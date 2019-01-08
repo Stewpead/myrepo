@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
     <!-- WOW -->
@@ -495,10 +496,49 @@
                         <div class="col-lg-12" id="DSpeed">
                            <div class="row ml-4">
                                <div class="col-md-5">
-                                   WAWAWA
+                                   <div class="row">
+                                        <div class="col-md-4">
+                                                <strong>Show:</strong>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="dropdown" style="background-color:rgb(255, 255, 255);color:#000;">
+                                                <button class="btn btn-flat dropdown-toggle" type="button" id="ddown-show" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Upload and Download
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="ddown-show">
+                                                    <a class="dropdown-item" href="#" id="ddown-show1">1</a>
+                                                    <a class="dropdown-item" href="#" id="ddown-show2">2</a>
+                                                    <a class="dropdown-item" href="#" id="ddown-show3">3</a>
+                                                    <a class="dropdown-item" href="#" id="ddown-show4">4</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                   </div>
                                </div>
                                <div class="col-md-5">
-                                   WOWOWOW
+                                   <div class="row">
+                                       <div class="col-md-4">
+                                            <strong>Resolution:</strong>
+                                       </div>
+                                       <div class="col-md-8">
+                                            <div class="dropdown" style="background-color:rgb(255, 255, 255);color:#000;">
+                                                <button class="btn btn-flat dropdown-toggle" type="button" id="ddown-resolution" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    1600 x 800
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#" id="ddown-resolution1">1</a>
+                                                    <a class="dropdown-item" href="#" id="ddown-resolution2">2</a>
+                                                    <a class="dropdown-item" href="#" id="ddown-resolution3">3</a>
+                                                    <a class="dropdown-item" href="#" id="ddown-resolution4">4</a>
+                                                </div>
+                                            </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="row ml-4">
+                               <div class="col-lg-12">
+                                   Graph
                                </div>
                            </div>
                         </div>
@@ -517,7 +557,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <table class="table table-md-responsive table-hover ml-3 mr-5 mt-3" id="tables">
+                            <table class="table table-md-responsive table-hover ml-3 mr-5 mt-3">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th></th>
