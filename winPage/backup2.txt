@@ -1,0 +1,136 @@
+let main, account, search, share, community, stream, settings;
+
+function loadWindow() {
+    main = new BrowserWindow({
+        frame: false,
+        maximize: true,
+        backgroundColor: '#262626',
+        icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
+        show: false,
+    });
+    main.loadURL(url.format({
+        pathname: path.join(__dirname, app_dir,'mainWindow.html'),
+        protocol: 'file:',
+        slashes: true
+    }));
+
+    account = new BrowserWindow({
+        frame: false,
+        maximize: true,
+        backgroundColor: '#262626',
+        icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
+        show: false,
+    });
+    account.loadURL(url.format({
+        pathname: path.join(__dirname, app_dir,'accountWindow.html'),
+        protocol: 'file:',
+        slashes: true
+    }));
+
+    search = new BrowserWindow({
+        frame: false,
+        maximize: true,
+        backgroundColor: '#262626',
+        icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
+        show: false,
+    });
+    search.loadURL(url.format({
+        pathname: path.join(__dirname, app_dir,'searchWindow.html'),
+        protocol: 'file:',
+        slashes: true
+    }));
+
+    share = new BrowserWindow({
+        frame: false,
+        maximize: true,
+        backgroundColor: '#262626',
+        icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
+        show: false,
+    });
+    share.loadURL(url.format({
+        pathname: path.join(__dirname, app_dir,'shareWindow.html'),
+        protocol: 'file:',
+        slashes: true
+    }));
+
+    main.once('ready-to-show', () => {
+        main.show();
+    });
+    main.maximize();
+
+}
+let thisWindow;
+
+ipcMain.on('main', (event, arg) => {
+    if(arg == 'account')
+    {
+
+        main.show();
+        account.hide();
+    } else if(arg == 'search') {
+
+        main.show();
+        search.hide();
+    } else if(arg == 'share') {
+
+        main.show();
+        share.hide();
+    }
+});
+ipcMain.on('account', (event, arg) => {
+    if(arg == 'main')
+    {
+
+        account.show();
+        main.hide();
+    } else if(arg == 'search') {
+
+        account.show();
+        search.hide();
+    } else if(arg == 'share') {
+
+        account.show();
+        share.hide();
+    }
+});
+ipcMain.on('search', (event, arg) => {
+    if(arg == 'main')
+    {
+
+        search.show();
+        main.hide();
+    } else if(arg == 'account') {
+
+        search.show();
+        account.hide();
+    } else if(arg == 'share') {
+
+        search.show();
+        share.hide();
+    }
+});
+ipcMain.on('share', (event, arg) => {
+    if(arg == 'main')
+    {
+
+        share.show();
+        main.hide();
+    } else if(arg == 'account') {
+
+        share.show();
+        account.hide();
+    } else if(arg == 'search') {
+
+        share.show();
+        search.hide();
+    }
+});
+
+
+
+
+app.on('ready',loadWindow);
+
+app.on('window-all-closed', () => {
+    app.quit();
+});

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- WOW  -->
+    <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <!-- WOW -->
+    <!-- MINE -->
+    <link rel="stylesheet" href="../css/appStyle.css">
+    <link rel="stylesheet" type="text/css" href="../css/account3Style.css">
+    <!--  -->
+    <!-- MINE -->    
+    <header>
+        <div id="container">
+            <nav>
+                <div id="buttons">
+                    <div id="minimize">
+                        <span>-</span>
+                    </div>
+                    <div id="maximize">
+                        <span>+</span>
+                    </div>
+                    <div id="close">
+                        <span>&times;</span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <body>
+        <div id="main">
+            <div id="slidenav" class="sidenav">
+                <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+                <!-- <img src="../images/logo image.png" alt="Logo"> -->
+                <div id="avxlogonav">
+                    <img src="../images/logo_white.png" alt="avx" id="logox"> 
+                </div>
+                <a href="#" onclick="location.href = 'mainWindow.html'"><i class="fa fa-home" id="sidelinks"></i><br>Home</a>
+                <a href="#" style="color:#ed1c24;"><i class="fa fa-id-card" id="sidelinks"  ></i><br>Account Wallet</a>
+                <a href="#" onclick="location.href = 'searchWindow.html'"><i class="fa fa-search" id="sidelinks" ></i><br>Search Browser</a>
+                <a href="#" onclick="location.href = 'shareWindow.html'"><i class="fa fa-share-alt" id="sidelinks" ></i><br>Share</a>
+                <a href="#" onclick="location.href = 'streamplayerWindow.html'"><i class="fa fa-play-circle" id="sidelinks" ></i><br>Stream Player</a>
+                <a href="#" onclick="location.href = 'communityWindow.html'"><i class="fa fa-globe" id="sidelinks"></i><br>Community</a>
+                <a href="#" onclick="location.href = 'settingsWindow.html'"><i class="fa fa-cogs" id="sidelinks" ></i><br>Settings</a>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="navbartop">
+                            <nav class="navbar navbar-expand-md sticky-top" style="background-color:#252525;">
+                                <ul class="nav nav-pills nav-fill">
+                                    <li class="nav-item mr-5">
+                                        <a class="nav-link" href="#"onclick="location.href = 'accountWindow.html'" >My Wallet</a>
+                                    </li>
+                                    <li class="nav-item mr-5">
+                                        <a class="nav-link" href="#" onclick="location.href = 'accountWindow2.html'">Profile</a>
+                                    </li>
+                                    <li class="nav-item mr-5">
+                                        <a class="nav-link" href="#" style="color:#ed1c24;">Files</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            
+            <!-- style="background-image:url('./images/horizontal logo white.png');background-size:contain;background-repeat:no-repeat; background-position: right; -->
+                <div class="row">
+                    <div class="col-lg-12 mt-5 ml-3">
+                        <ul id="tabs">
+                            <li>
+                                <a href="#" onclick="hideAF()"> <i class="fas fa-arrows-alt-v"></i> Active Files </a>
+                            </li>
+                            <li>
+                                <a href="#" onclick="hideCF()"> <i class="far fa-save"></i> Completed Files</a>
+                            </li>
+                        </ul>
+                    </div> 
+                </div>
+                <div id="activeFiles">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-lg-12" >
+                                    <div class="float-left ml-4 pl-3 mt-3">Download(s)</div>
+                                    <div class=" float-right mr-4 mt-3"><a href="#">Stream Player <i class="far fa-play-circle"></i></a></div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <table class="table table-md-responsive table-hover ml-3 mr-5 mt-3" id="tables">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th></th>
+                                        <th>File Name<a href="#" id="up"> ^ </a><a href="#" id="down">-</a></th>
+                                        <th>Data Rate</th>
+                                        <th>Graph</th>
+                                        <th>Peers</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>      
+                    </div> 
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-lg-12" >
+                                    <div class="float-left ml-4 pl-3 mt-3">Download(s)</div>
+                                    <div class=" float-right mr-4 mt-3"><a href="#">Stream Player</a></div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <table class="table table-md-responsive table-hover ml-3 mr-5 mt-3" id="tables">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th></th>
+                                        <th>File Name<a href="#" id="up"> ^ </a><a href="#" id="down">-</a></th>
+                                        <th>Data Rate</th>
+                                        <th>Graph</th>
+                                        <th>Peers</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>      
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="nav nav-tabs ml-4 mt-3" id="tabs">
+                                <li> <a href="#" onclick="viewDD()">Download Details</a></li>
+                                <li> <a href="#" onclick="viewDFiles()">Files</a></li> 
+                                <li> <a href="#" onclick="viewDPeers()">Peers</a></li> 
+                                <li> <a href="#" onclick="viewDspeed()">Speed</a></li> 
+                            </ul>   
+                        </div>
+                        <div class="ml-5 mt-3">
+                            <div class="col-lg-12" id="DDetails">
+                                Details
+                            </div>
+                            <div class="col-lg-12" id="DFiles">
+                                Files
+                            </div>
+                            <div class="col-lg-12" id="DPeers">
+                                Peers
+                            </div>
+                            <div class="col-lg-12" id="DSpeed">
+                                Speed
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+                <div id="completedFiles"> 
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-lg-12" >
+                                    <div class="float-left ml-4 pl-3 mt-3"></div>
+                                    <div class=" float-right mr-4 mt-3"></div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <table class="table table-md-responsive table-hover ml-3 mr-5 mt-3" id="tables">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th></th>
+                                        <th>File Name<a href="#" id="up"> ^ </a><a href="#" id="down">-</a></th>
+                                        <th>Data Rate</th>
+                                        <th>Graph</th>
+                                        <th>Peers</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>      
+                    </div> 
+                </div>
+            </div>
+        </div>     <!-- end of main -->
+    </body>
+    <script src="../js/topHandler.js"></script>
+    <!-- <script src="../js/scripts.js"></script> -->
+    <script src="../js/account_file.js"></script>
+    <script src="../js/mainWindow.js"></script>
+</html>

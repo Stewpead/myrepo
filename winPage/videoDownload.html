@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+                    <!-- <script src="../js/scripts.js"></script> -->
+    <!-- WOW  -->
+    <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <!-- WOW -->
+            
+        <!-- MINE -->
+        <link rel="stylesheet" type="text/css" href="../css/searchStyle.css">
+        <link rel="stylesheet" type="text/css" href="../css/appStyle.css">
+        <!-- MINE -->
+        <!-- <title id="title">AVXChange</title> -->
+    <header>
+        <div id="container">
+            <nav>
+                <div id="buttons">
+                    <div id="minimize">
+                        <span>-</span>
+                    </div>
+                    <div id="maximize">
+                        <span>+</span>
+                    </div>
+                    <div id="close">
+                        <span>&times;</span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <body>
+        <div id="slidenav" class="sidenav">
+            <div id="avxlogonav"><img src="../images/logo_white.png" alt="avx" id="logox"> 
+            </div>
+            <a href="#" onclick="location.href = 'mainWindow.html'"><i class="fa fa-home" id="sidelinks"></i><br>Home</a>
+            <a href="#" onclick="location.href = 'accountWindow.html'"><i class="fa fa-address-card" id="sidelinks"></i><br>Account Wallet</a>
+            <a href="#" style="color:#ed1c24;"><i class="fa fa-search" id="sidelinks"></i><br>Search Browser</a>
+            <a href="#" onclick="location.href = 'shareWindow.html'"><i class="fa fa-share-alt" id="sidelinks"></i><br>Share</a>
+            <a href="#" onclick="location.href = 'streamplayerWindow.html'"><i class="fa fa-play-circle" id="sidelinks"></i><br>Stream Player</a>
+            <a href="#" onclick="location.href = 'communityWindow.html'"><i class="fa fa-globe" id="sidelinks"></i><br>Community</a>
+            <a href="#" onclick="location.href = 'settingsWindow.html'"><i class="fa fa-cog" id="sidelinks"></i><br>Settings</a>
+        </div>
+        <div id="main">
+            <div id="bgvids">
+                <div class="container-fluid">
+                    <div class="row"> 
+                        <div class="col-lg-12 mt-2">
+                            <div class="float-right">
+                                <div id="sowl">
+                                        <a href="#"><i class="fa fa-sign-out-alt mr-2"> Sign out</i></a>    
+                                        <a href="#"><i class="fa fa-heart mr-5"> Wishlist</i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row"> 
+                        <div class="col-lg-6 mt-3">
+                            <a href="#" id="btnBack"><i class="fas fa-arrow-left p-4 ml-3"> Back</i></a>
+                        </div>
+                        <div class="col-lg-6 mt-3">
+                            <div style="margin-left:10vh;">
+                                <div class="p-4 mr-2" id="">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Movie Titles or Audio Tracks" aria-label="Movie Titles or Audio Tracks" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-danger" type="button" style="color:white;"> Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row"> 
+                        <div class="col-md-3">
+                            <div class="ml-4">
+                                <img src="" id="fileimage" style="border-radius:2px;">
+                            </div>
+                        </div>
+                        <div class="col-lg-9">
+                            <div style="float:left;">
+                                <h3 id="movietitle"></h3>
+                                <ul class="nav nav-tabs" id="tabs">
+                                    <li id="movieres">
+                                       
+                                    </li>
+                                    <li id="moviecost">
+                                       
+                                    </li>
+                                    <li id="movieavail">
+                                       
+                                    </li>
+                                </ul>
+                                <br>
+                                <p id="movieplot"></p>
+                                <br>
+                                <div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="d-flex justify-content-start">
+                                                <div class="p-2 bd-highlight">
+                                                    <button class="btn btn-outline-light" id="btnViewFiles">View Files</button>
+                                                </div>
+                                                <div class="p-2 bd-highlight">
+                                                    <button class="btn btn-outline-light" id="btnWishlist">Add to Wishlist</button>
+                                                </div>
+                                                <div class="p-2 bd-highlight">
+                                                    <button class="btn btn-danger" id="btnBuy">Buy now</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                        </div>                
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 ml-5">
+                            <span class="mt-5">Ratings Section Here</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                                    
+                        </div>
+                    </div>                                        
+                </div>
+            </div>
+        </div>    
+    </body>
+    <script src="../js/topHandler.js"></script>
+    <script src="../js/video_download.js"></script>
+</html>

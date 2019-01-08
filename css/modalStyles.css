@@ -1,0 +1,64 @@
+* {
+    overflow: hidden;
+}
+p {
+    font-size: 3vh;
+    text-align: center;
+}
+button {
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    margin-top:10px;
+}
+#avxquantity {
+    color:whitesmoke;
+    padding: 20px 20px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    font-size: 4.5vh;   
+    border:none;
+    background: transparent;
+    text-align: center;
+    outline: none;
+    border-bottom: 1px solid;
+}
+#avxText {
+    /* margin-bottom: 5%; */
+    margin:auto;
+    width: 60%;
+}
+#usertext {
+    margin:auto;
+    width: 80%;
+}
+#receiver {
+    color:#000;
+    /* padding: 10px 20px; */
+    margin: 5px 0;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 3.5vh;
+    border:none;
+    /* background: transparent; */
+    text-align: left;
+    outline: none;
+    /* border-bottom: 1px solid; */
+}
+#comment {
+    width: 100%;
+}
+#commentdiv {
+    margin: auto;
+    width: 80%;
+    padding-top: 10px;
+}
+#titleShown {
+    -webkit-app-region: drag;
+   }

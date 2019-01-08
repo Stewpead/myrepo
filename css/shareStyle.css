@@ -1,0 +1,47 @@
+#navbartop {
+    position: fixed;
+    height: 70px;
+    width: 100%;
+    top: 30px;
+    left: 130px;
+    background-color: #252525;
+}
+#rightcontents {
+    right: 5%;
+    margin-top: 15px;
+    display: inline-block;
+}
+button {
+    width: 100px;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+#contentmain {
+    margin-top: 60px;
+}
+#wrapit {
+    margin: 15px;
+}
+.centercontent {
+    margin-top: 5%;
+}
+.box1 {
+    float: right;
+    margin-right: 20%;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: antiquewhite;
+    height: 250px;
+    width: 250px;
+}
+.box2 {
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: antiquewhite;
+    height: 250px;
+    width: 250px;
+}
+/* #btnClosetop {
+    right: 5%;
+} */

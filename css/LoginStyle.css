@@ -1,0 +1,223 @@
+html {
+    width:100%;
+    height: 100%;
+    overflow: hidden;
+}
+body {
+    margin-top:30px;
+    height: auto;
+}
+*{
+    margin: 0px;
+    padding: 0px; 
+    font-family: segoe ui light;
+    box-sizing: border-box;
+    height: auto;
+   }
+#titleShown {
+    -webkit-app-region: drag;
+   }
+#logo {
+    width: 180%;
+}
+#btnUpload {
+    background-color:#000000;
+    color: white;
+    padding: 4px 9px;
+    margin: auto;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+#container {
+       width: 100%;
+       height: 30px;
+       display:block;
+       position: absolute;
+       top:0;
+       left: 0;
+   }
+#savew {
+    background-color: #ed1c24;
+    color: white;
+    padding: 4px 8px;
+    margin: 0 27%;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+   }
+#container nav {
+       display: block;
+       width:100%;
+       height: 30px;
+       background-color: #333333;
+   }
+#container nav #titleShown {
+       width: 30%;
+       height: 100%;
+       line-height: 30px;
+       color:#f7f7f7;
+       font-size: 1.2em;
+       font-weight: bold;
+       float: left;
+       padding: 0 0 0 1em;
+   }
+#container nav #buttons {
+       float: right;
+       width: 150px;
+       height: 100%;
+       line-height: 30px;
+       background-color: #222222;
+   }
+#buttons #minimize, #buttons #maximize, #buttons #close {
+    float: left;
+    height: 100%;
+    width:33%;
+    text-align: center;
+    color: #f7f7f7;
+    cursor: default;
+   }
+
+#buttons #close:hover {
+       background-color: #ed1c24;
+   }
+
+.col-container {
+    position: fixed;
+    display: flex;
+    width: 100%;   
+    height: 100%;
+    background-image:url('../images/slider-avxchange-movies-min.jpg');
+  }
+.col {
+    flex: 2;
+    color: white;
+  }
+#loginAVX {
+    padding: 30px;
+  }
+  a {
+      color: rgb(255, 255, 255);
+  }
+  a:hover {
+    color: #ed1c24;
+  }
+
+.col img {
+    width: 30%;
+    height: auto;
+    margin-top: 5%;
+    opacity: 1;
+}
+#back {
+    margin-left: 20px;
+    margin-top: 10%;
+}
+@media screen and (max-width: 600px) {
+    img {
+        min-width: 80px;
+        min-height: auto;
+    }
+}
+p {
+    text-align: center;
+}
+.login {
+    padding: 25px;
+    color: white;
+    left: 50%;
+    margin:auto;
+    padding: 30% 0;
+}
+.signup {
+    color: white;
+    left: 50%;
+    margin:auto;
+    padding: 30% 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 20%; margin-right: 20%;
+}
+.welcome {
+    text-align: left;
+    width: 35%;
+    margin: 25% 0 0 15%;
+}
+.welcome p {
+    overflow: auto;
+    padding-top: 20px;
+
+}
+#tagline {
+    overflow: auto;
+    text-align: justify;
+    width: 100%;
+
+}
+.tagg {
+    width: 60%;
+    margin-left: 15%;
+    margin-right: 20%;
+}
+input[type=text], input[type=password], input[type=email] {
+
+    color:whitesmoke;
+    padding: 10px 20px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    font-size: 14px;   
+    border:none;
+    background: transparent;
+    text-align: left;
+    outline: none;
+    border-bottom: 1px solid;
+    width: 100%;
+    margin-bottom: 5%;
+}
+form {
+    border: 3px solid #000000;
+}
+
+span.psw {
+    float: right;
+}
+button {
+    background-color: #ed1c24;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+.footdetails {
+    margin: auto;
+    padding-left: 35%;
+    padding-right: 35%;
+    display: inline;
+    text-align: center!important;
+}
+#foots {
+    font-size: 14px;
+
+    
+}
+  @media screen and (max-width: 800px) {
+        .col {
+            font-size: 1.3vw;
+        }
+  }
+  @media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+}
+#downwallet {
+    margin-left: 10%;
+    margin-right: 40%;
+}

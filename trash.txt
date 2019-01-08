@@ -1,0 +1,228 @@
+function otherWindow(filename) {
+    notDefaultWindow = new BrowserWindow({
+        frame: false,
+        icon: path.join(__dirname, IMG_DIR, 'whiteicon.png')
+    });
+
+    notDefaultWindow.loadURL(url.format({
+        pathname: path.join(__dirname, app_dir, filename),
+        protocol: 'file:',
+        slashes: true
+    }));
+
+    notDefaultWindow.on('open', _ => {
+        console.log(filename);
+        defaultWindow.hide();
+    });
+
+    notDefaultWindow.on('close', _ => {
+        console.log('back to main page');
+        this.BrowserWindow = null;
+        defaultWindow.showWindow();
+    });
+    notDefaultWindow.on('closed', _ => {
+        defaultWindow.show();
+    });
+    notDefaultWindow.maximize();
+}
+
+ipcMain.on('newPage',(event, arg) => {
+    otherWindow(arg);
+});
+
+
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);  */
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    -webkit- */
+}
+::-webkit-scrollbar-track:horizontal {
+    color: #333333;
+    border-radius: 10px;
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5); */
+
+}
+
+
+
+// defaultWindow.on('closed', _ => {
+//     console.log('closed');
+//     defaultWindow = null;
+//     app.quit();
+//   });
+// defaultWindow.maximize();
+
+//menu template
+// const mainMenuTemplate = [
+//     {
+//         label: 'File',
+//         submenu: [
+//             {
+//                 label: 'Submenu 1'   
+//             },
+//             {
+//                 label: 'Submenu 2'
+//             }
+            
+//         ]
+//     },
+//     {
+//         label: 'Options',
+//         submenu: [
+//             {
+//                 label: 'Option 1'
+//             },
+//             {
+//                 label: 'Option 2'
+//             }
+//         ]
+//     }
+// ]
+
+
+    // ipcMain.on('synchronous-message',(event,arg) => {
+    //     console.log(arg);
+    //     event.returnValue = 'Test message4 ';
+    // });
+
+    
+
+    // var fs = require('fs');
+    // var temp = fs.readFileSync('../PHP/data.json'); 
+    // var data = JSON.parse(temp);
+    // console.log(data);
+
+// If mac, add empty object to menu
+
+
+var net = require('net');
+
+var client = new net.Socket();
+
+client.connect(1337, '127.0.0.1', function() {
+	console.log('Connected');
+	client.write('Hello, server! Love, Client.');
+});
+
+client.on('data', function(data) {
+	console.log('Received: ' + data);
+	// client.destroy(); // kill client after server's response
+});
+
+client.on('close', function() {
+	console.log('Connection closed');
+});
+
+// var newWins = 'main.html';
+// function openWindow() {
+//     console.log('clickedd');
+//     ipcRender.sendSync('newPage', newWins);
+// }
+
+// $(document).ready(function(){
+//     $('[data-toggle="tooltip"]').tooltip(); 
+// });
+// $('#container').dblclick(function(){
+//     if(!win.isMaximized()) {
+//         win.maximize();
+//         }
+//         else
+//         {
+//             win.unmaximize();
+//         }
+// });
+
+{"private":"d1a3eeb77fa1f23902cb78e15997fd48b542234a68b2e1551c191549333d3c9a","public":"227cc6f62080f017c2a6a6738afdd4ba690f8cce5a27ac25ab24d23464cb20bb"}
+
+
+g++ p2pTest.cpp -std=c++11 -o p2pTest -lws2_32
+
+
+
+
+
+
+
+
+
+         <table class="table table-md-responsive table-hover ml-5 mr-3 mt-2">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                        <th></th>
+                                        <th>File Name <a href="#"> ^ </a></th>
+                                        <th>ID</th>
+                                        <th>Resolution</th>
+                                        <th>File size</th>
+                                        <th>Type</th>
+                                        <th>Peers</th>
+                                        <th>Ratings</th>
+                                        <th>Action</th>
+                                        <!-- <th>Last Name</th> -->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                        <th scope="row"></th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <!-- <td>Otto</td> -->
+                                        </tr>
+                                        <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <!-- <td>Otto</td> -->
+                                        </tr>
+                                        <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <!-- <td>Otto</td> -->
+                                        </tr>
+                                        <tr>
+                                        <th scope="row" onclick="row3(row3)"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <!-- <td>Otto</td> -->
+                                        </tr>
+                                    </tbody>
+                                </table> 
+
+
+
+
+
+                                

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- WOW  -->
+    <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <!-- WOW -->
+
+    
+    <!-- MINE -->
+    <link rel="stylesheet" type="text/css" href="../css/accountStyle.css">
+    <link rel="stylesheet" type="text/css" href="../css/appStyle.css">
+    <script src="../js/dataparse.js"></script>
+    <!-- MINE -->    
+    
+    <header>
+        <div id="container">
+            <nav class="topBar">
+                <div id="buttons">
+                    <div id="minimize">
+                        <span>-</span>
+                    </div>
+                    <div id="maximize">
+                        <span>+</span>
+                    </div>
+                    <div id="close">
+                        <span>&times;</span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <body>
+        <div id="main">
+            <div id="slidenav" class="sidenav">
+                <div id="avxlogonav">
+                    <img src="../images/logo_white.png" alt="avx" id="logox">
+                </div>
+                
+                    <a href="#" onclick="location.href = 'mainWindow.html'"><i class="fa fa-home" id="sidelinks"></i><br>Home</a>
+                    <a href="#" style="color:#ed1c24;"><i class="fa fa-address-card" id="sidelinks" ></i><br>Account Wallet</a>
+                    <a href="#" onclick="location.href = 'searchWindow.html'"><i class="fa fa-search" id="sidelinks" ></i><br>Search Browser</a>
+                    <a href="#" onclick="location.href = 'shareWindow.html'"><i class="fa fa-share-alt" id="sidelinks" ></i><br>Share</a>
+                    <a href="#" onclick="location.href = 'streamplayerWindow.html'"><i class="fa fa-play-circle" id="sidelinks" ></i><br>Stream Player</a>
+                    <a href="#" onclick="location.href = 'communityWindow.html'"><i id="sidelinks">&#xE774;</i></i><br>Community</a>
+                    <a href="#" onclick="location.href = 'settingsWindow.html'"><i class="fa fa-cogs" id="sidelinks" ></i><br>Settings</a>
+            </div>
+            <div id="navbartop">
+                <nav class="navbar navbar-expand-md sticky-top" style="background-color:#252525;">
+                    <ul class="nav nav-pills nav-fill">
+                        <li class="nav-item mr-5">
+                            <a class="nav-link" href="#" style="color:#ed1c24;">My Wallet</a>
+                        </li>
+                        <li class="nav-item mr-5">
+                            <a class="nav-link" href="#" onclick="location.href = 'accountWindow2.html'">Profile</a>
+                        </li>
+                        <li class="nav-item mr-5">
+                            <a class="nav-link" href="#" onclick="location.href = 'accountWindow3.html'">Files</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-9" style="height:45vh; margin-top:80px;">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-xs-2"> 
+                                        <div id="qrcode">
+                                            <img src="../images/frame.png">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <h3 id="wback">Welcome Back, <span id="userprofile"></span></h3>
+                                                <tr><td>&#xe774;</td><td><i class="mdl2 mdl2-globe"></i></td><td>globe</td><td>Globe</td></tr>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <p style="font-size: 14px;"> Wallet address: </p><span id="Waddress"></span>
+                                                <button type="button" class="btn btn-outline-dark ml-5 float-right"><i class="fa fa-copy"></i></button>  
+                                            </div>
+                                        </div> 
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div>
+                                                    <div class="d-flex flex-wrap mb-5 mt-2">
+                                                        <div class="d-flex flex-column" style="background-color:#000;">
+                                                            <div class="p-2" class="avxlabel">
+                                                                <span style="font-size:14px;"> Total AVX Spent</span>
+                                                            </div>
+                                                            <div class="p-2" style="color:rgb(212, 50, 50);font-size: 32px;" id="redavx">
+                                                                <strong><span id="spentavx">0.00</span></strong>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex flex-column"  class="avxlabel">
+                                                            <div class="p-2">
+                                                                <span style="font-size:14px;"> Total AVX Earned</span>
+                                                            </div>
+                                                            <div class="p-2" style="color:rgb(64, 212, 50);font-size: 32px;" id="greenavx">
+                                                                <strong><span id="earnedavx">0.00</span></strong>
+                                                            </div>
+                                                        </div>  
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="col-lg-3" style="height:45vh; margin-top:80px;">
+                    <h5>Wallet Balance</h5>
+                    <div class="d-inline-flex p-2">
+                        <p class="p-2" id="totalBalance" style="font-size:24px;">98.6754321</p><p class="p-2" style="font-size:24px;">AVX</p>
+                    </div>
+                    <div class="d-inline-flex p-2">
+                            <p class="p-2">Display</p>
+                            <div class="p-2">
+                                    <div class="dropdown" style="background-color:rgb(255, 255, 255);color:#000;">
+
+                                            <button class="btn btn-flat dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            2
+                                            </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#" id="a1">1</a>
+                            <a class="dropdown-item" href="#" id="a2">2</a>
+                            <a class="dropdown-item" href="#" id="a3">3</a>
+                            <a class="dropdown-item" href="#" id="a4">4</a>
+                        </div>
+                    </div>
+            </div>
+            <p class="p-2" style="padding-left: 10px; background-color:#000;font-size: 2.5vh;"> decimal point</p>
+                    </div>
+                    <button type="button" id="btnSend" class="btn btn-outline-danger" style="padding: 0 20%;font-size: 2.5vh;">Send Coins(AVX)</button>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="ml-5 mt-4">Transaction History</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <ul class="nav nav-tabs ml-5" id="tabs">
+                            <li class="active"><a data-toggle="tab" href="#home" style="padding:10px;" onclick="getmerge()">Merged</a></li>
+                            <li ><a data-toggle="tab" href="#menu1" onclick="getincoming()">Incoming Token(s)</a></li>
+                            <li ><a data-toggle="tab" href="#menu2" onclick="getOutgoing()">Outgoing Token(s)</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <div>       
+                            <p style="color:white;display: inline;"> Sort by Date</p>
+                            <div class="dropdown" style="display: inline;">
+                                <button class="btn btn-flat dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                recent
+                                </button>                  
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">old</a>
+                                    <a class="dropdown-item" href="#">this week</a>
+                                    <a class="dropdown-item" href="#">this month</a>
+                                    <a class="dropdown-item" href="#">this year</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="tab-content mt-2 mr-5 ml-5" style="width: auto;background-color:#000;">
+                            <div id="home" class="tab-pane fade in active">  
+                                <table class="table table-dark mr-5" style="color:white;">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Status</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>From</th>
+                                            <th>To</th>
+                                            <th>Description</th>
+                                            <th>Amount(AVX)</th>
+                                            <th>Transaction ID</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row"></th>
+                                            <td id="mstatus1"></td>
+                                            <td id="mdate1"></td>
+                                            <td id="mtime1"></td>
+                                            <td id="mfrom1"></td>
+                                            <td id="mto1"></td>
+                                            <td id="mdescrip1"></td>
+                                            <td id="mamount1"></td>
+                                            <td id="mtransacID1"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"></th>
+                                            <td id="mstatus2"></td>
+                                            <td id="mdate2"></td>
+                                            <td id="mtime2"></td>
+                                            <td id="mfrom2"></td>
+                                            <td id="mto2"></td>
+                                            <td id="mdescrip2"></td>
+                                            <td id="mamount2"></td>
+                                            <td id="mtransacID2"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"></th>
+                                            <td id="mstatus3"></td>
+                                            <td id="mdate3"></td>
+                                            <td id="mtime3"></td>
+                                            <td id="mfrom3"></td>
+                                            <td id="mto3"></td>
+                                            <td id="mdescrip3"></td>
+                                            <td id="mamount3"></td>
+                                            <td id="mtransacID3"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"></th>
+                                            <td id="mstatus4"></td>
+                                            <td id="mdate4"></td>
+                                            <td id="mtime4"></td>
+                                            <td id="mfrom4"></td>
+                                            <td id="mto4"></td>
+                                            <td id="mdescrip4"></td>
+                                            <td id="mamount4"></td>
+                                            <td id="mtransacID4"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"></th>
+                                            <td id="mstatus5"></td>
+                                            <td id="mdate5"></td>
+                                            <td id="mtime5"></td>
+                                            <td id="mfrom5"></td>
+                                            <td id="mto5"></td>
+                                            <td id="mdescrip5"></td>
+                                            <td id="mamount5"></td>
+                                            <td id="mtransacID5"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"></th>
+                                            <td id="mstatus6"></td>
+                                            <td id="mdate6"></td>
+                                            <td id="mtime6"></td>
+                                            <td id="mfrom6"></td>
+                                            <td id="mto6"></td>
+                                            <td id="mdescrip6"></td>
+                                            <td id="mamount6"></td>
+                                            <td id="mtransacID6"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"></th>
+                                            <td id="mstatus7"></td>
+                                            <td id="mdate7"></td>
+                                            <td id="mtime7"></td>
+                                            <td id="mfrom7"></td>
+                                            <td id="mto7"></td>
+                                            <td id="mdescrip7"></td>
+                                            <td id="mamount7"></td>
+                                            <td id="mtransacID7"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"></th>
+                                            <td id="mstatus8"></td>
+                                            <td id="mdate8"></td>
+                                            <td id="mtime8"></td>
+                                            <td id="mfrom8"></td>
+                                            <td id="mto8"></td>
+                                            <td id="mdescrip8"></td>
+                                            <td id="mamount8"></td>
+                                            <td id="mtransacID8"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="menu1" class="tab-pane fade">
+                                <table class="table table-dark mr-5" style="color:white;">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Status</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>From</th>
+                                            <th>To</th>
+                                            <th>Description</th>
+                                            <th>Amount(AVX)</th>
+                                            <th>Transaction ID</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row"></th>
+                                            <td id="istatus1"></td>
+                                            <td id="idate1"></td>
+                                            <td id="itime1"></td>
+                                            <td id="ifrom1"></td>
+                                            <td id="ito1"></td>
+                                            <td id="idescrip1"></td>
+                                            <td id="iamount1"></td>
+                                            <td id="itransacID1"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"></th>
+                                            <td id="istatus2"></td>
+                                            <td id="idate2"></td>
+                                            <td id="itime2"></td>
+                                            <td id="ifrom2"></td>
+                                            <td id="ito2"></td>
+                                            <td id="idescrip2"></td>
+                                            <td id="iamount2"></td>
+                                            <td id="itransacID2"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"></th>
+                                            <td id="istatus3"></td>
+                                            <td id="idate3"></td>
+                                            <td id="itime3"></td>
+                                            <td id="ifrom3"></td>
+                                            <td id="ito3"></td>
+                                            <td id="idescrip3"></td>
+                                            <td id="iamount3"></td>
+                                            <td id="itransacID3"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"></th>
+                                            <td id="istatus4"></td>
+                                            <td id="idate4"></td>
+                                            <td id="itime4"></td>
+                                            <td id="ifrom4"></td>
+                                            <td id="ito4"></td>
+                                            <td id="idescrip4"></td>
+                                            <td id="iamount4"></td>
+                                            <td id="itransacID4"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="menu2" class="tab-pane fade">
+                                <table class="table table-dark mr-5" style="color:white;">
+                                    <thead>
+                                    <tr>
+                                    <th></th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Description</th>
+                                    <th>Amount(AVX)</th>
+                                    <th>Transaction ID</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row"></th>
+                                            <td id="ostatus1"></td>
+                                            <td id="odate1"></td>
+                                            <td id="otime1"></td>
+                                            <td id="ofrom1"></td>
+                                            <td id="oto1"></td>
+                                            <td id="odescrip1"></td>
+                                            <td id="oamount1"></td>
+                                            <td id="otransacID1"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"></th>
+                                            <td id="ostatus2"></td>
+                                            <td id="odate2"></td>
+                                            <td id="otime2"></td>
+                                            <td id="ofrom2"></td>
+                                            <td id="oto2"></td>
+                                            <td id="odescrip2"></td>
+                                            <td id="oamount2"></td>
+                                            <td id="otransacID2"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"></th>
+                                            <td id="ostatus3"></td>
+                                            <td id="odate3"></td>
+                                            <td id="otime3"></td>
+                                            <td id="ofrom3"></td>
+                                            <td id="oto3"></td>
+                                            <td id="odescrip3"></td>
+                                            <td id="oamount3"></td>
+                                            <td id="otransacID3"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"></th>
+                                            <td id="ostatus4"></td>
+                                            <td id="odate4"></td>
+                                            <td id="otime4"></td>
+                                            <td id="ofrom4"></td>
+                                            <td id="oto4"></td>
+                                            <td id="odescrip4"></td>
+                                            <td id="oamount4"></td>
+                                            <td id="otransacID4"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <br>
+                        <span class="mb-5">     
+                        </span>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </body>
+    <!-- <footer style="height:10%;width: 100%;">
+    <br>
+    <br>
+    </footer> -->
+    <script src="../js/topHandler.js"></script>
+    <script src="../js/account_window.js"></script>
+    <script src="../js/getprofile.js"></script>
+</html>

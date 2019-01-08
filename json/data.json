@@ -1,0 +1,51 @@
+{
+	"Out" : {
+		"Verified" : {
+			"x2": {
+				"Amount": 11,
+				"From": "073d21b8230ee49c09ff1349138fefcd3b9070de1e439d231e3bd86ab573447e",
+				"To": "861caebcac0d8c0765822d12343ab52b903ebaed881a7088a336801f96be81d8"
+			},
+			"x6": {
+				"Amount": 14,
+				"From": "073d21b8230ee49c09ff1349138fefcd3b9070de1e439d231e3bd86ab573447e",
+				"To": "861caebcac0d8c0765822d12343ab52b903ebaed881a7088a336801f96be81d8"
+			}
+		},
+		"Unverified": {
+			"x1": {
+				"Amount": 32,
+				"From": "073d21b8230ee49c09ff1349138fefcd3b9070de1e439d231e3bd86ab573447e",
+				"To": "861caebcac0d8c0765822d12343ab52b903ebaed881a7088a336801f96be81d8"
+			},
+			"x4": {
+				"Amount": 4,
+				"From": "073d21b8230ee49c09ff1349138fefcd3b9070de1e439d231e3bd86ab573447e",
+				"To": "861caebcac0d8c0765822d12343ab52b903ebaed881a7088a336801f96be81d8"
+			}
+		}
+	},
+	"In": {
+		"Verified": {
+			"x0": {
+				"Amount": 100,
+				"From": "073d21b8230ee49c09ff1349138fefcd3b9070de1e439d231e3bd86ab573447e",
+				"To": "073d21b8230ee49c09ff1349138fefcd3b9070de1e439d231e3bd86ab573447e"
+			},
+			"x5": {
+				"Amount": 41,
+				"From": "073d21b8230ee49c09ff1349138fefcd3b9070de1e439d231e3bd86ab573447e",
+				"To": "861caebcac0d8c0765822d12343ab52b903ebaed881a7088a336801f96be81d8"
+			}
+		},
+		"Unverified": {
+			"x3": {
+				"Amount": 41,
+				"From": "073d21b8230ee49c09ff1349138fefcd3b9070de1e439d231e3bd86ab573447e",
+				"To": "861caebcac0d8c0765822d12343ab52b903ebaed881a7088a336801f96be81d8"
+			}
+		}
+	}
+}
+
+

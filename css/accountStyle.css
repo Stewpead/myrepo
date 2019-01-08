@@ -1,0 +1,98 @@
+
+#navbartop {
+    position: fixed;
+    width: 100%;
+    /* top: 30px; */
+    left: 130px;
+    z-index: 1;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+    width: 90px;
+    height: 90px;
+}
+#qrcode {
+    padding-left: 40px;
+}
+
+#contents {
+    margin-top:50px;
+}
+.btn {
+    color:rgb(255, 255, 255);
+    border-radius: 0px !important;
+}
+#btnSend {
+    border-color:#818181;
+}
+#qrcode {
+    top: 12%;
+    left: 40px;
+    height: 30vh;
+    width: 30vh;
+    display: inline-block;
+}
+.avxlabel {
+    font-size: 10px;
+}
+a {
+    color:white;
+}
+a:hover {
+    color:rgb(158, 34, 34);
+}
+li a {
+    color:white;
+    display: inline;
+}
+/* #tabs {
+    display: block;
+} */
+#tabs li a:hover {
+    color: #c72d2d;
+}
+#tabs li + li:before {
+    content: "  |  ";
+    padding: 0 10px;
+}
+li {
+    float: left;
+}
+/* hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    color: #ed1c24;
+} */
+thead {
+    background-color:rgb(49, 49, 49);
+}
+td {
+    font-size: 11px;
+}
+tbody {
+    background-color:white;
+    color:#000;
+}
+/* #sidelinks {
+    font-size:17px;
+    color:white; 
+    margin-bottom:8%;
+} */
+#Waddress {
+    float: left;
+    padding-left: 5px;
+    font-size: 10px;
+}
+#dropdownMenuButton {
+    color: #000;
+}
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }

@@ -1,0 +1,25 @@
+{
+  "name": "avx-application",
+  "version": "1.0.0",
+  "description": "AVXChange",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "AVX Team",
+  "license": "MIT",
+  "dependencies": {
+    "base64-to-image": "^1.0.2",
+    "bootstrap": "^4.1.3",
+    "electron": "^3.0.6",
+    "font-awesome-icons": "^1.5.0",
+    "jquery": "^3.3.1",
+    "materialize-css": "^1.0.0",
+    "node-ipc": "^9.1.1",
+    "segoe-fonts": "^1.0.1",
+    "segoe-mdl2-icons": "^0.1.0"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.5.0"
+  }
+}

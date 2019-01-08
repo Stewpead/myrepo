@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- WOW  -->
+    <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <!-- WOW -->
+    <!-- MINE -->
+    <link rel="stylesheet" href="../css/appStyle.css">
+    <link rel="stylesheet" type="text/css" href="../css/account3Style.css">
+    <!--  -->
+    <!-- MINE -->    
+    <header>
+        <div id="container">
+            <nav>
+                <div id="buttons">
+                    <div id="minimize">
+                        <span>-</span>
+                    </div>
+                    <div id="maximize">
+                        <span>+</span>
+                    </div>
+                    <div id="close">
+                        <span>&times;</span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <body>
+        <div id="main">
+            <div id="slidenav" class="sidenav">
+                <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+                <!-- <img src="../images/logo image.png" alt="Logo"> -->
+                <div id="avxlogonav">
+                    <img src="../images/logo_white.png" alt="avx" id="logox"> 
+                </div>
+                <a href="#" onclick="location.href = 'mainWindow.html'"><i class="fa fa-home" id="sidelinks"></i><br>Home</a>
+                <a href="#" style="color:#ed1c24;"><i class="fa fa-id-card" id="sidelinks"  ></i><br>Account Wallet</a>
+                <a href="#" onclick="location.href = 'searchWindow.html'"><i class="fa fa-search" id="sidelinks" ></i><br>Search Browser</a>
+                <a href="#" onclick="location.href = 'shareWindow.html'"><i class="fa fa-share-alt" id="sidelinks" ></i><br>Share</a>
+                <a href="#" onclick="location.href = 'streamplayerWindow.html'"><i class="fa fa-play-circle" id="sidelinks" ></i><br>Stream Player</a>
+                <a href="#" onclick="location.href = 'communityWindow.html'"><i class="fa fa-globe" id="sidelinks"></i><br>Community</a>
+                <a href="#" onclick="location.href = 'settingsWindow.html'"><i class="fa fa-cogs" id="sidelinks" ></i><br>Settings</a>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="navbartop">
+                            <nav class="navbar navbar-expand-md sticky-top" style="background-color:#252525;">
+                                <ul class="nav nav-pills nav-fill">
+                                    <li class="nav-item mr-5">
+                                        <a class="nav-link" href="#"onclick="location.href = 'accountWindow.html'" >My Wallet</a>
+                                    </li>
+                                    <li class="nav-item mr-5">
+                                        <a class="nav-link" href="#" onclick="location.href = 'accountWindow2.html'">Profile</a>
+                                    </li>
+                                    <li class="nav-item mr-5">
+                                        <a class="nav-link" href="#" style="color:#ed1c24;">Files</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            
+            <!-- style="background-image:url('./images/horizontal logo white.png');background-size:contain;background-repeat:no-repeat; background-position: right; -->
+                <div class="row">
+                    <div class="col-lg-12 mt-5 ml-3">
+                        <ul id="tabs">
+                            <li>
+                                <a href="#" onclick="hideAF()"> <i class="fas fa-arrows-alt-v"></i> Active Files </a>
+                            </li>
+                            <li>
+                                <a href="#" onclick="hideCF()"> <i class="far fa-save"></i> Completed Files</a>
+                            </li>
+                        </ul>
+                    </div> 
+                </div>
+                <div id="activeFiles">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-lg-12" >
+                                    <div class="float-left ml-4 pl-3 mt-3">Download(s)</div>
+                                    <div class=" float-right mr-4 mt-3"><a href="#">Stream Player <i class="far fa-play-circle"></i></a></div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <table class="table table-md-responsive table-hover ml-3 mr-5 mt-3" id="tables">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th></th>
+                                        <th>File Name<a href="#" id="up"> ^ </a><a href="#" id="down">-</a></th>
+                                        <th>Data Rate</th>
+                                        <th>Graph</th>
+                                        <th>Peers</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>      
+                    </div> 
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-lg-12" >
+                                    <div class="float-left ml-4 pl-3 mt-3">Download(s)</div>
+                                    <div class=" float-right mr-4 mt-3"><a href="#">Stream Player</a></div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <table class="table table-md-responsive table-hover ml-3 mr-5 mt-3" id="tables">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th></th>
+                                        <th>File Name<a href="#" id="up"> ^ </a><a href="#" id="down">-</a></th>
+                                        <th>Data Rate</th>
+                                        <th>Graph</th>
+                                        <th>Peers</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>      
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 header-links">
+                            <ul class="nav ml-4 mt-3" id="tabs">
+                                <li> <a onclick="viewDD()">Download Details</a></li>
+                                <li> <a onclick="viewDFiles()">Files</a></li> 
+                                <li> <a onclick="viewDPeers()">Peers</a></li> 
+                                <li> <a onclick="viewDspeed()">Speed</a></li> 
+                            </ul>   
+                        </div>
+                        <div class="ml-4 mt-3 col-lg-12">
+                            <div id="DDetails">
+                                <div class="section-divider">
+                                    <span id="divider-text">
+                                        <b>Transfer</b>
+                                    </span>
+                                </div>
+                                <div class="content-details ml-2 mt-5 mb-5">
+                                    <div class="row">
+                                        <div class="col-lg-5">
+                                            <div class="row mb-2">
+                                                <div class="col-md-6">
+                                                <strong>Time Elapse:</strong>
+                                                </div>
+                                                <div class="col-md-6">
+                                                <span id="time-elapse">1h 3m</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-md-6">
+                                                    <strong>Downloaded:</strong>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <span id="downloaded-size">791 MB</span>
+                                                </div> 
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-md-6">
+                                                    <strong>Downloaded Speed:</strong>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <span id="download-speed">46.0 kB/s(avg. 215.2 kB/s)</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-md-6">
+                                                    <strong>Down Limit:</strong>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <span id="download-limit"> - </span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-md-6">
+                                                    <strong>Status:</strong>
+                                                </div>  
+                                                <div class="col-md-6">
+                                                    <span id="download-status"> not complete </span>
+                                                </div>  
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <div class="row mb-2">
+                                                <div class="col-md-6">
+                                                    <strong>Remaining:</strong>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <span id="time-remaining">41m 2s</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-md-6">
+                                                    <strong>Uploaded:</strong>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <span id="uploaded-size">791 MB</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-md-6">
+                                                    <strong>Upload speed:</strong>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <span id="upload-speed">13.0 kB/s(avg. 78.7 kB/s)</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-md-6">
+                                                    <strong>Upload speed limit:</strong>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <span id="upload-speed-limit">15 Kb/s</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="section-divider">
+                                    <span id="divider-text">
+                                        <b>General</b>
+                                    </span>
+                                </div>
+                                <div class="content-details ml-2 mt-5 mb-5">
+                                    <div class="row mb-2">
+                                        <div class="col-lg-5">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <strong>Directory:</strong>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <span id="file-directory">C:\Users\Documents\Downloads\Videos\</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-5">
+                                            <div class="row mb-2">
+                                                <div class="col-md-6">
+                                                    <strong>Total Size:</strong>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <span id="total-size">190 GB( 791 MB done)</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-md-6">
+                                                    <strong>Created on: </strong>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <span id="date-created">3/6/2018 12:51am</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-md-6">
+                                                    <strong>Added on:</strong>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <span id="added-on">3/6/2018 12:51am</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-md-6">
+                                                    <strong>Hash:</strong>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <span id="file-hash">AVXd232d23sft5k7l5igtk5ofk4i4jgo5</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="col-lg-12" id="DFiles">
+                                Files
+                            </div>
+                            <div class="col-lg-12" id="DPeers">
+                                Peers
+                            </div>
+                            <div class="col-lg-12" id="DSpeed">
+                                Speed
+                            </div>
+                    </div>
+                </div>
+                <div id="completedFiles"> 
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-lg-12" >
+                                    <div class="float-left ml-4 pl-3 mt-3"></div>
+                                    <div class=" float-right mr-4 mt-3"></div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <table class="table table-md-responsive table-hover ml-3 mr-5 mt-3" id="tables">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th></th>
+                                        <th>File Name<a href="#" id="up"> ^ </a><a href="#" id="down">-</a></th>
+                                        <th>Data Rate</th>
+                                        <th>Graph</th>
+                                        <th>Peers</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>      
+                    </div> 
+                </div>
+            </div>
+        </div>     <!-- end of main -->
+    </body>
+    <script src="../js/topHandler.js"></script>
+    <script src="../js/account_file.js"></script>
+</html>

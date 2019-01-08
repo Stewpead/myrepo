@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    background-color: #262626;
+}
+/* .innerCircle {
+
+} */
+#innerCircle {
+    margin-top: 30%;
+    left: 30%;
+    width: 100px;
+    height: 100px;
+    background: white;
+}

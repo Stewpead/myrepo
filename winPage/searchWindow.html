@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- WOW  -->
+    <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <!-- WOW -->
+
+    <!-- MINE -->
+    <link rel="stylesheet" type="text/css" href="../css/appStyle.css">
+    <link rel="stylesheet" type="text/css" href="../css/searchStyle.css">
+    <!-- MINE -->
+    <header>
+        <div id="container">
+            <nav>
+                
+                <div id="buttons">
+                    <div id="minimize">
+                        <span>-</span>
+                    </div>
+                    <div id="maximize">
+                        <span>+</span>
+                    </div>
+                        <div id="close">
+                    <span>&times;</span>
+                    </div>
+                </div>
+            </nav>
+        </div> 
+    </header>
+    <body>
+        <div id="main">
+            <div id="slidenav" class="sidenav">
+                <div id="avxlogonav"><img src="../images/logo_white.png" alt="avx" id="logox"> 
+                </div>
+                <a href="#" id="linkMain"><i class="fa fa-home" id="sidelinks"></i><br>Home</a>
+                <a href="#" id="linkAccount"><i class="fa fa-address-card" id="sidelinks"></i><br>Account Wallet</a>
+                <a href="#" style="color:#ed1c24;"><i class="fa fa-search" id="sidelinks"></i><br>Search Browser</a>
+                <a href="#" id="linkShare"><i class="fa fa-share-alt" id="sidelinks"></i><br>Share</a>
+                <a href="#" onclick="location.href = 'streamplayerWindow.html'"><i class="fa fa-play-circle" id="sidelinks"></i><br>Stream Player</a>
+                <a href="#" onclick="location.href = 'communityWindow.html'"><i class="fa fa-globe" id="sidelinks"></i><br>Community</a>
+                <a href="#" onclick="location.href = 'settingsWindow.html'"><i class="fa fa-cog" id="sidelinks"></i><br>Settings</a>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-2" style="background-color:rgb(0, 0, 0);height: 100%;display: block;">
+                    </div>
+                    <div class="col-lg-8 align-self-center" id="centersearch" style="background-color:rgb(0, 0, 0);">
+                            <div style="text-align:center;margin-top:20%;">
+                                <h1 style="font-size:4vh;">Search over 5000+</h1>
+                                <p style="font-size:1.5vh;">Movies, TV series, Audio Files and more</p>
+                                    <div class="ml-auto justify-content-center" style="align-content:center;">
+                                        <div class="d-flex flex-wrap justify-content-center">
+                                            <div class="d-flex flex-column mr-5">
+                                                <div class="p-2" style="background-color:#000;font-size: 2.5vh;">
+                                                    <i style="font-size:8vh;" class="fa">&#xf03d;</i>
+                                                </div>
+                                                <div class="p-2" style="background-color:#000;font-size: 1.5vh;">
+                                                    <a href="#">Trending Videos</a>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex flex-column ml-5" style="font-size: 2.5vh;">
+                                                <div class="p-2" style="background-color:#000;font-size: 2.5vh;">
+                                                    <i style="font-size:8vh" class="fa">&#xf192;</i>
+                                                </div>
+                                                <div class="p-2" style="background-color:#000;font-size: 1.5vh;">
+                                                    <a href="#">Trending Audio</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <div style="margin-left:20vh;margin-right:20vh;">
+                                            <div class="input-group mb-3 mt-5">
+                                                    <input type="text" class="form-control" placeholder="Movie Titles or Audio Tracks" aria-label="Movie Titles or Audio Tracks" aria-describedby="basic-addon2">
+                                                    <div class="input-group-append">
+                                                            <button id="btnSearch" class="btn btn-danger" type="button" style="color:white;">Search</button>
+                                                    </div>
+                                            </div>
+                                            <div class="float-left" id="rButtons">
+                                                            <label class="radio-inline"><input type="radio" name="optradio" checked> Movie </label>
+                                                            <label class="radio-inline"><input type="radio" name="optradio"> TV Series </label>
+                                                            <label class="radio-inline"><input type="radio" name="optradio"> Audio </label>
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+                    <div class="col-lg-2" id="signoutwishlist">
+                        <div class="mt-3">
+                            <a href="#"><i class="fa fa-sign-out-alt"> Sign out</i></a>    
+                            <a href="#"><i class="fa fa-heart"> Wishlist</i></a>
+                        </div>
+                    </div>   
+                </div>             
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="fixed-bottom">
+                        <div class="footer-copyright text-center ml-5">
+                            <!-- <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+                                <div class="btn-group" role="group" aria-label="First group">
+                                    <button type="button" class="btn btn-dark">#</button>
+                                    <button type="button" class="btn btn-dark">A</button>
+                                    <button type="button" class="btn btn-dark">B</button>
+                                    <button type="button" class="btn btn-dark">C</button>
+                                    <button type="button" class="btn btn-dark">D</button>
+                                    <button type="button" class="btn btn-dark">E</button>
+                                    <button type="button" class="btn btn-dark">F</button>
+                                    <button type="button" class="btn btn-dark">G</button>
+                                    <button type="button" class="btn btn-dark">H</button>
+                                    <button type="button" class="btn btn-dark">I</button>
+                                    <button type="button" class="btn btn-dark">J</button>
+                                    <button type="button" class="btn btn-dark">K</button>
+                                    <button type="button" class="btn btn-dark">L</button>
+                                    <button type="button" class="btn btn-dark">M</button>
+                                    <button type="button" class="btn btn-dark">N</button>
+                                    <button type="button" class="btn btn-dark">O</button>
+                                    <button type="button" class="btn btn-dark">P</button>
+                                    <button type="button" class="btn btn-dark">Q</button>
+                                    <button type="button" class="btn btn-dark">R</button>
+                                    <button type="button" class="btn btn-dark">S</button>
+                                    <button type="button" class="btn btn-dark">T</button>
+                                    <button type="button" class="btn btn-dark">U</button>
+                                    <button type="button" class="btn btn-dark">V</button>
+                                    <button type="button" class="btn btn-dark">W</button>
+                                    <button type="button" class="btn btn-dark">X</button>
+                                    <button type="button" class="btn btn-dark">Y</button>
+                                    <button type="button" class="btn btn-dark">Z</button>
+                                </div>
+                            </div> -->
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="#">#</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">A</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">B</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">C</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">D</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">E</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">F</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">G</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">H</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">I</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">J</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">K</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">L</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">M</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">N</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">O</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">P</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">Q</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">R</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">S</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">T</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">U</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">V</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">W</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">X</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">Y</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">Z</a>
+                                </li>
+                            
+                            
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="../js/topHandler.js"></script>
+    <script src="../js/search_window.js"></script>
+</html>

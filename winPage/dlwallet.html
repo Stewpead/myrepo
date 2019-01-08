@@ -1,0 +1,57 @@
+<html lang="en">
+<!-- WOW  -->
+<script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<!-- WOW -->
+<head>
+    <script src="../js/popup.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <title>Document</title> -->
+    <link rel="stylesheet" href="../css/appStyle.css">
+    <link rel="stylesheet" href="../css/dlwalletStyle.css">
+    <div id="container">
+            <nav>
+                <div id="titleShown">
+            </div>
+            <div id="buttons">
+                <div id="close" style="float:right">
+                <span>&times;</span>
+                </div>
+                </div>
+            </nav>
+            </div>
+</head>
+<body>
+    <h6>Wallet is succesfully created.</h6>
+    <span id="pubkey"></span>
+    <h6>Dont share this information to anyone. Anyone.</h6>
+    <div id="hideit">
+        
+        <span id="privkey">HIDIDIDIWIIWIEWELWELDWLDLWDJSKDJWDJ</span>
+    </div>
+    <button type="submit" class="btn btn-outline-danger" onclick="hidetoggle()">View Private Key</button>
+    <hr>
+    <button onclick="WriteToFile()" class="btn btn-outline-danger" id="downwallet">Download Wallet</button>
+</body>
+<script src="../js/topHandler.js"></script>
+<script src="../js/popup.js"></script>
+
+<script>
+        function WriteToFile() {
+            
+           var fso = CreateObject("Scripting.FileSystemObject");  
+           var s = fso.CreateTextFile("D:\test.txt", True);
+           s.writeline("HI");
+           s.writeline("Bye");
+           s.writeline("-----------------------------");
+           s.Close();
+        
+        }
+         </script>
+</html>

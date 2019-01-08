@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: wheat;
+}
+html, body {
+    background-color: #333333;
+}
+
+#container nav #buttons {
+    float: right;
+    width: 150px;
+    height: 100%;
+    line-height: 30px;
+    background-color: #333333;
+}
+#buttons #close {
+    background-color: #333333;
+    float: right;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+#check {
+    margin: 0 35%;
+    width: auto;
+    height: 70spx;
+}
+#contents {
+    margin: auto;
+    width: 100%;
+}
+
+button {
+    background-color: #ed1c24;
+    color: white;
+    padding: 8px 12px;
+    margin: 5 30%;
+    border: none;
+    cursor: pointer;
+    width: 40%;
+}
+#contents {
+    width: 100%;
+    margin: auto;
+}
+#cp {
+    width: 100%;
+    margin: 0 18%;
+}
+#fileprice {
+    width: 100%;
+    margin: 0 27%;
+}
+#total_balance {
+    width: 100%;
+    margin: 0 27%; 
+}

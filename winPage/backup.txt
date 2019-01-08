@@ -1,0 +1,262 @@
+function hidewindow() {
+    BrowserWindow({
+        show:false
+    });
+}
+
+function showWindow() {
+
+    defaultWindow = new BrowserWindow({
+        frame: false,
+        minWidth: 850,
+        minHeight: 600,
+        backgroundColor: '#312450',
+        icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
+        show: false,
+    });
+
+    defaultWindow.loadURL(url.format({
+        pathname: path.join(__dirname, app_dir,'loadingWindow.html'),
+        protocol: 'file:',
+        slashes: true
+    }));
+    
+    defaultWindow.openDevTools();
+    defaultWindow.maximize();
+    defaultWindow.webContents.on('did-finish-load', () => {
+        defaultWindow.show();
+    });
+    defaultWindow.on('close', () => {
+        defaultWindow.show();
+    });
+}
+
+function anotherWindow(filename) {
+
+    notDefaultWindow = null;
+
+    notDefaultWindow = new BrowserWindow({
+    frame: false,
+    maxHeight:612,
+    maxWidth: 632,
+    width: 631,
+    height: 611,
+    minWidth: 630,
+    minHeight: 610,
+    icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
+    parent: defaultWindow,
+    modal: true
+    });
+
+
+notDefaultWindow.loadURL(url.format({
+    pathname: path.join(__dirname, app_dir, filename),
+    protocol: 'file:',
+    slashes: true
+}));
+
+notDefaultWindow.once('ready-to-show', () => {
+    notDefaultWindow.show();
+});
+
+}
+
+let popupWindows;
+
+function popupWindow(filename) {
+
+    popupWindows = new BrowserWindow({
+        frame: false,
+        maxHeight:162,
+        maxWidth: 352,
+        width: 351,
+        height: 161,
+        minWidth: 350,
+        minHeight: 160,
+        icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
+        parent: notDefaultWindow,
+        modal: true
+        });
+
+    popupWindows.loadURL(url.format({
+        pathname: path.join(__dirname, app_dir, filename),
+        protocol: 'file:',
+        slashes: true
+    }));
+
+    popupWindows.once('ready-to-show', () => {
+        popupWindows.show();
+    });
+
+}
+
+let popMediumWindow;
+
+function popMediumWindows(filename) {
+    popMediumWindow = new BrowserWindow({
+        frame: false,
+        maxHeight: 382,
+        maxWidth: 382,
+        width: 381,
+        height: 382,
+        minWidth: 310,
+        minHeight: 382,
+        icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
+        parent: defaultWindow,
+        modal: true
+        });
+
+    popMediumWindow.loadURL(url.format({
+        pathname: path.join(__dirname, app_dir, filename),
+        protocol: 'file:',
+        slashes: true
+    }));
+
+    popMediumWindow.once('ready-to-show', () => {
+        popMediumWindow.show();
+    });
+
+}
+
+/////////////////////////////////////////////////////////////////IPC MAIN
+ipcMain.on('popup', (event, arg) => {
+    popupWindow(arg);
+});
+
+ipcMain.on('modal', (event, arg) => { 
+    anotherWindow(arg);
+  });
+
+ipcMain.on('popBuy', (event, arg) => {
+    popMediumWindows(arg);
+});
+/////////////////////////////////////////////////////////////////IPC MAIN
+
+
+app.on('quit', () => {
+    console.log("closed");
+});
+
+app.on('ready',showWindow);
+
+app.on('window-all-closed', () => {
+    if(process.platform !== 'darwin'){
+        app.quit();
+    }
+});
+
+app.on('activate', () => {
+    if(mainWindow == null) {
+        showWindow();
+    }
+});
+
+
+var wb;
+var avxtokens;
+var logindatas;
+ipcMain.on('test', () => {
+    receiveee();
+}
+);
+ipcMain.on('sendingavx', (event,arg) => {
+
+    event.sender.send('sendingavx', )
+});
+
+ipcMain.on('logindata',(event, arg) => {
+    logindatas = arg;
+    dataconnect(logindatas);
+  });
+
+ipcMain.on('sendAVX',(event, arg) => {
+    avxtokens = arg;
+    dataconnect(avxtokens);
+});
+
+function dataconnect(logindatas) {
+    client.write(logindatas);
+}
+client.on('close', function() {
+	console.log('Connection closed');
+});    
+
+client.on('data', function(data) {
+  
+    var data1 = JSON.parse(data);;
+    console.log(data1);
+
+    if(data1["status"]==1) {
+        console.log("Status is 1");
+        console.log("Access Denied");
+    }
+    else if(data1["status"]==2) {
+
+        console.log("Status is 2");
+        defaultWindow.loadURL(url.format({
+            pathname: path.join(__dirname, app_dir,'mainWindow.html'),
+            protocol: 'file:',
+            slashes: true
+        }));
+        ipcMain.on('waddress', (event,arg) => {
+            event.sender.send('waddress',data1["public"]);
+        });
+    }
+
+    else if(data1["status"]==3) {
+
+        console.log(data1["balance"]);
+        
+        wb = data1["balance"].toString();
+    }
+    if(data1["status"]==777) {
+        console.log(data1["historyjson"])
+        console.log(data1);
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// UDP SERVER =========================================================================================
+// var PORT = 7070;
+// var HOST = '127.0.0.1';
+
+// var dgram = require('dgram');
+// var server = dgram.createSocket('udp4');
+
+// server.on('listening', function () 
+// {
+//     var address = server.address();
+//     console.log('UDP Server listening on ' + address.address + ":" + address.port);
+// });
+
+// server.on('message', function (message, remote) 
+// {
+//     console.log(remote.address + ':' + remote.port +' - ' + message);
+//     var msg = JSON.parse(message);
+    
+//     server.send(message, 0, message.length, remote.port, remote.address, 
+//         function(err, bytes) 
+//         {
+//             if (err) throw err;
+//         }
+//     );
+// });
+// server.on('error', function(err){
+// 	console.log("Error: " + err.message);
+// });
+
+// server.bind(PORT, HOST);
+
+// console.log('Received: ' + data); ==================================================================
