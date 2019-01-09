@@ -74,10 +74,10 @@
                     <div class="col-lg-12 mt-5 ml-3">
                         <ul id="tabs">
                             <li>
-                                <a href="#" onclick="hideAF()"> <i class="fas fa-arrows-alt-v"></i> Active Files </a>
+                                <a href="#" id="btnHideCF"> <i class="fas fa-arrows-alt-v"></i> Active Files </a>
                             </li>
                             <li>
-                                <a href="#" onclick="hideCF()"> <i class="far fa-save"></i> Completed Files</a>
+                                <a href="#"  id="btnHideAF"> <i class="far fa-save"></i> Completed Files</a>
                             </li>
                         </ul>
                     </div> 
@@ -88,7 +88,7 @@
                             <div class="row">
                                 <div class="col-lg-12" >
                                     <div class="float-left ml-4 pl-3 mt-3">Download(s)</div>
-                                    <div class=" float-right mr-4 mt-3"><a href="#">Stream Player <i class="far fa-play-circle"></i></a></div>
+                                    <div class=" float-right mr-4 mt-3"><a href="#">Stream Player <span class="mdi mdi-play"></span> </a></div>
                                 </div> 
                             </div>
                         </div>
@@ -111,9 +111,21 @@
                                         <th scope="row"></th>
                                         <td>Mark</td>
                                         <td>Otto</td>
-                                        <td>Mark</td>
+                                        <td>
+                                            <div class="container">
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:36%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td>Otto</td>
-                                        <td>Mark</td>
+                                        <td class="action-col" id="action-col-id-1">
+                                            <a href="#"><span class="mdi mdi-play"></span></a>
+                                            <a href="#"> <span class="mdi mdi-pause"></span></a>
+                                            <a href="#"> <span class="mdi mdi-trash-can-outline"></span></a>
+                                            <a href="#"> <span class="mdi mdi-file-remove"></span></a>
+                                        </td>
                                     <!-- <td>Otto</td> -->
                                     </tr>
                                     <tr>
@@ -122,7 +134,12 @@
                                         <td>Thornton</td>
                                         <td>Mark</td>
                                         <td>Otto</td>
-                                        <td>Mark</td>
+                                        <td class="action-col" id="action-col-id-2">
+                                            <a href="#"><span class="mdi mdi-play"></span></a>
+                                            <a href="#"> <span class="mdi mdi-pause"></span></a>
+                                            <a href="#"> <span class="mdi mdi-trash-can-outline"></span></a>
+                                            <a href="#"> <span class="mdi mdi-file-remove"></span></a>
+                                        </td>
                                     <!-- <td>Otto</td> -->
                                     </tr>
                                     <tr>
@@ -131,7 +148,12 @@
                                         <td>Thornton</td>
                                         <td>Mark</td>
                                         <td>Otto</td>
-                                        <td>Mark</td>
+                                        <td class="action-col" id="action-col-id-3">
+                                            <a href="#"><span class="mdi mdi-play"></span></a>
+                                            <a href="#"> <span class="mdi mdi-pause"></span></a>
+                                            <a href="#"> <span class="mdi mdi-trash-can-outline"></span></a>
+                                            <a href="#"> <span class="mdi mdi-file-remove"></span></a>
+                                        </td>
                                     <!-- <td>Otto</td> -->
                                     </tr>
                                     <tr>
@@ -140,7 +162,12 @@
                                         <td>Thornton</td>
                                         <td>Mark</td>
                                         <td>Otto</td>
-                                        <td>Mark</td>
+                                        <td class="action-col" id="action-col-id-4">
+                                            <a href="#"><span class="mdi mdi-play"></span></a>
+                                            <a href="#"> <span class="mdi mdi-pause"></span></a>
+                                            <a href="#"> <span class="mdi mdi-trash-can-outline"></span></a>
+                                            <a href="#"> <span class="mdi mdi-file-remove"></span></a>
+                                        </td>
                                     <!-- <td>Otto</td> -->
                                     </tr>
                                 </tbody>

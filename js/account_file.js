@@ -8,14 +8,23 @@ function toggleSidebar()
 {
     document.getElementById("sidebar").classList.toggle('active');
 }
-function hideAF() {
-        document.getElementById("activeFiles").style.display = "block";
-        document.getElementById("completedFiles").style.display = "none";
-}
-function hideCF() {
-        document.getElementById("activeFiles").style.display = "none";
-        document.getElementById("completedFiles").style.display = "block";
-}
+
+$('#btnHideCF').click( () => {
+    document.getElementById('activeFiles').style.display = "block";
+    document.getElementById("completedFiles").style.display = "none";
+});
+$('#btnHideAF').click(() => {
+    document.getElementById("activeFiles").style.display = "none";
+    document.getElementById("completedFiles").style.display = "block";
+});
+// function hideAF() {
+//         document.getElementById("activeFiles").style.display = "block";
+//         document.getElementById("completedFiles").style.display = "none";
+// }
+// function hideCF() {
+//         document.getElementById("activeFiles").style.display = "none";
+//         document.getElementById("completedFiles").style.display = "block";
+// }
     document.getElementById('DDetails').style.display = "block";
     document.getElementById("DFiles").style.display = "none";
     document.getElementById("DPeers").style.display = "none";

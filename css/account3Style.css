@@ -130,3 +130,6 @@ span#divider-text {
 .content-details {
     font-size: 12px;
 }
+.action-col a {
+    color: #000;
+}
