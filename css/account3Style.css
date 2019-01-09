@@ -41,10 +41,12 @@ a {
 a:hover {
     color:rgb(158, 34, 34);
 }
-/* li a {
-    color:white;
-    display: inline;
-} */
+#ddown-show {
+    color: #000;
+}
+#ddown-resolution {
+    color: #000;
+}
 ul {
     list-style: none;
 }

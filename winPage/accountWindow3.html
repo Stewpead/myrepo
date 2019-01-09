@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <link rel="stylesheet" href="../node_modules/@mdi/font/css/materialdesignicons.min.css">
     <!-- WOW -->
     <!-- MINE -->
     <link rel="stylesheet" href="../css/appStyle.css">
@@ -38,14 +40,14 @@
                 <div id="avxlogonav">
                     <img src="../images/logo_white.png" alt="avx" id="logox"> 
                 </div>
-                <a href="#" onclick="location.href = 'mainWindow.html'"><i class="fa fa-home" id="sidelinks"></i><br>Home</a>
-                <a href="#" style="color:#ed1c24;"><i class="fa fa-id-card" id="sidelinks"  ></i><br>Account Wallet</a>
-                <a href="#" onclick="location.href = 'searchWindow.html'"><i class="fa fa-search" id="sidelinks" ></i><br>Search Browser</a>
-                <a href="#" onclick="location.href = 'shareWindow.html'"><i class="fa fa-share-alt" id="sidelinks" ></i><br>Share</a>
-                <a href="#" onclick="location.href = 'streamplayerWindow.html'"><i class="fa fa-play-circle" id="sidelinks" ></i><br>Stream Player</a>
-                <a href="#" onclick="location.href = 'communityWindow.html'"><i class="fa fa-globe" id="sidelinks"></i><br>Community</a>
-                <a href="#" onclick="location.href = 'settingsWindow.html'"><i class="fa fa-cogs" id="sidelinks" ></i><br>Settings</a>
-            </div>
+                <a href="#" onclick="location.href = 'mainWindow.html'"> <span class="mdi mdi-home-outline" id="sidelinks"></span> <br>Home</a>
+                <a href="#" style="background-color: #ed1c24; color:white;"><span class="mdi mdi-account-details" id="sidelinks"></span><br>Account Wallet</a>
+                <a href="#" onclick="location.href = 'searchWindow.html'"><span class="mdi mdi-magnify" id="sidelinks"></span><br>Search Browser</a>
+                <a href="#" onclick="location.href = 'shareWindow.html'"><span class="mdi mdi-radio-tower" id="sidelinks"></span><br>Share</a>
+                <a href="#" onclick="location.href = 'streamplayerWindow.html'"><span class="mdi mdi-play" id="sidelinks"></span><br>Stream Player</a>
+                <a href="#" onclick="location.href = 'communityWindow.html'"><span class="mdi mdi-account-group-outline" id="sidelinks"></span><br>Community</a>
+                <a href="#" onclick="location.href = 'settingsWindow.html'" style="padding-bottom: 50px;"><span class="mdi mdi-settings-outline" id="sidelinks"></span><br>Settings</a>
+            </div>                                                 
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
@@ -358,19 +360,189 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-lg-5">
+                                            <div class="row mb2">
+                                                <div class="col-md-6">
+                                                    <strong>Pieces:</strong>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <span id="file-pieces">3896x512 kB(have 2054)</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-md-6">
+                                                    <strong>Created by:</strong>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <span id="create-by">YTS.AG</span>
+                                                </div>  
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-md-6">
+                                                    <strong>Completed on:</strong>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <span id="complete-on"> - </span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                            <div class="col-lg-12" id="DFiles">
-                                Files
-                            </div>
-                            <div class="col-lg-12" id="DPeers">
-                                Peers
-                            </div>
-                            <div class="col-lg-12" id="DSpeed">
-                                Speed
-                            </div>
+                        <div class="col-lg-12" id="DFiles">
+                            <table class="table table-md-responsive table-hover ml-3 mr-5 mt-3" id="tables">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th></th>
+                                        <th>File Name<a href="#" id="up"> ^ </a><a href="#" id="down">-</a></th>
+                                        <th>Data Rate</th>
+                                        <th>Graph</th>
+                                        <th>Peers</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>aweaweawewa</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-lg-12" id="DPeers">
+                            <table class="table table-md-responsive table-hover ml-3 mr-5 mt-3" id="tables">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th></th>
+                                        <th>File Name<a href="#" id="up"> ^ </a><a href="#" id="down">-</a></th>
+                                        <th>Data Rate</th>
+                                        <th>Graph</th>
+                                        <th>Peers</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                    <!-- <td>Otto</td> -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-lg-12" id="DSpeed">
+                           <div class="row ml-4">
+                               <div class="col-md-5">
+                                   <div class="row">
+                                        <div class="col-md-4">
+                                                <strong>Show:</strong>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="dropdown" style="background-color:rgb(255, 255, 255);color:#000;">
+                                                <button class="btn btn-flat dropdown-toggle" type="button" id="ddown-show" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Upload and Download
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="ddown-show">
+                                                    <a class="dropdown-item" href="#" id="ddown-show1">1</a>
+                                                    <a class="dropdown-item" href="#" id="ddown-show2">2</a>
+                                                    <a class="dropdown-item" href="#" id="ddown-show3">3</a>
+                                                    <a class="dropdown-item" href="#" id="ddown-show4">4</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                   </div>
+                               </div>
+                               <div class="col-md-5">
+                                   <div class="row">
+                                       <div class="col-md-4">
+                                            <strong>Resolution:</strong>
+                                       </div>
+                                       <div class="col-md-8">
+                                            <div class="dropdown" style="background-color:rgb(255, 255, 255);color:#000;">
+                                                <button class="btn btn-flat dropdown-toggle" type="button" id="ddown-resolution" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    1600 x 800
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#" id="ddown-resolution1">1</a>
+                                                    <a class="dropdown-item" href="#" id="ddown-resolution2">2</a>
+                                                    <a class="dropdown-item" href="#" id="ddown-resolution3">3</a>
+                                                    <a class="dropdown-item" href="#" id="ddown-resolution4">4</a>
+                                                </div>
+                                            </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="row ml-4">
+                               <div class="col-lg-12 mt-4">
+                                   Graph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph HereGraph Here
+                               </div>
+                           </div>
+                        </div>
                     </div>
                 </div>
                 <div id="completedFiles"> 
@@ -386,7 +558,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <table class="table table-md-responsive table-hover ml-3 mr-5 mt-3" id="tables">
+                            <table class="table table-md-responsive table-hover ml-3 mr-5 mt-3">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th></th>
