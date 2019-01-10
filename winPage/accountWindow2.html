@@ -18,6 +18,8 @@
     <header>
         <div id="container">
             <nav>
+                <div id="titleShown">
+                </div>
                 <div id="buttons">
                     <div id="minimize">
                         <span>-</span>
@@ -33,6 +35,21 @@
         </div>
     </header>
     <body>
+        <div id="container">
+                <nav>
+                    <div id="buttons">
+                        <div id="minimize">
+                            <span>-</span>
+                        </div>
+                        <div id="maximize">
+                            <span>+</span>
+                        </div>
+                        <div id="close">
+                            <span>&times;</span>
+                        </div>
+                    </div>
+                </nav>
+        </div>
         <div class="clearfix"></div>
             <div id="slidenav" class="sidenav">
                 <div id="avxlogonav">
@@ -78,9 +95,9 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="dropdown" style="display: inline;">
-                                                    <button class="btn btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <button class="btn btn-block dropdown-toggle" type="button" id="dd-agerange" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Under 18 </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <div class="dropdown-menu" aria-labelledby="dd-agerange">
                                                         <a class="dropdown-item" href="#">option 1</a>
                                                         <a class="dropdown-item" href="#">option 2</a>
                                                         <a class="dropdown-item" href="#">option 3</a>
@@ -113,9 +130,9 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="dropdown">
-                                                    <button class="btn btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <button class="btn btn-block dropdown-toggle" type="button" id="dd-educational" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Elementary Graduate </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <div class="dropdown-menu" aria-labelledby="dd-educational">
                                                         <a class="dropdown-item" href="#">Undergraduate</a>
                                                         <a class="dropdown-item" href="#">Bachelor's Degree</a>
                                                         <a class="dropdown-item" href="#">Master's Degree</a>
@@ -148,7 +165,7 @@
                                         <div class="col-md-6">
                                             <div class="row">
                                                 <div class="col-lg-6">
-                                                    <span class="ml-4">Username </span>
+                                                    <span class="ml-5">Username </span>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <input type="text" style="width: 100%;" name="Username" id="Username">

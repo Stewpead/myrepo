@@ -28,9 +28,9 @@ button {
     display: block;
     margin-left: 25vw;
 }
-.topBar {
+#titleShown {
     -webkit-app-region: drag;
-}
+   }
 #container > #main {
     position: relative;
 }
