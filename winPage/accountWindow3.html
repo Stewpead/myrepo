@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
     <link rel="stylesheet" href="../node_modules/@mdi/font/css/materialdesignicons.min.css">
     <!-- WOW -->
     <!-- MINE -->
     <link rel="stylesheet" href="../css/appStyle.css">
     <link rel="stylesheet" type="text/css" href="../css/account3Style.css">
     <!--  -->
+
     <!-- MINE -->    
     <header>
         <div id="container">
@@ -68,16 +68,15 @@
                         </div>
                     </div>
                 </div>
-            
             <!-- style="background-image:url('./images/horizontal logo white.png');background-size:contain;background-repeat:no-repeat; background-position: right; -->
                 <div class="row">
                     <div class="col-lg-12 mt-5 ml-3">
                         <ul id="tabs">
                             <li>
-                                <a href="#" id="btnHideCF"> <i class="fas fa-arrows-alt-v"></i> Active Files </a>
+                                <a href="#" id="btnHideCF"> <span class="mdi mdi-swap-vertical"></span> Active Files </a>
                             </li>
                             <li>
-                                <a href="#"  id="btnHideAF"> <i class="far fa-save"></i> Completed Files</a>
+                                <a href="#"  id="btnHideAF"> <span class="mdi mdi-content-save"></span> Completed Files</a>
                             </li>
                         </ul>
                     </div> 
@@ -121,10 +120,10 @@
                                         </td>
                                         <td>Otto</td>
                                         <td class="action-col" id="action-col-id-1">
-                                            <a href="#"><span class="mdi mdi-play"></span></a>
-                                            <a href="#"> <span class="mdi mdi-pause"></span></a>
-                                            <a href="#"> <span class="mdi mdi-trash-can-outline"></span></a>
-                                            <a href="#"> <span class="mdi mdi-file-remove"></span></a>
+                                            <a href="#"><span class="mdi mdi-play">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-pause">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-trash-can-outline">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-file-remove">&nbsp;</span></a>
                                         </td>
                                     <!-- <td>Otto</td> -->
                                     </tr>
@@ -135,10 +134,10 @@
                                         <td>Mark</td>
                                         <td>Otto</td>
                                         <td class="action-col" id="action-col-id-2">
-                                            <a href="#"><span class="mdi mdi-play"></span></a>
-                                            <a href="#"> <span class="mdi mdi-pause"></span></a>
-                                            <a href="#"> <span class="mdi mdi-trash-can-outline"></span></a>
-                                            <a href="#"> <span class="mdi mdi-file-remove"></span></a>
+                                            <a href="#"><span class="mdi mdi-play">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-pause">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-trash-can-outline">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-file-remove">&nbsp;</span></a>
                                         </td>
                                     <!-- <td>Otto</td> -->
                                     </tr>
@@ -149,10 +148,10 @@
                                         <td>Mark</td>
                                         <td>Otto</td>
                                         <td class="action-col" id="action-col-id-3">
-                                            <a href="#"><span class="mdi mdi-play"></span></a>
-                                            <a href="#"> <span class="mdi mdi-pause"></span></a>
-                                            <a href="#"> <span class="mdi mdi-trash-can-outline"></span></a>
-                                            <a href="#"> <span class="mdi mdi-file-remove"></span></a>
+                                            <a href="#"><span class="mdi mdi-play">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-pause">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-trash-can-outline">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-file-remove">&nbsp;</span></a>
                                         </td>
                                     <!-- <td>Otto</td> -->
                                     </tr>
@@ -163,12 +162,11 @@
                                         <td>Mark</td>
                                         <td>Otto</td>
                                         <td class="action-col" id="action-col-id-4">
-                                            <a href="#"><span class="mdi mdi-play"></span></a>
-                                            <a href="#"> <span class="mdi mdi-pause"></span></a>
-                                            <a href="#"> <span class="mdi mdi-trash-can-outline"></span></a>
-                                            <a href="#"> <span class="mdi mdi-file-remove"></span></a>
+                                            <a href="#"><span class="mdi mdi-play">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-pause">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-trash-can-outline">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-file-remove">&nbsp;</span></a>
                                         </td>
-                                    <!-- <td>Otto</td> -->
                                     </tr>
                                 </tbody>
                             </table>
@@ -178,7 +176,7 @@
                         <div class="col-lg-12">
                             <div class="row">
                                 <div class="col-lg-12" >
-                                    <div class="float-left ml-4 pl-3 mt-3">Download(s)</div>
+                                    <div class="float-left ml-4 pl-3 mt-3">Upload(s)</div>
                                     <div class=" float-right mr-4 mt-3"><a href="#">Stream Player</a></div>
                                 </div> 
                             </div>
@@ -241,10 +239,10 @@
                     <div class="row">
                         <div class="col-lg-12 header-links">
                             <ul class="nav ml-4 mt-3" id="tabs">
-                                <li> <a onclick="viewDD()">Download Details</a></li>
-                                <li> <a onclick="viewDFiles()">Files</a></li> 
-                                <li> <a onclick="viewDPeers()">Peers</a></li> 
-                                <li> <a onclick="viewDspeed()">Speed</a></li> 
+                                <li> <a id="viewDD">Download Details</a></li>
+                                <li> <a id="viewDFiles">Files</a></li> 
+                                <li> <a id="viewDPeers">Peers</a></li> 
+                                <li> <a id="viewDspeed">Speed</a></li> 
                             </ul>   
                         </div>
                         <div class="ml-4 mt-3 col-lg-12">
@@ -418,15 +416,20 @@
                             </div>
                         </div>
                         <div class="col-lg-12" id="DFiles">
-                            <table class="table table-md-responsive table-hover ml-3 mr-5 mt-3" id="tables">
+                            <table class="table table-md-responsive table-hover ml-3 mr-5 mt-3">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th></th>
-                                        <th>File Name<a href="#" id="up"> ^ </a><a href="#" id="down">-</a></th>
-                                        <th>Data Rate</th>
-                                        <th>Graph</th>
-                                        <th>Peers</th>
-                                        <th>Action</th>
+                                        <th>Path</th>
+                                        <th>Size</th>
+                                        <th>Done</th>
+                                        <th>%</th>
+                                        <th>#Pieces</th>
+                                        <th>Priority</th>
+                                        <th>Rate</th>
+                                        <th>Resolution</th>
+                                        <th>Duration</th>
+                                        <th>Streamable</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -437,7 +440,11 @@
                                         <td>Mark</td>
                                         <td>Otto</td>
                                         <td>Mark</td>
-                                    <!-- <td>Otto</td> -->
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>
@@ -446,7 +453,11 @@
                                         <td>Mark</td>
                                         <td>Otto</td>
                                         <td>Mark</td>
-                                    <!-- <td>Otto</td> -->
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>
@@ -455,7 +466,11 @@
                                         <td>Mark</td>
                                         <td>Otto</td>
                                         <td>Mark</td>
-                                    <!-- <td>Otto</td> -->
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>
@@ -464,7 +479,11 @@
                                         <td>Mark</td>
                                         <td>Otto</td>
                                         <td>aweaweawewa</td>
-                                    <!-- <td>Otto</td> -->
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>Mark</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -474,11 +493,13 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th></th>
-                                        <th>File Name<a href="#" id="up"> ^ </a><a href="#" id="down">-</a></th>
-                                        <th>Data Rate</th>
-                                        <th>Graph</th>
-                                        <th>Peers</th>
-                                        <th>Action</th>
+                                        <th>User</th>
+                                        <th>App Version</th>
+                                        <th>%</th>
+                                        <th>Download Speed</th>
+                                        <th>Up Speed</th>
+                                        <th>Downloaded</th>
+                                        <th>Peer Downloaded</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -489,7 +510,8 @@
                                         <td>Mark</td>
                                         <td>Otto</td>
                                         <td>Mark</td>
-                                    <!-- <td>Otto</td> -->
+                                        <td>Otto</td>
+                                        <td>Mark</td>
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>
@@ -498,7 +520,8 @@
                                         <td>Mark</td>
                                         <td>Otto</td>
                                         <td>Mark</td>
-                                    <!-- <td>Otto</td> -->
+                                        <td>Otto</td>
+                                        <td>Mark</td>
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>
@@ -507,7 +530,8 @@
                                         <td>Mark</td>
                                         <td>Otto</td>
                                         <td>Mark</td>
-                                    <!-- <td>Otto</td> -->
+                                        <td>Otto</td>
+                                        <td>Mark</td>
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>
@@ -516,7 +540,8 @@
                                         <td>Mark</td>
                                         <td>Otto</td>
                                         <td>Mark</td>
-                                    <!-- <td>Otto</td> -->
+                                        <td>Otto</td>
+                                        <td>Mark</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -590,10 +615,13 @@
                                     <tr>
                                         <th></th>
                                         <th>File Name<a href="#" id="up"> ^ </a><a href="#" id="down">-</a></th>
-                                        <th>Data Rate</th>
-                                        <th>Graph</th>
+                                        <th>ID #</th>
+                                        <th>Resolution</th>
+                                        <th>File Size</th>
+                                        <th>Type</th>
                                         <th>Peers</th>
-                                        <th>Action</th>
+                                        <th>Ratings</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -604,7 +632,10 @@
                                         <td>Mark</td>
                                         <td>Otto</td>
                                         <td>Mark</td>
-                                    <!-- <td>Otto</td> -->
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                               
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>
@@ -613,7 +644,9 @@
                                         <td>Mark</td>
                                         <td>Otto</td>
                                         <td>Mark</td>
-                                    <!-- <td>Otto</td> -->
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>
@@ -622,7 +655,9 @@
                                         <td>Mark</td>
                                         <td>Otto</td>
                                         <td>Mark</td>
-                                    <!-- <td>Otto</td> -->
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>
@@ -631,7 +666,9 @@
                                         <td>Mark</td>
                                         <td>Otto</td>
                                         <td>Mark</td>
-                                    <!-- <td>Otto</td> -->
+                                        <td>Otto</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
                                     </tr>
                                 </tbody>
                             </table>
