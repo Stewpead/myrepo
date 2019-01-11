@@ -1,4 +1,4 @@
-
+// $('#bg > .page-content-wrapper');
 
 $('#linkAccount').click(function () {
     ipcRenderer.send('account','main');

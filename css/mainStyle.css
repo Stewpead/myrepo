@@ -1,8 +1,8 @@
 #bg {
     position: fixed;
-    background-image:url('../images/mainwall.jpg');
     height: 40vh;
-    width: auto;
+    width: 90%;
+    background-image:url('../images/mainwall.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -12,6 +12,7 @@
 }
 .page-content-wrapper {
     height: 500px;
+    background-color: #252525;
     /* overflow: auto; */
     /* top: 500px !important; */
     /* display: block; */
