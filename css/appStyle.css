@@ -30,7 +30,7 @@ button {
 }
 #titleShown {
     -webkit-app-region: drag;
-   }
+}
 #container > #main {
     position: relative;
 }
@@ -129,6 +129,7 @@ a {
 }
 a:hover {
     color: #ed1c24;
+    text-decoration: none;
 }
 ::-webkit-scrollbar {
     display: none;
