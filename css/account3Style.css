@@ -71,9 +71,15 @@ thead {
 td {
     font-size: 11px;
 }
+/* table {
+    display: block;
+} */
 tbody {
     background-color:white;
     color:#000;
+    overflow-y: scroll;
+    height: 100px;
+    width: 100%;
 }
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
@@ -133,6 +139,19 @@ span#divider-text {
 .action-col a {
     color: #000;
 }
-/* .prog-bar {
-    left: -5%;
-} */
+
+#col-graph {
+    text-align: center;
+}
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+bottom: .5em;
+}

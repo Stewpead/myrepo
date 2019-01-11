@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <!-- WOW  -->
+      <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css">
+      <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+      <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="../node_modules/@mdi/font/css/materialdesignicons.min.css">
+      <!-- WOW -->
+      <style>
+          .table-fixed tbody {
+height: 200px;
+overflow-y: auto;
+width: 100%;
+}
+.table-fixed thead,
+.table-fixed tbody,
+.table-fixed tr,
+.table-fixed td,
+.table-fixed th {
+display: block;
+}
+.table-fixed tr:after {
+content: "";
+display: block;
+visibility: hidden;
+clear: both;
+}
+.table-fixed tbody td,
+.table-fixed thead > tr > th {
+float: left;
+}
+ .table > thead > tr > th,
+.table > thead > tr > td {
+font-size: .9em;
+font-weight: 400;
+border-bottom: 0;
+letter-spacing: 1px;
+vertical-align: top;
+padding: 8px;
+background: #51596a;
+text-transform: uppercase;
+color: #ffffff;
+}
+        
+      </style>
+    <script>
+        $(document).ready(function () {
+        $('#dtDynamicVerticalScrollExample').DataTable({
+        "scrollY": "50vh",
+        "scrollCollapse": true,
+        });
+        $('.dataTables_length').addClass('bs-select');
+        });
+    </script>
+</head>
+<body>  
+        <table class="table table-fixed">
+        <thead>
+        <tr>
+        <th class="col-xs-1">#</th>
+        <th class="col-xs-5">President</th>
+        <th class="col-xs-3">Terms</th>
+        <th class="col-xs-3">Tenure</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td class="col-xs-1">1</td>
+        <td class="col-xs-5">George Washington</td>
+        <td class="col-xs-3">two</td>
+        <td class="col-xs-3">1789-1797</td>
+        </tr>
+        <tr>
+        <td class="col-xs-1">2</td>
+        <td class="col-xs-5">John Adams</td>
+        <td class="col-xs-3">one</td>
+        <td class="col-xs-3">1797-1801</td>
+        </tr>
+        </tbody>
+        </table>
+</body>
+</html>
