@@ -1,7 +1,10 @@
-#bg {
+html::-webkit-scrollbar {
+    display: none;
+}
+/* #bg {
     position: fixed;
     height: 40vh;
-    width: 90%;
+    width: 95%;
     background-image:url('../images/mainwall.jpg');
     background-size: cover;
     background-position: center;
@@ -9,13 +12,45 @@
     background-size: cover;
     background-blend-mode: soft-light;
     background-color:rgba(0, 0, 0, 0.582);
+    display: block;
+    z-index: 1;
+} */
+/* .main-content {
+    margin-top: 22%;
+    overflow: scroll;
+    width: auto;
+    overflow-x: hidden;
 }
-.page-content-wrapper {
-    height: 500px;
-    background-color: #252525;
-    /* overflow: auto; */
-    /* top: 500px !important; */
-    /* display: block; */
+.main-content::-webkit-scrollbar {
+    display: block;
+    width: 10px;
+    border-radius: 10px;
+    padding-top: 60% !important;
+
+}
+.main-content::-webkit-scrollbar-track {
+    background: #000000; 
+    border-radius: 10px;
+    box-shadow: inset 0 0 8px grey; 
+}
+
+.main-content::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+    display: block;
+}
+
+.main-content::-webkit-scrollbar-thumb:hover {
+    background: #252525; 
+    border-radius: 10px;
+} */
+#main-contents {
+    margin-top: 22%;
+    overflow-y: scroll;
+    width: auto;
+    overflow-x: hidden;
+    height: 50%;
+    /* position: fixed; */
 }
 #sowl {
     float: right;
@@ -114,12 +149,8 @@ span#divider-text:hover {
       text-decoration: none;
   }
   #grid-container div > a:hover {
-    background-color: #333;
+     background-color: #333;
   }
-::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-}
-
 
   @media screen and (max-width:150px) {
     .grid-container > div {
