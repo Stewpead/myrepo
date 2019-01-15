@@ -65,21 +65,17 @@ html::-webkit-scrollbar {
 }
 .grid-cards {
     background-color:#191919;
-    /* height: 40%;
-    width: 20%; */
-    /* max-height: 220px;
-    min-height: 170px;
-    max-width: 140px;
-    min-width: 100px; */
-    /* padding: 2px 16px; */
+    height: 250px;
+    height: 220px;
+    max-width: 200px;
+    min-width: 190px; 
+    margin: 15px;
     border-style: solid 1px #555555;
     overflow: hidden;
     border: 1px solid #ed1c24;
     text-align: left;
-    /* height: 60%; */
     min-width: 120px;
-    /* width: 80%; */
-    padding: 8px;
+    padding: 5px;
     padding-bottom: 15px;
     font-size: 12px;
     transition: transform .2s;
@@ -185,6 +181,7 @@ span#divider-text:hover {
     #sowl {
         padding-right: 5%;
     }
+
 }
 /* .main-content {
     margin-top: 22%;
