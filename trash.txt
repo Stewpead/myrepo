@@ -226,3 +226,257 @@ g++ p2pTest.cpp -std=c++11 -o p2pTest -lws2_32
 
 
                                 
+
+
+
+
+
+
+
+
+                                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                <div class="col-lg-12">
+                    <div class="content-main">
+                       
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                        <div class="container-fluid" id="grid-container">
+                                            <div class="col-lg-2">
+                                                <div>
+                                                    <img width="100%" style="height:20vh" id="main1" onclick="location.href = 'videoDetails.html'">
+                                                    <p id="filetitle">Antman and The Wasp</p>
+                                                    <p id="movieyear">2018</p>
+                                                </div>
+                                            </div>   
+                                            <div class="col-lg-2">
+                                                <div>
+                                                    <img width="100%" style="height:20vh" id="main2" >
+                                                    <p id="filetitle">Antman and The Wasp</p>
+                                                    <p id="movieyear">2018</p>
+                                                </div>          
+                                            </div>  
+                                            <div class="col-lg-2">
+                                                <div>
+                                                    <img width="100%" style="height:20vh" id="main3" >
+                                                    <p id="filetitle">Antman and The Wasp</p>
+                                                    <p id="movieyear">2018</p>
+                                                </div>  
+                                            </div>   
+                                            <div class="col-lg-2">
+                                                <div>
+                                                    <img width="100%" style="height:20vh"  id="main4">
+                                                    <p id="filetitle">Antman and The Wasp</p>
+                                                    <p id="movieyear">2018</p>
+                                                </div>
+                                            </div>   
+                                            <div class="col-lg-2">
+                                                <div>
+                                                    <img width="100%" style="height:20vh" id="main5">
+                                                    <p id="filetitle">Antman and The Wasp</p>
+                                                    <p id="movieyear">2018</p>
+                                                </div>
+                                            </div>   
+                                            <div class="col-lg-2">
+                                                <div>
+                                                    <img src=""  width="100%" style="height:20vh" >
+                                                    <p id="filetitle">Antman and The Wasp</p>
+                                                    <p id="movieyear">2018</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div>
+                                                    <img src="" width="100%" style="height:20vh" >
+                                                    <p id="filetitle">Antman and The Wasp</p>
+                                                    <p id="movieyear">2018</p>
+                                                </div>
+                                            </div>   
+                                            <div class="col-lg-2">
+                                                <div>
+                                                    <img src=""  width="100%" style="height:20vh" >
+                                                    <p id="filetitle">Antman and The Wasp</p>
+                                                    <p id="movieyear">2018</p>
+                                                </div>
+                                            </div>   
+                                            <div class="col-lg-2">
+                                                <div>
+                                                    <img src=""  width="100%" style="height:20vh" >
+                                                    <p id="filetitle">Antman and The Wasp</p>
+                                                    <p id="movieyear">2018</p>
+                                                </div>  
+                                            </div>   
+                                            <div class="col-lg-2">
+                                                <div>
+                                                    <img src=""  width="100%" style="height:20vh" >
+                                                    <p id="filetitle">Antman and The Wasp</p>
+                                                    <p id="movieyear">2018</p>
+                                                </div>
+                                            </div>   
+                                            <div class="col-lg-2">
+                                                <div>
+                                                    <img src="" width="100%" style="height:20vh" >
+                                                    <p id="filetitle">Antman and The Wasp</p>
+                                                    <p id="movieyear">2018</p>
+                                                </div>
+                                            </div>   
+                                            <div class="col-lg-2">
+                                                <div>
+                                                    <img src=""  width="100%" style="height:20vh" >
+                                                    <p id="filetitle">Antman and The Wasp</p>
+                                                    <p id="movieyear">2018</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div>
+                                                    <img src=""  width="100%" style="height:20vh" >
+                                                    <p id="filetitle">Antman and The Wasp</p>
+                                                    <p id="movieyear">2018</p>
+                                                </div>
+                                            </div>  
+                                            <div class="col-lg-2">
+                                                <div>
+                                                    <img src=""  width="100%" style="height:20vh" >
+                                                    <p id="filetitle">Antman and The Wasp</p>
+                                                    <p id="movieyear">2018</p>
+                                                </div>
+                                            </div>             
+                                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                                         <div class="row">
+                                <div class="col-lg-12" style="background-color:rgb(0, 0, 0);">
+                                    <div id="separators" class="mb-4">
+                                        <ul style="width: auto; height:30px; border-bottom: 1px solid rgba(145, 145, 145, 0.473); text-align: justify" class="mt-2">
+                                            <span style="font-size: 3vh; background-color: rgb(0, 0, 0); padding: 0 10px;">
+                                                <li><a href="#">Trending Videos <i class="fas fa-video"></i></a></li>
+                                                <li><a href="#" class="pr-3">Trending More Videos <i class="fas fa-file"></i></a></li>
+                                            </span>   
+                                        </ul>
+                                    </div>
+                                    <div class="container-fluid" id="grid-container">
+                                        <div class="col-lg-2">
+                                            <div>
+                                                <img width="100%" style="height:20vh" id="main1" onclick="location.href = 'videoDetails.html'">
+                                                <p id="filetitle">Antman and The Wasp</p>
+                                                <p id="movieyear">2018</p>
+                                            </div>
+                                        </div>   
+                                        <div class="col-lg-2">
+                                            <div>
+                                                <img width="100%" style="height:20vh" id="main2" >
+                                                <p id="filetitle">Antman and The Wasp</p>
+                                                <p id="movieyear">2018</p>
+                                            </div>          
+                                        </div>  
+                                        <div class="col-lg-2">
+                                            <div>
+                                                <img width="100%" style="height:20vh" id="main3" >
+                                                <p id="filetitle">Antman and The Wasp</p>
+                                                <p id="movieyear">2018</p>
+                                            </div>  
+                                        </div>   
+                                        <div class="col-lg-2">
+                                            <div>
+                                                <img width="100%" style="height:20vh"  id="main4">
+                                                <p id="filetitle">Antman and The Wasp</p>
+                                                <p id="movieyear">2018</p>
+                                            </div>
+                                        </div>   
+                                        <div class="col-lg-2">
+                                            <div>
+                                                <img width="100%" style="height:20vh" id="main5">
+                                                <p id="filetitle">Antman and The Wasp</p>
+                                                <p id="movieyear">2018</p>
+                                            </div>
+                                        </div>   
+                                        <div class="col-lg-2">
+                                            <div>
+                                                <img src=""  width="100%" style="height:20vh" >
+                                                <p id="filetitle">Antman and The Wasp</p>
+                                                <p id="movieyear">2018</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <div>
+                                                <img src="" width="100%" style="height:20vh" >
+                                                <p id="filetitle">Antman and The Wasp</p>
+                                                <p id="movieyear">2018</p>
+                                            </div>
+                                        </div>   
+                                        <div class="col-lg-2">
+                                            <div>
+                                                <img src=""  width="100%" style="height:20vh" >
+                                                <p id="filetitle">Antman and The Wasp</p>
+                                                <p id="movieyear">2018</p>
+                                            </div>
+                                        </div>   
+                                        <div class="col-lg-2">
+                                            <div>
+                                                <img src=""  width="100%" style="height:20vh" >
+                                                <p id="filetitle">Antman and The Wasp</p>
+                                                <p id="movieyear">2018</p>
+                                            </div>  
+                                        </div>   
+                                        <div class="col-lg-2">
+                                            <div>
+                                                <img src=""  width="100%" style="height:20vh" >
+                                                <p id="filetitle">Antman and The Wasp</p>
+                                                <p id="movieyear">2018</p>
+                                            </div>
+                                        </div>   
+                                        <div class="col-lg-2">
+                                            <div>
+                                                <img src="" width="100%" style="height:20vh" >
+                                                <p id="filetitle">Antman and The Wasp</p>
+                                                <p id="movieyear">2018</p>
+                                            </div>
+                                        </div>   
+                                        <div class="col-lg-2">
+                                            <div>
+                                                <img src=""  width="100%" style="height:20vh" >
+                                                <p id="filetitle">Antman and The Wasp</p>
+                                                <p id="movieyear">2018</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <div>
+                                                <img src=""  width="100%" style="height:20vh" >
+                                                <p id="filetitle">Antman and The Wasp</p>
+                                                <p id="movieyear">2018</p>
+                                            </div>
+                                        </div>  
+                                        <div class="col-lg-2">
+                                            <div>
+                                                <img src=""  width="100%" style="height:20vh" >
+                                                <p id="filetitle">Antman and The Wasp</p>
+                                                <p id="movieyear">2018</p>
+                                            </div>
+                                        </div>             
+                                    </div>
+                                    <div class="float-right">
+                                        <a href="#" style="font-size:16px;">See more</a>
+                                    </div>
+                                </div>
+                            </div>

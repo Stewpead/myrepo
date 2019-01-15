@@ -11,3 +11,4 @@ $('#linkSearch').click(function() {
 $('#linkShare').click(function() {
     ipcRenderer.send('share','main');
 });
+$('content-main').parent('#bg');
