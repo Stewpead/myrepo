@@ -47,7 +47,7 @@
                 <a href="#" onclick="location.href = 'streamplayerWindow.html'"><span class="mdi mdi-play" id="sidelinks"></span><br>Stream Player</a>
                 <a href="#" onclick="location.href = 'communityWindow.html'"><span class="mdi mdi-account-group-outline" id="sidelinks"></span><br>Community</a>
                 <a href="#" onclick="location.href = 'settingsWindow.html'" style="padding-bottom: 50px;"><span class="mdi mdi-settings-outline" id="sidelinks"></span><br>Settings</a>
-            </div>
+            </div> 
             <div id="navbartop">
                 <nav class="navbar navbar-expand-md sticky-top" style="background-color:#252525;">
                     <ul class="nav nav-pills nav-fill">
@@ -118,16 +118,16 @@
                     <div class="col-lg-3" style="height:45vh; margin-top:80px;">
                         <h5>Available Wallet Balance</h5>
                         <div class="d-inline-flex p-2">
-                            <p class="p-2" id="totalBalance" style="font-size:24px;">98.6754321</p><p class="p-2" style="font-size:24px;">AVX</p>
+                            <p class="p-2" id="total-balance" style="font-size:24px;">98.6754321</p><p class="p-2" style="font-size:24px;">AVX</p>
                         </div>
                         <div class="d-inline-flex p-2">
-                            <p class="p-2">Display</p>
+                            <p class="p-2 wallet-bal-texts">Display</p>
                             <div class="p-2">
                                 <div class="dropdown" style="background-color:rgb(255, 255, 255);color:#000;">
-                                    <button class="btn btn-flat dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button class="btn btn-flat dropdown-toggle" type="button" id="decimal-place" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         2
                                     </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <div class="dropdown-menu" aria-labelledby="decimal-place">
                                         <a class="dropdown-item" href="#" id="a1">1</a>
                                         <a class="dropdown-item" href="#" id="a2">2</a>
                                         <a class="dropdown-item" href="#" id="a3">3</a>
@@ -135,7 +135,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="p-2" style="padding-left: 10px; background-color:#000;font-size: 2.5vh;"> decimal point</p>
+                            <p class="p-2 wallet-bal-texts"> decimal point</p>
                         </div>
                         <button type="button" id="btnSend" class="btn btn-outline-danger" style="padding: 0 20%;font-size: 2.5vh;">Send Coins(AVX)</button>
                     </div>
@@ -147,20 +147,20 @@
                 </div>
                 <div class="row">
                     <div class="col-md-9">
-                        <ul class="nav nav-tabs ml-5" id="tabs">
-                            <li class="active"><a data-toggle="tab" href="#home" style="padding:10px;" onclick="getmerge()">Merged</a></li>
-                            <li ><a data-toggle="tab" href="#menu1" onclick="getincoming()">Incoming Token(s)</a></li>
-                            <li ><a data-toggle="tab" href="#menu2" onclick="getOutgoing()">Outgoing Token(s)</a></li>
+                        <ul class="nav ml-5" id="tabs">
+                            <li><a data-toggle="tab" href="#merged" style="padding:10px;" id="btnMergeTx">Merged</a></li>
+                            <li ><a data-toggle="tab" href="#incoming" id="btnIncomingTx">Incoming Token(s)</a></li>
+                            <li ><a data-toggle="tab" href="#outgoing" id="btnOutcomingTx">Outgoing Token(s)</a></li>
                         </ul>
                     </div>
                     <div class="col-md-3">
                         <div>       
                             <p style="color:white;display: inline;"> Sort by Date</p>
                             <div class="dropdown" style="display: inline;">
-                                <button class="btn btn-flat dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-flat dropdown-toggle" type="button" id="sort-date" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 recent
                                 </button>                  
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <div class="dropdown-menu" aria-labelledby="sort-date">
                                     <a class="dropdown-item" href="#">old</a>
                                     <a class="dropdown-item" href="#">this week</a>
                                     <a class="dropdown-item" href="#">this month</a>
@@ -173,8 +173,8 @@
                 <br>
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="tab-content mt-2 mr-5 ml-5" style="width: auto;background-color:#000;">
-                            <div id="home" class="tab-pane fade in active">  
+                        <div class="tab-content mt-2 mr-5 ml-5">
+                            <div id="merged" class="active tab-pane fade">  
                                 <table class="table table-dark mr-5" style="color:white;">
                                     <thead>
                                         <tr>
@@ -281,7 +281,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div id="menu1" class="tab-pane fade">
+                            <div id="incoming" class="tab-pane fade">
                                 <table class="table table-dark mr-5" style="color:white;">
                                     <thead>
                                         <tr>
@@ -344,7 +344,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div id="menu2" class="tab-pane fade">
+                            <div id="outgoing" class="tab-pane fade">
                                 <table class="table table-dark mr-5" style="color:white;">
                                     <thead>
                                     <tr>
@@ -427,5 +427,4 @@
     </footer> -->
     <script src="../js/topHandler.js"></script>
     <script src="../js/account_window.js"></script>
-    <script src="../js/getprofile.js"></script>
 </html>

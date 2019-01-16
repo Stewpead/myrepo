@@ -1,6 +1,8 @@
+const {ipcRenderer} = require('electron');
+
 
 $('#btnSend').click(function() {
-   ipcRenderer.send('modal','sendtokenModal.html'); 
+   ipcRenderer.send('modal','send-token.html'); 
 });
 
 $('#linkMain').click(function() {
@@ -52,12 +54,15 @@ $('#a4').click(function () {
     document.getElementById('totalBalance').innerHTML = avxbalance;
 });
 
+// $(document).ready(function () {
+//     $('#dtVerticalScroll').DataTable({
+//     "scrollY": "200px",
+//     "scrollCollapse": true,
+//     });
+//     $('.dataTables_length').addClass('bs-select');
+// });
 $(document).ready(function () {
-    $('#dtVerticalScroll').DataTable({
-    "scrollY": "200px",
-    "scrollCollapse": true,
-    });
-    $('.dataTables_length').addClass('bs-select');
+    $('#merged').click();
 });
 
 // $(document).ready( () => {

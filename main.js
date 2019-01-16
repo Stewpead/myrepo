@@ -6,10 +6,7 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const url = require('url');
 const path = require('path');
-// const {app, BrowserWindow} = electron;
-// const {app} = require('electron');
-// const app = electron.app;
-// const {ipc} = require('electron');
+
 const {ipcMain} = require('electron');
 
 
@@ -110,7 +107,6 @@ notDefaultWindow.loadURL(url.format({
 }));
 notDefaultWindow.once('ready-to-show', () => {
     notDefaultWindow.show();
-    // defaultWindow.hide();
 })
 
 }
@@ -164,26 +160,26 @@ if(process.platform == 'darwin'){
 
 // add developer tools item if not in production
 
-if(process.env.NODE_ENV == 'production')
-{
-    mainMenuTemplate.push({
-        label: 'Developer Tools',
-        submenu: [
-            {
-                label: 'Toggle Devtools',
-                accelerator: process.platform == 'darwin' ? 'Command+I':
-                'Ctrl+I',
-                click(item,focusedWindow)
-                {
-                    focusedWindow.toggleDevTools();
-                }
-            },
-            {
-                role: 'reload'
-            }
-        ]
-    });
-}
+// if(process.env.NODE_ENV == 'production')
+// {
+//     mainMenuTemplate.push({
+//         label: 'Developer Tools',
+//         submenu: [
+//             {
+//                 label: 'Toggle Devtools',
+//                 accelerator: process.platform == 'darwin' ? 'Command+I':
+//                 'Ctrl+I',
+//                 click(item,focusedWindow)
+//                 {
+//                     focusedWindow.toggleDevTools();
+//                 }
+//             },
+//             {
+//                 role: 'reload'
+//             }
+//         ]
+//     });
+// }
 
 
 
