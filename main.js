@@ -123,10 +123,15 @@ function popupWindow(filename) {
         minWidth: 310,
         minHeight: 350,
         icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
-        parent: anotherWindow,
+        parent: notDefaultWindow,
         modal: true
-        });
-
+    });
+    popupWindows.loadURL(url.format({
+        pathname: path.join(__dirname, app_dir, filename),
+        protocol: 'file:',
+        slashes: true
+    }));
+    popupWindow.show();
 }
 
 
@@ -134,6 +139,10 @@ function popupWindow(filename) {
 ipcMain.on('modal', (event, arg) => { 
     anotherWindow(arg);
   });
+ipcMain.on('popup', (event, arg) => {
+    notDefaultWindow = close;
+    popupWindow(arg);
+});
 
 app.on('quit', () => {
     console.log("closed");

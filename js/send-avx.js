@@ -1,3 +1,4 @@
+const {ipcRenderer} = require('electron');
 function sendAVX() {
     json2.status = 555;
     json2.txType = 0;
@@ -26,5 +27,6 @@ function sendAVX() {
  }
 
  $('#btnSend').click(function() {
-    ipcRenderer.send('popup','sendComplete.html');
+    ipcRenderer.send('popup','send-complete.html');
+    alert('awdawdaw');
  });
