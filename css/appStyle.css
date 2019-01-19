@@ -110,15 +110,12 @@ button {
     height: 100%;
     display:block;
 }
-
 #sidelinks {
     font-size: 28px;
     color:white; 
     margin-bottom: 3%;
 }
 #logox {
-    /* top:-50px; */
-    /* top: 50px; */
     width: 80px;
     height: 50px;
     margin-left: 25px;

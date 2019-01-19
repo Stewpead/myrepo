@@ -1,3 +1,6 @@
+html::-webkit-scrollbar {
+    display: none;
+}
 #navbartop {
     position: fixed;
     width: 100%;
@@ -18,3 +21,9 @@
 #dd-agerange, #dd-educational {
     color: #000;
 }
+@media screen and (max-height: 850px) and (min-height:600px) {
+    #signup-row {
+        margin-top:20%;
+    }
+  }
+

@@ -58,22 +58,25 @@ li a {
     color:white;
     display: inline;
 }
-/* #tabs {
-    display: block;
-} */
+ul {
+    list-style: none;
+}
 #tabs {
-    display: block;
+    display: inline-block;
+    margin-top: 2.5%;
 }
 #tabs li a:hover {
     color: #c72d2d;
 }
 #tabs li + li:before {
-    content: "  |  ";
+    color: #818181;
+    content: "   |   ";
     padding: 0 10px;
 }
-li {
+
+ li {
     float: left;
-}
+} 
 table {
     height: 500px;
     overflow-y: scroll;

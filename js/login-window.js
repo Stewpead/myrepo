@@ -1,3 +1,3 @@
 $('#btnLogin').click(() => {
-    location.href = 'mainWindow.html';
+    location.href = 'main-window.html';
 });

@@ -260,7 +260,6 @@ client.on('data', function(data) {
            //mainWindow.webContents.send('ping', 5);
 
         });
-    
     }
     if(data1["status"]==777) {
         console.log("historyjson")
@@ -269,4 +268,3 @@ client.on('data', function(data) {
 });
 
 // console.log('Received: ' + data);
-

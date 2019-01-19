@@ -30,7 +30,6 @@ $('#a1').click(function () {
 $('#a2').click(function () {
     document.getElementById('dropdownMenuButton').innerHTML = "2";
     var avxbalance;
-    // alert(avxbalance);
     avxbalance = document.getElementById('totalBalance').innerHTML;
     alert(avxbalance);
     avxbalance.toFixed(2);
@@ -54,17 +53,23 @@ $('#a4').click(function () {
     document.getElementById('totalBalance').innerHTML = avxbalance;
 });
 
-// $(document).ready(function () {
-//     $('#dtVerticalScroll').DataTable({
-//     "scrollY": "200px",
-//     "scrollCollapse": true,
-//     });
-//     $('.dataTables_length').addClass('bs-select');
-// });
 $(document).ready(function () {
-    $('#merged').click();
+    $('#btnMergeTx').click();
 });
 
-// $(document).ready( () => {
+$('#btnMergeTx').click(() =>  {
+    document.getElementById('merged').style.display = "block";
+    document.getElementById("incoming").style.display = "none";
+    document.getElementById('outgoing').style.display = "none";
 
-// });
+});
+$('#btnIncomingTx').click(() => {
+    document.getElementById('incoming').style.display = "block";
+    document.getElementById('merged').style.display = "none";
+    document.getElementById('outgoing').style.display = "none";
+})
+$('#btnOutcomingTx').click(() => {
+    document.getElementById('incoming').style.display = "none";
+    document.getElementById('merged').style.display = "none";
+    document.getElementById('outgoing').style.display = "block";
+})
