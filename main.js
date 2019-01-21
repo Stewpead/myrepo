@@ -34,7 +34,7 @@ defaultWindow = new BrowserWindow({
     width: 1050,
     height: 750,
     minWidth: 850,
-    minHeight: 600,
+    minHeight: 650,
     icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
     show: false,
 });

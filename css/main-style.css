@@ -21,7 +21,7 @@ html::-webkit-scrollbar {
     cursor: pointer;
     transition: background-blend-mode 1s;
     z-index: 1;
-}
+} 
 #bg:hover {
     background-blend-mode: normal;
 }
