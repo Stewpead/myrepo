@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="../node_modules/@mdi/font/css/materialdesignicons.min.css">
     <!-- WOW -->
     <!-- MINE -->
-    <link rel="stylesheet" href="../css/appStyle.css">
-    <link rel="stylesheet" type="text/css" href="../css/account3Style.css">
+    <link rel="stylesheet" href="../css/app-style.css">
+    <link rel="stylesheet" type="text/css" href="../css/account-file-style.css">
     <!--  -->
 
     <!-- MINE -->    
@@ -40,13 +40,13 @@
                 <div id="avxlogonav">
                     <img src="../images/logo_white.png" alt="avx" id="logox"> 
                 </div>
-                <a href="#" onclick="location.href = 'mainWindow.html'"> <span class="mdi mdi-home-outline" id="sidelinks"></span> <br>Home</a>
+                <a href="#" onclick="location.href = 'main-window.html'"> <span class="mdi mdi-home-outline" id="sidelinks"></span> <br>Home</a>
                 <a href="#" style="background-color: #ed1c24; color:white;"><span class="mdi mdi-account-details" id="sidelinks"></span><br>Account Wallet</a>
-                <a href="#" onclick="location.href = 'searchWindow.html'"><span class="mdi mdi-magnify" id="sidelinks"></span><br>Search Browser</a>
-                <a href="#" onclick="location.href = 'shareWindow.html'"><span class="mdi mdi-radio-tower" id="sidelinks"></span><br>Share</a>
-                <a href="#" onclick="location.href = 'streamplayerWindow.html'"><span class="mdi mdi-play" id="sidelinks"></span><br>Stream Player</a>
-                <a href="#" onclick="location.href = 'communityWindow.html'"><span class="mdi mdi-account-group-outline" id="sidelinks"></span><br>Community</a>
-                <a href="#" onclick="location.href = 'settingsWindow.html'" style="padding-bottom: 50px;"><span class="mdi mdi-settings-outline" id="sidelinks"></span><br>Settings</a>
+                <a href="#" onclick="location.href = 'search-window.html'"><span class="mdi mdi-magnify" id="sidelinks"></span><br>Search Browser</a>
+                <a href="#" onclick="location.href = 'share-window.html'"><span class="mdi mdi-radio-tower" id="sidelinks"></span><br>Share</a>
+                <a href="#" onclick="location.href = 'streamplayer-window.html'"><span class="mdi mdi-play" id="sidelinks"></span><br>Stream Player</a>
+                <a href="#" onclick="location.href = 'community-window.html'"><span class="mdi mdi-account-group-outline" id="sidelinks"></span><br>Community</a>
+                <a href="#" onclick="location.href = 'settings-window.html'" style="padding-bottom: 50px;"><span class="mdi mdi-settings-outline" id="sidelinks"></span><br>Settings</a>
             </div>                                                 
             <div class="container-fluid">
                 <div class="row">
@@ -55,10 +55,10 @@
                             <nav class="navbar navbar-expand-md sticky-top" style="background-color:#252525;">
                                 <ul class="nav nav-pills nav-fill">
                                     <li class="nav-item mr-5">
-                                        <a class="nav-link" href="#"onclick="location.href = 'accountWindow.html'" >My Wallet</a>
+                                        <a class="nav-link" href="#"onclick="location.href = 'account-window.html'" >My Wallet</a>
                                     </li>
                                     <li class="nav-item mr-5">
-                                        <a class="nav-link" href="#" onclick="location.href = 'accountWindow2.html'">Profile</a>
+                                        <a class="nav-link" href="#" onclick="location.href = 'account-window-profile.html'">Profile</a>
                                     </li>
                                     <li class="nav-item mr-5">
                                         <a class="nav-link" href="#" style="color:#ed1c24;">Files</a>
@@ -132,7 +132,14 @@
                                         <th scope="row"></th>
                                         <td>Jacob</td>
                                         <td>Thornton</td>
-                                        <td>Mark</td>
+                                        <td>
+                                            <div class="container">
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-success"  id="prog-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:36%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td>Otto</td>
                                         <td class="action-col" id="action-col-id-2">
                                             <a href="#"><span class="mdi mdi-play">&nbsp;</span></a>
@@ -146,7 +153,14 @@
                                         <th scope="row"></th>
                                         <td>Jacob</td>
                                         <td>Thornton</td>
-                                        <td>Mark</td>
+                                        <td>
+                                                <div class="container">
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-success"  id="prog-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:36%">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
                                         <td>Otto</td>
                                         <td class="action-col" id="action-col-id-3">
                                             <a href="#"><span class="mdi mdi-play">&nbsp;</span></a>
@@ -160,7 +174,14 @@
                                         <th scope="row"></th>
                                         <td>Jacob</td>
                                         <td>Thornton</td>
-                                        <td>Mark</td>
+                                        <td>
+                                                <div class="container">
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-success"  id="prog-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:36%">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
                                         <td>Otto</td>
                                         <td class="action-col" id="action-col-id-4">
                                             <a href="#"><span class="mdi mdi-play">&nbsp;</span></a>
@@ -189,9 +210,9 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th></th>
-                                        <th>File Name<a href="#" id="up"> ^ </a><a href="#" id="down">-</a></th>
+                                        <th>File Name</th>
                                         <th>Data Rate</th>
-                                        <th>Graph</th>
+                                        <th id="col-graph">Graph</th>
                                         <th>Peers</th>
                                         <th>Action</th>
                                     </tr>
@@ -201,36 +222,84 @@
                                         <th scope="row"></th>
                                         <td>Mark</td>
                                         <td>Otto</td>
-                                        <td>Mark</td>
+                                        <td>
+                                            <div class="container">
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-success"  id="prog-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:36%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td>Otto</td>
-                                        <td>Mark</td>
+                                        <td class="action-col" id="action-col-id-1">
+                                            <a href="#"><span class="mdi mdi-play">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-pause">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-trash-can-outline">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-file-remove">&nbsp;</span></a>
+                                        </td>
                                     <!-- <td>Otto</td> -->
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>
                                         <td>Jacob</td>
                                         <td>Thornton</td>
-                                        <td>Mark</td>
+                                        <td>
+                                            <div class="container">
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-success"  id="prog-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:36%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td>Otto</td>
-                                        <td>Mark</td>
+                                        <td class="action-col" id="action-col-id-1">
+                                            <a href="#"><span class="mdi mdi-play">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-pause">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-trash-can-outline">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-file-remove">&nbsp;</span></a>
+                                        </td>
                                     <!-- <td>Otto</td> -->
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>
                                         <td>Jacob</td>
                                         <td>Thornton</td>
-                                        <td>Mark</td>
+                                        <td>
+                                            <div class="container">
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-success"  id="prog-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:36%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td>Otto</td>
-                                        <td>Mark</td>
+                                        <td class="action-col" id="action-col-id-1">
+                                            <a href="#"><span class="mdi mdi-play">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-pause">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-trash-can-outline">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-file-remove">&nbsp;</span></a>
+                                        </td>
                                     <!-- <td>Otto</td> -->
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>
                                         <td>Jacob</td>
                                         <td>Thornton</td>
-                                        <td>Mark</td>
+                                        <td>
+                                            <div class="container">
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-success"  id="prog-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:36%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td>Otto</td>
-                                        <td>Mark</td>
+                                        <td class="action-col" id="action-col-id-1">
+                                            <a href="#"><span class="mdi mdi-play">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-pause">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-trash-can-outline">&nbsp;</span></a>
+                                            <a href="#"> <span class="mdi mdi-file-remove">&nbsp;</span></a>
+                                        </td>
                                     <!-- <td>Otto</td> -->
                                     </tr>
                                 </tbody>

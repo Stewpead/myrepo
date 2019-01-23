@@ -42,6 +42,9 @@ button {
     height: 250px;
     width: 250px;
 }
+#upload-video-folder {
+    display: none;
+}
 /* #btnClosetop {
     right: 5%;
 } */

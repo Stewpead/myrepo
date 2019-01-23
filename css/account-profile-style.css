@@ -21,9 +21,8 @@ html::-webkit-scrollbar {
 #dd-agerange, #dd-educational {
     color: #000;
 }
-@media screen and (max-height: 850px) and (min-height:600px) {
+  @media screen and (max-width: 992px) and (min-width:850px) {
     #signup-row {
         margin-top:20%;
     }
   }
-
