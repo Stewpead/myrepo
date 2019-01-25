@@ -42,7 +42,7 @@ function signin() {
 	var username, password, string, directory, privateKey;
 	username = document.getElementById('username').value;
 	password = document.getElementById('passw').value;
-	privateKeyUpload = document.getElementById('privateKeyUpload').value;
+	privateKeyUpload = document.getElementById('walletUpload').value;
 
 	var file = document.getElementById("walletUpload").files[0];
 	
