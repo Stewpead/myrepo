@@ -6,6 +6,7 @@ const url = require('url');
 const path = require('path');
 // const ipcMain = require('electron').ipcMain;
 
+<<<<<<< HEAD
 //<<<<<<< HEAD
 const {ipcMain} = require('electron');
 
@@ -166,6 +167,15 @@ app.on('activate', () => {
 // let prevWindow;
 // let connectionPort = 5150;
 // let connectionHost = '192.168.254.33';
+=======
+var filename = ipcMain.addListener.toString;
+var temp;
+let defaultWindow; 
+let notDefaultWindow;
+let prevWindow;
+let connectionPort = 5150;
+let connectionHost = '192.168.254.33';
+>>>>>>> 4219727d868016f3963d8e3477e0efa2b8e37b97
 
 // var IMG_DIR = './../images/';
 // var app_dir = './../winPage/';
@@ -187,6 +197,7 @@ app.on('activate', () => {
 // 		console.log('Connected');
 // 		attempt = 0;
 		
+<<<<<<< HEAD
 // 		ipcMain.on('avx-login',(event, arg) => {
 			
 // 			client.write(arg);
@@ -201,6 +212,17 @@ app.on('activate', () => {
 
 		
 // 	});
+=======
+	
+		
+		var tools = require('./includes/main-window');
+		tools.showWindow();
+		tools.avxLogin(client);
+		tools.avxSignup
+		
+		
+	});
+>>>>>>> 4219727d868016f3963d8e3477e0efa2b8e37b97
 
 // 	client.on('error', function() {
 		
@@ -223,10 +245,16 @@ app.on('activate', () => {
 
 // }
 
+<<<<<<< HEAD
 // var reconnectConnection = function(attempt) {
 // 	initiateConnection(attempt); 
 // >>>>>>> c7c64c37bb9f0795efb7feab0d94daeec0359f38
 // }
+=======
+var reconnectConnection = function(attempt) {
+	initiateConnection(attempt); 
+}
+>>>>>>> 4219727d868016f3963d8e3477e0efa2b8e37b97
 
 // initiateConnection(0);
 

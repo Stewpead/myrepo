@@ -4,7 +4,12 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const url = require('url');
 const path = require('path');
-
+const ipcMain = require('electron').ipcMain;
+const Store = require('electron-store');
+const store = new Store();
+var fs = require('fs');
+const lstat = require('lstat');
+const {shell} = require('electron');
 
 
 var IMG_DIR = './../images/';
@@ -38,7 +43,26 @@ module.exports = {
 	defaultWindow.on('close', () => {
 		defaultWindow.show();
 	});
+	
+	ipcMain.on('avx-load-wallet',(event, arg) => {
+	
 
+	});	
+	
+  },
+  avxLogin: function (client) {
+	ipcMain.on('avx-login',(event, arg) => {
+		client.write(arg);
+	});	
+  },
+  
+  avxSignup: function (client) {
+	  store.set('directory.wallet', 'D:\myrepo');
+  
   }
+  
 
 };
+
+
+

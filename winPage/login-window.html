@@ -2,6 +2,7 @@
 
 <html lang="en">
     <header>
+<<<<<<< HEAD
      <!-- WOW  -->
      <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
      <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,6 +14,20 @@
      <!-- WOW -->
  
     <link rel="stylesheet" type="text/css" href="../css/login-style.css">
+=======
+		<!-- WOW  -->
+		 <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+		 <meta name="viewport" content="width=device-width, initial-scale=1">
+		 <link rel="stylesheet" type="text/css" href="../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css">
+		 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+		 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+		 <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+		 <link rel="stylesheet" href="../node_modules/@mdi/font/css/materialdesignicons.min.css">
+		 <!-- WOW -->
+
+
+        <link rel="stylesheet" type="text/css" href="../css/login-style.css">
+>>>>>>> 4219727d868016f3963d8e3477e0efa2b8e37b97
     </header>
     <body>
         <div id="container">
@@ -49,6 +64,7 @@
             </div>
             <div class="col" style="background-color:rgb(0, 0, 0);">
                 <div>
+<<<<<<< HEAD
                     <div class="login">
                         <h2><b style="font-size:2.5vw;">Sign in</b></h2>
                         <span></span>
@@ -90,6 +106,48 @@
                         <span id="foots"><a href="mailto:info@avxchange.io">info@avxchange.io</a> | <a href="https://www.avxchange.io/" target="_blank" >www.avxchange.io</a></span>
                     </div>
                      <!--</form> --> 
+=======
+                    <!-- <form style=" margin-left: 20%; margin-right: 20%;"> -->
+
+						<div class="login">
+							<h2><b style="font-size:2.5vw;">Sign in</b></h2>
+							<span></span>
+							<div class="loginfields">
+							<input type="text" style="margin-top: 30px;" placeholder="Username" id="username" required>
+							<br> 
+							<input type="password" placeholder="Password" id="passw" required>
+							<div id="btnUpload">
+								Upload Wallet
+								<input type="file" name="file" id="file"/>
+							</div>
+							<div class="dropdown" style="background-color:rgb(255, 255, 255);color:#000;">
+								<button class="btn btn-flat dropdown-toggle" type="button" id="btnSavedWallets" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Wallets
+								</button>
+								<div class="dropdown-menu" aria-labelledby="btnSavedWallets" id="dropdownItemMenu">
+									<a class="dropdown-item" href="#" id="a1">AVX1</a>
+									<a class="dropdown-item" href="#" id="a2">AVX2</a>
+									<a class="dropdown-item" href="#" id="a3">AVX3</a>
+									<a class="dropdown-item" href="#" id="a4">AVX4</a>
+								</div>
+							</div>
+							</div>
+							<button type="submit" style="margin-top: 20px;" id="btnLogin" onclick="signin()">Login</button>
+							<div style="margin-top: 20px;">
+								<label>
+									<input type="checkbox" name="remember" style="float:lef"> Remember me 
+								</label>
+								<span class="psw">Forgot <a href="#">password?</a></span>
+							</div>
+							<br>
+							<p>Do you already have an AVX Wallet?</p>
+							<br>
+							<p><a href="#" onclick="location.href = 'signup-window.html'">Create a new wallet</a></p>
+							<span id="foots"><a href="mailto:info@avxchange.io">info@avxchange.io</a> | <a href="https://www.avxchange.io/" target="_blank" >www.avxchange.io</a></span>
+						</div>
+                     <!--</form> -->
+                    
+>>>>>>> 4219727d868016f3963d8e3477e0efa2b8e37b97
                 </div>
             </div>  
         </div>
