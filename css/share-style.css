@@ -7,6 +7,7 @@
     background-color: #252525;
 }
 #rightcontents {
+    position: fixed;
     right: 5%;
     margin-top: 15px;
     display: inline-block;
@@ -16,6 +17,10 @@ button {
 }
 ::-webkit-scrollbar {
     display: none;
+}
+#btnClosetop {
+    color: white;
+    background-color: #ed1c24;
 }
 #contentmain {
     margin-top: 60px;
@@ -34,6 +39,7 @@ button {
     outline-color: antiquewhite;
     height: 250px;
     width: 250px;
+    text-align: center;
 }
 .box2 {
     outline-style: solid;
@@ -41,10 +47,22 @@ button {
     outline-color: antiquewhite;
     height: 250px;
     width: 250px;
+    text-align: center;
 }
 #upload-video-folder {
     display: none;
 }
-/* #btnClosetop {
-    right: 5%;
-} */
+#rightcontents {
+    display: block;
+}
+@media screen and (max-width: 992px) and (min-width:850px) {
+    #rightcontents {
+        margin-top: 6%;
+    }
+  }
+
+  @media screen and (max-width: 1042px) and (min-width:850px) {
+    #navbartop {
+        height: 90px;
+    }
+  }

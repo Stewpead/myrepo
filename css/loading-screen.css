@@ -1,0 +1,15 @@
+body {
+    text-align: center;
+    align-content: center;
+}
+button {
+    width: 100px;
+    color: white;
+    background-color: #ed1c24;
+}
+button:hover {
+    background-color: #ed1d48;
+}
+hr {
+    border-bottom: 1px solid #ed1c24;
+}
