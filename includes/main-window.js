@@ -10,7 +10,7 @@ const store = new Store();
 var fs = require('fs');
 const lstat = require('lstat');
 const {shell} = require('electron');
-
+var filename;
 
 var IMG_DIR = './../images/';
 var app_dir = './../winPage/';
@@ -43,6 +43,12 @@ module.exports = {
 	defaultWindow.on('close', () => {
 		defaultWindow.show();
 	});
+// ============================================================================================
+
+
+	// =====================================================================================================
+	
+
 	
 	ipcMain.on('avx-load-wallet',(event, arg) => {
 	
@@ -62,10 +68,65 @@ module.exports = {
 		client.write(arg);
 	});	
   
-  }
-  
+  },
+	avxPopup: function (client) {
+		ipcMain.on('upload-files', (event, arg) => {
+			popupWindows(arg);
+		});
+	},
+
+	avxModal: function (client) {
+		ipcMain.on('file-scan-result', (event, arg) => {
+			modalWindows(arg);
+		});
+	}
 
 };
 
+let popupWindow;
+function popupWindows(filename) {
+		popupWindow = new BrowserWindow({
+				frame: false,
+				maxHeight:312,
+				maxWidth: 352,
+				width: 351,
+				height: 311,
+				minWidth: 310,
+				minHeight: 350,
+				icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
+				parent: defaultWindow,
+				modal: true
+		});
+		popupWindow.loadURL(url.format({
+				pathname: path.join(__dirname, app_dir, filename),
+				protocol: 'file:',
+				slashes: true
+		}));
+		popupWindow.show();
+}
 
+let modalWindow;
 
+function modalWindows(filename) {
+    modalWindow = new BrowserWindow({
+    frame: false,
+    maxHeight:312,
+    maxWidth: 632,
+    width: 631,
+    height: 311,
+    minWidth: 630,
+    minHeight: 310,
+    icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
+    parent: defaultWindow,
+    modal: true
+		});
+		
+    modalWindow.loadURL(url.format({
+    pathname: path.join(__dirname, app_dir, filename),
+    protocol: 'file:',
+    slashes: true
+}));
+    modalWindow.once('ready-to-show', () => {
+    modalWindow.show();
+})
+}

@@ -40,7 +40,8 @@ var initiateConnection = function(attempt){
 		tools.showWindow();
 		tools.avxLogin(client);
 		tools.avxSignup(client);
-		
+        tools.avxPopup(client);
+        tools.avxModal(client);
 		
 	});
 
@@ -74,7 +75,8 @@ var reconnectConnection = function(attempt) {
 
 initiateConnection(0);
 
-
+// POPUP POPUP
+let popupWindow;
 
 
 
