@@ -39,20 +39,26 @@ function signin() {
 	var username, password, string, path;
 	username = document.getElementById('username').value;
 	password = document.getElementById('passw').value;
+	privateKeyUpload = document.getElementById('privateKeyUpload').value;
 
 	var file = document.getElementById("file").files[0];
 	
 	if (typeof file !== 'undefined' && file !== null) {
-		path = file.path
-		string = fs.readFileSync(path, 'utf8');
+		directory = file.path
+		privateKey = fs.readFileSync(directory, 'utf8');
+	} else {
+		if ( privateKeyUpload !== "") {
+			directory = privateKeyUpload;
+			privateKey = fs.readFileSync(directory, 'utf8');
+		}
 	}
 		var json = {
 			status: 4,
 			data : {
 				username : username,
 				password : password,
-				directory : path,
-				string	 : string
+				directory : directory,
+				privateKey	 : privateKey
 				
 			}
 		};
@@ -64,13 +70,17 @@ function signin() {
 
 $(document).ready( function() {
 
-		store.set('directory.wallet', "D:\\wallet" );
-		// Check local db for lists of directory
-		var listDir = store.get('directory');
-		if ( typeof listDir !== 'undefined' || listDir !== null ) {
-			selectWallet(listDir);
-			
-		}	
+	store.set('directory.wallet', "D:/wallet" );
+	var listDir = store.get('directory');
+	if ( typeof listDir !== 'undefined' || listDir !== null ) {
+		selectWallet(listDir);
+		
+	}
+	$('.loginfields .dropdown-menu .dropdown-item').click(function() {
+		var data = $(this).attr('value');
+		$('#privateKeyUpload').val(data);	
+	});
+	
 	
 });
 
@@ -123,7 +133,7 @@ function generateWalletDropdown(data) {
 	
 	
 
-	var output ='';
+	var output ='<input type="hidden" id="privateKeyUpload">';
 	for (var i in data){
 		var file =  path.basename(data[i], '.txt');
 		var dir =  data[i];
@@ -134,7 +144,7 @@ function generateWalletDropdown(data) {
 		
 	}
 	
-	$('#dropdownItemMenu').append(output);
+	$('#dropdownItemMenu').html(output);
 	
 	
 	
