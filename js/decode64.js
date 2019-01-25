@@ -8,7 +8,7 @@ var imgname = 'decodedimg';
 var imgpath = path.join(__dirname,'/decodedimg/');
 var data64 = "data:image/jpg;base64,";
 
-
+loadimg();
 
 function loadimg() {
 
