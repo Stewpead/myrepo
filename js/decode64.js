@@ -8,13 +8,23 @@ var imgname = 'decodedimg';
 var imgpath = path.join(__dirname,'/decodedimg/');
 var data64 = "data:image/jpg;base64,";
 
- 
+
 
 function loadimg() {
-document.getElementById('main1').src = data64 + json64[0];
-document.getElementById('main2').src = data64 + json64[1];
-document.getElementById('main3').src = data64 + json64[2];
-// document.getElementById('main4').src = data64 + json64[3];
-document.getElementById('main5').src = data64 + json64[4];
-// console.log(data64 + json64[0]);
+
+	var x;
+	
+	for (var i = 0; i < 14; ++i) {
+		var movieThumbs = '<div class="col-lg-3 grid-cards">';
+		movieThumbs += '<div class="container">';
+		movieThumbs += '<img src="' + data64 + json64[i]['thumbnail'] + '" />';
+		movieThumbs += '<p id="video-title" class="thumb-title">' + json64[i]['title'] + '</p>';
+		movieThumbs += '<p id="video-year" class="thumb-year" >(' + json64[i]['year'] + ')</p>';
+		//movieThumbs += '<p id="video-description">' + json64[i]['description'] + '</p>';
+		movieThumbs += '</div>';
+		movieThumbs += '</div>';
+		
+		$("#latest-movies").append(movieThumbs);
+	}
+
 }

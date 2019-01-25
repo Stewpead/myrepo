@@ -1,12 +1,12 @@
 var net = require('net');
-var client = new net.Socket();
-
 const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const url = require('url');
 const path = require('path');
+const ipcMain = require('electron').ipcMain;
 
+<<<<<<< HEAD
 const {ipcMain} = require('electron');
 
 
@@ -154,113 +154,80 @@ app.on('activate', () => {
 
 if(process.platform == 'darwin'){
     mainMenuTemplate.unshift({});
+=======
+var filename = ipcMain.addListener.toString;
+var temp;
+let defaultWindow; 
+let notDefaultWindow;
+let prevWindow;
+let connectionPort = 5150;
+let connectionHost = '192.168.254.33';
+
+var IMG_DIR = './../images/';
+var app_dir = './../winPage/';
+var tmpStr = '';
+
+
+
+var walletBalance = 0;
+var walletAddress = '';
+
+/*
+	Establishing Connection and Reconnecting
+*/
+var initiateConnection = function(attempt){
+	
+	var client = new net.Socket();
+
+	client.connect(connectionPort, connectionHost, function() {
+		console.log('Connected');
+		attempt = 0;
+		
+		ipcMain.on('avx-login',(event, arg) => {
+			
+			client.write(arg);
+		});		
+		
+		var tools = require('./includes/main-window');
+		tools.showWindow(client);
+		
+		
+		
+
+
+		
+	});
+
+	client.on('error', function() {
+		
+		if ( attempt < 5 ){
+		  console.log('Reconnecting... Attempt(s): ' + attempt);
+		  attempt = attempt + 1;
+		  setTimeout(reconnectConnection, 5000, attempt);
+		  
+		} else {
+		  console.log('Connection Timeout');
+		  client.destroy();
+		}
+		
+	});
+	
+	client.on('data', function(data) {
+		console.log('test');
+		
+	});
+
 }
 
-// add developer tools item if not in production
+var reconnectConnection = function(attempt) {
+	initiateConnection(attempt); 
+>>>>>>> c7c64c37bb9f0795efb7feab0d94daeec0359f38
+}
 
-// if(process.env.NODE_ENV == 'production')
-// {
-//     mainMenuTemplate.push({
-//         label: 'Developer Tools',
-//         submenu: [
-//             {
-//                 label: 'Toggle Devtools',
-//                 accelerator: process.platform == 'darwin' ? 'Command+I':
-//                 'Ctrl+I',
-//                 click(item,focusedWindow)
-//                 {
-//                     focusedWindow.toggleDevTools();
-//                 }
-//             },
-//             {
-//                 role: 'reload'
-//             }
-//         ]
-//     });
-// }
+initiateConnection(0);
 
 
 
-// var avxtokens;
-// var logindatas;
-// ipcMain.on('test', () => {
-//     receiveee();
-// }
-// );
-// ipcMain.on('logindata',
 
 
-// client.connect(5150, '192.168.254.115', function() {
-//     console.log('Connected');
-// });
-
-// ipcMain.on('logindata',(event, arg) => {
-//     logindatas = arg;
-//     dataconnect(logindatas);
-//   });
-
-//   ipcMain.on('signupdata',(event, arg) => {
-//     logindatas = arg;
-//     dataconnect(logindatas);
-//   });
-
-// ipcMain.on('sendAVX',(event, arg) => {
-//     avxtokens = arg;
-//     dataconnect(avxtokens);
-// });
-
-// function dataconnect(logindatas) {
-//    // var msg = JSON.stringify(logindatas);
-//     //console.log(msg);
-
-//     client.write(logindatas);
-// }
-// client.on('close', function() {
-// 	console.log('Connection closed');
-// });
-// client.on('error', function(err) {
-// 	console.log('Connection error ' + err);
-// });    
-
-
-// var obj = {}
-//  data1;
-
-// client.on('data', function(data) {
-//     // console.log(data);
-//     var data1 = JSON.parse(data);
-//     // console.log(data1);
-
-//     if(data1["status"]==1) {
-//         console.log("Status is 1");
-//     }
-//     else if(data1["status"]==2) {
-
-//         console.log("Status is 2");
-//         defaultWindow.loadURL(url.format({
-//             pathname: path.join(__dirname, app_dir,'mainWindow.html'),
-//             protocol: 'file:',
-//             slashes: true
-//         }));
-//     }
-//     else if(data1["status"]==3) {
-//         // console.log("Status is 3"); wallet balance
-//         console.log(data1["balance"]);
-
-//         ipcMain.on('wballance', (event, arg) => { 
-//            // Send value synchronously back to renderer process
-//            event.returnValue = data1["balance"];
-//            // Send async message to renderer process
-//            //mainWindow.webContents.send('ping', 5);
-
-//         });
-    
-//     }
-//     if(data1["status"]==777) {
-//         console.log("historyjson")
-//         console.log(data1);
-//     }
-// });
-
-// console.log('Received: ' + data);
 

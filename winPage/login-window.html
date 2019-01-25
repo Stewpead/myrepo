@@ -42,7 +42,7 @@
             </div>
             <div class="col" style="background-color:rgb(0, 0, 0);">
                 <div>
-                    <form style=" margin-left: 20%; margin-right: 20%;">
+                    <!-- <form style=" margin-left: 20%; margin-right: 20%;"> -->
                         <div class="login">
                             <h2><b style="font-size:2.5vw;">Sign in</b></h2>
                             <span></span>
@@ -52,10 +52,10 @@
                             <input type="password" placeholder="Password" id="passw" required>
                             <div id="btnUpload">
                                 Upload Wallet
-                                <input type="file" name="file"/>
+                                <input type="file" name="file" id="file"/>
                             </div>
                             </div>
-                            <button type="submit" style="margin-top: 20px;" id="btnLogin">Login</button>
+                            <button type="submit" style="margin-top: 20px;" onclick="signin()">Login</button>
                             <div style="margin-top: 20px;">
                             <label><input type="checkbox" name="remember" style="float:lef"> Remember me </label>
                             <span class="psw">Forgot <a href="#">password?</a></span>
@@ -66,7 +66,7 @@
                             <br>
                             <p><a href="#" onclick="location.href = 'signup-window.html'">Create a new wallet</a></p>
                         </div>
-                    </form>
+                     <!--</form> -->
                     <div class="footdetails">
                         <span id="foots"><a href="mailto:info@avxchange.io">info@avxchange.io</a> | <a href="https://www.avxchange.io/" target="_blank" >www.avxchange.io</a></span>
                     </div> 
