@@ -57,7 +57,10 @@ module.exports = {
   },
   
   avxSignup: function (client) {
-	  store.set('directory.wallet', 'D:\myrepo');
+	//store.set('directory.wallet', 'D:\myrepo');
+	ipcMain.on('avx-signup',(event, arg) => {
+		client.write(arg);
+	});	
   
   }
   

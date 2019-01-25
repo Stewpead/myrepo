@@ -39,7 +39,7 @@ var initiateConnection = function(attempt){
 		var tools = require('./includes/main-window');
 		tools.showWindow();
 		tools.avxLogin(client);
-		tools.avxSignup
+		tools.avxSignup(client);
 		
 		
 	});
@@ -59,7 +59,11 @@ var initiateConnection = function(attempt){
 	});
 	
 	client.on('data', function(data) {
-		console.log('test');
+		var data = JSON.parse(data);
+		var module = require('./includes/login-signup');
+		module.signupResponse(data);
+		module.signinResponse(data);
+		
 		
 	});
 

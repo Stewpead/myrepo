@@ -4,16 +4,17 @@ const store = new Store();
 var fs = require('fs');
 var path = require('path');
 
-function signin() {
-	var data = {};
-	var username, password, privateKey, path;
-	username = document.getElementById('username').value;
-	password = document.getElementById('confirmpass').value;
+function signup() {
 
-	var file = document.getElementById("file").files[0];
+	var data = {};
+	var username, password, privateKey, directory;
+	username = document.getElementById('username').value;
+	password = document.getElementById('passw').value;
+
+	var file = document.getElementById("openWallet").files[0];
 	
 	if (typeof file !== 'undefined' && file !== null) {
-		privateKey = file.path
+		directory = file.path
 
 	}
 	
@@ -22,21 +23,20 @@ function signin() {
 		data : {
 			username : username,
 			password : password,
-			directory : file,
-			privateKey	 : privateKey
+			directory : directory
 			
 		}
 	};
 
 	var jsonString = JSON.stringify(json);
-	ipcRenderer.send("avx-signin", jsonString);
+	ipcRenderer.send("avx-signup", jsonString);
 	
 
 }
 
 function signin() {
 	var data = {};
-	var username, password, string, path;
+	var username, password, string, directory, privateKey;
 	username = document.getElementById('username').value;
 	password = document.getElementById('passw').value;
 	privateKeyUpload = document.getElementById('privateKeyUpload').value;
@@ -70,7 +70,6 @@ function signin() {
 
 $(document).ready( function() {
 
-	store.set('directory.wallet', "D:/wallet" );
 	var listDir = store.get('directory');
 	if ( typeof listDir !== 'undefined' || listDir !== null ) {
 		selectWallet(listDir);
