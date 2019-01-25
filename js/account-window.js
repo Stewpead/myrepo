@@ -2,7 +2,7 @@ const {ipcRenderer} = require('electron');
 
 
 $('#btnSend').click(function() {
-   ipcRenderer.send('modal','send-token.html'); 
+   ipcRenderer.send('modal','send-token.html');
 });
 
 $('#linkMain').click(function() {

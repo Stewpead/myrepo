@@ -1,0 +1,40 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- Local Dependecies  -->
+        <title>AVXChange</title>
+        <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> 
+        <link rel="stylesheet" href="../node_modules/@mdi/font/css/materialdesignicons.min.css">
+        <!-- Local Dependecies -->
+                
+        <!-- Styles -->
+        <link rel="stylesheet" type="text/css" href="../css/top-style.css">
+        <link rel="stylesheet" type="text/css" href="../css/modal-styles.css">
+        <link rel="stylesheet" type="text/css" href="../css/loading-screen.css">
+        <!-- Styles -->
+    </head>
+    <body>
+        <div id="container">
+            <nav>
+                <div id="buttons">
+                    <div id="close">
+                        <span>&times;</span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <h3>Screening the files</h3>
+        <span class="mdi mdi-loading mdi-spin mdi-48px"></span>
+        <p id="loadingText"></p>
+        <button id="btnOkay">Okay</button>
+        
+    </body>
+    <script src="../js/top-handler.js"></script>
+    <script src="../js/loading-screen.js"></script>
+</html>

@@ -12,11 +12,9 @@ const {ipcMain} = require('electron');
 
 var filename;
 
-filename = ipcMain.addListener.toString;
+// filename = ipcMain.addListener.toString;
 var temp;
 let defaultWindow; 
-let notDefaultWindow;
-let prevWindow;
 var IMG_DIR = './images/';
 var app_dir = './winPage/';
 
@@ -50,43 +48,11 @@ defaultWindow.once('ready-to-show', () => {
 });
 }
 
-let mainWindow;
-function mWindow() {
-    // defaultWindow = hidden;a
+let modalWindow;
 
-    mainWindow = new BrowserWindow({
-        frame: false,
-        width: 1050,
-        height: 750,
-        minWidth: 850,
-        minHeight: 600,
-        icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
-        show: false,
-    });
+function modalWindows(filename) {
 
-    mainWindow.openDevTools();
-    mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, app_dir,'mainWindow.html'),
-        protocol: 'file:',
-        slashes: true
-    }));
-
-    mainWindow.once('ready-to-show', () => {
-        // defaultWindow.hidden = true;
-        // mainWindow.location.href = 'mainWindow.html';
-        mainWindow.show();
-    });
-    
-    // mainWindow.on('close', () => {
-    //     app.quit();
-    // });
-}
-
-function anotherWindow(filename) {
-
-    notDefaultWindow = null;
-
-    notDefaultWindow = new BrowserWindow({
+    modalWindow = new BrowserWindow({
     frame: false,
     maxHeight:612,
     maxWidth: 632,
@@ -98,17 +64,15 @@ function anotherWindow(filename) {
     parent: defaultWindow,
     modal: true
     });
-
-// notDefaultWindow.openDevTools();
-notDefaultWindow.loadURL(url.format({
+    // notDefaultWindow.openDevTools();
+    modalWindow.loadURL(url.format({
     pathname: path.join(__dirname, app_dir, filename),
     protocol: 'file:',
     slashes: true
 }));
-notDefaultWindow.once('ready-to-show', () => {
-    notDefaultWindow.show();
+    modalWindow.once('ready-to-show', () => {
+    modalWindow.show();
 })
-
 }
 
 let popupWindows;
@@ -123,7 +87,7 @@ function popupWindow(filename) {
         minWidth: 310,
         minHeight: 350,
         icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
-        parent: notDefaultWindow,
+        parent: defaultWindow,
         modal: true
     });
     popupWindows.loadURL(url.format({
@@ -131,24 +95,49 @@ function popupWindow(filename) {
         protocol: 'file:',
         slashes: true
     }));
-    popupWindow.show();
+    popupWindows.show();
 }
 
+let filescanresult;
+function filescanwindow(filename) {
+    filescanresult = new BrowserWindow({
+        frame: false,
+        maxHeight:412,
+        maxWidth: 612,
+        width: 611,
+        height: 411,
+        minWidth: 610,
+        minHeight: 410,
+        icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
+        parent: defaultWindow,
+        modal: true
+    });
+    filescanresult.loadURL(url.format({
+        pathname: path.join(__dirname, app_dir, filename),
+        protocol: 'file:',
+        slashes: true
+    }));
+    filescanresult.show();
+}
+
+ipcMain.on('modal', (event, arg) => {
+    modalWindows(arg);
+});
 
 
-ipcMain.on('modal', (event, arg) => { 
-    anotherWindow(arg);
-  });
-ipcMain.on('popup', (event, arg) => {
-    notDefaultWindow = close;
+ipcMain.on('upload-files', (event, arg) => {
     popupWindow(arg);
+});
+
+ipcMain.on('file-scan-result', (event, arg) => {
+    filescanwindow(arg);
 });
 
 app.on('quit', () => {
     console.log("closed");
 });
 
-app.on('ready',showWindow);
+app.on('ready', showWindow);
 
 app.on('window-all-closed', () => {
     if(process.platform !== 'darwin'){

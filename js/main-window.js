@@ -11,4 +11,13 @@ $('#linkSearch').click(function() {
 $('#linkShare').click(function() {
     ipcRenderer.send('share','main');
 });
-$('content-main').parent('#bg');
+$('.content-main').parent('#bg');
+
+$('#btnFirst').click( () => {
+    location.href = "video-details.html";
+});
+
+$('#btnSignout').click( () => {
+    location.href = "login-window.html";
+    // this.
+});
