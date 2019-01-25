@@ -34,18 +34,13 @@ var initiateConnection = function(attempt){
 		console.log('Connected');
 		attempt = 0;
 		
-		ipcMain.on('avx-login',(event, arg) => {
-			
-			client.write(arg);
-		});		
+	
 		
 		var tools = require('./includes/main-window');
-		tools.showWindow(client);
+		tools.showWindow();
+		tools.avxLogin(client);
+		tools.avxSignup
 		
-		
-		
-
-
 		
 	});
 
