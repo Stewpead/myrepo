@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-const {ipcRenderer} = require('electron');
-
-$('#btnLogin').click(() => {
-    location.href = 'main-window.html';
-    ipcRenderer.send('logindatas','');
-});
-=======
 const {ipcRenderer}  = require('electron');
 const Store = require('electron-store');
 const store = new Store();
@@ -148,4 +140,3 @@ function generateWalletDropdown(data) {
 	
 }
 
->>>>>>> c7c64c37bb9f0795efb7feab0d94daeec0359f38
