@@ -35,7 +35,7 @@ var initiateConnection = function(attempt){
 		attempt = 0;
 		
 		var tools = require('./includes/main-window');
-		tools.showWindow();
+		tools.showWindow(client);
 
 		
 	});
