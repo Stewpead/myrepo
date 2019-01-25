@@ -12,11 +12,13 @@ function signup() {
 	password = document.getElementById('passw').value;
 
 	var file = document.getElementById("openWallet").files[0];
-	
+
+
 	if (typeof file !== 'undefined' && file !== null) {
 		directory = file.path
 
 	}
+
 	
 	var json = {
 		status: 3,
@@ -27,6 +29,7 @@ function signup() {
 			
 		}
 	};
+
 
 	var jsonString = JSON.stringify(json);
 	ipcRenderer.send("avx-signup", jsonString);
@@ -41,7 +44,7 @@ function signin() {
 	password = document.getElementById('passw').value;
 	privateKeyUpload = document.getElementById('privateKeyUpload').value;
 
-	var file = document.getElementById("file").files[0];
+	var file = document.getElementById("walletUpload").files[0];
 	
 	if (typeof file !== 'undefined' && file !== null) {
 		directory = file.path
@@ -59,13 +62,12 @@ function signin() {
 				password : password,
 				directory : directory,
 				privateKey	 : privateKey
-				
+
 			}
-		};
-	
+		}
+
 	var jsonString = JSON.stringify(json);
 	ipcRenderer.send("avx-login", jsonString);
-	
 }
 
 $(document).ready( function() {
@@ -107,12 +109,8 @@ function selectWallet(data) {
 		   }
 		}
 
-
 	}
-	
-	
 }
-
 function getFiles (dir, files_){
     files_ = files_ || [];
     var files = fs.readdirSync(dir);
@@ -148,4 +146,3 @@ function generateWalletDropdown(data) {
 	
 	
 }
-

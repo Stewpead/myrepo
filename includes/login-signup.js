@@ -20,12 +20,13 @@ var app_dir = './../winPage/';
 module.exports = {
   signupResponse: function (data) {
 	if (data['status'] == 7) {
-		
+		console.log(data);
 	}	
 	
   },
   signinResponse: function (data) {
 	if (data['status'] == 1) {
+		//console.log(data);
         defaultWindow.loadURL(url.format({
             pathname: path.join(__dirname, app_dir,'main-window.html'),
             protocol: 'file:',

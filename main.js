@@ -59,11 +59,10 @@ var initiateConnection = function(attempt){
 	});
 	
 	client.on('data', function(data) {
-		var data = JSON.parse(data);
+		data = JSON.parse(data);
 		var module = require('./includes/login-signup');
 		module.signupResponse(data);
 		module.signinResponse(data);
-		
 		
 	});
 

@@ -1,5 +1,5 @@
 // $('#bg > .page-content-wrapper');
-loadimg();
+// loadimg();
 
 $('#linkAccount').click(function () {
     ipcRenderer.send('account','main');
@@ -12,7 +12,7 @@ $('#linkSearch').click(function() {
 $('#linkShare').click(function() {
     ipcRenderer.send('share','main');
 });
-<<<<<<< HEAD
+
 $('.content-main').parent('#bg');
 
 $('#btnFirst').click( () => {
@@ -20,10 +20,10 @@ $('#btnFirst').click( () => {
 });
 
 $('#btnSignout').click( () => {
-    location.href = "login-window.html";
-    // this.
+    location.href = 'login-window.html';
 });
-=======
-$('content-main').parent('#bg');
+// <<<<<<< HEAD
+// =======
+// $('content-main').parent('#bg');
 
->>>>>>> c7c64c37bb9f0795efb7feab0d94daeec0359f38
+// >>>>>>> c7c64c37bb9f0795efb7feab0d94daeec0359f38

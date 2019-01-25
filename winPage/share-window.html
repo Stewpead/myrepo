@@ -9,7 +9,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> 
         <link rel="stylesheet" href="../node_modules/@mdi/font/css/materialdesignicons.min.css">
-        <!-- WOW -->
+        <!-- WOW --> 
                 
         <!-- MINE -->
         <link rel="stylesheet" type="text/css" href="../css/app-style.css">
@@ -21,13 +21,13 @@
                 </div>
                 <div id="buttons">
                     <div id="minimize">
-                        <span>-</span>
+                        <span class="mdi mdi-window-minimize"></span>
                     </div>
                     <div id="maximize">
-                        <span>+</span>
+                        <span class="mdi mdi-fullscreen"></span>
                     </div>
                     <div id="close">
-                        <span>&times;</span>
+                        <span class="mdi mdi-window-close"></span>
                     </div>
                 </div>
             </nav>
@@ -39,7 +39,7 @@
                 <img src="../images/logo_white.png" alt="avx" id="logox">
              </div>
             <a href="#" onclick="location.href = 'main-window.html'"> <span class="mdi mdi-home-outline" id="sidelinks"></span> <br>Home</a>
-            <a href="#" onclick="location.href = 'search-window.html'"><span class="mdi mdi-account-details" id="sidelinks"></span><br>Account Wallet</a>
+            <a href="#" onclick="location.href = 'account-window.html'"><span class="mdi mdi-account-details" id="sidelinks"></span><br>Account Wallet</a>
             <a href="#" onclick="location.href = 'search-window.html'"><span class="mdi mdi-magnify" id="sidelinks"></span><br>Search Browser</a>
             <a href="#" style="background-color: #ed1c24; color:white;"><span class="mdi mdi-radio-tower" id="sidelinks"></span><br>Share</a>
             <a href="#" onclick="location.href = 'stream-window.html'"><span class="mdi mdi-play" id="sidelinks"></span><br>Stream Player</a>
@@ -89,14 +89,15 @@
                             <hr />
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="btmButtons">
-                                            <i class="fas fa-folder"></i><input type="file" id="upload-video-folder"> <a href="" id="btn-upload-folder"> Folder( Open folder to upload with one or more files.</a>
-                                            <hr />
-                                            <span><a href="#"> File (Open a single file)</a></span>
+                                    <div class="btnButtons">
+                                        <i class="fas fa-folder"></i><input type="file" id="upload-video-folder">
+                                        <a href="" id="btn-upload-folder"> Folder( Open folder to upload with one or more files.</a>
+                                        <hr />
+                                        <span><a href="#"> File (Open a single file)</a></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="btmButtons">
+                                    <div class="btnButtons">
                                         <i class="fas fa-folder"></i> <span> <a href="#"> Folder( Open folder to upload with one or more files.</a></span>
                                         <hr />
                                         <i class="far fa-file-audio"></i> <span> <a href="#"> File (Open a single file)</a></span>
@@ -108,14 +109,14 @@
                     
                     </div>
                 </div>
-                <div class="row"> 
+                <!-- <div class="row"> 
                     <div class="col-lg-12">
                         
                     </div>    
-                </div>
+                </div> -->
             </div>
             </div>
-        </div>
+        </div> 
     </body>
     <script src="../js/top-handler.js"></script>
     <script src="../js/share-window.js"></script>
