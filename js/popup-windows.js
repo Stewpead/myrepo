@@ -1,5 +1,5 @@
 
-var win = remote.getCurrentWindow();
+// var win = remote.getCurrentWindow();
 $('#btnOkay').click(function () {
-    win.close();
+    this.closes();
 });

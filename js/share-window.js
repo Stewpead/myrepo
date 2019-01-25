@@ -15,7 +15,6 @@ $('#linkSearch').click(function() {
 $('#btn-upload-folder').click(function(e) {
     e.preventDefault();
     $('#upload-video-folder:hidden').trigger('click');
-    
 });
 
 $('#btnClosetop').click( () => {
@@ -30,7 +29,6 @@ $('#btnClosetop').click( () => {
 var videoFolder = document.getElementById('upload-video-folder');
 videoFolder.addEventListener('change',processFile);
 var filename;
-
 function processFile(event) {
     var input = event.srcElement;
     filename = input.files[0].name;

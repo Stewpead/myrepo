@@ -13,7 +13,7 @@ body {
     font-family: segoe ui light;
     box-sizing: border-box;
     height: auto;
-   }
+}
 #container {
     cursor: pointer;
     user-select: none;
@@ -90,9 +90,13 @@ body {
    }
 
 #buttons #close:hover {
-       background-color: #ed1c24;
-   }
-
+    background-color: #ed1c24;
+}
+#downUpload {
+    width:100px;
+    height:30px;
+    display: inline-block;
+}
 .col-container {
     position: fixed;
     display: flex;
@@ -107,12 +111,12 @@ body {
 #loginAVX {
     padding: 30px;
   }
-  a {
-      color: rgb(255, 255, 255);
-  }
-  a:hover {
+a {
+    color: rgb(255, 255, 255);
+}
+a:hover {
     color: #ed1c24;
-  }
+}
 
 .col img {
     width: 30%;
@@ -137,8 +141,8 @@ p {
     padding: 25px;
     color: white;
     left: 50%;
-    margin:auto;
-    padding: 30% 0;
+    margin:0 20% 0 20%;
+    padding: 15% 0;
 }
 .signup {
     color: white;
@@ -170,8 +174,7 @@ p {
     margin-left: 15%;
     margin-right: 20%;
 }
-input[type=text], input[type=password], input[type=email] {
-
+input[type=text], input[type=password] {
     color:whitesmoke;
     padding: 10px 20px;
     margin: 5px 0;
@@ -188,47 +191,48 @@ input[type=text], input[type=password], input[type=email] {
 form {
     border: 3px solid #000000;
 }
-
 span.psw {
     float: right;
 }
+#walletUpload {
+    display: none;
+}
 button {
-    background-color: #ed1c24;
+    background-color: #ed1c24 !important;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
     width: 100%;
+    
+} 
+#btnSavedWallets {
+    background-color: #000000;
+    color: white;
 }
-
-button:hover {
+/* button:hover {
     opacity: 0.8;
-}
-.footdetails {
-    margin: auto;
-    padding-left: 35%;
-    padding-right: 35%;
-    display: inline;
-    text-align: center!important;
-}
+} */
 #foots {
     font-size: 14px;
+    padding: 1% 0;
+    width: 100%;
+    padding-left: 7%;
+}
 
-    
-}
-  @media screen and (max-width: 800px) {
-        .col {
-            font-size: 1.3vw;
-        }
-  }
-  @media screen and (max-width: 300px) {
-    span.psw {
-       display: block;
-       float: none;
-    }
-}
 #downwallet {
     margin-left: 10%;
     margin-right: 40%;
+}
+@media screen and (max-width: 800px) {
+    .col {
+        font-size: 1.3vw;
+    }
+}
+@media screen and (max-width: 300px) {
+span.psw {
+   display: block;
+   float: none;
+}
 }

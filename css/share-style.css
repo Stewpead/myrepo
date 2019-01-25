@@ -17,7 +17,7 @@ button {
 }
 ::-webkit-scrollbar {
     display: none;
-}
+} 
 #btnClosetop {
     color: white;
     background-color: #ed1c24;

@@ -2,10 +2,17 @@
 
 <html lang="en">
     <header>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" type="text/css" href="../css/login-style.css">
+     <!-- WOW  -->
+     <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" type="text/css" href="../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css">
+     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" href="../node_modules/@mdi/font/css/materialdesignicons.min.css">
+     <!-- WOW -->
+ 
+    <link rel="stylesheet" type="text/css" href="../css/login-style.css">
     </header>
     <body>
         <div id="container">
@@ -37,39 +44,52 @@
                     <br>
                 </div>
                 <div class="tagg">
-                    <p id="tagline">A distributed peer-to-peer (P2P) file sharing network with elements of blockchain and cryptocurrency. AVXChange is designed for the exchange of audio and video entertainment over the internet using P2P and is set to revolutionize the distribution of proprietary data over the internet.</p>
+                    <p id="tagline">An incentivised distributed peer-to-peer (P2P) file sharing network with elements of blockchain and cryptocurrency. AVXChange is designed for the exchange of audio and video entertainment over the internet using P2P and is set to revolutionize the distribution of proprietary data over the internet.</p>
                 </div>  
             </div>
             <div class="col" style="background-color:rgb(0, 0, 0);">
                 <div>
-                    <!-- <form style=" margin-left: 20%; margin-right: 20%;"> -->
-                        <div class="login">
-                            <h2><b style="font-size:2.5vw;">Sign in</b></h2>
-                            <span></span>
-                            <div class="loginfields">
+                    <div class="login">
+                        <h2><b style="font-size:2.5vw;">Sign in</b></h2>
+                        <span></span>
+                        <div class="loginfields">
                             <input type="text" style="margin-top: 30px;" placeholder="Username" id="username" required>
                             <br> 
                             <input type="password" placeholder="Password" id="passw" required>
-                            <div id="btnUpload">
-                                Upload Wallet
-                                <input type="file" name="file" id="file"/>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input type="file" name="file" id="walletUpload"/></input>
+                                    <button id="btnUpload">Upload a file</button>
+                                </div>
+                                <div class="col-lg-6">
+                                        <div class="dropdown" id="downUpload">
+                                            <button class="btn btn-danger dropdown-toggle" type="button" id="btnSavedWallets" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Wallets
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="btnSavedWallets" id="dropdownItemMenu">
+                                                <a class="dropdown-item" href="#" id="a1">AVX1</a>
+                                                <a class="dropdown-item" href="#" id="a2">AVX2</a>
+                                                <a class="dropdown-item" href="#" id="a3">AVX3</a>
+                                                <a class="dropdown-item" href="#" id="a4">AVX4</a>
+                                            </div>
+                                        </div>
+                                </div>
                             </div>
-                            </div>
-                            <button type="submit" style="margin-top: 20px;" onclick="signin()">Login</button>
-                            <div style="margin-top: 20px;">
-                            <label><input type="checkbox" name="remember" style="float:lef"> Remember me </label>
-                            <span class="psw">Forgot <a href="#">password?</a></span>
-                            </div>
-                            <br>
-                            <br>
-                            <p>Do you already have an AVX Wallet?</p>
-                            <br>
-                            <p><a href="#" onclick="location.href = 'signup-window.html'">Create a new wallet</a></p>
                         </div>
-                     <!--</form> -->
-                    <div class="footdetails">
+                        <button type="submit" style="margin-top: 20px;" id="btnLogin">Login</button>
+                        <div style="margin-top: 20px;">
+                            <label>
+                                <input type="checkbox" name="remember" style="float:lef"> Remember me 
+                            </label>
+                            <span class="psw">Forgot <a href="#">password?</a></span>
+                        </div>
+                        <br>
+                        <p>Do you already have an AVX Wallet?</p>
+                        <br>
+                        <p><a href="#" onclick="location.href = 'signup-window.html'">Create a new wallet</a></p>
                         <span id="foots"><a href="mailto:info@avxchange.io">info@avxchange.io</a> | <a href="https://www.avxchange.io/" target="_blank" >www.avxchange.io</a></span>
-                    </div> 
+                    </div>
+                     <!--</form> --> 
                 </div>
             </div>  
         </div>
