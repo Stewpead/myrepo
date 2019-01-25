@@ -62,13 +62,13 @@ module.exports = {
 	});	
   },
   
-  avxSignup: function (client) {
+	avxSignup: function (client) {
 	//store.set('directory.wallet', 'D:\myrepo');
 	ipcMain.on('avx-signup',(event, arg) => {
 		client.write(arg);
 	});	
   
-  },
+	},
 	avxPopup: function (client) {
 		ipcMain.on('upload-files', (event, arg) => {
 			popupWindows(arg);
