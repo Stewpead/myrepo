@@ -43,15 +43,18 @@ function processFile(event) {
 		var json = {
 			status: 30, //Need to consult
 			data : {
-				directory : directory,
-				filename	 : filename
+				directory 	: directory,
+				filename	: filename
 
 			}
 		}
 
 	}
 	var jsonString = JSON.stringify(json);
-	ipcRenderer.send("avx-share-upload-file", jsonString);
+	var uploadFile =  ipcRenderer.sendSync('avx-share-upload-file', jsonString);
 	
-    ipcRenderer.send('upload-files','loading-screen-1.html');
+	ipcRenderer.send('upload-files','loading-screen-1.html');
+	
+			
+    
 }

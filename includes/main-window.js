@@ -63,7 +63,7 @@ module.exports = {
   },
   
 	avxSignup: function (client) {
-	store.set('directory.wallet', 'D:\wallet');
+	store.set('directory.wallet', 'D:\\wallet');
 	ipcMain.on('avx-signup',(event, arg) => {
 		client.write(arg);
 	});	
