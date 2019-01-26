@@ -14,8 +14,20 @@ var app_dir = './../winPage/';
 
 module.exports = {
   shareUpload: function (client) {
+
+
 	ipcMain.on('avx-share-upload-file',(event, arg) => {
 		client.write(arg);
-	});  
+		event.returnValue = true;
+	});		
+  },
+  
+  executeUploadFile: function (client) {
+
+	ipcMain.on('avx-share-upload-file-finish',(event, arg) => {
+		event.returnValue = true;
+	});		
   }
+  
+	
 };

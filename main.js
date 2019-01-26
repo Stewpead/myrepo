@@ -43,8 +43,15 @@ var initiateConnection = function(attempt){
         module.avxPopup(client);
         module.avxModal(client);
 		
+		
 		var module = require('./includes/dashboard');
 		module.shareUpload(client);
+		module.executeUploadFile(client);
+		
+		
+		ipcMain.on('test-btn',(event, arg) => {
+			event.returnValue = 1 +arg;
+		});	
 
 		
 	});
@@ -84,7 +91,6 @@ initiateConnection(0);
 
 // POPUP POPUP
 let popupWindow;
-
 
 
 

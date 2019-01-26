@@ -22,7 +22,8 @@ module.exports = {
 	  
 	if (data['status'] == 15) {
 		console.log(data);
-		document.getElementById("btnOkay").click();
+
+		
 		
 	}	
 	
