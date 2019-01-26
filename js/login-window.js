@@ -146,3 +146,38 @@ function generateWalletDropdown(data) {
 	
 	
 }
+
+var walletItem;
+$('#a1').click( () =>  {
+	document.getElementById('btnSavedWallets').innerHTML = 'AVX1';
+	console.log('a1');
+});	
+$('#a2').click( () => {
+	document.getElementById('btnSavedWallets').innerHTML = 'AVX2';
+});
+$('#a3').click( () => {
+	document.getElementById('btnSavedWallets').innerHTML = 'AVX3';
+});
+$('#a4').click( () => {
+	document.getElementById('btnSavedWallets').innerHTML = 'AVX4';
+});
+
+$(function(){
+    $("#btnUpload").on('click', function(e){
+        e.preventDefault();
+        $("#walletUpload:hidden").trigger('click');
+	});
+
+});
+
+var inputFile = document.getElementById('wallletUpload');
+inputFile.addEventListener('change', showFile);
+var filename;
+
+function showFile(event) {
+	var input = event.srcElement;
+	filename = input.files[0].name;
+	document.getElementById('btnUpload').innerHTML = filename;
+	// alert(filename);
+	// console.log('awdadawdaw');
+}
