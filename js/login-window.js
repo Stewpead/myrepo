@@ -183,7 +183,7 @@ $(function(){
 });
 
 var inputFile = document.getElementById('wallletUpload');
-// inputFile.addEventListener('change', showFile);
+inputFile.addEventListener('change', showFile);
 var filename;
 
 function showFile(event) {
