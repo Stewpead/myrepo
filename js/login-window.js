@@ -21,7 +21,7 @@ function signup() {
 
 	
 	var json = {
-		status: 3,
+		status: 1112,
 		data : {
 			username : username,
 			password : password,
@@ -68,7 +68,7 @@ function signin() {
 		}
 	}
 		var json = {
-			status: 4,
+			status: 1113,
 			data : {
 				username : username,
 				password : password,
