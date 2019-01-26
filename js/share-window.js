@@ -1,4 +1,5 @@
 const {ipcRenderer} = require('electron');
+var path = require('path');
 
 $('#linkMain').click(function() {
     ipcRenderer.send('main','share');
@@ -32,5 +33,25 @@ var filename;
 function processFile(event) {
     var input = event.srcElement;
     filename = input.files[0].name;
+	
+	var directory, filename, json;
+	var file = document.getElementById("upload-video-folder").files[0];
+	if (typeof file !== 'undefined' && file !== null) {
+		filename = file.name;
+		directory = path.dirname(file.path);
+		
+		var json = {
+			status: 30, //Need to consult
+			data : {
+				directory : directory,
+				filename	 : filename
+
+			}
+		}
+
+	}
+	var jsonString = JSON.stringify(json);
+	ipcRenderer.send("avx-share-upload-file", jsonString);
+	
     ipcRenderer.send('upload-files','loading-screen-1.html');
 }

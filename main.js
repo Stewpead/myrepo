@@ -12,7 +12,7 @@ let defaultWindow;
 let notDefaultWindow;
 let prevWindow;
 let connectionPort = 5150;
-let connectionHost = '192.168.254.33';
+let connectionHost = '127.0.0.1';
 
 var IMG_DIR = './../images/';
 var app_dir = './../winPage/';
@@ -36,12 +36,16 @@ var initiateConnection = function(attempt){
 		
 	
 		
-		var tools = require('./includes/main-window');
-		tools.showWindow();
-		tools.avxLogin(client);
-		tools.avxSignup(client);
-        tools.avxPopup(client);
-        tools.avxModal(client);
+		var module = require('./includes/main-window');
+		module.showWindow();
+		module.avxLogin(client);
+		module.avxSignup(client);
+        module.avxPopup(client);
+        module.avxModal(client);
+		
+		var module = require('./includes/dashboard');
+		module.shareUpload(client);
+
 		
 	});
 
@@ -64,6 +68,9 @@ var initiateConnection = function(attempt){
 		var module = require('./includes/login-signup');
 		module.signupResponse(data);
 		module.signinResponse(data);
+		
+		var module = require('./includes/dashboard-action');
+		module.shareUploadResponse(data);
 		
 	});
 

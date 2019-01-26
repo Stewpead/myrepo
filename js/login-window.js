@@ -55,16 +55,17 @@ function signin() {
 			privateKey = fs.readFileSync(directory, 'utf8');
 		}
 	}
-		var json = {
-			status: 4,
-			data : {
-				username : username,
-				password : password,
-				directory : directory,
-				privateKey	 : privateKey
+	
+	var json = {
+		status: 4,
+		data : {
+			username : username,
+			password : password,
+			directory : directory,
+			privateKey	 : privateKey
 
-			}
 		}
+	}
 
 	var jsonString = JSON.stringify(json);
 	ipcRenderer.send("avx-login", jsonString);
