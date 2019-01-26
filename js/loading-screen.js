@@ -19,6 +19,12 @@ var executeClose = ipcRenderer.sendSync('avx-share-upload-file-finish', uploadFi
 if (executeClose == true) {
 	$('#btnConfirm').close();
 }
+
+setTimeout(
+  function() 
+  {
+    $('#btnConfirm').close();
+  }, 3000);
 	
 
 // $('#btnConfirm').click( () => {
