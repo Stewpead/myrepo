@@ -19,8 +19,18 @@ var app_dir = './../winPage/';
 
 module.exports = {
   signupResponse: function (data) {
-	if (data['status'] == 7) {
+	if (data['status'] == 3) {
 		console.log(data);
+		var validate = data['data'];
+		// ARJ NOTE UI FOR NOTIFICATION FOR SUCCESS/ERROR 
+		if (validate == 1 ){
+			defaultWindow.loadURL(url.format({
+				pathname: path.join(__dirname, app_dir,'login-window.html'),
+				protocol: 'file:',
+				slashes: true
+			}));
+		}
+		
 	}	
 	
   },
