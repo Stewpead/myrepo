@@ -12,7 +12,7 @@ let defaultWindow;
 let notDefaultWindow;
 let prevWindow;
 let connectionPort = 5150;
-let connectionHost = '127.0.0.1';
+let connectionHost = '192.168.254.33';
 
 var IMG_DIR = './../images/';
 var app_dir = './../winPage/';

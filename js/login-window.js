@@ -67,17 +67,16 @@ function signin() {
 			privateKey = fs.readFileSync(directory, 'utf8');
 		}
 	}
-	
-	var json = {
-		status: 4,
-		data : {
-			username : username,
-			password : password,
-			directory : directory,
-			privateKey	 : privateKey
+		var json = {
+			status: 4,
+			data : {
+				username : username,
+				password : password,
+				directory : directory,
+				privateKey	 : privateKey
 
+			}
 		}
-	}
 
 	var jsonString = JSON.stringify(json);
 	ipcRenderer.send("avx-login", jsonString);
@@ -184,13 +183,12 @@ $(function(){
 });
 
 var inputFile = document.getElementById('wallletUpload');
-inputFile.addEventListener('change', showFile);
+// inputFile.addEventListener('change', showFile);
 var filename;
 
 function showFile(event) {
 	var input = event.srcElement;
 	filename = input.files[0].name;
 	document.getElementById('btnUpload').innerHTML = filename;
-	// alert(filename);
-	// console.log('awdadawdaw');
+	
 }
