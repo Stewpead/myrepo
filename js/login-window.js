@@ -40,12 +40,12 @@ function signup() {
 
 /* test */
 $('#btnUpload').click( function() {
-	var data = 1;
+	/*var data = 1;
 	alert(data);
 	// var test = ipcRenderer.send("test-btn", data);
 	var test =  ipcRenderer.sendSync('test-btn', data);
 	alert(test);
-	
+	*/
 });
 /**/
 
