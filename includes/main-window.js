@@ -79,7 +79,14 @@ module.exports = {
 		ipcMain.on('file-scan-result', (event, arg) => {
 			modalWindows(arg);
 		});
+	},
+
+	avxSendAVX: function (client) {
+		ipcMain.on('send-avx', (event, arg) => {
+			modalSends(arg);
+		});
 	}
+	
 
 };
 
@@ -129,4 +136,31 @@ function modalWindows(filename) {
     modalWindow.once('ready-to-show', () => {
     modalWindow.show();
 })
+}
+
+let modalSend;
+
+function modalSends(filename) {
+
+	modalSend = new BrowserWindow({
+		frame: false,
+		maxHeight:612,
+		maxWidth: 532,
+		width: 511,
+		height: 611,
+		minWidth: 530,
+		minHeight: 610,
+		icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
+		parent: defaultWindow,
+		modal: true
+		});
+			
+		modalSend.loadURL(url.format({
+		pathname: path.join(__dirname, app_dir, filename),
+		protocol: 'file:',
+		slashes: true
+	}));
+	modalSend.once('ready-to-show', () => {
+		modalSend.show();
+	});
 }
