@@ -191,7 +191,7 @@ input[type=text], input[type=password] {
 form {
     border: 3px solid #000000;
 }
-span.psw {
+span.psw { 
     float: right;
 }
 #walletUpload {
@@ -211,9 +211,6 @@ button {
     background-color: #000000;
     color: white;
 }
-/* button:hover {
-    opacity: 0.8;
-} */
 #foots {
     font-size: 14px;
     padding: 1% 0;
@@ -235,4 +232,5 @@ span.psw {
    display: block;
    float: none;
 }
+
 }
