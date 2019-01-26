@@ -25,14 +25,15 @@ module.exports = {
 	
   },
   signinResponse: function (data) {
-	if (data['status'] == 1) {
-		//console.log(data);
-        defaultWindow.loadURL(url.format({
-            pathname: path.join(__dirname, app_dir,'main-window.html'),
-            protocol: 'file:',
-            slashes: true
-        }));
-		//remote.getCurrentWindow().loadURL(app_dir + "main-window.html");
+	if (data['status'] == 4) {
+		var validate = data['data'];
+		if (validate == 1 ){
+			defaultWindow.loadURL(url.format({
+				pathname: path.join(__dirname, app_dir,'main-window.html'),
+				protocol: 'file:',
+				slashes: true
+			}));
+		}
 
 	}
   }
