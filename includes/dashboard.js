@@ -27,7 +27,15 @@ module.exports = {
 	ipcMain.on('avx-share-upload-file-finish',(event, arg) => {
 		event.returnValue = true;
 	});		
-  }
-  
+	},
+	sendTokenAVX: function (client) {
+
+		ipcMain.on('send-token',(event, arg) => {
+			client.write(arg);
+				// console.log(arg);		
+		});		
+		}
+	
+	
 	
 };

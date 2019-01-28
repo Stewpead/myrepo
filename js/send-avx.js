@@ -1,20 +1,24 @@
 const {ipcRenderer} = require('electron');
+var json1 = {};
+var jsonString1;
+var javascriptObject1;
+var jasonString1;
 
-function sendAVX() {
-    json2.status = 555;
-    json2.txType = 0;
-    json2.filename = "";
-    json2.price = 0;
-    json2.assetname = "";
-    json2.publicKey = document.getElementById("walletaddress").value
+
+$('#btnSendtoken').click( function () {
     var amountt = document.getElementById('avxquantity').value;
-    json2.amount = parseInt(amountt);
-    json2.receiver = document.getElementById('receiver').value;
-    jsonString2 = JSON.stringify(json2);
-    javascriptObject2 = $.parseJSON(jsonString2);
-    jasonString2 = JSON.stringify(javascriptObject2);
-    ipcRenderer.send('sendAVX',jasonString2);
+    json1.publicKey = document.getElementById("walletaddress").value
+    json1.amount = parseInt(amountt);
+    json1.receiver = document.getElementById('receiver').value;
+    jsonString1 = JSON.stringify(json1);
+    javascriptObject1 = $.parseJSON(jsonString1);
+    jasonString1 = JSON.stringify(javascriptObject1);
+    console.log(jasonString1);
+    ipcRenderer.send('send-token',jasonString1);
  }
+);
+
+
 
  function getdetails() {
      var avx;

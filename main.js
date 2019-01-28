@@ -48,7 +48,7 @@ var initiateConnection = function(attempt){
 		var module = require('./includes/dashboard');
 		module.shareUpload(client);
 		module.executeUploadFile(client);
-		
+		module.sendTokenAVX(client);
 		
 		ipcMain.on('test-btn',(event, arg) => {
 			event.returnValue = 1 +arg;
