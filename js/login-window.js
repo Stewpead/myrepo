@@ -181,9 +181,9 @@ $(function(){
 
 });
 
-var inputFile = document.getElementById('wallletUpload');
-inputFile.addEventListener('change', showFile);
-var filename;
+	var inputFile = document.getElementById('walletUpload');
+	inputFile.addEventListener('change', showFile);
+	var filename;
 
 function showFile(event) {
 	var input = event.srcElement;

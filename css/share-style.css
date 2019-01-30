@@ -52,6 +52,9 @@ button {
 #upload-video-folder {
     display: none;
 }
+#upload-video-thumbnail {
+    display: none;
+}
 #rightcontents {
     display: block;
 }
