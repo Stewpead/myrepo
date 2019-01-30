@@ -75,6 +75,7 @@ function appendJSON(event) {
 		filename = file.name;
 		directory = path.dirname(file.path) + "\\";
 		// json.data = {};
+		directory += filename;
 		json.data.thumbnailPath = directory;
 	}
 	var jsonString = JSON.stringify(json);
