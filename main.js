@@ -49,6 +49,7 @@ var initiateConnection = function(attempt){
 		module.shareUpload(client);
 		module.executeUploadFile(client);
 		module.sendTokenAVX(client);
+		// module.sendUploadDetails(client);
 		
 		ipcMain.on('test-btn',(event, arg) => {
 			event.returnValue = 1 +arg;

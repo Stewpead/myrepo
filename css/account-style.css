@@ -4,7 +4,6 @@ html::-webkit-scrollbar {
 #navbartop {
     position: fixed;
     width: 100%;
-    /* top: 30px; */
     left: 130px;
     z-index: 1;
 }
@@ -17,7 +16,6 @@ img {
 #qrcode {
     padding-left: 40px;
 }
-
 #contents {
     margin-top:50px;
 }
@@ -47,7 +45,6 @@ img {
     color: #000;
     width: 120px;
 }
-
 a {
     color:white;
 }
@@ -73,39 +70,61 @@ ul {
     content: "   |   ";
     padding: 0 10px;
 }
-
- li {
+li {
     float: left;
 } 
-#tbMerge {
-    width: auto;
-}
 table {
-    height: 400px;
+    height: 350px;
+    text-align: left;
     overflow-y: scroll;
     overflow: auto;
-    width: auto;
-    /* width: 100%; */
+    width: 100%;
     display: block;
+    background-color:rgb(49, 49, 49) !important;
+}
+table::-webkit-scrollbar {
+    display: block;
+    width: 10px;
+    border-radius: 10px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border-radius: 5px;
+}
+table::-webkit-scrollbar-track {
+    background: #111111; 
+    border-radius: 10px;
+    box-shadow: inset 0 0 8px grey; 
+}
+table::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+    display: block;
+}
+table::-webkit-scrollbar-thumb:hover {
+    background: #555555; 
+    border-radius: 14px;
 }
 thead {
     background-color:rgb(49, 49, 49);
     position: relative;
+
 }
 th {
-    padding: 30px;
+    padding-right: 50px !important;
+    width: auto;
 }
 tbody {
     background-color:white;
     color:#000;
 }
-
 tr {
     height: 10px !important;
 }
 td {
     font-size: 11px;
     height: 30px !important;
+    text-align: left;
 }
 /* #Waddress {
     float: left;
@@ -120,8 +139,27 @@ td {
     .sidenav a {font-size: 18px;}
   }
 
-  /* #sidelinks {
-    font-size:17px;
-    color:white; 
-    margin-bottom:8%;
-} */
+#thStatus {
+    width: 8%;
+}
+#thDate {
+    width: 8%;
+}
+#thTime {
+    width: 8%;
+}
+#thFrom {
+    width: 19%;
+}
+#thTo {
+    width: 18%;
+}
+#thDescription {
+    width: 18%;
+}
+#thAmount {
+    width: 8%;
+}
+#thTxID {
+    width: 15%;
+}

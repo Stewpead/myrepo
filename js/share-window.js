@@ -28,8 +28,9 @@ $('#btnClosetop').click( () => {
 });
 
 var videoFolder = document.getElementById('upload-video-folder');
-videoFolder.addEventListener('change',processFile);
+videoFolder.addEventListener('change', processFile);
 var filename;
+
 function processFile(event) {
     var input = event.srcElement;
     filename = input.files[0].name;
@@ -41,11 +42,13 @@ function processFile(event) {
 		directory = path.dirname(file.path);
 		
 		var json = {
-			status: 30, //Need to consult
+			status : 1120,
 			data : {
+				description: "Description-Description",
 				directory 	: directory,
-				filename	: filename
-
+				filename	: filename,
+				thumbnailPath : "D:awemaaweaweawe",
+				price : 100
 			}
 		}
 

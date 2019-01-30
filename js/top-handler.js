@@ -5,6 +5,7 @@ var win = remote.getCurrentWindow();
 $('#minimize').click(function() {
     win.minimize();
 });
+
 $('#maximize').click(function() {
 if(!win.isMaximized()) {
 win.maximize();

@@ -14,87 +14,90 @@
  
     <link rel="stylesheet" type="text/css" href="../css/login-style.css">
 
-    <div id="container">
-        <nav>
-            <div id="titleShown">
-            </div>
-            <div id="buttons">
-                <div id="minimize">
-                    <span class="mdi mdi-window-minimize"> </span>
-                </div>
-                <div id="maximize">
-                    <span class="mdi mdi-window-maximize"> </span>
-                </div>
-                <div id="close">
-                    <span class="mdi mdi-window-close"> </span>
-                </div>
-            </div>
-        </nav>
-    </div>
+       
     </head>
-    <body>
 
-    <div id="main">
-        <div class="col-container" style="background-blend-mode:soft-light;background-color: rgba(0, 0, 0, 0.747);">
-            <div class="col">
-                <br>
-                <div class="welcome">
-                    <h3 style="font-size: 2vw;">Welcome to</h3>
-                    <div class="logo">
-                        <img src="../images/horizontal logo_tm_x800.png" id="logo" alt="AVXChange">
-                    </div>
-                    <br>
+    <body>
+        <div id="container">
+            <nav>
+                <div id="titleShown">
                 </div>
-                <div class="tagg">
-                    <p id="tagline">An incentivised distributed peer-to-peer (P2P) file sharing network with elements of blockchain and cryptocurrency. AVXChange is designed for the exchange of audio and video entertainment over the internet using P2P and is set to revolutionize the distribution of proprietary data over the internet.</p>
-                </div>  
-            </div>
-            <div class="col" style="background-color:rgb(0, 0, 0);">
-                <div>
-                    <div class="login">
-                        <h2><b style="font-size:2.5vw;">Sign in</b></h2>
-                        <div class="loginfields">
-                            <input type="text" style="margin-top: 30px;" placeholder="Username" id="username" required>
-                            <br> 
-                            <input type="password" placeholder="Password" id="passw" required>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <input type="file" name="file" id="walletUpload"/></input>
-                                    <button id="btnUpload">Upload a file</button>
-                                </div>
-                                <div class="col-lg-6">
-                                        <div class="dropdown" id="downUpload">
-                                            <button class="btn btn-danger dropdown-toggle" type="button" id="btnSavedWallets" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Wallets
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="btnSavedWallets" id="dropdownItemMenu">
-                                                <a class="dropdown-item" href="#" id="a1">AVX1</a>
-                                                <a class="dropdown-item" href="#" id="a2">AVX2</a>
-                                                <a class="dropdown-item" href="#" id="a3">AVX3</a>
-                                                <a class="dropdown-item" href="#" id="a4">AVX4</a>
+                <div id="buttons">
+                    <div id="minimize">
+                        <span class="mdi mdi-window-minimize"></span>
+                    </div>
+                    <div id="maximize">
+                        <span class="mdi mdi-window-maximize"></span>
+                    </div>
+                    <div id="close">
+                        <span class="mdi mdi-window-close"></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="main">
+            <div class="col-container" style="background-blend-mode:soft-light;background-color: rgba(0, 0, 0, 0.747);">
+                <div class="col">
+                    <br>
+                    <div class="welcome">
+                        <h3 style="font-size: 2vw;">Welcome to</h3>
+                        <div class="logo">
+                            <img src="../images/horizontal logo_tm_x800.png" id="logo" alt="AVXChange">
+                        </div>
+                        <br>
+                    </div>
+                    <div class="tagg">
+                        <p id="tagline">An incentivised distributed peer-to-peer (P2P) file sharing network with elements of blockchain and cryptocurrency. AVXChange is designed for the exchange of audio and video entertainment over the internet using P2P and is revolutionizing the distribution of proprietary data over the internet.</p>
+                    </div>  
+                </div>
+                <div class="col" style="background-color:rgb(0, 0, 0);">
+                    <div>
+                        <div class="login">
+                            <h2><b style="font-size:2.5vw;">Sign in</b></h2>
+                            <div class="loginfields">
+                                <input type="text" style="margin-top: 30px;" placeholder="Username" id="username" required>
+                                <br> 
+                                <input type="password" placeholder="Password" id="passw" required>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <br />
+                                        <input type="file" name="file" id="walletUpload"/></input>
+                                        <button id="btnUpload">Upload a file</button>
+                                    </div>
+                                    <div class="col-lg-6">
+                                            <br />
+                                            <div class="dropdown" id="downUpload">
+                                                <button class="btn btn-danger dropdown-toggle" type="button" id="btnSavedWallets" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Wallets
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="btnSavedWallets" id="dropdownItemMenu">
+                                                    <a class="dropdown-item" href="#" id="a1">AVX1</a>
+                                                    <a class="dropdown-item" href="#" id="a2">AVX2</a>
+                                                    <a class="dropdown-item" href="#" id="a3">AVX3</a>
+                                                    <a class="dropdown-item" href="#" id="a4">AVX4</a>
+                                                </div>
                                             </div>
-                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <button type="submit" style="margin-top: 20px;" onclick="signin()">Login</button>
+                            <div style="margin-top: 20px;">
+                                <label>
+                                    <input type="checkbox" name="remember" style="float:lef"> Remember me 
+                                </label>
+                                <span class="psw">Forgot <a href="#">password?</a></span>
+                            </div>
+                            <br>
+                            <p>Do you already have an AVX Wallet?</p>
+                            <br>
+                            <p><a href="#" onclick="location.href = 'signup-window.html'">Create a new wallet</a></p>
+                            <span id="foots"><a href="mailto:info@avxchange.io">info@avxchange.io</a> | <a href="https://www.avxchange.io/" target="_blank" >www.avxchange.io</a></span>
                         </div>
-                        <button type="submit" style="margin-top: 20px;"  onclick="signin()">Login</button>
-                        <div style="margin-top: 20px;">
-                            <label>
-                                <input type="checkbox" name="remember" style="float:lef"> Remember me 
-                            </label>
-                            <span class="psw">Forgot <a href="#">password?</a></span>
-                        </div>
-                        <br>
-                        <p>Do you already have an AVX Wallet?</p>
-                        <br>
-                        <p><a href="#" onclick="location.href = 'signup-window.html'">Create a new wallet</a></p>
-                        <span id="foots"><a href="mailto:info@avxchange.io">info@avxchange.io</a> | <a href="https://www.avxchange.io/" target="_blank" >www.avxchange.io</a></span>
+                        <!--</form> --> 
                     </div>
-                     <!--</form> --> 
-                </div>
-            </div>  
+                </div>  
+            </div>
         </div>
-    </div>
     </body>
     <script src="../js/top-handler.js"></script>
     <script src="../js/login-window.js"></script>

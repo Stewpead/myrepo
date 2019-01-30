@@ -1,0 +1,22 @@
+{
+	"incoming": {
+		"01": {
+			"status": "verified",
+			"amount": "2.27"
+		},
+		"04": {
+			"status": "Unverified",
+			"amount": "2.27"
+		}
+	},
+	"outgoing": {
+		"02": {
+			"status": "Unverified",
+			"amount": "7.23"
+		},
+		"03": {
+			"status": "verified",
+			"amount": "4.11"
+		}
+	}
+}

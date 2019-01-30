@@ -15,7 +15,6 @@ var app_dir = './../winPage/';
 module.exports = {
   shareUpload: function (client) {
 
-
 	ipcMain.on('avx-share-upload-file',(event, arg) => {
 		client.write(arg);
 		event.returnValue = true;
@@ -33,8 +32,14 @@ module.exports = {
 		ipcMain.on('send-token',(event, arg) => {
 			client.write(arg);
 				// console.log(arg);		
-		});		
-		}
+		});
+	}		
+	// },
+	// sendUploadDetails: function (client) {
+	// 	ipcMain.on('upload-file-details', (event, arg) => {
+	// 		client.write(arg);
+	// 	});
+	// }
 	
 	
 	

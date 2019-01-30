@@ -19,16 +19,18 @@
     
     <header>
         <div id="container">
-            <nav class="topBar">
+            <nav>
+                <div id="titleShown">
+                </div>
                 <div id="buttons">
                     <div id="minimize">
-                        <span>-</span>
+                        <span class="mdi mdi-window-minimize"></span>
                     </div>
                     <div id="maximize">
-                        <span>+</span>
+                        <span class="mdi mdi-window-maximize"></span>
                     </div>
                     <div id="close">
-                        <span>&times;</span>
+                        <span class="mdi mdi-window-close"></span>
                     </div>
                 </div>
             </nav>
@@ -152,10 +154,10 @@
                                 <a href="#" id="btnMergeTx">  Merged </a>
                             </li>
                             <li>
-                                <a href="#"  id="btnIncomingTx"> Outgoing</a>
+                                <a href="#"  id="btnIncomingTx"> Incoming Tokens </a>
                             </li>
                             <li>
-                                <a href="#" id="btnOutcomingTx"> Incoming</a>
+                                <a href="#" id="btnOutcomingTx"> Outgoing Tokems</a>
                             </li>
                         </ul>
                     </div> 
@@ -176,277 +178,399 @@
                         </div>
                     </div>
                 </div>
-                <!-- 
-                    <div class="row">
-                    <div class="col-md-9">
-                        <ul class="nav ml-5" id="tabs">
-                            <li><a data-toggle="tab" href="#merged" style="padding:10px;" id="btnMergeTx">Merged</a></li>
-                            <li ><a data-toggle="tab" href="#incoming" id="btnIncomingTx">Incoming Token(s)</a></li>
-                            <li ><a data-toggle="tab" href="#outgoing" id="btnOutcomingTx">Outgoing Token(s)</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3">      
-                    </div>
-                </div>
-             -->
+
                 <br>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="tab-content mt-2 mr-5 ml-5">
-                            <div id="merged">  
-                                <!-- class="table table-dark mr-5" -->
-                                <table id="tbMerge">
-                                    <thead>
-                                        <tr>
-                                            <th>Status</th>
-                                            <th>Date</th>
-                                            <th>Time</th>
-                                            <th>From</th>
-                                            <th>To</th>
-                                            <th>Description</th>
-                                            <th>Amount(AVX)</th>
-                                            <th>Transaction ID</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row"></th>
-                                            <td id="mstatus1"></td>
-                                            <td id="mdate1"></td>
-                                            <td id="mtime1"></td>
-                                            <td id="mfrom1"></td>
-                                            <td id="mto1"></td>
-                                            <td id="mdescrip1"></td>
-                                            <td id="mamount1"></td>
-                                            <td id="mtransacID1"></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"></th>
-                                            <td id="mstatus2"></td>
-                                            <td id="mdate2"></td>
-                                            <td id="mtime2"></td>
-                                            <td id="mfrom2"></td>
-                                            <td id="mto2"></td>
-                                            <td id="mdescrip2"></td>
-                                            <td id="mamount2"></td>
-                                            <td id="mtransacID2"></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"></th>
-                                            <td id="mstatus3"></td>
-                                            <td id="mdate3"></td>
-                                            <td id="mtime3"></td>
-                                            <td id="mfrom3"></td>
-                                            <td id="mto3"></td>
-                                            <td id="mdescrip3"></td>
-                                            <td id="mamount3"></td>
-                                            <td id="mtransacID3"></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"></th>
-                                            <td id="mstatus4"></td>
-                                            <td id="mdate4"></td>
-                                            <td id="mtime4"></td>
-                                            <td id="mfrom4"></td>
-                                            <td id="mto4"></td>
-                                            <td id="mdescrip4"></td>
-                                            <td id="mamount4"></td>
-                                            <td id="mtransacID4"></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"></th>
-                                            <td id="mstatus5"></td>
-                                            <td id="mdate5"></td>
-                                            <td id="mtime5"></td>
-                                            <td id="mfrom5"></td>
-                                            <td id="mto5"></td>
-                                            <td id="mdescrip5"></td>
-                                            <td id="mamount5"></td>
-                                            <td id="mtransacID5"></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"></th>
-                                            <td id="mstatus6"></td>
-                                            <td id="mdate6"></td>
-                                            <td id="mtime6"></td>
-                                            <td id="mfrom6"></td>
-                                            <td id="mto6"></td>
-                                            <td id="mdescrip6"></td>
-                                            <td id="mamount6"></td>
-                                            <td id="mtransacID6"></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"></th>
-                                            <td id="mstatus7"></td>
-                                            <td id="mdate7"></td>
-                                            <td id="mtime7"></td>
-                                            <td id="mfrom7"></td>
-                                            <td id="mto7"></td>
-                                            <td id="mdescrip7"></td>
-                                            <td id="mamount7"></td>
-                                            <td id="mtransacID7"></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"></th>
-                                            <td id="mstatus8"></td>
-                                            <td id="mdate8"></td>
-                                            <td id="mtime8"></td>
-                                            <td id="mfrom8"></td>
-                                            <td id="mto8"></td>
-                                            <td id="mdescrip8"></td>
-                                            <td id="mamount8"></td>
-                                            <td id="mtransacID8"></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"></th>
-                                            <td id="mstatus9"></td>
-                                            <td id="mdate9"></td>
-                                            <td id="mtime9"></td>
-                                            <td id="mfrom9"></td>
-                                            <td id="mto9"></td>
-                                            <td id="mdescrip9"></td>
-                                            <td id="mamount9"></td>
-                                            <td id="mtransacID9"></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"></th>
-                                            <td id="mstatus10"></td>
-                                            <td id="mdate10"></td>
-                                            <td id="mtime10"></td>
-                                            <td id="mfrom10"></td>
-                                            <td id="mto10"></td>
-                                            <td id="mdescrip10"></td>
-                                            <td id="mamount10"></td>
-                                            <td id="mtransacID10"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div id="incoming">
-                                <table class="table table-dark mr-5" style="color:white;">
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>Status</th>
-                                            <th>Date</th>
-                                            <th>Time</th>
-                                            <th>From</th>
-                                            <th>To</th>
-                                            <th>Description</th>
-                                            <th>Amount(AVX)</th>
-                                            <th>Transaction ID</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row"></th>
-                                            <td id="istatus1"></td>
-                                            <td id="idate1"></td>
-                                            <td id="itime1"></td>
-                                            <td id="ifrom1"></td>
-                                            <td id="ito1"></td>
-                                            <td id="idescrip1"></td>
-                                            <td id="iamount1"></td>
-                                            <td id="itransacID1"></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"></th>
-                                            <td id="istatus2"></td>
-                                            <td id="idate2"></td>
-                                            <td id="itime2"></td>
-                                            <td id="ifrom2"></td>
-                                            <td id="ito2"></td>
-                                            <td id="idescrip2"></td>
-                                            <td id="iamount2"></td>
-                                            <td id="itransacID2"></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"></th>
-                                            <td id="istatus3"></td>
-                                            <td id="idate3"></td>
-                                            <td id="itime3"></td>
-                                            <td id="ifrom3"></td>
-                                            <td id="ito3"></td>
-                                            <td id="idescrip3"></td>
-                                            <td id="iamount3"></td>
-                                            <td id="itransacID3"></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"></th>
-                                            <td id="istatus4"></td>
-                                            <td id="idate4"></td>
-                                            <td id="itime4"></td>
-                                            <td id="ifrom4"></td>
-                                            <td id="ito4"></td>
-                                            <td id="idescrip4"></td>
-                                            <td id="iamount4"></td>
-                                            <td id="itransacID4"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div id="outgoing">
-                                <table class="table table-dark mr-5" style="color:white;">
-                                    <thead>
-                                    <tr>
-                                    <th></th>
-                                    <th>Status</th>
-                                    <th>Date</th>
-                                    <th>Time</th>
-                                    <th>From</th>
-                                    <th>To</th>
-                                    <th>Description</th>
-                                    <th>Amount(AVX)</th>
-                                    <th>Transaction ID</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row"></th>
-                                            <td id="ostatus1"></td>
-                                            <td id="odate1"></td>
-                                            <td id="otime1"></td>
-                                            <td id="ofrom1"></td>
-                                            <td id="oto1"></td>
-                                            <td id="odescrip1"></td>
-                                            <td id="oamount1"></td>
-                                            <td id="otransacID1"></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"></th>
-                                            <td id="ostatus2"></td>
-                                            <td id="odate2"></td>
-                                            <td id="otime2"></td>
-                                            <td id="ofrom2"></td>
-                                            <td id="oto2"></td>
-                                            <td id="odescrip2"></td>
-                                            <td id="oamount2"></td>
-                                            <td id="otransacID2"></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"></th>
-                                            <td id="ostatus3"></td>
-                                            <td id="odate3"></td>
-                                            <td id="otime3"></td>
-                                            <td id="ofrom3"></td>
-                                            <td id="oto3"></td>
-                                            <td id="odescrip3"></td>
-                                            <td id="oamount3"></td>
-                                            <td id="otransacID3"></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"></th>
-                                            <td id="ostatus4"></td>
-                                            <td id="odate4"></td>
-                                            <td id="otime4"></td>
-                                            <td id="ofrom4"></td>
-                                            <td id="oto4"></td>
-                                            <td id="odescrip4"></td>
-                                            <td id="oamount4"></td>
-                                            <td id="otransacID4"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                <div class="container-flui">
+                    <div class="row">
+                        <div class="col-lg-12">
+                                <!-- <div class="tab-content mt-2 mr-5 ml-5" style="width: auto;background-color:#000;">
+                                        <div id="home" >  
+                                            <table  style="color:white;"> -->
+                            <div class="tab-content mt-2 mr-5 ml-5">
+                                <div id="merged" class="tab-pane">  
+                                    <table id="tbMerge" class="table table-dark mr-5">
+                                        <thead>
+                                            <tr>
+                                                <th id="thStatus">Status</th>
+                                                <th id="thDate">Date</th>
+                                                <th id="thTime">Time</th>
+                                                <th id="thFrom">From</th>
+                                                <th id="thTo">To</th>
+                                                <th id="thDescription">Description</th>
+                                                <th id="thAmount">Amount(AVX)</th>
+                                                <th id="thTxID">Transaction ID</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <!-- <th scope="row"></th> -->
+                                                <td id="mstatus1"></td>
+                                                <td id="mdate1"></td>
+                                                <td id="mtime1"></td>
+                                                <td id="mfrom1"></td>
+                                                <td id="mto1"></td>
+                                                <td id="mdescrip1"></td>
+                                                <td id="mamount1"></td>
+                                                <td id="mtransacID1"></td>
+                                            </tr>
+                                            <tr>
+                                                <!-- <th scope="row"></th> -->
+                                                <td id="mstatus2"></td>
+                                                <td id="mdate2"></td>
+                                                <td id="mtime2"></td>
+                                                <td id="mfrom2"></td>
+                                                <td id="mto2"></td>
+                                                <td id="mdescrip2"></td>
+                                                <td id="mamount2"></td>
+                                                <td id="mtransacID2"></td>
+                                            </tr>
+                                            <tr>
+                                                <!-- <th scope="row"></th> -->
+                                                <td id="mstatus3"></td>
+                                                <td id="mdate3"></td>
+                                                <td id="mtime3"></td>
+                                                <td id="mfrom3"></td>
+                                                <td id="mto3"></td>
+                                                <td id="mdescrip3"></td>
+                                                <td id="mamount3"></td>
+                                                <td id="mtransacID3"></td>
+                                            </tr>
+                                            <tr>
+                                                <!-- <th scope="row"></th> -->
+                                                <td id="mstatus4"></td>
+                                                <td id="mdate4"></td>
+                                                <td id="mtime4"></td>
+                                                <td id="mfrom4"></td>
+                                                <td id="mto4"></td>
+                                                <td id="mdescrip4"></td>
+                                                <td id="mamount4"></td>
+                                                <td id="mtransacID4"></td>
+                                            </tr>
+                                            <tr>
+                                                <!-- <th scope="row"></th> -->
+                                                <td id="mstatus5"></td>
+                                                <td id="mdate5"></td>
+                                                <td id="mtime5"></td>
+                                                <td id="mfrom5"></td>
+                                                <td id="mto5"></td>
+                                                <td id="mdescrip5"></td>
+                                                <td id="mamount5"></td>
+                                                <td id="mtransacID5"></td>
+                                            </tr>
+                                            <tr>
+                                                <!-- <th scope="row"></th> -->
+                                                <td id="mstatus6"></td>
+                                                <td id="mdate6"></td>
+                                                <td id="mtime6"></td>
+                                                <td id="mfrom6"></td>
+                                                <td id="mto6"></td>
+                                                <td id="mdescrip6"></td>
+                                                <td id="mamount6"></td>
+                                                <td id="mtransacID6"></td>
+                                            </tr>
+                                            <tr>
+                                                <!-- <th scope="row"></th> -->
+                                                <td id="mstatus7"></td>
+                                                <td id="mdate7"></td>
+                                                <td id="mtime7"></td>
+                                                <td id="mfrom7"></td>
+                                                <td id="mto7"></td>
+                                                <td id="mdescrip7"></td>
+                                                <td id="mamount7"></td>
+                                                <td id="mtransacID7"></td>
+                                            </tr>
+                                            <tr>
+                                                <!-- <th scope="row"></th> -->
+                                                <td id="mstatus8"></td>
+                                                <td id="mdate8"></td>
+                                                <td id="mtime8"></td>
+                                                <td id="mfrom8"></td>
+                                                <td id="mto8"></td>
+                                                <td id="mdescrip8"></td>
+                                                <td id="mamount8"></td>
+                                                <td id="mtransacID8"></td>
+                                            </tr>
+                                            <tr>
+                                                <!-- <th scope="row"></th> -->
+                                                <td id="mstatus9"></td>
+                                                <td id="mdate9"></td>
+                                                <td id="mtime9"></td>
+                                                <td id="mfrom9"></td>
+                                                <td id="mto9"></td>
+                                                <td id="mdescrip9"></td>
+                                                <td id="mamount9"></td>
+                                                <td id="mtransacID9"></td>
+                                            </tr>
+                                            <tr>
+                                                <!-- <th scope="row"></th> -->
+                                                <td id="mstatus10"></td>
+                                                <td id="mdate10"></td>
+                                                <td id="mtime10"></td>
+                                                <td id="mfrom10"></td>
+                                                <td id="mto10"></td>
+                                                <td id="mdescrip10"></td>
+                                                <td id="mamount10"></td>
+                                                <td id="mtransacID10"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="incoming">
+                                    <table class="table table-dark mr-5" style="color:white;">
+                                        <thead>
+                                            <tr>
+                                                <th id="thStatus">Status</th>
+                                                <th id="thDate">Date</th>
+                                                <th id="thTime">Time</th>
+                                                <th id="thFrom">From</th>
+                                                <th id="thTo">To</th>
+                                                <th id="thDescription">Description</th>
+                                                <th id="thAmount">Amount(AVX)</th>
+                                                <th id="thTxID">Transaction ID</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td id="istatus1"></td>
+                                                <td id="idate1"></td>
+                                                <td id="itime1"></td>
+                                                <td id="ifrom1"></td>
+                                                <td id="ito1"></td>
+                                                <td id="idescrip1"></td>
+                                                <td id="iamount1"></td>
+                                                <td id="itransacID1"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td id="istatus2"></td>
+                                                <td id="idate2"></td>
+                                                <td id="itime2"></td>
+                                                <td id="ifrom2"></td>
+                                                <td id="ito2"></td>
+                                                <td id="idescrip2"></td>
+                                                <td id="iamount2"></td>
+                                                <td id="itransacID2"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td id="istatus3"></td>
+                                                <td id="idate3"></td>
+                                                <td id="itime3"></td>
+                                                <td id="ifrom3"></td>
+                                                <td id="ito3"></td>
+                                                <td id="idescrip3"></td>
+                                                <td id="iamount3"></td>
+                                                <td id="itransacID3"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td id="istatus4"></td>
+                                                <td id="idate4"></td>
+                                                <td id="itime4"></td>
+                                                <td id="ifrom4"></td>
+                                                <td id="ito4"></td>
+                                                <td id="idescrip4"></td>
+                                                <td id="iamount4"></td>
+                                                <td id="itransacID4"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td id="istatus5"></td>
+                                                <td id="idate5"></td>
+                                                <td id="itime5"></td>
+                                                <td id="ifrom5"></td>
+                                                <td id="ito5"></td>
+                                                <td id="idescrip5"></td>
+                                                <td id="iamount5"></td>
+                                                <td id="itransacID5"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td id="istatus6"></td>
+                                                <td id="idate6"></td>
+                                                <td id="itime6"></td>
+                                                <td id="ifrom6"></td>
+                                                <td id="ito6"></td>
+                                                <td id="idescrip6"></td>
+                                                <td id="iamount6"></td>
+                                                <td id="itransacID6"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td id="istatus7"></td>
+                                                <td id="idate7"></td>
+                                                <td id="itime7"></td>
+                                                <td id="ifrom7"></td>
+                                                <td id="ito7"></td>
+                                                <td id="idescrip7"></td>
+                                                <td id="iamount7"></td>
+                                                <td id="itransacID7"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td id="istatus8"></td>
+                                                <td id="idate8"></td>
+                                                <td id="itime8"></td>
+                                                <td id="ifrom8"></td>
+                                                <td id="ito8"></td>
+                                                <td id="idescrip8"></td>
+                                                <td id="iamount8"></td>
+                                                <td id="itransacID8"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td id="istatus9"></td>
+                                                <td id="idate9"></td>
+                                                <td id="itime9"></td>
+                                                <td id="ifrom9"></td>
+                                                <td id="ito9"></td>
+                                                <td id="idescrip9"></td>
+                                                <td id="iamount9"></td>
+                                                <td id="itransacID9"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td id="istatus10"></td>
+                                                <td id="idate10"></td>
+                                                <td id="itime10"></td>
+                                                <td id="ifrom10"></td>
+                                                <td id="ito10"></td>
+                                                <td id="idescrip10"></td>
+                                                <td id="iamount10"></td>
+                                                <td id="itransacID10"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="outgoing">
+                                    <table class="table table-dark mr-5" style="color:white;">
+                                        <thead>
+                                            <tr>
+                                                <th id="thStatus">Status</th>
+                                                <th id="thDate">Date</th>
+                                                <th id="thTime">Time</th>
+                                                <th id="thFrom">From</th>
+                                                <th id="thTo">To</th>
+                                                <th id="thDescription">Description</th>
+                                                <th id="thAmount">Amount(AVX)</th>
+                                                <th id="thTxID">Transaction ID</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td id="ostatus1"></td>
+                                                <td id="odate1"></td>
+                                                <td id="otime1"></td>
+                                                <td id="ofrom1"></td>
+                                                <td id="oto1"></td>
+                                                <td id="odescrip1"></td>
+                                                <td id="oamount1"></td>
+                                                <td id="otransacID1"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td id="ostatus2"></td>
+                                                <td id="odate2"></td>
+                                                <td id="otime2"></td>
+                                                <td id="ofrom2"></td>
+                                                <td id="oto2"></td>
+                                                <td id="odescrip2"></td>
+                                                <td id="oamount2"></td>
+                                                <td id="otransacID2"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td id="ostatus3"></td>
+                                                <td id="odate3"></td>
+                                                <td id="otime3"></td>
+                                                <td id="ofrom3"></td>
+                                                <td id="oto3"></td>
+                                                <td id="odescrip3"></td>
+                                                <td id="oamount3"></td>
+                                                <td id="otransacID3"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td id="ostatus4"></td>
+                                                <td id="odate4"></td>
+                                                <td id="otime4"></td>
+                                                <td id="ofrom4"></td>
+                                                <td id="oto4"></td>
+                                                <td id="odescrip4"></td>
+                                                <td id="oamount4"></td>
+                                                <td id="otransacID4"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td id="ostatus5"></td>
+                                                <td id="odate5"></td>
+                                                <td id="otime5"></td>
+                                                <td id="ofrom5"></td>
+                                                <td id="oto5"></td>
+                                                <td id="odescrip5"></td>
+                                                <td id="oamount5"></td>
+                                                <td id="otransacID5"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td id="ostatus6"></td>
+                                                <td id="odate6"></td>
+                                                <td id="otime6"></td>
+                                                <td id="ofrom6"></td>
+                                                <td id="oto6"></td>
+                                                <td id="odescrip6"></td>
+                                                <td id="oamount6"></td>
+                                                <td id="otransacID6"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td id="ostatus7"></td>
+                                                <td id="odate7"></td>
+                                                <td id="otime7"></td>
+                                                <td id="ofrom7"></td>
+                                                <td id="oto7"></td>
+                                                <td id="odescrip7"></td>
+                                                <td id="oamount7"></td>
+                                                <td id="otransacID7"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td id="ostatus8"></td>
+                                                <td id="odate8"></td>
+                                                <td id="otime8"></td>
+                                                <td id="ofrom8"></td>
+                                                <td id="oto8"></td>
+                                                <td id="odescrip8"></td>
+                                                <td id="oamount8"></td>
+                                                <td id="otransacID8"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td id="ostatus9"></td>
+                                                <td id="odate9"></td>
+                                                <td id="otime9"></td>
+                                                <td id="ofrom9"></td>
+                                                <td id="oto9"></td>
+                                                <td id="odescrip9"></td>
+                                                <td id="oamount9"></td>
+                                                <td id="otransacID9"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td id="ostatus10"></td>
+                                                <td id="odate10"></td>
+                                                <td id="otime10"></td>
+                                                <td id="ofrom10"></td>
+                                                <td id="oto10"></td>
+                                                <td id="odescrip10"></td>
+                                                <td id="oamount10"></td>
+                                                <td id="otransacID10"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -469,3 +593,16 @@
     <script src="../js/top-handler.js"></script>
     <script src="../js/account-window.js"></script>
 </html>
+                <!-- 
+                    <div class="row">
+                    <div class="col-md-9">
+                        <ul class="nav ml-5" id="tabs">
+                            <li><a data-toggle="tab" href="#merged" style="padding:10px;" id="btnMergeTx">Merged</a></li>
+                            <li ><a data-toggle="tab" href="#incoming" id="btnIncomingTx">Incoming Token(s)</a></li>
+                            <li ><a data-toggle="tab" href="#outgoing" id="btnOutcomingTx">Outgoing Token(s)</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">      
+                    </div>
+                </div>
+             -->

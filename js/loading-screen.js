@@ -10,7 +10,7 @@ $('#btnOkay2').click( () => {
     this.close();
 });
 $('#btnOkay3').click( () => {
-    location.href = "account-window-files.html";
+    // location.href = "account-window-files.html";
     this.close();
 });
 
