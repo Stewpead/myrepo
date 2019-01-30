@@ -61,7 +61,7 @@ function processFile(event) {
 		}
 
 	}
-	var jsonString = JSON.stringify(json);
+	//var jsonString = JSON.stringify(json);
 
 	
 }
