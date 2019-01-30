@@ -7,6 +7,9 @@ document.getElementById('DDetails').style.display = "block";
 document.getElementById("DFiles").style.display = "none";
 document.getElementById("DPeers").style.display = "none";
 document.getElementById("DSpeed").style.display = "none";
+$(document).ready( () => {
+    $('.progress-bar').attr('aria-valuenow', 1);
+});
 $('#btnHideCF').click( () => {
     document.getElementById('activeFiles').style.display = "block";
     document.getElementById("completedFiles").style.display = "none";
@@ -40,3 +43,4 @@ $('#viewDspeed').click(() => {
     document.getElementById("DPeers").style.display = "none";
     document.getElementById("DSpeed").style.display = "block";
 });
+

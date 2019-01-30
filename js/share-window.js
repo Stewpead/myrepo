@@ -39,15 +39,15 @@ function processFile(event) {
 	var file = document.getElementById("upload-video-folder").files[0];
 	if (typeof file !== 'undefined' && file !== null) {
 		filename = file.name;
-		directory = path.dirname(file.path);
+		directory = path.dirname(file.path) + "\\";
 		
 		var json = {
 			status : 1120,
 			data : {
 				description: "Description-Description",
-				directory 	: directory,
 				filename	: filename,
-				thumbnailPath : "D:awemaaweaweawe",
+				filenamePath 	: directory+filename,
+				thumbnailPath : "D:\\AVX\\Screen Optimization\\AVXChange\\images",
 				price : 100
 			}
 		}
