@@ -28,6 +28,11 @@ module.exports = {
 		}	
 	
   },
+  getWalletBalance: function (data) {
+	  if(data['status'] == 2000) {
+		  console.log(data);
+	  }
+  }
 
 };
 
