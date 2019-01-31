@@ -20,12 +20,12 @@ var app_dir = './../winPage/';
 module.exports = {
   shareUploadResponse: function (data) {
 	  
-	if (data['status'] == 15) {
-		console.log(data);
+		if (data['status'] == 15) {
+			console.log(data);
 
-		
-		
-	}	
+			
+			
+		}	
 	
   },
 

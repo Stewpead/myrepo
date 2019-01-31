@@ -33,13 +33,12 @@ module.exports = {
 			client.write(arg);
 				// console.log(arg);		
 		});
-	}		
-	// },
-	// sendUploadDetails: function (client) {
-	// 	ipcMain.on('upload-file-details', (event, arg) => {
-	// 		client.write(arg);
-	// 	});
-	// }
+	},		
+	checkStatus: function (client) {
+		ipcMain.on('checkStatus', (event, arg) => {
+			client.write(arg);
+		});
+	}
 	
 	
 	

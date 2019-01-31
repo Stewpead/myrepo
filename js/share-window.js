@@ -59,11 +59,7 @@ function processFile(event) {
 				price : 100
 			}
 		}
-
 	}
-	//var jsonString = JSON.stringify(json);
-
-	
 }
 
 function appendJSON(event) {
@@ -74,13 +70,12 @@ function appendJSON(event) {
 	if (typeof file !== 'undefined' && file !== null) {
 		filename = file.name;
 		directory = path.dirname(file.path) + "\\";
-		// json.data = {};
 		directory += filename;
+
 		json.data.thumbnailPath = directory;
 	}
 	var jsonString = JSON.stringify(json);
 	var uploadFile =  ipcRenderer.sendSync('avx-share-upload-file', jsonString);
-	
 	ipcRenderer.send('upload-files','loading-screen-1.html');
 
 }

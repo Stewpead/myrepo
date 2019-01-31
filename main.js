@@ -12,7 +12,7 @@ let defaultWindow;
 let notDefaultWindow;
 let prevWindow;
 let connectionPort = 5150;
-let connectionHost = '127.0.0.1';
+let connectionHost = '192.168.254.33';
 
 var IMG_DIR = './../images/';
 var app_dir = './../winPage/';
@@ -49,7 +49,7 @@ var initiateConnection = function(attempt){
 		module.shareUpload(client);
 		module.executeUploadFile(client);
 		module.sendTokenAVX(client);
-		// module.sendUploadDetails(client);
+		module.checkStatus(client);
 		
 		ipcMain.on('test-btn',(event, arg) => {
 			event.returnValue = 1 +arg;

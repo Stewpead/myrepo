@@ -1,5 +1,7 @@
 const {ipcRenderer} = require('electron');
+$(document).ready(() => {
 
+});
 
 $('#btnOkay').click( () => {
     ipcRenderer.send('file-scan-result', 'file-scan-result.html');
@@ -10,7 +12,11 @@ $('#btnOkay2').click( () => {
     this.close();
 });
 $('#btnOkay3').click( () => {
-    // location.href = "account-window-files.html";
+    var stat = {
+        status : 1121
+    };
+    var Jstat = JSON.stringify(stat);
+    ipcRenderer.send('checkStatus', Jstat);
     this.close();
 });
 

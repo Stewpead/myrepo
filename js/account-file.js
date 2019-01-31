@@ -9,6 +9,7 @@ document.getElementById("DPeers").style.display = "none";
 document.getElementById("DSpeed").style.display = "none";
 $(document).ready( () => {
     $('.progress-bar').attr('aria-valuenow', 1);
+    
 });
 $('#btnHideCF').click( () => {
     document.getElementById('activeFiles').style.display = "block";

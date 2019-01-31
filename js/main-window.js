@@ -1,3 +1,5 @@
+import { ipcRenderer } from "electron";
+
 // $('#bg > .page-content-wrapper');
 // loadimg();
 
@@ -12,6 +14,7 @@
 // $('#linkShare').click(function() {
 //     ipcRenderer.send('share','main');
 // });
+
 
 $('.content-main').parent('#bg');
 
