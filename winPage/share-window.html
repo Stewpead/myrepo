@@ -11,10 +11,12 @@
         <link rel="stylesheet" href="../node_modules/@mdi/font/css/materialdesignicons.min.css">
         <!-- WOW --> 
                 
-        <!-- MINE -->
+        <!-- Custom Styles -->
         <link rel="stylesheet" type="text/css" href="../css/app-style.css">
         <link rel="stylesheet" type="text/css" href="../css/share-style.css">
-        <!-- MINE -->
+		<link rel="stylesheet" type="text/css" href="../css/skin/modal-theme.css">
+        <!-- Custom Styles -->
+		
         <div id="container">
             <nav>
                 <div id="titleShown">
@@ -119,6 +121,14 @@
             </div>
             </div>
         </div> 
+		
+        <!-- INCLUDE HTML AREA -->
+		<div id="ShareModalView"></div>
+        <script type="text/javascript"> 
+			$(function(){
+				$("#ShareModalView").load("../partials/tools/share-modals.html");
+			});
+        </script>
     </body>
     <script src="../js/top-handler.js"></script>
     <script src="../js/share-window.js"></script>

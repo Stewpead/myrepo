@@ -1,0 +1,57 @@
+ <div class="popup scanning-file" pd-popup="shareScanningModal">
+    <div class="popup-inner">
+      <p><span class="mdi mdi-loading mdi-spin mdi-48px"></span></p>
+	  <h2 id="transferStat"><span class="counter" data-count="100">0</span>%</h2>
+	  <h4 class="title-label" >Scanning user files...</h3>
+	  <a class="popup-close" pd-popup-close="shareScanningModal" href="#"> </a>
+    </div>
+</div>
+
+ <div class="popup scan-result" pd-popup="shareScanResultModal">
+    <div class="popup-inner">
+        <h1 class="title-holder">
+			<span class="mdi mdi-file-outline mdi-48px" id="icon-vid"></span> 
+			File(s) scanning result
+		</h1>
+		<div class="file-scanned">
+			<label class="title">
+				<p> 
+					<span class="mdi mdi-file-outline mdi-48px"></span> 
+					Shaun the Sheep (2018)[BluRay][1080p][YTS.AM]
+				</p>
+			</label>
+			<ul class="file-lists">
+				<li> 
+					<p>
+						<span class="mdi mdi-checkbox-marked-outline mdi-48px"></span> 
+						shaun-the-sheep-2018-BluRay-1080p.mp4 - 
+						<strong>1.91 GB</strong>
+					<p>
+				</li>
+				<li> 
+					<p>
+						<span class="mdi mdi-checkbox-marked-outline mdi-48px"></span> 
+						shaun-the-sheep-2018-BluRay-1080p.str - 
+						<strong>1.2 KB</strong>
+					<p>
+				</li>
+			</ul>
+		</div>
+		<p class="file-dir-info">
+			File Directory:  
+			<span style="margin-left:10px;"> S:\Torrent-Data\downloads\Shaun the Sheep (2018)[BluRay][1080p][YTS.AM]</span>
+			<span class="mdi mdi-information-outline mdi-48px float-right"></span> 
+		</p>
+		<div class="share-modal-options row">
+			<div class="col-7">
+				<p>Are these the files do you want to share?</p>
+			</div>
+			<div class="col-5">
+				 <a pd-popup-close="shareScanResultModal" href="#" class="btn btn-danger float-right">Yes, proceed</a>
+				 <a pd-popup-close="shareScanResultModal" href="#" class="btn btn-default float-right">Close</a>
+			</div>
+		</div>
+      
+	  <a class="popup-close" pd-popup-close="shareScanResultModal" href="#"> </a>
+    </div>
+</div>

@@ -1,0 +1,179 @@
+
+.popup {
+	width: 100%;
+	height: 100%;
+	display: none;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background: rgba(0, 0, 0, 0.75);
+	z-index: 99;    
+	font-family: 'Segoe UI';
+}
+
+.popup {
+	text-align: center;
+}
+
+.popup:before {
+	content: '';
+	display: inline-block;
+	height: 100%;
+	margin-right: -4px;
+	vertical-align: middle;
+}
+
+.popup-inner {
+	display: inline-block;
+	text-align: left;
+	vertical-align: middle;
+	position: relative;
+	max-width: 700px;
+	width: 90%;
+	padding: 40px;
+	box-shadow: 0px 2px 6px rgba(0, 0, 0, 1);
+	border-radius: 3px;
+	text-align: center;
+	background-color: #000000;
+	color: whitesmoke;
+	font-family: 'Segoe UI';
+}
+
+.popup-inner h1 {
+    font-size: 27px;
+    font-weight: 400;
+}
+
+.popup-inner p {
+	font-size: 24px;
+	font-weight: 400;
+}
+
+.popup-close {
+	width: 56px;
+    height: 34px;
+    display: inline-block;
+    position: absolute;
+    top: 17px;
+    right: 28px;
+    -webkit-transform: translate(50%, -50%);
+    transform: translate(50%, -50%);
+    border-radius: 100%;
+    background: transparent;
+}
+
+.popup-close:after,
+.popup-close:before {
+    content: "";
+    position: absolute;
+    top: 17px;
+    left: 20px;
+    height: 2px;
+    width: 16px;
+    border-radius: 30px;
+    background: #ffffff;
+    transform: rotate(45deg);
+}
+
+.popup-close:after {
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+.popup-close:hover, 
+.popup-close:hover {
+    background: #ed1c24;
+    text-decoration: #ed1c24;
+    border-color: #ed1c24;
+    border-radius: 0;
+}
+.popup .btn-danger {
+    background-color: #ed1c24;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.popup-close:hover:after,
+.popup-close:hover::before {
+	background: #fff;
+}
+
+
+/** Popup Modal for Share Scanning File **/
+
+.popup.scanning-file .popup-inner h4.title-label {
+	font-size: 19px;
+    padding-top: 124px;
+    font-weight: 400;
+    color: #c1c1c1;
+}
+.popup.scanning-file .popup-inner #transferStat {
+	margin-top: -200px;
+}
+.popup.scanning-file .popup-inner .mdi-48px.mdi:before {
+    font-size: 220px;
+}
+
+/** Popup Modal for Share Scan Result **/
+.popup.scan-result .popup-inner {
+    max-width: 990px;    
+	padding-left: 66px;
+    padding-right: 66px;
+}
+.popup.scan-result .popup-inner  h1 {
+	text-align: left;    
+	font-size: 30px;
+    font-weight: 400;
+}
+.popup.scan-result .popup-inner  h1 span.mdi-file-outline::before {
+    font-size: 32px;
+}
+.popup.scan-result .popup-inner .file-scanned {
+    margin-top: 50px;
+}
+.popup.scan-result .popup-inner .file-scanned label.title {
+    display: block;
+}
+.popup.scan-result .popup-inner .file-scanned p {
+    font-size: 15px;
+    text-align: left;
+    padding-left: 38px;
+}
+.popup.scan-result .popup-inner .file-scanned p span:before {
+    font-size: 23px;
+}
+.popup.scan-result .popup-inner .file-scanned .file-lists{
+	list-style-type:none;
+	padding-left: 32px;
+}
+.popup.scan-result .popup-inner .file-scanned .file-lists > p {
+    font-size: 12px;
+}
+.popup.scan-result .popup-inner .file-scanned .file-lists span:before{
+	font-size: 16px;
+}
+.popup.scan-result .popup-inner p.file-dir-info {
+    text-align: left;
+    margin-top: 60px;
+    font-size: 15px;    
+	border-bottom: 1px #808080 solid;
+    padding-bottom: 20px;
+}
+.popup.scan-result .popup-inner p.file-dir-info span.mdi-48px.mdi:before {
+    font-size: 26px;    
+	margin-top: -5px;
+}
+.popup.scan-result .popup-inner .share-modal-options {
+    margin: 50px 0;
+}
+.popup.scan-result .popup-inner .share-modal-options p {
+    text-align: left;
+}

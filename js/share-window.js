@@ -76,6 +76,37 @@ function appendJSON(event) {
 	}
 	var jsonString = JSON.stringify(json);
 	var uploadFile =  ipcRenderer.sendSync('avx-share-upload-file', jsonString);
-	ipcRenderer.send('upload-files','loading-screen-1.html');
+	//ipcRenderer.send('upload-files','loading-screen-1.html');
+	$('[pd-popup="shareScanningModal"]').fadeIn(100);
+	
+	// Generate Uploading status
+	$('.counter').each(function() {
+	  var $this = $(this),
+		  countTo = $this.attr('data-count');
+	  
+	  $({ countNum: $this.text()}).animate({
+		countNum: countTo
+	  },
 
+	  {
+
+		duration: 8000,
+		easing:'linear',
+		step: function() {
+		  $this.text(Math.floor(this.countNum));
+		},
+		complete: function() {
+		  $this.text(this.countNum);
+		  $('[pd-popup="shareScanningModal"]').fadeOut(100);
+		  $('[pd-popup="shareScanResultModal"]').fadeIn(100);
+		}
+
+	  });  
+	  
+	  
+
+	});	
+	
+	
+	
 }

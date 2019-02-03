@@ -1,6 +1,10 @@
 html::-webkit-scrollbar {
     display: none;
 }
+
+#block-top {
+	z-index: 999;
+}
 #spacing {
     height: 40vh;   
     display: block;
