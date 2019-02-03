@@ -23,6 +23,13 @@ var tmpStr = '';
 var walletBalance = 0;
 var walletAddress = '';
 
+var Status = {
+	SIGNUP: 1112,
+	SIGNIN: 1113,
+	ASSET_UPLOAD_DATA: 15,
+	WALLET_BALANCE: 2000
+};
+
 /*
 	Establishing Connection and Reconnecting
 */
@@ -74,13 +81,29 @@ var initiateConnection = function(attempt){
 	
 	client.on('data', function(data) {
 		data = JSON.parse(data);
-		var module = require('./includes/login-signup');
-		module.signupResponse(data);
-		module.signinResponse(data);
+		
+		var moduleAccount = require('./includes/login-signup');
+		var moduleDashboard = require('./includes/dashboard-action');
+		
+		switch(data["status"])
+		{
+			case Status.SIGNUP:
+				moduleAccount.signupResponse(data);
+				break;
+			
+			case Status.SIGNIN:
+				moduleAccount.signinResponse(data);
+				break;
+				
+			case Status.ASSET_UPLOAD_DATA:
+				moduleDashboard.shareUploadResponse(data);
+				break;
+				
+			case Status.WALLET_BALANCE:
+				moduleDashboard.getWalletBalance(data);
+				break;
+		}
 
-		var module = require('./includes/dashboard-action');
-		module.shareUploadResponse(data);
-		module.getWalletBalance(data);
 	});
 
 }
