@@ -37,6 +37,8 @@
             <div class="sidenav">
                 <div id="avxlogonav">
                     <img src="../images/logo_white.png" alt="avx" id="logox">
+
+        <a class="btn btn-success" pd-popup-open="popupNew" href="#">For Single modal</a>
                 </div>
                 <a href="#" style="background-color: #ed1c24; color:white;"> <span class="mdi mdi-home-outline" id="sidelinks"></span> <br>Home</a>
                 <a href="#" onclick="location.href = 'account-window.html'"><span class="mdi mdi-account-details" id="sidelinks"></span><br>Account Wallet</a>
@@ -162,8 +164,16 @@
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
+        <div id="modalView"></div>
+        <!-- INCLUDE HTML AREA -->
+        <script type="text/javascript">
+            $(function(){
+          $("#modalView").load("../partials/tools/modal.html");
+        });
+        </script>
     </body>
+
     <script src="../js/top-handler.js"></script>
 	<script src="../js/decode64.js"></script>
     <script src="../js/main-window.js"></script>
