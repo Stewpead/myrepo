@@ -31,6 +31,7 @@ $('#btnClosetop').click( () => {
 
 });
 
+
 var videoFolder = document.getElementById('upload-video-folder');
 videoFolder.addEventListener('change', processFile);
 var filename;
@@ -80,6 +81,7 @@ function appendJSON(event) {
 	$('[pd-popup="shareScanningModal"]').fadeIn(100);
 	
 	// Generate Uploading status
+	$('.counter').text(0);
 	$('.counter').each(function() {
 	  var $this = $(this),
 		  countTo = $this.attr('data-count');
@@ -102,11 +104,91 @@ function appendJSON(event) {
 		}
 
 	  });  
-	  
-	  
 
 	});	
-	
-	
+
 	
 }
+
+
+jQuery(window).on('load', function(){
+
+	/*Close Modal action*/
+	$('[pd-popup-close]').on('click', function(e)  {
+	    var targeted_popup_class = jQuery(this).attr('pd-popup-close');
+	    $('[pd-popup="' + targeted_popup_class + '"]').fadeOut(200);
+
+	    e.preventDefault();
+	});
+
+	$('#proceedAfterFileScanning').click(function(e) {
+		$('[pd-popup="shareScanResultModal"]').fadeOut(100);
+		$('[pd-popup="shareComparingFilesToNetworkModal"]').fadeIn(100);
+
+		// Generate Uploading status
+		$('.counter').text(0);
+		$('.counter').each(function() {
+		  var $this = $(this),
+			  countTo = $this.attr('data-count');
+		  
+		  $({ countNum: $this.text()}).animate({
+			countNum: countTo
+		  },
+
+		  {
+
+			duration: 8000,
+			easing:'linear',
+			step: function() {
+			  $this.text(Math.floor(this.countNum));
+			},
+			complete: function() {
+			  $this.text(this.countNum);
+			  $('[pd-popup="shareComparingFilesToNetworkModal"]').fadeOut(100);
+			  $('[pd-popup="shareExistAvxNetwork"]').fadeIn(100);
+			}
+
+		  });  
+		  
+		});	
+
+		e.preventDefault();
+
+	});
+
+
+	$('#proceedAfterConfirmFileNotExist').click(function(e) {
+		$('[pd-popup="shareExistAvxNetwork"]').fadeOut(100);
+		$('[pd-popup="shareGettingMetaDataLoadingModal"]').fadeIn(100);
+
+		// Generate Uploading status
+		$('.counter').text(0);
+		$('.counter').each(function() {
+		  var $this = $(this),
+			  countTo = $this.attr('data-count');
+		  
+		  $({ countNum: $this.text()}).animate({
+			countNum: countTo
+		  },
+
+		  {
+
+			duration: 8000,
+			easing:'linear',
+			step: function() {
+			  $this.text(Math.floor(this.countNum));
+			},
+			complete: function() {
+			  $this.text(this.countNum);
+			}
+
+		  });  
+		  
+		});	
+
+		e.preventDefault();
+
+	});
+
+
+});

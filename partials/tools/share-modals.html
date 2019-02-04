@@ -47,11 +47,144 @@
 				<p>Are these the files do you want to share?</p>
 			</div>
 			<div class="col-5">
-				 <a pd-popup-close="shareScanResultModal" href="#" class="btn btn-danger float-right">Yes, proceed</a>
-				 <a pd-popup-close="shareScanResultModal" href="#" class="btn btn-default float-right">Close</a>
+				 <a href="#" id="proceedAfterFileScanning" class="btn btn-danger float-right">Yes, proceed</a>
+				 <a pd-popup-close="shareScanResultModal" href="#" class="btn btn-default float-right">No</a>
 			</div>
 		</div>
       
 	  <a class="popup-close" pd-popup-close="shareScanResultModal" href="#"> </a>
+    </div>
+</div>
+
+ <div class="popup scanning-file" pd-popup="shareComparingFilesToNetworkModal">
+    <div class="popup-inner">
+      <p><span class="mdi mdi-loading mdi-spin mdi-48px"></span></p>
+	  <h2 id="transferStat"><span class="counter" data-count="100">0</span>%</h2>
+	  <h4 class="title-label" >Please wait, while comparing your file <br> with the network.</h3>
+	  <a class="popup-close" pd-popup-close="shareComparingFilesToNetworkModal" href="#"> </a>
+    </div>
+</div>
+
+ <div class="popup scan-result" pd-popup="shareExistAvxNetwork">
+    <div class="popup-inner">
+        <h1 class="title-holder">
+			<span class="mdi mdi-file-outline mdi-48px" id="icon-vid"></span> 
+			These files do not currently exist on AVXChange network
+		</h1>
+
+		<h5 class="label-with-border">Media directory: </h5>
+
+		<p class="file-dir-info" style="margin-left: 30px">
+			File Directory:  
+			<span style="margin-left:10px;"> S:\Torrent-Data\downloads\Shaun the Sheep (2018)[BluRay][1080p][YTS.AM]</span>
+			<span class="mdi mdi-information-outline mdi-48px float-right"></span> 
+		</p>
+
+		<h5 class="label-with-border">Media files: </h5>
+
+		<div class="file-scanned">
+			<label class="title">
+				<p> 
+					<span class="mdi mdi-file-outline mdi-48px"></span> 
+					Shaun the Sheep (2018)[BluRay][1080p][YTS.AM]
+				</p>
+			</label>
+			<ul class="file-lists">
+				<li> 
+					<p>
+						<span class="mdi mdi-checkbox-marked-outline mdi-48px"></span> 
+						shaun-the-sheep-2018-BluRay-1080p.mp4 - 
+						<strong>1.91 GB</strong>
+					<p>
+				</li>
+				<li> 
+					<p>
+						<span class="mdi mdi-checkbox-marked-outline mdi-48px"></span> 
+						shaun-the-sheep-2018-BluRay-1080p.str - 
+						<strong>1.2 KB</strong>
+					<p>
+				</li>
+			</ul>
+		</div>
+
+		<h5 class="label-with-border">Subtitle & Audio Info: </h5>
+		<div class="row meta-data-details">
+			<div class="col-6">
+				<label>Subtitles:</label>
+				<select>
+					<option>English (SRT External)</option>
+				</select>
+
+				<br><br>
+				<label>Codec: <strong>STR</strong> </label>
+				<label>Language: <strong>English</strong> </label>
+				<label>Display Title: <strong>English(STR External)</strong> </label>
+		
+			</div>
+			<div class="col-6">
+				<label>Audio:</label>
+				<select>
+					<option>English (ACC Stereo)</option>
+				</select>
+
+				<br><br>
+				<label>Codec: <strong>ASS</strong> </label>
+				<label>Language: <strong>English</strong> </label>
+				<label>Display Title: <strong>English(ASS)</strong> </label>
+
+			</div>
+		</div>
+
+		<h5 class="label-with-border">Media details: </h5>
+
+		<div class="row meta-data-details">
+			<div class="col-6">
+				<label class="full-width">Video Resolution: <strong>1080p</strong> </label>
+				<label class="full-width">Duration: <strong>1:59:01</strong> </label>
+				<label class="full-width">Size: <strong>1.91 GB</strong> </label>
+				<label class="full-width">Audio & Video Bitrate: <strong>2298 kbps</strong> </label>
+				<label class="full-width">Width: <strong>1920</strong> </label>
+				<label class="full-width">Height: <strong>800</strong> </label>
+				<label class="full-width">Aspect Ratio: <strong>2.35</strong> </label>
+				<label class="full-width">Container: <strong>MP4</strong> </label>
+				<label class="full-width">Video Frame Rate: <strong>800</strong> </label>
+				<label class="full-width">Web Optimized: <strong>Yes</strong> </label>
+				<label class="full-width">Video Profile: <strong>High</strong> </label>
+				<label class="full-width">Video Codec: <strong>1011 kbps</strong> </label>
+		
+			</div>
+			<div class="col-6">
+				<label class="full-width">Bit Depth: <strong>8</strong> </label>
+				<label class="full-width">Frame Rate: <strong>23.965 fps</strong> </label>
+				<label class="full-width">Audio Codec: <strong>AAC</strong> </label>
+				<label class="full-width">Audio Channels: <strong>2</strong> </label>
+				<label class="full-width">Audio Bitrate: <strong>149 kbps</strong> </label>
+				<label class="full-width">Audio Channel Layout: <strong>Stereo</strong> </label>
+				<label class="full-width">Sampling Rate: <strong>48000 Hz</strong> </label>
+
+			</div>
+		</div>
+
+		<div class="share-modal-options row">
+			<div class="col-8">
+				<p style="font-size: 20px;">Next step, we will scan our network for existing meta-data<br> for this file/IP assets. Would you like to proceed?</p>
+			</div>
+			<div class="col-4">
+				 <a href="#" id="proceedAfterConfirmFileNotExist" class="btn btn-danger float-right">Yes, proceed</a>
+				 <a pd-popup-close="shareExistAvxNetwork" href="#" class="btn btn-default float-right">No</a>
+			</div>
+		</div>
+      
+	  <a class="popup-close" pd-popup-close="shareExistAvxNetwork" href="#"> </a>
+    </div>
+</div>
+
+
+ <div class="popup scanning-file" pd-popup="shareGettingMetaDataLoadingModal">
+    <div class="popup-inner">
+      <p><span class="mdi mdi-loading mdi-spin mdi-48px"></span></p>
+	  <h2 id="transferStat"><span class="counter" data-count="100">0</span>%</h2>
+	  <h4 class="title-label" >Please wait, while retrieving metadata on <br> AXVChange network for your files.</h3>
+	  <a class="popup-close" pd-popup-close="shareComparingFilesToNetworkModal" href="#"> </a>
     </div>
 </div>

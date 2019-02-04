@@ -13,6 +13,7 @@
 
 .popup {
 	text-align: center;
+    overflow: scroll;
 }
 
 .popup:before {
@@ -48,7 +49,9 @@
 	font-size: 24px;
 	font-weight: 400;
 }
-
+.popup-inner .full-width {
+    width: 100%;
+}
 .popup-close {
 	width: 56px;
     height: 34px;
@@ -106,6 +109,46 @@
 	background: #fff;
 }
 
+/* Label with border as breaker */
+.popup .popup-inner h5.label-with-border {
+    overflow: hidden;
+    text-align: left;
+    font-size: 16px;
+    padding-top: 37px;
+}
+
+.popup .popup-inner h5.label-with-border:before,
+.popup .popup-inner h5.label-with-border:after {
+    background-color: #808080;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 0%;
+}
+
+.popup .popup-inner h5.label-with-border:before {
+    right: 0.5em;
+}
+
+.popup .popup-inner h5.label-with-border:after {
+    left: 11px;
+    margin-right: -31%;
+    width: 100%;
+}
+
+.popup .popup-inner .meta-data-details {
+    font-size: 15px;
+    text-align: left;
+    padding: 30px 40px;
+}
+.popup .popup-inner .meta-data-details select {
+    outline: none;
+    background: none;
+    color: red;
+    border: none;
+}
 
 /** Popup Modal for Share Scanning File **/
 
@@ -164,7 +207,6 @@
     text-align: left;
     margin-top: 60px;
     font-size: 15px;    
-	border-bottom: 1px #808080 solid;
     padding-bottom: 20px;
 }
 .popup.scan-result .popup-inner p.file-dir-info span.mdi-48px.mdi:before {
@@ -173,7 +215,12 @@
 }
 .popup.scan-result .popup-inner .share-modal-options {
     margin: 50px 0;
+    border-top: 1px #808080 solid;    
+    padding-top: 33px;
 }
 .popup.scan-result .popup-inner .share-modal-options p {
     text-align: left;
+}
+.popup.scan-result .popup-inner .share-modal-options .btn-default{
+    padding: 10px 32px;    
 }
