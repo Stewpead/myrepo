@@ -224,3 +224,89 @@
 .popup.scan-result .popup-inner .share-modal-options .btn-default{
     padding: 10px 32px;    
 }
+
+
+.popup.scan-result .popup-inner .file-details {
+	margin: 30px 0;    
+	min-height: 32px;
+}
+.popup.scan-result .popup-inner .file-details #claimThisAccount {
+	background: #252525;
+	font-size: 13px;
+}
+.popup.scan-result .popup-inner .file-details .file-feature-img {
+    min-height: 320px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 0 auto;
+    display: block;
+    vertical-align: middle;
+    background-position: center;
+}
+.popup.scan-result .popup-inner .file-details .file-title .file-year {
+    display: block;
+    font-size: 16px;
+    padding: 15px 0;
+}
+.popup.scan-result .popup-inner .file-details .file-subdata{
+    text-align: left;
+    font-size: 15px;	
+}
+.popup.scan-result .popup-inner .file-details .file-subdata strong {
+    background: rgb(237, 28, 36);
+    padding: 5px 16px;
+    margin: 10px;
+}
+
+.popup.scan-result .popup-inner .file-details .file-metadata{
+	text-align: left;
+	padding: 22px 0;
+	width: 100%;
+}
+.popup.scan-result .popup-inner .file-details .file-metadata p, 
+.popup.scan-result .popup-inner .file-details .file-metadata strong {
+    font-size: 15px;
+    float: left;
+}
+.popup.scan-result .popup-inner .file-details .file-metadata p {
+	width: 110px;    
+	margin-bottom: 9px;
+}
+.popup.scan-result .popup-inner .file-details .file-metadata strong {
+	display: contents;
+}
+.popup.scan-result .popup-inner .file-details .file-metadata p.full-width{
+	width: 100%;
+	padding: 0 12px;
+}
+.popup.scan-result .popup-inner .file-details .file-metadata .file-actor {
+    padding: 0 25px;
+}
+.popup.scan-result .popup-inner .file-details .file-metadata .file-actor h3 {
+    font-size: 17px;	
+}
+
+.popup.scan-result .popup-inner .file-details .file-metadata .file-actor-heading{
+	margin-bottom: 36px;
+}
+
+.popup.scan-result .popup-inner .file-details .file-metadata .file-actor-content .file-actor-details .img {
+    height: 107px;
+    border-radius: 54px;
+    max-width: 304px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    display: block;
+    vertical-align: middle;
+    background-position: center;
+}
+.popup.scan-result .popup-inner .file-details .file-metadata .file-actor-content .file-actor-details .name {
+	margin-top: 13px;
+    font-weight: bold;
+    font-size: 13px;
+     margin-bottom: 0;
+}
+.popup.scan-result .popup-inner .file-details .file-metadata .file-actor-content .file-actor-details .role {
+    font-size: 12px;
+}

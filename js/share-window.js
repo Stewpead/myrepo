@@ -92,7 +92,7 @@ function appendJSON(event) {
 
 	  {
 
-		duration: 8000,
+		duration: 3000,
 		easing:'linear',
 		step: function() {
 		  $this.text(Math.floor(this.countNum));
@@ -110,11 +110,14 @@ function appendJSON(event) {
 	
 }
 
+setTimeout(
+  function() 
+  {
 
-jQuery(window).on('load', function(){
+	$ = jQuery;
 
 	/*Close Modal action*/
-	$('[pd-popup-close]').on('click', function(e)  {
+	$('[pd-popup-close]').click(function(e) {
 	    var targeted_popup_class = jQuery(this).attr('pd-popup-close');
 	    $('[pd-popup="' + targeted_popup_class + '"]').fadeOut(200);
 
@@ -137,7 +140,7 @@ jQuery(window).on('load', function(){
 
 		  {
 
-			duration: 8000,
+			duration: 3000,
 			easing:'linear',
 			step: function() {
 			  $this.text(Math.floor(this.countNum));
@@ -173,13 +176,15 @@ jQuery(window).on('load', function(){
 
 		  {
 
-			duration: 8000,
+			duration: 3000,
 			easing:'linear',
 			step: function() {
 			  $this.text(Math.floor(this.countNum));
 			},
 			complete: function() {
 			  $this.text(this.countNum);
+				$('[pd-popup="shareGettingMetaDataLoadingModal"]').fadeOut(100);
+				$('[pd-popup="shareConfirmMetadata"]').fadeIn(100);
 			}
 
 		  });  
@@ -191,4 +196,4 @@ jQuery(window).on('load', function(){
 	});
 
 
-});
+}, 1000);
