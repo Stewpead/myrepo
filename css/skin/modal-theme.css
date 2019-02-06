@@ -49,6 +49,9 @@
 	font-size: 24px;
 	font-weight: 400;
 }
+.popup-inner .red-text {
+	color: #ed1c24;
+}
 .popup-inner .full-width {
     width: 100%;
 }

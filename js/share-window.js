@@ -184,7 +184,7 @@ setTimeout(
 			complete: function() {
 			  $this.text(this.countNum);
 				$('[pd-popup="shareGettingMetaDataLoadingModal"]').fadeOut(100);
-				$('[pd-popup="shareConfirmMetadata"]').fadeIn(100);
+				$('[pd-popup="shareConfirmMetadataModal"]').fadeIn(100);
 			}
 
 		  });  
@@ -194,6 +194,68 @@ setTimeout(
 		e.preventDefault();
 
 	});
+	
+	$('#proceedAfterVerifyMetadata').click(function(e) {
+		$('[pd-popup="shareConfirmMetadataModal"]').fadeOut(100);
+		$('[pd-popup="shareMergingAVXnetworkModal"]').fadeIn(100);
+		
 
+		// Generate Uploading status
+		$('.counter').text(0);
+		$('.counter').each(function() {
+		  var $this = $(this),
+			  countTo = $this.attr('data-count');
+		  
+		  $({ countNum: $this.text()}).animate({
+			countNum: countTo
+		  },
+
+		  {
+
+			duration: 1000,
+			easing:'linear',
+			step: function() {
+			  $this.text(Math.floor(this.countNum));
+			},
+			complete: function() {
+			  $this.text(this.countNum);
+			  $('[pd-popup="shareMergingAVXnetworkModal"]').fadeOut(100);
+			  $('[pd-popup="shareIntellectualPropertyModal"]').fadeIn(100);
+			  
+			}
+
+		  });  
+		  
+		});	
+
+		e.preventDefault();
+
+	});
+	
+	$('#proceedAfterVerifyIntellectualProperty').click(function(e) {
+		$('[pd-popup="shareIntellectualPropertyModal"]').fadeOut(100);
+		$('[pd-popup="shareIntellectualPropertyConfirmationModal"]').fadeIn(100);
+		$('#proceedProceedPaymentCart').addClass('disabled');
+
+		e.preventDefault();
+
+	});
+	
+	$('#confirmFilesInformation').click(function() {
+		if ( $(this).is(':checked' ) ){
+			$('#proceedProceedPaymentCart').removeClass('disabled');
+		} else {
+			$('#proceedProceedPaymentCart').addClass('disabled');
+		}
+	});
+	
+	$('#proceedProceedPaymentCart').click( function(){
+		alert('proceed to payment');
+	});
+
+
+	
+	
+	
 
 }, 1000);
