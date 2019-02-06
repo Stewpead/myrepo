@@ -1,5 +1,5 @@
 $("#btnSearch").click( function() {
-    location.href = 'searchDetailed.html';
+    location.href = 'search-detailed.html';
 });
 
 $('#linkMain').click(function() {

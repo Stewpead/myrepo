@@ -8,14 +8,14 @@ var imgname = 'decodedimg';
 var imgpath = path.join(__dirname,'/decodedimg/');
 var data64 = "data:image/jpg;base64,";
 
-loadimg();
+// loadimg();
 
 function loadimg() {
-
+ 
 	var x;
 	
 	for (var i = 0; i < 14; ++i) {
-		var movieThumbs = '<div class="col-lg-3 grid-cards">';
+		var movieThumbs = '<div class="col-lg-3 grid-cards" id="card' + i + '">';
 		movieThumbs += '<div class="container">';
 		movieThumbs += '<img src="' + data64 + json64[i]['thumbnail'] + '" />';
 		movieThumbs += '<p id="video-title" class="thumb-title">' + json64[i]['title'] + '</p>';
@@ -24,7 +24,7 @@ function loadimg() {
 		movieThumbs += '</div>';
 		movieThumbs += '</div>';
 		
-		$("#latest-movies").append(movieThumbs);
+		$("#trending-movies").append(movieThumbs);
 	}
 
 }

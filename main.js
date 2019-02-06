@@ -12,7 +12,7 @@ let defaultWindow;
 let notDefaultWindow;
 let prevWindow;
 let connectionPort = 5150;
-let connectionHost = '127.0.0.1';
+let connectionHost = '192.168.254.103';
 
 var IMG_DIR = './../images/';
 var app_dir = './../winPage/';
@@ -26,6 +26,7 @@ var walletAddress = '';
 var Status = {
 	SIGNUP: 1112,
 	SIGNIN: 1113,
+	SENDFUND: 1115,
 	ASSET_UPLOAD_DATA: 15,
 	WALLET_BALANCE: 2000
 };
@@ -55,8 +56,9 @@ var initiateConnection = function(attempt){
 		var module = require('./includes/dashboard');
 		module.shareUpload(client);
 		module.executeUploadFile(client);
-		module.sendTokenAVX(client);
+		module.sendFundAVX(client);
 		module.checkStatus(client);
+		
 		
 		ipcMain.on('test-btn',(event, arg) => {
 			event.returnValue = 1 +arg;

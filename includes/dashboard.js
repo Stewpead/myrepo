@@ -27,13 +27,15 @@ module.exports = {
 		event.returnValue = true;
 	});		
 	},
-	sendTokenAVX: function (client) {
+
+	sendFundAVX: function (client) {
 
 		ipcMain.on('send-token',(event, arg) => {
 			client.write(arg);
 				// console.log(arg);		
 		});
 	},		
+	
 	checkStatus: function (client) {
 		ipcMain.on('checkStatus', (event, arg) => {
 			client.write(arg);

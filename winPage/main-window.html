@@ -51,20 +51,20 @@
                     <div id="bg"> 
                         <div id="sowl" class="mr-5">
                             <a href="#" id="btnSignout"><span class="mdi mdi-logout"> Sign out </span></a>    
-                            <a href="#"><span class="mdi mdi-heart-outline"> Wishlist </span></a>
+                            <a href="wishlist-window.html"><span class="mdi mdi-heart-outline"> Wishlist </span></a>
                         </div>
                     </div> 
                 </div>
             </div>
-            <div  id="content-main">
+            <div id="content-main">
                 <div class="row mt-3 trending-videos">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-lg-12" style="background-color:rgb(0, 0, 0); margin-left:130px;">
+                            <div class="col-lg-12" id="styleRow">
                                 <div class="row">
                                     <div class="section-divider ml-5">
                                         <ul>
-                                            <li styl="background-color: #000; margin: 50px 0 0 0;">
+                                            <li style="background-color: #000; margin: 50px 0 0 0;">
                                                 <span id="divider-text" class="mdi mdi-video-outline"> Trending Videos</span>
                                             </li>
                                             <li>
@@ -75,9 +75,9 @@
                                 </div>
                             </div>
                             <div class="container-fluid">
-                                <div class="row" id="latest-movies">
-
-                                </div>
+                                <div class="row" id="trendingMovies">
+                                    
+                                </div> 
                             </div>
                         </div>
                         <div class="row">
@@ -89,72 +89,96 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mt-1 trending-artists">
+                <div class="row mt-3 trending-artist">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-lg-12" style="background-color:rgb(0, 0, 0); margin-left:130px;">
+                            <div class="col-lg-12" id="styleRow">
                                 <div class="row">
                                     <div class="section-divider ml-5">
                                         <ul>
-                                            <li>
-                                                <span id="divider-text" class="mdi mdi-video-outline">Trending Artists</span>
+                                            <li style="background-color: #000; margin: 50px 0 0 0;">
+                                                <span id="divider-text" class="mdi mdi-headphones"> Trending Artist</span>
                                             </li>
                                             <li>
-                                                <span id="divider-text" class="mdi mdi-file-document-outline">More Trending Artists</span>
+                                                <span id="divider-text" class="mdi mdi-file-document-outline"> More Trending Artist</span>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <div class="container-fluid">
-                                <div class="row">
-                                    <!-- <div class="container-fluid"> -->
-                                        <div class="col-lg-2 grid-cards">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac posuere tellus. Aliquam at orci felis. Praesent ultricies accumsan dui nec fermentum. Nulla augue ligula, pretium non rutrum in, condimentum tempus nisi. Vivamus egestas purus vel interdum vestibulum. Morbi tempus sem sem, non sollicitudin velit aliquet eget. Nunc at purus neque. Fusce sed sagittis lacus. Etiam tristique lorem a purus ultricies dignissim. Quisque congue sagittis mi, vel dictum enim hendrerit nec. Nullam lectus diam, lacinia vel libero maximus, consectetur placerat nulla. Praesent finibus libero mi, at porta dui gravida vitae. Donec sollicitudin tristique ligula, et sollicitudin nulla hendrerit molestie.
-                                        </div>
-                                        <div class="col-lg-2 grid-cards">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac posuere tellus. Aliquam at orci felis. Praesent ultricies accumsan dui nec fermentum. Nulla augue ligula, pretium non rutrum in, condimentum tempus nisi. Vivamus egestas purus vel interdum vestibulum. Morbi tempus sem sem, non sollicitudin velit aliquet eget. Nunc at purus neque. Fusce sed sagittis lacus. Etiam tristique lorem a purus ultricies dignissim. Quisque congue sagittis mi, vel dictum enim hendrerit nec. Nullam lectus diam, lacinia vel libero maximus, consectetur placerat nulla. Praesent finibus libero mi, at porta dui gravida vitae. Donec sollicitudin tristique ligula, et sollicitudin nulla hendrerit molestie.
-                                        </div>
-                                        <div class="col-lg-2 grid-cards">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac posuere tellus. Aliquam at orci felis. Praesent ultricies accumsan dui nec fermentum. Nulla augue ligula, pretium non rutrum in, condimentum tempus nisi. Vivamus egestas purus vel interdum vestibulum. Morbi tempus sem sem, non sollicitudin velit aliquet eget. Nunc at purus neque. Fusce sed sagittis lacus. Etiam tristique lorem a purus ultricies dignissim. Quisque congue sagittis mi, vel dictum enim hendrerit nec. Nullam lectus diam, lacinia vel libero maximus, consectetur placerat nulla. Praesent finibus libero mi, at porta dui gravida vitae. Donec sollicitudin tristique ligula, et sollicitudin nulla hendrerit molestie.
-                                        </div>
-                                        <div class="col-lg-2 grid-cards">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac posuere tellus. Aliquam at orci felis. Praesent ultricies accumsan dui nec fermentum. Nulla augue ligula, pretium non rutrum in, condimentum tempus nisi. Vivamus egestas purus vel interdum vestibulum. Morbi tempus sem sem, non sollicitudin velit aliquet eget. Nunc at purus neque. Fusce sed sagittis lacus. Etiam tristique lorem a purus ultricies dignissim. Quisque congue sagittis mi, vel dictum enim hendrerit nec. Nullam lectus diam, lacinia vel libero maximus, consectetur placerat nulla. Praesent finibus libero mi, at porta dui gravida vitae. Donec sollicitudin tristique ligula, et sollicitudin nulla hendrerit molestie.
-                                        </div>
-                                        <div class="col-lg-2 grid-cards">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac posuere tellus. Aliquam at orci felis. Praesent ultricies accumsan dui nec fermentum. Nulla augue ligula, pretium non rutrum in, condimentum tempus nisi. Vivamus egestas purus vel interdum vestibulum. Morbi tempus sem sem, non sollicitudin velit aliquet eget. Nunc at purus neque. Fusce sed sagittis lacus. Etiam tristique lorem a purus ultricies dignissim. Quisque congue sagittis mi, vel dictum enim hendrerit nec. Nullam lectus diam, lacinia vel libero maximus, consectetur placerat nulla. Praesent finibus libero mi, at porta dui gravida vitae. Donec sollicitudin tristique ligula, et sollicitudin nulla hendrerit molestie.
-                                        </div>
-                                        <div class="col-lg-2 grid-cards">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac posuere tellus. Aliquam at orci felis. Praesent ultricies accumsan dui nec fermentum. Nulla augue ligula, pretium non rutrum in, condimentum tempus nisi. Vivamus egestas purus vel interdum vestibulum. Morbi tempus sem sem, non sollicitudin velit aliquet eget. Nunc at purus neque. Fusce sed sagittis lacus. Etiam tristique lorem a purus ultricies dignissim. Quisque congue sagittis mi, vel dictum enim hendrerit nec. Nullam lectus diam, lacinia vel libero maximus, consectetur placerat nulla. Praesent finibus libero mi, at porta dui gravida vitae. Donec sollicitudin tristique ligula, et sollicitudin nulla hendrerit molestie.
-                                        </div>
-                                    <!-- </div> -->
-                                </div>
-                                <div class="row">
-                            <!-- <div class="container-fluid"> -->
-                                    <div class="col-lg-2 grid-cards">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac posuere tellus. Aliquam at orci felis. Praesent ultricies accumsan dui nec fermentum. Nulla augue ligula, pretium non rutrum in, condimentum tempus nisi. Vivamus egestas purus vel interdum vestibulum. Morbi tempus sem sem, non sollicitudin velit aliquet eget. Nunc at purus neque. Fusce sed sagittis lacus. Etiam tristique lorem a purus ultricies dignissim. Quisque congue sagittis mi, vel dictum enim hendrerit nec. Nullam lectus diam, lacinia vel libero maximus, consectetur placerat nulla. Praesent finibus libero mi, at porta dui gravida vitae. Donec sollicitudin tristique ligula, et sollicitudin nulla hendrerit molestie.
-                                    </div>
-                                    <div class="col-lg-2 grid-cards">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac posuere tellus. Aliquam at orci felis. Praesent ultricies accumsan dui nec fermentum. Nulla augue ligula, pretium non rutrum in, condimentum tempus nisi. Vivamus egestas purus vel interdum vestibulum. Morbi tempus sem sem, non sollicitudin velit aliquet eget. Nunc at purus neque. Fusce sed sagittis lacus. Etiam tristique lorem a purus ultricies dignissim. Quisque congue sagittis mi, vel dictum enim hendrerit nec. Nullam lectus diam, lacinia vel libero maximus, consectetur placerat nulla. Praesent finibus libero mi, at porta dui gravida vitae. Donec sollicitudin tristique ligula, et sollicitudin nulla hendrerit molestie.
-                                    </div>
-                                    <div class="col-lg-2 grid-cards">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac posuere tellus. Aliquam at orci felis. Praesent ultricies accumsan dui nec fermentum. Nulla augue ligula, pretium non rutrum in, condimentum tempus nisi. Vivamus egestas purus vel interdum vestibulum. Morbi tempus sem sem, non sollicitudin velit aliquet eget. Nunc at purus neque. Fusce sed sagittis lacus. Etiam tristique lorem a purus ultricies dignissim. Quisque congue sagittis mi, vel dictum enim hendrerit nec. Nullam lectus diam, lacinia vel libero maximus, consectetur placerat nulla. Praesent finibus libero mi, at porta dui gravida vitae. Donec sollicitudin tristique ligula, et sollicitudin nulla hendrerit molestie.
-                                    </div>
-                                    <div class="col-lg-2 grid-cards">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac posuere tellus. Aliquam at orci felis. Praesent ultricies accumsan dui nec fermentum. Nulla augue ligula, pretium non rutrum in, condimentum tempus nisi. Vivamus egestas purus vel interdum vestibulum. Morbi tempus sem sem, non sollicitudin velit aliquet eget. Nunc at purus neque. Fusce sed sagittis lacus. Etiam tristique lorem a purus ultricies dignissim. Quisque congue sagittis mi, vel dictum enim hendrerit nec. Nullam lectus diam, lacinia vel libero maximus, consectetur placerat nulla. Praesent finibus libero mi, at porta dui gravida vitae. Donec sollicitudin tristique ligula, et sollicitudin nulla hendrerit molestie.
-                                    </div>
-                                    <div class="col-lg-2 grid-cards">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac posuere tellus. Aliquam at orci felis. Praesent ultricies accumsan dui nec fermentum. Nulla augue ligula, pretium non rutrum in, condimentum tempus nisi. Vivamus egestas purus vel interdum vestibulum. Morbi tempus sem sem, non sollicitudin velit aliquet eget. Nunc at purus neque. Fusce sed sagittis lacus. Etiam tristique lorem a purus ultricies dignissim. Quisque congue sagittis mi, vel dictum enim hendrerit nec. Nullam lectus diam, lacinia vel libero maximus, consectetur placerat nulla. Praesent finibus libero mi, at porta dui gravida vitae. Donec sollicitudin tristique ligula, et sollicitudin nulla hendrerit molestie.
-                                    </div>
-                                    <div class="col-lg-2 grid-cards">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac posuere tellus. Aliquam at orci felis. Praesent ultricies accumsan dui nec fermentum. Nulla augue ligula, pretium non rutrum in, condimentum tempus nisi. Vivamus egestas purus vel interdum vestibulum. Morbi tempus sem sem, non sollicitudin velit aliquet eget. Nunc at purus neque. Fusce sed sagittis lacus. Etiam tristique lorem a purus ultricies dignissim. Quisque congue sagittis mi, vel dictum enim hendrerit nec. Nullam lectus diam, lacinia vel libero maximus, consectetur placerat nulla. Praesent finibus libero mi, at porta dui gravida vitae. Donec sollicitudin tristique ligula, et sollicitudin nulla hendrerit molestie.
-                                    </div>
-                                </div>
+                                <div class="row" id="trending-artist">
+                                    
+                                </div> 
                             </div>
                         </div>
                         <div class="row">
                             <div class="container-fluid">
-                                <div class="float-right mb-5 mr-3">
+                                <div class="float-right mb-2 mr-3">
+                                    <a href="#" style="font-size:16px;">See more <span class="mdi mdi-arrow-right"></span> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3 popular-video">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12" id="styleRow">
+                                <div class="row">
+                                    <div class="section-divider ml-5">
+                                        <ul>
+                                            <li style="background-color: #000; margin: 50px 0 0 0;">
+                                                <span id="divider-text" class="mdi mdi-video-outline"> Trending Videos</span>
+                                            </li>
+                                            <li>
+                                                <span id="divider-text" class="mdi mdi-file-document-outline"> More Trending Videos</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="row" id="popular-movies">
+                                    
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="container-fluid">
+                                <div class="float-right mb-2 mr-3">
+                                    <a href="#" style="font-size:16px;">See more <span class="mdi mdi-arrow-right"></span> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3 popular-artist">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12" id="styleRow">
+                                <div class="row">
+                                    <div class="section-divider ml-5">
+                                        <ul>
+                                            <li style="background-color: #000; margin: 50px 0 0 0;">
+                                                <span id="divider-text" class="mdi mdi-video-outline"> Trending Videos</span>
+                                            </li>
+                                            <li>
+                                                <span id="divider-text" class="mdi mdi-file-document-outline"> More Trending Videos</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="row" id="popular-artist">
+                                    
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="container-fluid">
+                                <div class="float-right mb-2 mr-3">
                                     <a href="#" style="font-size:16px;">See more <span class="mdi mdi-arrow-right"></span> </a>
                                 </div>
                             </div>
@@ -163,11 +187,14 @@
                 </div>
             </div>
         </div>
-
-		
     </body>
-
-    <script src="../js/top-handler.js"></script>
+    <script>
+        require("../js/top-handler");
+        require("../js/decode64");
+        require("../js/main-window");
+    </script>
+    <script src="../js/main-content.js"></script>
+    <!-- <script src="../js/top-handler.js"></script>
 	<script src="../js/decode64.js"></script>
-    <script src="../js/main-window.js"></script>
+    <script src="../js/main-window.js"></script> -->
 </html>
