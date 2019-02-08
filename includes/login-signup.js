@@ -34,6 +34,9 @@ module.exports = {
   },
   signinResponse: function (data) {
 		var validate = data['data'];
+
+		// console.log('PUTA BRAD GANUN KA KAYAMAN!');
+		
 		if (validate == 1 ){
 			defaultWindow.loadURL(url.format({
 				pathname: path.join(__dirname, app_dir,'main-window.html'),
@@ -42,7 +45,6 @@ module.exports = {
 			}));
 		}
   }
-
 };
 
 

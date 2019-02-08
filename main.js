@@ -48,7 +48,7 @@ var initiateConnection = function(attempt){
 		module.showWindow();
 		module.avxLogin(client);
 		module.avxSignup(client);
-        module.avxPopup(client);
+		module.avxPopup(client);
 		module.avxModal(client);
 		module.avxSendAVX(client);
 		

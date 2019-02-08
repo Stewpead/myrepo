@@ -85,8 +85,13 @@ function signin() {
 
 	var jsonString = JSON.stringify(json);
 	ipcRenderer.send("avx-login", jsonString);
+	// $('[pd-popup="shareScanResultModal"]').fadeOut(100);
+	$('[pd-popup="shareScanningModal"]').fadeIn(100);
 }
-
+// $('#buttonExecute').click(function() {
+// 	$('[pd-popup="shareScanResultModal"]').fadeOut(100);
+// 	$('[pd-popup="shareScanningModal"]').fadeIn(100);
+// });
 $(document).ready( function() {
 
 	var listDir = store.get('directory');

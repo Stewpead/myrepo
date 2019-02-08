@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <head>
     <!-- WOW  -->
     <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,167 +8,163 @@
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
-
+    <link rel="stylesheet" href="../node_modules/@mdi/font/css/materialdesignicons.min.css">
     <!-- WOW -->
-        
-    <!-- MINE -->
-    <link rel="stylesheet" type="text/css" href="../css/searchStyle.css">
-    <link rel="stylesheet" href="../css/appStyle.css">
-    <!-- MINE -->
 
-    <header>
-        <div id="container">
-                <nav>
-                        <div id="buttons">
-                                <div id="minimize">
-                                        <span>-</span>
-                                </div>
-                                <div id="maximize">
-                                        <span>+</span>
-                                </div>
-                                <div id="close">
-                                        <span>&times;</span>
-                                </div>
-                        </div>
-                </nav>
-        </div> 
-    </header>
 
+    <!-- MINE -->
+    <link rel="stylesheet" href="../css/app-style.css">
+    <link rel="stylesheet" type="text/css" href="../css/search-style.css">
+    <!-- MINE -->
+    </head>
     <body>
+        <div id="container">
+            <nav>
+                <div id="titleShown">
+                </div>
+                <div id="buttons">
+                    <div id="minimize">
+                        <span class="mdi mdi-window-minimize"></span>
+                    </div>
+                    <div id="maximize">
+                        <span class="mdi mdi-window-maximize"></span>
+                    </div>
+                    <div id="close">
+                        <span class="mdi mdi-window-close"></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
         <div id="slidenav" class="sidenav">
-            <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
-            <a href="#" onclick="location.href = 'mainWindow.html'"><i class="fa fa-home" style="font-size:17px;color:white;"></i><br>Home</a>
-            <a href="#" onclick="location.href = 'accountWindow.html'"><i class="fa fa-id-card" style="font-size:17px;color:white;"></i><br>Account Wallet</a>
-            <a href="#" style="color:#ed1c24;"><i class="fa fa-search" style="font-size:17px;color:white;"></i><br>Search Browser</a>
-            <a href="#" onclick="location.href = 'searchWindow.html'"><i class="fa fa-share-alt" style="font-size:17px;color:white;"></i><br>Share</a>
-            <a href="#" onclick="location.href = 'searchWindow.html'"><i class="fa fa-play-circle" style="font-size:17px;color:white;"></i><br>Stream Player</a>
-            <a href="#" onclick="location.href = 'searchWindow.html'"><i class="fa fa-globe" style="font-size:17px;color:white;"></i><br>Community</a>
-            <a href="#" onclick="location.href = 'searchWindow.html'"><i class="fa fa-cogs" style="font-size:17px;color:white;"></i><br>Settings</a>
+            <div id="avxlogonav">
+                <img src="../images/logo_white.png" alt="avx" id="logox"> 
+            </div>
+            <a href="#" onclick="location.href = 'main-window.html'"> <span class="mdi mdi-home-outline" id="sidelinks"></span> <br>Home</a>
+            <a href="#" onclick="location.href = 'account-window.html'"><span class="mdi mdi-account-details" id="sidelinks"></span><br>Account Wallet</a>
+            <a href="#" style="background-color: #ed1c24; color:white;"><span class="mdi mdi-magnify" id="sidelinks"></span><br>Search Browser</a>
+            <a href="#" onclick="location.href = 'share-window.html'"><span class="mdi mdi-radio-tower" id="sidelinks"></span><br>Share</a>
+            <a href="#" onclick="location.href = 'stream-window.html'"><span class="mdi mdi-play" id="sidelinks"></span><br>Stream Player</a>
+            <a href="#" onclick="location.href = 'community-window.html'"><span class="mdi mdi-account-group-outline" id="sidelinks"></span><br>Community</a>
+            <a href="#" onclick="location.href = 'settings-window.html'" style="padding-bottom: 50px;"><span class="mdi mdi-settings-outline" id="sidelinks"></span><br>Settings</a>
         </div>
         <div id="main">
             <div class="container-fluid">
                 <div class="row"> 
                     <div class="col-lg-12 mt-2">
                         <div class="float-right mr-2">
-                            <a href="#"><i class="fa fa-sign-out-alt"> Sign out</i></a>    
-                            <a href="#"><i class="fa fa-heart"> Wishlist</i></a>
+                            <a href="#" id="btnSignout"><span class="mdi mdi-logout"> Sign out </span></a>    
+                            <a href="wishlist-window.html"><span class="mdi mdi-heart-outline"> Wishlist </span></a>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                        <div class="col-lg-1">
-                            <div class="d-flex flex-column">
-                                <div class="p-2 ml-3">
-                                        <span>Genre</span>
-                                </div>
-                                <div class="p-2  ml-3">
-                                    <div class="dropdown" style="background-color:rgb(0, 0, 0);color:rgb(255, 255, 255);">
-                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                           <span id="defaultgenre">Action</span>
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#" id="gaction">Action</a>
-                                            <a class="dropdown-item" href="#" id="gdrama">Drama</a>
-                                            <a class="dropdown-item" href="#" id="gscifi">Sci-Fi</a>
-                                            <a class="dropdown-item" href="#" id="gfantasy">Fantasy</a>
-                                            <a class="dropdown-item" href="#" id="gromance">Romance</a>
-                                        </div>
+                    <div class="col-lg-2">
+                        <div class="d-flex flex-column">
+                            <div class="p-2 ml-3">
+                                <span>Genre</span>
+                            </div>
+                            <div class="p-2 ml-3">
+                                <div class="dropdown" style="background-color:rgb(0, 0, 0);color:rgb(255, 255, 255);">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span id="defaultgenre">Action</span>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#" id="gaction">Action</a>
+                                        <a class="dropdown-item" href="#" id="gdrama">Drama</a>
+                                        <a class="dropdown-item" href="#" id="gscifi">Sci-Fi</a>
+                                        <a class="dropdown-item" href="#" id="gfantasy">Fantasy</a>
+                                        <a class="dropdown-item" href="#" id="gromance">Romance</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-2">
-                            <div class="d-flex flex-column">
-                                <div class="p-2  ml-3">
-                                        <span>Release Date</span> 
-                                </div>
-                                <div class="p-2  ml-3">
-                                    <div class="dropdown" style="background-color:rgb(0, 0, 0);color:rgb(255, 255, 255);">
-                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span id="defaultyear">2018</span>
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#" id="year2018">2018</a>
-                                            <a class="dropdown-item" href="#" id="year2017">2017</a>
-                                            <a class="dropdown-item" href="#" id="year2016">2016</a>
-                                            <a class="dropdown-item" href="#" id="year2015">2015</a>
-                                            <a class="dropdown-item" href="#" id="year2014">2014</a>
-                                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="d-flex flex-column">
+                            <div class="p-2 ml-3">
+                                <span>Release Date</span> 
+                            </div>
+                            <div class="p-2  ml-3">
+                                <div class="dropdown" style="background-color:rgb(0, 0, 0);color:rgb(255, 255, 255);">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span id="defaultyear">2018</span>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#" id="year2018">2018</a>
+                                        <a class="dropdown-item" href="#" id="year2017">2017</a>
+                                        <a class="dropdown-item" href="#" id="year2016">2016</a>
+                                        <a class="dropdown-item" href="#" id="year2015">2015</a>
+                                        <a class="dropdown-item" href="#" id="year2014">2014</a>
                                     </div>
-                                </div>                   
+                                </div>
+                            </div>                   
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="d-flex flex-column">
+                            <div class="p-2 ml-3">
+                                <span>Popularity</span>
+                            </div>
+                            <div class="p-2 ml-3">
+                                <div class="dropdown" style="color:rgb(0, 0, 0);color:rgb(255, 255, 255);">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span id="defaultpopularity">All time </span>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">90's</a>
+                                        <a class="dropdown-item" href="#">Blabla</a>
+                                        <a class="dropdown-item" href="#">blabla</a>
+                                        <a class="dropdown-item" href="#">blabla</a>
+                                    </div>
+                                </div>
+                            </div>            
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="d-flex flex-column">
+                            <div class="p-2 ml-3">
+                                <span>Studio</span>
+                            </div>
+                            <div class="p-2 ml-3">
+                                <div class="dropdown" style="background-color:rgb(0, 0, 0);color:rgb(255, 255, 255);">
+                                    <button class="btn btn-default btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                       <span id="defaultstudio">Marvel Comics</span> 
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">90's</a>
+                                        <a class="dropdown-item" href="#">Blabla</a>
+                                        <a class="dropdown-item" href="#">blabla</a>
+                                        <a class="dropdown-item" href="#">blabla</a>
+                                    </div>
+                                </div>
+                            </div>            
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="d-flex flex-column">
+                            <div class="p-2">
+                                <form>
+                                    <label class="radio-inline p-1">
+                                        <input type="radio" name="optradio">Movies
+                                    </label>
+                                    <label class="radio-inline p-1">
+                                        <input type="radio" name="optradio">TV series
+                                    </label>
+                                    <label class="radio-inline p-1">
+                                        <input type="radio" name="optradio">Audios
+                                    </label>
+                                </form>
+                            </div>
+                            <div class="p-2" style="margin-top:-10px;">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Movie Titles or Audio Tracks" aria-label="Movie Titles or Audio Tracks" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-danger" type="button" id="btnSearch" style="color:white;">Search</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-1">
-                                <div class="d-flex flex-column">
-                                        <div class="p-2 ml-3">
-                                                <span>Popularity</span>
-                                        </div>
-                                        <div class="p-2 ml-3">
-                                                <div class="dropdown" style="background-color:rgb(0, 0, 0);color:rgb(255, 255, 255);">
-                                
-                                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                        All time
-                                                        </button>
-                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                <a class="dropdown-item" href="#">90's</a>
-                                                                <a class="dropdown-item" href="#">Blabla</a>
-                                                                <a class="dropdown-item" href="#">blabla</a>
-                                                                <a class="dropdown-item" href="#">blabla</a>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                                
-                                </div>
-                        </div>
-                        <div class="col-lg-2">
-                                <div class="d-flex flex-column">
-                                        <div class="p-2 ml-3">
-                                                <span>Studio</span>
-                                        </div>
-                                        <div class="p-2 ml-3">
-                                                <div class="dropdown" style="background-color:rgb(0, 0, 0);color:rgb(255, 255, 255);">
-                                
-                                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                        Marvel Comics
-                                                        </button>
-                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                <a class="dropdown-item" href="#">90's</a>
-                                                                <a class="dropdown-item" href="#">Blabla</a>
-                                                                <a class="dropdown-item" href="#">blabla</a>
-                                                                <a class="dropdown-item" href="#">blabla</a>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                                
-                                </div>
-                        </div>
-                        <div class="col-lg-6">
-                                <div class="d-flex flex-column">
-                                        <div class="p-2">
-                                                <form>
-                                                        <label class="radio-inline p-1">
-                                                                <input type="radio" name="optradio">Movies
-                                                        </label>
-                                                        <label class="radio-inline p-1">
-                                                                <input type="radio" name="optradio">TV series
-                                                        </label>
-                                                        <label class="radio-inline p-1">
-                                                                <input type="radio" name="optradio">Audios
-                                                        </label>
-                                                </form>
-                                        </div>
-
-                                        <div class="p-2" style="margin-top:-10px;">
-                                                <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Movie Titles or Audio Tracks" aria-label="Movie Titles or Audio Tracks" aria-describedby="basic-addon2">
-                                                        <div class="input-group-append">
-                                                                <button class="btn btn-danger" type="button" style="color:white;">Search</button>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12" style="margin-left:1%; margin-right: 5%;">
@@ -246,7 +243,7 @@
                                         <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
                                         <div class="card-body">
                                             <h6 class="card-title" style="font-size:2.5vh"><strong>Black Panther</strong></h6>
-                                            <!-- <p class="card-text" style="font-size:2vh">As Scott Lang balances being both a Super Hero and a father, Hope van Dyne and Dr. Hank Pym present an urgent new mission that finds the Ant-Man fighting alongside The Wasp to uncover secrets from their past.</p> -->
+                                          
                                         </div>
                                     </div>
                                 </div>
@@ -263,7 +260,7 @@
                                         <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
                                         <div class="card-body">
                                             <h6 class="card-title" style="font-size:2.5vh"><strong>Avengers: Infinity War</strong></h6>
-                                                <!-- <p class="card-text" style="font-size:2vh">As Scott Lang balances being both a Super Hero and a father, Hope van Dyne and Dr. Hank Pym present an urgent new mission that finds the Ant-Man fighting alongside The Wasp to uncover secrets from their past.</p> -->
+                                               
                                         </div>
                                     </div>
                                 </div>
@@ -385,8 +382,6 @@
             </div>
         </div>
     </body>
-
     <script src="../js/top-handler.js"></script>
     <script src="../js/search-details.js"></script>
-
 </html>

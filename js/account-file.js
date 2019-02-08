@@ -11,25 +11,26 @@ document.getElementById("DSpeed").style.display = "none";
 
 
 // $(document).ready( () => {
-    var str = "";
-    for (var i = 0; i <= 100; i++) {
-        wait(100);
-        console.log(i);
-        str = (i + "%");
-        progbar(str);
-   }    
+//     var str = "";
+//     for (var i = 0; i <= 100; i++) {
+//         wait(100);
+//         console.log(i);
+//         str = (i + "%");
+//         progbar(str);
+//    }    
 // });
-var num = 0;
-function progbar(num) {
-    document.getElementById('prog-bar').style.width = num;
-}
-function wait(ms)
-{
-var d = new Date();
-var d2 = null;
-do { d2 = new Date(); }
-while(d2-d < ms);
-}
+// var num = 0;
+// function progbar(num) {
+//     document.getElementById('prog-bar').style.width = num;
+// }
+// function wait(ms)
+// {
+// var d = new Date();
+// var d2 = null;
+// do { d2 = new Date(); }
+// while(d2-d < ms);
+// }
+
 $('#btnHideCF').click( () => {
     document.getElementById('activeFiles').style.display = "block";
     document.getElementById("completedFiles").style.display = "none";

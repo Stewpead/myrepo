@@ -1,4 +1,20 @@
 
+#main {
+    font-size: 12px;
+}
+button {
+    background-color: white !important;
+}
+button span {
+    font-size: 12px;
+    color: #000;
+}
+#btnSearch {
+    background-color: red !important;
+}
+#defaultstudio {
+    font-size: 10px;
+}
 .sidenav a:hover {
     color: #f1f1f1;
 }
@@ -66,3 +82,4 @@ ul.list-group:after {
   .list-group-item {
       float: left;
   }
+
