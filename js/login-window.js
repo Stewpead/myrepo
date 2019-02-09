@@ -3,7 +3,8 @@ const Store = require('electron-store');
 const store = new Store();
 var fs = require('fs');
 var path = require('path');
-$(document).ready(() => {
+
+jQuery(document).ready(($) => {
 	document.getElementById('btnUpload').style.display = 'none';
 	document.getElementById('downUpload').style.display = 'none';
 	document.getElementById('savew').style.display = 'none';
