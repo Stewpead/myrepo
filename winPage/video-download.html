@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-                    <!-- <script src="../js/scripts.js"></script> -->
     <!-- WOW  -->
     <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <link rel="stylesheet" href="../node_modules/@mdi/font/css/materialdesignicons.min.css">
     <!-- WOW -->
             
         <!-- MINE -->
@@ -18,15 +18,17 @@
     <header>
         <div id="container">
             <nav>
+                <div id="titleShown">
+                </div>
                 <div id="buttons">
                     <div id="minimize">
-                        <span>-</span>
+                        <span class="mdi mdi-window-minimize"></span>
                     </div>
                     <div id="maximize">
-                        <span>+</span>
+                        <span class="mdi mdi-window-maximize"></span>
                     </div>
                     <div id="close">
-                        <span>&times;</span>
+                        <span class="mdi mdi-window-close"></span>
                     </div>
                 </div>
             </nav>
@@ -34,32 +36,31 @@
     </header>
     <body>
         <div id="slidenav" class="sidenav">
-            <div id="avxlogonav"><img src="../images/logo_white.png" alt="avx" id="logox"> 
+            <div id="avxlogonav">
+                <img src="../images/logo_white.png" alt="avx" id="logox"> 
             </div>
-            <a href="#" onclick="location.href = 'mainWindow.html'"><i class="fa fa-home" id="sidelinks"></i><br>Home</a>
-            <a href="#" onclick="location.href = 'accountWindow.html'"><i class="fa fa-address-card" id="sidelinks"></i><br>Account Wallet</a>
-            <a href="#" style="color:#ed1c24;"><i class="fa fa-search" id="sidelinks"></i><br>Search Browser</a>
-            <a href="#" onclick="location.href = 'shareWindow.html'"><i class="fa fa-share-alt" id="sidelinks"></i><br>Share</a>
-            <a href="#" onclick="location.href = 'streamplayerWindow.html'"><i class="fa fa-play-circle" id="sidelinks"></i><br>Stream Player</a>
-            <a href="#" onclick="location.href = 'communityWindow.html'"><i class="fa fa-globe" id="sidelinks"></i><br>Community</a>
-            <a href="#" onclick="location.href = 'settingsWindow.html'"><i class="fa fa-cog" id="sidelinks"></i><br>Settings</a>
+            <a href="#" onclick="location.href = 'main-window.html'"> <span class="mdi mdi-home-outline" id="sidelinks"></span> <br>Home</a>
+            <a href="#" onclick="location.href = 'account-window.html'"><span class="mdi mdi-account-details" id="sidelinks"></span><br>Account Wallet</a>
+            <a href="#" style="background-color: #ed1c24; color:white;"><span class="mdi mdi-magnify" id="sidelinks"></span><br>Search Browser</a>
+            <a href="#" onclick="location.href = 'share-window.html'"><span class="mdi mdi-radio-tower" id="sidelinks"></span><br>Share</a>
+            <a href="#" onclick="location.href = 'stream-window.html'"><span class="mdi mdi-play" id="sidelinks"></span><br>Stream Player</a>
+            <a href="#" onclick="location.href = 'community-window.html'"><span class="mdi mdi-account-group-outline" id="sidelinks"></span><br>Community</a>
+            <a href="#" onclick="location.href = 'settings-window.html'" style="padding-bottom: 50px;"><span class="mdi mdi-settings-outline" id="sidelinks"></span><br>Settings</a>
         </div>
         <div id="main">
             <div id="bgvids">
                 <div class="container-fluid">
                     <div class="row"> 
                         <div class="col-lg-12 mt-2">
-                            <div class="float-right">
-                                <div id="sowl">
-                                        <a href="#"><i class="fa fa-sign-out-alt mr-2"> Sign out</i></a>    
-                                        <a href="#"><i class="fa fa-heart mr-5"> Wishlist</i></a>
-                                </div>
+                            <div class="float-right mr-2">
+                                <a href="#" id="btnSignout"><span class="mdi mdi-logout"> Sign out </span></a>    
+                                <a href="wishlist-window.html"><span class="mdi mdi-heart-outline"> Wishlist </span></a>
                             </div>
                         </div>
                     </div>
                     <div class="row"> 
                         <div class="col-lg-6 mt-3">
-                            <a href="#" id="btnBack"><i class="fas fa-arrow-left p-4 ml-3"> Back</i></a>
+                            <a href="#" id="btnBack"> <span class="mdi mdi-arrow-left"> Back</span>  </a>
                         </div>
                         <div class="col-lg-6 mt-3">
                             <div style="margin-left:10vh;">
@@ -132,6 +133,6 @@
             </div>
         </div>    
     </body>
-    <script src="../js/topHandler.js"></script>
-    <script src="../js/video_download.js"></script>
+    <script src="../js/top-handler.js"></script>
+    <script src="../js/video-download.js"></script>
 </html>

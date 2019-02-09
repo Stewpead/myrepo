@@ -49,7 +49,7 @@ html::-webkit-scrollbar {
     padding-bottom: 5%;
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
-#content-main::-webkit-scrollbar-track {
+#content-main::-webkit-scrollbar-track { 
     background: #111111; 
     border-radius: 10px;
     box-shadow: inset 0 0 8px grey; 
@@ -74,8 +74,8 @@ html::-webkit-scrollbar {
 #sowl {
     float: right;
     padding-right: 30px;
-    
 }
+
 .grid-cards {
     cursor: pointer;
     height: 364px;
@@ -94,7 +94,6 @@ html::-webkit-scrollbar {
 }
 .grid-cards .container img {
     width: 100%;
-   /* height: 140px !important; */
     margin: auto;
 }
 a {

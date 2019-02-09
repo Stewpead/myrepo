@@ -11,9 +11,8 @@
     <link rel="stylesheet" href="../node_modules/@mdi/font/css/materialdesignicons.min.css">
     <!-- WOW -->
 
-
     <!-- MINE -->
-    <link rel="stylesheet" href="../css/app-style.css">
+    <link rel="stylesheet" type="text/css" href="../css/app-style.css">
     <link rel="stylesheet" type="text/css" href="../css/search-style.css">
     <!-- MINE -->
     </head>
@@ -166,216 +165,79 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12" style="margin-left:1%; margin-right: 5%;">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-lg-12 mt-3">
-                                    <h2>Search Results</h2>
-                                </div>
-                                <div class="col-lg-2 p-1">
-                                    <div class="card" data-toggle="tooltip" data-placement="bottom" title="2018" style="width: 12rem; height:20rem;">
-                                        <img class="card-img-top" src="" id="result1" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                        <div class="card-body">
-                                            <h6 class="card-title" style="font-size:2.5vh"><strong>Ant-Man and the Wasp</strong></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 p-1">
-                                    <div class="card" data-toggle="tooltip" data-placement="bottom" title="2018" style="width: 12rem; height:20rem;">
-                                        <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                        <div class="card-body">
-                                            <h6 class="card-title" style="font-size:2.5vh"><strong>Avengers: Infinity War</strong></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 p-1">
-                                    <div class="card" data-toggle="tooltip" data-placement="bottom" title="2018" style="width: 12rem; height:20rem;">
-                                        <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                        <div class="card-body">
-                                            <h6 class="card-title" style="font-size:2.5vh"><strong>Black Panther</strong></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 p-1">
-                                    <div class="card"data-toggle="tooltip" data-placement="bottom" title="2008" style="width: 12rem; height:20rem;">
-                                        <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                        <div class="card-body">
-                                            <h6 class="card-title" style="font-size:2.5vh"><strong>Ironman</strong></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 p-1">
-                                    <div class="card" data-toggle="tooltip" data-placement="bottom" title="2016" style="width: 12rem; height:20rem;">
-                                        <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                        <div class="card-body">
-                                            <h6 class="card-title" style="font-size:2.5vh"><strong>Avengers: Infinity War</strong></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 p-1">
-                                    <div class="card" data-toggle="tooltip" data-placement="bottom" title="2008" style="width: 12rem; height:20rem;">
-                                        <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                        <div class="card-body">
-                                            <h6 class="card-title" style="font-size:2.5vh"><strong>The Incredible Hulk</strong></h6>                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-2 p-1">
-                                    <div class="card"data-toggle="tooltip" data-placement="bottom" title="2018" style="width: 12rem; height:20rem;">
-                                        <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                        <div class="card-body">
-                                            <h6 class="card-title" style="font-size:2.5vh"><strong>Ant-Man and the Wasp</strong></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 p-1">
-                                        <div class="card" data-toggle="tooltip" data-placement="bottom" title="2018" style="width: 12rem; height:20rem;">
-                                            <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                            <div class="card-body">
-                                                <h6 class="card-title" style="font-size:2.5vh"><strong>Avengers: Infinity War</strong></h6>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12" style="margin-left:1%; margin-right: 5%;">
+                            <div class="container-fluid">
+                                <div class="row mt-3 trending-videos">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-lg-12" id="styleRow">
+                                                <div class="row">
+                                                    <div class="section-divider ml-5">
+                                                        <ul>
+                                                            <li style="background-color: #000; margin: 50px 0 0 0;">
+                                                                <span id="divider-text" class="mdi mdi-video-outline"> Trending Videos</span>
+                                                            </li>
+                                                            <li>
+                                                                <span id="divider-text" class="mdi mdi-file-document-outline"> More Trending Videos</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container-fluid">
+                                                <div class="row" id="trendingMovies">
+                                                    
+                                                </div> 
                                             </div>
                                         </div>
-                                </div>
-                                <div class="col-lg-2 p-1">
-                                    <div class="card" data-toggle="tooltip" data-placement="bottom" title="2018" style="width: 12rem; height:20rem;">
-                                        <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                        <div class="card-body">
-                                            <h6 class="card-title" style="font-size:2.5vh"><strong>Black Panther</strong></h6>
-                                          
+                                        <div class="row">
+                                            <div class="container-fluid">
+                                                <div class="float-right mb-2 mr-3">
+                                                    <a href="#" style="font-size:16px;">See more <span class="mdi mdi-arrow-right"></span> </a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-2 p-1">
-                                    <div class="card"data-toggle="tooltip" data-placement="bottom" title="2008" style="width: 12rem; height:20rem;">
-                                        <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                        <div class="card-body">
-                                            <h6 class="card-title" style="font-size:2.5vh"><strong>Ironman</strong></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 p-1">
-                                    <div class="card" data-toggle="tooltip" data-placement="bottom" title="2016" style="width: 12rem; height:20rem;">
-                                        <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                        <div class="card-body">
-                                            <h6 class="card-title" style="font-size:2.5vh"><strong>Avengers: Infinity War</strong></h6>
-                                               
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 p-1">
-                                    <div class="card" data-toggle="tooltip" data-placement="bottom" title="2008" style="width: 12rem; height:20rem;">
-                                        <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                        <div class="card-body">
-                                            <h6 class="card-title" style="font-size:2.5vh"><strong>The Incredible Hulk</strong></h6>
-                                        </div>
-                                    </div>
-                                </div>                         
-                            </div>
-                        </div> 
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12" style="margin-left:2%; margin-right: 5%;">
-                        <div class="row">
-                            <div class="col-lg-12 mt-3">
-                                    <h2>Related Results</h2>
-                            </div>
-                            <div class="col-lg-2 p-1">
-                                <div class="card"data-toggle="tooltip" data-placement="bottom" title="2018" style="width: 12rem; height:20rem;">
-                                    <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                    <div class="card-body">
-                                        <h6 class="card-title" style="font-size:2.5vh"><strong>Ant-Man and the Wasp</strong></h6>                                        </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 p-1">
-                                <div class="card" data-toggle="tooltip" data-placement="bottom" title="2018" style="width: 12rem; height:20rem;">
-                                    <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                    <div class="card-body">
-                                        <h6 class="card-title" style="font-size:2.5vh"><strong>Avengers: Infinity War</strong></h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 p-1">
-                                <div class="card" data-toggle="tooltip" data-placement="bottom" title="2018" style="width: 12rem; height:20rem;">
-                                    <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                    <div class="card-body">
-                                        <h6 class="card-title" style="font-size:2.5vh"><strong>Black Panther</strong></h6>                                        </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 p-1">
-                                <div class="card"data-toggle="tooltip" data-placement="bottom" title="2008" style="width: 12rem; height:20rem;">
-                                    <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                    <div class="card-body">
-                                        <h6 class="card-title" style="font-size:2.5vh"><strong>Ironman</strong></h6>                                        </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 p-1">
-                                <div class="card" data-toggle="tooltip" data-placement="bottom" title="2016" style="width: 12rem; height:20rem;">
-                                    <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                    <div class="card-body">
-                                        <h6 class="card-title" style="font-size:2.5vh"><strong>Avengers: Infinity War</strong></h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 p-1">
-                                <div class="card" data-toggle="tooltip" data-placement="bottom" title="2008" style="width: 12rem; height:20rem;">
-                                    <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                    <div class="card-body">
-                                        <h6 class="card-title" style="font-size:2.5vh"><strong>The Incredible Hulk</strong></h6>                                       </div>
-                                </div>
-                            </div>
+                            </div> 
                         </div>
-                        <div class="row">
-                            <div class="col-lg-2 p-1">
-                                <div class="card"data-toggle="tooltip" data-placement="bottom" title="2018" style="width: 12rem; height:20rem;">
-                                    <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                    <div class="card-body">
-                                        <h6 class="card-title" style="font-size:2.5vh"><strong>Ant-Man and the Wasp</strong></h6>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12" style="margin-left:2%; margin-right: 5%;">
+                            <div class="row mt-3 trending-videos">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-12" id="styleRow">
+                                            <div class="row">
+                                                <div class="section-divider ml-5">
+                                                    <ul>
+                                                        <li style="background-color: #000; margin: 50px 0 0 0;">
+                                                            <span id="divider-text" class="mdi mdi-video-outline"> Trending Videos</span>
+                                                        </li>
+                                                        <li>
+                                                            <span id="divider-text" class="mdi mdi-file-document-outline"> More Trending Videos</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container-fluid">
+                                            <div class="row" id="trendingMovies">
+                                                
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="container-fluid">
+                                            <div class="float-right mb-2 mr-3">
+                                                <a href="#" style="font-size:16px;">See more <span class="mdi mdi-arrow-right"></span> </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-2 p-1">
-                                <div class="card" data-toggle="tooltip" data-placement="bottom" title="2018" style="width: 12rem; height:20rem;">
-                                    <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                    <div class="card-body">
-                                        <h6 class="card-title" style="font-size:2.5vh"><strong>Avengers: Infinity War</strong></h6> 
-                                    </div>                                                                 
-                                </div>
-                            </div>
-                            <div class="col-lg-2 p-1">
-                                <div class="card" data-toggle="tooltip" data-placement="bottom" title="2018" style="width: 12rem; height:20rem;">
-                                    <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                    <div class="card-body">
-                                        <h6 class="card-title" style="font-size:2.5vh"><strong>Black Panther</strong></h6>                          
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 p-1">
-                                <div class="card"data-toggle="tooltip" data-placement="bottom" title="2008" style="width: 12rem; height:20rem;">
-                                    <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                    <div class="card-body">
-                                        <h6 class="card-title" style="font-size:2.5vh"><strong>Ironman</strong></h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 p-1">
-                                    <div class="card" data-toggle="tooltip" data-placement="bottom" title="2016" style="width: 12rem; height:20rem;">
-                                    <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                    <div class="card-body">
-                                        <h6 class="card-title" style="font-size:2.5vh"><strong>Avengers: Infinity War</strong></h6>                                                            
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 p-1">
-                                <div class="card" data-toggle="tooltip" data-placement="bottom" title="2008" style="width: 12rem; height:20rem;">
-                                    <img class="card-img-top" src="" alt="Card image cap" width="auto"height="75%" style="border-radius:2px;">
-                                    <div class="card-body">
-                                        <h6 class="card-title" style="font-size:2.5vh"><strong>The Incredible Hulk</strong></h6>                                                                        
-                                    </div>
-                                </div>
-                            </div>                                                
                         </div>
                     </div>
                 </div>
@@ -383,5 +245,5 @@
         </div>
     </body>
     <script src="../js/top-handler.js"></script>
-    <script src="../js/search-details.js"></script>
+    <script src="../js/search-results.js"></script>
 </html>
