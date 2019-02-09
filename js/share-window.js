@@ -56,8 +56,7 @@ function processFile(event) {
 				description: "Description-Description",
 				filename	: filename,
 				filenamePath 	: directory+filename,
-				thumbnailPath : "",
-				price : 100
+				thumbnailPath : ""
 			}
 		}
 	}
@@ -75,10 +74,12 @@ function appendJSON(event) {
 
 		json.data.thumbnailPath = directory;
 	}
+	
 	var jsonString = JSON.stringify(json);
 	var uploadFile =  ipcRenderer.sendSync('avx-share-upload-file', jsonString);
 	//ipcRenderer.send('upload-files','loading-screen-1.html');
 	$('[pd-popup="shareScanningModal"]').fadeIn(100);
+	
 	
 	// Generate Uploading status
 	$('.counter').text(0);

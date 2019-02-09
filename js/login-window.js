@@ -18,17 +18,18 @@ function signup() {
 	username = document.getElementById('username').value;
 	password = document.getElementById('passw').value;
 
-	var file = document.getElementById("openWallet").files[0];
+	//var file = document.getElementById("openWallet").files[0];
 
 
-	if (typeof file !== 'undefined' && file !== null) {
-		directory = file.path
+	//if (typeof file !== 'undefined' && file !== null) {
+	//	directory = file.path
 
-	}
+	//}
+	directory = "D:\\wallet";
 
 	
 	var json = {
-		status: 1112,
+		status: 1113,
 		data : {
 			username : username,
 			password : password,
@@ -74,7 +75,7 @@ function signin() {
 		}
 	}
 		var json = {
-			status: 1113,
+			status: 1114,
 			data : {
 				username : username,
 				password : password,

@@ -19,12 +19,15 @@ var app_dir = './../winPage/';
 
 module.exports = {
   shareUploadResponse: function (data) {
-
-			console.log(data);
+	console.log(data);
 	
   },
   getWalletBalance: function (data) {
-		  console.log(data);
+	console.log(data);
+  },
+  
+  uploadShareFile: function (data) {
+	console.log(data);
   }
 
 };

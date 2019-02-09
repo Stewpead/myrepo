@@ -24,11 +24,12 @@ var walletBalance = 0;
 var walletAddress = '';
 
 var Status = {
-	SIGNUP: 1112,
-	SIGNIN: 1113,
+	SIGNUP: 1113,
+	SIGNIN: 1114,
 	SENDFUND: 1115,
 	ASSET_UPLOAD_DATA: 15,
-	WALLET_BALANCE: 2000
+	WALLET_BALANCE: 2000,
+	SHARE_FILE_UPLOAD: 1120,
 };
 
 /*
@@ -103,6 +104,10 @@ var initiateConnection = function(attempt){
 				
 			case Status.WALLET_BALANCE:
 				moduleDashboard.getWalletBalance(data);
+				break;
+			
+			case Status.SHARE_FILE_UPLOAD:
+				module.Dashboard.uploadShareFile(data);
 				break;
 		}
 
