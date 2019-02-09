@@ -1,5 +1,6 @@
 var net = require('net');
 const electron = require('electron');
+const {ipcRenderer} = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const url = require('url');
@@ -27,10 +28,18 @@ module.exports = {
   },
   
   uploadShareFile: function (data) {
-	//console.log('ssss');
-	console.log(data);
-  }
+	data = JSON.stringify(data);
 
+	ipcRenderer.send('Test', data);
+	/*
+	ipcMain.on('avx-share-upload-file-reply',(event, arg) => {
+		
+		event.sender.send('Test', data);
+	});		
+
+
+*/
+  }
 };
 
 
