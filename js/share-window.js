@@ -51,7 +51,7 @@ function processFile(event) {
 		directory = path.dirname(file.path) + "\\";
 		
 		json = {
-			status : 1120,
+			status : 9000,
 			data : {
 				description: "Description-Description",
 				filename	: filename,
@@ -128,6 +128,8 @@ setTimeout(
 	$('#proceedAfterFileScanning').click(function(e) {
 		$('[pd-popup="shareScanResultModal"]').fadeOut(100);
 		$('[pd-popup="shareComparingFilesToNetworkModal"]').fadeIn(100);
+		
+		//var uploadFile =  ipcRenderer.sendSync('avx-share-upload-file', jsonString);
 
 		// Generate Uploading status
 		$('.counter').text(0);

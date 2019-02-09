@@ -27,6 +27,7 @@ module.exports = {
   },
   
   uploadShareFile: function (data) {
+	//console.log('ssss');
 	console.log(data);
   }
 

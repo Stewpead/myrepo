@@ -34,7 +34,7 @@ module.exports = {
   },
   signinResponse: function (data) {
 		var validate = data['data'];
-
+		console.log(validate+"ccc");
 		// console.log('PUTA BRAD GANUN KA KAYAMAN!');
 		
 		if (validate == 1 ){
