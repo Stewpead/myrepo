@@ -12,7 +12,7 @@ let defaultWindow;
 let notDefaultWindow;
 let prevWindow;
 let connectionPort = 5150;
-let connectionHost = '192.168.254.103';
+let connectionHost = '127.0.0.1';
 
 var IMG_DIR = './../images/';
 var app_dir = './../winPage/';
@@ -38,7 +38,7 @@ var Status = {
 var initiateConnection = function(attempt){
 	
 	var client = new net.Socket();
-
+	
 	client.connect(connectionPort, connectionHost, function() {
 		console.log('Connected');
 		attempt = 0;

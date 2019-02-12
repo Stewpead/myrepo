@@ -313,3 +313,41 @@
 .popup.scan-result .popup-inner .file-details .file-metadata .file-actor-content .file-actor-details .role {
     font-size: 12px;
 }
+
+/** Popup Modal for Validation File **/
+.popup .validation-event .popup-inner {
+    max-width: 450px;    
+	padding-left: 66px;
+    padding-right: 66px;
+}
+.validation-event .popup-inner {
+    max-width: 450px;    
+	padding-left: 66px;
+    padding-right: 66px;
+}
+.popup.validation-event .popup-inner h4.title-label {
+	font-size: 19px;
+    padding-top: 124px;
+    font-weight: 400;
+    color: #c1c1c1;
+}
+.popup.validation-event .popup-inner #transferStat {
+	margin-top: -200px;
+}
+.popup.validation-event .popup-inner .mdi-48px.mdi:before {
+    font-size: 220px;
+}
+
+#transferStat {
+    display: none;
+}
+.counterLogin {
+    display: none;
+}
+#signupfailPopup {
+    margin-top: 50px !important;
+}
+
+#btnChkAgreement, #btnpasswordEmptyfail, #btnSignupemptyfail, #btnSignupfail, #btnLoginfail {
+    width: 150px;
+}

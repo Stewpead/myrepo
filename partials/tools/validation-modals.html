@@ -1,8 +1,57 @@
-<div class="popup scanning-file" pd-popup="loginValidationModal">
+<div class="popup validation-event" pd-popup="loginSuccessModal">
     <div class="popup-inner">
-      <p><span class="mdi mdi-loading mdi-spin mdi-48px"></span></p>
-	  <h2 id="transferStat"><span class="counter" data-count="100">0</span>%</h2>
-	  <h4 class="title-label" >Scanning user files...</h3>
-	  <a class="popup-close" pd-popup-close="shareScanningModal" href="#"> </a>
+    <h4 class="title-label">Login is succesful</h3>
+      <h2 id="transferStat"><span class="counter" data-count="100">0</span>%</h2>
     </div>
-</div>
+</div> 
+
+<div class="popup validation-event" pd-popup="loginFailModal">
+  <div class="popup-inner">
+    <p><span class="mdi mdi-loading mdi-spin mdi-48px"></span></p>
+    <h2 id="transferStat"><span class="counter" data-count="100">0</span>%</h2>
+  <h4 class="title-label" >Check you details.</h3>
+    <button id="btnLoginfail" class="btn btn-danger">Okay</button>
+  </div>
+</div> 
+
+
+<div class="popup validation-event" pd-popup="signupSuccessModal">
+  <div class="popup-inner">
+    <p><span class="mdi mdi-loading mdi-spin mdi-48px"></span></p>
+    <h2 id="transferStat"><span class="counter" data-count="100">0</span>%</h2>
+  <h4 class="title-label" >Login is succesful</h3>
+
+  </div>
+</div> 
+
+<div class="popup validation-event" pd-popup="signupFailModal">
+  <div class="popup-inner">
+  <h4 class="title-label" id="signupfailPopup">Password did not match.</h4>
+    <button class="btn btn-danger" id="btnSignupfail">Okay</button>
+  </div>
+</div> 
+
+<div class="popup validation-event" pd-popup="signupFieldsEmptyModal">
+  <div class="popup-inner">
+  <h4 class="title-label" id="signupfailPopup">Fill out all the fields.</h4>
+    <button class="btn btn-danger" id="btnSignupemptyfail">Okay</button>
+  </div>
+</div> 
+
+
+<div class="popup validation-event" pd-popup="signupPasswordEmptyModal">
+  <div class="popup-inner">
+  <h4 class="title-label" id="signupfailPopup">Password fields are empy match.</h4>
+    <button class="btn btn-danger" id="btnpasswordEmptyfail">Okay</button>
+  </div>
+</div> 
+
+
+<div class="popup validation-event" pd-popup="signupAgreementModal">
+  <div class="popup-inner">
+  <h4 class="title-label" id="signupfailPopup">Check out the terms and agreement first before signing up.</h4>
+    <button class="btn btn-danger pl-5 pr-5" id="btnChkAgreement">Okay</button>
+  </div>
+</div> 
+
+
