@@ -83,12 +83,33 @@ function appendJSON(event) {
 
 	
 	
-	// POPULATE DATA ON SCREEN
+	
 	setTimeout(function() {
+		// POPULATE DATA ON SCREEN
 		let data = store.get('avx-share-upload-scan-results');
 		store.delete('avx-share-upload-scan-results');
+		console.log(data["data"]["metadata"]["duration"]);
 		var dtp = new DirTreeParser(data);
-		jQuery("#generateFileScanned").html(dtp.getHtmlTree());
+		//DIR TREE
+		$("#generateFileScanned").html(dtp.getHtmlTree());
+		//METADATA
+		$(".video-reso strong").html( data["data"]["metadata"]["video_resolution"] );
+		$(".video-duration strong").html( data["data"]["metadata"]["duration"] );
+		//$(".video-size strong").html( data["data"]["metadata"]["duration"] ); NO VIDEO SIZE FROM METADATA RESPONSE
+		$(".audio-video-bitrate strong").html( data["data"]["metadata"]["video_bitrate"] );
+		//$(".video-width strong").html( data["data"]["metadata"]["video_width"] ); REFER TO DIMENSION
+		//$(".video-height strong").html( data["data"]["metadata"]["video_height"] ); REFER TO DIMENSION
+		$(".aspect-ratio strong").html( data["data"]["metadata"]["aspect_ratio"] );
+		$(".video-container strong").html( data["data"]["metadata"]["container"] );
+		$(".video-frame-rate strong").html( data["data"]["metadata"]["video_frame_rate"] );
+		$(".video-profile strong").html( data["data"]["metadata"]["video_profile"] );
+		//$(".video-codec strong").html( data["data"]["metadata"]["video_codec"] ); NO VIDEO CODEC FROM METADATA RESPONSE
+		//$(".video-bitrate strong").html( data["data"]["metadata"]["video_bitrate"] ); CLARIFY
+		$(".bit-depth strong").html( data["data"]["metadata"]["bit_depth"] );
+		$(".audio-codec strong").html( data["data"]["metadata"]["audio_codec_name"] );
+		$(".audio-channels strong").html( data["data"]["metadata"]["channels"] );
+		
+		
 		
 		
 	}, 200);

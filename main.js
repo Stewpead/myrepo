@@ -87,9 +87,6 @@ var initiateConnection = function(attempt){
 		data = JSON.parse(data);
 
 		
-
-
-		
 		var moduleAccount = require('./includes/login-signup');
 		var moduleDashboard = require('./includes/dashboard-action');
 	
