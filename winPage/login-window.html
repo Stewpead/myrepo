@@ -14,10 +14,9 @@
  
     <link rel="stylesheet" type="text/css" href="../css/login-style.css">
 	<link rel="stylesheet" type="text/css" href="../css/skin/modal-theme.css">
-
-       
+    
     </head>
-
+ 
     <body>
         <div id="container">
             <nav>
@@ -52,7 +51,7 @@
                     </div>  
                 </div>
                 <div class="col" style="background-color:rgb(0, 0, 0);">
-                    <div>
+                    <div id="loginmode">
                         <div class="login">
                             <h2><b style="font-size:2.5vw;">Sign in</b></h2>
                             <div class="loginfields">
@@ -81,7 +80,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" style="margin-top: 20px;" onclick="signin()">Login</button>
+                            <button type="submit" style="margin-top: 20px;" id="btnLogin">Login</button>
                             <div style="margin-top: 20px;">
                                 <label>
                                     <input type="checkbox" name="remember" style="float:lef"> Remember me 
@@ -89,18 +88,33 @@
                                 <span class="psw">Forgot <a href="#">password?</a></span>
                             </div>
                             <br>
-                            
                             <br>
-                            <p><a href="#" onclick="location.href = 'signup-window.html'">Create a new wallet</a></p>
+                            <p><a href="#" id="showSignup">Create a new wallet</a></p>
                             <span id="foots"><a href="mailto:info@avxchange.io">info@avxchange.io</a> | <a href="https://www.avxchange.io/" target="_blank" >www.avxchange.io</a></span>
                         </div>
                         <!--</form> --> 
+                    </div>
+                    <div id="signupmode">
+                        <div class="signup">
+                            <span><b style="font-size:2.5vw;">Sign Up</b></span>
+                            <input type="text" placeholder="Username" id="susername" required>
+                            <br>
+                            <input type="password" placeholder="Password" id="spassword" required>
+
+                            <input type="password" placeholder="Confirm Password" id="confirmpass" name="confirmpass" required>
+                            <input type="checkbox" name="agreed" style="float:lef"> <label style="font-size:1.1vw;"> I Undestand the  <a href="#">Terms and Agreement</a></label>
+                            <br>
+                            <button type="submit" id="btnSignup">Sign Up</button> 
+                            <br>
+                            <p><a href="#" id="showLogin">Already have AVX Wallet? Sign in</a></p>
+                        </div>
                     </div>
                 </div>  
             </div>
         </div>
     </body>
     <!-- Validation popups diri na side -->
+
     <div id="validationPopup"></div>
     <script type="text/javascript"> 
         jQuery(function($){

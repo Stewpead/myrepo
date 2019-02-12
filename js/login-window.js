@@ -7,8 +7,37 @@ var path = require('path');
 jQuery(document).ready(($) => {
 	document.getElementById('btnUpload').style.display = 'none';
 	document.getElementById('downUpload').style.display = 'none';
-	document.getElementById('savew').style.display = 'none';
-	document.getElementById('openWallet').style.display = 'none';
+});
+
+$('#btnLogin').click( () => {
+
+	signin();
+
+});
+
+$('#btnSignup').click(() => {
+	var pass1 = document.getElementById('spassword').value;
+	var pass2 = document.getElementById('confirmpass').value;
+	if ( pass1 == pass2 ) {
+		// alert("Success Signup");
+		signup();
+	}
+	else if( pass1 != pass2 ) {
+		// alert("Password did not match.");
+		
+	}
+
+	
+});
+
+$('#showSignup').click( () => {
+	document.getElementById('loginmode').style.display = 'none';
+	document.getElementById('signupmode').style.display = 'block';
+});
+
+$('#showLogin').click( () => {
+	document.getElementById('loginmode').style.display = 'block';
+	document.getElementById('signupmode').style.display = 'none';
 });
 
 function signup() {
@@ -38,11 +67,9 @@ function signup() {
 		}
 	};
 
-
 	var jsonString = JSON.stringify(json);
 	ipcRenderer.send("avx-signup", jsonString);
 	
-
 }
 
 
@@ -88,7 +115,9 @@ function signin() {
 	var jsonString = JSON.stringify(json);
 	ipcRenderer.send("avx-login", jsonString);
 	// $('[pd-popup="shareScanResultModal"]').fadeOut(100);
-	$('[pd-popup="shareScanningModal"]').fadeIn(100);
+	$('[pd-popup="loginSuccessModal"]').fadeIn(150);
+
+	// $('[pd-popup="loginSuccessModal"]').fadeOut(3000);
 }
 // $('#buttonExecute').click(function() {
 // 	$('[pd-popup="shareScanResultModal"]').fadeOut(100);
@@ -105,7 +134,8 @@ $(document).ready( function() {
 		var data = $(this).attr('value');
 		$('#privateKeyUpload').val(data);	
 	});
-	
+	document.getElementById('loginmode').style.display = 'block';
+	document.getElementById('signupmode').style.display = 'none';
 	
 });
 
@@ -204,3 +234,4 @@ function showFile(event) {
 	document.getElementById('btnUpload').innerHTML = filename;
 	
 }
+
