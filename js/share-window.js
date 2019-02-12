@@ -1,6 +1,8 @@
 const {ipcRenderer} = require('electron');
 const ipcMain = require('electron').ipcMain;
 var path = require('path');
+const Store = require('electron-store');
+const store = new Store();
 
 $('#linkMain').click(function() {
     ipcRenderer.send('main','share');
@@ -77,18 +79,18 @@ function appendJSON(event) {
 	}
 	
 	var jsonString = JSON.stringify(json);
-	var uploadFile =  ipcRenderer.send('avx-share-upload-file', jsonString);
-
-
-	ipcMain.on('avx-share-upload-file',(event, arg) => {
-		ALERT('sss');
-	});
+	var uploadFile =  ipcRenderer.sendSync('avx-share-upload-file', jsonString);
 
 	
-
-
 	
-	//ipcRenderer.send('upload-files','loading-screen-1.html');
+	// POPULATE DATA ON SCREEN
+	setTimeout(function() {
+		let data = store.get('avx-share-upload-scan-results');
+		store.delete('avx-share-upload-scan-results');
+		
+		
+	}, 200);
+
 	$('[pd-popup="shareScanningModal"]').fadeIn(100);
 	
 	
