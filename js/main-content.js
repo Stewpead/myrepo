@@ -1,7 +1,6 @@
 
 const base64toimage = require('base64-to-image');
 const path = require('path');
-
 const fs = require('fs');
 var obj64 = fs.readFileSync('./json/base64img-2.json'); 
 var json64 = JSON.parse(obj64);
@@ -18,7 +17,6 @@ trendingVids();
 
     function trendingVids(){
         var trendingVcards = "";
-        console.log(json64);
         for (var key in json64) 
         {
             trendingVcards += '<div class="col-lg-3 grid-cards" id="card' + key + '">';
@@ -32,12 +30,10 @@ trendingVids();
             // = json64[key]['IPO'];
         }
         $('#trendingMovies').append(trendingVcards);
-    
     }
 
     $('#card0').click(() => {
-        
-        
+        location.href = "video-details.html";
     });
 
 // for (var i = 0; i < 14; ++i) {

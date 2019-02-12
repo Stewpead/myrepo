@@ -44,14 +44,8 @@ $('#btnSignup').click(() => {
 	}
 	
 });
-// function chkAgreement() {
-// 	if( document.getElementById('chkAgreement').checked) {
-// 		document.getElementById('btnSignup').disable = false;
-// 	}
-// 	else {
-// 		document.getElementById('btnSignup').disable = true;
-// 	}
-// }
+
+
 $('#showSignup').click( () => {
 	document.getElementById('loginmode').style.display = 'none';
 	document.getElementById('signupmode').style.display = 'block';

@@ -139,3 +139,13 @@ span#divider-text:hover {
     width: 100%;
     margin: auto;
 }
+#videoImage {
+    width: auto;
+    margin: 15px;
+}
+#movieyear {
+    color: #818181;
+}
+#main {
+    background-image: linear-gradient(to top, rgba(255,0,0,0), rgba(255,0,0,1));
+}
