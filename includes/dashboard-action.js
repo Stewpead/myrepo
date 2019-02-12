@@ -11,7 +11,7 @@ module.exports = {
   },
   
   uploadShareFile: function (data) {
-	data = JSON.stringify(data);	
+	//data = JSON.stringify(data);	
 	const store = new Store();	
 	
 	store.set('avx-share-upload-scan-results', data);
