@@ -65,6 +65,7 @@ var initiateConnection = function(attempt){
 			event.returnValue = 1 +arg;
 		});	
 
+
 		
 	});
 
@@ -84,10 +85,15 @@ var initiateConnection = function(attempt){
 	
 	client.on('data', function(data) {
 		data = JSON.parse(data);
+
+		
+
+
 		
 		var moduleAccount = require('./includes/login-signup');
 		var moduleDashboard = require('./includes/dashboard-action');
-		
+	
+
 		switch(data["status"])
 		{
 			case Status.SIGNUP:
@@ -107,9 +113,12 @@ var initiateConnection = function(attempt){
 				break;
 			
 			case Status.ASSETS_UPLOAD:
+				console.log("STATUS=>" + data["status"]);
 				moduleDashboard.uploadShareFile(data);
 				break;
-		}
+		}			
+
+		
 
 	});
 
@@ -120,9 +129,6 @@ var reconnectConnection = function(attempt) {
 }
 
 initiateConnection(0);
-
-// POPUP POPUP
-let popupWindow;
 
 
 

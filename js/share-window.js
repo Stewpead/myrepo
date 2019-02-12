@@ -1,5 +1,8 @@
 const {ipcRenderer} = require('electron');
+const ipcMain = require('electron').ipcMain;
 var path = require('path');
+const Store = require('electron-store');
+const store = new Store();
 
 $('#linkMain').click(function() {
     ipcRenderer.send('main','share');
@@ -77,7 +80,19 @@ function appendJSON(event) {
 	
 	var jsonString = JSON.stringify(json);
 	var uploadFile =  ipcRenderer.sendSync('avx-share-upload-file', jsonString);
-	//ipcRenderer.send('upload-files','loading-screen-1.html');
+
+	
+	
+	// POPULATE DATA ON SCREEN
+	setTimeout(function() {
+		let data = store.get('avx-share-upload-scan-results');
+		store.delete('avx-share-upload-scan-results');
+		var dtp = new DirTreeParser(data);
+		jQuery("#generateFileScanned").html(dtp.getHtmlTree());
+		
+		
+	}, 200);
+
 	$('[pd-popup="shareScanningModal"]').fadeIn(100);
 	
 	
@@ -262,3 +277,53 @@ setTimeout(
 	
 
 }, 1000);
+
+
+/* GET DIR TREE */
+class DirTreeParser {
+	constructor(jsonTree) {
+		this.dirtree = '';
+		this.setJsonTree(jsonTree);
+		this.parse(this.jsonTree);
+	}
+	
+	parse(jsonTree) {
+		for (var key in jsonTree) {
+			let currObj = jsonTree[key];
+			
+			if (typeof currObj == 'object' && Object.keys(currObj).length > 0) {
+				
+				if (("name" in currObj) && typeof currObj["name"] == 'string') {
+					this.dirtree += '		<p>';
+					this.dirtree += '			<span class="mdi mdi-checkbox-marked-outline mdi-48px"></span>'; 
+					this.dirtree += 				currObj["name"]; 
+					this.dirtree += '			<strong>' + currObj["size"] + '</strong>';
+					this.dirtree += '		</p>';
+				} else {
+					this.dirtree += '<div class="file-scanned">';
+					this.dirtree += '<label class="title">';
+					this.dirtree += '<p>'; 
+					this.dirtree += '	<span class="mdi mdi-file-outline mdi-48px"></span>'; 
+					this.dirtree += key;
+					this.dirtree += '</p>';
+					this.dirtree += '</label>';
+					this.dirtree += '<ul class="file-lists">';
+					this.dirtree += '	<li>';
+					this.parse(currObj, this.dirtree);
+					this.dirtree += '	</li>';
+					this.dirtree += '</ul>';
+					this.dirtree += '</div>';
+				}
+			}
+		}
+	}
+	
+	setJsonTree(jsonTree) {
+		this.jsonTree = jsonTree;
+	}
+	
+	getHtmlTree() {
+		return this.dirtree;
+	}
+}
+
