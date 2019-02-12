@@ -16,20 +16,42 @@ $('#btnLogin').click( () => {
 });
 
 $('#btnSignup').click(() => {
+	var username = document.getElementById('username').value;
 	var pass1 = document.getElementById('spassword').value;
 	var pass2 = document.getElementById('confirmpass').value;
-	if ( pass1 == pass2 ) {
-		// alert("Success Signup");
-		signup();
+	// var agreement = ;
+	if ( username=="" && pass1=="" && pass2=="") {
+		$('[pd-popup="signupFieldsEmptyModal"]').fadeIn(200);
+	}
+	else if( username=="" && pass1=="" && pass2=="" &&  document.getElementById('chkAgreement').checked == true) {
+
 	}
 	else if( pass1 != pass2 ) {
-		// alert("Password did not match.");
-		
+		$('[pd-popup="signupFailModal"]').fadeIn(200);
 	}
+	else if( pass1 == pass2 && document.getElementById('chkAgreement').checked == true ) {
+		alert(" SUCCESS! ");
+		// signup();
+	}
+	else if( pass1=="" && pass2=="" ) {
+		$('[pd-popup="signupPasswordEmptyModal"]').fadeIn(200);
+	}
+	else if(document.getElementById('chkAgreement').checked != true ) {
+		$('[pd-popup="signupAgreementModal"]').fadeIn(200);
+	}
+	else if (pass1 == pass2 && document.getElementById('chkAgreement').checked == false) {
 
+	}
 	
 });
-
+// function chkAgreement() {
+// 	if( document.getElementById('chkAgreement').checked) {
+// 		document.getElementById('btnSignup').disable = false;
+// 	}
+// 	else {
+// 		document.getElementById('btnSignup').disable = true;
+// 	}
+// }
 $('#showSignup').click( () => {
 	document.getElementById('loginmode').style.display = 'none';
 	document.getElementById('signupmode').style.display = 'block';
@@ -114,8 +136,8 @@ function signin() {
 
 	var jsonString = JSON.stringify(json);
 	ipcRenderer.send("avx-login", jsonString);
-	// $('[pd-popup="shareScanResultModal"]').fadeOut(100);
-	$('[pd-popup="loginSuccessModal"]').fadeIn(150);
+	$('[pd-popup="loginSuccessModal"]').fadeIn(200);
+	
 
 	// $('[pd-popup="loginSuccessModal"]').fadeOut(3000);
 }
@@ -124,6 +146,8 @@ function signin() {
 // 	$('[pd-popup="shareScanningModal"]').fadeIn(100);
 // });
 $(document).ready( function() {
+
+	// document.getElementById('btnSignup').disabled = true;
 
 	var listDir = store.get('directory');
 	if ( typeof listDir !== 'undefined' || listDir !== null ) {
@@ -221,7 +245,6 @@ $(function(){
         e.preventDefault();
         $("#walletUpload:hidden").trigger('click');
 	});
-
 });
 
 	var inputFile = document.getElementById('walletUpload');
@@ -232,6 +255,5 @@ function showFile(event) {
 	var input = event.srcElement;
 	filename = input.files[0].name;
 	document.getElementById('btnUpload').innerHTML = filename;
-	
 }
 
