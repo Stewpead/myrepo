@@ -60,8 +60,8 @@ function signup() {
 
 	var data = {};
 	var username, password, privateKey, directory;
-	username = document.getElementById('username').value;
-	password = document.getElementById('passw').value;
+	username = document.getElementById('susername').value;
+	password = document.getElementById('spassword').value;
 
 	//var file = document.getElementById("openWallet").files[0];
 
