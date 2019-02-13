@@ -91,7 +91,7 @@ function appendJSON(event) {
 		console.log(data["data"]["metadata"]["duration"]);
 		var dtp = new DirTreeParser(data);
 		//DIR TREE
-		$("#generateFileScanned").html(dtp.getHtmlTree());
+		$(".generateFileScanned").html(dtp.getHtmlTree());
 		//METADATA
 		$(".video-reso strong").html( data["data"]["metadata"]["video_resolution"] );
 		$(".video-duration strong").html( data["data"]["metadata"]["duration"] );
@@ -103,8 +103,8 @@ function appendJSON(event) {
 		$(".video-container strong").html( data["data"]["metadata"]["container"] );
 		$(".video-frame-rate strong").html( data["data"]["metadata"]["video_frame_rate"] );
 		$(".video-profile strong").html( data["data"]["metadata"]["video_profile"] );
-		//$(".video-codec strong").html( data["data"]["metadata"]["video_codec"] ); NO VIDEO CODEC FROM METADATA RESPONSE
-		//$(".video-bitrate strong").html( data["data"]["metadata"]["video_bitrate"] ); CLARIFY
+		$(".video-codec strong").html( data["data"]["metadata"]["video_codec_name"] );
+		$(".video-bitrate strong").html( data["data"]["metadata"]["video_bitrate"] );
 		$(".bit-depth strong").html( data["data"]["metadata"]["bit_depth"] );
 		$(".audio-codec strong").html( data["data"]["metadata"]["audio_codec_name"] );
 		$(".audio-channels strong").html( data["data"]["metadata"]["channels"] );
@@ -289,7 +289,8 @@ setTimeout(
 	});
 	
 	$('#proceedProceedPaymentCart').click( function(){
-		alert('proceed to payment');
+		$('[pd-popup="shareIntellectualPropertyConfirmationModal"]').fadeOut(100);
+		$('[pd-popup="shareMarketPriceModal"]').fadeIn(100);
 	});
 
 
