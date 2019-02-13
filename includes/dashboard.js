@@ -40,8 +40,15 @@ module.exports = {
 		ipcMain.on('checkStatus', (event, arg) => {
 			client.write(arg);
 		});
-	}
+	},
 	
+	sharePayment: function (client) {
+
+		ipcMain.on('avx-share-upload-payment',(event, arg) => {
+			client.write(arg);
+			event.returnValue = true;
+		});		
+	}
 	
 	
 };

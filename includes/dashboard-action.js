@@ -16,7 +16,15 @@ module.exports = {
 	
 	store.set('avx-share-upload-scan-results', data);
 
+  },
+  
+  sharePaymentResponse: function (data) {
+	const store = new Store();
+	store.set('avx-share-upload-payment-response', data);
+
   }
+  
+  
 };
 
 

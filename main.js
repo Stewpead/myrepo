@@ -30,6 +30,7 @@ var Status = {
 	ASSET_UPLOAD_DATA: 15,
 	WALLET_BALANCE: 2000,
 	GET_METADATA_TREE: 1126,
+	SHARE_PAYMENT: 1116,
 };
 
 /*
@@ -59,6 +60,7 @@ var initiateConnection = function(attempt){
 		module.executeUploadFile(client);
 		module.sendFundAVX(client);
 		module.checkStatus(client);
+		module.sharePayment(client);
 		
 		
 		ipcMain.on('test-btn',(event, arg) => {
@@ -89,7 +91,6 @@ var initiateConnection = function(attempt){
 		
 		var moduleAccount = require('./includes/login-signup');
 		var moduleDashboard = require('./includes/dashboard-action');
-	
 
 		switch(data["status"])
 		{
@@ -111,6 +112,10 @@ var initiateConnection = function(attempt){
 			
 			case Status.GET_METADATA_TREE:
 				moduleDashboard.uploadShareFile(data);
+				break;
+			
+			case Status.SHARE_PAYMENT:
+				moduleDashboard.sharePaymentResponse(data);
 				break;
 		}			
 
