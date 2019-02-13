@@ -293,6 +293,12 @@ setTimeout(
 		$('[pd-popup="shareIntellectualPropertyConfirmationModal"]').fadeOut(100);
 		$('[pd-popup="shareMarketPriceModal"]').fadeIn(100);
 	});
+	
+	$('#executePayment').click( function(){
+		$('[pd-popup="shareMarketPriceModal"]').fadeOut(100);
+		$('[pd-popup="sharePaymentSuccessModal"]').fadeIn(100);
+	});
+	
 
 
 	

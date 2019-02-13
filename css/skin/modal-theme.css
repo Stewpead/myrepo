@@ -27,6 +27,15 @@
     border-radius: 10px;
 } 
 
+/*POPUP INNER WHITE*/
+.popup-inner-white {
+    max-width: 990px;
+    padding-left: 66px;
+    padding-right: 66px;
+    margin: 0 auto;
+    color: #000000;
+    background: #ffffff;
+}
 
 /*Popup*/
 .popup {

@@ -754,61 +754,11 @@
 			
 			
 		</div>
-		
-		<h5 class="label-with-border">IP Ownership <span class="mdi mdi-information-outline"></span>  </h5>
-		<div class="row file-details">
-			<div class="row file-metadata">
-				<div class="col-12">
-					<p class="full-width">This intellectual property has an AVX token account</p>
-					<p class="full-width">AVX Account Name: <strong><u>Sony Pictures\ShaunTheSheep2001</u></strong></p>
-					<p class="full-width">Do you own the rights to this intellectual property? 
-						<span class="mdi mdi-alert-outline"></span> <u>Warning!</u>
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="col-12 file-details">
-			<a href="" id="claimThisAccount" class="btn btn-default float-right">Claim this account</a>
-		</div>
-		
-		<h5 class="label-with-border">Local media directory: </h5>
-
-		<p class="file-dir-info" style="margin-left: 30px">
-			File Directory:  
-			<span style="margin-left:10px;"> S:\Torrent-Data\downloads\Shaun the Sheep (2018)[BluRay][1080p][YTS.AM]</span>
-			<span class="mdi mdi-information-outline mdi-48px float-right"></span> 
-		</p>
-
-
-        <h5 class="label-with-border">Media files: </h5>
-        <div class="generateFileScanned scroll-skin" >
-			<div class="file-scanned">
-				<label class="title">
-					<p> 
-						<span class="mdi mdi-file-outline mdi-48px"></span> 
-						Shaun the Sheep (2018)[BluRay][1080p][YTS.AM]
-					</p>
-				</label>
-				<ul class="file-lists">
-					<li> 
-						<p>
-							<span class="mdi mdi-checkbox-marked-outline mdi-48px"></span> 
-							shaun-the-sheep-2018-BluRay-1080p.mp4 - 
-							<strong>1.91 GB</strong>
-						<p>
-					</li>
-					<li> 
-						<p>
-							<span class="mdi mdi-checkbox-marked-outline mdi-48px"></span> 
-							shaun-the-sheep-2018-BluRay-1080p.str - 
-							<strong>1.2 KB</strong>
-						<p>
-					</li>
-				</ul>
-			</div>
-		</div>		
-		
-		<div class="share-modal-options row">
+	  <a class="popup-close" pd-popup-close="shareMarketPriceModal" href="#"> </a>
+    </div>
+	
+	<div class="popup-inner-white">
+		<div class="row">
 			<div class="col-8">
 				<p style="font-size: 22px;">Proceed to AVXChange network file genesis payment?</p>
 				<div class="row file-details" style="margin: 0px;">
@@ -824,11 +774,29 @@
 			</div>
 
 			<div class="col-4">
-				 <a href="#" id="proceedProceedPaymentCart" class="btn btn-danger float-right">Pay now</a>
+				 <a href="#" id="executePayment" class="btn btn-danger float-right">Share/Pay</a>
 				 <a pd-popup-close="shareMarketPriceModal" href="#" class="btn btn-default float-right">Cancel</a>
 			</div>
 		</div>
-	  <a class="popup-close" pd-popup-close="shareMarketPriceModal" href="#"> </a>
-    </div>
+	</div>
 </div>
 <!-- /Payment Confirmation Page -->
+<!-- Payment Confirmation Success -->
+ <div class="popup scanning-file" pd-popup="sharePaymentSuccessModal">
+    <div class="popup-inner">
+		<div class="row">
+			<div class="col-6">
+				image
+			</div>
+			<div class="col-6">
+				<label>Congratulations, your file is now uploading/sharing.</label>
+				<p>Your video is on currently sharing(upload). You can check the status on Account Waller/Active Files</p>
+				<div class="balance-info">
+					<label id="account-balance"><span></span> AVX</label>
+					<p>Current Balance</p>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+<!--/ Payment Confirmation Success -->
