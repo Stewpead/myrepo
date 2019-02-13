@@ -88,7 +88,8 @@ function appendJSON(event) {
 		// POPULATE DATA ON SCREEN
 		let data = store.get('avx-share-upload-scan-results');
 		store.delete('avx-share-upload-scan-results');
-		console.log(data["data"]["metadata"]["duration"]);
+		//console.log(data["data"]["metadata"]["duration"]);
+		console.log(data["data"]["tree"]);
 		var dtp = new DirTreeParser(data["data"]["tree"]);
 		//DIR TREE
 		$(".generateFileScanned").html(dtp.getHtmlTree());
