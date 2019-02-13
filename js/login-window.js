@@ -31,7 +31,7 @@ $('#btnSignup').click(() => {
 	}
 	else if( pass1 == pass2 && document.getElementById('chkAgreement').checked == true ) {
 		alert(" SUCCESS! ");
-		// signup();
+		signup();
 	}
 	else if( pass1=="" && pass2=="" ) {
 		$('[pd-popup="signupPasswordEmptyModal"]').fadeIn(200);
@@ -130,7 +130,7 @@ function signin() {
 
 	var jsonString = JSON.stringify(json);
 	ipcRenderer.send("avx-login", jsonString);
-	$('[pd-popup="loginSuccessModal"]').fadeIn(200);
+	// $('[pd-popup="loginSuccessModal"]').fadeIn(200);
 	
 
 	// $('[pd-popup="loginSuccessModal"]').fadeOut(3000);
