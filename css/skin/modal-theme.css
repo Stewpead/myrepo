@@ -1,7 +1,7 @@
 /*SCROLL SKIN*/
 .scroll-skin {
-    overflow: hidden;
-    overflow-y: scroll;
+    overflow: hidden!important;
+    overflow-y: auto!important;
 	/*PROVIDE MIN-HEIGHT ON MAIN CLASS*/
 }
 .scroll-skin::-webkit-scrollbar {
@@ -68,6 +68,8 @@
 	background-color: #000000;
 	color: whitesmoke;
 	font-family: 'Segoe UI';
+    max-height: 625px;
+    overflow: hidden;
 }
 
 .popup-inner h1 {
@@ -184,7 +186,9 @@
 }
 
 /** Popup Modal for Share Scanning File **/
-
+.popup.scanning-file #stat {
+	margin-top: -201px;
+}
 .popup.scanning-file .popup-inner h4.title-label {
 	font-size: 19px;
     padding-top: 124px;
@@ -200,8 +204,8 @@
 
 /** Popup Modal for Share Scan Result **/
 .popup.scan-result .popup-inner {
-    max-width: 990px;    
-	padding-left: 66px;
+    max-width: 990px;
+    padding-left: 66px;
     padding-right: 66px;
 }
 .popup.scan-result .popup-inner  h1 {
