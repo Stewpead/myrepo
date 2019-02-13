@@ -313,6 +313,14 @@
 .popup.scan-result .popup-inner .file-details .file-metadata .file-actor-content .file-actor-details .role {
     font-size: 12px;
 }
+.popup.scan-result .popup-inner .generateFileScanned {
+	max-height: 300px;
+}
+.popup.scan-result .popup-inner .generateFileScanned .file-scanned:not(:first-child) {
+	margin: 0;
+}
+
+
 
 /** Popup Modal for Validation File **/
 .popup .validation-event .popup-inner {

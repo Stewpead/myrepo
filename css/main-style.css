@@ -149,6 +149,35 @@ span#divider-text:hover {
     margin-top: 0;
 }
 
+/*SCROLL SKIN*/
+.scroll-skin {
+    overflow: hidden;
+    overflow-y: scroll;
+	/*PROVIDE MIN-HEIGHT ON MAIN CLASS*/
+}
+.scroll-skin::-webkit-scrollbar {
+    display: block;
+    width: 10px;
+    border-radius: 10px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.scroll-skin::-webkit-scrollbar-track { 
+    background: #111111; 
+    border-radius: 10px;
+    box-shadow: inset 0 0 8px grey; 
+}
+.scroll-skin::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+    display: block;
+}
+.scroll-skin::-webkit-scrollbar-thumb:hover {
+    background: #555555; 
+    border-radius: 10px;
+} 
+
 @media screen and (width:850px) {
     #sowl {
         padding-right: 5%;
