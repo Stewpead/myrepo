@@ -146,6 +146,19 @@ span#divider-text:hover {
 #movieyear {
     color: #818181;
 }
-#main {
-    background-image: linear-gradient(to top, rgba(255,0,0,0), rgba(255,0,0,1));
+#mainSearchResult {
+    margin-left: 130px;
+    background-color: #000;
+    color:white;
+    height: 100%;
+    display:block;
+    
+    -webkit-background-size: cover;
+    background-size: cover;
+
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.192) 40%, rgba(0, 0, 0, 0.795) 45%), url('../images/avengers_wall.jpg') no-repeat;
+    /* background-image: url('../images/avengers_wall.jpg') cross-fade(); */
+    background-size: 100% 60%;
+    background-repeat: no-repeat;
+
 }
