@@ -29,7 +29,7 @@ var Status = {
 	SENDFUND: 1115,
 	ASSET_UPLOAD_DATA: 15,
 	WALLET_BALANCE: 2000,
-	ASSETS_UPLOAD: 9000,
+	GET_METADATA_TREE: 1126,
 };
 
 /*
@@ -109,8 +109,7 @@ var initiateConnection = function(attempt){
 				moduleDashboard.getWalletBalance(data);
 				break;
 			
-			case Status.ASSETS_UPLOAD:
-				console.log("STATUS=>" + data["status"]);
+			case Status.GET_METADATA_TREE:
 				moduleDashboard.uploadShareFile(data);
 				break;
 		}			
