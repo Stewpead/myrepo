@@ -89,7 +89,7 @@ function appendJSON(event) {
 		let data = store.get('avx-share-upload-scan-results');
 		store.delete('avx-share-upload-scan-results');
 		console.log(data["data"]["metadata"]["duration"]);
-		var dtp = new DirTreeParser(data);
+		var dtp = new DirTreeParser(data["data"]["tree"]);
 		//DIR TREE
 		$(".generateFileScanned").html(dtp.getHtmlTree());
 		//METADATA
@@ -112,7 +112,7 @@ function appendJSON(event) {
 		
 		
 		
-	}, 200);
+	}, 1000);
 
 	$('[pd-popup="shareScanningModal"]').fadeIn(100);
 	
@@ -310,32 +310,41 @@ class DirTreeParser {
 	}
 	
 	parse(jsonTree) {
+		var flag = false;
+		
 		for (var key in jsonTree) {
 			let currObj = jsonTree[key];
 			
 			if (typeof currObj == 'object' && Object.keys(currObj).length > 0) {
 				
 				if (("name" in currObj) && typeof currObj["name"] == 'string') {
-					this.dirtree += '		<p>';
-					this.dirtree += '			<span class="mdi mdi-checkbox-marked-outline mdi-48px"></span>'; 
-					this.dirtree += 				currObj["name"]; 
-					this.dirtree += '			<strong>' + currObj["size"] + '</strong>';
-					this.dirtree += '		</p>';
+					this.dirtree += '<div class="file-scanned">';
+					this.dirtree += '<ul class="file-lists">';
+					this.dirtree += '<li>';
+					this.dirtree += '<p>';
+					this.dirtree += '<span class="mdi mdi-checkbox-marked-outline mdi-48px"></span>'; 
+					this.dirtree += currObj["name"]; 
+					this.dirtree += '<strong>' + currObj["size"] + '</strong>';
+					this.dirtree += '</p>';
+					this.dirtree += '</li>';
+					this.dirtree += '</ul>';
+					this.dirtree += '</div>';
 				} else {
 					this.dirtree += '<div class="file-scanned">';
 					this.dirtree += '<label class="title">';
 					this.dirtree += '<p>'; 
-					this.dirtree += '	<span class="mdi mdi-file-outline mdi-48px"></span>'; 
+					this.dirtree += '<span class="mdi mdi-file-outline mdi-48px"></span>'; 
 					this.dirtree += key;
 					this.dirtree += '</p>';
 					this.dirtree += '</label>';
 					this.dirtree += '<ul class="file-lists">';
-					this.dirtree += '	<li>';
+					this.dirtree += '<li>';
 					this.parse(currObj, this.dirtree);
-					this.dirtree += '	</li>';
+					this.dirtree += '</li>';
 					this.dirtree += '</ul>';
 					this.dirtree += '</div>';
 				}
+
 			}
 		}
 	}
