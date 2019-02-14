@@ -341,7 +341,7 @@ setTimeout(
 			// POPULATE DATA ON SCREEN
 			let data = store.get('avx-share-upload-payment-response');
 			store.delete('avx-share-upload-payment-response');
-			
+			 location.reload();
 		}, 1000);
 		
 	});
