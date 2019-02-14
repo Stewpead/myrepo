@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="../css/app-style.css">
     <script src="../js/dataparse.js"></script>
     <!-- MINE -->    
+	<link rel="stylesheet" type="text/css" href="../css/skin/account-modal-theme.css">
     
     <header>
         <div id="container">
@@ -84,7 +85,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12">
-                                                <p style="font-size: 14px;"> Wallet address: </p><span id="Waddress"></span>
+                                                <p style="font-size: 14px;"> Wallet address: </p><span class="Waddress"></span>
                                                 <!-- <button type="button" class="btn btn-outline-dark ml-5 float-right"><i class="fa fa-copy"></i></button>   -->
                                             </div>
                                         </div> 
@@ -120,7 +121,7 @@
                     <div class="col-lg-3" style="height:45vh; margin-top:80px;">
                         <h5>Available Wallet Balance</h5>
                         <div class="d-inline-flex p-2">
-                            <p class="p-2" id="total-balance" style="font-size:24px;">0.00</p><p class="p-2" style="font-size:24px;">AVX</p>
+                            <p class="p-2 total-balance"style="font-size:24px;">0.00</p><p class="p-2" style="font-size:24px;">AVX</p>
                         </div>
                         <div class="d-inline-flex p-2">
                             <p class="p-2 wallet-bal-texts">Display</p>
@@ -564,6 +565,14 @@
                 </div>
             </div>
     </div>
+	
+	<!-- INCLUDE HTML AREA -->
+	<div id="AccountModalView"></div>
+	<script type="text/javascript"> 
+		$(function(){
+			$("#AccountModalView").load("../partials/tools/account-modals.html");
+		});
+	</script>
     </body>
     <!-- <footer style="height:10%;width: 100%;">
     <br>
@@ -571,6 +580,7 @@
     </footer> -->
     <script src="../js/top-handler.js"></script>
     <script src="../js/account-window.js"></script>
+	<script src="../js/send-avx.js"></script>
 </html>
                 <!-- 
                     <div class="row">
