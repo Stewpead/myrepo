@@ -26,7 +26,7 @@ var walletAddress = '';
 var Status = {
 	SIGNUP: 1113,
 	SIGNIN: 1114,
-	SENDFUND: 1115,
+	SEND_FUND: 1115,
 	ASSET_UPLOAD_DATA: 15,
 	WALLET_BALANCE: 2000,
 	GET_METADATA_TREE: 1126,
@@ -140,6 +140,10 @@ var initiateConnection = function(attempt){
 			
 			case Status.GET_PUBLICKEY:
 				moduleDashboard.getPublicKey(data);
+				break;
+			
+			case Status.SEND_FUND:
+				moduleDashboard.sendFund(data);
 				break;
 		}			
 

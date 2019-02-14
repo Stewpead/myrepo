@@ -1,0 +1,101 @@
+ <div class="popup sendToken" pd-popup="accountSendToModal">
+    <div class="popup-inner scroll-skin">
+	  <h4 style="font-weight: 400;text-align: left;margin-bottom: 37px; font-size: 29px;" >Send Token</h4>
+		<p class="wallet-infomation">
+			Wallet balance:  
+			<span style="margin-left: 10px; color: #098c48; font-weight: 700; font-size: 25px; " class="total-balance">00.00</span> 
+			<span style="margin-left: 10px; color: #098c48; font-weight: 700; font-size: 25px; margin-left:0">AVX</span>
+		</p>
+		<p class="wallet-infomation">
+			Wallet address:  
+			<span style="margin-left:10px; font-weight: 100;" class="Waddress"></span>
+		</p>
+		<div class="input-holder">
+			<div class="amount-holder">
+				<input type="number" id="avxquantity" placeholder="0.00">
+				<p>AVX Quantity to export</p>
+			</div>
+			<div class="wallet-info">
+				<input type="text" id="receiver" placeholder="Enter wallet address">
+				<textarea placeholder="Description"></textarea>
+			</div>
+		</div>
+		<div class="share-modal-options row">
+			<div class="col-7">
+			</div>
+			<div class="col-5">
+				 <a href="#" id="btnSendtoken" class="btn btn-danger float-right">Send</a>
+			</div>
+		</div>
+	  <a class="popup-close" pd-popup-close="accountSendToModal" href="#"> </a>
+    </div>
+</div>
+
+ <div class="popup sendToken" pd-popup="accountSendToSuccessModal">
+    <div class="popup-inner scroll-skin">
+		<p> You have successfully send token</p>
+    </div>
+</div>
+
+
+ <div class="popup sendToken" pd-popup="accountSendToErrorModal">
+    <div class="popup-inner scroll-skin">
+		<p> Error encountered when sending a token. Please check and try again</p>
+    </div>
+</div>
+
+<script>
+jQuery(document).ready(function($) {
+	/*Close Modal action*/
+	$('[pd-popup-close]').click(function(e) {
+	    var targeted_popup_class = jQuery(this).attr('pd-popup-close');
+	    $('[pd-popup="' + targeted_popup_class + '"]').fadeOut(200);
+
+	    e.preventDefault();
+	});
+	
+	$('#btnSendtoken').click( function (e) {
+		$(this).attr("disable","disable" );
+		e.preventDefault();
+
+		json1.status = 1115;
+		var amount = document.getElementById('avxquantity').value;
+		json1.data.sender = $(".Waddress").html();
+		json1.data.receiver = document.getElementById('receiver').value;
+		json1.data.amount = parseInt(amount);
+		json1.data.type = parseInt(1);
+		jsonString1 = JSON.stringify(json1);
+		ipcRenderer.sendSync('send-token',jsonString1);
+		
+		setTimeout(function() {
+			// POPULATE DATA ON SCREEN
+			let data = store.get('avx-account-send-wallet');
+			store.delete('avx-account-send-wallet');
+			if(typeof data["response"] != 'undefined') {
+				$(this).removeAttr("disable");
+				$('[pd-popup="accountSendToModal"]').fadeOut(100);
+				if ( data["response"] == 1) {
+					$('[pd-popup="accountSendToSuccessModal"]').fadeIn(100);
+					
+					setTimeout(function() {
+						$('[pd-popup="accountSendToSuccessModal"]').fadeOut(100);
+						location.reload();
+					}, 2000);
+				} else {
+					$('[pd-popup="accountSendToErrorModal"]').fadeIn(100);
+					
+					setTimeout(function() {
+						$('[pd-popup="accountSendToErrorModal"]').fadeOut(100);
+					}, 2000);
+				}
+				
+			}
+			
+		}, 1000);
+	
+	});
+});
+
+
+</script>
+

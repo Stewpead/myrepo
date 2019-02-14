@@ -114,7 +114,7 @@ $(document).ready( () => {
 		let dataBalance = store.get('avx-account-balance');
 		store.delete('avx-account-balance');
 		if(typeof dataBalance["balance"] != 'undefined') {
-			$('#total-balance').html(parseFloat(dataBalance["balance"]).toFixed(2));
+			$('.total-balance').html(parseFloat(dataBalance["balance"]).toFixed(2));
 		}
 
 	}, 1000);
@@ -151,7 +151,7 @@ $(document).ready( () => {
 		let dataWalletAddress = store.get('avx-account-wallet-address');
 		store.delete('avx-account-wallet-address');
 		if(typeof dataWalletAddress != 'undefined') {
-			$('span#Waddress').html(dataWalletAddress["publicKey"]);
+			$('span.Waddress').html(dataWalletAddress["publicKey"]);
 		}
 		
 		
@@ -217,10 +217,13 @@ $(document).ready( () => {
 			$("#tbMerge tbody").html(outputIncoming+outputOutgoing);
 		}
 		//let accountHistoryIncoming = data["incoming"];
+
 		
+
 		
 	}, 1000);
 	
+
 
   
 });
@@ -241,8 +244,11 @@ $('#btnOutcomingTx').click(() => {
     document.getElementById('btnIncomingTx').style.color = '#818181';
 });
 
+
+
 $('#btnSend').click(function() {
-   ipcRenderer.send('send-avx','send-token.html');
+	$('[pd-popup="accountSendToModal"]').fadeIn(100);
+   //ipcRenderer.send('send-avx','send-token.html');
 });
 
 $('#a1').click(function () {

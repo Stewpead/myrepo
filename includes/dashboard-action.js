@@ -46,6 +46,12 @@ module.exports = {
 	const store = new Store();
 	store.set('avx-account-wallet-address', data);
 
+  },
+  
+  sendFund: function (data) {
+	const store = new Store();
+	store.set('avx-account-send-wallet', data);
+
   }
   
   

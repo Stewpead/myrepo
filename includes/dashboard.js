@@ -29,10 +29,10 @@ module.exports = {
 	},
 
 	sendFundAVX: function (client) {
-
+		
 		ipcMain.on('send-token',(event, arg) => {
-			client.write(arg);
-				// console.log(arg);		
+			client.write(arg);	
+			event.returnValue = true;
 		});
 	},		
 	
