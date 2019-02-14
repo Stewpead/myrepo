@@ -4,16 +4,18 @@
 	  <h2 id="stat"><span class="counter" data-count="100">0</span>%</h2>
 	  <h4 class="title-label" >Scanning user files...</h3>
 	  <a class="popup-close" pd-popup-close="shareScanningModal" href="#"> </a>
+	  <input type="hidden" id="fullFilePathDir">
+	  <input type="hidden" id="fullThumbPathDir">
     </div>
 </div>
 
  <div class="popup scan-result" pd-popup="shareScanResultModal">
-    <div class="popup-inner">
+    <div class="popup-inner scroll-skin">
         <h1 class="title-holder">
 			<span class="mdi mdi-file-outline mdi-48px" id="icon-vid"></span> 
 			File(s) scanning result
 		</h1>
-		<div class="generateFileScanned" >
+		<div class="generateFileScanned scroll-skin" >
 			<div class="file-scanned">
 				<label class="title">
 					<p> 
@@ -68,7 +70,7 @@
 </div>
 
  <div class="popup scan-result" pd-popup="shareExistAvxNetwork">
-    <div class="popup-inner">
+    <div class="popup-inner scroll-skin">
         <h1 class="title-holder">
 			<span class="mdi mdi-file-outline mdi-48px" id="icon-vid"></span> 
 			These files do not currently exist on AVXChange network
@@ -83,7 +85,7 @@
 		</p>
 
 		<h5 class="label-with-border">Media files: </h5>
-		<div class="generateFileScanned">
+		<div class="generateFileScanned scroll-skin">
 			<div class="file-scanned">
 				<label class="title">
 					<p> 
@@ -193,7 +195,7 @@
 
 
  <div class="popup scan-result" pd-popup="shareConfirmMetadataModal">
-    <div class="popup-inner">
+    <div class="popup-inner scroll-skin">
 		<div class="row file-details">
 			<div class="col-sm-12 col-md-3">
 				<div class="file-feature-img" style="background-image: url('https://tinyurl.com/ycjjsd24')"></div>
@@ -318,7 +320,7 @@
 
 
  <div class="popup scan-result" pd-popup="shareIntellectualPropertyModal">
-    <div class="popup-inner">
+    <div class="popup-inner scroll-skin">
 		<div class="row file-details">
 			<div class="col-sm-12 col-md-3">
 				<div class="file-feature-img" style="background-image: url('https://tinyurl.com/ycjjsd24')"></div>
@@ -436,7 +438,7 @@
 
 
  <div class="popup scan-result" pd-popup="shareIntellectualPropertyConfirmationModal">
-    <div class="popup-inner">
+    <div class="popup-inner scroll-skin">
 		<div class="row file-details">
 			<div class="col-sm-12 col-md-3">
 				<div class="file-feature-img" style="background-image: url('https://tinyurl.com/ycjjsd24')"></div>
@@ -557,7 +559,7 @@
 			</div>
 
 
-			<div class="col-4">
+			<div class="col-4"><br><br><br>
 				<label class="full-width video-reso">Video Resolution: <strong>1080p</strong> </label>
 				<label class="full-width video-duration" >Duration: <strong>1:59:01</strong> </label>
 				<label class="full-width video-size">Size: <strong>1.91 GB</strong> </label>
@@ -567,7 +569,7 @@
 				<label class="full-width aspect-ratio">Aspect Ratio: <strong>2.35</strong> </label>
 			</div>
 			
-			<div class="col-4">
+			<div class="col-4"><br><br><br>
 				<label class="full-width video-container">Container: <strong>MP4</strong> </label>
 				<label class="full-width video-frame-rate">Video Frame Rate: <strong>800</strong> </label>
 				<label class="full-width">Web Optimized: <strong>Yes</strong> </label>
@@ -576,7 +578,7 @@
 				<label class="full-width video-bitrate">Video Bitrate: <strong>1011 kbps</strong> </label>				
 			</div>
 			
-			<div class="col-4">
+			<div class="col-4"><br><br><br>
 				<label class="full-width bit-depth">Bit Depth: <strong>8</strong> </label>
 				<label class="full-width video-frame-rate">Frame Rate: <strong>23.965 fps</strong> </label>
 				<label class="full-width audio-codec">Audio Codec: <strong>AAC</strong> </label>
@@ -616,7 +618,7 @@
 
 
         <h5 class="label-with-border">Media files: </h5>
-        <div class="generateFileScanned" >
+        <div class="generateFileScanned scroll-skin" >
 			<div class="file-scanned">
 				<label class="title">
 					<p> 
@@ -670,14 +672,24 @@
 <!-- Payment Confirmation Page -->
 
  <div class="popup scan-result" pd-popup="shareMarketPriceModal">
-    <div class="popup-inner">
+    <div class="popup-inner scroll-skin">
+		<div class="row file-details">
+			
+			<div class="col-sm-1 col-md-1">
+				<img class="popup-avx-logo float-left" src="../images/logo_white.png">
+			</div>
+			
+			<div class="col-sm-11 col-md-11">
+				<p class="float-left popup-avx-logo-title"> AVXChange Market Price Analytics</p>
+			</div>
+		</div>
 		<div class="row file-details">
 			<div class="col-sm-12 col-md-3">
 				<div class="file-feature-img" style="background-image: url('https://tinyurl.com/ycjjsd24')"></div>
 			</div>
 			<div class="col-sm-12 col-md-9 ">
 				<h1 class="file-title">
-					Shaun The Sheep : The Moviesss
+					Shaun The Sheep : The Movie
 					<span class="file-year">2001</span>
 				</h1>
 				<p class="file-subdata">
@@ -702,6 +714,10 @@
 						<strong class="col-12">Animated Series, Adventure</strong>
 					</div>
 					<div class="col-12">
+						<p>Video: </p>
+						<strong class="col-12 red-text">1080p </strong>
+					</div>
+					<div class="col-12">
 						<p>Audio: </p>
 						<strong class="col-12 red-text">English (ACC Stereo), Francias (ACC Mono), Francias (ACC Stereo) </strong>
 					</div>
@@ -711,173 +727,40 @@
 					</div>
 				</div>
 			</div>
-			
-			<div class="row file-metadata">
-				<div class="col-12">
-					<p class="full-width">
-						The Farmer is playing the piano and torturing everyone with his musical inability. When the Flock discover that Bitzer on the other hand is a virtuoso, they decide it's time for a party. They devise a plan to `borrow' the piano when the Farmer goes to bed - however things don't quite go to plan.
-					</p>
-				</div>
-			</div>
-			
-			<div class="row file-metadata">
-				<div class="col-12 file-actor">
-					<h3 class="file-actor-heading">Actors</h3>
-					<div class="row file-actor-content">
-						<!--  SAMPLE ACTOR -->
-						<div class="col-2 file-actor-details">
-							<div class="img" style="background-image: url('https://tinyurl.com/ycjjsd24')" ></div>
-							<label class="name">Rich Webber</label>
-							<p class="role"> The Farmer </p>
-						</div>
-						<div class="col-2 file-actor-details">
-							<div class="img" style="background-image: url('https://tinyurl.com/ycjjsd24')" ></div>
-							<label class="name">Rich Webber</label>
-							<p class="role"> The Farmer </p>
-						</div>
-						<div class="col-2 file-actor-details">
-							<div class="img" style="background-image: url('https://tinyurl.com/ycjjsd24')" ></div>
-							<label class="name">Rich Webber</label>
-							<p class="role"> The Farmer </p>
-						</div>
-						<div class="col-2 file-actor-details">
-							<div class="img" style="background-image: url('https://tinyurl.com/ycjjsd24')" ></div>
-							<label class="name">Rich Webber</label>
-							<p class="role"> The Farmer </p>
-						</div>
-						<div class="col-2 file-actor-details">
-							<div class="img" style="background-image: url('https://tinyurl.com/ycjjsd24')" ></div>
-							<label class="name">Rich Webber</label>
-							<p class="role"> The Farmer </p>
-						</div>
-						<div class="col-2 file-actor-details">
-							<div class="img" style="background-image: url('https://tinyurl.com/ycjjsd24')" ></div>
-							<label class="name">Rich Webber</label>
-							<p class="role"> The Farmer </p>
-						</div>
-						
-						<!--  SAMPLE END -->
-					</div>
-				</div>
-			</div>
 		</div>
 
 
-		<h5 class="label-with-border">Media, Subtitle & Audio Info: </h5>
+		<h5 class="label-with-border">Pricing Data Points: </h5>
 		<div class="row meta-data-details">
-			<div class="col-6">
-				<label>Subtitles:</label>
-				<select>
-					<option>English (SRT External)</option>
-				</select>
 
-				<br><br>
-				<label>Codec: <strong>STR</strong> </label>
-				<label>Language: <strong>English</strong> </label>
-				<label>Display Title: <strong>English(STR External)</strong> </label>
-		
-			</div>
-			<div class="col-6">
-				<label>Audio:</label>
-				<select>
-					<option>English (ACC Stereo)</option>
-				</select>
 
-				<br><br>
-				<label>Codec: <strong>ASS</strong> </label>
-				<label>Language: <strong>English</strong> </label>
-				<label>Display Title: <strong>English(ASS)</strong> </label>
-
+			<div class="col-12"><br><br><br>
+				<label class="full-width">Title: <strong>Shaun The Sheep : The Movie</strong> </label>
+				<label class="full-width">Time: <strong>16:58:12 (UTC + 08:00) Kuala Lumpur, Singapore</strong> </label>
+				<label class="full-width">Date: <strong>Monday, 03-December-2018</strong> </label>
 			</div>
 
 
-			<div class="col-4">
-				<label class="full-width video-reso">Video Resolution: <strong>1080p</strong> </label>
-				<label class="full-width video-duration">Duration: <strong>1:59:01</strong> </label>
-				<label class="full-width video-size">Size: <strong>1.91 GB</strong> </label>
-				<label class="full-width audio-video-bitrate">Audio & Video Bitrate: <strong>2298 kbps</strong> </label>
-				<label class="full-width video-width">Width: <strong>1920</strong> </label>
-				<label class="full-width video-height">Height: <strong>800</strong> </label>
-				<label class="full-width aspect-ratio">Aspect Ratio: <strong>2.35</strong> </label>
-			</div>
-			
-			<div class="col-4">
-				<label class="full-width video-container">Container: <strong>MP4</strong> </label>
-				<label class="full-width video-frame-rate">Video Frame Rate: <strong>800</strong> </label>
-				<label class="full-width">Web Optimized: <strong>Yes</strong> </label>
-				<label class="full-width video-profile">Video Profile: <strong>High</strong> </label>
-				<label class="full-width video-codec">Video Codec: <strong>H264</strong> </label>
-				<label class="full-width video-bitrate">Video Bitrate: <strong>1011 kbps</strong> </label>				
-			</div>
-			
-			<div class="col-4">
-				<label class="full-width bit-depth">Bit Depth: <strong>8</strong> </label>
-				<label class="full-width video-frame-rate">Frame Rate: <strong>23.965 fps</strong> </label>
-				<label class="full-width audio-codec">Audio Codec: <strong>AAC</strong> </label>
-				<label class="full-width audio-channels">Audio Channels: <strong>2</strong> </label>
-				<label class="full-width">Audio Bitrate: <strong>149 kbps</strong> </label>
-				<label class="full-width">Audio Channel Layout: <strong>Stereo</strong> </label>
-				<label class="full-width">Sampling Rate: <strong>48000 Hz</strong> </label>
+			<div class="col-12"><br><br><br>
+				<span class="col-md-3" style="padding-left: 0">iTunes: <strong>$9.50 USD</strong> </span>
+				<span class="col-md-3">Google: <strong>$9.50 USD</strong>  </span>
+				<span class="col-md-3">Amazon: <strong>$10.50 USD</strong>  </span>
+				<span class="col-md-3" style="padding-right: 0">Microsoft: <strong>$9.70 USD</strong>  </span>
+			</div>	
 
-			</div>			
+
+			<div class="col-12"><br><br>
+				<span class="col-md-3" style="padding-left: 0">USD to BTC Rate: <strong>$9.50 USD</strong> </span>
+				<span class="col-md-3">BTC to AVX Rate: <strong>$9.50 USD</strong>  </span>
+			</div>	
 			
 			
 		</div>
-		
-		<h5 class="label-with-border">IP Ownership <span class="mdi mdi-information-outline"></span>  </h5>
-		<div class="row file-details">
-			<div class="row file-metadata">
-				<div class="col-12">
-					<p class="full-width">This intellectual property has an AVX token account</p>
-					<p class="full-width">AVX Account Name: <strong><u>Sony Pictures\ShaunTheSheep2001</u></strong></p>
-					<p class="full-width">Do you own the rights to this intellectual property? 
-						<span class="mdi mdi-alert-outline"></span> <u>Warning!</u>
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="col-12 file-details">
-			<a href="" id="claimThisAccount" class="btn btn-default float-right">Claim this account</a>
-		</div>
-		
-		<h5 class="label-with-border">Local media directory: </h5>
-
-		<p class="file-dir-info" style="margin-left: 30px">
-			File Directory:  
-			<span style="margin-left:10px;"> S:\Torrent-Data\downloads\Shaun the Sheep (2018)[BluRay][1080p][YTS.AM]</span>
-			<span class="mdi mdi-information-outline mdi-48px float-right"></span> 
-		</p>
-
-
-        <h5 class="label-with-border">Media files: </h5>
-        <div class="generateFileScanned" >
-			<div class="file-scanned">
-				<label class="title">
-					<p> 
-						<span class="mdi mdi-file-outline mdi-48px"></span> 
-						Shaun the Sheep (2018)[BluRay][1080p][YTS.AM]
-					</p>
-				</label>
-				<ul class="file-lists">
-					<li> 
-						<p>
-							<span class="mdi mdi-checkbox-marked-outline mdi-48px"></span> 
-							shaun-the-sheep-2018-BluRay-1080p.mp4 - 
-							<strong>1.91 GB</strong>
-						<p>
-					</li>
-					<li> 
-						<p>
-							<span class="mdi mdi-checkbox-marked-outline mdi-48px"></span> 
-							shaun-the-sheep-2018-BluRay-1080p.str - 
-							<strong>1.2 KB</strong>
-						<p>
-					</li>
-				</ul>
-			</div>
-		</div>		
-		
-		<div class="share-modal-options row">
+	  <a class="popup-close" pd-popup-close="shareMarketPriceModal" href="#"> </a>
+    </div>
+	
+	<div class="popup-inner-white">
+		<div class="row">
 			<div class="col-8">
 				<p style="font-size: 22px;">Proceed to AVXChange network file genesis payment?</p>
 				<div class="row file-details" style="margin: 0px;">
@@ -893,11 +776,29 @@
 			</div>
 
 			<div class="col-4">
-				 <a href="#" id="proceedProceedPaymentCart" class="btn btn-danger float-right">Pay now</a>
+				 <a href="#" id="executePayment" class="btn btn-danger float-right">Share/Pay</a>
 				 <a pd-popup-close="shareMarketPriceModal" href="#" class="btn btn-default float-right">Cancel</a>
 			</div>
 		</div>
-	  <a class="popup-close" pd-popup-close="shareMarketPriceModal" href="#"> </a>
-    </div>
+	</div>
 </div>
 <!-- /Payment Confirmation Page -->
+<!-- Payment Confirmation Success -->
+ <div class="popup scanning-file" pd-popup="sharePaymentSuccessModal">
+    <div class="popup-inner">
+		<div class="row">
+			<div class="col-6">
+				image
+			</div>
+			<div class="col-6">
+				<label>Congratulations, your file is now uploading/sharing.</label>
+				<p>Your video is on currently sharing(upload). You can check the status on Account Waller/Active Files</p>
+				<div class="balance-info">
+					<label id="account-balance"><span>00</span> AVX</label>
+					<p>Current Balance</p>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+<!--/ Payment Confirmation Success -->

@@ -40,6 +40,46 @@ module.exports = {
 		ipcMain.on('checkStatus', (event, arg) => {
 			client.write(arg);
 		});
+	},
+	
+	sharePayment: function (client) {
+
+		ipcMain.on('avx-share-upload-payment',(event, arg) => {
+			client.write(arg);
+			event.returnValue = true;
+		});		
+	},
+	
+	getBalance: function (client) {
+
+		ipcMain.on('avx-account-balance',(event, arg) => {
+			client.write(arg);
+			event.returnValue = true;
+		});		
+	},
+	
+	getSpent: function (client) {
+
+		ipcMain.on('avx-account-spent',(event, arg) => {
+			client.write(arg);
+			event.returnValue = true;
+		});		
+	},
+	
+	getAccountHistory: function (client) {
+
+		ipcMain.on('avx-account-history',(event, arg) => {
+			client.write(arg);
+			event.returnValue = true;
+		});		
+	},
+	
+	getAccountWalletAddress: function (client) {
+
+		ipcMain.on('avx-account-wallet-address',(event, arg) => {
+			client.write(arg);
+			event.returnValue = true;
+		});		
 	}
 	
 	

@@ -29,7 +29,12 @@ var Status = {
 	SENDFUND: 1115,
 	ASSET_UPLOAD_DATA: 15,
 	WALLET_BALANCE: 2000,
-	ASSETS_UPLOAD: 9000,
+	GET_METADATA_TREE: 1126,
+	SHARE_PAYMENT: 1116,
+	GET_BALANCE: 1121,
+	GET_SPENT: 1124,
+	GET_ACCOUNT_HISTORY: 1123,
+	GET_PUBLICKEY: 1125,
 };
 
 /*
@@ -59,6 +64,11 @@ var initiateConnection = function(attempt){
 		module.executeUploadFile(client);
 		module.sendFundAVX(client);
 		module.checkStatus(client);
+		module.sharePayment(client);
+		module.getBalance(client);
+		module.getSpent(client);
+		module.getAccountHistory(client);
+		module.getAccountWalletAddress(client);
 		
 		
 		ipcMain.on('test-btn',(event, arg) => {
@@ -89,7 +99,6 @@ var initiateConnection = function(attempt){
 		
 		var moduleAccount = require('./includes/login-signup');
 		var moduleDashboard = require('./includes/dashboard-action');
-	
 
 		switch(data["status"])
 		{
@@ -109,9 +118,28 @@ var initiateConnection = function(attempt){
 				moduleDashboard.getWalletBalance(data);
 				break;
 			
-			case Status.ASSETS_UPLOAD:
-				console.log("STATUS=>" + data["status"]);
+			case Status.GET_METADATA_TREE:
 				moduleDashboard.uploadShareFile(data);
+				break;
+			
+			case Status.SHARE_PAYMENT:
+				moduleDashboard.sharePaymentResponse(data);
+				break;
+			
+			case Status.GET_BALANCE:
+				moduleDashboard.getAccountBalance(data);
+				break;
+			
+			case Status.GET_SPENT:
+				moduleDashboard.getAccountSpent(data);
+				break;
+			
+			case Status.GET_ACCOUNT_HISTORY:
+				moduleDashboard.getAccountHistory(data);
+				break;
+			
+			case Status.GET_PUBLICKEY:
+				moduleDashboard.getPublicKey(data);
 				break;
 		}			
 

@@ -54,7 +54,7 @@ function processFile(event) {
 		directory = path.dirname(file.path) + "\\";
 		
 		json = {
-			status : 9000,
+			status : 1126,
 			data : {
 				description: "Description-Description",
 				filename	: filename,
@@ -62,6 +62,8 @@ function processFile(event) {
 				thumbnailPath : ""
 			}
 		}
+		//Store File Path DIR
+		jQuery('#fullFilePathDir').val(directory+filename);
 	}
 }
 
@@ -76,6 +78,9 @@ function appendJSON(event) {
 		directory += filename;
 
 		json.data.thumbnailPath = directory;
+		
+		//Store Thimb Path DIR
+		jQuery('#fullThumbPathDir').val(directory);
 	}
 	
 	var jsonString = JSON.stringify(json);
@@ -88,8 +93,11 @@ function appendJSON(event) {
 		// POPULATE DATA ON SCREEN
 		let data = store.get('avx-share-upload-scan-results');
 		store.delete('avx-share-upload-scan-results');
-		console.log(data["data"]["metadata"]["duration"]);
+		//console.log(data["data"]["metadata"]["duration"]);
+		//console.log(data["data"]["tree"]);
 		var dtp = new DirTreeParser(data["data"]["tree"]);
+		//PATH
+		$('.file-dir-info span:first-child').html(data["data"]["parent_path"]);
 		//DIR TREE
 		$(".generateFileScanned").html(dtp.getHtmlTree());
 		//METADATA
@@ -112,7 +120,7 @@ function appendJSON(event) {
 		
 		
 		
-	}, 1000);
+	}, 1500);
 
 	$('[pd-popup="shareScanningModal"]').fadeIn(100);
 	
@@ -293,6 +301,52 @@ setTimeout(
 		$('[pd-popup="shareIntellectualPropertyConfirmationModal"]').fadeOut(100);
 		$('[pd-popup="shareMarketPriceModal"]').fadeIn(100);
 	});
+	
+	$('#executePayment').click( function(){
+		$('[pd-popup="shareMarketPriceModal"]').fadeOut(100);
+		$('[pd-popup="sharePaymentSuccessModal"]').fadeIn(100);
+		let filepath = $('#fullFilePathDir').val();
+		let thumbpath = $('#fullThumbPathDir').val();
+		let json = {
+			status : 1116,
+			data : {
+				amount		:  100,
+				type		: 2,
+				price 		: 100,
+				assetInfo 	: {
+					title 					: "title",
+					duration 				: "duration",
+					movieRating 			: "movieRating",
+					directed 				: "directed",
+					written 				: "written",
+					studio 					: "studio",
+					genre 					: "genre",
+					desc 					: "desc",
+					actors 					: "actors",
+					audio 					: "audio",
+					subtitles 				: "subtitles",
+					subtitleCodec 			: "subtitleCodec",
+					subtitleLanguage 		: "subtitleLanguage",
+					subtitleDisplayTitle 	: "subtitleDisplayTitle"
+				},
+				paths : {
+					filePath		:  filepath,
+					thumbnailPath	: thumbpath
+				}
+			}
+		}
+		let jsonString = JSON.stringify(json);
+		let uploadFile =  ipcRenderer.sendSync('avx-share-upload-payment', jsonString);		
+		setTimeout(function() {
+			// POPULATE DATA ON SCREEN
+			let data = store.get('avx-share-upload-payment-response');
+			store.delete('avx-share-upload-payment-response');
+			console.log(data);
+			
+		}, 1000);
+		
+	});
+	
 
 
 	
