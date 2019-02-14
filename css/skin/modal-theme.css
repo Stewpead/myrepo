@@ -29,6 +29,8 @@
 
 /*POPUP INNER WHITE*/
 .popup-inner-white {
+    top: -45px;
+    position: relative;
     max-width: 990px;
     padding-left: 66px;
     padding-right: 66px;
@@ -36,7 +38,21 @@
     color: #000000;
     background: #ffffff;
 }
+.popup-inner-white a {
+    color: #000000;
+}
+.popup-inner-white #whiteP {
+    text-align: left;
+}
 
+.popup-inner-white #priceAVX {
+    font-size: 32px;
+    float: right;
+}
+hr#hr {
+    width: 100%;
+    border-bottom: #111111;
+}
 /*Popup*/
 .popup {
 	width: 100%;

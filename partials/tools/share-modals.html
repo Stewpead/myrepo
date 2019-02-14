@@ -761,23 +761,36 @@
 	
 	<div class="popup-inner-white">
 		<div class="row">
-			<div class="col-8">
-				<p style="font-size: 22px;">Proceed to AVXChange network file genesis payment?</p>
-				<div class="row file-details" style="margin: 0px;">
-					<div class="row file-metadata" style="padding: 0;">
-						<div class="">
-							<p class="full-width">
-								<input type="checkbox" id="confirmFilesInformation">
-								<span>I have reviewed all of the above information and it appears correct</span>
-							</p>
-						</div>
-					</div>
-				</div>
+			<div class="col-8 mt-5">
+				<p style="font-size: 18px" id="whiteP"> (AVX Token Price) </p>
+				<!-- <p style="font-size: 22px;">Proceed to AVXChange network file genesis payment?</p> -->
 			</div>
 
+			<div class="col-4 mt-5">
+			<span id="priceAVX">13.5 AVX</span>
+			</div>
+		</div>
+		<hr id="hr"/>
+		<div class="row mb-5">
+			<div class="col-8">
+				<div class="row file-details" style="margin: 0px;">
+						<div class="row file-metadata" style="padding: 0;">
+							<div class="">
+								<!-- class="full-width" -->
+								<p class="pl-1">
+									<span id="walletBalance" style="font-size: 18px; color:#4ab65c;"> 992.53 </span> <span  style="font-size: 18px; color:#4ab65c;">AVX</span>
+									<span class="mdi mdi-shopping-music"></span>
+								</p>
+								<p class="pl-3">
+									<span style="font-size: 10px">Account Wallet Ballance</span>
+								</p>
+							</div>
+						</div>
+					</div>
+			</div>
 			<div class="col-4">
-				 <a href="#" id="executePayment" class="btn btn-danger float-right">Share/Pay</a>
-				 <a pd-popup-close="shareMarketPriceModal" href="#" class="btn btn-default float-right">Cancel</a>
+				<a href="#" id="executePayment" class="btn btn-danger float-right">Share/Pay</a>
+				<a pd-popup-close="shareMarketPriceModal" href="#" id="btnCancel" class="btn btn-default float-right">Cancel</a>
 			</div>
 		</div>
 	</div>

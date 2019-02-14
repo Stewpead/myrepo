@@ -15,16 +15,8 @@ $(document).ready(function() {
     loadTableData();
 
     loadVideoDetails();
-
+ 
 });
-
-function loadVideoDetails() {
-    var videoDetails = "";
-    videoDetails = '<img src="' + data64 + json64[0]['metadata']['thumbnail'] + '" id="fileimage" style="border-radius:2px;/>';
-    document.getElementById('movietitle').innerHTML = json64[0]['metadata']['filename'];
-    document.getElementById('movieyear').innerHTML = json64[0]['metadata']['year'];
-    $('#videoImage').append(videoDetails);
-}
 
 function loadTableData() {
     var countFiles = 1;
@@ -38,6 +30,17 @@ function loadTableData() {
     }
     $('#tbodyVdetails').append(resultsTableData);
 }
+
+function loadVideoDetails() {
+    var videoDetails = "";
+    videoDetails = '<img src="' + data64 + json64[0]['metadata']['thumbnail'] + '" id="fileimage" style="border-radius:2px;/>';
+    document.getElementById('movietitle').innerHTML = json64[0]['metadata']['filename'];
+    document.getElementById('movieyear').innerHTML = json64[0]['metadata']['year'];
+    console.log(videoDetails);
+    $('#videoImage').append(videoDetails);
+    // alert('WOW');
+}
+
 
 $("#btnBack").click(function() {
     location.href = 'search-detailed.html';

@@ -297,7 +297,6 @@ setTimeout(
 	});
 	
 	$('#proceedProceedPaymentCart').click( function(){
-		alert("BUY BUY BUY!");
 		$('[pd-popup="shareIntellectualPropertyConfirmationModal"]').fadeOut(100);
 		$('[pd-popup="shareMarketPriceModal"]').fadeIn(100);
 	});
@@ -347,12 +346,6 @@ setTimeout(
 		
 	});
 	
-
-
-	
-	
-	
-
 }, 1000);
 
 
