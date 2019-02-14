@@ -22,6 +22,18 @@ module.exports = {
 	const store = new Store();
 	store.set('avx-share-upload-payment-response', data);
 
+  },
+  
+  getAccountBalance: function (data) {
+	const store = new Store();
+	store.set('avx-share-account-balance', data);
+
+  },
+  
+  getAccountSpent: function (data) {
+	const store = new Store();
+	store.set('avx-share-account-spent', data);
+
   }
   
   

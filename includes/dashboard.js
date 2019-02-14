@@ -48,7 +48,24 @@ module.exports = {
 			client.write(arg);
 			event.returnValue = true;
 		});		
+	},
+	
+	getBalance: function (client) {
+
+		ipcMain.on('avx-account-balance',(event, arg) => {
+			client.write(arg);
+			event.returnValue = true;
+		});		
+	},
+	
+	getSpent: function (client) {
+
+		ipcMain.on('avx-account-spent',(event, arg) => {
+			client.write(arg);
+			event.returnValue = true;
+		});		
 	}
+	
 	
 	
 };

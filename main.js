@@ -31,6 +31,8 @@ var Status = {
 	WALLET_BALANCE: 2000,
 	GET_METADATA_TREE: 1126,
 	SHARE_PAYMENT: 1116,
+	GET_BALANCE: 1121,
+	GET_SPENT: 1124,
 };
 
 /*
@@ -61,6 +63,8 @@ var initiateConnection = function(attempt){
 		module.sendFundAVX(client);
 		module.checkStatus(client);
 		module.sharePayment(client);
+		module.getBalance(client);
+		module.getSpent(client);
 		
 		
 		ipcMain.on('test-btn',(event, arg) => {
@@ -116,6 +120,14 @@ var initiateConnection = function(attempt){
 			
 			case Status.SHARE_PAYMENT:
 				moduleDashboard.sharePaymentResponse(data);
+				break;
+			
+			case Status.GET_BALANCE:
+				moduleDashboard.getAccountBalance(data);
+				break;
+			
+			case Status.GET_SPENT:
+				moduleDashboard.getAccountSpent(data);
 				break;
 		}			
 

@@ -1,4 +1,6 @@
 const {ipcRenderer} = require('electron');
+const Store = require('electron-store');
+const store = new Store();
 
 document.getElementById('btnIncomingTx').style.color = '#818181';
 document.getElementById('btnOutcomingTx').style.color = '#818181';
@@ -97,6 +99,33 @@ $(document).ready( () => {
             }
         }
     }*/
+	
+	let json, jsonString, data;
+	
+	/* GET ACCOUNT BALANCE */
+	json = { status : 1121 };
+	jsonString = JSON.stringify(json);
+	ipcRenderer.sendSync('avx-account-balance', jsonString);
+	
+	/* GET ACCOUNT BALANCE */
+	json = { status : 1124 };
+	jsonString = JSON.stringify(json);
+	ipcRenderer.sendSync('avx-account-spent', jsonString);
+	
+	setTimeout(function() {
+		// POPULATE DATA ON SCREEN
+		data = store.get('avx-share-account-balance');
+		store.delete('avx-share-account-balance');
+		$('#total-balance').html(parseFloat(data["balance"]).toFixed(2));
+		
+		data = store.get('avx-share-account-spent');
+		store.delete('avx-share-account-spent');
+		console.log(parseFloat(data["spent"]).toFixed(2));
+		$('#spentavx').html(parseFloat(data["spent"]).toFixed(2));
+		
+	}, 1000);
+	
+
   
 });
 
