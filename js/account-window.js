@@ -60,6 +60,7 @@ var mamount = "mamount";
 var mtransacID = "mtransacID";
 
 $(document).ready( () => {
+	/*
     var n1 = 0, n2;
     for (var key in tbJsonMerge) {
         for (var idx in tbJsonMerge[key]) {
@@ -74,7 +75,7 @@ $(document).ready( () => {
         }
 
     }
-
+	*/
 
     /*var x1 = Object.keys(tbJsonMerge).length;
     for(var i = 0; i <= x1; i++ )
@@ -100,28 +101,123 @@ $(document).ready( () => {
         }
     }*/
 	
-	let json, jsonString, data;
+
+
+	setTimeout(function() {
 	
 	/* GET ACCOUNT BALANCE */
-	json = { status : 1121 };
-	jsonString = JSON.stringify(json);
-	ipcRenderer.sendSync('avx-account-balance', jsonString);
+	let jsonBalance = { status : 1121 };
+	let jsonStringBalance = JSON.stringify(jsonBalance);
+	ipcRenderer.sendSync('avx-account-balance', jsonStringBalance);
 	
-	/* GET ACCOUNT BALANCE */
-	json = { status : 1124 };
-	jsonString = JSON.stringify(json);
-	ipcRenderer.sendSync('avx-account-spent', jsonString);
+		// POPULATE DATA ON SCREEN
+		let dataBalance = store.get('avx-account-balance');
+		store.delete('avx-account-balance');
+		if(typeof dataBalance["balance"] != 'undefined') {
+			$('#total-balance').html(parseFloat(dataBalance["balance"]).toFixed(2));
+		}
+
+	}, 1000);
+
+	setTimeout(function() {
+	
+	/* GET ACCOUNT SPENT */
+	let jsonSpent = { status : 1124 };
+	let jsonStringSpent = JSON.stringify(jsonSpent);
+	ipcRenderer.sendSync('avx-account-spent', jsonStringSpent);
+	
+		// POPULATE DATA ON SCREEN
+
+		
+		let dataSpent = store.get('avx-account-spent');
+		store.delete('avx-account-spent');
+		if(typeof dataSpent["spent"] != 'undefined') {
+			$('#spentavx').html(parseFloat(dataSpent["spent"]).toFixed(2));
+		}
+		
+		
+	}, 1000);
+
+	setTimeout(function() {
+	
+	/* GET ACCOUNT WALLET ADDRESS */
+	let jsonWalletAddress = { status : 1125 };
+	let jsonStringWalletAddress = JSON.stringify(jsonWalletAddress);
+	ipcRenderer.sendSync('avx-account-wallet-address', jsonStringWalletAddress);
+	
+		// POPULATE DATA ON SCREEN
+
+		
+		let dataWalletAddress = store.get('avx-account-wallet-address');
+		store.delete('avx-account-wallet-address');
+		if(typeof dataWalletAddress != 'undefined') {
+			$('span#Waddress').html(dataWalletAddress["publicKey"]);
+		}
+		
+		
+	}, 1000);
 	
 	setTimeout(function() {
+	
+	/* GET HISTORY */
+	let jsonHistory = { status : 1123 };
+	let jsonStringHistory = JSON.stringify(jsonHistory);
+	ipcRenderer.sendSync('avx-account-history', jsonStringHistory);
+	
 		// POPULATE DATA ON SCREEN
-		data = store.get('avx-share-account-balance');
-		store.delete('avx-share-account-balance');
-		$('#total-balance').html(parseFloat(data["balance"]).toFixed(2));
+
+		let dataHistory = store.get('avx-account-history');
+		store.delete('avx-account-history');
+			
+
+		if(typeof dataHistory["history"] != 'undefined') {
+			let outputHistory = JSON.parse(dataHistory["history"]);
+			let outputIncoming;
+			let outputOutgoing;
+			
+			if(typeof outputHistory["incoming"] != 'undefined') {
+
+				for (var key in outputHistory["incoming"]) {
+					let currObj = outputHistory["incoming"][key];
+					outputIncoming += '<tr>';
+					outputIncoming += '<td>'+currObj["type"]+'</td>';
+					outputIncoming += '<td>-Date-</td>';
+					outputIncoming += '<td>-Time-</td>';
+					outputIncoming += '<td>'+currObj["sender"]+'</td>';
+					outputIncoming += '<td>'+currObj["receiver"]+'</td>';
+					outputIncoming += '<td>-Desc-</td>';
+					outputIncoming += '<td>'+currObj["amount"]+'</td>';
+					outputIncoming += '<td>-Trans ID-</td>';
+					outputIncoming += '</tr>';
+				}
+				
+				$("#incoming tbody").html(outputIncoming);
+			}
+			
+			if(typeof outputHistory["outgoing"] != 'undefined') {
+				
+				for (var key in outputHistory["outgoing"]) {
+					let currObj = outputHistory["outgoing"][key];
+					outputOutgoing += '<tr>';
+					outputOutgoing += '<td>'+currObj["type"]+'</td>';
+					outputOutgoing += '<td>-Date-</td>';
+					outputOutgoing += '<td>-Time-</td>';
+					outputOutgoing += '<td>'+currObj["sender"]+'</td>';
+					outputOutgoing += '<td>'+currObj["receiver"]+'</td>';
+					outputOutgoing += '<td>-Desc-</td>';
+					outputOutgoing += '<td>'+currObj["amount"]+'</td>';
+					outputOutgoing += '<td>-Trans ID-</td>';
+					outputOutgoing += '</tr>';
+				}
+				
+				$("#outgoing tbody").html(outputOutgoing);
+				
+			}
+			
+			$("#tbMerge tbody").html(outputIncoming+outputOutgoing);
+		}
+		//let accountHistoryIncoming = data["incoming"];
 		
-		data = store.get('avx-share-account-spent');
-		store.delete('avx-share-account-spent');
-		console.log(parseFloat(data["spent"]).toFixed(2));
-		$('#spentavx').html(parseFloat(data["spent"]).toFixed(2));
 		
 	}, 1000);
 	

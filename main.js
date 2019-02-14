@@ -33,6 +33,8 @@ var Status = {
 	SHARE_PAYMENT: 1116,
 	GET_BALANCE: 1121,
 	GET_SPENT: 1124,
+	GET_ACCOUNT_HISTORY: 1123,
+	GET_PUBLICKEY: 1125,
 };
 
 /*
@@ -65,6 +67,8 @@ var initiateConnection = function(attempt){
 		module.sharePayment(client);
 		module.getBalance(client);
 		module.getSpent(client);
+		module.getAccountHistory(client);
+		module.getAccountWalletAddress(client);
 		
 		
 		ipcMain.on('test-btn',(event, arg) => {
@@ -128,6 +132,14 @@ var initiateConnection = function(attempt){
 			
 			case Status.GET_SPENT:
 				moduleDashboard.getAccountSpent(data);
+				break;
+			
+			case Status.GET_ACCOUNT_HISTORY:
+				moduleDashboard.getAccountHistory(data);
+				break;
+			
+			case Status.GET_PUBLICKEY:
+				moduleDashboard.getPublicKey(data);
 				break;
 		}			
 

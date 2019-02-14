@@ -64,6 +64,22 @@ module.exports = {
 			client.write(arg);
 			event.returnValue = true;
 		});		
+	},
+	
+	getAccountHistory: function (client) {
+
+		ipcMain.on('avx-account-history',(event, arg) => {
+			client.write(arg);
+			event.returnValue = true;
+		});		
+	},
+	
+	getAccountWalletAddress: function (client) {
+
+		ipcMain.on('avx-account-wallet-address',(event, arg) => {
+			client.write(arg);
+			event.returnValue = true;
+		});		
 	}
 	
 	
