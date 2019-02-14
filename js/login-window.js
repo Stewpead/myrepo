@@ -5,8 +5,11 @@ var fs = require('fs');
 var path = require('path');
 
 jQuery(document).ready(($) => {
+
 	document.getElementById('btnUpload').style.display = 'none';
+
 	document.getElementById('downUpload').style.display = 'none';
+
 });
 
 $('#btnLogin').click( () => {
@@ -16,6 +19,7 @@ $('#btnLogin').click( () => {
 });
 
 $('#btnSignup').click(() => {
+
 	var username = document.getElementById('username').value;
 	var pass1 = document.getElementById('spassword').value;
 	var pass2 = document.getElementById('confirmpass').value;
@@ -30,8 +34,11 @@ $('#btnSignup').click(() => {
 		$('[pd-popup="signupFailModal"]').fadeIn(200);
 	}
 	else if( pass1 == pass2 && document.getElementById('chkAgreement').checked == true ) {
-		alert(" SUCCESS! ");
+
 		signup();
+		document.getElementById('loginmode').style.display = 'block';
+		document.getElementById('signupmode').style.display = 'none';
+		
 	}
 	else if( pass1=="" && pass2=="" ) {
 		$('[pd-popup="signupPasswordEmptyModal"]').fadeIn(200);
@@ -85,7 +92,7 @@ function signup() {
 
 	var jsonString = JSON.stringify(json);
 	ipcRenderer.send("avx-signup", jsonString);
-	
+	$('[pd-popup="signupSuccessModal"]').fadeIn(100);
 }
 
 
@@ -130,6 +137,20 @@ function signin() {
 
 	var jsonString = JSON.stringify(json);
 	ipcRenderer.send("avx-login", jsonString);
+	setTimeout(function() {
+		
+		let data = store.get('avx-login-true');
+
+		store.delete('avx-login-true');
+		console.log("Data: " + data);
+		// alert("Data: " + data);
+		if(data == "1") {
+			$('[pd-popup="loginSuccessModal"]').fadeIn(100);
+		}
+		else {
+			$('[pd-popup="loginFailModal"]').fadeIn(100);
+		}
+	}, 100);
 	// $('[pd-popup="loginSuccessModal"]').fadeIn(200);
 	
 

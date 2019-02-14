@@ -34,15 +34,29 @@ module.exports = {
   },
   signinResponse: function (data) {
 		var validate = data['data'];
-		// console.log(validate+"ccc");
-		// console.log('PUTA BRAD GANUN KA KAYAMAN!');
-		
-		if (validate == 1 ){
-			defaultWindow.loadURL(url.format({
-				pathname: path.join(__dirname, app_dir,'main-window.html'),
-				protocol: 'file:',
-				slashes: true
-			}));
+		const store = new Store();	
+	
+
+		if (validate == 1 ) {
+			//TRIGGER
+			store.set('avx-login-true', 1);
+
+			setTimeout(() => {
+				defaultWindow.loadURL(url.format({
+					pathname: path.join(__dirname, app_dir,'main-window.html'),
+					protocol: 'file:',
+					slashes: true
+				}));
+			}, 2000);
+			
+			// store.set('avx-share-upload-scan-results', data);
+			// ipcMain.on('avx-login', (event, arg) => {
+			// 	event.sender.send('login-true',)
+			// });
+
+		}
+		else if(validate != 1) {
+			store.set('avx-login-true', 0);
 		}
   }
 };

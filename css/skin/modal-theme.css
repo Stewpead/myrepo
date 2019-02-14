@@ -210,7 +210,7 @@
     font-weight: 400;
     color: #c1c1c1;
 }
-.popup.scanning-file .popup-inner #transferStat {
+.popup.scanning-file .popup-inner #stat {
 	margin-top: -200px;
 }
 .popup.scanning-file .popup-inner .mdi-48px.mdi:before {
@@ -388,7 +388,7 @@
     font-weight: 400;
     color: #c1c1c1;
 }
-.popup.validation-event .popup-inner #transferStat {
+.popup.validation-event .popup-inner #stat {
 	margin-top: -200px;
 }
 .popup.validation-event .popup-inner .mdi-48px.mdi:before {
