@@ -13,9 +13,10 @@ var trendingVideos;
 var trendingAudios;
 var popularVideos;
 var popularArtists;
+
 trendingVids();
 
-    function trendingVids(){
+ function trendingVids(){
         var trendingVcards = "";
         for (var key in json64) 
         {
@@ -35,6 +36,7 @@ trendingVids();
     $('#card0').click(() => {
         location.href = "video-details.html";
     });
+
 
 // for (var i = 0; i < 14; ++i) {
 //     var movieThumbs = '<div class="col-lg-3 grid-cards">';
