@@ -142,7 +142,7 @@ function signin() {
 		let data = store.get('avx-login-true');
 		data = JSON.parse(data);
 		store.delete('avx-login-true');
-		alert("Data: " + data);
+		
 		if(data == "1") {
 			$('[pd-popup="loginSuccessModal"]').fadeIn(100);
 		}
