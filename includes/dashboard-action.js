@@ -64,6 +64,11 @@ module.exports = {
   getFileInfo: function (data) {
     const store = new Store();
     store.set('get-file-info', data);
+  },
+  
+  generateDownload: function (data) {
+    const store = new Store();
+    store.set('set-generate-download', data);
   }
   
   

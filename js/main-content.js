@@ -24,6 +24,7 @@ $(document).ready( () => {
     };
     getAsset = JSON.stringify(getAsset);
 
+
     ipcRenderer.send('get-asset-chain', getAsset);
 	store.delete('set-dashboard-file-selected');
     trendingVids();

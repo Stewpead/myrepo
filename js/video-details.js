@@ -15,14 +15,15 @@ $ = jQuery;
 
 $(document).ready(function() {
 
-    loadTableData();
 
-    loadVideoDetails();
 	let data = store.get('set-dashboard-file-selected' );
 	
     var getFileInfo = {
         status : 1128,
-		trackingHash : data
+		data : {
+			trackingHash : data
+		}
+		
     };
     getFileInfo = JSON.stringify(getFileInfo);
 
@@ -30,29 +31,39 @@ $(document).ready(function() {
 	
 	setTimeout( () => {
 		let data = store.get('get-file-info');
-		console.log(data);
+		
+		if (typeof data != "undefined") {
+			var json64 = JSON.parse(data['asset']);
+			
+			    loadTableData(data);
+				loadVideoDetails(json64);
+		}
+		
 	 }, 1000);
  
 });
 
-function loadTableData() {
+function loadTableData(data) {
     var countFiles = 1;
     var resultsTableData = "";
-    for (var key in json64) {
+	
+    for (var key in data) {
         resultsTableData += '<tr id="row' + countFiles + '">';
         resultsTableData += '<th scope="row" class="clickable-row"></th>'
-        resultsTableData += '<td id="filename' + countFiles + '">' + json64[key]['metadata']['filename'] + '</td>';
+        resultsTableData += '<td id="filename' + countFiles + '">'+data['asset']['title']+'</td>';
         resultsTableData += '<td id="downloads' + countFiles + '"><td id="costavx' + countFiles + '"></td><td id="ratings' + countFiles + '"></td><td id="language' + countFiles + '"></td><td id="subtitle' + countFiles + '"></td><td id="resolution' + countFiles + '"></td><td id="filesize' + countFiles + '"></td><td id="videocode' + countFiles + '"></td><td id="audiocode' + countFiles + '"></td><td id="videobitrate' + countFiles + '"></td>';
         countFiles++;
     }
     $('#tbodyVdetails').append(resultsTableData);
+	
 }
 
-function loadVideoDetails() {
+function loadVideoDetails(json64) {
+	console.log(json64);
     var videoDetails = "";
-    videoDetails = '<img src="' + data64 + json64[0]['metadata']['thumbnail'] + '" id="fileimage" style="border-radius:2px;/>';
-    document.getElementById('movietitle').innerHTML = json64[0]['metadata']['filename'];
-    document.getElementById('movieyear').innerHTML = json64[0]['metadata']['year'];
+    videoDetails = '<img src="../images/thumbnail1.jpg" id="fileimage" style="border-radius:2px;/>';
+    document.getElementById('movietitle').innerHTML = json64['title'];
+    document.getElementById('movieyear').innerHTML = '2000';
     console.log(videoDetails);
     $('#videoImage').append(videoDetails);
     // alert('WOW');
