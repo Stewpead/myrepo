@@ -59,7 +59,7 @@ var mdescrip = "mdescrip";
 var mamount = "mamount";
 var mtransacID = "mtransacID";
 
-$(document).ready( () => {
+$(document).ready(function() {
 	/*
     var n1 = 0, n2;
     for (var key in tbJsonMerge) {
@@ -117,7 +117,7 @@ $(document).ready( () => {
 			$('.total-balance').html(parseFloat(dataBalance["balance"]).toFixed(2));
 		}
 
-	}, 1000);
+	}, 2500);
 
 	setTimeout(function() {
 	
@@ -136,7 +136,7 @@ $(document).ready( () => {
 		}
 		
 		
-	}, 1000);
+	}, 2500);
 
 	setTimeout(function() {
 	
@@ -155,7 +155,7 @@ $(document).ready( () => {
 		}
 		
 		
-	}, 1000);
+	}, 2500);
 	
 	setTimeout(function() {
 	
@@ -221,7 +221,7 @@ $(document).ready( () => {
 		
 
 		
-	}, 1000);
+	}, 2500);
 	
 
 
@@ -248,6 +248,9 @@ $('#btnOutcomingTx').click(() => {
 
 $('#btnSend').click(function() {
 	$('[pd-popup="accountSendToModal"]').fadeIn(100);
+	$("#avxquantity, #receiver, .wallet-info textarea").val("");
+	$('#btnSendtoken').removeAttr("disable");
+
    //ipcRenderer.send('send-avx','send-token.html');
 });
 

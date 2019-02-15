@@ -94,7 +94,7 @@ function appendJSON(event) {
 		let data = store.get('avx-share-upload-scan-results');
 		store.delete('avx-share-upload-scan-results');
 		//console.log(data["data"]["metadata"]["duration"]);
-		//console.log(data["data"]["tree"]);
+		console.log(data["data"]);
 		var dtp = new DirTreeParser(data["data"]["tree"]);
 		//PATH
 		$('.file-dir-info span:first-child').html(data["data"]["parent_path"]);

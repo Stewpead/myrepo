@@ -80,7 +80,15 @@ module.exports = {
 			client.write(arg);
 			event.returnValue = true;
 		});		
+	},
+	
+	accountReload: function (client) {
+
+		ipcMain.on('avx-account-reload',(event, arg) => {
+			client.write(arg);
+		});		
 	}
+	
 	
 	
 	
