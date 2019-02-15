@@ -91,6 +91,14 @@ module.exports = {
   
 	getFileInfo: function (client) {
 		ipcMain.on('get-file-info', (event, arg) => {
+			//console.log(arg);
+			client.write(arg);
+		});
+
+	},
+  
+	generateDownload: function (client) {
+		ipcMain.on('set-generate-download', (event, arg) => {
 			client.write(arg);
 		});
 

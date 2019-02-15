@@ -36,7 +36,8 @@ var Status = {
 	GET_ACCOUNT_HISTORY: 1123,
 	GET_PUBLICKEY: 1125,
 	GET_ASSET: 1122,
-	GET_FILE_INFO: 1128
+	GET_FILE_INFO: 1128,
+	GENERATE_DOWNLOAD: 1117
 };
 
 /*
@@ -73,6 +74,8 @@ var initiateConnection = function(attempt){
 		module.getAccountWalletAddress(client);
 		module.getAssset(client);
 		module.getFileInfo(client);
+		module.getFileInfo(client);
+		module.generateDownload(client);
 		
 		ipcMain.on('test-btn',(event, arg) => {
 			event.returnValue = 1 +arg;
@@ -153,6 +156,9 @@ var initiateConnection = function(attempt){
 				break;
 			case Status.GET_FILE_INFO:
 				moduleDashboard.getFileInfo(data);
+				break;
+			case Status.GENERATE_DOWNLOAD:
+				moduleDashboard.generateDownload(data);
 				break;
 		}			
 
