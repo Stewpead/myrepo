@@ -31,7 +31,7 @@ $(document).ready( () => {
 });
 
 
-    function trendingVids(){
+ function trendingVids(){
         var trendingVcards = "";
         setTimeout( () => {
             let data = store.get('get-asset-chain');
@@ -56,6 +56,7 @@ $(document).ready( () => {
     $('#card0').click(() => {
         location.href = "video-details.html";
     });
+
 
 // for (var i = 0; i < 14; ++i) {
 //     var movieThumbs = '<div class="col-lg-3 grid-cards">';

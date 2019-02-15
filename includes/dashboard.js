@@ -87,9 +87,7 @@ module.exports = {
 		console.log(arg);
 		client.write(arg);
 	  });
+
 	}
-	
-	
-	
 	
 };

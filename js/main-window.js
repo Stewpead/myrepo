@@ -25,8 +25,3 @@ $('#btnFirst').click( () => {
 $('#btnSignout').click( () => {
     location.href = 'login-window.html';
 });
-// <<<<<<< HEAD
-// =======
-// $('content-main').parent('#bg');
-
-// >>>>>>> c7c64c37bb9f0795efb7feab0d94daeec0359f38

@@ -25,8 +25,10 @@ module.exports = {
   },
   
   getAccountBalance: function (data) {
-	const store = new Store();
-	store.set('avx-account-balance', data);
+	var store = new Store();
+	store.delete('avx-account-balance');
+	store.set('avx-account-balance', data); 
+
 
   },
   
