@@ -51,9 +51,12 @@ module.exports = {
   sendFund: function (data) {
 	const store = new Store();
 	store.set('avx-account-send-wallet', data);
-
-  }
+  },
   
+  getAsset: function (data) {
+    const store = new Store();
+    store.set('get-asset-chain', data);
+  }
   
   
 };

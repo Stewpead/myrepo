@@ -80,7 +80,15 @@ module.exports = {
 			client.write(arg);
 			event.returnValue = true;
 		});		
+	},
+  
+	getAssset: function (client) {
+	  ipcMain.on('get-asset-chain', (event, arg) => {
+		console.log(arg);
+		client.write(arg);
+	  });
 	}
+	
 	
 	
 	

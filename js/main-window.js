@@ -1,4 +1,4 @@
-import { ipcRenderer } from "electron";
+// import { ipcRenderer } from "electron";
 
 // $('#bg > .page-content-wrapper');
 // loadimg();

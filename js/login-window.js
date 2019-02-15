@@ -140,16 +140,16 @@ function signin() {
 	setTimeout(function() {
 		
 		let data = store.get('avx-login-true');
-
+		data = JSON.parse(data);
 		store.delete('avx-login-true');
-		console.log("Data: " + data);
-		// alert("Data: " + data);
+		alert("Data: " + data);
 		if(data == "1") {
 			$('[pd-popup="loginSuccessModal"]').fadeIn(100);
 		}
-		else {
+		else if(data == "0") {
 			$('[pd-popup="loginFailModal"]').fadeIn(100);
 		}
+		
 	}, 100);
 	// $('[pd-popup="loginSuccessModal"]').fadeIn(200);
 	

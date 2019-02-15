@@ -334,8 +334,10 @@ setTimeout(
 				}
 			}
 		}
-		let jsonString = JSON.stringify(json);
-		let uploadFile =  ipcRenderer.sendSync('avx-share-upload-payment', jsonString);		
+		setTimeout( () => {
+			let jsonString = JSON.stringify(json);
+			let uploadFile =  ipcRenderer.sendSync('avx-share-upload-payment', jsonString);	
+		}, 1000);
 		setTimeout(function() {
 			// POPULATE DATA ON SCREEN
 			let data = store.get('avx-share-upload-payment-response');

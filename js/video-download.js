@@ -11,9 +11,11 @@ $(document).ready(() => {
     $('.popup-close').click(() => {
         $('[pd-popup="shareMarketPriceModal"]').fadeOut(100);
     });
-    
+    // console.log(document.getElementById('executePayment').value);
     $('#executePayment').click(() => {
         $('[pd-popup="shareMarketPriceModal"]').fadeOut(100);
         $('[pd-popup="sharePaymentSuccessModal"]').fadeIn(100);
+        
     });
+
 });
