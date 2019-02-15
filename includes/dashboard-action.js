@@ -58,6 +58,12 @@ module.exports = {
   getAsset: function (data) {
     const store = new Store();
     store.set('get-asset-chain', data);
+	console.log(data);
+  },
+  
+  getFileInfo: function (data) {
+    const store = new Store();
+    store.set('get-file-info', data);
   }
   
   

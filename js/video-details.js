@@ -8,6 +8,9 @@ var keys64 = Object.keys(json64);
 var imgname = 'decodedimg';
 var imgpath = path.join(__dirname,'/decodedimg/');
 var data64 = "data:image/jpg;base64,";
+const {ipcRenderer} = require('electron');
+const Store = require('electron-store');
+const store = new Store();
 $ = jQuery;
 
 $(document).ready(function() {
@@ -15,6 +18,20 @@ $(document).ready(function() {
     loadTableData();
 
     loadVideoDetails();
+	let data = store.get('set-dashboard-file-selected' );
+	
+    var getFileInfo = {
+        status : 1128,
+		trackingHash : data
+    };
+    getFileInfo = JSON.stringify(getFileInfo);
+
+    ipcRenderer.send('get-file-info', getFileInfo);
+	
+	setTimeout( () => {
+		let data = store.get('get-file-info');
+		console.log(data);
+	 }, 1000);
  
 });
 

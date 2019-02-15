@@ -84,9 +84,15 @@ module.exports = {
   
 	getAssset: function (client) {
 	  ipcMain.on('get-asset-chain', (event, arg) => {
-		console.log(arg);
 		client.write(arg);
 	  });
+
+	},
+  
+	getFileInfo: function (client) {
+		ipcMain.on('get-file-info', (event, arg) => {
+			client.write(arg);
+		});
 
 	}
 	

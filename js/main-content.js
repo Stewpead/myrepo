@@ -25,7 +25,7 @@ $(document).ready( () => {
     getAsset = JSON.stringify(getAsset);
 
     ipcRenderer.send('get-asset-chain', getAsset);
-
+	store.delete('set-dashboard-file-selected');
     trendingVids();
 
 });
@@ -36,28 +36,40 @@ $(document).ready( () => {
         setTimeout( () => {
             let data = store.get('get-asset-chain');
             store.delete('get-asset-chain');
-            console.log(JSON.parse(data));
-        }, 100);
-        // for (var key in json64) 
-        // {
 
-        //     trendingVcards += '<div class="col-lg-3 grid-cards" id="card' + key + '">';
-        //     trendingVcards += '<div class="container">';
-        //     trendingVcards += '<img src="' + data64 + json64[key]['metadata']['thumbnail'] + '" />';
-        //     trendingVcards += '<p id="video-title" class="thumb-title">' + json64[key]['metadata']['filename'] + '</p>';
-        //     trendingVcards += '<p id="video-year" class="thumb-year" >(' + json64[key]['metadata']['year'] + ')</p>';
-        //     trendingVcards += '</div>';
-        //     trendingVcards += '</div>';
+		
+			if (typeof data != "undefined") {
+				var json64 = JSON.parse(data["assets"]);
+				console.log(json64);
+				//' + data64 + json64[key]['thumbnail'] + ' 
+				for (var key in json64) 
+					{
 
-        // }
-        // $('#trendingMovies').append(trendingVcards);
+					trendingVcards += '<div class="col-lg-3 grid-cards" onclick="getFileInfo(\''+ json64[key]['trackingHash'] +'\')">';
+					trendingVcards += '<div class="container">';
+					trendingVcards += '<img src="../images/thumbnail1.jpg" />';
+					trendingVcards += '<p id="video-title" class="thumb-title">' + json64[key]['title'] + '</p>';
+					trendingVcards += '<p id="video-year" class="thumb-year" >(2000)</p>';
+					trendingVcards += '</div>';
+					trendingVcards += '</div>';
+
+					}
+					
+				$('#trendingMovies').append(trendingVcards);
+
+				
+
+				
+			}        
+		}, 1000);
+
     }
 
-    $('#card0').click(() => {
-        location.href = "video-details.html";
-    });
-
-
+function getFileInfo(hash) {
+	store.set('set-dashboard-file-selected', hash );
+	location.href = "video-details.html";
+}
+	
 // for (var i = 0; i < 14; ++i) {
 //     var movieThumbs = '<div class="col-lg-3 grid-cards">';
 //     movieThumbs += '<div class="container">';

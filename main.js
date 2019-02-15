@@ -35,7 +35,8 @@ var Status = {
 	GET_SPENT: 1124,
 	GET_ACCOUNT_HISTORY: 1123,
 	GET_PUBLICKEY: 1125,
-	GET_ASSET: 1122
+	GET_ASSET: 1122,
+	GET_FILE_INFO: 1128
 };
 
 /*
@@ -71,6 +72,7 @@ var initiateConnection = function(attempt){
 		module.getAccountHistory(client);
 		module.getAccountWalletAddress(client);
 		module.getAssset(client);
+		module.getFileInfo(client);
 		
 		ipcMain.on('test-btn',(event, arg) => {
 			event.returnValue = 1 +arg;
@@ -148,6 +150,9 @@ var initiateConnection = function(attempt){
 				break;
 			case Status.GET_ASSET:
 				moduleDashboard.getAsset(data);
+				break;
+			case Status.GET_FILE_INFO:
+				moduleDashboard.getFileInfo(data);
 				break;
 		}			
 
