@@ -129,7 +129,7 @@ function signin() {
 	ipcRenderer.send("avx-login", jsonString);
 	
 	ipcRenderer.on('signin-response', (event, arg) => {
-
+		
 		if( arg == "true" ) {
 			$('[pd-popup="loginSuccessModal"]').fadeIn(100);
 		}

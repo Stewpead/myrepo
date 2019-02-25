@@ -59,7 +59,7 @@ module.exports = {
 				show: false,
 			});
 			defaultWindow.loadURL(url.format({
-				pathname: path.join(__dirname, app_dir,'login-window.html'),
+				pathname: path.join(__dirname, app_dir,'signup-window.html'),
 				protocol: 'file:',
 				slashes: true
 			}));
@@ -77,7 +77,7 @@ module.exports = {
 		  
 	  //var jdata = JSON.parse(tmp);
 		// console.log(jdata);
-		var validate = data['login'];
+		var validate = data['registered'];
 		console.log(validate);
 		// ARJ NOTE UI FOR NOTIFICATION FOR SUCCESS/ERROR 
 

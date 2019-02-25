@@ -22,8 +22,9 @@ module.exports = {
 			status: 7001
 		};
 		data = JSON.stringify(data);
-		client.write(data);
 		console.log(data);
+		client.write(data);
+
 	// defaultWindow = new BrowserWindow({
 	// 	frame: false,
 	// 	width: 1050,
