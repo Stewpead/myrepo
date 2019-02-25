@@ -58,12 +58,11 @@ module.exports = {
 				icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
 				show: false,
 			});
-
-			  defaultWindow.loadURL(url.format({
-			      pathname: path.join(__dirname, app_dir,'signup-window.html'),
-			      protocol: 'file:',
-			      slashes: true
-			  }));
+			defaultWindow.loadURL(url.format({
+				pathname: path.join(__dirname, app_dir,'login-window.html'),
+				protocol: 'file:',
+				slashes: true
+			}));
 			defaultWindow.once('ready-to-show', () => {
 				defaultWindow.show();
 			});
