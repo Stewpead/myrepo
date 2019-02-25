@@ -13,23 +13,18 @@ jQuery(document).ready(($) => {
 });
 
 $('#btnLogin').click( () => {
-	// var username = document.getElementById('username').value;
-	// var password = document.getElementById('passw').value;
-	// if( username == "avx" && password == "avx" ) {
-	// 	$('[pd-popup="loginSuccessModal"]').fadeIn(100);
+	var username = document.getElementById('username').value;
+	var password = document.getElementById('passw').value;
 
-	// 	setTimeout(() => {
-	// 		location.href = "main-window.html";
-	// 	}, 2000);
-	
-	// }
-	// else {
-	// 	$('[pd-popup="loginFailModal"]').fadeIn(100);
-	// 	setTimeout( () => {
-	// 		location.href = "login-window.html";
-	// 	}, 1500);
-	// }
-	signin();
+	if( username == "" && password == "" ) {
+		$('[pd-popup="loginInvalidModal"]').fadeIn(100);
+	} else if( username == "" && password != "" ) {
+		$('[pd-popup="loginInvalidModal"]').fadeIn(100);
+	} else if( username != "" && password == "" ) {
+		$('[pd-popup="loginInvalidModal"]').fadeIn(100);
+	} else {
+		signin();
+	}
 
 });
 
@@ -38,7 +33,7 @@ $('#btnSignup').click(() => {
 	var username = document.getElementById('username').value;
 	var pass1 = document.getElementById('spassword').value;
 	var pass2 = document.getElementById('confirmpass').value;
-	// var agreement = ;
+
 	if ( username=="" && pass1=="" && pass2=="") {
 		$('[pd-popup="signupFieldsEmptyModal"]').fadeIn(200);
 	}
@@ -51,8 +46,6 @@ $('#btnSignup').click(() => {
 	else if( pass1 == pass2 && document.getElementById('chkAgreement').checked == true ) {
 
 		signup();
-		//document.getElementById('loginmode').style.display = 'block';
-		//document.getElementById('signupmode').style.display = 'none';
 
 	}
 	else if( pass1=="" && pass2=="" ) {
@@ -85,22 +78,11 @@ function signup() {
 	username = document.getElementById('susername').value;
 	password = document.getElementById('spassword').value;
 
-	//var file = document.getElementById("openWallet").files[0];
-
-
-	//if (typeof file !== 'undefined' && file !== null) {
-	//	directory = file.path
-
-	//}
-	// directory = "D:\\wallet";
-
-	
 	var json = {
 		status: 1113,
 		data : {
 			username : username,
 			password : password
-			// directory : directory
 			
 		}
 	};
@@ -116,32 +98,6 @@ function signup() {
 		}
 	});
 }
-	// $('[pd-popup="signupSuccessModal"]').fadeIn(100);
-	/*setTimeout( () => {
-		ipcRenderer.send('signup-check', "status");
-	},
-	200);
-	setTimeout( () => {
-		ipcRenderer.on('signup-response', (event, arg) => {
-			if(arg == "true") {
-				$('[pd-popup="signupSuccessModal"]').fadeIn(100);
-			}
-			else {
-				$('[pd-popup="signupInvalidModal"]').fadeIn(100);
-			}
-		});
-}
-
-
-/* test */
-	/*var data = 1;
-	alert(data);
-	// var test = ipcRenderer.send("test-btn", data);
-	var test =  ipcRenderer.sendSync('test-btn', data);
-	alert(test);
-	*/
-
-/**/
 
 function signin() {
 	var data = {};
@@ -166,9 +122,6 @@ function signin() {
 			data : {
 				username : username,
 				password : password,
-				// directory : directory,
-				// privateKey	 : privateKey
-
 			}
 		}
 
@@ -177,10 +130,10 @@ function signin() {
 	
 	ipcRenderer.on('signin-response', (event, arg) => {
 
-		if(arg == "true") {
+		if( arg == "true" ) {
 			$('[pd-popup="loginSuccessModal"]').fadeIn(100);
 		}
-		else if(arg == "true") {
+		else if( arg == "false" ) {
 			$('[pd-popup="loginFailModal"]').fadeIn(100);
 		}
 	});
@@ -188,23 +141,8 @@ function signin() {
 
 }
 
-	// setTimeout(function() {
-		
-		// let data = store.get('avx-login-true');
-		// data = JSON.parse(data);
-		// store.delete('avx-login-true');
-		
-	// }, 100);
-	// $('[pd-popup="loginSuccessModal"]').fadeIn(200);
-	
-	// $('[pd-popup="loginSuccessModal"]').fadeOut(3000);
-// $('#buttonExecute').click(function() {
-// 	$('[pd-popup="shareScanResultModal"]').fadeOut(100);
-// 	$('[pd-popup="shareScanningModal"]').fadeIn(100);
-// });
 $(document).ready( function() {
 
-	// document.getElementById('btnSignup').disabled = true;
 
 	var listDir = store.get('directory');
 	if ( typeof listDir !== 'undefined' || listDir !== null ) {

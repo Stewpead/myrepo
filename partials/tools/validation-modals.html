@@ -12,6 +12,13 @@
   </div>
 </div> 
 
+<div class="popup validation-event" pd-popup="loginInvalidModal">
+  <div class="popup-inner">
+    <h4>Login details incomplete.</h3>
+      <br />
+    <button id="btnLoginInvalid" class="btn btn-danger">Okay</button>
+  </div>
+</div> 
 
 <div class="popup validation-event" pd-popup="signupSuccessModal">
   <div class="popup-inner">
@@ -97,6 +104,10 @@ $('#btnRegFailSignup').click(() => {
 $('#btnLoginfail').click(() => {
   $('[pd-popup="loginFailModal"]').fadeOut(200);
   location.href = "login-window.html";
+});
+
+$('#btnLoginInvalid').click(() => {
+  $('[pd-popup="loginInvalidModal"]').fadeOut(200);
 });
 
 </script>

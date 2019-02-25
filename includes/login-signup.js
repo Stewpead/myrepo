@@ -19,6 +19,59 @@ var app_dir = './../winPage/';
 
 
 module.exports = {
+	checkRegisteredUser: function (data) {
+		var checkStat = data['has_registered'];
+		if( checkStat == 1 ) {
+			// show login window
+				defaultWindow = new BrowserWindow({
+				frame: false,
+				width: 1050,
+				height: 750,
+				minWidth: 850,
+				minHeight: 600,
+				backgroundColor: '#312450',
+				icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
+				show: false,
+			});
+
+			  defaultWindow.loadURL(url.format({
+			      pathname: path.join(__dirname, app_dir,'login-window.html'),
+			      protocol: 'file:',
+			      slashes: true
+			  }));
+			defaultWindow.once('ready-to-show', () => {
+				defaultWindow.show();
+			});
+			defaultWindow.on('close', () => {
+				app.close();
+			});
+		} else if ( checkStat == 0) {
+			//showw sign up
+			defaultWindow = new BrowserWindow({
+				frame: false,
+				width: 1050,
+				height: 750,
+				minWidth: 850,
+				minHeight: 600,
+				backgroundColor: '#312450',
+				icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
+				show: false,
+			});
+
+			  defaultWindow.loadURL(url.format({
+			      pathname: path.join(__dirname, app_dir,'signup-window.html'),
+			      protocol: 'file:',
+			      slashes: true
+			  }));
+			defaultWindow.once('ready-to-show', () => {
+				defaultWindow.show();
+			});
+			defaultWindow.on('close', () => {
+				app.close();
+			});
+		}
+	},
+
   signupResponse: function (data) {
 		console.log(data);
 		  
@@ -66,7 +119,6 @@ module.exports = {
   },
   signinResponse: function (data) {
 		var validate = data['login'];
-		console.log("Login: " + validate);
 
 		if (validate == 1 ) {
 			//TRIGGER
@@ -82,6 +134,7 @@ module.exports = {
 		else if(validate == 0) {
 			//TRIGGER
 			defaultWindow.webContents.send('signin-response', 'false');
+			
 		}
   }
 };

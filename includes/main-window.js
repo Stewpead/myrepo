@@ -17,44 +17,42 @@ var app_dir = './../winPage/';
 
 
 module.exports = {
-  showWindow: function () {
-	
-	defaultWindow = new BrowserWindow({
-		frame: false,
-		width: 1050,
-		height: 750,
-		minWidth: 850,
-		minHeight: 600,
-		backgroundColor: '#312450',
-		icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
-		show: false,
-	});
-	
-    defaultWindow.loadURL(url.format({
-        pathname: path.join(__dirname, app_dir,'login-window.html'),
-        protocol: 'file:',
-        slashes: true
-    }));
+  showWindow: function (client) {
+		var data = {
+			status: 7001
+		};
+		data = JSON.stringify(data);
+		client.write(data);
 
-	defaultWindow.once('ready-to-show', () => {
-		defaultWindow.show();
-	});
+	// defaultWindow = new BrowserWindow({
+	// 	frame: false,
+	// 	width: 1050,
+	// 	height: 750,
+	// 	minWidth: 850,
+	// 	minHeight: 600,
+	// 	backgroundColor: '#312450',
+	// 	icon: path.join(__dirname, IMG_DIR, 'whiteicon.png'),
+	// 	show: false,
+	// });
+
+  //   defaultWindow.loadURL(url.format({
+  //       pathname: path.join(__dirname, app_dir,'login-window.html'),
+  //       protocol: 'file:',
+  //       slashes: true
+  //   }));
+
+	// defaultWindow.once('ready-to-show', () => {
+
+	// 	defaultWindow.show();
+	// });
 	
-	defaultWindow.on('close', () => {
-		defaultWindow.show();
-	});
+	// defaultWindow.on('close', () => {
+	// 	app.close();
+	// });
 // ============================================================================================
 
 
 	// =====================================================================================================
-	
-
-	
-	ipcMain.on('avx-load-wallet',(event, arg) => {
-	
-
-	});	
-	
   },
   avxLogin: function (client) {
 	ipcMain.on('avx-login',(event, arg) => {

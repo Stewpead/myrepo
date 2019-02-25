@@ -37,7 +37,8 @@ var Status = {
 	GET_PUBLICKEY: 1125,
 	GET_ASSET: 1122,
 	GET_FILE_INFO: 1128,
-	GENERATE_DOWNLOAD: 1117
+	GENERATE_DOWNLOAD: 1117,
+	HAS_REGISTERED_USER : 7001
 };
 
 /*
@@ -54,7 +55,7 @@ var initiateConnection = function(attempt){
 	
 		
 		var module = require('./includes/main-window');
-		module.showWindow();
+		module.showWindow(client);
 		module.avxLogin(client);
 		module.avxSignup(client);
 		module.avxPopup(client);
@@ -109,6 +110,10 @@ var initiateConnection = function(attempt){
 
 		switch(data["status"])
 		{
+			case Status.HAS_REGISTERED_USER:
+				moduleAccount.checkRegisteredUser(data);
+				break;
+				
 			case Status.SIGNUP:
 				moduleAccount.signupResponse(data);
 				break;
