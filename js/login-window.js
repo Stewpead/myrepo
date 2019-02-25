@@ -34,27 +34,19 @@ $('#btnSignup').click(() => {
 	var pass1 = document.getElementById('spassword').value;
 	var pass2 = document.getElementById('confirmpass').value;
 
-	if ( username=="" && pass1=="" && pass2=="") {
+	if ( username == "" || pass1 == "" && pass2 == "" ) {
 		$('[pd-popup="signupFieldsEmptyModal"]').fadeIn(200);
-	}
-	else if( username=="" && pass1=="" && pass2=="" &&  document.getElementById('chkAgreement').checked == true) {
+	} else if( username=="" && pass1=="" && pass2=="" &&  document.getElementById('chkAgreement').checked == true) {
 
-	}
-	else if( pass1 != pass2 ) {
+	} else if( pass1 != pass2 ) {
 		$('[pd-popup="signupFailModal"]').fadeIn(200);
-	}
-	else if( pass1 == pass2 && document.getElementById('chkAgreement').checked == true ) {
-
+	} else if( pass1 == pass2 && document.getElementById('chkAgreement').checked == true ) {
 		signup();
-
-	}
-	else if( pass1=="" && pass2=="" ) {
+	} else if( username == "" || pass1=="" || pass2=="" ) {
 		$('[pd-popup="signupPasswordEmptyModal"]').fadeIn(200);
-	}
-	else if(document.getElementById('chkAgreement').checked != true ) {
+	} else if(document.getElementById('chkAgreement').checked != true ) {
 		$('[pd-popup="signupAgreementModal"]').fadeIn(200);
-	}
-	else if (pass1 == pass2 && document.getElementById('chkAgreement').checked == false) {
+	} else if (pass1 == pass2 && document.getElementById('chkAgreement').checked == false) {
 
 	}
 	
