@@ -96,7 +96,8 @@ var initiateConnection = function(attempt){
 		  console.log('Connection Timeout');
 		  client.destroy();
 		}
-		
+		// var module2 = require('./includes/main-window');
+		// module2.showWindow();
 	});
 	
 	client.on('data', function(data) {

@@ -428,3 +428,14 @@ hr#hr {
     font-size: 24px;
     text-align: left;
 }
+.scanning-file #confirmP {
+    color: #888888;
+    text-align: left;
+}
+.scanning-file #account-balance {
+    float: left;
+    color: #31da39;
+}
+.scanning-file #confirmPcurrent {
+    font-size: 12px;
+}

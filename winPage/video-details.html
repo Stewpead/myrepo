@@ -17,8 +17,8 @@
 
     <header>
         <div id="container">
-            <nav>
-                <div id="titleShown">
+            <nav> 
+                <div id="titleShown"> 
                 </div>
                 <div id="buttons">
                     <div id="minimize">
@@ -79,45 +79,103 @@
                     <div class="row"> 
                         <div class="col-md-3">
                             <div class="ml-4" id="videoImage">
-                        
+                                
                             </div>
                         </div>
                         <div class="col-lg-9">
                             <div style="float:left;">
-                                <h3 id="movietitle"></h3> <h5 id="movieyear"></h5>
-                                <ul class="nav nav-tabs" id="tabs">
-                                    <li id="movieseires">
-                                       
-                                    </li>
-                                    <li id="moviecost">
-                                       
-                                    </li>
-                                    <li id="movieavail">
-                                       
-                                    </li>
-                                </ul>
-                                <br>
-                                <p id="movieplot"></p>
-                                <br>
-                                <div >
-                                    <p style="display:inline;">Directed by: &emsp;</p><p id="moviedirector" style="display:inline;"></p>
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h5 id="filetitle" style="display: inline-block">Avengers The Infinity Wars</h5> <h5 id="fileyear" style="display: inline-block"></h5>2018</h5>
+                                            <ul class="nav" id="tabsVideoDetails">
+                                                <li id="movieseires">
+                                                    480p - 1080p Available 
+                                                </li>
+                                                <li id="filecost">
+                                                    Cost 10 AVX - 40 AVX
+                                                </li>
+                                                <li id="fileavail">
+                                                    50 file(s) available
+                                                </li>
+                                                <li id="fileowner">
+                                                    See ownership
+                                                </li>
+                                            </ul>
+                                            <br>
+                                            <p id="movieplot">
+                                                Iron Man, Thor, the Hulk and the rest of the Avengers unite to battle their most powerful enemy yet -- the evil Thanos. On a mission to collect all six Infinity Stones, Thanos plans to use the artifacts to inflict his twisted will on reality. The fate of the planet and existence itself has never been more uncertain as everything the Avengers have fought for has led up to this moment.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <br>
-                                <div >
-                                    <p style="display:inline;">Genre (s): &emsp;</p><p id="moviegenre" style="display:inline;"></p>
+                                <br />
+                                <div class="container-fluid" id="otherFileInfo">
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p class="mb-3">Parental Rating: &emsp;</p>
+                                        </div>
+                                        <div class="col-lg-10">
+                                            <span id="pg">PG. 13</span> <span> Runtime: </span> <span>2 hr 47 min</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p class="mb-3">Diretors: &emsp;</p>
+                                        </div>
+                                        <div class="col-lg-10">
+                                            <p>Anthony Russo, Joe Russo</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p class="mb-3">Producer: &emsp;</p>
+                                        </div>
+                                        <div class="col-lg-10">
+                                            <p>Kevin Feige</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p class="mb-3">Writers: &emsp;</p>
+                                        </div>
+                                        <div class="col-lg-10 pr-5">
+                                            <span class="pr-5">Christopher Markus, Stephen McFeely, Stan Lee, Jack Kirby, Joe Simon, Jack Kirby, Steve Englehart, Steve Gan, Keith Giffen, Jim Starlin, Stan Lee, Larry Lieber, Jack Kirby, Jim Starlin</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p class="mb-3">Studio: &emsp;</p>
+                                        </div>
+                                        <div class="col-lg-10">
+                                            <span>Marvel Cinematic Universe</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p class="mb-3">Genre: &emsp;</p>
+                                        </div>
+                                        <div class="col-lg-10">
+                                            <span>Action, Adventure, Fantasy </span> 
+                                        </div>
+                                    </div>
                                 </div>
-                                <br>
-                                <div>
-                                    <p style="display:inline;">Studio: &emsp;</p><p id="moviestudio" style="display:inline;"></p>
-                                </div>
-                                <br>
-
                             </div>
-                        </div>                
-                    </div>
-                    <div class="row">
-                        <h5 id="totalSearchResult" class="mb-3 ml-5"> 50 movies search result from </h5>
-                    </div>
+                            <div class="row">
+                                <div class="row">
+                                    <span>Actors</span>
+                                </div>
+                                <div class="col-lg-12">
+                                    
+                                </div>  
+                            </div>
+                        </div>
+                        
+                    </div>              
+                </div>
+                <div class="row">
+                    <h5 id="totalSearchResult" class="mb-3 ml-5"> <span id="totalSearch"></span> <span id="typeOfFile"></span> search result from </h5>
+                </div>
                     <div class="row">
                         <div class="col-lg-12" id="bodycolumn">
                             <table class="table table-hover ml-4">
@@ -137,8 +195,8 @@
                                             <th scope="col">Video Bitrate</th>
                                         </tr>
                                 </thead>
-                                <tbody id="tbodyVdetails">
-                                   
+                                <tbody id="tbodyDetails">
+                                    
                                 </tbody>
                             </table>             
                         </div>

@@ -15,31 +15,33 @@ $ = jQuery;
 
 $(document).ready(function() {
 
-
-	let data = store.get('set-dashboard-file-selected' );
-	
-    var getFileInfo = {
-        status : 1128,
-		data : {
-			trackingHash : data
-		}
+    setTimeout( () =>{
+        let data = store.get('set-dashboard-file-selected' );
+    }, 100);
+    document.getElementById('')
+	 
+    // var getFileInfo = {
+    //     status : 1128,
+	// 	data : {
+	// 		trackingHash : data
+	// 	}
 		
-    };
-    getFileInfo = JSON.stringify(getFileInfo);
+    // };
+    // getFileInfo = JSON.stringify(getFileInfo);
 
-    ipcRenderer.send('get-file-info', getFileInfo);
+    // ipcRenderer.send('get-file-info', getFileInfo);
 	
-	setTimeout( () => {
-		let data = store.get('get-file-info');
+	// setTimeout( () => {
+	// 	let data = store.get('get-file-info');
 		
-		if (typeof data != "undefined") {
-			var json64 = JSON.parse(data['asset']);
+	// 	if (typeof data != "undefined") {
+	// 		var json64 = JSON.parse(data['asset']);
 			
-			    loadTableData(data);
-				loadVideoDetails(json64);
-		}
+	// 		    loadTableData(data);
+	// 			loadVideoDetails(json64);
+	// 	}
 		
-	 }, 1000);
+	//  }, 1000);
  
 });
 
@@ -47,14 +49,14 @@ function loadTableData(data) {
     var countFiles = 1;
     var resultsTableData = "";
 	
-    for (var key in data) {
-        resultsTableData += '<tr id="row' + countFiles + '">';
-        resultsTableData += '<th scope="row" class="clickable-row"></th>'
-        resultsTableData += '<td id="filename' + countFiles + '">'+data['asset']['title']+'</td>';
-        resultsTableData += '<td id="downloads' + countFiles + '"><td id="costavx' + countFiles + '"></td><td id="ratings' + countFiles + '"></td><td id="language' + countFiles + '"></td><td id="subtitle' + countFiles + '"></td><td id="resolution' + countFiles + '"></td><td id="filesize' + countFiles + '"></td><td id="videocode' + countFiles + '"></td><td id="audiocode' + countFiles + '"></td><td id="videobitrate' + countFiles + '"></td>';
-        countFiles++;
-    }
-    $('#tbodyVdetails').append(resultsTableData);
+    // for (var key in data) {
+    //     resultsTableData += '<tr id="row' + countFiles + '">';
+    //     resultsTableData += '<th scope="row" class="clickable-row"></th>'
+    //     resultsTableData += '<td id="filename' + countFiles + '">'+data['asset']['title']+'</td>';
+    //     resultsTableData += '<td id="downloads' + countFiles + '"><td id="costavx' + countFiles + '"></td><td id="ratings' + countFiles + '"></td><td id="language' + countFiles + '"></td><td id="subtitle' + countFiles + '"></td><td id="resolution' + countFiles + '"></td><td id="filesize' + countFiles + '"></td><td id="videocode' + countFiles + '"></td><td id="audiocode' + countFiles + '"></td><td id="videobitrate' + countFiles + '"></td>';
+    //     countFiles++;
+    // }
+    // $('#tbodyVdetails').append(resultsTableData);
 	
 }
 

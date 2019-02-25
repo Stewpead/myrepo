@@ -9,11 +9,26 @@ jQuery(document).ready(($) => {
 	document.getElementById('btnUpload').style.display = 'none';
 
 	document.getElementById('downUpload').style.display = 'none';
-
+    
 });
 
 $('#btnLogin').click( () => {
+	// var username = document.getElementById('username').value;
+	// var password = document.getElementById('passw').value;
+	// if( username == "avx" && password == "avx" ) {
+	// 	$('[pd-popup="loginSuccessModal"]').fadeIn(100);
 
+	// 	setTimeout(() => {
+	// 		location.href = "main-window.html";
+	// 	}, 2000);
+	
+	// }
+	// else {
+	// 	$('[pd-popup="loginFailModal"]').fadeIn(100);
+	// 	setTimeout( () => {
+	// 		location.href = "login-window.html";
+	// 	}, 1500);
+	// }
 	signin();
 
 });
@@ -153,7 +168,6 @@ function signin() {
 	}, 100);
 	// $('[pd-popup="loginSuccessModal"]').fadeIn(200);
 	
-
 	// $('[pd-popup="loginSuccessModal"]').fadeOut(3000);
 }
 // $('#buttonExecute').click(function() {
