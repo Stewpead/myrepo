@@ -9,8 +9,9 @@ const Store = require('electron-store');
 const store = new Store();
 var fs = require('fs');
 const lstat = require('lstat');
-const {shell} = require('electron');
-const { remote } = require('electron');
+/*const {shell} = require('electron');
+const { remote } = require('electron');*/
+//const {ipcRenderer} = require('electron');
 
 
 var IMG_DIR = './../images/';
@@ -26,7 +27,22 @@ module.exports = {
 		var validate = data['registered'];
 		console.log(validate);
 		// ARJ NOTE UI FOR NOTIFICATION FOR SUCCESS/ERROR 
-		if ( validate == 1 ) {
+
+		if (validate == 1) {
+			//electron.send('signup-response', 'true');
+			defaultWindow.webContents.send('signup-response', 'true');
+
+			defaultWindow.loadURL(url.format({
+				pathname: path.join(__dirname, app_dir,'login-window.html'),
+				protocol: 'file:',
+				slashes: true
+			}));
+		} else {
+			defaultWindow.webContents.send('signup-response', 'false');
+			//electron.send('signup-response', 'false');
+		}
+
+		/*if ( validate == 1 ) {
 			ipcMain.on('signup-check', (event, arg) => {
 				event.sender.send('signup-response', 'true');
 			});
@@ -40,7 +56,7 @@ module.exports = {
 			ipcMain.on('signup-check', (event, arg) => {
 				event.sender.send('signup-response', 'false');
 			});
-		}
+		}*/
 		// else if( valide == 0 ) {
 		// 	ipcMain.on('signup-send', (event, arg) => {
 		// 		event.sender.send('signup-response')
