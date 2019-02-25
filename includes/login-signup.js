@@ -19,7 +19,9 @@ var app_dir = './../winPage/';
 
 module.exports = {
   signupResponse: function (data) {
-	//   var jdata = JSON.parse(data);
+		console.log(data);
+		  
+	  //var jdata = JSON.parse(tmp);
 		// console.log(jdata);
 		var validate = data['registered'];
 		console.log(validate);
