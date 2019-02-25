@@ -25,11 +25,15 @@ module.exports = {
 		console.log(validate);
 		// ARJ NOTE UI FOR NOTIFICATION FOR SUCCESS/ERROR 
 		if ( validate == 1 ) {
+
 			defaultWindow.loadURL(url.format({
 				pathname: path.join(__dirname, app_dir,'login-window.html'),
 				protocol: 'file:',
 				slashes: true
 			}));
+		}
+		else if( validate == 0 ) {
+
 		}
 		// else if( valide == 0 ) {
 		// 	ipcMain.on('signup-send', (event, arg) => {

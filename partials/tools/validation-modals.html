@@ -68,6 +68,10 @@ $('#btnSuccessSignup').click(() => {
   // location.href = 'login-window.html';
 });
 
+$('#btnSignupemptyfail').click(() => {
+  $('[pd-popup="signupFieldsEmptyModal"]').fadeOut(200);
+});
+
 $('#btnpasswordEmptyfail').click(() => {
   $('[pd-popup="signupPasswordEmptyModal"]').fadeOut(200);
 });

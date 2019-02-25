@@ -107,7 +107,7 @@ function signup() {
 
 	var jsonString = JSON.stringify(json);
 	ipcRenderer.send("avx-signup", jsonString);
-	$('[pd-popup="signupSuccessModal"]').fadeIn(100);
+	// $('[pd-popup="signupSuccessModal"]').fadeIn(100);
 }
 
 
