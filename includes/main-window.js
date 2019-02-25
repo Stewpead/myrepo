@@ -23,7 +23,7 @@ module.exports = {
 		};
 		data = JSON.stringify(data);
 		client.write(data);
-
+		console.log(data);
 	// defaultWindow = new BrowserWindow({
 	// 	frame: false,
 	// 	width: 1050,

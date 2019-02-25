@@ -21,6 +21,7 @@ var app_dir = './../winPage/';
 module.exports = {
 	checkRegisteredUser: function (data) {
 		var checkStat = data['has_registered'];
+		console.log(data);
 		if( checkStat == 1 ) {
 			// show login window
 				defaultWindow = new BrowserWindow({

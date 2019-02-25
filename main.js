@@ -113,7 +113,7 @@ var initiateConnection = function(attempt){
 			case Status.HAS_REGISTERED_USER:
 				moduleAccount.checkRegisteredUser(data);
 				break;
-				
+
 			case Status.SIGNUP:
 				moduleAccount.signupResponse(data);
 				break;
