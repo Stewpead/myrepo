@@ -24,7 +24,7 @@ module.exports = {
 		  
 	  //var jdata = JSON.parse(tmp);
 		// console.log(jdata);
-		var validate = data['registered'];
+		var validate = data['login'];
 		console.log(validate);
 		// ARJ NOTE UI FOR NOTIFICATION FOR SUCCESS/ERROR 
 
@@ -65,30 +65,23 @@ module.exports = {
 
   },
   signinResponse: function (data) {
-		var validate = data['data'];
-		const store = new Store();	
-	
+		var validate = data['login'];
+		console.log("Login: " + validate);
 
 		if (validate == 1 ) {
 			//TRIGGER
-			store.set('avx-login-true', 1);
-
-			setTimeout(() => {
-				defaultWindow.loadURL(url.format({
-					pathname: path.join(__dirname, app_dir,'main-window.html'),
-					protocol: 'file:',
-					slashes: true
-				}));
-			}, 2000);
-			
-			// store.set('avx-share-upload-scan-results', data);
-			// ipcMain.on('avx-login', (event, arg) => {
-			// 	event.sender.send('login-true',)
-			// });
-
+			defaultWindow.webContents.send('signin-response', 'true');
+				setTimeout( () =>{
+					defaultWindow.loadURL(url.format({
+						pathname: path.join(__dirname, app_dir,'main-window.html'),
+						protocol: 'file:',
+						slashes: true
+					}));
+				}, 2000);
 		}
-		else if(validate != 1) {
-			store.set('avx-login-true', 0);
+		else if(validate == 0) {
+			//TRIGGER
+			defaultWindow.webContents.send('signin-response', 'false');
 		}
   }
 };

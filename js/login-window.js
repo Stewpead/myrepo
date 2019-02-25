@@ -115,7 +115,7 @@ function signup() {
 			$('[pd-popup="signupInvalidModal"]').fadeIn(100);
 		}
 	});
-
+}
 	// $('[pd-popup="signupSuccessModal"]').fadeIn(100);
 	/*setTimeout( () => {
 		ipcRenderer.send('signup-check', "status");
@@ -130,13 +130,6 @@ function signup() {
 				$('[pd-popup="signupInvalidModal"]').fadeIn(100);
 			}
 		});
-<<<<<<< HEAD
-	}, 300);
-
-=======
-	}, 300);*/
-	
->>>>>>> 42d02ec0ce54733d70a7ca8778a48f071affe9f1
 }
 
 
@@ -173,32 +166,38 @@ function signin() {
 			data : {
 				username : username,
 				password : password,
-				directory : directory,
-				privateKey	 : privateKey
+				// directory : directory,
+				// privateKey	 : privateKey
 
 			}
 		}
 
 	var jsonString = JSON.stringify(json);
 	ipcRenderer.send("avx-login", jsonString);
-	setTimeout(function() {
-		
-		let data = store.get('avx-login-true');
-		data = JSON.parse(data);
-		store.delete('avx-login-true');
-		
-		if(data == "1") {
+	
+	ipcRenderer.on('signin-response', (event, arg) => {
+
+		if(arg == "true") {
 			$('[pd-popup="loginSuccessModal"]').fadeIn(100);
 		}
-		else if(data == "0") {
+		else if(arg == "true") {
 			$('[pd-popup="loginFailModal"]').fadeIn(100);
 		}
+	});
+
+
+}
+
+	// setTimeout(function() {
 		
-	}, 100);
+		// let data = store.get('avx-login-true');
+		// data = JSON.parse(data);
+		// store.delete('avx-login-true');
+		
+	// }, 100);
 	// $('[pd-popup="loginSuccessModal"]').fadeIn(200);
 	
 	// $('[pd-popup="loginSuccessModal"]').fadeOut(3000);
-}
 // $('#buttonExecute').click(function() {
 // 	$('[pd-popup="shareScanResultModal"]').fadeOut(100);
 // 	$('[pd-popup="shareScanningModal"]').fadeIn(100);
