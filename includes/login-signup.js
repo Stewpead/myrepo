@@ -19,9 +19,9 @@ var app_dir = './../winPage/';
 
 module.exports = {
   signupResponse: function (data) {
-	  var jdata = JSON.parse(data);
-		console.log(jdata);
-		var validate = jdata['registered'];
+	//   var jdata = JSON.parse(data);
+		// console.log(jdata);
+		var validate = data['registered'];
 		console.log(validate);
 		// ARJ NOTE UI FOR NOTIFICATION FOR SUCCESS/ERROR 
 		if ( validate == 1 ) {
