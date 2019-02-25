@@ -92,15 +92,15 @@ function signup() {
 	//	directory = file.path
 
 	//}
-	directory = "D:\\wallet";
+	// directory = "D:\\wallet";
 
 	
 	var json = {
 		status: 1113,
 		data : {
 			username : username,
-			password : password,
-			directory : directory
+			password : password
+			// directory : directory
 			
 		}
 	};
