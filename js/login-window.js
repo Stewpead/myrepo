@@ -111,18 +111,18 @@ function signup() {
 	setTimeout( () => {
 		ipcRenderer.send('signup-check', "status");
 	},
-	300);
+	200);
 	setTimeout( () => {
 		ipcRenderer.on('signup-response', (event, arg) => {
 			if(arg == "true") {
 				$('[pd-popup="signupSuccessModal"]').fadeIn(100);
 			}
-			else if(arg == "false") {
+			else {
 				$('[pd-popup="signupInvalidModal"]').fadeIn(100);
 			}
 		});
 	}, 300);
-	
+
 }
 
 
