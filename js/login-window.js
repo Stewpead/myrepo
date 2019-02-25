@@ -51,8 +51,8 @@ $('#btnSignup').click(() => {
 	else if( pass1 == pass2 && document.getElementById('chkAgreement').checked == true ) {
 
 		signup();
-		document.getElementById('loginmode').style.display = 'block';
-		document.getElementById('signupmode').style.display = 'none';
+		//document.getElementById('loginmode').style.display = 'block';
+		//document.getElementById('signupmode').style.display = 'none';
 
 	}
 	else if( pass1=="" && pass2=="" ) {
@@ -107,8 +107,17 @@ function signup() {
 
 	var jsonString = JSON.stringify(json);
 	ipcRenderer.send("avx-signup", jsonString);
+
+	ipcRenderer.on('signup-response', (event, arg) => {
+		if (arg == "true") {
+			$('[pd-popup="signupSuccessModal"]').fadeIn(100);
+		} else if(arg == "false") {
+			$('[pd-popup="signupInvalidModal"]').fadeIn(100);
+		}
+	});
+
 	// $('[pd-popup="signupSuccessModal"]').fadeIn(100);
-	setTimeout( () => {
+	/*setTimeout( () => {
 		ipcRenderer.send('signup-check', "status");
 	},
 	300);
@@ -121,7 +130,7 @@ function signup() {
 				$('[pd-popup="signupInvalidModal"]').fadeIn(100);
 			}
 		});
-	}, 300);
+	}, 300);*/
 	
 }
 
