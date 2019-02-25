@@ -19,18 +19,24 @@ var app_dir = './../winPage/';
 
 module.exports = {
   signupResponse: function (data) {
-		console.log(data);
-		var validate = data['data'];
+	  var jdata = JSON.parse(data);
+		console.log(jdata);
+		var validate = jdata['registered'];
+		console.log(validate);
 		// ARJ NOTE UI FOR NOTIFICATION FOR SUCCESS/ERROR 
-	//	if (validate == 1 ){
+		if ( validate == 1 ) {
 			defaultWindow.loadURL(url.format({
 				pathname: path.join(__dirname, app_dir,'login-window.html'),
 				protocol: 'file:',
 				slashes: true
 			}));
-	//	}
-		
-	
+		}
+		// else if( valide == 0 ) {
+		// 	ipcMain.on('signup-send', (event, arg) => {
+		// 		event.sender.send('signup-response')
+		// 	});
+		// }
+
   },
   signinResponse: function (data) {
 		var validate = data['data'];

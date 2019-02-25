@@ -53,7 +53,7 @@ $('#btnSignup').click(() => {
 		signup();
 		document.getElementById('loginmode').style.display = 'block';
 		document.getElementById('signupmode').style.display = 'none';
-		
+
 	}
 	else if( pass1=="" && pass2=="" ) {
 		$('[pd-popup="signupPasswordEmptyModal"]').fadeIn(200);
