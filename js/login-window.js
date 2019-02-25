@@ -30,7 +30,7 @@ $('#btnLogin').click( () => {
 
 $('#btnSignup').click(() => {
 
-	var username = document.getElementById('username').value;
+	var username = document.getElementById('susername').value;
 	var pass1 = document.getElementById('spassword').value;
 	var pass2 = document.getElementById('confirmpass').value;
 
