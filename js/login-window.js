@@ -114,9 +114,15 @@ function signup() {
 	300);
 	setTimeout( () => {
 		ipcRenderer.on('signup-response', (event, arg) => {
-			alert('Status: ' + arg);
+			if(arg == "true") {
+				$('[pd-popup="signupSuccessModal"]').fadeIn(100);
+			}
+			else if(arg == "false") {
+				$('[pd-popup="signupInvalidModal"]').fadeIn(100);
+			}
 		});
 	}, 300);
+	
 }
 
 
