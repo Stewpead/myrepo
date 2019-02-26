@@ -16,7 +16,7 @@ $('#btnLogin').click( () => {
 
 	var username = document.getElementById('username').value;
 	var password = document.getElementById('passw').value;
-	console.log('click');
+	
 	$('#btnLogin').prop('disabled', true).addClass('NotRed', true);
 
 	if( username == "" || password == "" ) {

@@ -1,5 +1,7 @@
 const Store = require('electron-store');
-
+const url = require('url');
+const path = require('path');
+const app_dir = './../winPage/';
 
 module.exports = {
   shareUploadResponse: function (data) {
@@ -14,7 +16,17 @@ module.exports = {
 	//data = JSON.stringify(data);	
 	const store = new Store();	
 	
-	store.set('avx-share-upload-scan-results', data);
+	//store.set('avx-share-upload-scan-results', data);
+	defaultWindow.webContents.send('avx-share-upload-scan-results', data);
+/*
+	defaultWindow.loadURL(url.format({
+		pathname: path.join(__dirname, app_dir,'share-window.html'),
+		protocol: 'file:',
+		slashes: true
+	}));
+*/
+		
+		
 
   },
   

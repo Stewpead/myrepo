@@ -380,6 +380,7 @@ hr#hr {
 }
 .popup.scan-result .popup-inner .generateFileScanned {
 	max-height: 300px;
+    color: #2f694a;
 }
 .popup.scan-result .popup-inner .generateFileScanned .file-scanned:not(:first-child) {
 	margin: 0;
@@ -424,18 +425,35 @@ hr#hr {
 #btnChkAgreement, #btnpasswordEmptyfail, #btnSignupemptyfail, #btnSignupfail, #btnLoginfail {
     width: 150px;
 }
-.scanning-file #confirmHeader {
-    font-size: 24px;
-    text-align: left;
+
+/* NO PADDING POPUP */
+.popup-inner.no-border-popup {
+    padding: 0;	
 }
-.scanning-file #confirmP {
+.popup-inner.no-border-popup #txImage {
+    width: 100%;
+}
+.popup-inner.no-border-popup #confirmHeader {
+    margin-top: 48px;
+    font-size: 17px;
+     text-align: left;
+}
+.popup-inner.no-border-popup #confirmP {
+	font-size: 14px;
+    margin: 20px 0;
     color: #888888;
     text-align: left;
 }
-.scanning-file #account-balance {
-    float: left;
-    color: #31da39;
+.popup-inner.no-border-popup #account-balance {
+    font-size: 22px;
+    color: #347b5d;
+    display: block;
+    text-align: left;
+    margin-bottom: 0px;
 }
-.scanning-file #confirmPcurrent {
+.popup-inner.no-border-popup #confirmPcurrent {
+    font-size: 12px;
+    display: block;
+    text-align: left;
     font-size: 12px;
 }
