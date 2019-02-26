@@ -13,14 +13,13 @@ jQuery(document).ready(($) => {
 });
 
 $('#btnLogin').click( () => {
+
 	var username = document.getElementById('username').value;
 	var password = document.getElementById('passw').value;
+	console.log('click');
+	$('#btnLogin').prop('disabled', true).addClass('NotRed', true);
 
-	if( username == "" && password == "" ) {
-		$('[pd-popup="loginInvalidModal"]').fadeIn(100);
-	} else if( username == "" && password != "" ) {
-		$('[pd-popup="loginInvalidModal"]').fadeIn(100);
-	} else if( username != "" && password == "" ) {
+	if( username == "" || password == "" ) {
 		$('[pd-popup="loginInvalidModal"]').fadeIn(100);
 	} else {
 		signin();
@@ -34,16 +33,15 @@ $('#btnSignup').click(() => {
 	var pass1 = document.getElementById('spassword').value;
 	var pass2 = document.getElementById('confirmpass').value;
 
-	if ( username == "" || pass1 == "" && pass2 == "" ) {
-		$('[pd-popup="signupFieldsEmptyModal"]').fadeIn(200);
-	} else if( username=="" && pass1=="" && pass2=="" &&  document.getElementById('chkAgreement').checked == true) {
+	console.log('click');
+	$('#btnSignup').prop('disabled', true).addClass('disabled', true);
 
-	} else if( pass1 != pass2 ) {
+	if ( username == "" || pass1 == "" || pass2 == "") {
+		$('[pd-popup="signupFieldsEmptyModal"]').fadeIn(200);
+	}  else if( pass1 != pass2 ) {
 		$('[pd-popup="signupFailModal"]').fadeIn(200);
-	} else if( pass1 == pass2 && document.getElementById('chkAgreement').checked == true ) {
+	}  else if( pass1 == pass2 && document.getElementById('chkAgreement').checked == true ) {
 		signup();
-	} else if( username == "" || pass1=="" || pass2=="" ) {
-		$('[pd-popup="signupPasswordEmptyModal"]').fadeIn(200);
 	} else if(document.getElementById('chkAgreement').checked != true ) {
 		$('[pd-popup="signupAgreementModal"]').fadeIn(200);
 	} else if (pass1 == pass2 && document.getElementById('chkAgreement').checked == false) {
@@ -64,31 +62,31 @@ $('#showLogin').click( () => {
 });
 
 function signup() {
+	alert('Sign up na diri na side');
+	// var data = {};
+	// var username, password, privateKey, directory;
+	// username = document.getElementById('susername').value;
+	// password = document.getElementById('spassword').value;
 
-	var data = {};
-	var username, password, privateKey, directory;
-	username = document.getElementById('susername').value;
-	password = document.getElementById('spassword').value;
-
-	var json = {
-		status: 1113,
-		data : {
-			username : username,
-			password : password
+	// var json = {
+	// 	status: 1113,
+	// 	data : {
+	// 		username : username,
+	// 		password : password
 			
-		}
-	};
+	// 	}
+	// };
 
-	var jsonString = JSON.stringify(json);
-	ipcRenderer.send("avx-signup", jsonString);
+	// var jsonString = JSON.stringify(json);
+	// ipcRenderer.send("avx-signup", jsonString);
 
-	ipcRenderer.on('signup-response', (event, arg) => {
-		if (arg == "true") {
-			$('[pd-popup="signupSuccessModal"]').fadeIn(100);
-		} else if(arg == "false") {
-			$('[pd-popup="signupInvalidModal"]').fadeIn(100);
-		}
-	});
+	// ipcRenderer.on('signup-response', (event, arg) => {
+	// 	if (arg == "true") {
+	// 		$('[pd-popup="signupSuccessModal"]').fadeIn(100);
+	// 	} else if(arg == "false") {
+	// 		$('[pd-popup="signupInvalidModal"]').fadeIn(100);
+	// 	}
+	// });
 }
 
 function signin() {
@@ -223,7 +221,7 @@ $('#a2').click( () => {
 $('#a3').click( () => {
 	document.getElementById('btnSavedWallets').innerHTML = 'AVX3';
 });
-$('#a4').click( () => {
+$('#a4').click( () => { 
 	document.getElementById('btnSavedWallets').innerHTML = 'AVX4';
 });
 

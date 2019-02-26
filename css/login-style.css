@@ -203,7 +203,7 @@ span.psw {
     display: none;
 }
 button {
-    background-color: #ed1c24 !important;
+    background-color: #ed1c24;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -253,4 +253,7 @@ button {
     #btnSavedWallets {
         width: 115%;
     }
+}
+.disabled {
+    background-color: #913d40be;
 }

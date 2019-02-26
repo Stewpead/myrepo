@@ -72,42 +72,79 @@
 <script>
 
 $('#btnSignupfail').click(() => {
-  $('[pd-popup="signupFailModal"]').fadeOut(200);
-});
 
-$('#btnSignupfail').click(() => {
   $('[pd-popup="signupFailModal"]').fadeOut(200);
+
+  $('#btnSignup').prop('disabled', false).removeClass('disabled');
+
+  $('.signup').find("input[type=text], textarea").val("");
+
+  $('.signup').find("input[type=password], textarea").val("");
+  
 });
 
 $('#btnSuccessSignup').click(() => {
+
   $('[pd-popup="signupSuccessModal"]').fadeOut(200);
-  // location.href = 'login-window.html';
+
+  location.href = "login-window.html"
+
 });
 
 $('#btnSignupemptyfail').click(() => {
+
   $('[pd-popup="signupFieldsEmptyModal"]').fadeOut(200);
+
+  $('#btnSignup').prop('disabled', false).removeClass('disabled');
+
 });
 
 $('#btnpasswordEmptyfail').click(() => {
+
   $('[pd-popup="signupPasswordEmptyModal"]').fadeOut(200);
+
+  $('#btnSignup').prop('disabled', false).removeClass('disabled');
+
 });
 
 $('#btnChkAgreement').click(() => {
+
   $('[pd-popup="signupAgreementModal"]').fadeOut(200);
+
+  $('#btnSignup').prop('disabled', false).removeClass('disabled');
+
 });
 
 $('#btnRegFailSignup').click(() => {
+
   $('[pd-popup="signupInvalidModal"]').fadeOut(200);
-  location.href = "login-window.html";
+
+  $('#btnSignup').prop('disabled', false).removeClass('disabled');
+
 });
 
 $('#btnLoginfail').click(() => {
+
   $('[pd-popup="loginFailModal"]').fadeOut(200);
-  location.href = "login-window.html";
+
+  $('#btnLogin').prop('disabled', false).removeClass('disabled');
+
+  $('.login').find("input[type=text], textarea").val("");
+
+  $('.login').find("input[type=password], textarea").val("");
+
 });
 
 $('#btnLoginInvalid').click(() => {
+
   $('[pd-popup="loginInvalidModal"]').fadeOut(200);
+
+  $('#btnLogin').prop('disabled', false).removeClass('disabled');
+
+  $('.login').find("input[type=text], textarea").val("");
+  
+  $('.login').find("input[type=password], textarea").val("");
+
 });
 
 </script>

@@ -17,14 +17,14 @@ var app_dir = './../winPage/';
 
 
 module.exports = {
+	
   showWindow: function (client) {
 		var data = {
 			status: 7001
 		};
 		data = JSON.stringify(data);
-		console.log(data);
 		client.write(data);
-
+		console.log("DITO NA ME: " + data);
 	// defaultWindow = new BrowserWindow({
 	// 	frame: false,
 	// 	width: 1050,

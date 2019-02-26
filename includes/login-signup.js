@@ -95,26 +95,6 @@ module.exports = {
 			//electron.send('signup-response', 'false');
 		}
 
-		/*if ( validate == 1 ) {
-			ipcMain.on('signup-check', (event, arg) => {
-				event.sender.send('signup-response', 'true');
-			});
-			defaultWindow.loadURL(url.format({
-				pathname: path.join(__dirname, app_dir,'login-window.html'),
-				protocol: 'file:',
-				slashes: true
-			}));
-		}
-		else if( validate == 0 ) {
-			ipcMain.on('signup-check', (event, arg) => {
-				event.sender.send('signup-response', 'false');
-			});
-		}*/
-		// else if( valide == 0 ) {
-		// 	ipcMain.on('signup-send', (event, arg) => {
-		// 		event.sender.send('signup-response')
-		// 	});
-		// }
 
   },
   signinResponse: function (data) {
