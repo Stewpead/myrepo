@@ -62,31 +62,31 @@ $('#showLogin').click( () => {
 });
 
 function signup() {
-	alert('Sign up na diri na side');
-	// var data = {};
-	// var username, password, privateKey, directory;
-	// username = document.getElementById('susername').value;
-	// password = document.getElementById('spassword').value;
+	// alert('Sign up na diri na side');
+	var data = {};
+	var username, password, privateKey, directory;
+	username = document.getElementById('susername').value;
+	password = document.getElementById('spassword').value;
 
-	// var json = {
-	// 	status: 1113,
-	// 	data : {
-	// 		username : username,
-	// 		password : password
+	var json = {
+		status: 1113,
+		data : {
+			username : username,
+			password : password
 			
-	// 	}
-	// };
+		}
+	};
 
-	// var jsonString = JSON.stringify(json);
-	// ipcRenderer.send("avx-signup", jsonString);
+	var jsonString = JSON.stringify(json);
+	ipcRenderer.send("avx-signup", jsonString);
 
-	// ipcRenderer.on('signup-response', (event, arg) => {
-	// 	if (arg == "true") {
-	// 		$('[pd-popup="signupSuccessModal"]').fadeIn(100);
-	// 	} else if(arg == "false") {
-	// 		$('[pd-popup="signupInvalidModal"]').fadeIn(100);
-	// 	}
-	// });
+	ipcRenderer.on('signup-response', (event, arg) => {
+		if (arg == "true") {
+			$('[pd-popup="signupSuccessModal"]').fadeIn(100);
+		} else if(arg == "false") {
+			$('[pd-popup="signupInvalidModal"]').fadeIn(100);
+		}
+	});
 }
 
 function signin() {
