@@ -63,7 +63,7 @@ jQuery(document).ready(function($) {
 		json1.data.sender = $(".Waddress").text();
 		json1.data.receiver = document.getElementById('receiver').value;
 		json1.data.amount = parseInt(amount);
-		json1.data.type = parseInt(1);
+		// json1.data.type = parseInt(1);
 		jsonString1 = JSON.stringify(json1);
 		ipcRenderer.sendSync('send-token',jsonString1);
 		
@@ -71,6 +71,7 @@ jQuery(document).ready(function($) {
 			// POPULATE DATA ON SCREEN
 			let data = store.get('avx-account-send-wallet');
 			store.delete('avx-account-send-wallet');
+			console.log(data);
 			if(typeof data != 'undefined') {
 				$(this).removeAttr("disable");
 				$('[pd-popup="accountSendToModal"]').fadeOut(100);
@@ -99,6 +100,7 @@ jQuery(document).ready(function($) {
 	
 	});
 });
+
 
 
 

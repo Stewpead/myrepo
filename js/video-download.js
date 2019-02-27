@@ -13,11 +13,11 @@ $(document).ready(() => {
         $('[pd-popup="shareMarketPriceModal"]').fadeIn(100);
     });
     setTimeout( () => {
-
+        //Buy Video/Audio
         $('#executePayment').click( function(){
 
             $('#executePayment').prop('disabled', true).addClass('disabled', true);
-            
+
             $('[pd-popup="shareMarketPriceModal"]').fadeOut(100);
             $('[pd-popup="sharePaymentSuccessModal"]').fadeIn(100);
             let jMessage = {
