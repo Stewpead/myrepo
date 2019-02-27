@@ -102,6 +102,12 @@ module.exports = {
 			client.write(arg);
 		});
 
+	},
+
+	requestHoardingSession: function (client) {
+		ipcMain.on('request-hoarding-session', (event, arg) => {
+			client.write(arg);
+		});
 	}
 	
 };

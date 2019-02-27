@@ -39,6 +39,7 @@ var Status = {
 	GET_FILE_INFO: 1128,
 	GET_WALLET_DATA: 1129,
 	GENERATE_DOWNLOAD: 1117,
+	START_HOARDING_SESSION: 5002,
 	HAS_REGISTERED_USER : 7001
 };
 
@@ -78,6 +79,7 @@ var initiateConnection = function(attempt){
 		module.getFileInfo(client);
 		module.getFileInfo(client);
 		module.generateDownload(client);
+		module.requestHoardingSession(client);
 		
 		ipcMain.on('test-btn',(event, arg) => {
 			event.returnValue = 1 +arg;

@@ -87,6 +87,14 @@ module.exports = {
     const store = new Store();
     store.set('set-generate-download', data);
   }
+
+  // ,
+
+	// startHoardingSession: function (data) {
+  //   console.log(data);
+  //   defaultWindow.webContents.send('start-hoarding-session', data);
+
+	// }
   
   
 };

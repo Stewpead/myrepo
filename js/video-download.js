@@ -12,10 +12,29 @@ $(document).ready(() => {
     $('#btnBuy').click(() => {
         $('[pd-popup="shareMarketPriceModal"]').fadeIn(100);
     });
-    
-    $('.popup-close').click(() => {
-        $('[pd-popup="shareMarketPriceModal"]').fadeOut(100);
-    });
+    setTimeout( () => {
+
+        $('#executePayment').click( function(){
+            $('[pd-popup="shareMarketPriceModal"]').fadeOut(100);
+            $('[pd-popup="sharePaymentSuccessModal"]').fadeIn(100);
+            let jMessage = {
+                status : 5002
+            };
+            jMessage = JSON.stringify(jMessage);
+            ipcRenderer.send('request-hoarding-session', jMessage);
+
+        });
+
+        $('.popup-close').click(() => {
+            $('[pd-popup="shareMarketPriceModal"]').fadeOut(100);
+        });
+
+        $('#btnCloseSuccess').click( function() {
+            $('[pd-popup="sharePaymentSuccessModal"]').fadeOut(100);
+        });   
+
+    }, 100);
+
 });
 // 	setTimeout( () => {
 // 		/* GET ACCOUNT WALLET ADDRESS */
