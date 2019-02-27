@@ -63,7 +63,7 @@ jQuery(document).ready(function($) {
 		json1.data.sender = $(".Waddress").text();
 		json1.data.receiver = document.getElementById('receiver').value;
 		json1.data.amount = parseInt(amount);
-		json1.data.type = parseInt(1);
+		// json1.data.type = parseInt(1);
 		jsonString1 = JSON.stringify(json1);
 		ipcRenderer.sendSync('send-token',jsonString1);
 		
@@ -99,6 +99,7 @@ jQuery(document).ready(function($) {
 	
 	});
 });
+
 
 
 

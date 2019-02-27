@@ -111,8 +111,10 @@ module.exports = {
 	},
 
 	requestFiletransferStats: function (client) {
+
 		ipcMain.on('request-filetransfer-stats', (event, arg) => {
 			client.write(arg);
+			console.log("SENT!");
 		});
 	}
 	
