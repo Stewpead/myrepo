@@ -37,6 +37,7 @@ var Status = {
 	GET_PUBLICKEY: 1125,
 	GET_ASSET: 1122,
 	GET_FILE_INFO: 1128,
+	GET_WALLET_DATA: 1129,
 	GENERATE_DOWNLOAD: 1117,
 	HAS_REGISTERED_USER : 7001
 };
@@ -61,7 +62,7 @@ var initiateConnection = function(attempt){
 		module.avxPopup(client);
 		module.avxModal(client);
 		module.avxSendAVX(client);
-		
+		module.avxWalletData(client);
 		
 		var module = require('./includes/dashboard');
 		module.shareUpload(client);
@@ -157,12 +158,19 @@ var initiateConnection = function(attempt){
 			case Status.SEND_FUND:
 				moduleDashboard.sendFund(data);
 				break;
+
 			case Status.GET_ASSET:
 				moduleDashboard.getAsset(data);
 				break;
+			
+			case Status.GET_WALLET_DATA:
+				moduleDashboard.getWalletData(data);
+				break;
+
 			case Status.GET_FILE_INFO:
 				moduleDashboard.getFileInfo(data);
 				break;
+
 			case Status.GENERATE_DOWNLOAD:
 				moduleDashboard.generateDownload(data);
 				break;

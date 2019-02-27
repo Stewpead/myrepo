@@ -60,7 +60,7 @@ jQuery(document).ready(function($) {
 
 		json1.status = 1115;
 		var amount = document.getElementById('avxquantity').value;
-		json1.data.sender = $(".Waddress").html();
+		json1.data.sender = $(".Waddress").text();
 		json1.data.receiver = document.getElementById('receiver').value;
 		json1.data.amount = parseInt(amount);
 		json1.data.type = parseInt(1);

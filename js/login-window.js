@@ -17,7 +17,7 @@ $('#btnLogin').click( () => {
 	var username = document.getElementById('username').value;
 	var password = document.getElementById('passw').value;
 	console.log('click');
-	$('#btnLogin').prop('disabled', true).addClass('NotRed', true);
+	$('#btnLogin').prop('disabled', true).addClass('disabled', true);
 
 	if( username == "" || password == "" ) {
 		$('[pd-popup="loginInvalidModal"]').fadeIn(100);
@@ -27,6 +27,7 @@ $('#btnLogin').click( () => {
 
 });
 
+
 $('#btnSignup').click(() => {
 
 	var username = document.getElementById('susername').value;
@@ -34,6 +35,7 @@ $('#btnSignup').click(() => {
 	var pass2 = document.getElementById('confirmpass').value;
 
 	console.log('click');
+
 	$('#btnSignup').prop('disabled', true).addClass('disabled', true);
 
 	if ( username == "" || pass1 == "" || pass2 == "") {

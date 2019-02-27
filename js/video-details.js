@@ -10,16 +10,22 @@ var imgpath = path.join(__dirname,'/decodedimg/');
 var data64 = "data:image/jpg;base64,";
 const {ipcRenderer} = require('electron');
 const Store = require('electron-store');
-const store = new Store();
+const store = new Store();  
 $ = jQuery;
 
 $(document).ready(function() {
+    var filefound;
+    var filename;
 
-    setTimeout( () =>{
-        let data = store.get('set-dashboard-file-selected' );
-    }, 100);
-    document.getElementById('')
-	 
+    filename = store.get('set-dashboard-file-selected' );
+    store.delete();
+    filefound = getFiledata(filename);
+    document.getElementById('filetitle').innerHTML = json64[filefound]['metadata']['filename'];
+    document.getElementById('fileyear').innerHTML = json64[filefound]['metadata']['year'];
+
+    var imgString = "";
+    imgString = '<img src="' + data64 + json64[filefound]['metadata']['thumbnail'] + '" class="fileimage" />';
+    $('#fileImage').append(imgString);
     // var getFileInfo = {
     //     status : 1128,
 	// 	data : {
@@ -44,7 +50,14 @@ $(document).ready(function() {
 	//  }, 1000);
  
 });
+function getFiledata(filename) {
+    for(var key in json64) {
+        if(json64[key]['metadata']['filename'] == filename) {
+            return key;
+        }
+    }
 
+}
 function loadTableData(data) {
     var countFiles = 1;
     var resultsTableData = "";

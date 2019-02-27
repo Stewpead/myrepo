@@ -120,7 +120,9 @@ $('#btnRegFailSignup').click(() => {
   $('[pd-popup="signupInvalidModal"]').fadeOut(200);
 
   $('#btnSignup').prop('disabled', false).removeClass('disabled');
-
+  
+  location.href = "login-window.html";
+  
 });
 
 $('#btnLoginfail').click(() => {

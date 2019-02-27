@@ -18,7 +18,7 @@ var popularVideos;
 var popularArtists;
 
 $(document).ready( () => {
-    
+     
     // var getAsset = {
     //     status : 1122
     // };

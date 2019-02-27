@@ -49,6 +49,11 @@ module.exports = {
 	store.set('avx-account-wallet-address', data);
 
   },
+
+  getWalletData: function (data) {
+    const store = new Store();
+    defaultWindow.webContents.send('avx-wallet-data', data);
+  },
   
   sendFund: function (data) {
 	const store = new Store();

@@ -59,8 +59,12 @@ module.exports = {
 	ipcMain.on('avx-login',(event, arg) => {
 		client.write(arg);
 	});	
-  },
-  
+	},
+	avxWalletData: function (client) {
+		ipcMain.on('get-wallet-data', (event, arg) => {
+			client.write(arg);
+		});
+	},
 	avxSignup: function (client) {
 	// store.set('directory.wallet', 'D:\\wallet');
 	ipcMain.on('avx-signup',(event, arg) => {

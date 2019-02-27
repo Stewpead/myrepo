@@ -7,7 +7,7 @@ document.getElementById('btnOutcomingTx').style.color = '#818181';
 
 
 var counter;
-
+ 
 var jsonString1;
 var javascriptObject1;
 var jasonString1;
@@ -37,8 +37,29 @@ var mto = "mto";
 var mdescrip = "mdescrip";
 var mamount = "mamount";
 var mtransacID = "mtransacID";
-///////////////////////=================================================================================================================
+var walletData = {};
+walletData.wallet_data = {};
+var jdata = {
+    status: 1129
+};
 
+///////////////////////=================================================================================================================
+ jdata = JSON.stringify(jdata);
+ ipcRenderer.send('get-wallet-data', jdata);
+
+ipcRenderer.on('avx-wallet-data', (event, arg) => {
+    walletData = arg;
+    console.log(walletData);
+    $('.Waddress').html(walletData['wallet_data']['public_key']);
+    $('total-balance').html(walletData['wallet_data']['balance'])
+});
+
+
+$(document).ready(function () {
+    $('#btnMergeTx').click();
+    // document.getElementById('Waddress').innerHTML = walletData['wallet_data']['public_key'];
+    // $('.total-balance').text(walletData['wallet_data']['balance']);
+});
 
 $('#btnMergeTx').click(() => {
     document.getElementById('btnMergeTx').style.color = 'white';
@@ -102,9 +123,7 @@ $('#a4').click(function () {
     document.getElementById('totalBalance').innerHTML = avxbalance;
 });
 
-$(document).ready(function () {
-    $('#btnMergeTx').click();
-});
+
 
 $('#btnMergeTx').click(() =>  {
     document.getElementById('merged').style.display = "block";
