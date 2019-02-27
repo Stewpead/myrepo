@@ -40,9 +40,10 @@ ipcRenderer.on('receive-filetransfer-stats', (event, arg) => {
 			row += '<td><div id="stat-datarate">' + fileDownloadList[key].data_rate + '</div></td>';
 			row += '<td>';
 			row += '<div class="container">';
+			row += '<span class="progress-label">'+fileDownloadList[key].progress.toFixed(2) + "%"+'</span>';
 			row += '<div class="progress">';
 			row += '<div id="stat-progress" class="progress-bar bg-success" style="width:'+ fileDownloadList[key].progress +'%" id="prog-bar" role="progressbar" aria-valuemin="0" aria-valuenow="'+ fileDownloadList[key].progress +'" aria-valuemax="100">';
-			row += '</div><p>sss</p>';
+			row += '</div>';
 			row += '</div>';
 			row += '</div>';
 			row += '</td>';
@@ -68,7 +69,7 @@ ipcRenderer.on('receive-filetransfer-stats', (event, arg) => {
 		$("#stat-datarate").html(fileDownloadList[fn].data_rate);
 		$("#stat-progress").attr("style", "width: "+fileDownloadList[fn].progress + "%");
 		$("#stat-progress").attr("aria-valuenow", fileDownloadList[fn].progress );
-		$("#stat-progress p").html(fileDownloadList[fn].progress);
+		$(".progress-label").html(fileDownloadList[fn].progress.toFixed(2) + "%");
 		$("#stat-peers").html(fileDownloadList[fn].peers);
 	}
 	
