@@ -71,6 +71,7 @@ jQuery(document).ready(function($) {
 			// POPULATE DATA ON SCREEN
 			let data = store.get('avx-account-send-wallet');
 			store.delete('avx-account-send-wallet');
+			console.log(data);
 			if(typeof data != 'undefined') {
 				$(this).removeAttr("disable");
 				$('[pd-popup="accountSendToModal"]').fadeOut(100);
