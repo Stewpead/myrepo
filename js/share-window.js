@@ -54,7 +54,7 @@ function processFile(event) {
 		directory = path.dirname(file.path) + "\\";
 		
 		json = {
-			status : 1126,
+			status : 1127,
 			data : {
 				description: "Description-Description",
 				filename	: filename,
@@ -90,6 +90,8 @@ function appendJSON(event) {
 
 
 	ipcRenderer.on('avx-share-upload-scan-results', (event, data) => {
+		data = JSON.parse(data);
+		
 		var dtp = new DirTreeParser(data["data"]["tree"]);
 		//PATH
 		$('.file-dir-info span:first-child').html(data["data"]["parent_path"]);

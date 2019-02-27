@@ -28,6 +28,11 @@ var Status = {
 	SIGNUP: 1113,
 	SIGNIN: 1114,
 	SEND_FUND: 1115,
+<<<<<<< HEAD
+=======
+	ASSET_UPLOAD_DATA: 15,
+	WALLET_BALANCE: 2000,
+>>>>>>> 725645bd8f720d1b28e4ebc4455a76e6f4676c3e
 	SHARE_PAYMENT: 1116,
 	GENERATE_DOWNLOAD: 1117,
 	GET_BALANCE: 1121,
@@ -35,6 +40,10 @@ var Status = {
 	GET_ACCOUNT_HISTORY: 1123,
 	GET_SPENT: 1124,
 	GET_PUBLICKEY: 1125,
+<<<<<<< HEAD
+=======
+	GET_ASSET: 1122,
+>>>>>>> 725645bd8f720d1b28e4ebc4455a76e6f4676c3e
 	GET_METADATA_TREE: 1127,
 	GET_FILE_INFO: 1128,
 	GET_WALLET_DATA: 1130,
@@ -107,7 +116,7 @@ var initiateConnection = function(attempt){
 	});
 	
 	client.on('data', function(data) {
-		console.log("data results=> "+ data);
+		
 		data = JSON.parse(data);
 
 		
