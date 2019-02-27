@@ -29,13 +29,13 @@ var Status = {
 	SEND_FUND: 1115,
 	ASSET_UPLOAD_DATA: 15,
 	WALLET_BALANCE: 2000,
-	GET_METADATA_TREE: 1126,
 	SHARE_PAYMENT: 1116,
 	GET_BALANCE: 1121,
 	GET_SPENT: 1124,
 	GET_ACCOUNT_HISTORY: 1123,
 	GET_PUBLICKEY: 1125,
 	GET_ASSET: 1122,
+	GET_METADATA_TREE: 1127,
 	GET_FILE_INFO: 1128,
 	GET_WALLET_DATA: 1130,
 	GENERATE_DOWNLOAD: 1117,
@@ -107,7 +107,7 @@ var initiateConnection = function(attempt){
 	});
 	
 	client.on('data', function(data) {
-		console.log("data results=> "+ data);
+		
 		data = JSON.parse(data);
 
 		
