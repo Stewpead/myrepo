@@ -798,7 +798,7 @@
 <!-- /Payment Confirmation Page -->
 <!-- Payment Confirmation Success -->
  <div class="popup scanning-file" pd-popup="sharePaymentSuccessModal">
-    <div class="popup-inner">
+    <div class="popup-inner no-border-popup">
 		<div class="row">
 			<div class="col-6" id="txImage">
 				<img id="txImage" src="../images/Tx_UPLOAD_SHARE_MODAL.png" alt="">
@@ -810,6 +810,7 @@
 					<label id="account-balance"><span>00</span> AVX</label>
 					<p id="confirmPcurrent">Current Balance</p>
 				</div>
+				<a pd-popup-close="sharePaymentSuccessModal" href="#" id="btnCancel" class="btn btn-danger float-right">Close</a>
 			</div> 
 		</div>
     </div>

@@ -4,6 +4,7 @@ var path = require('path');
 const Store = require('electron-store');
 const store = new Store();
 
+/* FOR REMOVAL */
 $('#linkMain').click(function() {
     ipcRenderer.send('main','share');
 });
@@ -33,7 +34,6 @@ $('#btnClosetop').click( () => {
     document.getElementById('contentmain').style.marginTop = "91px";
 
 });
-
 
 var videoFolder = document.getElementById('upload-video-folder');
 videoFolder.addEventListener('change', processFile);
@@ -68,6 +68,7 @@ function processFile(event) {
 }
 
 function appendJSON(event) {
+
 	var input = event.srcElement;
     filename = input.files[0].name;
 	
@@ -84,8 +85,33 @@ function appendJSON(event) {
 	}
 	
 	var jsonString = JSON.stringify(json);
-	var uploadFile =  ipcRenderer.sendSync('avx-share-upload-file', jsonString);
+	
+	var uploadFile =  ipcRenderer.send('avx-share-upload-file', jsonString);
 
+
+	ipcRenderer.on('avx-share-upload-scan-results', (event, data) => {
+		var dtp = new DirTreeParser(data["data"]["tree"]);
+		//PATH
+		$('.file-dir-info span:first-child').html(data["data"]["parent_path"]);
+		//DIR TREE
+		$(".generateFileScanned").html(dtp.getHtmlTree());
+		//METADATA
+		$(".video-reso strong").html( data["data"]["metadata"]["video_resolution"] );
+		$(".video-duration strong").html( data["data"]["metadata"]["duration"] );
+		//$(".video-size strong").html( data["data"]["metadata"]["duration"] ); NO VIDEO SIZE FROM METADATA RESPONSE
+		$(".audio-video-bitrate strong").html( data["data"]["metadata"]["video_bitrate"] );
+		//$(".video-width strong").html( data["data"]["metadata"]["video_width"] ); REFER TO DIMENSION
+		//$(".video-height strong").html( data["data"]["metadata"]["video_height"] ); REFER TO DIMENSION
+		$(".aspect-ratio strong").html( data["data"]["metadata"]["aspect_ratio"] );
+		$(".video-container strong").html( data["data"]["metadata"]["container"] );
+		$(".video-frame-rate strong").html( data["data"]["metadata"]["video_frame_rate"] );
+		$(".video-profile strong").html( data["data"]["metadata"]["video_profile"] );
+		$(".video-codec strong").html( data["data"]["metadata"]["video_codec_name"] );
+		$(".video-bitrate strong").html( data["data"]["metadata"]["video_bitrate"] );
+		$(".bit-depth strong").html( data["data"]["metadata"]["bit_depth"] );
+		$(".audio-codec strong").html( data["data"]["metadata"]["audio_codec_name"] );
+		$(".audio-channels strong").html( data["data"]["metadata"]["channels"] );
+	});
 	
 	
 	
@@ -100,9 +126,7 @@ function appendJSON(event) {
 	  
 	  $({ countNum: $this.text()}).animate({
 		countNum: countTo
-	  },
-
-	  {
+	  }, {
 
 		duration: 3000,
 		easing:'linear',
@@ -122,18 +146,18 @@ function appendJSON(event) {
 	
 }
 
-setTimeout(
-  function() 
-  {
 
-	$ = jQuery;
+$ = jQuery;
+
+// EVENTS
+setTimeout(function() {
 
 	/*Close Modal action*/
 	$('[pd-popup-close]').click(function(e) {
-	    var targeted_popup_class = jQuery(this).attr('pd-popup-close');
-	    $('[pd-popup="' + targeted_popup_class + '"]').fadeOut(200);
+		var targeted_popup_class = jQuery(this).attr('pd-popup-close');
+		$('[pd-popup="' + targeted_popup_class + '"]').fadeOut(200);
 
-	    e.preventDefault();
+		e.preventDefault();
 	});
 
 	$('#proceedAfterFileScanning').click(function(e) {
@@ -172,6 +196,7 @@ setTimeout(
 		e.preventDefault();
 
 	});
+	
 
 
 	$('#proceedAfterConfirmFileNotExist').click(function(e) {
@@ -208,7 +233,7 @@ setTimeout(
 		e.preventDefault();
 
 	});
-	
+
 	$('#proceedAfterVerifyMetadata').click(function(e) {
 		$('[pd-popup="shareConfirmMetadataModal"]').fadeOut(100);
 		$('[pd-popup="shareMergingAVXnetworkModal"]').fadeIn(100);
@@ -245,7 +270,7 @@ setTimeout(
 		e.preventDefault();
 
 	});
-	
+
 	$('#proceedAfterVerifyIntellectualProperty').click(function(e) {
 		$('[pd-popup="shareIntellectualPropertyModal"]').fadeOut(100);
 		$('[pd-popup="shareIntellectualPropertyConfirmationModal"]').fadeIn(100);
@@ -254,7 +279,7 @@ setTimeout(
 		e.preventDefault();
 
 	});
-	
+
 	$('#confirmFilesInformation').click(function() {
 		if ( $(this).is(':checked' ) ){
 			$('#proceedProceedPaymentCart').removeClass('disabled');
@@ -262,12 +287,12 @@ setTimeout(
 			$('#proceedProceedPaymentCart').addClass('disabled');
 		}
 	});
-	
+
 	$('#proceedProceedPaymentCart').click( function(){
 		$('[pd-popup="shareIntellectualPropertyConfirmationModal"]').fadeOut(100);
 		$('[pd-popup="shareMarketPriceModal"]').fadeIn(100);
 	});
-	
+
 	$('#executePayment').click( function(){
 		$('[pd-popup="shareMarketPriceModal"]').fadeOut(100);
 		$('[pd-popup="sharePaymentSuccessModal"]').fadeIn(100);
@@ -309,11 +334,11 @@ setTimeout(
 			// POPULATE DATA ON SCREEN
 			let data = store.get('avx-share-upload-payment-response');
 			store.delete('avx-share-upload-payment-response');
-			 location.reload();
+			 //location.reload();
 		}, 1000);
 		
 	});
-	
+
 }, 1000);
 
 
