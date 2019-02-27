@@ -1,35 +1,28 @@
-// import { watchFile } from "fs";
+import { ipcRenderer } from "electron";
+
 
 var x = document.getElementById('completedFiles');
 x.style.display = "none"
+
+
+$(document).ready( () => {
+    let jMessage = {
+        status : 5003
+    };
+    jMessage = JSON.stringify(jMessage);
+    ipcRenderer.send('request-filetransfer-stats', jMessage);
+    
+});
+
+ipcRenderer.on('receive-filetransfer-stats', (event, arg) => {
+    console.log(arg);
+});
 
 document.getElementById('activeFiles').style.display = "block";
 document.getElementById('DDetails').style.display = "block";
 document.getElementById("DFiles").style.display = "none";
 document.getElementById("DPeers").style.display = "none";
 document.getElementById("DSpeed").style.display = "none";
-
-
-// $(document).ready( () => {
-//     var str = "";
-//     for (var i = 0; i <= 100; i++) {
-//         wait(100);
-//         console.log(i);
-//         str = (i + "%");
-//         progbar(str);
-//    }    
-// });
-// var num = 0;
-// function progbar(num) {
-//     document.getElementById('prog-bar').style.width = num;
-// }
-// function wait(ms)
-// {
-// var d = new Date();
-// var d2 = null;
-// do { d2 = new Date(); }
-// while(d2-d < ms);
-// }
 
 $('#btnHideCF').click( () => {
     document.getElementById('activeFiles').style.display = "block";

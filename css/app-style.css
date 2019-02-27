@@ -134,6 +134,9 @@ a:hover {
     color: #ed1c24;
     text-decoration: none;
 }
+.disabled {
+    background-color: #ed1c2371;
+}
 /* ::-webkit-scrollbar {
     display: none;
 } */

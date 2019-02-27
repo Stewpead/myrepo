@@ -88,6 +88,11 @@ module.exports = {
   generateDownload: function (data) {
     const store = new Store();
     store.set('set-generate-download', data);
+  },
+
+  receiveFiletransferStats: function (data) {
+    console.log("data = " + data);
+    defaultWindow.webContents.send('receive-filetransfer-stats', data);
   }
 
   // ,

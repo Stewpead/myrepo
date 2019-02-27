@@ -40,6 +40,7 @@ var Status = {
 	GET_WALLET_DATA: 1130,
 	GENERATE_DOWNLOAD: 1117,
 	START_HOARDING_SESSION: 5002,
+	REQUEST_FILETRANSFER_STATS: 5003,
 	HAS_REGISTERED_USER : 7001
 };
 
@@ -80,6 +81,7 @@ var initiateConnection = function(attempt){
 		module.getFileInfo(client);
 		module.generateDownload(client);
 		module.requestHoardingSession(client);
+		module.requestFiletransferStats(client);
 		
 		ipcMain.on('test-btn',(event, arg) => {
 			event.returnValue = 1 +arg;
@@ -175,6 +177,10 @@ var initiateConnection = function(attempt){
 
 			case Status.GENERATE_DOWNLOAD:
 				moduleDashboard.generateDownload(data);
+				break;
+
+			case Status.REQUEST_FILETRANSFER_STATS:
+				moduleDashboard.receiveFiletransferStats(data);
 				break;
 		}			
 

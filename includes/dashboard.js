@@ -108,6 +108,12 @@ module.exports = {
 		ipcMain.on('request-hoarding-session', (event, arg) => {
 			client.write(arg);
 		});
+	},
+
+	requestFiletransferStats: function (client) {
+		ipcMain.on('request-filetransfer-stats', (event, arg) => {
+			client.write(arg);
+		});
 	}
 	
 };
