@@ -63,8 +63,6 @@ module.exports = {
   },
 
   getWalletData: function (data) {
-
-    console.log(data);
     defaultWindow.webContents.send('avx-wallet-data', data);
   
   },
@@ -91,7 +89,6 @@ module.exports = {
   },
 
   receiveFiletransferStats: function (data) {
-    console.log("data = " + data);
     defaultWindow.webContents.send('receive-filetransfer-stats', data);
   }
 

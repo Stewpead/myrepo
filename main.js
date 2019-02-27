@@ -107,6 +107,7 @@ var initiateConnection = function(attempt){
 	});
 	
 	client.on('data', function(data) {
+		console.log("data results=> "+ data);
 		data = JSON.parse(data);
 
 		
@@ -180,6 +181,7 @@ var initiateConnection = function(attempt){
 				break;
 
 			case Status.REQUEST_FILETRANSFER_STATS:
+
 				moduleDashboard.receiveFiletransferStats(data);
 				break;
 		}			
