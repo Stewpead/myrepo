@@ -63,8 +63,10 @@ module.exports = {
   },
 
   getWalletData: function (data) {
-    const store = new Store();
+
+    console.log(data);
     defaultWindow.webContents.send('avx-wallet-data', data);
+  
   },
   
   sendFund: function (data) {
