@@ -34,7 +34,7 @@ $('#btnClosetop').click( () => {
     document.getElementById('contentmain').style.marginTop = "91px";
 
 });
-
+/*
 var videoFolder = document.getElementById('upload-video-folder');
 videoFolder.addEventListener('change', processFile);
 var filename;
@@ -43,6 +43,7 @@ videoThumbnail.addEventListener('change',appendJSON);
 let json = {};
 var directory, filename;
 
+*/
 function processFile(event) {
     var input = event.srcElement;
     filename = input.files[0].name;
@@ -54,7 +55,7 @@ function processFile(event) {
 		directory = path.dirname(file.path) + "\\";
 		
 		json = {
-			status : 1127,
+			status : 1128,
 			data : {
 				description: "Description-Description",
 				filename	: filename,
@@ -85,12 +86,14 @@ function appendJSON(event) {
 	}
 	
 	var jsonString = JSON.stringify(json);
+		console.log(jsonString);
 	
 	var uploadFile =  ipcRenderer.send('avx-share-upload-file', jsonString);
 
 
 	ipcRenderer.on('avx-share-upload-scan-results', (event, data) => {
 		data = JSON.parse(data);
+	
 		
 		var dtp = new DirTreeParserVideo(data["data"]["tree"]);
 		//PATH
@@ -342,6 +345,29 @@ setTimeout(function() {
 	});
 
 }, 1000);
+
+/* NEW IMPLEMENTATION */ 
+
+$('.importShareFiles').click(function() {
+	$(this).find('input[type="file"]').val(null);
+	$(this).find('input[type="file"]')[0].click();
+	
+});
+$('.importShareFiles input[type="file"]').change(function () {
+	var action = $(this).parent().attr('file-action');
+	if (this.files && this.files[0]) {
+		var path = this.files[0]['path'];
+		json = {
+			status : 1128,
+			data : {
+				file	: path,
+				action 	: action
+			}
+		}
+		console.log( JSON.stringify(json) );
+	}
+
+});
 
 
 /* GET DIR TREE For Video */
