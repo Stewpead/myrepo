@@ -136,6 +136,71 @@ a:hover {
 .disabled {
     background-color: #ed1c2371;
 }
+
+/* ICONS */
+@font-face {
+  font-family: 'Segoemdl2';
+  src: url('../font/segoe-mdl2-assets.ttf');
+}
+.icon-segoe {
+	font-family: 'Segoemdl2';
+}
+.icon-flip:before {
+	position: absolute;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    margin-left: -13px;	
+}
+.segoe-video:before {
+	content: '\E714';
+}
+
+.segoe-movies:before {
+	content: '\E8B2';
+}
+.segoe-audio:before {
+	content: '\E8D6';
+}
+.segoe-home:before {
+	content: '\E80F';
+}
+.segoe-contact-info:before {
+	content: '\E779';
+}
+.segoe-search:before {
+	content: '\E721';
+}
+.segoe-communications:before {
+	content: '\E95A';
+}
+.segoe-world:before {
+	content: '\E774';
+}
+.segoe-settings:before {
+	content: '\E713';
+}
+.segoe-v-player:before {
+	content: '\E29b';
+}
+.segoe-wishlist:before {
+	content: '\EB51';
+}
+.segoe-close-pane:before {
+	content: '\E89F';
+}
+.segoe-resize-touch-narrower-mirrored:before {
+	content: '\EA62';
+}
+.segoe-page:before {
+	content: '\E7C3';
+}
+.segoe-headphone:before {
+	content: '\E7F6';
+}
+
 /* ::-webkit-scrollbar {
     display: none;
 } */

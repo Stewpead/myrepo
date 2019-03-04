@@ -49,7 +49,7 @@ ipcRenderer.on('receive-filetransfer-stats', (event, arg) => {
 			row += '</td>';
 			row += '<td><div id="stat-peers"> ' + fileDownloadList[key].peers + '</div></td>';
 			row += '<td class="action-col" id="action-col-id-1">';
-			row += '<a href="#"><span class="mdi mdi-play">&nbsp;</span></a>';
+			row += '<a href="#"><span class="icon-segoe segoe-v-player">&nbsp;</span></a>';
 			row += '<a href="#"> <span class="mdi mdi-pause">&nbsp;</span></a>';
 			row += '<a href="#"> <span class="mdi mdi-trash-can-outline">&nbsp;</span></a>';
 			row += '<a href="#"> <span class="mdi mdi-file-remove">&nbsp;</span></a>';
