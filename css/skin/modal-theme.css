@@ -457,3 +457,6 @@ hr#hr {
     text-align: left;
     font-size: 12px;
 }
+.popup-inner #btnWishlistClose {
+    width: 200px;
+}

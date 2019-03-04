@@ -4,12 +4,15 @@ $("#year2014").click(function() {
   $("#year2015").click(function() {
       document.getElementById("defaultyear").innerHTML = "2015";
   });
+  
   $("#year2016").click(function() {
       document.getElementById("defaultyear").innerHTML = "2016";
   });
+
   $("#year2017").click(function() {
       document.getElementById("defaultyear").innerHTML = "2017";
   });
+  
   $("#year2018").click(function() {
       document.getElementById("defaultyear").innerHTML = "2018";
   });

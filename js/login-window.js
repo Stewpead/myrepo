@@ -13,7 +13,7 @@ jQuery(document).ready(($) => {
 });
 
 $('#btnLogin').click( () => {
-
+ 
 	var username = document.getElementById('username').value;
 	var password = document.getElementById('passw').value;
 
@@ -169,7 +169,7 @@ function selectWallet(data) {
 		   // Handle error
 		   if(e.code == 'ENOENT'){
 			 console.log(false);
-		   }else {
+		   } else {
 			  
 			  
 		   }

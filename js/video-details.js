@@ -1,63 +1,64 @@
-
 const base64toimage = require('base64-to-image');
 const path = require('path');
 const fs = require('fs');
-var obj64 = fs.readFileSync('./json/base64img-2.json'); 
-var json64 = JSON.parse(obj64);
-var keys64 = Object.keys(json64);
-var imgname = 'decodedimg';
+const {ipcRenderer} = require('electron');
+
+// Object Asset Chain
+var objAC = fs.readFileSync('./json/base64img-2.json'); 
+var jsonAC = JSON.parse(objAC);
+// Object Asset Chain
+
+// Object File Search Result
+var objFSR = fs.readFileSync('./json/filelist64.json');
+var jsonFSR = JSON.parse(objFSR);
+// Object File Search Result
+
 var imgpath = path.join(__dirname,'/decodedimg/');
 var data64 = "data:image/jpg;base64,";
-const {ipcRenderer} = require('electron');
+
+
 const Store = require('electron-store');
 const store = new Store();  
+
 $ = jQuery;
 
-$(document).ready(function() {
-    var filefound;
-    var filename;
+var filefound;
+var filename;
 
+$(document).ready(function() {
+
+    // Get File Name from store()
     filename = store.get('set-dashboard-file-selected' );
-    store.delete();
+    console.log(filename);
+    store.delete(); 
+    // Get File Name from store()
+
+    // get search results 
     filefound = getFiledata(filename);
-    document.getElementById('filetitle').innerHTML = json64[filefound]['metadata']['filename'];
-    document.getElementById('fileyear').innerHTML = json64[filefound]['metadata']['year'];
+    // get search results 
+
+    filename = jsonAC[filefound]['metadata']['filename'];
+    var fileyear = jsonAC[filefound]['metadata']['year'];
+    document.getElementById('filetitle').innerHTML = filename;
+    document.getElementById('fileyear').innerHTML = fileyear;
 
     var imgString = "";
-    imgString = '<img src="' + data64 + json64[filefound]['metadata']['thumbnail'] + '" class="fileimage" />';
+    imgString = '<img src="' + data64 + jsonAC[filefound]['metadata']['thumbnail'] + '" class="fileimage" />';
     $('#fileImage').append(imgString);
-    // var getFileInfo = {
-    //     status : 1128,
-	// 	data : {
-	// 		trackingHash : data
-	// 	}
-		
-    // };
-    // getFileInfo = JSON.stringify(getFileInfo);
 
-    // ipcRenderer.send('get-file-info', getFileInfo);
-	
-	// setTimeout( () => {
-	// 	let data = store.get('get-file-info');
-		
-	// 	if (typeof data != "undefined") {
-	// 		var json64 = JSON.parse(data['asset']);
-			
-	// 		    loadTableData(data);
-	// 			loadVideoDetails(json64);
-	// 	}
-		
-	//  }, 1000);
- 
+    loadFileSearchResults();
 });
+
 function getFiledata(filename) {
-    for(var key in json64) {
-        if(json64[key]['metadata']['filename'] == filename) {
+
+    for(var key in jsonAC) {
+        if(jsonAC[key]['metadata']['filename'] == filename) {
             return key;
         }
     }
 
 }
+
 function loadTableData(data) {
     var countFiles = 1;
     var resultsTableData = "";
@@ -73,15 +74,28 @@ function loadTableData(data) {
 	
 }
 
-function loadVideoDetails(json64) {
-	console.log(json64);
-    var videoDetails = "";
-    videoDetails = '<img src="../images/thumbnail1.jpg" id="fileimage" style="border-radius:2px;/>';
-    document.getElementById('movietitle').innerHTML = json64['title'];
-    document.getElementById('movieyear').innerHTML = '2000';
-    console.log(videoDetails);
-    $('#videoImage').append(videoDetails);
-    // alert('WOW');
+
+function loadFileSearchResults() { 
+
+    var searchResult = "";
+    for( var key in jsonFSR[filename]) {
+        searchResult += '<tr id="row' + key +'">';
+        searchResult += '<th scope="row"></th>';
+        searchResult += '<td id="filename' + key + '">' + filename + '</td>';
+        searchResult += '<td id="downloads' + key + '"> ' + jsonFSR[filename][key]['downloads'] + '</td>';
+        searchResult += '<td id="cost' + key + '"> ' + jsonFSR[filename][key]['cost'] + ' AVX</td>';
+        searchResult += '<td id="ratings' + key + '"> ' + jsonFSR[filename][key]['ratings'] + '</td>';
+        searchResult += '<td id="language' + key + '"> ' + jsonFSR[filename][key]['language'] + '</td>';
+        searchResult += '<td id="subtitle' + key + '"> ' + jsonFSR[filename][key]['subtitle'] + '</td>';
+        searchResult += '<td id="resolution' + key + '"> ' + jsonFSR[filename][key]['Resolution'] + '</td>';
+        searchResult += '<td id="filesize' + key + '"> ' + jsonFSR[filename][key]['filesize'] + '</td>';
+        searchResult += '<td id="videocodec' + key + '"> ' + jsonFSR[filename][key]['videocodec'] + '</td>';
+        searchResult += '<td id="audiocodec' + key + '"> ' + jsonFSR[filename][key]['audiocodec'] + '</td>';
+        searchResult += '<td id="videobitrate' + key + '"> ' + jsonFSR[filename][key]['bitrate'] + '</td>';
+        searchResult += '</tr>';
+
+    }
+    $('#tbodyDetails').append(searchResult);
 }
 
 

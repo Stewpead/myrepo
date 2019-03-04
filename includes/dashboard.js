@@ -91,7 +91,6 @@ module.exports = {
   
 	getFileInfo: function (client) {
 		ipcMain.on('get-file-info', (event, arg) => {
-			//console.log(arg);
 			client.write(arg);
 		});
 
@@ -114,7 +113,6 @@ module.exports = {
 
 		ipcMain.on('request-filetransfer-stats', (event, arg) => {
 			client.write(arg);
-			console.log("SENT!");
 		});
 	}
 	

@@ -1,6 +1,14 @@
+const {ipcRenderer} = require('electron');
+const path = require('path');
+const fs = require('fs');
+var obj64 = fs.readFileSync('./json/base64img-2.json'); 
+var json64 = JSON.parse(obj64);
+var keys64 = Object.keys(json64);
+var imgname = 'decodedimg';
+var imgpath = path.join(__dirname,'/decodedimg/');
+var data64 = "data:image/jpg;base64,";
 const Store = require('electron-store');
 const store = new Store();
-const {ipcRenderer} = require('electron');
 
 
 $(document).ready(() => {
@@ -12,6 +20,29 @@ $(document).ready(() => {
     $('#btnBuy').click(() => {
         $('[pd-popup="shareMarketPriceModal"]').fadeIn(100);
     });
+
+    $('#btnWishlist').click(() => {
+
+        $('[pd-popup="addToWishlist"]').fadeIn(100);
+
+        setTimeout( () => {
+            $('[pd-popup="addToWishlist"]').fadeOut(100);
+        }, 1500);
+
+        var jWishlist = {};
+        var filename = "test " + Math.random();
+        var totalObj = Object.keys(jWishlist).length;
+        if(totalObj >= 1) {
+            jWishlist[totalObj] = filename;
+        } else if(totalObj > 0)
+        
+        console.log(Object.keys(jWishlist).length);
+        console.log(jWishlist);
+    });
+
+
+    
+    //Click events in nested modals
     setTimeout( () => {
         //Buy Video/Audio
         $('#executePayment').click( function(){
@@ -36,6 +67,10 @@ $(document).ready(() => {
             $('[pd-popup="sharePaymentSuccessModal"]').fadeOut(100);
         });   
 
+        $('#btnWishlistClose').click( () => {
+            $('[pd-popup="addToWishlist"]').fadeOut(100);  
+        });
+    
     }, 100);
 
 });

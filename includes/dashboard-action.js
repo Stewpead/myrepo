@@ -13,8 +13,7 @@ module.exports = {
   },
   
   uploadShareFile: function (data) {
-	data = JSON.stringify(data);	
-	console.log("TES==>"+data);
+	//data = JSON.stringify(data);	
 	const store = new Store();	
 	
 	//store.set('avx-share-upload-scan-results', data);
@@ -64,6 +63,8 @@ module.exports = {
   },
 
   getWalletData: function (data) {
+
+    // console.log(data);
     defaultWindow.webContents.send('avx-wallet-data', data);
   
   },
@@ -90,17 +91,10 @@ module.exports = {
   },
 
   receiveFiletransferStats: function (data) {
+    console.log("data = " + data);
     defaultWindow.webContents.send('receive-filetransfer-stats', data);
   }
 
-  // ,
-
-	// startHoardingSession: function (data) {
-  //   console.log(data);
-  //   defaultWindow.webContents.send('start-hoarding-session', data);
-
-	// }
-  
   
 };
 

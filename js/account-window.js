@@ -56,9 +56,9 @@ ipcRenderer.on('avx-wallet-data', (event, arg) => {
 
 
 $(document).ready(function () {
+
     $('#btnMergeTx').click();
-    // document.getElementById('Waddress').innerHTML = walletData['wallet_data']['public_key'];
-    // $('.total-balance').text(walletData['wallet_data']['balance']);
+
 });
 
 $('#btnMergeTx').click(() => {

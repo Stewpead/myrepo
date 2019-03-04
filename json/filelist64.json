@@ -1,0 +1,116 @@
+{
+	"avengers": {
+		"01": {
+			"downloads": "435",
+			"cost": 123,
+			"ratings": 4.2,
+			"language": "English(US)",
+			"subtitle": [
+				"English",
+				"French",
+				"Greek",
+				"Hungarian"
+			],
+			"Resolution": "1080p",
+			"filesize": "2.8GB",
+			"videocodec": "x265",
+			"bitrate": "8Mbps FR-24"
+        }, 
+        "02" : {
+			"downloads": "233",
+			"cost": 899,
+			"ratings": 4.5,
+			"language": "English(US)",
+			"subtitle": [
+				"English",
+				"French",
+				"Greek",
+				"Hungarian"
+			],
+			"Resolution": "1080p",
+			"filesize": "2.8GB",
+			"videocodec": "x265",
+			"bitrate": "8Mbps FR-24"
+        },
+        "03" : {
+            "downloads" : "476",
+            "cost" : 654,
+            "ratings" : 4.7,
+            "language": "English(US)",
+			"subtitle": [
+				"English",
+				"French",
+				"Greek",
+				"Hungarian"
+			],
+			"Resolution": "1080p",
+			"filesize": "1.2GB",
+			"videocodec": "x264",
+			"bitrate": "16Mbps FR-30"
+        },
+        "04" : {
+            "downloads" : "89",
+            "cost" : 1244,
+            "ratings" : 3.2,
+            "language": "English(US)",
+			"subtitle": [
+				"English",
+				"French",
+				"Greek",
+				"Hungarian"
+			],
+			"Resolution": "1440p",
+			"filesize": "3.1GB",
+			"videocodec": "x265",
+			"bitrate": "8Mbps FR-30"
+        },
+        "05" : {
+            "downloads" : "772",
+            "cost" : 675,
+            "ratings" : 4.3,
+            "language": "English(US)",
+			"subtitle": [
+				"English",
+				"French",
+				"Greek",
+				"Hungarian"
+			],
+			"Resolution": "4k",
+			"filesize": "5.4GB",
+			"videocodec": "x265",
+			"bitrate": "16Mbps FR-48"
+        },
+        "06" : {
+            "downloads" : "36",
+            "cost" : 5663,
+            "ratings" : 2.2,
+            "language": "English(US)",
+			"subtitle": [
+				"English",
+				"French",
+				"Greek",
+				"Hungarian"
+			],
+			"Resolution": "720p",
+			"filesize": "800MB",
+			"videocodec": "x264",
+			"bitrate": "4Mbps FR-24"
+        },
+        "07" : {
+            "downloads" : "455",
+            "cost" : 453,
+            "ratings" : 4.5,
+            "language": "English(US)",
+			"subtitle": [
+				"English",
+				"French",
+				"Greek",
+				"Hungarian"
+			],
+			"Resolution": "1080p",
+			"filesize": "2.1GB",
+			"videocodec": "x265",
+			"bitrate": "8Mbps FR-30"
+        }
+	}
+}
