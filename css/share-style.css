@@ -58,6 +58,16 @@ button {
 #rightcontents {
     display: block;
 }
+#block-top #navbartop{
+    height: 98px;
+}
+#block-top #wrapit{
+    margin: 34px 70px;
+}
+#block-top #rightcontents {
+	margin-top: 25px;	
+}
+
 @media screen and (max-width: 992px) and (min-width:850px) {
     #rightcontents {
         margin-top: 6%;

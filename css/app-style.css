@@ -136,6 +136,11 @@ a:hover {
 .disabled {
     background-color: #ed1c2371;
 }
+
+@font-face {
+  font-family: 'Segoemdl2';
+  src: url('font/segoe-mdl2-assets.ttf');
+}
 /* ::-webkit-scrollbar {
     display: none;
 } */
