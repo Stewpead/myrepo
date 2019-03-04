@@ -92,7 +92,7 @@ function appendJSON(event) {
 	ipcRenderer.on('avx-share-upload-scan-results', (event, data) => {
 		data = JSON.parse(data);
 		
-		var dtp = new DirTreeParser(data["data"]["tree"]);
+		var dtp = new DirTreeParserVideo(data["data"]["tree"]);
 		//PATH
 		$('.file-dir-info span:first-child').html(data["data"]["parent_path"]);
 		//DIR TREE
@@ -344,8 +344,8 @@ setTimeout(function() {
 }, 1000);
 
 
-/* GET DIR TREE */
-class DirTreeParser {
+/* GET DIR TREE For Video */
+class DirTreeParserVideo {
 	constructor(jsonTree) {
 		this.dirtree = '';
 		this.setJsonTree(jsonTree);

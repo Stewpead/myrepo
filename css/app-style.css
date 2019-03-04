@@ -137,9 +137,24 @@ a:hover {
     background-color: #ed1c2371;
 }
 
+/* ICONS */
 @font-face {
   font-family: 'Segoemdl2';
-  src: url('font/segoe-mdl2-assets.ttf');
+  src: url('../font/segoe-mdl2-assets.ttf');
+}
+.icon-segoe {
+	font-family: 'Segoemdl2';
+}
+
+.segoe-video:before {
+	content: '\E714';
+}
+
+.segoe-movies:before {
+	content: '\E8B2';
+}
+.segoe-audio:before {
+	content: '\E8D6';
 }
 /* ::-webkit-scrollbar {
     display: none;

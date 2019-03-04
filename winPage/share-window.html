@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <header>
+    <head>
         <!-- WOW  -->
         <title>AVXChange</title>
         <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
@@ -34,7 +34,7 @@
                 </div>
             </nav>
         </div> 
-    </header>
+    </head>
     <body>
         <div id="slidenav" class="sidenav">
             <div id="avxlogonav">
@@ -65,32 +65,40 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" id="contentmain">
-                    <div class="col-md-2">
-                    </div>
-                    <div class="col-md-8">
+                <div id="contentmain" class="share-file-screen">
+				
+                    <div class="col-md-12">
                         <span style="font-size: 32px;">Share File(s)</span><br />
                         <span>Select File to Upload, either video or audio.</span>
+                    </div>
+					
+                    <div class="col-md-12">
                         <div class="centercontent">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="box1">
-                                        <span class="mdi mdi-video-outline mdi-48px" id="icon-vid"></span>
+                                <div class="col-lg-4 col-md-12 ">
+                                    <div class="box">
+                                        <span class="icon-segoe segoe-video"></span>
                                         <br />
-                                        <span> Or drop a Video file(s) here. . .</span>
-                                    </div>  
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="box2">
-                                        <span class="mdi mdi-itunes mdi-48px"></span>
-                                        <br />
-                                        <span> Or drop an Audio file(s) here. . .</span>                       
+                                        <span> Import or drop a file or <br> folder. . .</span>
                                     </div>
+									<!--
+                                    <div class="btnButtons">
+                                        <i class="fas fa-folder"></i><input type="file" id="upload-video-folder">
+                                        <a href="" id="btn-upload-folder"> Folder( Open folder to upload with one or more files.</a>
+                                        <hr />
+                                        <i class="fas fa-folder"></i><input type="file" id="upload-video-thumbnail">
+                                        <a href="" id="btn-upload-thumbnail"> Upload thumbnail </a>
+                                        <hr />
+                                    </div>  
+									-->
                                 </div>
-                            </div>
-                            <hr />
-                            <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-lg-4 col-md-12 ">
+                                    <div class="box">
+                                        <span class="icon-segoe segoe-movies"></span>
+                                        <br />
+                                        <span> Import or drop a file or <br> folder. . .</span>                       
+                                    </div>
+									<!--
                                     <div class="btnButtons">
                                         <i class="fas fa-folder"></i><input type="file" id="upload-video-folder">
                                         <a href="" id="btn-upload-folder"> Folder( Open folder to upload with one or more files.</a>
@@ -99,13 +107,24 @@
                                         <a href="" id="btn-upload-thumbnail"> Upload thumbnail </a>
                                         <hr />
                                     </div>
+									-->
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="btnButtons">
-                                        <i class="fas fa-folder"></i> <span> <a href="#"> Folder( Open folder to upload with one or more files.</a></span>
-                                        <hr />
-                                        <i class="far fa-file-audio"></i> <span> <a href="#"> File (Open a single file)</a></span>
+                                <div class="col-lg-4 col-md-12 ">
+                                    <div class="box">
+                                        <span class="icon-segoe segoe-audio"></span>
+                                        <br />
+                                        <span> Import or drop a file or <br> folder. . .</span>              
                                     </div>
+									<!--
+                                    <div class="btnButtons">
+                                        <i class="fas fa-folder"></i><input type="file" id="upload-video-folder">
+                                        <a href="" id="btn-upload-folder"> Folder( Open folder to upload with one or more files.</a>
+                                        <hr />
+                                        <i class="fas fa-folder"></i><input type="file" id="upload-video-thumbnail">
+                                        <a href="" id="btn-upload-thumbnail"> Upload thumbnail </a>
+                                        <hr />
+                                    </div>
+									-->
                                 </div>
                             </div>
                         </div>
