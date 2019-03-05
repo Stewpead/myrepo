@@ -200,6 +200,12 @@ a:hover {
 .segoe-headphone:before {
 	content: '\E7F6';
 }
+.segoe-tree-folder-folder:before {
+	content: '\ED41';
+}
+.segoe-info:before {
+	content: '\E946';
+}
 
 /* ::-webkit-scrollbar {
     display: none;

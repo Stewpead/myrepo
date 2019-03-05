@@ -348,6 +348,10 @@ setTimeout(function() {
 
 /* NEW IMPLEMENTATION */ 
 
+/** 1. Events **/
+
+/** 1.1 Upload Folder via input type **/
+
 $('.importShareFiles').click(function() {
 	$(this).find('input[type="file"]').val(null);
 	$(this).find('input[type="file"]')[0].click();
@@ -365,12 +369,80 @@ $('.importShareFiles input[type="file"]').change(function () {
 			}
 		}
 		console.log( JSON.stringify(json) );
+		
+		$('[pd-popup="shareScanningModal"]').fadeIn(100);
+		getScanLoadingForModal( 3000, 'shareScanningModal', 'shareScanResultModal' );
+
 	}
 
 });
 
+/** 1.2 Upload Folder via dragdrop **/
+setTimeout(function() {
+	$(".importShareFiles")
+	.on("dragenter", onDragEnter)
+	.on("dragover", onDragOver)
+	.on("dragleave", onDragLeave)
+	.on("drop", onDrop);
 
-/* GET DIR TREE For Video */
+}, 100);
+
+var onDragEnter = function(event) {
+	event.preventDefault();
+	$(this).addClass("dragover");
+}, 
+
+onDragOver = function(event) {
+	event.preventDefault(); 
+	if(!$(this).hasClass("dragover"))
+		$(this).addClass("dragover");
+}, 
+
+onDragLeave = function(event) {
+	$(this).removeClass("dragover");
+},
+
+onDrop = function(event) {
+	event.preventDefault();
+	$(this).removeClass("dragover");
+	
+	var items = event.originalEvent.dataTransfer.items;
+	
+	if ( items.length > 1 ) {
+		alert('Multiple entry not allowed');
+	} else {
+		var item = items[0].webkitGetAsEntry();
+		if (item) {
+		  if (item.isDirectory == true) {
+			  let path = event.originalEvent.dataTransfer.files[0].path;
+			  let action = $(this).attr('file-action');
+				json = {
+					status : 1128,
+					data : {
+						file	: path,
+						action 	: action
+					}
+				}
+				console.log( JSON.stringify(json) );
+				$('[pd-popup="shareScanningModal"]').fadeIn(100);
+				getScanLoadingForModal( 3000, 'shareScanningModal', 'shareScanResultModal' );
+			  
+		  } else {
+			  alert("Please select a folder");
+		  }
+		}
+	}
+	
+};
+
+/** 1.3 Toggle DIR parent folder **/
+$(".title").click(function () {
+	$(this).parent().find('.file-lists').toggle();
+});
+	
+/** 2 Classes and Functions **/
+
+/*** 2.1 DIR Scan ***/
 class DirTreeParserVideo {
 	constructor(jsonTree) {
 		this.dirtree = '';
@@ -402,7 +474,7 @@ class DirTreeParserVideo {
 					this.dirtree += '<div class="file-scanned">';
 					this.dirtree += '<label class="title">';
 					this.dirtree += '<p>'; 
-					this.dirtree += '<span class="mdi mdi-file-outline mdi-48px"></span>'; 
+					this.dirtree += '<span class="icon-segoe segoe-tree-folder-folder"></span>'; 
 					this.dirtree += key;
 					this.dirtree += '</p>';
 					this.dirtree += '</label>';
@@ -427,3 +499,31 @@ class DirTreeParserVideo {
 	}
 }
 
+
+/*** 2.2 DIR Scan ***/
+
+function getScanLoadingForModal( speed, fadeOut, fadeIn ) {
+	$('.counter').text(0);
+	$('.counter').each(function() {
+	  var $this = $(this),
+		  countTo = $this.attr('data-count');
+	  
+	  $({ countNum: $this.text()}).animate({
+		countNum: countTo
+	  }, {
+
+		duration: speed,
+		easing:'linear',
+		step: function() {
+		  $this.text(Math.floor(this.countNum));
+		},
+		complete: function() {
+		  $this.text(this.countNum);
+		  $('[pd-popup="'+ fadeOut +'"]').fadeOut(100);
+		  $('[pd-popup="'+ fadeIn +'"]').fadeIn(100);
+		}
+
+	  });  
+
+	});
+}
