@@ -137,6 +137,13 @@ a:hover {
     background-color: #ed1c2371;
 }
 
+/* COLOR FILL */
+.color-success {
+	color: #008000;
+}
+.color-danger {
+	color : #ff0000;
+}
 /* ICONS */
 @font-face {
   font-family: 'Segoemdl2';
@@ -205,6 +212,20 @@ a:hover {
 }
 .segoe-info:before {
 	content: '\E946';
+}
+.segoe-completed-solid:before {
+	content: '\EC61';    
+	background: white;
+    border-radius: 55%;
+}
+.segoe-repeat-all:before {
+	content: '\E8EE';
+	-moz-transform: scale(1, -1);
+	-webkit-transform: scale(1, -1);
+	-o-transform: scale(1, -1);
+	-ms-transform: scale(1, -1);
+	transform: scale(1, -1);
+	cursor: pointer;
 }
 
 /* ::-webkit-scrollbar {

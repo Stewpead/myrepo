@@ -95,10 +95,10 @@ function appendJSON(event) {
 		data = JSON.parse(data);
 	
 		
-		var dtp = new DirTreeParserVideo(data["data"]["tree"]);
 		//PATH
 		$('.file-dir-info span:first-child').html(data["data"]["parent_path"]);
 		//DIR TREE
+		var dtp = new DirTreeParserVideo(data["data"]["tree"]);
 		$(".generateFileScanned").html(dtp.getHtmlTree());
 		//METADATA
 		$(".video-reso strong").html( data["data"]["metadata"]["video_resolution"] );

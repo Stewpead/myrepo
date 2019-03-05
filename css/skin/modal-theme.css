@@ -261,6 +261,11 @@ hr#hr {
 .popup.scan-result .popup-inner .file-scanned p span:before {
     font-size: 23px;
 }
+.popup.scan-result .popup-inner .file-scanned p span.segoe-completed-solid:before,
+.popup.scan-result .popup-inner .file-scanned p span.segoe-repeat-all:before,
+.popup.scan-result .popup-inner .file-scanned p span.mdi-loading :before {
+    font-size: inherit;
+}
 .popup.scan-result .popup-inner .file-scanned .file-lists{
 	list-style-type:none;
 	padding-left: 32px;
@@ -270,6 +275,9 @@ hr#hr {
 }
 .popup.scan-result .popup-inner .file-scanned .file-lists span:before{
 	font-size: 16px;
+}
+.popup.scan-result .popup-inner .file-scanned .icon-segoe{
+    margin: 5px;
 }
 .popup.scan-result .popup-inner p.file-dir-info {
     text-align: left;
