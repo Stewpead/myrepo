@@ -227,6 +227,21 @@ a:hover {
 	transform: scale(1, -1);
 	cursor: pointer;
 }
+.segoe-info:before {
+	content: '\E946';
+}
+.segoe-flick-up:before {
+	content: '\E936';
+}
+.segoe-flick-left:before {
+	content: '\E937';
+}
+.segoe-check-mark:before {
+	content: '\E73E';
+}
+.segoe-warning:before {
+	content: '\E7BA';
+}
 
 /* ::-webkit-scrollbar {
     display: none;

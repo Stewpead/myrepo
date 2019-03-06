@@ -286,7 +286,8 @@ setTimeout(function() {
 	});
 
 	$('#confirmFilesInformation').click(function() {
-		if ( $(this).is(':checked' ) ){
+		$(this).find("input").click();
+		if ( $(this).find("input").is(':checked' ) ){
 			$('#proceedProceedPaymentCart').removeClass('disabled');
 		} else {
 			$('#proceedProceedPaymentCart').addClass('disabled');
@@ -436,10 +437,48 @@ onDrop = function(event) {
 };
 
 /** 1.3 Toggle DIR parent folder **/
-$(".title").click(function () {
-	$(this).parent().find('.file-lists').toggle();
-});
+setTimeout(function() {
 	
+	$(".file-scanned .title.toggleable").parent().find('.file-lists').css('display', 'none');
+	
+	$(".title.toggleable").click(function () {
+		var action = $(this).attr('action');
+		if (action == 'close') {
+			$(this).attr('action', 'open');
+			$(this).find('.toogle-icon').removeClass('segoe-flick-up');
+			$(this).find('.toogle-icon').addClass('segoe-flick-left');
+			$(this).parent().find('.file-lists').slideUp();
+			
+		} else {
+			$(this).find('.toogle-icon').removeClass('segoe-flick-left');
+			$(this).find('.toogle-icon').addClass('segoe-flick-up');
+			$(this).attr('action', 'close');
+			$(this).parent().find('.file-lists').slideDown();
+			
+		}
+	});
+}, 100);
+
+/** 1.4 Select scanned files **/
+setTimeout(function() {
+
+	$(".file-scanned .selectable-asset-preview").click(function () {
+		 //Clear selected for preview
+		$('.file-scanned .selectable-asset-preview').removeClass('open');
+		
+		var action = $(this).hasClass('open');
+		
+		if (action) {
+			$(this).removeClass('open');
+			
+		} else {
+			$(this).addClass('open');
+			
+		}
+		
+	});
+}, 100);
+
 /** 2 Classes and Functions **/
 
 /*** 2.1 DIR Scan ***/
