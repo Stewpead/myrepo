@@ -15,7 +15,7 @@ var jsonFSR = JSON.parse(objFSR);
 
 var imgpath = path.join(__dirname,'/decodedimg/');
 var data64 = "data:image/jpg;base64,";
-
+var img64;
 
 const Store = require('electron-store');
 const store = new Store();  
@@ -43,7 +43,8 @@ $(document).ready(function() {
     document.getElementById('fileyear').innerHTML = fileyear;
 
     var imgString = "";
-    imgString = '<img src="' + data64 + jsonAC[filefound]['metadata']['thumbnail'] + '" class="fileimage" />';
+    img64 = data64 + jsonAC[filefound]['metadata']['thumbnail'];
+    imgString = '<img src="' + img64 + '" class="fileimage" />';
     $('#fileImage').append(imgString);
 
     loadFileSearchResults();
@@ -79,11 +80,12 @@ function loadFileSearchResults() {
 
     var searchResult = "";
     for( var key in jsonFSR[filename]) {
-        searchResult += '<tr id="row' + key +'">';
+
+        searchResult += '<tr class="fileDetailsData" data="' + key +'">';
         searchResult += '<th scope="row"></th>';
         searchResult += '<td id="filename' + key + '">' + filename + '</td>';
         searchResult += '<td id="downloads' + key + '"> ' + jsonFSR[filename][key]['downloads'] + '</td>';
-        searchResult += '<td id="cost' + key + '"> ' + jsonFSR[filename][key]['cost'] + ' AVX</td>';
+        searchResult += '<td id="cost' + key + '"> ' + jsonFSR[filename][key]['cost'] + '</td>';
         searchResult += '<td id="ratings' + key + '"> ' + jsonFSR[filename][key]['ratings'] + '</td>';
         searchResult += '<td id="language' + key + '"> ' + jsonFSR[filename][key]['language'] + '</td>';
         searchResult += '<td id="subtitle' + key + '"> ' + jsonFSR[filename][key]['subtitle'] + '</td>';
@@ -93,15 +95,38 @@ function loadFileSearchResults() {
         searchResult += '<td id="audiocodec' + key + '"> ' + jsonFSR[filename][key]['audiocodec'] + '</td>';
         searchResult += '<td id="videobitrate' + key + '"> ' + jsonFSR[filename][key]['bitrate'] + '</td>';
         searchResult += '</tr>';
-
     }
     $('#tbodyDetails').append(searchResult);
 }
 
-
 $("#btnBack").click(function() {
     location.href = 'search-detailed.html';
 });
+
+// $('#thetable').find('tr').click( function(){
+//     alert('You clicked row '+ ($(this).index()+1) );
+//     });
+
+setTimeout(() => {
+    $('tbody .fileDetailsData').click(function() {
+        let jData = {};
+        let row = $(this).attr('data');
+        jData.img64 = img64;
+        jData.fileID = $('#filename' + row).text();
+        jData.downloads = $('#downloads' + row).text();
+        jData.cost = $('#cost' + row).text();
+        jData.ratings = $('#ratings' + row).text();
+        jData.language = $('#language' + row).text();
+        jData.subtitle = $('#subtitle' + row).text();
+        jData.resolution = $('#resolution' + row).text();
+        jData.filesize = $('#filesize' + row).text();
+        jData.videocodec = $('#videcodec' + row).text();
+        jData.audiocodec = $('#audiocodec' + row).text();
+        jData.videobitrate = $('#videobitrate' + row).text();
+        store.set('file-details-for-download-page', jData);
+        location.href = 'video-download.html';
+    });    
+}, 50);
 
 $('#tbodyVdetails').on("click","#row1", function() {
     location.href = 'video-download.html';
@@ -110,3 +135,4 @@ $('#tbodyVdetails').on("click","#row1", function() {
 $('#btnSearch').click( () => {
     location.href = 'video-download.html';
 });
+

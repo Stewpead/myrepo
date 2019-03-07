@@ -12,7 +12,12 @@ const store = new Store();
 
 
 $(document).ready(() => {
+    let jData = store.get('file-details-for-download-page');
+    console.log(jData);
+    var img = "";
+    img = '<img src="' + jData['img64'] + '">';
 
+    $('#fileImage').append(img);
     $("#btnBack").click(function() {
         location.href = 'video-details.html';
     });
@@ -40,8 +45,6 @@ $(document).ready(() => {
         console.log(jWishlist);
     });
 
-
-    
     //Click events in nested modals
     setTimeout( () => {
         //Buy Video/Audio
@@ -74,6 +77,8 @@ $(document).ready(() => {
     }, 100);
 
 });
+
+
 // 	setTimeout( () => {
 // 		/* GET ACCOUNT WALLET ADDRESS */
 // 		let jsonWalletAddress = { status : 1125 };

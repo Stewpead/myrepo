@@ -2,11 +2,17 @@ html {
     margin: auto;
     padding: 0;
 }
+html::-webkit-scrollbar {
+  display: none;
+}
 #styleRow {
     background-color:rgb(0, 0, 0);
 }
 .list-group-item {
     float: left;
+}
+.container-fluid {
+  padding: 0;
 }
 .section-divider ul {
   margin: 0;
@@ -21,9 +27,13 @@ html {
 }
 .section-divider ul li
 {
+
   list-style-type: none;
   display: inline;
 
+}
+.section-divider ul li span {
+  margin-left: -20px;
 }
 .section-divider li:not(:first-child):before {
   content: " | ";
@@ -37,10 +47,65 @@ span#divider-text {
     background-color: #000;
     padding: 0 20px 0 0;
     cursor: pointer;
+    
 }
 span#divider-text:hover {
     color: #ed1c24;
 }
+
 .meta-data-details {
     font-size: 12px;
+}
+
+#tabsfileDetails li + li:before {
+  content: "  |  ";
+  padding: 0 10px;
+
+}
+
+#tabsfileDetails {
+  font-size: 12px;
+  padding-left: 15px;
+}
+
+#movieplot {
+  font-size: 10px;
+  text-align: justify;
+  width: 500px;
+}
+.btn {
+  border-radius: 0px !important;
+}
+.row {
+  padding: 0;
+  margin: 0;
+}
+#toggleBtn2 span {
+  float: right;
+  background-color: #000000;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.ratings-sector {
+  margin-left: 50px;
+}
+#fileRatings {
+  font-size: 48px;
+}
+#totalRatings {
+  font-size: 10px;
+  padding-left: 20px;
+}
+.file-ratings {
+  font-size: 14px !important;
+  /* padding-left: 15px; */
+}
+.file-review {
+  padding-left: 30px;
+}
+/* .file-review-row .col-lg-12 {
+  padding-left: 0 !important;
+} */
+button {
+  z-index: inherit;
 }

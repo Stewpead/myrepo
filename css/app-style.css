@@ -13,6 +13,9 @@ body {
     margin-top:30px;
     background-color: #000;
 } 
+.btn {
+    border-radius: 0px !important;
+}
 button {
     color: white;
     padding: 8px 10px;

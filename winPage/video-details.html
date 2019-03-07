@@ -69,7 +69,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" placeholder="Movie Titles or Audio Tracks" aria-label="Movie Titles or Audio Tracks" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-danger" id="btnSearch" type="button" style="color:white;"> Search</button>
+                                            <button class="btn btn-danger" id="btnSearch" type="button"> Search</button>
                                         </div>
                                     </div>
                                 </div>
@@ -88,17 +88,17 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <h4 id="filetitle" style="display: inline-block">Avengers The Infinity Wars</h4> <h6 id="fileyear" style="display: inline-block"></h6>
-                                            <ul class="nav" id="tabsVideoDetails">
-                                                <li id="movieseires">
+                                            <ul class="nav" id="tabsfileDetails">
+                                                <li id="resolutionRange">
                                                     480p - 1080p Available 
                                                 </li>
-                                                <li id="filecost">
+                                                <li id="fileCostRange">
                                                     Cost 10 AVX - 40 AVX
-                                                </li>
-                                                <li id="fileavail">
+                                                </li> 
+                                                <li id="availableFiles">
                                                     50 file(s) available
                                                 </li>
-                                                <li id="fileowner">
+                                                <li id="fileOwner">
                                                     See ownership
                                                 </li>
                                             </ul>
@@ -159,13 +159,55 @@
                                             <span>Action, Adventure, Fantasy </span> 
                                         </div>
                                     </div>
+                                    <hr />
                                 </div>
-                                <div class="row">
+                                <div class="container-fluid">
                                     <div class="row">
-                                        <span>Actors</span>
+                                        <div class="row ml-4">
+                                            <div class="col-lg-12">
+                                                <p>Actors</p>
+                                            </div>
+                                        </div>
+                                    <hr />
                                     </div>
-                                    <div class="col-lg-12">
-                                    </div>  
+                                    <div class="row ml-4 actors-section">
+                                        <div class="col-lg-2 cast-thumbnail">
+                                            <div class="actors-details">
+                                                <p class="cast-name">Robert Downey Jr.</p>
+                                                <p class="cast-character">Iron man</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 cast-thumbnail">
+                                            <div class="actors-details">
+                                                <p class="cast-name">Robert Downey Jr.</p>
+                                                <p class="cast-character">Iron man</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 cast-thumbnail">
+                                            <div class="actors-details">
+                                                <p class="cast-name">Robert Downey Jr.</p>
+                                                <p class="cast-character">Iron man</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 cast-thumbnail">
+                                            <div class="actors-details">
+                                                <p class="cast-name">Robert Downey Jr.</p>
+                                                <p class="cast-character">Iron man</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 cast-thumbnail">
+                                            <div class="actors-details">
+                                                <p class="cast-name">Robert Downey Jr.</p>
+                                                <p class="cast-character">Iron man</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 cast-thumbnail">
+                                            <div class="actors-details">
+                                                <p class="cast-name">Robert Downey Jr.</p>
+                                                <p class="cast-character">Iron man</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div> 
                         </div>
@@ -179,20 +221,20 @@
                         <div class="col-lg-12" id="bodycolumn">
                             <table class="table table-hover ml-4">
                                 <thead class="thead-dark">
-                                        <tr>
-                                            <th scope="col"></th>
-                                            <th scope="col" style="padding-right:12rem;">File</th>
-                                            <th scope="col">Downloads</th>
-                                            <th scope="col">Cost(AVX)</th>
-                                            <th scope="col">Ratings</th>
-                                            <th scope="col">Language</th>
-                                            <th scope="col">Subtitle</th>
-                                            <th scope="col">Resolution</th>
-                                            <th scope="col">File size</th>
-                                            <th scope="col">Video Codec</th>
-                                            <th scope="col">Audio Codec</th>
-                                            <th scope="col">Video Bitrate</th>
-                                        </tr>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col" style="padding-right:12rem;">File</th>
+                                        <th scope="col">Downloads</th>
+                                        <th scope="col">Cost(AVX)</th>
+                                        <th scope="col">Ratings</th>
+                                        <th scope="col">Language</th>
+                                        <th scope="col">Subtitle</th>
+                                        <th scope="col">Resolution</th>
+                                        <th scope="col">File size</th>
+                                        <th scope="col">Video Codec</th>
+                                        <th scope="col">Audio Codec</th>
+                                        <th scope="col">Video Bitrate</th>
+                                    </tr>
                                 </thead>
                                 <tbody id="tbodyDetails">
                                     

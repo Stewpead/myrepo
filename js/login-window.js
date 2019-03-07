@@ -25,9 +25,8 @@ $('#btnLogin').click( () => {
 	} else {
 		signin();
 	}
-
+	
 });
-
 
 $('#btnSignup').click(() => {
 

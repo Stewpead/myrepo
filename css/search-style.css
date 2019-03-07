@@ -163,12 +163,12 @@ span#divider-text:hover {
     /* background-color: rgb(0, 0, 0); */
     background-blend-mode: luminosity, luminosity, luminosity !important;
 }
-#tabsVideoDetails li + li:before {
+#tabsfileDetails li + li:before {
     content: "  |  ";
     padding: 0 10px;
 
 }
-#tabsVideoDetails {
+#tabsfileDetails { 
     font-size: 12px;
 }
 #movieplot {
@@ -182,7 +182,47 @@ span#divider-text:hover {
     padding: 3px 10px 3px 10px;
     background-color: #ed1c24;
 }
+#btnSearch {
+    border-radius: 0 !important;
+    background-color: #ed1c24;
+}
+.btn {
+    background-color: #ed1c24 !important;
+}
 #fileImageDiv {
     width: 90%;
     margin: auto;
+    margin-top: 20px;
+}
+td:hover {
+    cursor: pointer;
+}
+.actors-section {
+    height: 130px;
+}
+.cast-thumbnail {
+    height: 64px;
+    background-image: url('../images/cast1_tonystark.jpg');
+    border-radius: 50%;
+    max-width: 68px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    display: block;
+    vertical-align: middle;
+    background-position: center;
+}
+.cast-thumbnail .actors-details .cast-name {
+    padding: 0px;
+    margin-top: 70px !important;
+    font-size: 10px;
+    width: 90px;
+    margin-left: -20px;
+}
+.cast-thumbnail .actors-details .cast-character {
+    padding: 0px;
+    font-size: 10px;
+    width: 90px;
+    margin-left: -5px;
+    color: #999999;
 }

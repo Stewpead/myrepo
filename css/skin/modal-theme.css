@@ -9,7 +9,7 @@
     width: 10px;
     border-radius: 10px;
     padding-top: 5%;
-    padding-bottom: 5%;
+    padding-bottom: 5%; 
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 .scroll-skin::-webkit-scrollbar-track { 
