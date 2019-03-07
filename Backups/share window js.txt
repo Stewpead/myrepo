@@ -382,7 +382,7 @@ class DirTreeParser {
 					this.dirtree += '<div class="file-scanned">';
 					this.dirtree += '<label class="title">';
 					this.dirtree += '<p>'; 
-					this.dirtree += '<span class="mdi mdi-file-outline mdi-48px"></span>'; 
+					this.dirtree += '<span class="icon-segoe segoe-tree-folder-folder"></span>'; 
 					this.dirtree += key;
 					this.dirtree += '</p>';
 					this.dirtree += '</label>';

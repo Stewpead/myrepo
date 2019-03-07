@@ -12,106 +12,38 @@
  <div class="popup scan-result" pd-popup="shareScanResultModal">
     <div class="popup-inner scroll-skin">
         <h1 class="title-holder">
-			<span class="mdi mdi-file-outline mdi-48px" id="icon-vid"></span> 
+			<span class="icon-segoe segoe-tree-folder-folder float-left" id="icon-vid"></span> 
 			File(s) scanning result
 		</h1>
 		<div class="generateFileScanned scroll-skin" >
 			<div class="file-scanned">
-				<label class="title">
+				<label class="title toggleable">
 					<p> 
-						<span class="mdi mdi-file-outline mdi-48px"></span> 
+						<span class="icon-segoe segoe-flick-left float-left toogle-icon"></span> 
+						<span class="icon-segoe segoe-tree-folder-folder float-left"></span> 
 						Shaun the Sheep (2018)[BluRay][1080p][YTS.AM]
 					</p>
 				</label>
 				<ul class="file-lists">
 					<li> 
-						<p>
-							<span class="mdi mdi-checkbox-marked-outline mdi-48px"></span> 
+						<p class="selectable-asset-preview">
+							<span class="icon-segoe segoe-v-player float-left"></span> 
 							shaun-the-sheep-2018-BluRay-1080p.mp4 - 
 							<strong>1.91 GB</strong>
 						<p>
 					</li>
 					<li> 
-						<p>
-							<span class="mdi mdi-checkbox-marked-outline mdi-48px"></span> 
+						<p class="selectable-asset-preview">
+							<span class="icon-segoe segoe-v-player float-left"></span> 
 							shaun-the-sheep-2018-BluRay-1080p.str - 
 							<strong>1.2 KB</strong>
 						<p>
 					</li>
 				</ul>
 			</div>
-		</div>
-		<p class="file-dir-info">
-			File Directory:  
-			<span style="margin-left:10px;"> S:\Torrent-Data\downloads\Shaun the Sheep (2018)[BluRay][1080p][YTS.AM]</span>
-			<span class="mdi mdi-information-outline mdi-48px float-right"></span> 
-		</p>
-		<div class="share-modal-options row">
-			<div class="col-7">
-				<p>Are these the files do you want to share?</p>
-			</div>
-			<div class="col-5">
-				 <a href="#" id="proceedAfterFileScanning" class="btn btn-danger float-right">Yes, proceed</a>
-				 <a pd-popup-close="shareScanResultModal" href="#" class="btn btn-default float-right">No</a>
-			</div>
-		</div>
-      
-	  <a class="popup-close" pd-popup-close="shareScanResultModal" href="#"> </a>
-    </div>
-</div>
-
- <div class="popup scanning-file" pd-popup="shareComparingFilesToNetworkModal">
-    <div class="popup-inner">
-      <p><span class="mdi mdi-loading mdi-spin mdi-48px"></span></p>
-	  <h2 id="stat"><span class="counter" data-count="100">0</span>%</h2>
-	  <h4 class="title-label" >Please wait, while comparing your file <br> with the network.</h3>
-	  <a class="popup-close" pd-popup-close="shareComparingFilesToNetworkModal" href="#"> </a>
-    </div>
-</div>
-
- <div class="popup scan-result" pd-popup="shareExistAvxNetwork">
-    <div class="popup-inner scroll-skin">
-        <h1 class="title-holder">
-			<span class="mdi mdi-file-outline mdi-48px" id="icon-vid"></span> 
-			These files do not currently exist on AVXChange network
-		</h1>
-
-		<h5 class="label-with-border">Media directory: </h5>
-
-		<p class="file-dir-info" style="margin-left: 30px">
-			File Directory:  
-			<span style="margin-left:10px;"> S:\Torrent-Data\downloads\Shaun the Sheep (2018)[BluRay][1080p][YTS.AM]</span>
-			<span class="mdi mdi-information-outline mdi-48px float-right"></span> 
-		</p>
-
-		<h5 class="label-with-border">Media files: </h5>
-		<div class="generateFileScanned scroll-skin">
-			<div class="file-scanned">
-				<label class="title">
-					<p> 
-						<span class="mdi mdi-file-outline mdi-48px"></span> 
-						Shaun the Sheep (2018)[BluRay][1080p][YTS.AM]
-					</p>
-				</label>
-				<ul class="file-lists">
-					<li> 
-						<p>
-							<span class="mdi mdi-checkbox-marked-outline mdi-48px"></span> 
-							shaun-the-sheep-2018-BluRay-1080p.mp4 - 
-							<strong>1.91 GB</strong>
-						<p>
-					</li>
-					<li> 
-						<p>
-							<span class="mdi mdi-checkbox-marked-outline mdi-48px"></span> 
-							shaun-the-sheep-2018-BluRay-1080p.str - 
-							<strong>1.2 KB</strong>
-						<p>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<h5 class="label-with-border">Subtitle & Audio Info: </h5>
+		</div>		
+		
+		<h5 class="label-with-border">Audio Language & Subtitle: </h5>
 		<div class="row meta-data-details">
 			<div class="col-6">
 				<label>Subtitles:</label>
@@ -120,8 +52,8 @@
 				</select>
 
 				<br><br>
-				<label>Codec: <strong>STR</strong> </label>
-				<label>Language: <strong>English</strong> </label>
+				<label>Codec: <strong>STR</strong> </label><br>
+				<label>Language: <strong>English</strong> </label><br>
 				<label>Display Title: <strong>English(STR External)</strong> </label>
 		
 			</div>
@@ -132,12 +64,15 @@
 				</select>
 
 				<br><br>
-				<label>Codec: <strong>ASS</strong> </label>
-				<label>Language: <strong>English</strong> </label>
+				<label>Codec: <strong>ASS</strong> </label><br>
+				<label>Language: <strong>English</strong> </label><br>
 				<label>Display Title: <strong>English(ASS)</strong> </label>
 
-			</div>
+			</div>	
+			
+			
 		</div>
+
 
 		<h5 class="label-with-border">Media details: </h5>
 
@@ -167,11 +102,92 @@
 				<label class="full-width">Sampling Rate: <strong>48000 Hz</strong> </label>
 
 			</div>
+		</div>		
+		
+		
+		<p class="file-dir-info">
+			Local Media Directory:  
+			<span style="margin-left:10px;"> S:\Torrent-Data\downloads\Shaun the Sheep (2018)[BluRay][1080p][YTS.AM]</span>
+			<span class="icon-segoe segoe-info float-right"></span> 
+		</p>
+		<div class="share-modal-options row">
+			<div class="col-7">
+				<h5 style="text-align: left;">Proceed to scan metadata for your file asset?</h5>
+			</div>
+			<div class="col-5">
+				 <a href="#" id="proceedAfterFileScanning" class="btn btn-danger float-right">Yes, proceed</a>
+				 <a pd-popup-close="shareScanResultModal" href="#" class="btn btn-default float-right">No</a>
+			</div>
 		</div>
+      
+	  <a class="popup-close" pd-popup-close="shareScanResultModal" href="#"> </a>
+    </div>
+</div>
+
+ <div class="popup scanning-file" pd-popup="shareComparingFilesToNetworkModal">
+    <div class="popup-inner">
+      <p><span class="mdi mdi-loading mdi-spin mdi-48px"></span></p>
+	  <h2 id="stat"><span class="counter" data-count="100">0</span>%</h2>
+	  <h4 class="title-label" >Please wait, while retrieving metadata on <br> AVXChange networkfor your files.</h3>
+	  <a class="popup-close" pd-popup-close="shareComparingFilesToNetworkModal" href="#"> </a>
+    </div>
+</div>
+
+ <div class="popup scan-result" pd-popup="shareExistAvxNetwork">
+    <div class="popup-inner scroll-skin">
+        <h1 class="title-holder">
+			<span class="icon-segoe segoe-tree-folder-folder float-left" id="icon-vid"></span> 
+			Metadata scanning result
+		</h1>
+
+
+		<div class="generateFileScanned scroll-skin">
+			<div class="file-scanned">
+				<label class="title toggleable">
+					<p> 
+						<span class="icon-segoe segoe-flick-left float-left toogle-icon"></span> 
+						<span class="icon-segoe segoe-tree-folder-folder float-left"></span> 
+						<span>Shaun the Sheep (2018)[BluRay][1080p][YTS.AM]</span>
+						<span class="icon-segoe segoe-completed-solid color-success"></span>
+					</p>
+				</label>
+				<ul class="file-lists">
+					<li> 
+						<p  class="color-danger">
+							<span class="icon-segoe segoe-info color-danger float-left"></span> 
+							<span class="icon-segoe segoe-v-player  color-danger float-left"></span> 
+							<span>shaun-the-sheep-2018-BluRay-1080p.mp4 - </span>
+							<strong class=" color-danger">1.91 GB</strong>
+							<span class="icon-segoe segoe-repeat-all color-danger"></span>
+						<p>
+					</li>
+					<li> 
+						<p>
+							<span class="icon-segoe segoe-v-player float-left"></span> 
+							<span>shaun-the-sheep-2018-BluRay-1080p.str - </span>
+							<strong>1.2 KB</strong>
+							<span class="mdi mdi-loading mdi-spin mdi-48px"></span>
+						<p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+
+		<p class="file-dir-info">
+			Local Media Directory:  
+			<span style="margin-left:10px;"> S:\Torrent-Data\downloads\Shaun the Sheep (2018)[BluRay][1080p][YTS.AM]</span>
+			<span class="icon-segoe segoe-info float-right"></span> 
+		</p>
+		
 
 		<div class="share-modal-options row">
 			<div class="col-8">
-				<p style="font-size: 20px;">Next step, we will scan our network for existing meta-data<br> for this file/IP assets. Would you like to proceed?</p>
+				<p style="font-size: 20px;">Are these the files do you want to share?<br> 
+					<span style="font-size: 15px;">
+						Next step will merge the file asset with IP metadata.
+					</span>
+				</p>
 			</div>
 			<div class="col-4">
 				 <a href="#" id="proceedAfterConfirmFileNotExist" class="btn btn-danger float-right">Yes, proceed</a>
@@ -195,7 +211,11 @@
 
 
  <div class="popup scan-result" pd-popup="shareConfirmMetadataModal">
-    <div class="popup-inner scroll-skin">
+    <div class="popup-inner scroll-skin">        
+	<h1 class="title-holder" style="margin-bottom: 55px; font-size: 24px;" >
+		<span class="icon-segoe segoe-check-mark float-left" id="icon-vid"></span> 
+		Metadata and file asset merged success
+	</h1>
 		<div class="row file-details">
 			<div class="col-sm-12 col-md-3">
 				<div class="file-feature-img" style="background-image: url('https://tinyurl.com/ycjjsd24')"></div>
@@ -229,7 +249,7 @@
 				</div>
 			</div>
 			
-			<div class="row file-metadata">
+			<div class="row file-metadata" style="padding-top: 70px;">
 				<div class="col-12">
 					<p class="full-width">
 						The Farmer is playing the piano and torturing everyone with his musical inability. When the Flock discover that Bitzer on the other hand is a virtuoso, they decide it's time for a party. They devise a plan to `borrow' the piano when the Farmer goes to bed - however things don't quite go to plan.
@@ -279,29 +299,136 @@
 			</div>
 		</div>
 		
+		<h5 class="label-with-border">Media details: </h5>
+		<div class="row meta-data-details">
+			<div class="col-6">
+				<label>Subtitles:</label>
+				<select>
+					<option>English (SRT External)</option>
+				</select>
+
+				<br><br>
+				<label>Codec: <strong>STR</strong> </label><br>
+				<label>Language: <strong>English</strong> </label><br>
+				<label>Display Title: <strong>English(STR External)</strong> </label>
+		
+			</div>
+			<div class="col-6">
+				<label>Audio:</label>
+				<select>
+					<option>English (ACC Stereo)</option>
+				</select>
+
+				<br><br>
+				<label>Codec: <strong>ASS</strong> </label><br>
+				<label>Language: <strong>English</strong> </label><br>
+				<label>Display Title: <strong>English(ASS)</strong> </label>
+
+			</div>
+
+			<div class="col-4"><br><br>
+				<label class="full-width video-reso">Video Resolution: <strong>1080p</strong> </label>
+				<label class="full-width video-duration">Duration: <strong>1:59:01</strong> </label>
+				<label class="full-width video-size">Size: <strong>1.91 GB</strong> </label>
+				<label class="full-width audio-video-bitrate">Audio & Video Bitrate: <strong>2298 kbps</strong> </label>
+				<label class="full-width video-width">Width: <strong>1920</strong> </label>
+				<label class="full-width video-height">Height: <strong>800</strong> </label>
+				<label class="full-width aspect-ratio">Aspect Ratio: <strong>2.35</strong> </label>
+
+			</div>
+			
+			<div class="col-4"><br><br>	
+				
+				<label class="full-width video-container">Container: <strong>MP4</strong> </label>
+				<label class="full-width video-frame-rate">Video Frame Rate: <strong>800</strong> </label>
+				<label class="full-width">Web Optimized: <strong>Yes</strong> </label>
+				<label class="full-width video-profile">Video Profile: <strong>High</strong> </label>
+				<label class="full-width video-codec">Video Codec: <strong>1011 kbps</strong> </label>
+				<label class="full-width ">Video Bitrate: <strong>1011 kbps</strong> </label>
+
+			</div>
+			<div class="col-4"><br><br>
+				<label class="full-width bit-depth">Bit Depth: <strong>8</strong> </label>
+				<label class="full-width video-frame-rate">Frame Rate: <strong>23.965 fps</strong> </label>
+				<label class="full-width audio-codec">Audio Codec: <strong>AAC</strong> </label>
+				<label class="full-width audio-channels">Audio Channels: <strong>2</strong> </label>
+				<label class="full-width">Audio Bitrate: <strong>149 kbps</strong> </label>
+				<label class="full-width">Audio Channel Layout: <strong>Stereo</strong> </label>
+				<label class="full-width">Sampling Rate: <strong>48000 Hz</strong> </label>
+
+			</div>	
+			<div class="col-12">
+				
+				<div class="generateFileScanned scroll-skin" >
+					<div class="file-scanned">
+						<label class="full-width text-indent">File Assets: </label>
+						<label class="title toggleable">
+							<p> 
+								<span class="icon-segoe segoe-flick-left float-left toogle-icon"></span> 
+								<span class="icon-segoe segoe-tree-folder-folder float-left"></span> 
+								Shaun the Sheep (2018)[BluRay][1080p][YTS.AM]
+							</p>
+						</label>
+						<ul class="file-lists">
+							<li> 
+								<p class="selectable-asset-preview">
+									<span class="icon-segoe segoe-v-player float-left"></span> 
+									shaun-the-sheep-2018-BluRay-1080p.mp4 - 
+									<strong>1.91 GB</strong>
+								<p>
+							</li>
+							<li> 
+								<p class="selectable-asset-preview">
+									<span class="icon-segoe segoe-v-player float-left"></span> 
+									shaun-the-sheep-2018-BluRay-1080p.str - 
+									<strong>1.2 KB</strong>
+								<p>
+							</li>
+						</ul>
+					</div>
+				</div>	
+			</div>
+			
+			
+		</div>
+	
+		
+		
 		<h5 class="label-with-border">IP Ownership <span class="mdi mdi-information-outline"></span>  </h5>
 		<div class="row file-details">
 			<div class="row file-metadata">
 				<div class="col-12">
-					<p class="full-width">This intellectual property has an AVX token account</p>
-					<p class="full-width">AVX Account Name: <strong><u>Sony Pictures\ShaunTheSheep2001</u></strong></p>
-					<p class="full-width">Do you own the rights to this intellectual property? 
-						<span class="mdi mdi-alert-outline"></span> <u>Warning!</u>
+					<p class="full-width text-indent">This intellectual property has an AVX token account</p>
+					<p class="full-width text-indent">AVX Account Name: <strong><u>Sony Pictures\ShaunTheSheep2001</u></strong></p>
+					
+					<p class="full-width text-indent"><br><br><br>Do you own the rights to this intellectual property? 
+						<span class="icon-segoe segoe-warning"></span> <u>Warning!</u>
 					</p>
 				</div>
 			</div>
 		</div>
 		<div class="col-12 file-details">
-			<a href="" id="claimThisAccount" class="btn btn-default float-right">Claim this account</a>
+			<a href="" id="claimThisAccount" class="btn btn-default float-left" style="margin-left: 17px;">Claim this account</a>
 		</div>
  
 		<div class="share-modal-options row">
-			<div class="col-7">
-				<p style="font-size: 22px;">Is this the correct metadata for your video files?</p>
+			<div class="col-8">
+				<p style="font-size: 22px;">Proceed to AVXChange network file genesis payment?</p>
+				<div class="row file-details" style="margin: 0px;">
+					<div class="row file-metadata" style="padding: 0;">
+						<div class="">
+							<p class="full-width" id="confirmFilesInformation" style="cursor: pointer">
+								<input type="checkbox" >
+								<span for="confirmFilesInformation">I have reviewed all of the above information and it appears correct</span>
+							</p>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="col-5">
-				 <a href="#" id="proceedAfterVerifyMetadata" class="btn btn-danger float-right">Yes, proceed</a>
-				 <a pd-popup-close="shareConfirmMetadata" href="#" class="btn btn-default float-right">No</a>
+
+			<div class="col-4">
+				 <a href="#" id="proceedProceedPaymentCart" class="btn btn-danger float-right disabled">Pay now</a>
+				 <a pd-popup-close="shareIntellectualPropertyConfirmationModal" href="#" class="btn btn-default float-right">Cancel</a>
 			</div>
 		</div>
 	  <a class="popup-close" pd-popup-close="shareConfirmMetadata" href="#"> </a>
@@ -613,7 +740,7 @@
 		<p class="file-dir-info" style="margin-left: 30px">
 			File Directory:  
 			<span style="margin-left:10px;"> S:\Torrent-Data\downloads\Shaun the Sheep (2018)[BluRay][1080p][YTS.AM]</span>
-			<span class="mdi mdi-information-outline mdi-48px float-right"></span> 
+			<span class="icon-segoe segoe-info float-right"></span> 
 		</p>
 
 
@@ -622,21 +749,21 @@
 			<div class="file-scanned">
 				<label class="title">
 					<p> 
-						<span class="mdi mdi-file-outline mdi-48px"></span> 
+						<span class="icon-segoe segoe-tree-folder-folder"></span> 
 						Shaun the Sheep (2018)[BluRay][1080p][YTS.AM]
 					</p>
 				</label>
 				<ul class="file-lists">
 					<li> 
 						<p>
-							<span class="mdi mdi-checkbox-marked-outline mdi-48px"></span> 
+							<span class="icon-segoe segoe-v-player"></span> 
 							shaun-the-sheep-2018-BluRay-1080p.mp4 - 
 							<strong>1.91 GB</strong>
 						<p>
 					</li>
 					<li> 
 						<p>
-							<span class="mdi mdi-checkbox-marked-outline mdi-48px"></span> 
+							<span class="icon-segoe segoe-v-player"></span> 
 							shaun-the-sheep-2018-BluRay-1080p.str - 
 							<strong>1.2 KB</strong>
 						<p>

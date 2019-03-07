@@ -54,7 +54,7 @@
                     <div class="col-lg-8">
                         <div id="navbartop">
                             <div id="wrapit">
-                                <span style="display: inline-block;"> When sharing file(s) make sure its not in a compressed format such as zip, rar etc.</span>    
+                                <span style="display: inline-block;"> <span class="icon-segoe segoe-info"></span>  When sharing file(s) make sure its not in a compressed format such as zip, rar etc.</span>    
                             </div>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                         <div class="centercontent">
                             <div class="row">
                                 <div class="col-lg-4 col-md-12 ">
-                                    <div class="box" id="importShareMovies">
+                                    <div class="box importShareFiles" file-action="movie">
                                         <span class="icon-segoe segoe-video"></span>
                                         <br />
                                         <span> Import or drop a  <br> folder. . .</span>
@@ -95,10 +95,11 @@
 									<p class="box-below-label"> Movies(s) </p>
                                 </div>
                                 <div class="col-lg-4 col-md-12 ">
-                                    <div class="box">
+                                    <div class="box importShareFiles" file-action="tv">
                                         <span class="icon-segoe segoe-movies"></span>
                                         <br />
-                                        <span> Import or drop a <br> folder. . .</span>                       
+                                        <span> Import or drop a <br> folder. . .</span> 
+										<input class="d-none" type="file" webkitdirectory directory />                      
                                     </div>
 									<!--
                                     <div class="btnButtons">
@@ -113,10 +114,11 @@
 									<p class="box-below-label"> TV Show(s) </p>
                                 </div>
                                 <div class="col-lg-4 col-md-12 ">
-                                    <div class="box">
+                                    <div class="box importShareFiles" file-action="audio">
                                         <span class="icon-segoe segoe-audio"></span>
                                         <br />
-                                        <span> Import or drop a  <br> folder . . .</span>              
+                                        <span> Import or drop a  <br> folder . . .</span>  
+										<input class="d-none" type="file" webkitdirectory directory />            
                                     </div>
 									<!--
                                     <div class="btnButtons">

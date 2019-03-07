@@ -34,7 +34,7 @@ $('#btnClosetop').click( () => {
     document.getElementById('contentmain').style.marginTop = "91px";
 
 });
-
+/*
 var videoFolder = document.getElementById('upload-video-folder');
 videoFolder.addEventListener('change', processFile);
 var filename;
@@ -43,6 +43,7 @@ videoThumbnail.addEventListener('change',appendJSON);
 let json = {};
 var directory, filename;
 
+*/
 function processFile(event) {
     var input = event.srcElement;
     filename = input.files[0].name;
@@ -54,7 +55,7 @@ function processFile(event) {
 		directory = path.dirname(file.path) + "\\";
 		
 		json = {
-			status : 1127,
+			status : 1128,
 			data : {
 				description: "Description-Description",
 				filename	: filename,
@@ -85,17 +86,19 @@ function appendJSON(event) {
 	}
 	
 	var jsonString = JSON.stringify(json);
+		console.log(jsonString);
 	
 	var uploadFile =  ipcRenderer.send('avx-share-upload-file', jsonString);
 
 
 	ipcRenderer.on('avx-share-upload-scan-results', (event, data) => {
 		data = JSON.parse(data);
+	
 		
-		var dtp = new DirTreeParserVideo(data["data"]["tree"]);
 		//PATH
 		$('.file-dir-info span:first-child').html(data["data"]["parent_path"]);
 		//DIR TREE
+		var dtp = new DirTreeParserVideo(data["data"]["tree"]);
 		$(".generateFileScanned").html(dtp.getHtmlTree());
 		//METADATA
 		$(".video-reso strong").html( data["data"]["metadata"]["video_resolution"] );
@@ -283,7 +286,8 @@ setTimeout(function() {
 	});
 
 	$('#confirmFilesInformation').click(function() {
-		if ( $(this).is(':checked' ) ){
+		$(this).find("input").click();
+		if ( $(this).find("input").is(':checked' ) ){
 			$('#proceedProceedPaymentCart').removeClass('disabled');
 		} else {
 			$('#proceedProceedPaymentCart').addClass('disabled');
@@ -343,8 +347,141 @@ setTimeout(function() {
 
 }, 1000);
 
+/* NEW IMPLEMENTATION */ 
 
-/* GET DIR TREE For Video */
+/** 1. Events **/
+
+/** 1.1 Upload Folder via input type **/
+
+$('.importShareFiles').click(function() {
+	$(this).find('input[type="file"]').val(null);
+	$(this).find('input[type="file"]')[0].click();
+	
+});
+$('.importShareFiles input[type="file"]').change(function () {
+	var action = $(this).parent().attr('file-action');
+	if (this.files && this.files[0]) {
+		var path = this.files[0]['path'];
+		json = {
+			status : 1128,
+			data : {
+				file	: path,
+				action 	: action
+			}
+		}
+		console.log( JSON.stringify(json) );
+		
+		$('[pd-popup="shareScanningModal"]').fadeIn(100);
+		getScanLoadingForModal( 3000, 'shareScanningModal', 'shareScanResultModal' );
+
+	}
+
+});
+
+/** 1.2 Upload Folder via dragdrop **/
+setTimeout(function() {
+	$(".importShareFiles")
+	.on("dragenter", onDragEnter)
+	.on("dragover", onDragOver)
+	.on("dragleave", onDragLeave)
+	.on("drop", onDrop);
+
+}, 100);
+
+var onDragEnter = function(event) {
+	event.preventDefault();
+	$(this).addClass("dragover");
+}, 
+
+onDragOver = function(event) {
+	event.preventDefault(); 
+	if(!$(this).hasClass("dragover"))
+		$(this).addClass("dragover");
+}, 
+
+onDragLeave = function(event) {
+	$(this).removeClass("dragover");
+},
+
+onDrop = function(event) {
+	event.preventDefault();
+	$(this).removeClass("dragover");
+	
+	var items = event.originalEvent.dataTransfer.items;
+	
+	if ( items.length > 1 ) {
+		alert('Multiple entry not allowed');
+	} else {
+		var item = items[0].webkitGetAsEntry();
+		if (item) {
+		  if (item.isDirectory == true) {
+			  let path = event.originalEvent.dataTransfer.files[0].path;
+			  let action = $(this).attr('file-action');
+				json = {
+					status : 1128,
+					data : {
+						file	: path,
+						action 	: action
+					}
+				}
+				console.log( JSON.stringify(json) );
+				$('[pd-popup="shareScanningModal"]').fadeIn(100);
+				getScanLoadingForModal( 3000, 'shareScanningModal', 'shareScanResultModal' );
+			  
+		  } else {
+			  alert("Please select a folder");
+		  }
+		}
+	}
+	
+};
+
+/** 1.3 Toggle DIR parent folder **/
+setTimeout(function() {
+	
+	$(".file-scanned .title.toggleable").parent().find('.file-lists').css('display', 'none');
+	
+	$(".title.toggleable").click(function () {
+		var action = $(this).attr('action');
+		if (action == 'close') {
+			$(this).attr('action', 'open');
+			$(this).find('.toogle-icon').removeClass('segoe-flick-up');
+			$(this).find('.toogle-icon').addClass('segoe-flick-left');
+			$(this).parent().find('.file-lists').slideUp();
+			
+		} else {
+			$(this).find('.toogle-icon').removeClass('segoe-flick-left');
+			$(this).find('.toogle-icon').addClass('segoe-flick-up');
+			$(this).attr('action', 'close');
+			$(this).parent().find('.file-lists').slideDown();
+			
+		}
+	});
+}, 100);
+
+/** 1.4 Select scanned files **/
+setTimeout(function() {
+
+	$(".file-scanned .selectable-asset-preview").click(function () {
+		 //Clear selected for preview
+		$('.file-scanned .selectable-asset-preview').removeClass('open');
+		
+		var action = $(this).hasClass('open');
+		
+		if (action) {
+			$(this).removeClass('open');
+			
+		} else {
+			$(this).addClass('open');
+			
+		}
+		
+	});
+}, 100);
+
+/** 2 Classes and Functions **/
+
+/*** 2.1 DIR Scan ***/
 class DirTreeParserVideo {
 	constructor(jsonTree) {
 		this.dirtree = '';
@@ -376,7 +513,7 @@ class DirTreeParserVideo {
 					this.dirtree += '<div class="file-scanned">';
 					this.dirtree += '<label class="title">';
 					this.dirtree += '<p>'; 
-					this.dirtree += '<span class="mdi mdi-file-outline mdi-48px"></span>'; 
+					this.dirtree += '<span class="icon-segoe segoe-tree-folder-folder"></span>'; 
 					this.dirtree += key;
 					this.dirtree += '</p>';
 					this.dirtree += '</label>';
@@ -401,3 +538,31 @@ class DirTreeParserVideo {
 	}
 }
 
+
+/*** 2.2 DIR Scan ***/
+
+function getScanLoadingForModal( speed, fadeOut, fadeIn ) {
+	$('.counter').text(0);
+	$('.counter').each(function() {
+	  var $this = $(this),
+		  countTo = $this.attr('data-count');
+	  
+	  $({ countNum: $this.text()}).animate({
+		countNum: countTo
+	  }, {
+
+		duration: speed,
+		easing:'linear',
+		step: function() {
+		  $this.text(Math.floor(this.countNum));
+		},
+		complete: function() {
+		  $this.text(this.countNum);
+		  $('[pd-popup="'+ fadeOut +'"]').fadeOut(100);
+		  $('[pd-popup="'+ fadeIn +'"]').fadeIn(100);
+		}
+
+	  });  
+
+	});
+}

@@ -29,7 +29,7 @@
 
 /*POPUP INNER WHITE*/
 .popup-inner-white {
-    top: -45px;
+    top: -281px;
     position: relative;
     max-width: 990px;
     padding-left: 66px;
@@ -252,14 +252,28 @@ hr#hr {
 }
 .popup.scan-result .popup-inner .file-scanned label.title {
     display: block;
+	cursor: pointer;
 }
 .popup.scan-result .popup-inner .file-scanned p {
     font-size: 15px;
     text-align: left;
     padding-left: 38px;
 }
+
+.popup.scan-result .popup-inner .file-scanned .title > p {
+	padding: 8px;
+}
+.popup.scan-result .popup-inner .file-scanned  p.selectable-asset-preview.open {
+	background: #262525;
+}
+
 .popup.scan-result .popup-inner .file-scanned p span:before {
     font-size: 23px;
+}
+.popup.scan-result .popup-inner .file-scanned p span.segoe-completed-solid:before,
+.popup.scan-result .popup-inner .file-scanned p span.segoe-repeat-all:before,
+.popup.scan-result .popup-inner .file-scanned p span.mdi-loading :before {
+    font-size: inherit;
 }
 .popup.scan-result .popup-inner .file-scanned .file-lists{
 	list-style-type:none;
@@ -270,6 +284,9 @@ hr#hr {
 }
 .popup.scan-result .popup-inner .file-scanned .file-lists span:before{
 	font-size: 16px;
+}
+.popup.scan-result .popup-inner .file-scanned .icon-segoe{
+    margin: 5px;
 }
 .popup.scan-result .popup-inner p.file-dir-info {
     text-align: left;
@@ -295,7 +312,6 @@ hr#hr {
 
 
 .popup.scan-result .popup-inner .file-details {
-	margin: 30px 0;    
 	min-height: 32px;
 }
 .popup.scan-result .popup-inner .file-details #claimThisAccount {
@@ -305,7 +321,7 @@ hr#hr {
 .popup.scan-result .popup-inner .file-details .file-feature-img {
     min-height: 320px;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     margin: 0 auto;
     display: block;
     vertical-align: middle;
@@ -331,6 +347,9 @@ hr#hr {
 	padding: 22px 0;
 	width: 100%;
 }
+.popup.scan-result .popup-inner .file-details .text-indent{
+	margin-left: 32px;
+}
 .popup.scan-result .popup-inner .file-details .file-metadata p, 
 .popup.scan-result .popup-inner .file-details .file-metadata strong {
     font-size: 15px;
@@ -349,6 +368,9 @@ hr#hr {
 }
 .popup.scan-result .popup-inner .file-details .file-metadata .file-actor {
     padding: 0 25px;
+}
+.popup.scan-result .popup-inner .file-details .file-metadata .file-actor .file-actor-details {
+    text-align: center;
 }
 .popup.scan-result .popup-inner .file-details .file-metadata .file-actor h3 {
     font-size: 17px;	
@@ -381,12 +403,37 @@ hr#hr {
 .popup.scan-result .popup-inner .generateFileScanned {
 	max-height: 300px;
     color: #ffffff;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
 .popup.scan-result .popup-inner .generateFileScanned .file-scanned:not(:first-child) {
 	margin: 0;
 }
 
-
+.popup.scan-result .title-holder span{
+    margin-top: 4px;
+    margin-right: 8px;
+}
+.popup.scan-result .file-scanned .title .icon-segoe.float-left {
+	margin-top: -2px;
+}
+.popup.scan-result .file-scanned .file-lists .icon-segoe.float-left {
+	margin-top: 3px;
+	margin-right: 12px;
+}
+.popup.scan-result .file-scanned .title.toggleable .segoe-flick-up,
+.popup.scan-result .file-scanned .title.toggleable .segoe-flick-left {
+    margin-top: 1px;
+}
+.popup.scan-result .file-scanned .title.toggleable .segoe-flick-up:before,
+.popup.scan-result .file-scanned .title.toggleable .segoe-flick-left:before {
+    font-size: 13px;
+}
 
 /** Popup Modal for Validation File **/
 .popup .validation-event .popup-inner {
@@ -459,4 +506,20 @@ hr#hr {
 }
 .popup-inner #btnWishlistClose {
     width: 200px;
+}
+
+/*SCAN RESULTS */
+
+.popup-inner.scroll-skin.blur-bg:before {
+    content: url(http://www.shockya.com/news/wp-content/uploads/disney-a-wrinkle-in-time-movie-poster.jpg);
+    height: 400px;
+    background: inherit;
+    position: absolute;
+    filter: blur(500px);
+    width: 100%;
+    left: -10%;
+}
+
+.popup-inner.scroll-skin .selectable-asset-preview > p.display-preview.open {
+	
 }
