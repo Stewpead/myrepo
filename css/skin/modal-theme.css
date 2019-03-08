@@ -29,7 +29,7 @@
 
 /*POPUP INNER WHITE*/
 .popup-inner-white {
-    top: -281px;
+    top: -234px;
     position: relative;
     max-width: 990px;
     padding-left: 66px;
@@ -264,7 +264,7 @@ hr#hr {
 	padding: 8px;
 }
 .popup.scan-result .popup-inner .file-scanned  p.selectable-asset-preview.open {
-	background: #262525;
+	background: rgba(38, 37, 37, 0.42);
 }
 
 .popup.scan-result .popup-inner .file-scanned p span:before {
@@ -381,7 +381,7 @@ hr#hr {
 }
 
 .popup.scan-result .popup-inner .file-details .file-metadata .file-actor-content .file-actor-details .img {
-    height: 107px;
+    height: 114px;
     border-radius: 54px;
     max-width: 304px;
     background-repeat: no-repeat;
@@ -399,6 +399,33 @@ hr#hr {
 }
 .popup.scan-result .popup-inner .file-details .file-metadata .file-actor-content .file-actor-details .role {
     font-size: 12px;
+}
+
+.popup.scan-result .popup-inner .file-details .file-metadata .file-movie-content .file-movie-details .img {
+    width: 100%;
+    display: block;
+    height: 148px;
+    background-size: contain;	
+	cursor: pointer;
+}
+.popup.scan-result .popup-inner .file-details .file-metadata .file-movie-content .file-movie-details .img.active {
+	border: 2px solid red;
+}
+.popup.scan-result .popup-inner .file-details .file-metadata .file-movie-content .file-movie-details .img.active:before {
+    content: '\E73E';
+    color: white;
+    float: right;
+    top: -13px;
+    position: relative;
+    background: red;
+    border-radius: 36px;
+    height: 26px;
+    width: 25px;
+    padding: 0px 5px;
+    right: -9px;
+    font-family: 'Segoemdl2';
+    font-weight: bolder;
+
 }
 .popup.scan-result .popup-inner .generateFileScanned {
 	max-height: 300px;
@@ -510,16 +537,16 @@ hr#hr {
 
 /*SCAN RESULTS */
 
-.popup-inner.scroll-skin.blur-bg:before {
-    content: url(http://www.shockya.com/news/wp-content/uploads/disney-a-wrinkle-in-time-movie-poster.jpg);
-    height: 400px;
-    background: inherit;
-    position: absolute;
-    filter: blur(500px);
+.popup[pd-popup="shareConfirmMetadataModal"] .popup-inner.scroll-skin:before {
+    /*content: url('https://tinyurl.com/ycjjsd24'); */
+    height: 100%;
+    filter: blur(30px);
     width: 100%;
     left: -10%;
-}
-
-.popup-inner.scroll-skin .selectable-asset-preview > p.display-preview.open {
-	
+    background-repeat: repeat;
+    transform: scale(5);
+    position: absolute;
+    background-size: cover;
+    overflow: hidden;
+    opacity: 0.5;
 }

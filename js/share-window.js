@@ -228,6 +228,9 @@ setTimeout(function() {
 			complete: function() {
 			  $this.text(this.countNum);
 				$('[pd-popup="shareGettingMetaDataLoadingModal"]').fadeOut(100);
+				$('#shareStyleBG').remove();
+				let imageSrc = $('.file-feature-img').css('background-image');
+				$('body').append('<style id="shareStyleBG">.popup[pd-popup="shareConfirmMetadataModal"] .popup-inner.scroll-skin:before { content:'+ imageSrc +';}</style>');
 				$('[pd-popup="shareConfirmMetadataModal"]').fadeIn(100);
 			}
 
@@ -295,7 +298,9 @@ setTimeout(function() {
 	});
 
 	$('#proceedProceedPaymentCart').click( function(){
-		$('[pd-popup="shareIntellectualPropertyConfirmationModal"]').fadeOut(100);
+		$('.popup[pd-popup="shareConfirmMetadataModal"] .popup-inner.scroll-skin').attr("data-content", "url('https://tinyurl.com/ycjjsd24')");
+		
+		$('[pd-popup="shareConfirmMetadataModal"]').fadeOut(100);
 		$('[pd-popup="shareMarketPriceModal"]').fadeIn(100);
 	});
 
@@ -478,6 +483,27 @@ setTimeout(function() {
 		
 	});
 }, 100);
+
+/** 1.5 Select movie assets preview  **/
+setTimeout(function() {
+
+	$(".file-movie-content .img").click(function () {
+		$(".file-movie-content .img").removeClass('active');
+		$(this).addClass('active');
+		let imageSrc = $(this).css('background-image');
+
+		$('#shareStyleBG').remove();
+		$('body').append('<style id="shareStyleBG">.popup[pd-popup="shareConfirmMetadataModal"] .popup-inner.scroll-skin:before { content:'+ imageSrc +';}</style>');
+		
+		imageSrc = imageSrc.replace(/"/g, "'");
+		imageSrc = ' background-image: '+ imageSrc;
+		$('.popup[pd-popup="shareConfirmMetadataModal"] .file-feature-img').attr('style', imageSrc );
+		
+		
+		
+	});
+}, 100);
+
 
 /** 2 Classes and Functions **/
 
