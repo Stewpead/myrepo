@@ -64,21 +64,20 @@ module.exports = {
   },
 
   getWalletData: function (data) {
-
-    // console.log(data);
+    // data = JSON.stringify(data);
     defaultWindow.webContents.send('avx-wallet-data', data);
-  
   },
   
   sendFund: function (data) {
-	const store = new Store();
-	store.set('avx-account-send-wallet', data);
+    // data = JSON.stringify(data);
+    // console.log("SEND FUNDS RESPONSE: "  + data );
+    defaultWindow.webContents.send('avx-account-send-wallet', data);
   },
   
   getAsset: function (data) {
     const store = new Store();
     store.set('get-asset-chain', data);
-	console.log(data);
+	// console.log(data);
   },
   
   getFileInfo: function (data) {

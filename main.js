@@ -109,7 +109,7 @@ var initiateConnection = function(attempt){
 	client.on('data', function(data) {
 		
 		data = JSON.parse(data);
-
+		
 		
 		var moduleAccount = require('./includes/login-signup');
 		var moduleDashboard = require('./includes/dashboard-action');
