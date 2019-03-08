@@ -16,7 +16,6 @@ module.exports = {
 	shareUpload: function (client) {
 		ipcMain.on('avx-share-upload-file',(event, arg) => {
 			client.write(arg);
-			event.returnValue = true;
 		});		
 	},
   
