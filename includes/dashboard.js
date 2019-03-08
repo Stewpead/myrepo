@@ -32,6 +32,7 @@ module.exports = {
 		
 		ipcMain.on('send-token',(event, arg) => {
 			client.write(arg);	
+			console.log(arg);
 			event.returnValue = true;
 		});
 	},		
