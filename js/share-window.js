@@ -368,13 +368,22 @@ $('.importShareFiles input[type="file"]').change(function () {
 	if (this.files && this.files[0]) {
 		var path = this.files[0]['path'];
 		json = {
-			status : 1128,
+			status : 1130,
 			data : {
-				file	: path,
-				action 	: action
+				filenamePath	: 	path,
+				action 			: 	action
 			}
 		}
-		console.log( JSON.stringify(json) );
+	
+	let jsonString = JSON.stringify(json);
+		
+	ipcRenderer.send('avx-share-upload-file', jsonString);
+
+
+	ipcRenderer.on('avx-share-upload-scan-results', (event, data) => {
+		data = JSON.parse(data);
+		console.log(data);
+	});
 		
 		$('[pd-popup="shareScanningModal"]').fadeIn(100);
 		getScanLoadingForModal( 3000, 'shareScanningModal', 'shareScanResultModal' );
