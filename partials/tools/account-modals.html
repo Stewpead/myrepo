@@ -14,7 +14,7 @@
 			<div class="amount-holder">
 				<input type="number" id="avxquantity" placeholder="0.00">
 				<p>AVX Quantity to export</p>
-			</div>
+			</div> 
 			<div class="wallet-info">
 				<input type="text" id="receiver" placeholder="Enter wallet address">
 				<textarea placeholder="Description"></textarea>
@@ -35,6 +35,11 @@
     <div class="popup-inner scroll-skin">
 		<p> You have successfully send token</p>
     </div>
+</div>
+<div class="popup sendToken" pd-popup="accountSendIncompleteDetailsModal">
+	<div class="popup-inner scroll-skin">
+	<p> Details incomplete. </p>
+	</div>
 </div>
 
 
@@ -60,6 +65,7 @@ jQuery(document).ready(function($) {
 		// $(this).attr("disable","disable" );
 		$('#btnSendtoken').prop('disabled', true).addClass('disabled', true);
 
+
 		json1.status = 1115;
 		var amount = document.getElementById('avxquantity').value;
 		json1.data.sender = $(".Waddress").text();
@@ -67,7 +73,17 @@ jQuery(document).ready(function($) {
 		json1.data.amount = parseInt(amount);
 		// json1.data.type = parseInt(1);
 		jsonString1 = JSON.stringify(json1);
-		ipcRenderer.send('send-token',jsonString1);
+		
+		if($(".Waddress").text() == "" || document.getElementById('avxquantity').value == "" ) {
+			$('[pd-popup="accountSendIncompleteDetailsModal"]').fadeIn(100);
+			setTimeout( () => {
+				$('[pd-popup="accountSendIncompleteDetailsModal"]').fadeOut(100);
+				$('#btnSendtoken').removeAttr('disabled');
+			}, 1500);
+		} else {
+			ipcRenderer.send('send-token',jsonString1);
+		}
+		
 		
 		// setTimeout(function() {
 			// POPULATE DATA ON SCREEN 
@@ -83,12 +99,13 @@ jQuery(document).ready(function($) {
 		// }, 2000);
 	});
 		ipcRenderer.on('avx-account-send-wallet', (event , arg) => {
-			if ( arg["valid"] == 1) {
+			if ( arg["data"]["valid"] == 1) {
 					$('[pd-popup="accountSendToSuccessModal"]').fadeIn(100);
+					$('#btnSendtoken').removeAttr('disabled');
 					setTimeout(function() {
 						$('[pd-popup="accountSendToSuccessModal"]').fadeOut(100);
 						location.reload();
-						autoRefresh();
+						// autoRefresh();
 					}, 3000);
 				} else {
 					$('[pd-popup="accountSendToErrorModal"]').fadeIn(100);
