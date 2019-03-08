@@ -51,7 +51,7 @@ var jdata = {
 ipcRenderer.on('avx-wallet-data', (event, arg) => {
     walletData = arg;
     console.log(walletData);
-    $('.Waddress').html(walletData['wallet_data']['public_key']);
+    $('.WaddressAccountWindow').html(walletData['wallet_data']['public_key']);
     document.getElementById('walletBalance').innerHTML = walletData['wallet_data']['balance'];
 });
 
