@@ -12,6 +12,8 @@ const store = new Store();
 
 
 $(document).ready(() => {
+    document.getElementById('file-review').style.display = 'block';
+    document.getElementById('artistic-review').style.display = 'none';
     let jData = store.get('file-details-for-download-page');
     console.log(jData);
     var img = "";
@@ -44,6 +46,16 @@ $(document).ready(() => {
         console.log(Object.keys(jWishlist).length);
         console.log(jWishlist);
     });
+
+    $('#btnFileReview').click( () => {
+        document.getElementById('file-review').style.display = 'block';
+        document.getElementById('artistic-review').style.display = 'none';
+    });
+    $('#btnArtisticReview').click( () => {
+        document.getElementById('file-review').style.display = 'none';
+        document.getElementById('artistic-review').style.display = 'block';
+    });
+    
 
     //Click events in nested modals
     setTimeout( () => {

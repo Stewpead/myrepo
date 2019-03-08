@@ -63,15 +63,16 @@ module.exports = {
   },
 
   getWalletData: function (data) {
-
-    // console.log(data);
+    // data = JSON.stringify(data);
+    console.log("GET WALLET DATA: " + data);
     defaultWindow.webContents.send('avx-wallet-data', data);
   
   },
   
   sendFund: function (data) {
-	const store = new Store();
-	store.set('avx-account-send-wallet', data);
+    data = JSON.stringify(data);
+    console.log("SEND FUNDS RESPONSE: "  + data );
+    defaultWindow.webContents.send('avx-account-send-wallet', data);
   },
   
   getAsset: function (data) {

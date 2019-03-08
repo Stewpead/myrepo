@@ -109,3 +109,12 @@ span#divider-text:hover {
 button {
   z-index: inherit;
 }
+.meta-data-details #ddownSubs, #ddownAudio {
+  color: rgba(212, 27, 33, 0.76);
+}
+#tabsfileDetails #btnFileReview, #btnArtisticReview {
+  cursor: pointer;
+}
+#tabsfileDetails #btnFileReview:hover, #btnArtisticReview:hover {
+  color:  rgba(226, 12, 20, 0.808);
+}

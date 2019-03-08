@@ -39,6 +39,7 @@ var mamount = "mamount";
 var mtransacID = "mtransacID";
 var walletData = {};
 walletData.wallet_data = {};
+
 var jdata = {
     status: 1130
 };
@@ -51,7 +52,7 @@ ipcRenderer.on('avx-wallet-data', (event, arg) => {
     walletData = arg;
     console.log(walletData);
     $('.Waddress').html(walletData['wallet_data']['public_key']);
-    $('total-balance').html(walletData['wallet_data']['balance'])
+    document.getElementById('walletBalance').innerHTML = walletData['wallet_data']['balance'];
 });
 
 
@@ -131,6 +132,7 @@ $('#btnMergeTx').click(() =>  {
     document.getElementById('outgoing').style.display = "none";
 
 });
+
 $('#btnIncomingTx').click(() => {
     document.getElementById('incoming').style.display = "block";
     document.getElementById('merged').style.display = "none";

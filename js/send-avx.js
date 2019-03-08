@@ -20,7 +20,7 @@ jQuery(document).ready(function($) {
 		// console.log(jasonString1);
 		// ipcRenderer.send('send-token',jasonString1);
 		// console.log(jasonString1);
-		
+		 
 	});
 });
 
