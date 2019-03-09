@@ -47,14 +47,18 @@ var jdata = {
 ///////////////////////=================================================================================================================
  jdata = JSON.stringify(jdata);
  ipcRenderer.send('get-wallet-data', jdata);
-
+// Real time wallet data retrieval
 ipcRenderer.on('avx-wallet-data', (event, arg) => {
     walletData = arg;
     console.log(walletData);
-    $('.Waddress').html(walletData['wallet_data']['public_key']);
+    $('.WaddressAccountWindow').html(walletData['wallet_data']['public_key']);
     document.getElementById('walletBalance').innerHTML = walletData['wallet_data']['balance'];
 });
 
+setTimeout( () => {
+    $('.Waddress').html(walletData['wallet_data']['public_key']);
+    $('.total-balance').html(walletData['wallet_data']['balance']);
+}, 100);
 
 $(document).ready(function () {
 
@@ -81,11 +85,11 @@ $('#btnOutcomingTx').click(() => {
 
 
 $('#btnSend').click(function() {
-	$('[pd-popup="accountSendToModal"]').fadeIn(100);
-	$("#avxquantity, #receiver, .wallet-info textarea").val("");
-	$('#btnSendtoken').removeAttr("disable");
 
-   //ipcRenderer.send('send-avx','send-token.html');
+    $('[pd-popup="accountSendToModal"]').fadeIn(100);
+    
+    $("#avxquantity, #receiver, .wallet-info textarea").val("");
+    
 });
 
 $('#a1').click(function () {
