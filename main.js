@@ -35,7 +35,7 @@ var Status = {
 	GET_ACCOUNT_HISTORY: 1123,
 	GET_SPENT: 1124,
 	GET_PUBLICKEY: 1125,
-	GET_METADATA_TREE: 1127,
+	GET_FILE_DETAILS: 1131,
 	GET_FILE_INFO: 1128,
 	GET_WALLET_DATA: 1130,
 	WALLET_BALANCE: 2000,
@@ -135,7 +135,7 @@ var initiateConnection = function(attempt){
 				moduleDashboard.getWalletBalance(data);
 				break;
 			
-			case Status.GET_METADATA_TREE:
+			case Status.GET_FILE_DETAILS:
 				moduleDashboard.uploadShareFile(data);
 				break;
 			

@@ -98,7 +98,7 @@ function appendJSON(event) {
 		//PATH
 		$('.file-dir-info span:first-child').html(data["data"]["parent_path"]);
 		//DIR TREE
-		var dtp = new DirTreeParserVideo(data["data"]["tree"]);
+		//var dtp = new DirTreeParserVideo(data["data"]["tree"]);
 		$(".generateFileScanned").html(dtp.getHtmlTree());
 		//METADATA
 		$(".video-reso strong").html( data["data"]["metadata"]["video_resolution"] );
@@ -368,7 +368,7 @@ $('.importShareFiles input[type="file"]').change(function () {
 	if (this.files && this.files[0]) {
 		var path = this.files[0]['path'];
 		json = {
-			status : 1130,
+			status : 1131,
 			data : {
 				filenamePath	: 	path,
 				action 			: 	action
@@ -381,8 +381,11 @@ $('.importShareFiles input[type="file"]').change(function () {
 
 
 	ipcRenderer.on('avx-share-upload-scan-results', (event, data) => {
-		data = JSON.parse(data);
-		console.log(data);
+		let jsonString = JSON.stringify(data);
+		
+		var dtp = new DirTreeParserVideo(data["data"]["file_metadata"]);
+		$(".generateFileScanned").html(dtp.getHtmlTree());
+
 	});
 		
 		$('[pd-popup="shareScanningModal"]').fadeIn(100);
@@ -526,13 +529,21 @@ class DirTreeParserVideo {
 	
 	parse(jsonTree) {
 		var flag = false;
+		var countPlayableFiles = 0;
 		
 		for (var key in jsonTree) {
 			let currObj = jsonTree[key];
 			
 			if (typeof currObj == 'object' && Object.keys(currObj).length > 0) {
 				
+				//if (currObj["file_metadata"])
+				//if ( currObj["name"] != 'n/a' ) {
+					
+				//}
+				
 				if (("name" in currObj) && typeof currObj["name"] == 'string') {
+					if ( typeof(currObj["metadata"] ) == 'object' ) {
+				
 					this.dirtree += '<div class="file-scanned">';
 					this.dirtree += '<ul class="file-lists">';
 					this.dirtree += '<li>';
@@ -544,6 +555,8 @@ class DirTreeParserVideo {
 					this.dirtree += '</li>';
 					this.dirtree += '</ul>';
 					this.dirtree += '</div>';
+					console.log( currObj["metadata"] );
+					}
 				} else {
 					this.dirtree += '<div class="file-scanned">';
 					this.dirtree += '<label class="title">';
@@ -559,9 +572,12 @@ class DirTreeParserVideo {
 					this.dirtree += '</ul>';
 					this.dirtree += '</div>';
 				}
+		
+				
 
 			}
 		}
+		
 	}
 	
 	setJsonTree(jsonTree) {
