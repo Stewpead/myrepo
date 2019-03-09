@@ -14,7 +14,7 @@ html::-webkit-scrollbar {
 .container-fluid {
   padding: 0;
 }
-.section-divider ul {
+.section-divider ul { 
   margin: 0;
   padding: 0;
 }
@@ -117,4 +117,12 @@ button {
 }
 #tabsfileDetails #btnFileReview:hover, #btnArtisticReview:hover {
   color:  rgba(226, 12, 20, 0.808);
+}
+.users-review-section span {
+  margin-left: 15px;
+}
+  .users-review-section p {
+  font-size: 10px;
+  margin-left: 30px;
+  width: 600px;
 }

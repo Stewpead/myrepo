@@ -72,7 +72,6 @@ var initiateConnection = function(attempt){
 		module.sendFundAVX(client);
 		module.checkStatus(client);
 		module.sharePayment(client);
-		module.getBalance(client);
 		module.getSpent(client);
 		module.getAccountHistory(client);
 		module.getAccountWalletAddress(client);

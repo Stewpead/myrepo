@@ -36,9 +36,16 @@
 		<p> You have successfully send token</p>
     </div>
 </div>
+
 <div class="popup sendToken" pd-popup="accountSendIncompleteDetailsModal">
 	<div class="popup-inner scroll-skin">
 	<p> Details incomplete. </p>
+	</div>
+</div>
+
+<div class="popup sendToken" pd-popup="accountSendSenderIsReceiverModal">
+	<div class="popup-inner scroll-skin">
+	<p> Invalid Receiver Wallet Address. </p>
 	</div>
 </div>
 
@@ -50,21 +57,29 @@
 </div>
 
 <script>
+
+
+
+
+
 jQuery(document).ready(function($) {
+
 	/*Close Modal action*/
+
 	$('[pd-popup-close]').click(function(e) {
 	    var targeted_popup_class = jQuery(this).attr('pd-popup-close');
 	    $('[pd-popup="' + targeted_popup_class + '"]').fadeOut(200);
 
-	    e.preventDefault();
+			e.preventDefault();
+			
 	});
-	
 	$('#btnSendtoken').click( function (e) {
 
 		e.preventDefault();
 
 		$('#btnSendtoken').prop('disabled', true).addClass('disabled', true);
-
+		var json1 = {};
+		json1.data = {};
 		json1.status = 1115;
 
 		var amount = document.getElementById('avxquantity').value;
@@ -72,43 +87,45 @@ jQuery(document).ready(function($) {
 		json1.data.receiver = document.getElementById('receiver').value;
 		json1.data.amount = parseInt(amount);
 		jsonString1 = JSON.stringify(json1);
-
-		if($(".WaddressAccountWindow").text() == "" || document.getElementById('avxquantity').value == "" ) {
+		
+		if( $('#receiver').text() == "" || document.getElementById('avxquantity').value == "" ) {
 			$('[pd-popup="accountSendIncompleteDetailsModal"]').fadeIn(100);
-			setTimeout( () => {
-				$('[pd-popup="accountSendIncompleteDetailsModal"]').fadeOut(100);
-				$('#btnSendtoken').removeAttr('disabled');
-			}, 1500);
-		} else {
-			ipcRenderer.send('send-token',jsonString1);
-		}
-		
-		
-		// setTimeout(function() {
-			// POPULATE DATA ON SCREEN 
-			// let data = store.get('avx-account-send-wallet');
-			// store.delete('avx-account-send-wallet');
-			// console.log(data);
-			// if(typeof data != 'undefined') {
-				// $(this).removeAttr("disable");
-				// $('[pd-popup="accountSendToModal"]').fadeOut(100);
 
-				
-			// }
-		// }, 2000);
+			setTimeout( () => {
+
+				$('[pd-popup="accountSendIncompleteDetailsModal"]').fadeOut(100);
+				$('#btnSendtoken').prop('disabled', false).removeClass('disabled');
+
+			}, 1000);
+		} else if( $(".WaddressAccountWindow").text() == document.getElementById('receiver').value ){
+			$('[pd-popup="accountSendSenderIsReceiverModal"]').fadeIn(100);
+
+			setTimeout( () => {
+
+				$('[pd-popup="accountSendSenderIsReceiverModal"]').fadeOut(100);
+				$('#btnSendtoken').prop('disabled', false).removeClass('disabled');
+
+			}, 1000);
+
+		} else {
+			ipcRenderer.send('send-token', jsonString1);
+		}
 	});
+
 		ipcRenderer.on('avx-account-send-wallet', (event , arg) => {
+
 			if ( arg["data"]["valid"] == 1) {
 					$('[pd-popup="accountSendToSuccessModal"]').fadeIn(100);
 					$('#btnSendtoken').removeAttr('disabled');
 					setTimeout(function() {
 						$('[pd-popup="accountSendToSuccessModal"]').fadeOut(100);
+
 						location.reload();
-						// autoRefresh();
+
 					}, 3000);
+
 				} else {
 					$('[pd-popup="accountSendToErrorModal"]').fadeIn(100);
-					
 					setTimeout(function() {
 						$('[pd-popup="accountSendToErrorModal"]').fadeOut(100);
 					}, 2000);
@@ -127,30 +144,30 @@ function autoRefresh() {
 	/* GET ACCOUNT BALANCE */
 	let jsonBalance = { status : 1121 };
 	let jsonStringBalance = JSON.stringify(jsonBalance);
-	ipcRenderer.sendSync('avx-account-balance', jsonStringBalance);
+	ipcRenderer.send('avx-account-balance', jsonStringBalance);
 	
 	/* GET HISTORY */
 	let jsonHistory = { status : 1123 };
 	let jsonStringHistory = JSON.stringify(jsonHistory);
-	ipcRenderer.sendSync('avx-account-history', jsonStringHistory);
+	ipcRenderer.send('avx-account-history', jsonStringHistory);
 	
 	/* GET ACCOUNT SPENT */
 	let jsonSpent = { status : 1124 };
 	let jsonStringSpent = JSON.stringify(jsonSpent);
-	ipcRenderer.sendSync('avx-account-spent', jsonStringSpent);
+	ipcRenderer.send('avx-account-spent', jsonStringSpent);
 	
 	
-	setTimeout(function() {
 
-	
-		// POPULATE DATA ON SCREEN
-		let dataBalance = store.get('avx-account-balance');
-		store.delete('avx-account-balance');
-		if(typeof dataBalance["balance"] != 'undefined') {
-			$('.total-balance').html(parseFloat(dataBalance["balance"]).toFixed(2));
-		}
 
-	}, 1000);
+	// setTimeout(function() {
+	
+	// 	let dataBalance = store.get('avx-account-balance');
+	// 	store.delete('avx-account-balance');
+	// 	if(typeof dataBalance["balance"] != 'undefined') {
+	// 		$('.total-balance').html(parseFloat(dataBalance["balance"]).toFixed(2));
+	// 	}
+
+	// }, 1000);
 
 	setTimeout(function() {
 
