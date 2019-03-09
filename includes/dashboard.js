@@ -30,8 +30,11 @@ module.exports = {
 	sendFundAVX: function (client) {
 		
 		ipcMain.on('send-token',(event, arg) => {
+
+			console.log("Mao ni gi send sa UI: " + arg);
+
 			client.write(arg);	
-			console.log(arg);
+
 			event.returnValue = true;
 		});
 	},		
