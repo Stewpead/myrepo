@@ -259,10 +259,15 @@ hr#hr {
     text-align: left;
     padding-left: 38px;
 }
-
 .popup.scan-result .popup-inner .file-scanned .title > p {
+    margin-bottom: 0;	
 	padding: 8px;
 }
+
+.popup.scan-result .popup-inner .file-scanned .title[action="close"] > p {
+    margin-bottom: -50px;
+}
+
 .popup.scan-result .popup-inner .file-scanned  p.selectable-asset-preview.open {
 	background: rgba(38, 37, 37, 0.42);
 }
@@ -453,6 +458,9 @@ hr#hr {
 .popup.scan-result .file-scanned .file-lists .icon-segoe.float-left {
 	margin-top: 3px;
 	margin-right: 12px;
+}
+.popup.scan-result .file-scanned .file-lists .icon-segoe.segoe-info.float-left {
+	margin-left: -29px;
 }
 .popup.scan-result .file-scanned .title.toggleable .segoe-flick-up,
 .popup.scan-result .file-scanned .title.toggleable .segoe-flick-left {

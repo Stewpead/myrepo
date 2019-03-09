@@ -12,8 +12,8 @@ module.exports = {
 	console.log(data);
   },
   
-  uploadShareFile: function (data) {
-	//data = JSON.stringify(data);	
+  getMetaDataDIRTREE: function (data) {
+
 	const store = new Store();	
 	
 	//store.set('avx-share-upload-scan-results', data);

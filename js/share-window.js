@@ -368,7 +368,7 @@ $('.importShareFiles input[type="file"]').change(function () {
 	if (this.files && this.files[0]) {
 		var path = this.files[0]['path'];
 		json = {
-			status : 1131,
+			status : 1127,
 			data : {
 				filenamePath	: 	path,
 				action 			: 	action
@@ -383,8 +383,9 @@ $('.importShareFiles input[type="file"]').change(function () {
 	ipcRenderer.on('avx-share-upload-scan-results', (event, data) => {
 		let jsonString = JSON.stringify(data);
 		
-		var dtp = new DirTreeParserVideo(data["data"]["file_metadata"]);
+		var dtp = new DirTreeParserVideo(data["data"]["tree"]);
 		$(".generateFileScanned").html(dtp.getHtmlTree());
+		activateToggleDIR();
 
 	});
 		
@@ -435,7 +436,7 @@ onDrop = function(event) {
 			  let path = event.originalEvent.dataTransfer.files[0].path;
 			  let action = $(this).attr('file-action');
 				json = {
-					status : 1128,
+					status : 1127,
 					data : {
 						file	: path,
 						action 	: action
@@ -453,30 +454,8 @@ onDrop = function(event) {
 	
 };
 
-/** 1.3 Toggle DIR parent folder **/
-setTimeout(function() {
-	
-	$(".file-scanned .title.toggleable").parent().find('.file-lists').css('display', 'none');
-	
-	$(".title.toggleable").click(function () {
-		var action = $(this).attr('action');
-		if (action == 'close') {
-			$(this).attr('action', 'open');
-			$(this).find('.toogle-icon').removeClass('segoe-flick-up');
-			$(this).find('.toogle-icon').addClass('segoe-flick-left');
-			$(this).parent().find('.file-lists').slideUp();
-			
-		} else {
-			$(this).find('.toogle-icon').removeClass('segoe-flick-left');
-			$(this).find('.toogle-icon').addClass('segoe-flick-up');
-			$(this).attr('action', 'close');
-			$(this).parent().find('.file-lists').slideDown();
-			
-		}
-	});
-}, 100);
 
-/** 1.4 Select scanned files **/
+/** 1.3 Select scanned files **/
 setTimeout(function() {
 
 	$(".file-scanned .selectable-asset-preview").click(function () {
@@ -496,7 +475,7 @@ setTimeout(function() {
 	});
 }, 100);
 
-/** 1.5 Select movie assets preview  **/
+/** 1.4 Select movie assets preview  **/
 setTimeout(function() {
 
 	$(".file-movie-content .img").click(function () {
@@ -542,25 +521,31 @@ class DirTreeParserVideo {
 				//}
 				
 				if (("name" in currObj) && typeof currObj["name"] == 'string') {
-					if ( typeof(currObj["metadata"] ) == 'object' ) {
+					//if ( typeof(currObj["metadata"] ) == 'object' ) {
 				
 					this.dirtree += '<div class="file-scanned">';
 					this.dirtree += '<ul class="file-lists">';
 					this.dirtree += '<li>';
 					this.dirtree += '<p>';
-					this.dirtree += '<span class="mdi mdi-checkbox-marked-outline mdi-48px"></span>'; 
-					this.dirtree += currObj["name"]; 
-					this.dirtree += '<strong>' + currObj["size"] + '</strong>';
+					
+					if ( checkFileForVideoPlayable(currObj["name"]) > 0 ) {
+						this.dirtree += '<span class="icon-segoe segoe-info float-left"></span> '; 
+					}
+					
+					this.dirtree += '<span class="icon-segoe segoe-v-player float-left"></span>'; 
+					this.dirtree += '<strong>' + currObj["name"] +'</strong>'; 
+					this.dirtree += '<strong> - ' + formatBytes(currObj["size"], 2) + '</strong>';
 					this.dirtree += '</p>';
 					this.dirtree += '</li>';
 					this.dirtree += '</ul>';
 					this.dirtree += '</div>';
-					console.log( currObj["metadata"] );
-					}
+					//console.log( currObj["metadata"] );
+					//}
 				} else {
 					this.dirtree += '<div class="file-scanned">';
-					this.dirtree += '<label class="title">';
+					this.dirtree += '<label class="title toggleable">';
 					this.dirtree += '<p>'; 
+					this.dirtree += '<span class="icon-segoe segoe-flick-left float-left toogle-icon"></span>'; 
 					this.dirtree += '<span class="icon-segoe segoe-tree-folder-folder"></span>'; 
 					this.dirtree += key;
 					this.dirtree += '</p>';
@@ -615,5 +600,48 @@ function getScanLoadingForModal( speed, fadeOut, fadeIn ) {
 
 	  });  
 
+	});
+}
+
+
+/*** 2.3 Check if the file is VIDEO FILE ***/
+
+function checkFileForVideoPlayable( filename  ) {
+	let file_ext =  filename.substring(filename.lastIndexOf('.') + 1);
+	let video_lists = [ "webm", "mkv", "flv", "vob", "ogg", "ogv", "avi", "mov", "wmv", "mpg", "mpeg", "mpe", "mpv", "m2v", "m4v", "mp4"];
+	let results = $.inArray( file_ext, video_lists );
+	return ( results < 0 ) ? 0 : 1;
+}
+
+/*** 2.4 BYTES BIT VALUE***/
+function formatBytes(bytes,decimals) {
+   if(bytes == 0) return '0 Bytes';
+   var k = 1024,
+       dm = decimals <= 0 ? 0 : decimals || 2,
+       sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+       i = Math.floor(Math.log(bytes) / Math.log(k));
+   return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+}
+
+/*** 2.4 Check if the file is VIDEO FILE ***/
+function activateToggleDIR() {
+	
+	$(".file-scanned .title.toggleable").parent().find('.file-lists').css('display', 'none');
+	
+	$(".title.toggleable").click(function () {
+		var action = $(this).attr('action');
+		if (action == 'close') {
+			$(this).attr('action', 'open');
+			$(this).find('.toogle-icon').removeClass('segoe-flick-up');
+			$(this).find('.toogle-icon').addClass('segoe-flick-left');
+			$(this).parent().find('.file-lists').slideUp();
+			
+		} else {
+			$(this).find('.toogle-icon').removeClass('segoe-flick-left');
+			$(this).find('.toogle-icon').addClass('segoe-flick-up');
+			$(this).attr('action', 'close');
+			$(this).parent().find('.file-lists').slideDown();
+			
+		}
 	});
 }
