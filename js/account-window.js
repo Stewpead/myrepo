@@ -87,7 +87,8 @@ $('#btnOutcomingTx').click(() => {
 $('#btnSend').click(function() {
 
     $('[pd-popup="accountSendToModal"]').fadeIn(100);
-    
+    $('.Waddress').html(walletData['wallet_data']['public_key']);
+    $('.total-balance').html(walletData['wallet_data']['balance']);
     $("#avxquantity, #receiver, .wallet-info textarea").val("");
     
 });

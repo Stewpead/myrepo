@@ -78,17 +78,22 @@ jQuery(document).ready(function($) {
 		e.preventDefault();
 
 		$('#btnSendtoken').prop('disabled', true).addClass('disabled', true);
-		var json1 = {};
+		var json1 = {}; 
 		json1.data = {};
 		json1.status = 1115;
 
-		var amount = document.getElementById('avxquantity').value;
-		json1.data.sender = $(".WaddressAccountWindow").text();
-		json1.data.receiver = document.getElementById('receiver').value;
-		json1.data.amount = parseInt(amount);
-		jsonString1 = JSON.stringify(json1);
+		// var amount = ;
 		
-		if( $('#receiver').text() == "" || document.getElementById('avxquantity').value == "" ) {
+		json1.data.sender = $(".WaddressAccountWindow").text();
+
+		json1.data.receiver = document.getElementById('receiver').value;
+
+		json1.data.amount = document.getElementById('avxquantity').value;
+
+		jsonString1 = JSON.stringify(json1);
+
+		if( document.getElementById('receiver').value == "" || document.getElementById('avxquantity').value == "" ) {
+			
 			$('[pd-popup="accountSendIncompleteDetailsModal"]').fadeIn(100);
 
 			setTimeout( () => {
