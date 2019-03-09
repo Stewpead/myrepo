@@ -381,15 +381,16 @@ hr#hr {
 }
 
 .popup.scan-result .popup-inner .file-details .file-metadata .file-actor-content .file-actor-details .img {
-    height: 114px;
+	height: 66px;
     border-radius: 54px;
-    max-width: 304px;
+    max-width: 273px;
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0 auto;
     display: block;
     vertical-align: middle;
     background-position: center;
+    width: 65px;
 }
 .popup.scan-result .popup-inner .file-details .file-metadata .file-actor-content .file-actor-details .name {
 	margin-top: 13px;
