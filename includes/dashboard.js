@@ -110,6 +110,13 @@ module.exports = {
 		ipcMain.on('request-filetransfer-stats', (event, arg) => {
 			client.write(arg);
 		});
+	},
+
+	requestFileMetadata: function (client) {
+
+		ipcMain.on('request-file-metadata', (event, arg) => {
+			client.write(arg);
+		});
 	}
 	
 };

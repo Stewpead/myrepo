@@ -82,6 +82,7 @@ var initiateConnection = function(attempt){
 		module.generateDownload(client);
 		module.requestHoardingSession(client);
 		module.requestFiletransferStats(client);
+		module.requestFileMetadata(client);
 		
 		ipcMain.on('test-btn',(event, arg) => {
 			event.returnValue = 1 +arg;
@@ -182,6 +183,10 @@ var initiateConnection = function(attempt){
 
 			case Status.REQUEST_FILETRANSFER_STATS:
 				moduleDashboard.receiveFiletransferStats(data);
+				break;
+				
+			case Status.GET_FILE_DETAILS: 
+				moduleDashboard.receiveFileMetadata(data);
 				break;
 		}			
 

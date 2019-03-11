@@ -90,9 +90,14 @@ module.exports = {
   },
 
   receiveFiletransferStats: function (data) {
-    console.log("data = " + data);
+   
     defaultWindow.webContents.send('receive-filetransfer-stats', data);
-  }
+  },
+  
+  receiveFileMetadata: function (data) {
+	console.log("data test = " + data);
+    defaultWindow.webContents.send('avx-share-respond-file-metadata', data);
+  },
 
   
 };
