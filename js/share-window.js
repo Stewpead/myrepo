@@ -522,10 +522,10 @@ class DirTreeParserVideo {
 	constructor(jsonTree) {
 		this.dirtree = '';
 		this.setJsonTree(jsonTree);
-		this.parse(this.jsonTree);
+		this.parse(this.jsonTree, 0);
 	}
 	
-	parse(jsonTree) {
+	parse(jsonTree, level) {
 		var flag = false;
 		var countPlayableFiles = 0;
 		
@@ -562,7 +562,13 @@ class DirTreeParserVideo {
 					//console.log( currObj["metadata"] );
 					//}
 				} else {
-					this.dirtree += '<div class="file-scanned item-file-meta-parent">';
+					let className = "";
+					
+					if (level == 0) {
+						className = "item-file-meta-parent";
+					}
+					
+					this.dirtree += '<div class="file-scanned ' + className + '">';
 					this.dirtree += '<label class="title toggleable">';
 					this.dirtree += '<p>'; 
 					this.dirtree += '<span class="icon-segoe segoe-flick-left float-left toogle-icon"></span>'; 
@@ -572,7 +578,7 @@ class DirTreeParserVideo {
 					this.dirtree += '</label>';
 					this.dirtree += '<ul class="file-lists">';
 					this.dirtree += '<li>';
-					this.parse(currObj, this.dirtree);
+					this.parse(currObj, level + 1);
 					this.dirtree += '</li>';
 					this.dirtree += '</ul>';
 					this.dirtree += '</div>';
@@ -671,6 +677,8 @@ function shareShowMetadataPerFile(event) {
 	let target = $( event.target );
 	let filename = target.attr("file-name");
 	let folder = target.closest('.item-file-meta-parent').find('.title .item-file-meta-foldername').html();
+	
+	console.log(target.closest('.item-file-meta-parent').html());
 	
 	
 	if ( folder !== undefined ) {
