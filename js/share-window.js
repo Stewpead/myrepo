@@ -673,11 +673,13 @@ function shareShowMetadataPerFile(event) {
 	let folder = target.closest('.item-file-meta-parent').find('.title .item-file-meta-foldername').html();
 	
 	
-	if ( folder ) {
+	if ( folder !== undefined ) {
 		var url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() +"\\"+ folder +"\\"+ filename;
+		
 	} else {
-		var url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() + filename;
+		var url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() +"\\"+  filename;
 	}
+	
 	
 
 	
