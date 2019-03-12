@@ -131,7 +131,7 @@ td {
     padding-left: 5px;
     font-size: 10px;
 } */
-#decimal-place {
+#decimalPlace {
     color: #000;
 }
 @media screen and (max-height: 450px) {

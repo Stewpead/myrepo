@@ -100,7 +100,7 @@ function loadFileSearchResults() {
 }
 
 $("#btnBack").click(function() {
-    location.href = 'search-detailed.html';
+    alert('button back under construction!');
 });
 
 // $('#thetable').find('tr').click( function(){

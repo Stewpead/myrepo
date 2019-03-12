@@ -67,7 +67,9 @@ jQuery(document).ready(function($) {
 	/*Close Modal action*/
 
 	$('[pd-popup-close]').click(function(e) {
-	    var targeted_popup_class = jQuery(this).attr('pd-popup-close');
+
+			var targeted_popup_class = jQuery(this).attr('pd-popup-close');
+			
 	    $('[pd-popup="' + targeted_popup_class + '"]').fadeOut(200);
 
 			e.preventDefault();
@@ -85,11 +87,11 @@ jQuery(document).ready(function($) {
 		// var amount = ;
 		
 		json1.data.sender = $(".WaddressAccountWindow").text();
-
+ 
 		json1.data.receiver = document.getElementById('receiver').value;
 
 		json1.data.amount = document.getElementById('avxquantity').value;
-
+		
 		jsonString1 = JSON.stringify(json1);
 
 		if( document.getElementById('receiver').value == "" || document.getElementById('avxquantity').value == "" ) {
@@ -120,9 +122,13 @@ jQuery(document).ready(function($) {
 		ipcRenderer.on('avx-account-send-wallet', (event , arg) => {
 
 			if ( arg["data"]["valid"] == 1) {
+
 					$('[pd-popup="accountSendToSuccessModal"]').fadeIn(100);
+
 					$('#btnSendtoken').removeAttr('disabled');
+
 					setTimeout(function() {
+
 						$('[pd-popup="accountSendToSuccessModal"]').fadeOut(100);
 
 						location.reload();

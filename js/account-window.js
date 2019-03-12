@@ -39,7 +39,7 @@ var mamount = "mamount";
 var mtransacID = "mtransacID";
 var walletData = {};
 walletData.wallet_data = {};
-
+var avxTokens = 0.0;
 var jdata = {
     status: 1130
 };
@@ -49,10 +49,11 @@ var jdata = {
  ipcRenderer.send('get-wallet-data', jdata);
 // Real time wallet data retrieval
 ipcRenderer.on('avx-wallet-data', (event, arg) => {
-    walletData = arg;
+    walletData = arg; 
     console.log(walletData);
     $('.WaddressAccountWindow').html(walletData['wallet_data']['public_key']);
-    document.getElementById('walletBalance').innerHTML = walletData['wallet_data']['balance'];
+    avxTokens = parseFloat(walletData['wallet_data']['balance']);
+    document.getElementById('walletBalance').innerHTML = avxTokens;
 });
 
 setTimeout( () => {
@@ -94,41 +95,110 @@ $('#btnSend').click(function() {
 });
 
 $('#a1').click(function () {
-    document.getElementById('dropdownMenuButton').innerHTML = "1";
-    var avxbalance;
-    avxbalance = (document.getElementById('totalBalance').innerText)
-    avxbalance.toInt64;
-    alert(avxbalance);
-    avxbalance.toFixed(3);
-    alert("Balance: " + avxbalance);
-    document.getElementById('totalBalance').innerHTML = avxbalance;
-});
-$('#a2').click(function () {
-    document.getElementById('dropdownMenuButton').innerHTML = "2";
-    var avxbalance;
-    avxbalance = document.getElementById('totalBalance').innerHTML;
-    alert(avxbalance);
-    avxbalance.toFixed(2);
-    alert(avxbalance);
-    document.getElementById('totalBalance').innerHTML = avxbalance;
-});
-$('#a3').click(function () {
-    document.getElementById('dropdownMenuButton').innerHTML = "3";
-    var avxbalance;
-    avxbalance = (document.getElementById('totalBalance').value)
-    avxbalance.parseFloat.toFixed(3);
-    alert("Balance: " + avxbalance);
-    document.getElementById('totalBalance').innerHTML = avxbalance;
-});
-$('#a4').click(function () {
-    document.getElementById('dropdownMenuButton').innerHTML = "4";
-    var avxbalance;
-    avxbalance = (document.getElementById('totalBalance').value)
-    avxbalance.toFixed(4);
-    alert(avxbalance);
-    document.getElementById('totalBalance').innerHTML = avxbalance;
+
+    document.getElementById('decimalPlace').innerText = "1";
+
+    let avxbalance = avxTokens;
+
+    avxbalance = parseFloat(avxbalance).toFixed(1);
+
+    document.getElementById('walletBalance').innerHTML = avxbalance;
+
 });
 
+$('#a2').click(function () {
+
+    document.getElementById('decimalPlace').innerHTML = "2";
+    let avxbalance = avxTokens;
+
+    avxbalance = parseFloat(avxbalance).toFixed(2);
+
+    document.getElementById('walletBalance').innerHTML = avxbalance;
+
+});
+
+$('#a3').click(function () {
+
+    document.getElementById('decimalPlace').innerHTML = "3";
+
+    let avxbalance = avxTokens;
+
+    avxbalance = parseFloat(avxbalance).toFixed(3);
+
+    document.getElementById('walletBalance').innerHTML = avxbalance;
+    
+});
+
+$('#a4').click(function () {
+
+    document.getElementById('decimalPlace').innerHTML = "4";
+
+    let avxbalance = avxTokens;
+
+    avxbalance = parseFloat(walletData['wallet_data']['balance']).toFixed(4);
+    
+    avxbalance = avxbalance.toString();
+
+    document.getElementById('walletBalance').innerHTML = avxbalance;
+
+});
+
+$('#a5').click(function () {
+
+    document.getElementById('decimalPlace').innerHTML = "5";
+
+    let avxbalance = avxTokens;
+
+    avxbalance = parseFloat(walletData['wallet_data']['balance']).toFixed(5);
+    
+    avxbalance = avxbalance.toString();
+
+    document.getElementById('walletBalance').innerHTML = avxbalance;
+
+});
+
+
+$('#a6').click(function () {
+
+    document.getElementById('decimalPlace').innerHTML = "6";
+
+    let avxbalance = avxTokens;
+
+    avxbalance = parseFloat(walletData['wallet_data']['balance']).toFixed(6);
+    
+    avxbalance = avxbalance.toString();
+
+    document.getElementById('walletBalance').innerHTML = avxbalance;
+
+});
+
+$('#a7').click(function () {
+
+    document.getElementById('decimalPlace').innerHTML = "7";
+
+    let avxbalance = avxTokens;
+
+    avxbalance = parseFloat(walletData['wallet_data']['balance']).toFixed(7);
+    
+    avxbalance = avxbalance.toString();
+
+    document.getElementById('walletBalance').innerHTML = avxbalance;
+
+});
+
+$('#a8').click(function () {
+
+    document.getElementById('decimalPlace').innerHTML = "8";
+
+    let avxbalance = avxTokens;
+
+    avxbalance = parseFloat(walletData['wallet_data']['balance']).toFixed(8);
+    
+    avxbalance = avxbalance.toString();
+
+    document.getElementById('walletBalance').innerHTML = avxbalance;
+
+});
 
 
 $('#btnMergeTx').click(() =>  {
