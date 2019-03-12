@@ -12,8 +12,8 @@ module.exports = {
 	console.log(data);
   },
   
-  uploadShareFile: function (data) {
-	//data = JSON.stringify(data);	
+  getMetaDataDIRTREE: function (data) {
+
 	const store = new Store();	
 	
 	//store.set('avx-share-upload-scan-results', data);
@@ -90,9 +90,14 @@ module.exports = {
   },
 
   receiveFiletransferStats: function (data) {
-    console.log("data = " + data);
+   
     defaultWindow.webContents.send('receive-filetransfer-stats', data);
-  }
+  },
+  
+  receiveFileMetadata: function (data) {
+	console.log("data test = " + data);
+    defaultWindow.webContents.send('avx-share-respond-file-metadata', data);
+  },
 
   
 };

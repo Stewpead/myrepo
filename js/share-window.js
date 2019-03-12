@@ -368,25 +368,28 @@ $('.importShareFiles input[type="file"]').change(function () {
 	if (this.files && this.files[0]) {
 		var path = this.files[0]['path'];
 		json = {
-			status : 1131,
+			status : 1127,
 			data : {
 				filenamePath	: 	path,
 				action 			: 	action
 			}
 		}
 	
-	let jsonString = JSON.stringify(json);
-		
-	ipcRenderer.send('avx-share-upload-file', jsonString);
+		let jsonString = JSON.stringify(json);
+			
+		ipcRenderer.send('avx-share-upload-file', jsonString);
 
 
-	ipcRenderer.on('avx-share-upload-scan-results', (event, data) => {
-		let jsonString = JSON.stringify(data);
-		
-		var dtp = new DirTreeParserVideo(data["data"]["file_metadata"]);
-		$(".generateFileScanned").html(dtp.getHtmlTree());
+		ipcRenderer.on('avx-share-upload-scan-results', (event, data) => {
+			let jsonString = JSON.stringify(data);
+			
+			var dtp = new DirTreeParserVideo(data["data"]["tree"]);
+			$(".generateFileScanned").html(dtp.getHtmlTree());
+			$(".file-dir-info span:nth-child(1)").html(path);
+			$( ".item-file-meta" ).on( "click", shareShowMetadataPerFile );
+			activateToggleDIR();
 
-	});
+		});
 		
 		$('[pd-popup="shareScanningModal"]').fadeIn(100);
 		getScanLoadingForModal( 3000, 'shareScanningModal', 'shareScanResultModal' );
@@ -435,13 +438,30 @@ onDrop = function(event) {
 			  let path = event.originalEvent.dataTransfer.files[0].path;
 			  let action = $(this).attr('file-action');
 				json = {
-					status : 1128,
+					status : 1127,
 					data : {
-						file	: path,
+						filenamePath	: path,
 						action 	: action
 					}
 				}
-				console.log( JSON.stringify(json) );
+				
+				let jsonString = JSON.stringify(json);
+					
+				ipcRenderer.send('avx-share-upload-file', jsonString);
+
+
+				ipcRenderer.on('avx-share-upload-scan-results', (event, data) => {
+					let jsonString = JSON.stringify(data);
+					
+					var dtp = new DirTreeParserVideo(data["data"]["tree"]);
+					$(".generateFileScanned").html(dtp.getHtmlTree());
+					$(".file-dir-info span:nth-child(1)").html(path);
+					$( ".popup .item-file-meta" ).on( "click", shareShowMetadataPerFile );
+					activateToggleDIR();
+
+				});
+
+				
 				$('[pd-popup="shareScanningModal"]').fadeIn(100);
 				getScanLoadingForModal( 3000, 'shareScanningModal', 'shareScanResultModal' );
 			  
@@ -453,30 +473,8 @@ onDrop = function(event) {
 	
 };
 
-/** 1.3 Toggle DIR parent folder **/
-setTimeout(function() {
-	
-	$(".file-scanned .title.toggleable").parent().find('.file-lists').css('display', 'none');
-	
-	$(".title.toggleable").click(function () {
-		var action = $(this).attr('action');
-		if (action == 'close') {
-			$(this).attr('action', 'open');
-			$(this).find('.toogle-icon').removeClass('segoe-flick-up');
-			$(this).find('.toogle-icon').addClass('segoe-flick-left');
-			$(this).parent().find('.file-lists').slideUp();
-			
-		} else {
-			$(this).find('.toogle-icon').removeClass('segoe-flick-left');
-			$(this).find('.toogle-icon').addClass('segoe-flick-up');
-			$(this).attr('action', 'close');
-			$(this).parent().find('.file-lists').slideDown();
-			
-		}
-	});
-}, 100);
 
-/** 1.4 Select scanned files **/
+/** 1.3 Select scanned files **/
 setTimeout(function() {
 
 	$(".file-scanned .selectable-asset-preview").click(function () {
@@ -496,7 +494,7 @@ setTimeout(function() {
 	});
 }, 100);
 
-/** 1.5 Select movie assets preview  **/
+/** 1.4 Select movie assets preview  **/
 setTimeout(function() {
 
 	$(".file-movie-content .img").click(function () {
@@ -524,15 +522,16 @@ class DirTreeParserVideo {
 	constructor(jsonTree) {
 		this.dirtree = '';
 		this.setJsonTree(jsonTree);
-		this.parse(this.jsonTree);
+		this.parse(this.jsonTree, 0);
 	}
 	
-	parse(jsonTree) {
+	parse(jsonTree, level) {
 		var flag = false;
 		var countPlayableFiles = 0;
 		
 		for (var key in jsonTree) {
 			let currObj = jsonTree[key];
+			let coun
 			
 			if (typeof currObj == 'object' && Object.keys(currObj).length > 0) {
 				
@@ -542,32 +541,44 @@ class DirTreeParserVideo {
 				//}
 				
 				if (("name" in currObj) && typeof currObj["name"] == 'string') {
-					if ( typeof(currObj["metadata"] ) == 'object' ) {
+					//if ( typeof(currObj["metadata"] ) == 'object' ) {
 				
 					this.dirtree += '<div class="file-scanned">';
 					this.dirtree += '<ul class="file-lists">';
 					this.dirtree += '<li>';
 					this.dirtree += '<p>';
-					this.dirtree += '<span class="mdi mdi-checkbox-marked-outline mdi-48px"></span>'; 
-					this.dirtree += currObj["name"]; 
-					this.dirtree += '<strong>' + currObj["size"] + '</strong>';
+					
+					if ( checkFileForVideoPlayable(currObj["name"]) > 0 ) {
+						this.dirtree += '<span class="item-file-meta icon-segoe segoe-info float-left" file-name="'+currObj["name"]+'"></span> '; 
+					}
+					
+					this.dirtree += '<span class="icon-segoe segoe-v-player float-left" ></span>'; 
+					this.dirtree += '<strong>' + currObj["name"] +'</strong>'; 
+					this.dirtree += '<strong> - ' + formatBytes(currObj["size"], 2) + '</strong>';
 					this.dirtree += '</p>';
 					this.dirtree += '</li>';
 					this.dirtree += '</ul>';
 					this.dirtree += '</div>';
-					console.log( currObj["metadata"] );
-					}
+					//console.log( currObj["metadata"] );
+					//}
 				} else {
-					this.dirtree += '<div class="file-scanned">';
-					this.dirtree += '<label class="title">';
+					let className = "";
+					
+					if (level == 0) {
+						className = "item-file-meta-parent";
+					}
+					
+					this.dirtree += '<div class="file-scanned ' + className + '">';
+					this.dirtree += '<label class="title toggleable">';
 					this.dirtree += '<p>'; 
+					this.dirtree += '<span class="icon-segoe segoe-flick-left float-left toogle-icon"></span>'; 
 					this.dirtree += '<span class="icon-segoe segoe-tree-folder-folder"></span>'; 
-					this.dirtree += key;
+					this.dirtree += '<span class="item-file-meta-foldername">' + key + '</span>';
 					this.dirtree += '</p>';
 					this.dirtree += '</label>';
 					this.dirtree += '<ul class="file-lists">';
 					this.dirtree += '<li>';
-					this.parse(currObj, this.dirtree);
+					this.parse(currObj, level + 1);
 					this.dirtree += '</li>';
 					this.dirtree += '</ul>';
 					this.dirtree += '</div>';
@@ -617,3 +628,100 @@ function getScanLoadingForModal( speed, fadeOut, fadeIn ) {
 
 	});
 }
+
+
+/*** 2.3 Check if the file is VIDEO FILE ***/
+
+function checkFileForVideoPlayable( filename  ) {
+	let file_ext =  filename.substring(filename.lastIndexOf('.') + 1);
+	let video_lists = [ "webm", "mkv", "flv", "vob", "ogg", "ogv", "avi", "mov", "wmv", "mpg", "mpeg", "mpe", "mpv", "m2v", "m4v", "mp4"];
+	let results = $.inArray( file_ext, video_lists );
+	return ( results < 0 ) ? 0 : 1;
+}
+
+/*** 2.4 BYTES BIT VALUE***/
+function formatBytes(bytes,decimals) {
+   if(bytes == 0) return '0 Bytes';
+   var k = 1024,
+       dm = decimals <= 0 ? 0 : decimals || 2,
+       sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+       i = Math.floor(Math.log(bytes) / Math.log(k));
+   return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+}
+
+/*** 2.4 Check if the file is VIDEO FILE ***/
+function activateToggleDIR() {
+	
+	$(".file-scanned .title.toggleable").parent().find('.file-lists').css('display', 'none');
+	
+	$(".title.toggleable").click(function () {
+		var action = $(this).attr('action');
+		if (action == 'close') {
+			$(this).attr('action', 'open');
+			$(this).find('.toogle-icon').removeClass('segoe-flick-up');
+			$(this).find('.toogle-icon').addClass('segoe-flick-left');
+			$(this).parent().find('.file-lists').slideUp();
+			
+		} else {
+			$(this).find('.toogle-icon').removeClass('segoe-flick-left');
+			$(this).find('.toogle-icon').addClass('segoe-flick-up');
+			$(this).attr('action', 'close');
+			$(this).parent().find('.file-lists').slideDown();
+			
+		}
+	});
+}
+
+/*** 2.5 Get Metadata info per file ***/
+function shareShowMetadataPerFile(event) {
+	let target = $( event.target );
+	let filename = target.attr("file-name");
+	let folder = target.closest('.item-file-meta-parent').find('.title .item-file-meta-foldername').html();
+	
+	console.log(target.closest('.item-file-meta-parent').html());
+	
+	
+	if ( folder !== undefined ) {
+		var url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() +"\\"+ folder +"\\"+ filename;
+		
+	} else {
+		var url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() +"\\"+  filename;
+	}
+	
+	
+
+	
+	let json = {
+			status : 1131,
+			data : {
+				filename	: url
+			}
+		}
+		
+		let jsonString = JSON.stringify(json);
+		ipcRenderer.send('request-file-metadata', jsonString);
+
+
+		ipcRenderer.on('avx-share-respond-file-metadata', (event, data) => {
+			//let jsonString = JSON.stringify(data);
+			$("[pd-popup='shareScanResultModal'] .video-reso strong").html( data["data"]["file_metadata"]["video_resolution"] );
+			$("[pd-popup='shareScanResultModal'] .video-duration strong").html( data["data"]["file_metadata"]["duration"] );
+			$("[pd-popup='shareScanResultModal'] .video-size strong").html( data["data"]["file_metadata"]["filesize"] );
+			$("[pd-popup='shareScanResultModal'] .audio-video-bitrate strong").html( data["data"]["file_metadata"]["video_bitrate"] );
+			$("[pd-popup='shareScanResultModal'] .video-width strong").html( data["data"]["file_metadata"]["width"] );
+			$("[pd-popup='shareScanResultModal'] .video-height strong").html( data["data"]["file_metadata"]["height"] );
+			$("[pd-popup='shareScanResultModal'] .aspect-ratio strong").html( data["data"]["file_metadata"]["aspect_ratio"] );
+			$("[pd-popup='shareScanResultModal'] .video-container strong").html( '' ); //Provide from file name
+			$("[pd-popup='shareScanResultModal'] .video-frame-rate strong").html( data["data"]["file_metadata"]["video_frame_rate"] );
+			$("[pd-popup='shareScanResultModal'] .video-profile strong").html( data["data"]["file_metadata"]["video_profile"] );
+			$("[pd-popup='shareScanResultModal'] .video-codec strong").html( data["data"]["file_metadata"]["video_codec_type"] );
+			$("[pd-popup='shareScanResultModal'] .bit-depth strong").html( data["data"]["file_metadata"]["bit_depth"] );
+			$("[pd-popup='shareScanResultModal'] .video-frame-rate strong").html( data["data"]["file_metadata"]["video_frame_rate"] );
+			$("[pd-popup='shareScanResultModal'] .audio-codec strong").html( data["data"]["file_metadata"]["audio_codec_name"] );
+			$("[pd-popup='shareScanResultModal'] .audio-channels strong").html( data["data"]["file_metadata"]["channels"] );
+
+		});
+		
+		
+
+} 

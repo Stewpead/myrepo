@@ -19,4 +19,13 @@ $('#close').click(function(){
     win.close();
 });
 
+$(function(){   
+    $(document).keydown(function(objEvent) {        
+        if (objEvent.ctrlKey) {          
+            if (objEvent.keyCode == 65) {                         
 
+                return false;
+            }            
+        }        
+    });
+});   
