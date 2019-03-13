@@ -73,6 +73,9 @@ ul {
 li {
     float: left;
 } 
+#tabs li {
+    cursor: pointer;
+}
 table {
     height: 350px;
     text-align: left;
