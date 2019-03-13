@@ -8,24 +8,36 @@ var imgname = 'decodedimg';
 var imgpath = path.join(__dirname,'/decodedimg/');
 var data64 = "data:image/jpg;base64,";
 const Store = require('electron-store');
-const store = new Store();
+const store = new Store(); 
 
 
 $(document).ready(() => {
-    document.getElementById('file-review').style.display = 'block';
-    document.getElementById('artistic-review').style.display = 'none';
-    let jData = store.get('file-details-for-download-page');
-    console.log(jData);
-    var img = "";
-    img = '<img src="' + jData['img64'] + '">';
 
+    document.getElementById('file-review').style.display = 'block';
+
+    document.getElementById('artistic-review').style.display = 'none';
+
+    let jData = store.get('file-details-for-download-page');
+
+    var img = "";
+
+    img = '<img src="' + jData['img64'] + '">';
     $('#fileImage').append(img);
+    document.getElementById('filetitle').innerHTML = jData['fileID'];
+    document.getElementById('fileCost').innerHTML = jData['cost'];
+    document.getElementById('fileSize').innerHTML = jData['filesize'];
+    document.getElementById('resolution').innerHTML = jData['resolution'];
+    
     $("#btnBack").click(function() {
+
         location.href = 'video-details.html';
+
     });
     
     $('#btnBuy').click(() => {
+
         $('[pd-popup="shareMarketPriceModal"]').fadeIn(100);
+
     });
 
     $('#btnWishlist').click(() => {
@@ -33,16 +45,29 @@ $(document).ready(() => {
         $('[pd-popup="addToWishlist"]').fadeIn(100);
 
         setTimeout( () => {
-            $('[pd-popup="addToWishlist"]').fadeOut(100);
-        }, 1500);
 
+            $('[pd-popup="addToWishlist"]').fadeOut(100);
+
+        }, 1500);
+ 
+        var Wishlist = '{"0" : {"filename" : "MADAFAKA"}}';
         var jWishlist = {};
-        var filename = "test " + Math.random();
+        // jWishlist.items = [{}];
+ 
         var totalObj = Object.keys(jWishlist).length;
-        if(totalObj >= 1) {
-            jWishlist[totalObj] = filename;
-        } else if(totalObj > 0)
+        jWishlist = JSON.parse(Wishlist);
+        jWishlist[totalObj].push({ id : "01", filename : 'Fuck you'});
+        jWishlist = JSON.stringify(jWishlist); 
+        // jWishlist.items.push(
         
+        //     { id : totalObj, filename : "Fuck you"}
+
+        // );
+        fs.writeFile("jWishlist.json",jWishlist, function(e) {
+            if(e) {
+                console.log(e);
+            }
+        });
         console.log(Object.keys(jWishlist).length);
         console.log(jWishlist);
     });

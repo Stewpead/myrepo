@@ -1,9 +1,11 @@
 html {
     margin: auto;
     padding: 0;
+    text-transform: capitalize;
 }
 html::-webkit-scrollbar {
-  display: none;
+  display: none; 
+
 }
 #styleRow {
     background-color:rgb(0, 0, 0);

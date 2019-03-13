@@ -1,9 +1,9 @@
 /*SCROLL SKIN*/
 .scroll-skin {
     overflow: hidden!important;
-    overflow-y: auto!important;
+    overflow-y: auto!important; 
 	/*PROVIDE MIN-HEIGHT ON MAIN CLASS*/
-}
+} 
 .scroll-skin::-webkit-scrollbar {
     display: block;
     width: 10px;
