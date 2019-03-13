@@ -109,7 +109,7 @@ module.exports = {
 						protocol: 'file:',
 						slashes: true
 					}));
-				}, 2000);
+				}, 1500);
 		}
 		else if(validate == 0) {
 			//TRIGGER

@@ -32,13 +32,14 @@ var Status = {
 	GENERATE_DOWNLOAD: 1117,
 	GET_BALANCE: 1121,
 	GET_ASSET: 1122,
-	GET_ACCOUNT_HISTORY: 1123,
-	GET_SPENT: 1124,
-	GET_PUBLICKEY: 1125,
+	// GET_SPENT: 1124,
+	// GET_PUBLICKEY: 1125,
 	GET_METADATA_DIR_TREE: 1127,
 	GET_FILE_DETAILS: 1131,
+	GET_UPDATED_ACCOUNT_HISTORY: 1132,
+	GET_ACCOUNT_HISTORY: 1124,
 	GET_FILE_INFO: 1128,
-	//GET_WALLET_DATA: 1130,
+	GET_WALLET_DATA: 1130,
 	WALLET_BALANCE: 2000,
 	START_HOARDING_SESSION: 5002,
 	REQUEST_FILETRANSFER_STATS: 5003,
@@ -103,15 +104,13 @@ var initiateConnection = function(attempt){
 		  console.log('Connection Timeout');
 		  client.destroy();
 		}
-		// var module2 = require('./includes/main-window');
-		// module2.showWindow();
 	});
 	
 	client.on('data', function(data) {
 		
 		data = JSON.parse(data);
 		
-		
+
 		var moduleAccount = require('./includes/login-signup');
 		var moduleDashboard = require('./includes/dashboard-action');
 
@@ -133,10 +132,6 @@ var initiateConnection = function(attempt){
 				moduleDashboard.shareUploadResponse(data);
 				break;
 				
-			case Status.WALLET_BALANCE:
-				moduleDashboard.getWalletBalance(data);
-				break;
-			
 			case Status.GET_METADATA_DIR_TREE:
 				moduleDashboard.getMetaDataDIRTREE(data);
 				break;
@@ -189,9 +184,6 @@ var initiateConnection = function(attempt){
 				moduleDashboard.receiveFileMetadata(data);
 				break;
 		}			
-
-		
-
 	});
 
 }

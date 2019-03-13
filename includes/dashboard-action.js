@@ -8,26 +8,14 @@ module.exports = {
 	console.log(data);
 	
   },
-  getWalletBalance: function (data) {
-	console.log(data);
-  },
-  
+
   getMetaDataDIRTREE: function (data) {
 
 	const store = new Store();	
 	
-	//store.set('avx-share-upload-scan-results', data);
 	defaultWindow.webContents.send('avx-share-upload-scan-results', data);
-/*
-	defaultWindow.loadURL(url.format({
-		pathname: path.join(__dirname, app_dir,'share-window.html'),
-		protocol: 'file:',
-		slashes: true
-	}));
-*/
-		
-		
 
+		
   },
   
   sharePaymentResponse: function (data) {
@@ -51,25 +39,28 @@ module.exports = {
   },
   
   getAccountHistory: function (data) {
-	const store = new Store();
-	store.set('avx-account-history', data);
-
+    const store = new Store();
+    store.set('wallet-tx-history', data);
+    console.log(data);
+    
   },
   
   getPublicKey: function (data) {
-	const store = new Store();
-	store.set('avx-account-wallet-address', data);
 
+  const store = new Store();
+  
+  store.set('avx-account-wallet-address', data);
+  
   },
 
   getWalletData: function (data) {
-    // data = JSON.stringify(data);
+
     defaultWindow.webContents.send('avx-wallet-data', data);
+
   },
   
   sendFund: function (data) {
-    // data = JSON.stringify(data);
-    // console.log("SEND FUNDS RESPONSE: "  + data );
+
     defaultWindow.webContents.send('avx-account-send-wallet', data);
   },
   
@@ -95,7 +86,7 @@ module.exports = {
   },
   
   receiveFileMetadata: function (data) {
-	console.log("data test = " + data);
+
     defaultWindow.webContents.send('avx-share-respond-file-metadata', data);
   },
 

@@ -6,51 +6,19 @@ document.getElementById('btnIncomingTx').style.color = '#818181';
 document.getElementById('btnOutcomingTx').style.color = '#818181';
 
 
-var counter;
- 
-var jsonString1;
-var javascriptObject1;
-var jasonString1;
-// tbJsonMerge.incoming.verified = {};
-// tbJsonMerge.incoming.Unverified = {};
-// tbJsonMerge.outgoing.verified = {};
-// tbJsonMerge.outgoing.Unverified = {};
-// jsonString1 = JSON.stringify(json1);
-// javascriptObject1 = $.parseJSON(jsonString1);
-// jasonString1 = JSON.stringify(javascriptObject1);
-// var temp = "awe";
-/* <th scope="row"></th>
-<td id="mstatus10"></td>
-<td id="mdate10"></td>
-<td id="mtime10"></td>
-<td id="mfrom10"></td>
-<td id="mto10"></td>
-<td id="mdescrip10"></td>
-<td id="mamount10"></td>
-<td id="mtransacID10"></td> */
-
-var mstatus = "mstatus";
-var mdate = "mdate";
-var mtime = "mtime";
-var mfrom = "mfrom";
-var mto = "mto";
-var mdescrip = "mdescrip";
-var mamount = "mamount";
-var mtransacID = "mtransacID";
 var walletData = {};
 walletData.wallet_data = {};
 var avxTokens = 0.0;
 var jdata = {
     status: 1130
 };
-
 ///////////////////////=================================================================================================================
  jdata = JSON.stringify(jdata);
  ipcRenderer.send('get-wallet-data', jdata);
-// Real time wallet data retrieval
+// Real time wallet data retrieval 
 ipcRenderer.on('avx-wallet-data', (event, arg) => {
     walletData = arg; 
-    console.log(walletData);
+   // console.log(walletData);
     $('.WaddressAccountWindow').html(walletData['wallet_data']['public_key']);
     avxTokens = parseFloat(walletData['wallet_data']['balance']);
     document.getElementById('walletBalance').innerHTML = avxTokens;
@@ -83,9 +51,9 @@ $('#btnOutcomingTx').click(() => {
     document.getElementById('btnIncomingTx').style.color = '#818181';
 });
 
+ 
 
-
-$('#btnSend').click(function() {
+$('#btnSend').click(function() { 
 
     $('[pd-popup="accountSendToModal"]').fadeIn(100);
     $('.Waddress').html(walletData['wallet_data']['public_key']);
@@ -201,6 +169,7 @@ $('#a8').click(function () {
 });
 
 
+
 $('#btnMergeTx').click(() =>  {
     document.getElementById('merged').style.display = "block";
     document.getElementById("incoming").style.display = "none";
@@ -219,3 +188,161 @@ $('#btnOutcomingTx').click(() => {
     document.getElementById('outgoing').style.display = "block";
 })
 
+
+//Request for account transaction history
+var holder = store.get('boolean-transaction-history');
+store.delete('boolean-transaction-history');
+if( holder == true) {
+
+    let accHistory = {
+        status : 1124
+    };
+    accHistory = JSON.stringify(accHistory);
+    ipcRenderer.send('request-account-history', accHistory);
+}
+
+var jData1124 = store.get('1124-data');
+//Load Data to populate tables
+var jHistory = store.get('wallet-tx-history');
+store.delete('wallet-tx-history');
+// console.log(jHistory['data']['1']['out']['0']);
+
+    var incomingPending = "";
+    var incomingVerified = "";
+    var outgoingPending = "";
+    var outgoingVerified = "";
+
+   // console.log("HEYY" + jHistory['data'] );
+    console.log( jHistory['data']["1"]["out"][0][4]);
+
+    let txRecord = [];
+
+    for ( var key in jHistory['data']) {
+		txRecord[key] = [];
+        for (var status in jHistory['data'][key]) {
+            var len = jHistory['data'][key][status][i].length;
+            alert("Okay: " + len);
+			for (var i = 0; i < 6; ++i) {
+				if (jHistory['data'][key][status] && jHistory['data'][key][status][i]) {
+					txRecord[key][status] += '<tr>';
+					txRecord[key][status] += '<td>Pending</td>';
+					txRecord[key][status] += '<td>' + jHistory['data'][key][status][i][4] + '</td>';
+					txRecord[key][status] += '<td>' + jHistory['data'][key][status][i][0] +'</td>';
+					txRecord[key][status] += '<td>' + jHistory['data'][key][status][i][1] +'</td>';
+					txRecord[key][status] += '<td>Description Message Sample</td>';
+					txRecord[key][status] += '<td>' + jHistory['data'][key][status][i][2] + '</td>';
+					txRecord[key][status] += '<td>' + jHistory['data'][key][status][i][3] + '</td>';
+					txRecord[key][status] += '<td>' + jHistory['data'][key][status][i][5] + '</td>';
+					txRecord[key][status] += '</tr>';
+					
+					console.log(txRecord[key][status]);
+				}
+			}
+        }
+    }
+	
+	$('#incoming tbody').html(txRecord["0"]["in"] + txRecord["1"]["in"]);
+	$('#outgoing tbody').html(txRecord["0"]["out"] + txRecord["1"]["out"]);
+
+    /*for( var key in jHistory['data']) {
+
+        if( key == "0") {
+            switch(jHistory['data'][key]) {
+                
+                case "in":
+                
+                    let num1 = jHistory['data'][key]['in'].length;
+                    console.log(num1);
+                    for (let x1 = 0 ; x1 < num1 ; x1++ ) {
+                        incomingPending += '<tr>';
+                        incomingPending += '<td id="iPendingStatus"' + x1 + '>Pending</td>';
+                        incomingPending += '<td id="iPendingDate"' + x1 + '>' + jHistory['data'][key]['in'].slice(3,4) + '</td>';
+                        incomingPending += '<td id="iPendingSender"' + x1 + '>' + jHistory['data'][key]['in'].slice(0) +'</td>';
+                        incomingPending += '<td id="iPendingReceiver"' + x1 + '>' + jHistory['data'][key]['in'].slice(1) +'</td>';
+                        incomingPending += '<td id="iPendingDescript"' + x1 + '>Description Message Sample</td>';
+                        incomingPending += '<td id="iPendingAmount"' + x1 + '>' + jHistory['data'][key]['in'].slice(2) + '</td>';
+                        incomingPending += '<td id="iPendingTxFee"' + x1 + '>' + jHistory['data'][key]['in'].slice(3) + '</td>';
+                        incomingPending += '<td id="iPendingTxHash"' + x1 + '>' + jHistory['data'][key]['in'].slice(5) + '</td>';
+                        incomingPending  += '</tr>';
+                    }
+                    $('#incoming tbody').html(incomingPending);
+                break;
+
+                case "out:":
+                    let num2 = jHistory['data'][key]['out'].length;
+                        for( let x2 = 0; x2 < num2; x2++ ) {
+                            outgoingPending += '<tr>';
+                            outgoingPending += '<td id="oPendingStatus"' + x2 + '>Pending</td>';
+                            outgoingPending += '<td id="oPendingDate"' + x2 + '>' + jHistory['data'][key]['out'].slice(3,4) + '</td>';
+                            outgoingPending += '<td id="oPendingSender"' + x2 + '>' + jHistory['data'][key]['out'].slice(-1,0) +'</td>';
+                            outgoingPending += '<td id="oPendingReceiver"' + x2 + '>' + jHistory['data'][key]['out'].slice(0,1) +'</td>';
+                            outgoingPending += '<td id="oPendingDescript"' + x2 + '>Description Message Sample</td>';
+                            outgoingPending += '<td id="oPendingAmount"' + x2 + '>' + jHistory['data'][key]['out'].slice(1,2) + '</td>';
+                            outgoingPending += '<td id="oPendingTxFee"' + x2 + '>' + jHistory['data'][key]['out'].slice(2,3) + '</td>';
+                            outgoingPending += '<td id="oPendingTxHash"' + x2 + '>' + jHistory['data'][key]['out'].slice(4,5) + '</td>';
+                            outgoingPending  += '</tr>';
+                        }
+                        $('#outgoing tbody').append(outgoingPending);
+                break;
+            }
+
+
+        } else {
+
+            switch(jHistory['data'][key]) {
+
+                case "in":
+
+                        let num3 = jHistory['data'][key]['in'].length;
+
+                        for (let x3 = 0 ; x3 < num3 ; x2++ ) {
+                            incomingVerified += '<tr>';
+                            incomingVerified += '<td id="iPendingStatus"' + x1 + '>Pending</td>';
+                            incomingVerified += '<td id="iPendingDate"' + x1 + '>' + jHistory['data'][key]['in'][x1][4] + '</td>';
+                            incomingVerified += '<td id="iPendingSender"' + x1 + '>' + jHistory['data'][key]['in'][x1][0] +'</td>';
+                            incomingVerified += '<td id="iPendingReceiver"' + x1 + '>' + jHistory['data'][key]['in'][x1][1] +'</td>';
+                            incomingVerified += '<td id="iPendingDescript"' + x1 + '>Description Message Sample</td>';
+                            incomingVerified += '<td id="iPendingAmount"' + x1 + '>' + jHistory['data'][key]['in'][x1][2] + '</td>';
+                            incomingVerified += '<td id="iPendingTxFee"' + x1 + '>' + jHistory['data'][key]['in'][x1][3] + '</td>';
+                            incomingVerified += '<td id="iPendingTxHash"' + x1 + '>' + jHistory['data'][key]['in'][x1][5] + '</td>';
+                            incomingVerified  += '</tr>';
+                        }
+                        $('#incoming tbody').append(incomingVerified);
+                break;
+
+                case "out:":
+                    let num1 = jHistory['data'][key]['in'].length;
+                        for( let x2 = 0; x2 < num1; x2++ ) {
+                            outgoingVerified += '<tr>';
+                            outgoingVerified += '<td id="oPendingStatus"' + x2 + '>Pending</td>';
+                            outgoingVerified += '<td id="oPendingDate"' + x2 + '>' + jHistory['data'][key]['out'][x2].slice(4) + '</td>';
+                            outgoingVerified += '<td id="oPendingSender"' + x2 + '>' + jHistory['data'][key]['out'][x2].slice(0) +'</td>';
+                            outgoingVerified += '<td id="oPendingReceiver"' + x2 + '>' + jHistory['data'][key]['out'][x2].slice(1) +'</td>';
+                            outgoingVerified += '<td id="oPendingDescript"' + x2 + '>Description Message Sample</td>';
+                            outgoingVerified += '<td id="oPendingAmount"' + x2 + '>' + jHistory['data'][key]['out'][x2].slice(2) + '</td>';
+                            outgoingVerified += '<td id="oPendingTxFee"' + x2 + '>' + jHistory['data'][key]['out'][x2].slice(3) + '</td>';
+                            outgoingVerified += '<td id="oPendingTxHash"' + x2 + '>' + jHistory['data'][key]['out'][x2].slice(5) + '</td>';
+                            outgoingVerified  += '</tr>';
+                        }
+                        $('#outgoing tbody').append(outgoingVerified);
+                break;
+            }
+
+        }
+    }*/
+
+
+
+function incoming() {
+    let incomingSTR = "";
+
+}
+
+function outgoing() {
+
+}
+// target txhash 1132 for update tx history
+var txHash = [];
+function targetTxHash() {
+
+}

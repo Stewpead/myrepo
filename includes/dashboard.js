@@ -64,7 +64,7 @@ module.exports = {
 	
 	getAccountHistory: function (client) {
 
-		ipcMain.on('avx-account-history',(event, arg) => {
+		ipcMain.on('request-account-history',(event, arg) => {
 			client.write(arg);
 			event.returnValue = true;
 		});		
