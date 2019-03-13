@@ -200,32 +200,28 @@ if( holder == true) {
     accHistory = JSON.stringify(accHistory);
     ipcRenderer.send('request-account-history', accHistory);
 }
-
-var jData1124 = store.get('1124-data');
 //Load Data to populate tables
+
 var jHistory = store.get('wallet-tx-history');
-store.delete('wallet-tx-history');
-// console.log(jHistory['data']['1']['out']['0']);
-
-    var incomingPending = "";
-    var incomingVerified = "";
-    var outgoingPending = "";
-    var outgoingVerified = "";
-
-   // console.log("HEYY" + jHistory['data'] );
-    console.log( jHistory['data']["1"]["out"][0][4]);
-
+console.log(jHistory);
+var incomingPending = "";
+var incomingVerified = "";
+var outgoingPending = "";
+var outgoingVerified = "";
+    // 1124 all transactions but will be requested only once
     let txRecord = [];
 
     for ( var key in jHistory['data']) {
 		txRecord[key] = [];
         for (var status in jHistory['data'][key]) {
-            var len = jHistory['data'][key][status][i].length;
-            alert("Okay: " + len);
-			for (var i = 0; i < 6; ++i) {
+			for (var i in jHistory['data'][key][status]) {
 				if (jHistory['data'][key][status] && jHistory['data'][key][status][i]) {
-					txRecord[key][status] += '<tr>';
-					txRecord[key][status] += '<td>Pending</td>';
+                    txRecord[key][status] += '<tr>';
+                    if( key == "0" ) {
+                        txRecord[key][status] += '<td id="' + jHistory['data'][key][status][i][5] + '">Pending</td>';
+                    } else {
+                        txRecord[key][status] += '<td id="' + jHistory['data'][key][status][i][5] + '">Verified</td>';
+                    }
 					txRecord[key][status] += '<td>' + jHistory['data'][key][status][i][4] + '</td>';
 					txRecord[key][status] += '<td>' + jHistory['data'][key][status][i][0] +'</td>';
 					txRecord[key][status] += '<td>' + jHistory['data'][key][status][i][1] +'</td>';
@@ -233,9 +229,7 @@ store.delete('wallet-tx-history');
 					txRecord[key][status] += '<td>' + jHistory['data'][key][status][i][2] + '</td>';
 					txRecord[key][status] += '<td>' + jHistory['data'][key][status][i][3] + '</td>';
 					txRecord[key][status] += '<td>' + jHistory['data'][key][status][i][5] + '</td>';
-					txRecord[key][status] += '</tr>';
-					
-					console.log(txRecord[key][status]);
+                    txRecord[key][status] += '</tr>';
 				}
 			}
         }
@@ -243,6 +237,14 @@ store.delete('wallet-tx-history');
 	
 	$('#incoming tbody').html(txRecord["0"]["in"] + txRecord["1"]["in"]);
 	$('#outgoing tbody').html(txRecord["0"]["out"] + txRecord["1"]["out"]);
+
+    ipcRenderer.on('wallet-update-history', (event,arg) => {
+        if(arg['data']) {
+            var targetTx = arg['tx_hash'];
+            document.getElementById(targetTx).innerHTML = "Verified";
+        }
+    });
+
 
     /*for( var key in jHistory['data']) {
 
@@ -330,19 +332,4 @@ store.delete('wallet-tx-history');
 
         }
     }*/
-
-
-
-function incoming() {
-    let incomingSTR = "";
-
-}
-
-function outgoing() {
-
-}
 // target txhash 1132 for update tx history
-var txHash = [];
-function targetTxHash() {
-
-}

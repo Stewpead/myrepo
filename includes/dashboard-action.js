@@ -60,7 +60,6 @@ module.exports = {
   },
   
   sendFund: function (data) {
-
     defaultWindow.webContents.send('avx-account-send-wallet', data);
   },
   
@@ -83,12 +82,18 @@ module.exports = {
   receiveFiletransferStats: function (data) {
    
     defaultWindow.webContents.send('receive-filetransfer-stats', data);
+
   },
   
   receiveFileMetadata: function (data) {
 
     defaultWindow.webContents.send('avx-share-respond-file-metadata', data);
   },
+  
+  getUpdatedAccountHistory: function(data) {
+    console.log(data);
+    defaultWindow.webContents.send('wallet-update-history', data);
+  }
 
   
 };

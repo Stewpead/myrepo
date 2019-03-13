@@ -43,24 +43,9 @@ module.exports = {
 		client.write(arg);
 	});	
   
-	},
-	avxPopup: function (client) {
-		ipcMain.on('upload-files', (event, arg) => {
-			popupWindows(arg);
-		});
-	},
-
-	avxModal: function (client) {
-		ipcMain.on('file-scan-result', (event, arg) => {
-			modalWindows(arg);
-		});
-	},
-
-	avxSendAVX: function (client) {
-		ipcMain.on('send-avx', (event, arg) => {
-			modalSends(arg);
-		});
 	}
+
+
 	
 
 };

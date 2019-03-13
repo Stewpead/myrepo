@@ -63,9 +63,6 @@ var initiateConnection = function(attempt){
 		module.showWindow(client);
 		module.avxLogin(client);
 		module.avxSignup(client);
-		module.avxPopup(client);
-		module.avxModal(client);
-		module.avxSendAVX(client);
 		module.avxWalletData(client);
 		
 		var module = require('./includes/dashboard');
@@ -84,12 +81,7 @@ var initiateConnection = function(attempt){
 		module.requestHoardingSession(client);
 		module.requestFiletransferStats(client);
 		module.requestFileMetadata(client);
-		
-		ipcMain.on('test-btn',(event, arg) => {
-			event.returnValue = 1 +arg;
-		});	
-
-
+		module.requestUpdateWalletAfterSending(client);
 		
 	});
 
@@ -182,6 +174,10 @@ var initiateConnection = function(attempt){
 				
 			case Status.GET_FILE_DETAILS: 
 				moduleDashboard.receiveFileMetadata(data);
+				break;
+				
+			case Status.GET_UPDATED_ACCOUNT_HISTORY:
+				moduleDashboard.getUpdatedAccountHistory(data);
 				break;
 		}			
 	});

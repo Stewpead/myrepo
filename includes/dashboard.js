@@ -32,8 +32,6 @@ module.exports = {
 		
 		ipcMain.on('send-token',(event, arg) => {
 
-			console.log("Mao ni gi send sa UI: " + arg);
-
 			client.write(arg);	
 
 			event.returnValue = true;
@@ -115,6 +113,12 @@ module.exports = {
 	requestFileMetadata: function (client) {
 
 		ipcMain.on('request-file-metadata', (event, arg) => {
+			client.write(arg);
+		});
+	},
+
+	requestUpdateWalletAfterSending: function (client) {
+		ipcMain.on('update-after-sending', (event, arg) => {
 			client.write(arg);
 		});
 	}

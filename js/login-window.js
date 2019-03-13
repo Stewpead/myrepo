@@ -9,9 +9,17 @@ jQuery(document).ready(($) => {
 	document.getElementById('btnUpload').style.display = 'none';
 
 	document.getElementById('downUpload').style.display = 'none';
-    
 });
 
+
+	//disable space in registration and login
+	$(window).keypress( (e) => {
+		if(e.which == 32){
+		return false;
+	}
+	});
+	//disable space in registration and login
+	
 $('#btnLogin').click( () => {
  
 	var username = document.getElementById('username').value;
