@@ -147,6 +147,11 @@ a:hover {
 .color-danger {
 	color : #ff0000;
 }
+
+.pointer-cursor {
+	cursor: pointer;
+}
+
 /* ICONS */
 @font-face {
   font-family: 'Segoemdl2';

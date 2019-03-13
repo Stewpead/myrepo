@@ -522,34 +522,28 @@ class DirTreeParserVideo {
 	constructor(jsonTree) {
 		this.dirtree = '';
 		this.setJsonTree(jsonTree);
-		this.parse(this.jsonTree, 0);
+		this.parse(this.jsonTree, 0, '');
 	}
 	
-	parse(jsonTree, level) {
+	parse(jsonTree, level, dir) {
 		var flag = false;
 		var countPlayableFiles = 0;
 		
 		for (var key in jsonTree) {
 			let currObj = jsonTree[key];
-			let coun
 			
 			if (typeof currObj == 'object' && Object.keys(currObj).length > 0) {
 				
-				//if (currObj["file_metadata"])
-				//if ( currObj["name"] != 'n/a' ) {
-					
-				//}
 				
 				if (("name" in currObj) && typeof currObj["name"] == 'string') {
-					//if ( typeof(currObj["metadata"] ) == 'object' ) {
-				
+
 					this.dirtree += '<div class="file-scanned">';
 					this.dirtree += '<ul class="file-lists">';
 					this.dirtree += '<li>';
 					this.dirtree += '<p>';
-					
+						
 					if ( checkFileForVideoPlayable(currObj["name"]) > 0 ) {
-						this.dirtree += '<span class="item-file-meta icon-segoe segoe-info float-left" file-name="'+currObj["name"]+'"></span> '; 
+						this.dirtree += '<span class="pointer-cursor item-file-meta icon-segoe segoe-info float-left" file-name="'+currObj["name"]+'"></span> '; 
 					}
 					
 					this.dirtree += '<span class="icon-segoe segoe-v-player float-left" ></span>'; 
@@ -559,26 +553,23 @@ class DirTreeParserVideo {
 					this.dirtree += '</li>';
 					this.dirtree += '</ul>';
 					this.dirtree += '</div>';
-					//console.log( currObj["metadata"] );
-					//}
+
 				} else {
-					let className = "";
-					
-					if (level == 0) {
-						className = "item-file-meta-parent";
+					if ( level == 0 ){
+						dir = "";
 					}
-					
-					this.dirtree += '<div class="file-scanned ' + className + '">';
+					dir = dir + "\\" + key;
+					this.dirtree += '<div class="file-scanned item-file-meta-parent"  dir = "'+ dir+'">';
 					this.dirtree += '<label class="title toggleable">';
 					this.dirtree += '<p>'; 
 					this.dirtree += '<span class="icon-segoe segoe-flick-left float-left toogle-icon"></span>'; 
 					this.dirtree += '<span class="icon-segoe segoe-tree-folder-folder"></span>'; 
-					this.dirtree += '<span class="item-file-meta-foldername">' + key + '</span>';
+					this.dirtree += '<span class="item-file-meta-foldername">' + key +'</span>';
 					this.dirtree += '</p>';
 					this.dirtree += '</label>';
 					this.dirtree += '<ul class="file-lists">';
 					this.dirtree += '<li>';
-					this.parse(currObj, level + 1);
+					this.parse(currObj, level + 1, dir );
 					this.dirtree += '</li>';
 					this.dirtree += '</ul>';
 					this.dirtree += '</div>';
@@ -653,6 +644,7 @@ function formatBytes(bytes,decimals) {
 function activateToggleDIR() {
 	
 	$(".file-scanned .title.toggleable").parent().find('.file-lists').css('display', 'none');
+	//$(".file-scanned .item-file-meta-parent .file-lists").css('display', 'none');
 	
 	$(".title.toggleable").click(function () {
 		var action = $(this).attr('action');
@@ -660,7 +652,7 @@ function activateToggleDIR() {
 			$(this).attr('action', 'open');
 			$(this).find('.toogle-icon').removeClass('segoe-flick-up');
 			$(this).find('.toogle-icon').addClass('segoe-flick-left');
-			$(this).parent().find('.file-lists').slideUp();
+			$(this).parent().closest('.file-lists').slideUp();
 			
 		} else {
 			$(this).find('.toogle-icon').removeClass('segoe-flick-left');
@@ -676,21 +668,27 @@ function activateToggleDIR() {
 function shareShowMetadataPerFile(event) {
 	let target = $( event.target );
 	let filename = target.attr("file-name");
-	let folder = target.closest('.item-file-meta-parent').find('.title .item-file-meta-foldername').html();
+	target.addClass("active").css("cursor", "progress");
 	
-	console.log(target.closest('.item-file-meta-parent').html());
-	
-	
-	if ( folder !== undefined ) {
-		var url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() +"\\"+ folder +"\\"+ filename;
-		
+	if ( target.attr("disabled") ) {
+		//console.log('true');
 	} else {
-		var url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() +"\\"+  filename;
+	//	console.log('false');
 	}
 	
+	let folder = target.closest('.item-file-meta-parent').attr("dir");
+	if ( folder ) {
+		
+		var url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() + folder +"\\"+ filename;
+	} else {
+	
+		var url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() +"\\"+ filename;
+	
+	}
+
+	console.log(url);
 	
 
-	
 	let json = {
 			status : 1131,
 			data : {
@@ -721,7 +719,6 @@ function shareShowMetadataPerFile(event) {
 			$("[pd-popup='shareScanResultModal'] .audio-channels strong").html( data["data"]["file_metadata"]["channels"] );
 
 		});
-		
 		
 
 } 
