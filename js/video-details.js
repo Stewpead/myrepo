@@ -23,18 +23,24 @@ const store = new Store();
 $ = jQuery;
 
 var filefound;
-var filename;
+var videoname;
+
 
 $(document).ready(function() {
 
     // Get File Name from store()
-    filename = store.get('set-dashboard-file-selected' );
-    console.log(filename);
-    store.delete(); 
-    // Get File Name from store()
+    videoname = store.get('set-dashboard-file-selected-movie' );
+
+    // console.log(filename);
+    store.delete('set-dashboard-file-selected-movie'); 
+    videonameF();
+    loadFileSearchResults();
+});
+
+function videonameF() {
 
     // get search results 
-    filefound = getFiledata(filename);
+    filefound = getFiledata(videoname);
     // get search results 
 
     filename = jsonAC[filefound]['metadata']['filename'];
@@ -46,9 +52,8 @@ $(document).ready(function() {
     img64 = data64 + jsonAC[filefound]['metadata']['thumbnail'];
     imgString = '<img src="' + img64 + '" class="fileimage" />';
     $('#fileImage').append(imgString);
+}
 
-    loadFileSearchResults();
-});
 
 function getFiledata(filename) {
 
@@ -79,21 +84,21 @@ function loadTableData(data) {
 function loadFileSearchResults() { 
 
     var searchResult = "";
-    for( var key in jsonFSR[filename]) {
+    for( var key in jsonFSR[videoname]) {
 
         searchResult += '<tr class="fileDetailsData" data="' + key +'">';
         searchResult += '<th scope="row"></th>';
         searchResult += '<td id="filename' + key + '">' + filename + '</td>';
-        searchResult += '<td id="downloads' + key + '"> ' + jsonFSR[filename][key]['downloads'] + '</td>';
-        searchResult += '<td id="cost' + key + '"> ' + jsonFSR[filename][key]['cost'] + '</td>';
-        searchResult += '<td id="ratings' + key + '"> ' + jsonFSR[filename][key]['ratings'] + '</td>';
-        searchResult += '<td id="language' + key + '"> ' + jsonFSR[filename][key]['language'] + '</td>';
-        searchResult += '<td id="subtitle' + key + '"> ' + jsonFSR[filename][key]['subtitle'] + '</td>';
-        searchResult += '<td id="resolution' + key + '"> ' + jsonFSR[filename][key]['Resolution'] + '</td>';
-        searchResult += '<td id="filesize' + key + '"> ' + jsonFSR[filename][key]['filesize'] + '</td>';
-        searchResult += '<td id="videocodec' + key + '"> ' + jsonFSR[filename][key]['videocodec'] + '</td>';
-        searchResult += '<td id="audiocodec' + key + '"> ' + jsonFSR[filename][key]['audiocodec'] + '</td>';
-        searchResult += '<td id="videobitrate' + key + '"> ' + jsonFSR[filename][key]['bitrate'] + '</td>';
+        searchResult += '<td id="downloads' + key + '"> ' + jsonFSR[videoname][key]['downloads'] + '</td>';
+        searchResult += '<td id="cost' + key + '"> ' + jsonFSR[videoname][key]['cost'] + '</td>';
+        searchResult += '<td id="ratings' + key + '"> ' + jsonFSR[videoname][key]['ratings'] + '</td>';
+        searchResult += '<td id="language' + key + '"> ' + jsonFSR[videoname][key]['language'] + '</td>';
+        searchResult += '<td id="subtitle' + key + '"> ' + jsonFSR[videoname][key]['subtitle'] + '</td>';
+        searchResult += '<td id="resolution' + key + '"> ' + jsonFSR[videoname][key]['Resolution'] + '</td>';
+        searchResult += '<td id="filesize' + key + '"> ' + jsonFSR[videoname][key]['filesize'] + '</td>';
+        searchResult += '<td id="videocodec' + key + '"> ' + jsonFSR[videoname][key]['videocodec'] + '</td>';
+        searchResult += '<td id="audiocodec' + key + '"> ' + jsonFSR[videoname][key]['audiocodec'] + '</td>';
+        searchResult += '<td id="videobitrate' + key + '"> ' + jsonFSR[videoname][key]['bitrate'] + '</td>';
         searchResult += '</tr>';
     }
     $('#tbodyDetails').append(searchResult);
@@ -102,10 +107,6 @@ function loadFileSearchResults() {
 $("#btnBack").click(function() {
     alert('button back under construction!');
 });
-
-// $('#thetable').find('tr').click( function(){
-//     alert('You clicked row '+ ($(this).index()+1) );
-//     });
 
 setTimeout(() => {
     $('tbody .fileDetailsData').click(function() {
