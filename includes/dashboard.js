@@ -44,9 +44,9 @@ module.exports = {
 		});
 	},
 	
-	sharePayment: function (client) {
+	sharePaymentAsset: function (client) {
 
-		ipcMain.on('avx-share-upload-payment',(event, arg) => {
+		ipcMain.on('avx-share-upload-asset',(event, arg) => {
 			client.write(arg);
 			event.returnValue = true;
 		});		
@@ -118,9 +118,30 @@ module.exports = {
 	},
 
 	requestUpdateWalletAfterSending: function (client) {
+
 		ipcMain.on('update-after-sending', (event, arg) => {
 			client.write(arg);
 		});
+		
+	},
+	
+	triggerCrawlingEvent: function(client) {
+
+		ipcMain.on('trigger-crawl-event', (event, arg) => {
+			client.write(arg);
+		});
+
 	}
 	
 };
+
+
+// {
+//     "status": 9000,
+//     "data": {
+//         "type": "musicIndividual",
+//  "title": "sugar - maroon 5"
+   
+
+//     }
+// }
