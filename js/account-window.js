@@ -71,7 +71,7 @@ $('#a1').click(function () {
     avxbalance = parseFloat(avxbalance).toFixed(1);
 
     document.getElementById('walletBalance').innerHTML = avxbalance;
-
+ 
 });
 
 $('#a2').click(function () {
@@ -191,8 +191,9 @@ $('#btnOutcomingTx').click(() => {
 
 //Request for account transaction history
 var holder = store.get('boolean-transaction-history');
-store.delete('boolean-transaction-history');
-if( holder == true) {
+// store.delete('boolean-transaction-history');
+
+if( holder ) {
 
     let accHistory = {
         status : 1124

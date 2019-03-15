@@ -150,7 +150,7 @@ function appendJSON(event) {
 
 	
 }
-
+ 
 
 $ = jQuery;
 
@@ -185,6 +185,22 @@ setTimeout(function() {
 		
 		//var uploadFile =  ipcRenderer.sendSync('avx-share-upload-file', jsonString);
 
+		let jCrawlMovie = {
+			status : 9000,
+			data : {
+				type : "movie",
+				title : "Avengers: Infinity War"
+			}
+		}
+		jCrawl = JSON.stringify(jCrawlMovie);
+		ipcRenderer.send('trigger-crawl-event', jCrawl);
+		
+		let jCrawlTvSeries = {
+			status : 9000
+		}
+		let jCrawlAudio = {
+			status : 9000
+		}
 		// Generate Uploading status
 		$('.counter').text(0);
 		$('.counter').each(function() {
@@ -322,45 +338,37 @@ setTimeout(function() {
 		$('[pd-popup="shareMarketPriceModal"]').fadeOut(100);
 		$('[pd-popup="sharePaymentSuccessModal"]').fadeIn(100);
 		let filepath = $('#fullFilePathDir').val();
-		let thumbpath = $('#fullThumbPathDir').val();
-		let json = {
+		let jsonAssetUpload = {
 			status : 1116,
 			data : {
-				amount		:  100,
-				type		: 2,
+				type		: 1,
 				price 		: 100,
-				assetInfo 	: {
+				fileInfo 	: {
 					title 					: "title",
 					duration 				: "duration",
-					movieRating 			: "movieRating",
+					movieRating 		: "movieRating",
 					directed 				: "directed",
 					written 				: "written",
 					studio 					: "studio",
 					genre 					: "genre",
-					desc 					: "desc",
-					actors 					: "actors",
-					audio 					: "audio",
-					subtitles 				: "subtitles",
-					subtitleCodec 			: "subtitleCodec",
-					subtitleLanguage 		: "subtitleLanguage",
-					subtitleDisplayTitle 	: "subtitleDisplayTitle"
-				},
-				paths : {
-					filePath		:  filepath,
-					thumbnailPath	: thumbpath
+					actors 					: "actors"
 				}
 			}
 		}
-		setTimeout( () => {
-			let jsonString = JSON.stringify(json);
-			let uploadFile =  ipcRenderer.sendSync('avx-share-upload-payment', jsonString);	
-		}, 1000);
-		setTimeout(function() {
+		// setTimeout( () => {
+
+
+			let jsonString = JSON.stringify(jsonAssetUpload);
+			ipcRenderer.send('avx-share-upload-asset', jsonString);	
+
+
+		// }, 1000);
+		// setTimeout(function() {
 			// POPULATE DATA ON SCREEN
-			let data = store.get('avx-share-upload-payment-response');
-			store.delete('avx-share-upload-payment-response');
+			// let data = store.get('avx-share-upload-payment-response');
+			// store.delete('avx-share-upload-payment-response');
 			 //location.reload();
-		}, 1000);
+		// }, 1000);
 		
 	});
 

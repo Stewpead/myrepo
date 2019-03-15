@@ -27,4 +27,5 @@ function audionameF() {
     img64 = data64 + jsonAC[filefound]['metadata']['thumbnail'];
     imgString = '<img src="' + img64 + '" class="fileimage" />';
     $('#fileImage').append(imgString);
+    
 }

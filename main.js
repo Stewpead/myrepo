@@ -43,7 +43,8 @@ var Status = {
 	WALLET_BALANCE: 2000,
 	START_HOARDING_SESSION: 5002,
 	REQUEST_FILETRANSFER_STATS: 5003,
-	HAS_REGISTERED_USER : 7001
+	HAS_REGISTERED_USER : 7001,
+	REQUEST_CRAWLING: 9000
 };
 
 /*
@@ -60,7 +61,7 @@ var initiateConnection = function(attempt){
 	
 		
 		var module = require('./includes/main-window');
-		module.showWindow(client);
+		module.showWindow(client); 
 		module.avxLogin(client);
 		module.avxSignup(client);
 		module.avxWalletData(client);
@@ -70,7 +71,7 @@ var initiateConnection = function(attempt){
 		module.executeUploadFile(client);
 		module.sendFundAVX(client);
 		module.checkStatus(client);
-		module.sharePayment(client);
+		module.sharePaymentAsset(client);
 		module.getSpent(client);
 		module.getAccountHistory(client);
 		module.getAccountWalletAddress(client);
@@ -78,6 +79,7 @@ var initiateConnection = function(attempt){
 		module.getFileInfo(client);
 		module.getFileInfo(client);
 		module.generateDownload(client);
+		module.triggerCrawlingEvent(client);
 		module.requestHoardingSession(client);
 		module.requestFiletransferStats(client);
 		module.requestFileMetadata(client);
