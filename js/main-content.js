@@ -25,6 +25,7 @@ const store = new Store();
 $(document).ready( () => {
 
 	trendingVids();
+
 	trendingAudios();
 
 });
@@ -35,7 +36,7 @@ $(document).ready( () => {
 	var trendingVcards = "";
 
 	for (var key in json1) {
-		trendingVcards += '<div class="col-lg-3 grid-cards" onclick="getMovieInfo(\''+ json1[key]['metadata']['filename'] +'\')">';
+		trendingVcards += '<div class="col-lg-3 grid-cards-video" onclick="getMovieInfo(\''+ json1[key]['metadata']['filename'] +'\')">';
 		trendingVcards += '<div class="container">';
 		trendingVcards += '<img src="' + data64 + json1[key]['metadata']['thumbnail'] + '" />';
 		trendingVcards += '<p id="video-title" class="thumb-title">' + json1[key]['metadata']['filename'] + '</p>';
@@ -57,7 +58,7 @@ function getMovieInfo(hash) {
 function trendingAudios(){
 	var trendingAcards = "";
 	for (var key in json2) {
-		trendingAcards += '<div class="col-lg-3 grid-cards" onclick="getAudioInfo(\''+ json2[key]['metadata']['filename'] +'\')">';
+		trendingAcards += '<div class="col-lg-3 grid-cards-audio" onclick="getAudioInfo(\''+ json2[key]['metadata']['filename'] +'\')">';
 		trendingAcards += '<div class="container">';
 		trendingAcards += '<img src="' + data64 + json2[key]['metadata']['thumbnail'] + '" />';
 		trendingAcards += '<p id="video-title" class="thumb-title">' + json2[key]['metadata']['filename'] + '</p>';

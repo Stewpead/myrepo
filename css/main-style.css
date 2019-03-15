@@ -76,9 +76,9 @@ html::-webkit-scrollbar {
     padding-right: 30px;
 }
 
-.grid-cards {
+.grid-cards-video {
     cursor: pointer;
-    height: 364px;
+    height: 324px;
     max-width: 200px;
     margin: 5px;
     border-radius: 2px;
@@ -89,13 +89,34 @@ html::-webkit-scrollbar {
     font-size: 12px;
     line-height: 7px;
 }
-.grid-cards:hover {
+.grid-cards-video:hover {
     background-color:#222222;
 }
-.grid-cards .container img {
+.grid-cards-video .container img {
     width: 100%;
     margin: auto;
 }
+.grid-cards-audio {
+    cursor: pointer;
+    height: 230px;
+    max-width: 200px;
+    margin: 5px;
+    border-radius: 2px;
+    overflow: hidden;
+    text-align: left;
+    padding: 5px;
+    padding-bottom: 15px;
+    font-size: 12px;
+    line-height: 11px;
+}
+.grid-cards-audio:hover {
+    background-color:#222222;
+}
+.grid-cards-audio .container img {
+    width: 100%;
+    margin: auto;
+}
+
 a {
     color:white;
     font-size: 15px;

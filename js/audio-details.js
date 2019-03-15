@@ -9,4 +9,22 @@ var imgname = 'decodedimg';
 var imgpath = path.join(__dirname,'/decodedimg/');
 var data64 = "data:image/jpg;base64,";
 
+ 
 
+
+function audionameF() {
+    var filename;
+    // get search results 
+    filefound = getFiledata(audioname);
+    // get search results 
+
+    filename = jsonAC[filefound]['metadata']['filename'];
+    var fileyear = jsonAC[filefound]['metadata']['year'];
+    document.getElementById('filetitle').innerHTML = filename;
+    document.getElementById('fileyear').innerHTML = fileyear;
+
+    var imgString = "";
+    img64 = data64 + jsonAC[filefound]['metadata']['thumbnail'];
+    imgString = '<img src="' + img64 + '" class="fileimage" />';
+    $('#fileImage').append(imgString);
+}
