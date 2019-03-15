@@ -169,6 +169,20 @@ setTimeout(function() {
 		$('[pd-popup="shareScanResultModal"]').fadeOut(100);
 		$('[pd-popup="shareComparingFilesToNetworkModal"]').fadeIn(100);
 		
+		let title = $('[pd-popup="shareScanResultModal"] .item-file-meta.icon-segoe.segoe-info').attr("file-name");
+		
+		let jCrawlMovie = {
+		   status : 9000,
+		   data : {
+			type : "movie",
+			title : title
+		   }
+		  }
+		  
+		jCrawl = JSON.stringify(jCrawlMovie);
+		ipcRenderer.send('trigger-crawl-event', jCrawl);
+		console.log(jCrawl);
+		
 		//var uploadFile =  ipcRenderer.sendSync('avx-share-upload-file', jsonString);
 
 		// Generate Uploading status
