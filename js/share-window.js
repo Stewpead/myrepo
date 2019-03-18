@@ -3,6 +3,7 @@ const ipcMain = require('electron').ipcMain;
 var path = require('path');
 const Store = require('electron-store');
 const store = new Store();
+const fs = require('fs');
 
 /* FOR REMOVAL */
 $('#linkMain').click(function() {
@@ -169,31 +170,55 @@ setTimeout(function() {
 		$('[pd-popup="shareScanResultModal"]').fadeOut(100);
 		$('[pd-popup="shareComparingFilesToNetworkModal"]').fadeIn(100);
 		
-		let title = $('[pd-popup="shareScanResultModal"] .item-file-meta.icon-segoe.segoe-info').attr("file-name");
 		
+	let files = $('[pd-popup="shareScanResultModal"] .pointer-cursor.item-file-meta');
+	
+	let counter = 0;
+	let tree = [];
+	$.each(files, function( index, value ) {
+		let filename = $(this).attr('file-name');
+		let size = $(this).attr('file-size');
+		let folder = $(this).closest('.item-file-meta-parent').attr('dir');
+		let url;
+		if ( folder ) {
+			
+			url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() + folder +"\\"+ filename;
+		} else {
+		
+			url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() +"\\"+ filename;
+		
+		}
+		tree[counter] = {"name":  url, "size":  size };
+		counter++;
+
+		
+	});
+
+	
 		let jCrawlMovie = {
 		   status : 9000,
 		   data : {
-			type : "movie",
-			title : title
+			action : "movie",
+			tree : tree
 		   }
 		  }
 		  
 		jCrawl = JSON.stringify(jCrawlMovie);
+		console.log(jCrawlMovie);
 		ipcRenderer.send('trigger-crawl-event', jCrawl);
-		console.log(jCrawl);
 		
-		//var uploadFile =  ipcRenderer.sendSync('avx-share-upload-file', jsonString);
+		ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
+			console.log(data);
+			//var obj1 = fs.readFileSync('./json/craw-sample.json'); 
+			//var data = JSON.parse(obj1);
+			$('#crawlingResults').text(data);
 
-		let jCrawlMovie = {
-			status : 9000,
-			data : {
-				type : "movie",
-				title : "Avengers: Infinity War"
-			}
-		}
-		jCrawl = JSON.stringify(jCrawlMovie);
-		ipcRenderer.send('trigger-crawl-event', jCrawl);
+		});
+		
+
+		
+
+
 		
 		let jCrawlTvSeries = {
 			status : 9000
@@ -406,6 +431,7 @@ $('.importShareFiles input[type="file"]').change(function () {
 			let jsonString = JSON.stringify(data);
 			
 			var dtp = new DirTreeParserVideo(data["data"]["tree"]);
+			console.log(data["data"]["tree"]);
 			$(".generateFileScanned").html(dtp.getHtmlTree());
 			$(".file-dir-info span:nth-child(1)").html(path);
 			$( ".item-file-meta" ).on( "click", shareShowMetadataPerFile );
@@ -565,7 +591,7 @@ class DirTreeParserVideo {
 					this.dirtree += '<p>';
 						
 					if ( checkFileForVideoPlayable(currObj["name"]) > 0 ) {
-						this.dirtree += '<span class="pointer-cursor item-file-meta icon-segoe segoe-info float-left" file-name="'+currObj["name"]+'"></span> '; 
+						this.dirtree += '<span class="pointer-cursor item-file-meta icon-segoe segoe-info float-left" file-name="'+currObj["name"]+'" file-size="'+ currObj["size"]+'" ></span> '; 
 					}
 					
 					this.dirtree += '<span class="icon-segoe segoe-v-player float-left" ></span>'; 
@@ -708,7 +734,6 @@ function shareShowMetadataPerFile(event) {
 	
 	}
 
-	console.log(url);
 	
 
 	let json = {
@@ -723,6 +748,7 @@ function shareShowMetadataPerFile(event) {
 
 
 		ipcRenderer.on('avx-share-respond-file-metadata', (event, data) => {
+
 			//let jsonString = JSON.stringify(data);
 			$("[pd-popup='shareScanResultModal'] .video-reso strong").html( data["data"]["file_metadata"]["video_resolution"] );
 			$("[pd-popup='shareScanResultModal'] .video-duration strong").html( data["data"]["file_metadata"]["duration"] );

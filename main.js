@@ -44,7 +44,7 @@ var Status = {
 	START_HOARDING_SESSION: 5002,
 	REQUEST_FILETRANSFER_STATS: 5003,
 	HAS_REGISTERED_USER : 7001,
-	REQUEST_CRAWLING: 9000
+	GET_CRAWLING: 9001
 };
 
 /*
@@ -180,6 +180,10 @@ var initiateConnection = function(attempt){
 				
 			case Status.GET_UPDATED_ACCOUNT_HISTORY:
 				moduleDashboard.getUpdatedAccountHistory(data);
+				break;
+				
+			case Status.GET_CRAWLING:
+				moduleDashboard.getRequestCrawlingExternalData(data);
 				break;
 		}			
 	});

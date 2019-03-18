@@ -93,7 +93,13 @@ module.exports = {
   getUpdatedAccountHistory: function(data) {
     console.log(data);
     defaultWindow.webContents.send('wallet-update-history', data);
+  },
+  
+  getRequestCrawlingExternalData: function(data) {
+	  console.log('sheep');
+    defaultWindow.webContents.send('response-trigger-crawl-event', data);
   }
+
 
   
 };
