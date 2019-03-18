@@ -78,6 +78,7 @@ var initiateConnection = function(attempt){
 		module.getAssset(client);
 		module.getFileInfo(client);
 		module.getFileInfo(client);
+		module.sendAllMetadata(client);
 		module.generateDownload(client);
 		module.triggerCrawlingEvent(client);
 		module.requestHoardingSession(client);

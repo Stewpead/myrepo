@@ -3,10 +3,10 @@ const path = require('path');
 const fs = require('fs');
 const {ipcRenderer} = require('electron');
 
-// Object Asset Chain
+// Object Asset Chain Movie
 var objAC = fs.readFileSync('./json/base64img-2.json'); 
 var jsonAC = JSON.parse(objAC);
-// Object Asset Chain
+// Object Asset Chain Movie
 
 // Object File Search Result
 var objFSR = fs.readFileSync('./json/filelist64.json');

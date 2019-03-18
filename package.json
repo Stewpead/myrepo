@@ -19,6 +19,7 @@
     "lstat": "^1.0.0",
     "materialize-css": "^1.0.0",
     "node-ipc": "^9.1.1",
+    "popper.js": "^1.14.7",
     "segoe-fonts": "^1.0.1",
     "segoe-mdl2-icons": "^0.1.0"
   },

@@ -52,7 +52,6 @@ $('#btnOutcomingTx').click(() => {
 });
 
  
-
 $('#btnSend').click(function() { 
 
     $('[pd-popup="accountSendToModal"]').fadeIn(100);
@@ -188,7 +187,6 @@ $('#btnOutcomingTx').click(() => {
     document.getElementById('outgoing').style.display = "block";
 })
 
-
 //Request for account transaction history
 var holder = store.get('boolean-transaction-history');
 // store.delete('boolean-transaction-history');
@@ -201,14 +199,16 @@ if( holder ) {
     accHistory = JSON.stringify(accHistory);
     ipcRenderer.send('request-account-history', accHistory);
 }
-//Load Data to populate tables
 
+//Load Data to populate tables
 var jHistory = store.get('wallet-tx-history');
 console.log(jHistory);
-var incomingPending = "";
-var incomingVerified = "";
-var outgoingPending = "";
-var outgoingVerified = "";
+
+// var incomingPending = "";
+// var incomingVerified = "";
+// var outgoingPending = "";
+// var outgoingVerified = "";
+
     // 1124 all transactions but will be requested only once
     let txRecord = [];
 
@@ -235,14 +235,20 @@ var outgoingVerified = "";
 			}
         }
     }
-	
-	$('#incoming tbody').html(txRecord["0"]["in"] + txRecord["1"]["in"]);
-	$('#outgoing tbody').html(txRecord["0"]["out"] + txRecord["1"]["out"]);
+    console.log(txRecord);
+    
+    $('#incoming tbody').html(txRecord["0"]["in"] + txRecord["1"]["in"]);
+    $('#outgoing tbody').html(txRecord["0"]["out"] + txRecord["1"]["out"]);
+
+        ipcRenderer.on('response-acc-history-display', (event, arg) => {
+            $('#incoming tbody').html(txRecord["0"]["in"] + txRecord["1"]["in"]);
+            $('#outgoing tbody').html(txRecord["0"]["out"] + txRecord["1"]["out"]);
+        });
 
     ipcRenderer.on('wallet-update-history', (event,arg) => {
         if(arg['data']) {
             var targetTx = arg['tx_hash'];
-            document.getElementById(targetTx).innerHTML = "Verified";
+            document.getElementById(targetTx).innerHTML = "Verifiedoooo";
         }
     });
 

@@ -50,7 +50,7 @@
 </div>
 
 
- <div class="popup sendToken" pd-popup="accountSendToErrorModal">
+<div class="popup sendToken" pd-popup="accountSendToErrorModal">
     <div class="popup-inner scroll-skin">
 		<p> Error encountered when sending a token. Please check and try again</p>
     </div>
@@ -98,19 +98,23 @@ jQuery(document).ready(function($) {
 		if( document.getElementById('receiver').value == "" || document.getElementById('avxquantity').value == "" ) {
 			
 			$('[pd-popup="accountSendIncompleteDetailsModal"]').fadeIn(100);
+			$('#btnSendtoken').prop('disabled', false).removeClass('disabled');
 
 			setTimeout( () => {
 
 				$('[pd-popup="accountSendIncompleteDetailsModal"]').fadeOut(100);
-				$('#btnSendtoken').prop('disabled', false).removeClass('disabled');
+
+
 
 			}, 1000);
-		} else if( $(".WaddressAccountWindow").text() == document.getElementById('receiver').value ){
+		} else if( $(".WaddressAccountWindow").text() == document.getElementById('receiver').value ) {
+
 			$('[pd-popup="accountSendSenderIsReceiverModal"]').fadeIn(100);
 
 			setTimeout( () => {
 
 				$('[pd-popup="accountSendSenderIsReceiverModal"]').fadeOut(100);
+
 				$('#btnSendtoken').prop('disabled', false).removeClass('disabled');
 
 			}, 1000);
@@ -120,6 +124,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
+	//Confirmation after sending
 		ipcRenderer.on('avx-account-send-wallet', (event , arg) => {
 
 			if ( arg["data"]["valid"] == 1) {
@@ -136,8 +141,7 @@ jQuery(document).ready(function($) {
 						ipcRenderer.send('update-after-sending', jSend);
 						
 						$('[pd-popup="accountSendToSuccessModal"]').fadeOut(100);
-						// location.reload();
-
+						$('[pd-popup="accountSendToModal"]').fadeOut(100);
 					}, 2000);
 
 				} else {
