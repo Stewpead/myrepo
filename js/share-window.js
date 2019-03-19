@@ -175,6 +175,7 @@ setTimeout(function() {
 	
 	let counter = 0;
 	let tree = [];
+
 	$.each(files, function( index, value ) {
 		let filename = $(this).attr('file-name');
 		let size = $(this).attr('file-size');
@@ -208,10 +209,15 @@ setTimeout(function() {
 		ipcRenderer.send('trigger-crawl-event', jCrawl);
 		
 		ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
-			console.log(data);
+			data = JSON.parse(data["data"]);
+			console.log(data["data"]);
 			//var obj1 = fs.readFileSync('./json/craw-sample.json'); 
 			//var data = JSON.parse(obj1);
-			$('#crawlingResults').text(data);
+			//$('#crawlingResults').text(data);
+			console.log(data);
+			$(".popup.scan-result .file-title").html(data["name"]);
+			$(".popup.scan-result .metadata-desc").html(data["description"]);
+			$(".popup.scan-result .file-feature-img").css("background-image","url('"+data["image"]+"'");
 
 		});
 		
