@@ -28,6 +28,8 @@ module.exports = {
 		});		
 	},
 
+
+
 	sendFundAVX: function (client) {
 		
 		ipcMain.on('send-token',(event, arg) => {
@@ -88,6 +90,12 @@ module.exports = {
 			client.write(arg);
 		});
 
+	},
+
+	sendAllMetadata: function(client) {
+		ipcMain.on('send-data-for-crawling', (event, arg) => {
+			client.write(arg);
+		});
 	},
   
 	generateDownload: function (client) {

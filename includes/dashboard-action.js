@@ -40,7 +40,9 @@ module.exports = {
   
   getAccountHistory: function (data) {
     const store = new Store();
+
     store.set('wallet-tx-history', data);
+    defaultWindow.webContents.send('response-acc-history-display', data);
     console.log(data);
     
   },
@@ -88,6 +90,7 @@ module.exports = {
   receiveFileMetadata: function (data) {
 
     defaultWindow.webContents.send('avx-share-respond-file-metadata', data);
+    
   },
   
   getUpdatedAccountHistory: function(data) {

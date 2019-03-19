@@ -75,11 +75,7 @@ module.exports = {
   signupResponse: function (data) {
 		console.log(data);
 		  
-	  //var jdata = JSON.parse(tmp);
-		// console.log(jdata);
 		var validate = data['registered'];
-		console.log(validate);
-		// ARJ NOTE UI FOR NOTIFICATION FOR SUCCESS/ERROR 
 
 		if (validate == 1) {
 			//electron.send('signup-response', 'true');
