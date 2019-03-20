@@ -33,6 +33,8 @@ module.exports = {
 	sendFundAVX: function (client) {
 		
 		ipcMain.on('send-token',(event, arg) => {
+			
+			console.log('SEND TOKEN: ' + arg);
 
 			client.write(arg);	
 
@@ -73,7 +75,7 @@ module.exports = {
 	saveAccountHistory: function () {
 		ipcMain.on('save-account-history', (event, arg) => {
 			const store = new Store();
-			store.set('saved-account-hisory', arg);
+			store.set('saved-account-history', arg);
 		});
 	},
 	
