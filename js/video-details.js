@@ -44,7 +44,7 @@ function videonameF() {
     // get search results 
 
     filename = jsonAC[filefound]['metadata']['filename'];
-    var fileyear = jsonAC[filefound]['metadata']['year'];
+    var fileyear = jsonAC[filefound]['metadata']['year']; 
     document.getElementById('filetitle').innerHTML = filename;
     document.getElementById('fileyear').innerHTML = fileyear;
 

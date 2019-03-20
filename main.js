@@ -37,6 +37,7 @@ var Status = {
 	GET_METADATA_DIR_TREE: 1127,
 	GET_FILE_DETAILS: 1131,
 	GET_UPDATED_ACCOUNT_HISTORY: 1132,
+	ADD_TRANSACTION_DATA: 1134,
 	GET_ACCOUNT_HISTORY: 1124,
 	GET_FILE_INFO: 1128,
 	GET_WALLET_DATA: 1130,
@@ -44,7 +45,7 @@ var Status = {
 	START_HOARDING_SESSION: 5002,
 	REQUEST_FILETRANSFER_STATS: 5003,
 	HAS_REGISTERED_USER : 7001,
-	GET_CRAWLING: 9001
+	REQUEST_CRAWLING: 9000
 };
 
 /*
@@ -74,6 +75,7 @@ var initiateConnection = function(attempt){
 		module.sharePaymentAsset(client);
 		module.getSpent(client);
 		module.getAccountHistory(client);
+		module.saveAccountHistory();
 		module.getAccountWalletAddress(client);
 		module.getAssset(client);
 		module.getFileInfo(client);
@@ -105,7 +107,6 @@ var initiateConnection = function(attempt){
 		
 		data = JSON.parse(data);
 		
-
 		var moduleAccount = require('./includes/login-signup');
 		var moduleDashboard = require('./includes/dashboard-action');
 
@@ -182,9 +183,9 @@ var initiateConnection = function(attempt){
 			case Status.GET_UPDATED_ACCOUNT_HISTORY:
 				moduleDashboard.getUpdatedAccountHistory(data);
 				break;
-				
-			case Status.GET_CRAWLING:
-				moduleDashboard.getRequestCrawlingExternalData(data);
+
+			case Status.ADD_TRANSACTION_DATA:
+				moduleDashboard.addTransactionData(data);
 				break;
 		}			
 	});

@@ -1,7 +1,7 @@
 const base64toimage = require('base64-to-image');
 const path = require('path');
 const {ipcRenderer} = require('electron');
-const fs = require('fs');
+const fs = require('fs'); 
 
 // Object Asset Chain Audio
 var objAC = fs.readFileSync('./json/audiosection-temp.json'); 
@@ -15,26 +15,31 @@ var data64 = "data:image/jpg;base64,";
 var audioname;
 const Store = require('electron-store');
 const store = new Store();  
+
 $(document).ready( () => {
+
     // Get File Name from store()
     audioname = store.get('set-dashboard-file-selected-audio' );
 
     audionameF();
 
+    document.getElementById('bandMembers').style.display = 'none';
+
 });
 
+$('#btnSearch').click(() => {
+    location.href = "audio-download.html";
+});
 
 function audionameF() {
     var filename;
 
-    // get search results 
+    // get search results  
     filefound = getFiledata(audioname);
     // get search results 
-
+    
     filename = jsonAC[filefound]['metadata']['filename'];
-    var fileyear = jsonAC[filefound]['metadata']['year'];
     document.getElementById('filetitle').innerHTML = filename;
-    document.getElementById('fileyear').innerHTML = fileyear;
 
     var imgString = "";
     img64 = data64 + jsonAC[filefound]['metadata']['thumbnail'];
@@ -52,3 +57,4 @@ function getFiledata(filename) {
     }
 
 }
+

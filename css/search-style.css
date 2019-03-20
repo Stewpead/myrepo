@@ -189,7 +189,7 @@ span#divider-text:hover {
 .btn {
     background-color: #ed1c24 !important;
 }
-#fileImageDiv {
+#fileImageDiv { 
     width: 90%;
     margin: auto;
     margin-top: 20px;
