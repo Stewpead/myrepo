@@ -18,7 +18,7 @@ button span {
 #defaultstudio {
     font-size: 10px;
 }
-.sidenav a:hover {
+.sidenav a:hover { 
     color: #f1f1f1;
 }
 
@@ -180,13 +180,13 @@ span#divider-text:hover {
     font-size: 11px;
 }
 #pg {
-    padding: 3px 10px 3px 10px;
+    padding: 3px 10px 3px 10px; 
     background-color: #ed1c24;
 }
 #btnSearch {
     border-radius: 0 !important;
     background-color: #ed1c24;
-}
+} 
 .btn {
     background-color: #ed1c24 !important;
 }
@@ -194,6 +194,11 @@ span#divider-text:hover {
     width: 90%;
     margin: auto;
     margin-top: 20px;
+}
+.fileimage {
+    width: 230px;
+    height: 230px;
+    margin-left: 19%;
 }
 td:hover {
     cursor: pointer;

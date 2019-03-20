@@ -39,12 +39,8 @@ module.exports = {
   },
   
   getAccountHistory: function (data) {
-    const store = new Store();
-
-    store.set('wallet-tx-history', data);
     defaultWindow.webContents.send('response-acc-history-display', data);
-    console.log(data);
-    
+
   },
   
   getPublicKey: function (data) {
@@ -101,11 +97,12 @@ module.exports = {
   getRequestCrawlingExternalData: function(data) {
 	  console.log('sheep');
     defaultWindow.webContents.send('response-trigger-crawl-event', data);
+  },
+
+  addTransactionData: function(data) {
+    console.log(data);
+   defaultWindow.webContents.send('add-transaction-history', data);
   }
 
 
-  
 };
-
-
-

@@ -69,6 +69,13 @@ module.exports = {
 			event.returnValue = true;
 		});		
 	},
+
+	saveAccountHistory: function () {
+		ipcMain.on('save-account-history', (event, arg) => {
+			const store = new Store();
+			store.set('saved-account-hisory', arg);
+		});
+	},
 	
 	getAccountWalletAddress: function (client) {
 

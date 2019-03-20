@@ -85,7 +85,7 @@ jQuery(document).ready(function($) {
 		json1.data = {}; 
 		json1.status = 1115;
  
-		// var amount = ;
+		// var amount = ; 
 		
 		json1.data.sender = $(".WaddressAccountWindow").text();
   
@@ -104,7 +104,11 @@ jQuery(document).ready(function($) {
 
 				$('[pd-popup="accountSendIncompleteDetailsModal"]').fadeOut(100);
 
-
+				let accHistory = {
+        	status : 1124
+				};
+				accHistory = JSON.stringify(accHistory);
+				ipcRenderer.send('request-account-history', accHistory);
 
 			}, 1000);
 		} else if( $(".WaddressAccountWindow").text() == document.getElementById('receiver').value ) {

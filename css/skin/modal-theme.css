@@ -559,3 +559,6 @@ hr#hr {
     overflow: hidden;
     opacity: 0.5;
 }
+.popup.validation-event#loginSuccessModal {
+    height: 150px;
+}

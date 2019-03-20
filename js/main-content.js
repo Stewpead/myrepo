@@ -57,13 +57,16 @@ function getMovieInfo(hash) {
 // Generate Audio cards
 function trendingAudios(){
 	var trendingAcards = "";
+
 	for (var key in json2) {
+		
 		trendingAcards += '<div class="col-lg-3 grid-cards-audio" onclick="getAudioInfo(\''+ json2[key]['metadata']['filename'] +'\')">';
 		trendingAcards += '<div class="container">';
 		trendingAcards += '<img src="' + data64 + json2[key]['metadata']['thumbnail'] + '" />';
 		trendingAcards += '<p id="video-title" class="thumb-title">' + json2[key]['metadata']['filename'] + '</p>';
 		trendingAcards += '</div>';
 		trendingAcards += '</div>';
+
 	} 
 	$('#trendingArtist').append(trendingAcards);
 }        
