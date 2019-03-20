@@ -175,6 +175,8 @@ setTimeout(function() {
 	
 	let counter = 0;
 	let tree = [];
+	let filesLength = files.length;
+
 	$.each(files, function( index, value ) {
 		let filename = $(this).attr('file-name');
 		let size = $(this).attr('file-size');
@@ -188,13 +190,26 @@ setTimeout(function() {
 			url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() +"\\"+ filename;
 		
 		}
-		tree[counter] = {"name":  url, "size":  size };
-		counter++;
 
-		
 	});
 
 	
+		
+	let json = {
+		status : 1131,
+		data : {
+			filename	: url
+		}
+	}
+	
+	let jsonString = JSON.stringify(json);
+	ipcRenderer.send('request-file-metadata', jsonString);
+
+
+	ipcRenderer.on('avx-share-respond-file-metadata', (event, data) => {
+		tree[counter] = {"name":  url, "size":  size, "metadata": data["data"]["file_metadata"] };
+		counter++;
+		
 		let jCrawlMovie = {
 		   status : 9000,
 		   data : {
@@ -208,17 +223,43 @@ setTimeout(function() {
 		ipcRenderer.send('trigger-crawl-event', jCrawl);
 		
 		ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
-			console.log(data);
+			data = JSON.parse(data["data"]);
+			console.log(data["data"]);
 			//var obj1 = fs.readFileSync('./json/craw-sample.json'); 
 			//var data = JSON.parse(obj1);
-			$('#crawlingResults').text(data);
+			//$('#crawlingResults').text(data); file-genre
+			console.log(data);
+			$(".popup.scan-result .file-title").html(data["name"]);
+			$(".popup.scan-result .metadata-desc").html(data["description"]);
+			$(".popup.scan-result .file-feature-img").css("background-image","url('"+data["image"]+"'");
+			$(".popup.scan-result .file-director").html(data["director"]["name"]);
+			$(".popup.scan-result .file-rating").html(data["contentRating"]);
+			
+			
+			//GENRE
+			let genre = data["genre"];
+			let genreData =  genre.join(', ');
+			$(".popup.scan-result .file-genre").html(genreData);
+			
+			//ACTORS
+			let actors = data["castLinks"]["thumbnails"];
+			let actorsData = '';
+			$.each( actors, function( actor, thumb ) {
+				actorsData += '<div class="col-2 file-actor-details">';
+				actorsData += '<div class="img" style="background-image: url('+ "'" + thumb.replace(/(\r\n|\n|\r|'|")/gm, "") + "'" +')"></div>';
+				actorsData += '<label class="name">'+ actor +'</label> ';
+				actorsData += '<p class="role">  </p>'
+				actorsData += '</div>';
+			});
+			
+			$(".popup.scan-result .file-actor-content").html(actorsData);
+			
 
 		});
 		
 
-		
-
-
+	});
+	
 		
 		let jCrawlTvSeries = {
 			status : 9000
@@ -767,6 +808,56 @@ function shareShowMetadataPerFile(event) {
 			$("[pd-popup='shareScanResultModal'] .audio-channels strong").html( data["data"]["file_metadata"]["channels"] );
 
 		});
-		
 
 } 
+
+/*** 2.6 send to crawl file ***/
+function shareCrawlFile(tree) {
+			
+	let jCrawlMovie = {
+	   status : 9000,
+	   data : {
+		action : "movie",
+		tree : tree
+	   }
+	  }
+	  
+	jCrawl = JSON.stringify(jCrawlMovie);
+	console.log(jCrawlMovie);
+	ipcRenderer.send('trigger-crawl-event', jCrawl);
+	
+	ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
+		data = JSON.parse(data["data"]);
+		console.log(data["data"]);
+		//var obj1 = fs.readFileSync('./json/craw-sample.json'); 
+		//var data = JSON.parse(obj1);
+		//$('#crawlingResults').text(data); file-genre
+		console.log(data);
+		$(".popup.scan-result .file-title").html(data["name"]);
+		$(".popup.scan-result .metadata-desc").html(data["description"]);
+		$(".popup.scan-result .file-feature-img").css("background-image","url('"+data["image"]+"'");
+		$(".popup.scan-result .file-director").html(data["director"]["name"]);
+		$(".popup.scan-result .file-rating").html(data["contentRating"]);
+		
+		
+		//GENRE
+		let genre = data["genre"];
+		let genreData =  genre.join(', ');
+		$(".popup.scan-result .file-genre").html(genreData);
+		
+		//ACTORS
+		let actors = data["castLinks"]["thumbnails"];
+		let actorsData = '';
+		$.each( actors, function( actor, thumb ) {
+			actorsData += '<div class="col-2 file-actor-details">';
+			actorsData += '<div class="img" style="background-image: url('+ "'" + thumb.replace(/(\r\n|\n|\r|'|")/gm, "") + "'" +')"></div>';
+			actorsData += '<label class="name">'+ actor +'</label> ';
+			actorsData += '<p class="role">  </p>'
+			actorsData += '</div>';
+		});
+		
+		$(".popup.scan-result .file-actor-content").html(actorsData);
+		
+
+	});
+}
