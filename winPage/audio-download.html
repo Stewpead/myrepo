@@ -9,15 +9,18 @@
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../node_modules/@mdi/font/css/materialdesignicons.min.css">
     <!-- WOW -->
-             
+            
     <!-- MINE -->
     <link rel="stylesheet" type="text/css" href="../css/app-style.css">
+    <link rel="stylesheet" type="text/css" href="../css/skin/modal-theme.css">
     <link rel="stylesheet" type="text/css" href="../css/audio-style.css">
     <!-- MINE -->
- 
+
+    <!-- MINE --> 
+    <!-- <title id="title">AVXChange</title> -->
     <header> 
-        <div id="container">
-            <nav> 
+        <div id="container"> 
+            <nav>
                 <div id="titleShown"> 
                 </div>
                 <div id="buttons">
@@ -41,14 +44,13 @@
             </div>
             <a href="#" onclick="location.href = 'main-window.html'"> <span class="icon-segoe segoe-home" id="sidelinks"></span> <br>Home</a>
             <a href="#" onclick="location.href = 'account-window.html'"><span class="icon-segoe segoe-contact-info" id="sidelinks"></span><br>Account Wallet</a>
-            <a href="#" onclick="location.href = 'search-window.html'" style="background-color: #ed1c24; color:white;"><span class="icon-segoe segoe-search icon-flip" id="sidelinks"></span><br>Search Browser</a>
+            <a href="#" style="background-color: #ed1c24; color:white;"><span class="icon-segoe segoe-search icon-flip" id="sidelinks"></span><br>Search Browser</a>
             <a href="#" onclick="location.href = 'share-window.html'"><span class="icon-segoe segoe-communications" id="sidelinks"></span><br>Share</a>
             <a href="#" onclick="location.href = 'stream-window.html'"><span class="icon-segoe segoe-v-player" id="sidelinks"></span><br>Stream Player</a>
             <a href="#" onclick="location.href = 'community-window.html'"><span class="icon-segoe segoe-world" id="sidelinks"></span><br>Community</a>
             <a href="#" onclick="location.href = 'settings-window.html'" style="padding-bottom: 50px;"><span class="icon-segoe segoe-settings" id="sidelinks"></span><br>Settings</a>
         </div>
-        </div>
-        <div id="mainSearchResult">
+        <div id="main">
             <div id="bgvids">
                 <div class="container-fluid">
                     <div class="row"> 
@@ -61,7 +63,7 @@
                     </div>
                     <div class="row"> 
                         <div class="col-lg-6 mt-3">
-                            <a href="#" id="btnBack"> <span class="mdi mdi-arrow-left"> Back</span> </a>
+                            <a href="#" id="btnBack"> <span class="mdi mdi-arrow-left"> Back</span>  </a>
                         </div>
                         <div class="col-lg-6 mt-3">
                             <div style="margin-left:10vh;">
@@ -69,7 +71,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" placeholder="Movie Titles or Audio Tracks" aria-label="Movie Titles or Audio Tracks" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-danger" id="btnSearch" type="button"> Search</button>
+                                            <button class="btn btn-danger" type="button" style="color:white;"> Search</button>
                                         </div>
                                     </div>
                                 </div>
@@ -77,29 +79,41 @@
                         </div>
                     </div>
                     <div class="row"> 
-                        <div class="col-md-3" id="fileImageDiv">
-                            <div class="ml-1"id="fileImage">
-                                
+                            <div class="col-md-3" id="fileImageDiv">
+                                <div class="ml-1"id="fileImage">
+                                    
+                                </div>
                             </div>
-                        </div>
                         <div class="col-lg-9">
                             <div style="float:left;">
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <h4 id="filetitle" style="display: inline-block">Avengers The Infinity Wars</h4> <h6 id="fileyear" style="display: inline-block"></h6>
+                                            <h4 id="filetitle" style="display: inline-block"></h4> <h6 id="fileyear" style="display: inline-block">2018</h6>
                                             <ul class="nav" id="tabsfileDetails">
-                                                <li id="resolutionRange">
-                                                    480p - 1080p Available 
+                                                <li id="fileCost">
+
                                                 </li>
-                                                <li id="fileCostRange">
-                                                    Cost 10 AVX - 40 AVX
-                                                </li> 
-                                                <li id="availableFiles">
-                                                    50 file(s) available
+                                                <li id="videolength">
+                                                    2 h 46 min
+                                                </li>
+                                                <li id="fileSize">
+
+                                                </li>
+                                                <li id="fileExtension">
+                                                    MP4
+                                                </li>
+                                                <li id="resolution">
+
+                                                </li>
+                                                <li id="videoEncoded">
+                                                    H.264
+                                                </li>
+                                                <li id="audioEncoded">
+                                                    ACC Stereo
                                                 </li>
                                                 <li id="fileOwner">
-                                                    See ownership
+                                                    See Ownership
                                                 </li>
                                             </ul>
                                             <br>
@@ -109,143 +123,203 @@
                                         </div>
                                     </div>
                                 </div>
-                                <br />
-                                <div class="container-fluid" id="otherFileInfo">
-                                    <div class="row">
-                                        <div class="col-lg-2">
-                                            <p class="mb-3">Parental Rating: &emsp;</p>
-                                        </div>
-                                        <div class="col-lg-10">
-                                            <span id="pg">PG. 13</span> <span> Runtime: </span> <span>2 hr 47 min</span>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-2">
-                                            <p class="mb-3">Diretors: &emsp;</p>
-                                        </div>
-                                        <div class="col-lg-10">
-                                            <p>Anthony Russo, Joe Russo</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-2">
-                                            <p class="mb-3">Producer: &emsp;</p>
-                                        </div>
-                                        <div class="col-lg-10">
-                                            <p>Kevin Feige</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-2">
-                                            <p class="mb-3">Writers: &emsp;</p>
-                                        </div>
-                                        <div class="col-lg-10 pr-5">
-                                            <span class="pr-5">Christopher Markus, Stephen McFeely, Stan Lee, Jack Kirby, Joe Simon, Jack Kirby, Steve Englehart, Steve Gan, Keith Giffen, Jim Starlin, Stan Lee, Larry Lieber, Jack Kirby, Jim Starlin</span>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-2">
-                                            <p class="mb-3">Studio: &emsp;</p>
-                                        </div>
-                                        <div class="col-lg-10">
-                                            <span>Marvel Cinematic Universe</span>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-2">
-                                            <p class="mb-3">Genre: &emsp;</p>
-                                        </div>
-                                        <div class="col-lg-10">
-                                            <span>Action, Adventure, Fantasy </span> 
-                                        </div>
-                                    </div>
-                                    <hr />
-                                </div>
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="row ml-4">
-                                            <div class="col-lg-12">
-                                                <p>Actors</p>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="d-flex justify-content-start">
+                                            <div class="p-2 bd-highlight">
+                                                <button class="btn btn-outline-light" id="btnViewFiles">View Files</button>
                                             </div>
-                                        </div>
-                                    <hr />
-                                    </div>
-                                    <div class="row ml-4 actors-section">
-                                        <div class="col-lg-2 cast-thumbnail">
-                                            <div class="actors-details">
-                                                <p class="cast-name">Robert Downey Jr.</p>
-                                                <p class="cast-character">Iron man</p>
-                                            </div> 
-                                        </div>
-                                        <div class="col-lg-2 cast-thumbnail">
-                                            <div class="actors-details">
-                                                <p class="cast-name">Robert Downey Jr.</p>
-                                                <p class="cast-character">Iron man</p>
+                                            <div class="p-2 bd-highlight">
+                                                <button class="btn btn-outline-light" id="btnWishlist">Add to Wishlist</button>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-2 cast-thumbnail">
-                                            <div class="actors-details">
-                                                <p class="cast-name">Robert Downey Jr.</p>
-                                                <p class="cast-character">Iron man</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 cast-thumbnail">
-                                            <div class="actors-details">
-                                                <p class="cast-name">Robert Downey Jr.</p>
-                                                <p class="cast-character">Iron man</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 cast-thumbnail">
-                                            <div class="actors-details">
-                                                <p class="cast-name">Robert Downey Jr.</p>
-                                                <p class="cast-character">Iron man</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 cast-thumbnail">
-                                            <div class="actors-details">
-                                                <p class="cast-name">Robert Downey Jr.</p>
-                                                <p class="cast-character">Iron man</p>
+                                            <div class="p-2 bd-highlight">
+                                                <button class="btn btn-danger" id="btnBuy">Buy now</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div> 
+                                <br>
+                            </div>
+                        </div>                
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-md-3">
+
                         </div>
-                        
-                    </div>              
-                </div>
-                <div class="row">
-                    <h5 id="totalSearchResult" class="mb-3 ml-5"> <span id="totalSearch"></span> <span id="typeOfFile"></span> search result from </h5>
-                </div>
+                        <div class="col-lg-9" id="styleRow">
+                            <div class="row">
+                                <div class="section-divider">
+                                    <ul>
+                                        <li style="background-color: #000; margin: 50px 0 0 0;">
+                                            <span id="divider-text"> Media details </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-3">
+
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="row meta-data-details">
+                                        <div class="col-lg-4">
+                                            <br />
+                                            <label class="full-width video-reso">Subtitles: <strong id="ddownSubs">English (SRT External)</strong> </label>
+                                            <br />
+                                            <hr />
+                                            <label class="full-width video-duration" >Codec: <strong>SRT</strong> </label>
+                                            <br />
+                                            <label class="full-width video-size">Language: <strong>English</strong> </label>
+                                            <br />
+                                            <label class="full-width audio-video-bitrate">Display Title: <strong>English (SRT External)</strong> </label>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <br />
+                                            <label class="full-width video-reso">Audio: <strong id="ddownAudio">English(AAC Stereo)</strong> </label>
+                                            <br />
+                                            <hr />
+                                            <label class="full-width video-duration" >Codec: <strong>SRT</strong> </label>
+                                            <br />
+                                            <label class="full-width video-size">Language: <strong>English</strong> </label>
+                                            <br />
+                                            <label class="full-width audio-video-bitrate">Display Title: <strong>English (SRT External)</strong> </label>
+                                        </div>
+                                    </div>    
+                                    <div class="row meta-data-details mt-2">
+                             
+                                        <div class="col-4"><br>
+                                            <label class="full-width video-reso">Video Resolution: <strong>1080p</strong> </label>
+                                            <br />
+                                            <label class="full-width video-duration" >Duration: <strong>1:59:01</strong> </label>
+                                            <br />
+                                            <label class="full-width video-size">Size: <strong>1.91 GB</strong> </label>
+                                            <br />
+                                            <label class="full-width audio-video-bitrate">Audio & Video Bitrate: <strong>2298 kbps</strong> </label>
+                                            <br />
+                                            <label class="full-width video-width">Width: <strong>1920</strong> </label>
+                                            <br />
+                                            <label class="full-width video-height">Height: <strong>800</strong> </label>
+                                            <br />
+                                            <label class="full-width aspect-ratio">Aspect Ratio: <strong>2.35</strong> </label>
+                                        </div>
+
+                                        <div class="col-4"><br>
+                                            <label class="full-width video-container">Container: <strong>MP4</strong> </label>
+                                            <br />
+                                            <label class="full-width video-frame-rate">Video Frame Rate: <strong>800</strong> </label>
+                                            <br />
+                                            <label class="full-width">Web Optimized: <strong>Yes</strong> </label>
+                                            <br />
+                                            <label class="full-width video-profile">Video Profile: <strong>High</strong> </label>
+                                            <br />
+                                            <label class="full-width video-codec">Video Codec: <strong>H264</strong> </label>
+                                            <br />
+                                            <label class="full-width video-bitrate">Video Bitrate: <strong>1011 kbps</strong> </label>				
+                                        </div>
+                                        
+                                        <div class="col-4"><br>
+                                            <label class="full-width bit-depth">Bit Depth: <strong>8</strong> </label>
+                                            <br />
+                                            <label class="full-width video-frame-rate">Frame Rate: <strong>23.965 fps</strong> </label>
+                                            <br />
+                                            <label class="full-width audio-codec">Audio Codec: <strong>AAC</strong> </label>
+                                            <br />
+                                            <label class="full-width audio-channels">Audio Channels: <strong>2</strong> </label>
+                                            <br />
+                                            <label class="full-width">Audio Bitrate: <strong>149 kbps</strong> </label>
+                                            <br />
+                                            <label class="full-width">Audio Channel Layout: <strong>Stereo</strong> </label>
+                                            <br />
+                                            <label class="full-width">Sampling Rate: <strong>48000 Hz</strong> </label>
+                                        </div>			 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
                     <div class="row">
-                        <div class="col-lg-12" id="bodycolumn">
-                            <table class="table table-hover ml-4">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col" style="padding-right:12rem;">File</th>
-                                        <th scope="col">Downloads</th>
-                                        <th scope="col">Cost(AVX)</th>
-                                        <th scope="col">Ratings</th>
-                                        <th scope="col">Language</th>
-                                        <th scope="col">Subtitle</th>
-                                        <th scope="col">Resolution</th>
-                                        <th scope="col">File size</th>
-                                        <th scope="col">Video Codec</th>
-                                        <th scope="col">Audio Codec</th>
-                                        <th scope="col">Video Bitrate</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbodyDetails">
-                                    
-                                </tbody> 
-                            </table>             
+                        <div class="col-lg-12" id="styleRow">
+                            <div class="row">
+                                <div class="section-divider ml-5">
+                                    <ul>
+                                        <li style="background-color: #000; margin: 50px 0 0 0;">
+                                            <span id="divider-text">File Review & Artistic Review </span>
+                                        </li>
+                                    </ul>
+                                    <div id="toggleBtn2">
+                                        <span class="mdi mdi-arrow-up-drop-circle"> </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="ratings-sector">
+                                        <span id="fileRatings">5.0</span> <span class="mdi mdi-thumb-up-outline mdi-48px"></span>
+                                        <br/>
+                                        <span id="totalRatings">Total Ratings</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9 file-ratings">
+                                    <ul class="nav mt-5" id="tabsfileDetails">
+                                        <li>
+                                            <a id="btnFileReview">File Review</a>
+                                        </li>
+                                        <li>
+                                            <a id="btnArtisticReview">Artistic Review</a>
+                                        </li>
+                                    </ul>
+                                    <br />
+                                    <div class="container-fluid">
+                                        <div class="row file-review-row">
+                                            <div class="col-lg-12" id="file-review">
+                                                <div class="row stars-section">
+                                                    <span> As describe &nbsp;</span>
+                                                    <span class="mdi mdi-star"> </span>
+                                                    <span class="mdi mdi-star"> </span>
+                                                    <span class="mdi mdi-star"> </span>
+                                                    <span class="mdi mdi-star"> </span>
+                                                    <span class="mdi mdi-star">&nbsp;</span>
+                                                    <span> &nbsp; Quality &nbsp;</span>
+                                                    <span class="mdi mdi-star"></span>
+                                                    <span class="mdi mdi-star"></span>
+                                                    <span class="mdi mdi-star"></span>
+                                                    <span class="mdi mdi-star"></span>
+                                                    <span class="mdi mdi-star"></span>
+                                                </div>
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-lg-12 users-review-section">
+                                                        <span>Love it</span><br />
+                                                        <span> userlove123# </span>&nbsp; <span class="mdi mdi-newspaper"></span> <span>March 19, 2018</span> <br />
+                                                        <br />
+                                                        <p id="userReview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pharetra mauris non nunc sollicitudin venenatis. Pellentesque in ante orci. Morbi finibus, dolor a mollis cursus, ipsum nisl consequat ipsum, ut vehicula velit risus nec nunc. Ut ac sollicitudin mauris. Sed efficitur neque sed tortor aliquet luctus ut quis urna. Sed commodo est non venenatis fringilla. Praesent ut tristique urna. Mauris convallis ornare malesuada. Fusce aliquet et orci convallis congue. Fusce vehicula fringilla turpis, quis porttitor lectus aliquam at. Curabitur volutpat nisl quis tellus pellentesque, at aliquet ex mattis.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12" id="artistic-review">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>                                        
-                </div> 
+                </div>
             </div>
         </div>    
     </body>
+    <!-- INCLUDE HTML AREA -->
+    <div id="FileModalView"></div>
+    <script type="text/javascript"> 
+        $(function(){
+            $("#FileModalView").load("../partials/tools/file-download.html");
+        }); 
+    </script> 
     <script src="../js/top-handler.js"></script>
     <script src="../js/audio-details.js"></script>
-</html>
+</html> 

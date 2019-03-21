@@ -9,12 +9,14 @@ document.getElementById('btnOutcomingTx').style.color = '#818181';
 var walletData = {};
 walletData.wallet_data = {};
 var avxTokens = 0.0;
+
 var jdata = {
     status: 1130
 };
 ///////////////////////=================================================================================================================
  jdata = JSON.stringify(jdata);
  ipcRenderer.send('get-wallet-data', jdata);
+ 
 // Real time wallet data retrieval 
 ipcRenderer.on('avx-wallet-data', (event, arg) => {
     walletData = arg; 

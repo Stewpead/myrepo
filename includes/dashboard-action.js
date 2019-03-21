@@ -58,7 +58,9 @@ module.exports = {
   },
   
   sendFund: function (data) {
+
     defaultWindow.webContents.send('avx-account-send-wallet', data);
+    
   },
   
   getAsset: function (data) {

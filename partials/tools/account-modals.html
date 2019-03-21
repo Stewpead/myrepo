@@ -34,7 +34,7 @@
  <div class="popup sendToken" pd-popup="accountSendToSuccessModal">
     <div class="popup-inner scroll-skin">
 		<p> You have successfully send token</p>
-    </div>
+    </div> 
 </div>
 
 <div class="popup sendToken" pd-popup="accountSendIncompleteDetailsModal">
@@ -135,16 +135,22 @@ jQuery(document).ready(function($) {
 
 					$('[pd-popup="accountSendToSuccessModal"]').fadeIn(100);
  
-					$('#btnSendtoken').removeAttr('disabled');
+
 
 					setTimeout(function() {
+
 						let jSend = {
 							status: 1130
 						};
+
 						jSend = JSON.stringify(jSend);
+
 						ipcRenderer.send('update-after-sending', jSend);
 						
 						$('[pd-popup="accountSendToSuccessModal"]').fadeOut(100);
+
+						$('#btnSendtoken').prop('disabled', false).removeClass('disabled');
+						
 						$('[pd-popup="accountSendToModal"]').fadeOut(100);
 					}, 2000);
 
@@ -180,17 +186,6 @@ function autoRefresh() {
 	let jsonStringSpent = JSON.stringify(jsonSpent);
 	ipcRenderer.send('avx-account-spent', jsonStringSpent);
 	
-	
-
-
-	// setTimeout(function() {
-	
-	// 	let dataBalance = store.get('avx-account-balance');
-	// 	store.delete('avx-account-balance');
-	// 	if(typeof dataBalance["balance"] != 'undefined') {
-	// 		$('.total-balance').html(parseFloat(dataBalance["balance"]).toFixed(2));
-	// 	}
-	// }, 1000);
 
 	setTimeout(function() {
 
