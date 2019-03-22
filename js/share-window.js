@@ -170,6 +170,8 @@ setTimeout(function() {
 		$('[pd-popup="shareScanResultModal"]').fadeOut(100);
 		$('[pd-popup="shareComparingFilesToNetworkModal"]').fadeIn(100);
 		
+		$('.file-movie-content').html('');
+		
 		
 	let files = $('[pd-popup="shareScanResultModal"] .pointer-cursor.item-file-meta');
 	
@@ -190,76 +192,55 @@ setTimeout(function() {
 			url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() +"\\"+ filename;
 		
 		}
+		
+		tree[counter] = {"url":  url };
 
+		counter++;
+
+		if (  counter == filesLength ) {
+			shareBulkGetmetadataForCrawl(tree,0);
+
+		}
+		
 	});
 
-	
-		
-	let json = {
-		status : 1131,
-		data : {
-			filename	: url
+function shareBulkGetmetadataForCrawl(data, counter){
+	let dataLength = Object.keys(data).length;
+
+
+	if ( typeof (data[0]["url"]) ) {
+		let json = {
+			status : 1131,
+			data : {
+				filename	: data[counter]["url"],
+				counter 	: counter,
+				dataLength	: dataLength,
+				filesScanned : data
+				
+			}
 		}
+		
+		let jsonString = JSON.stringify(json);
+
+		ipcRenderer.send('request-file-metadata', jsonString);
+	}
+
+}
+	
+ipcRenderer.on('avx-share-respond-file-metadata', (event, metadata) => {
+	filesWithMetadata = [];
+	filesWithMetadata[metadata["data"]["counter"]] = {"name":  metadata["data"]["filename"], "size":  parseInt(metadata["data"]["file_metadata"]["filesize"]), "metadata": metadata["data"]["file_metadata"] };
+	console.log(filesWithMetadata[metadata["data"]["counter"]]);
+	let count = metadata["data"]["counter"] + 1;
+	
+	if ( metadata["data"]["dataLength"] >= count ) {
+		shareCrawlFile(filesWithMetadata[metadata["data"]["counter"]]);
+		shareBulkGetmetadataForCrawl(metadata["data"]["filesScanned"], count);
+		
 	}
 	
-	let jsonString = JSON.stringify(json);
-	ipcRenderer.send('request-file-metadata', jsonString);
-
-
-	ipcRenderer.on('avx-share-respond-file-metadata', (event, data) => {
-		tree[counter] = {"name":  url, "size":  size, "metadata": data["data"]["file_metadata"] };
-		counter++;
+});
 		
-		let jCrawlMovie = {
-		   status : 9000,
-		   data : {
-			action : "movie",
-			tree : tree
-		   }
-		  }
-		  
-		jCrawl = JSON.stringify(jCrawlMovie);
-		console.log(jCrawlMovie);
-		ipcRenderer.send('trigger-crawl-event', jCrawl);
-		
-		ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
-			data = JSON.parse(data["data"]);
-			console.log(data["data"]);
-			//var obj1 = fs.readFileSync('./json/craw-sample.json'); 
-			//var data = JSON.parse(obj1);
-			//$('#crawlingResults').text(data); file-genre
-			console.log(data);
-			$(".popup.scan-result .file-title").html(data["name"]);
-			$(".popup.scan-result .metadata-desc").html(data["description"]);
-			$(".popup.scan-result .file-feature-img").css("background-image","url('"+data["image"]+"'");
-			$(".popup.scan-result .file-director").html(data["director"]["name"]);
-			$(".popup.scan-result .file-rating").html(data["contentRating"]);
-			
-			
-			//GENRE
-			let genre = data["genre"];
-			let genreData =  genre.join(', ');
-			$(".popup.scan-result .file-genre").html(genreData);
-			
-			//ACTORS
-			let actors = data["castLinks"]["thumbnails"];
-			let actorsData = '';
-			$.each( actors, function( actor, thumb ) {
-				actorsData += '<div class="col-2 file-actor-details">';
-				actorsData += '<div class="img" style="background-image: url('+ "'" + thumb.replace(/(\r\n|\n|\r|'|")/gm, "") + "'" +')"></div>';
-				actorsData += '<label class="name">'+ actor +'</label> ';
-				actorsData += '<p class="role">  </p>'
-				actorsData += '</div>';
-			});
-			
-			$(".popup.scan-result .file-actor-content").html(actorsData);
-			
-
-		});
-		
-
-	});
-	
 		
 		let jCrawlTvSeries = {
 			status : 9000
@@ -295,6 +276,7 @@ setTimeout(function() {
 		});	
 
 		e.preventDefault();
+
 
 	});
 	
@@ -585,8 +567,8 @@ setTimeout(function() {
 
 /** 1.4 Select movie assets preview  **/
 setTimeout(function() {
-
-	$(".file-movie-content .img").click(function () {
+	$('.file-movie-content').on("click",".img", function() {
+	//$(".file-movie-content .img").click(function () {
 		$(".file-movie-content .img").removeClass('active');
 		$(this).addClass('active');
 		let imageSrc = $(this).css('background-image');
@@ -597,6 +579,56 @@ setTimeout(function() {
 		imageSrc = imageSrc.replace(/"/g, "'");
 		imageSrc = ' background-image: '+ imageSrc;
 		$('.popup[pd-popup="shareConfirmMetadataModal"] .file-feature-img').attr('style', imageSrc );
+		
+		let data = $(this).parent().find("textarea").text();
+		data = JSON.parse(data);
+
+		//GENERATE RESULT
+		$(".popup.scan-result .file-title").html(data["crawl"]["name"]);
+		$(".popup.scan-result .metadata-desc").html(data["crawl"]["description"]);
+		$(".popup.scan-result .file-director").html(data["crawl"]["director"]["name"]);
+		$(".popup.scan-result .file-rating").html(data["crawl"]["contentRating"]);
+		
+		
+		//GENRE
+		let genre = data["crawl"]["genre"];
+		let genreData =  genre.join(', ');
+		$(".popup.scan-result .file-genre").html(genreData);
+		
+		//ACTORS
+		let actors = data["crawl"]["castLinks"]["thumbnails"];
+		let actorsData = '';
+		$.each( actors, function( actor, thumb ) {
+			actorsData += '<div class="col-2 file-actor-details">';
+			actorsData += '<div class="img" style="background-image: url('+ "'" + thumb.replace(/(\r\n|\n|\r|'|")/gm, "") + "'" +')"></div>';
+			actorsData += '<label class="name">'+ actor +'</label> ';
+			actorsData += '<p class="role">  </p>'
+			actorsData += '</div>';
+		});
+		
+		selectedAssets = ' active';
+		$(".popup.scan-result .file-actor-content").html(actorsData);
+		
+		//METADATA
+		$('[pd-popup="shareConfirmMetadataModal"] .aspect-ratio strong'). html(data["data"]["metadata"]["aspect_ratio"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .audio-bitrate strong'). html(data["data"]["metadata"]["audio_bitrate"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .audio-codec strong'). html(data["data"]["metadata"]["audio_codec_name"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .bit-depth strong'). html(data["data"]["metadata"]["bit_depth"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .audio-channel-layout strong'). html(data["data"]["metadata"]["channel_layout"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .audio-channels strong'). html(data["data"]["metadata"]["channels"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-duration strong, [pd-popup="shareConfirmMetadataModal"] .video-duration-head'). html(data["data"]["metadata"]["duration"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-size strong'). html(data["data"]["metadata"]["filesize"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-height strong'). html(data["data"]["metadata"]["height"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .audio-sampling-rate strong'). html(data["data"]["metadata"]["sampling_rate"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .audio-video-bitrate strong'). html(data["data"]["metadata"]["video_bitrate"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-codec strong'). html(data["data"]["metadata"]["video_codec_name"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-frame-rate strong'). html(data["data"]["metadata"]["video_frame_rate"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-profile strong'). html(data["data"]["metadata"]["video_profile"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-reso strong'). html(data["data"]["metadata"]["video_resolution"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-width strong'). html(data["data"]["metadata"]["width"]);
+		
+		 $('[pd-popup="shareConfirmMetadataModal"] .title-holder').attr("tabindex",-1).focus();;
+			
 		
 		
 		
@@ -813,9 +845,10 @@ function shareShowMetadataPerFile(event) {
 
 /*** 2.6 send to crawl file ***/
 function shareCrawlFile(tree) {
-			
+		
 	let jCrawlMovie = {
 	   status : 9000,
+	   action : 0,
 	   data : {
 		action : "movie",
 		tree : tree
@@ -825,28 +858,32 @@ function shareCrawlFile(tree) {
 	jCrawl = JSON.stringify(jCrawlMovie);
 	console.log(jCrawlMovie);
 	ipcRenderer.send('trigger-crawl-event', jCrawl);
+
+}
+
 	
-	ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
-		data = JSON.parse(data["data"]);
-		console.log(data["data"]);
-		//var obj1 = fs.readFileSync('./json/craw-sample.json'); 
-		//var data = JSON.parse(obj1);
-		//$('#crawlingResults').text(data); file-genre
-		console.log(data);
-		$(".popup.scan-result .file-title").html(data["name"]);
-		$(".popup.scan-result .metadata-desc").html(data["description"]);
-		$(".popup.scan-result .file-feature-img").css("background-image","url('"+data["image"]+"'");
-		$(".popup.scan-result .file-director").html(data["director"]["name"]);
-		$(".popup.scan-result .file-rating").html(data["contentRating"]);
+ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
+
+	let getMovieList = $('.file-movie-content .file-movie-details').length;
+	let movieAssets = '';
+	let selectedAssets = '';
+	
+	if ( parseInt(getMovieList) == 0 ) {
+		$('[pd-popup="shareConfirmMetadataModal"] .file-movie').parent().parent().css("display", 'none');
+		$(".popup.scan-result .file-title").html(data["crawl"]["name"]);
+		$(".popup.scan-result .metadata-desc").html(data["crawl"]["description"]);
+		$(".popup.scan-result .file-feature-img").css("background-image","url('"+data["crawl"]["image"]+"'");
+		$(".popup.scan-result .file-director").html(data["crawl"]["director"]["name"]);
+		$(".popup.scan-result .file-rating").html(data["crawl"]["contentRating"]);
 		
 		
 		//GENRE
-		let genre = data["genre"];
+		let genre = data["crawl"]["genre"];
 		let genreData =  genre.join(', ');
 		$(".popup.scan-result .file-genre").html(genreData);
 		
 		//ACTORS
-		let actors = data["castLinks"]["thumbnails"];
+		let actors = data["crawl"]["castLinks"]["thumbnails"];
 		let actorsData = '';
 		$.each( actors, function( actor, thumb ) {
 			actorsData += '<div class="col-2 file-actor-details">';
@@ -856,8 +893,42 @@ function shareCrawlFile(tree) {
 			actorsData += '</div>';
 		});
 		
+		selectedAssets = ' active';
 		$(".popup.scan-result .file-actor-content").html(actorsData);
 		
+		//METADATA
+		$('[pd-popup="shareConfirmMetadataModal"] .aspect-ratio strong'). html(data["data"]["metadata"]["aspect_ratio"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .audio-bitrate strong'). html(data["data"]["metadata"]["audio_bitrate"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .audio-codec strong'). html(data["data"]["metadata"]["audio_codec_name"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .bit-depth strong'). html(data["data"]["metadata"]["bit_depth"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .audio-channel-layout strong'). html(data["data"]["metadata"]["channel_layout"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .audio-channels strong'). html(data["data"]["metadata"]["channels"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-duration strong, [pd-popup="shareConfirmMetadataModal"] .video-duration-head'). html(data["data"]["metadata"]["duration"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-size strong'). html(data["data"]["metadata"]["filesize"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-height strong'). html(data["data"]["metadata"]["height"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .audio-sampling-rate strong'). html(data["data"]["metadata"]["sampling_rate"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .audio-video-bitrate strong'). html(data["data"]["metadata"]["video_bitrate"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-codec strong'). html(data["data"]["metadata"]["video_codec_name"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-frame-rate strong'). html(data["data"]["metadata"]["video_frame_rate"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-profile strong'). html(data["data"]["metadata"]["video_profile"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-reso strong'). html(data["data"]["metadata"]["video_resolution"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-width strong'). html(data["data"]["metadata"]["width"]);
+			
+		
+		
+	} else {
+		
+		$('[pd-popup="shareConfirmMetadataModal"] .file-movie').parent().parent().css("display", 'block');
+	}
+	
 
-	});
-}
+	movieAssets += '<div class="col-2 file-movie-details">';
+	movieAssets += '	<div class="img'+ selectedAssets +'" style="background-image: url('+ "'" + data["crawl"]["image"] + "'"+')"></div>';
+	movieAssets += '	<label class="title">'+data["crawl"]["name"]+'</label>';
+	movieAssets += '	<textarea style="display: none">'+ JSON.stringify(data) +'</textarea>';
+	movieAssets += '	<p class="year"> 2015 </p>';
+	movieAssets += '</div>';
+	$('.file-movie-content').append(movieAssets);
+
+
+});

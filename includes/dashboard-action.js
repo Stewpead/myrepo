@@ -98,7 +98,6 @@ module.exports = {
   },
   
   getRequestCrawlingExternalData: function(data) {
-	  console.log('sheep');
     defaultWindow.webContents.send('response-trigger-crawl-event', data);
   },
 
