@@ -73,7 +73,6 @@ var initiateConnection = function(attempt){
 		module.checkStatus(client);
 		module.sharePaymentAsset(client);
 		module.getSpent(client);
-		module.passAccountHistory();
 		module.getAccountHistory(client);
 		module.getAccountWalletAddress(client);
 		module.getAssset(client);

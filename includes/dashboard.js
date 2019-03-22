@@ -63,11 +63,6 @@ module.exports = {
 			event.returnValue = true;
 		});		
 	},
-	passAccountHistory: function(client) {
-		ipcMain.on('save-account-history', (event, arg) => {
-			store.set('saved-account-history', arg);
-		});
-	},
 	
 	getAccountHistory: function (client) {
 
