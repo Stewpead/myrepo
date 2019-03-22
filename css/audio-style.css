@@ -2,9 +2,6 @@
 #main {
     font-size: 12px;
 }
-button {
-    background-color: white !important;
-}
 body {
     text-transform: capitalize;
 }
@@ -71,6 +68,8 @@ tbody {
 #bodycolumn {
     height: 80vh;
     padding-right: 3%; 
+    padding-left: 5%;
+    margin-right: 3%;
     font-size: 10px;
 }
 /* #bgvids {
@@ -91,6 +90,8 @@ ul.list-group:after {
     padding: 0;
 }
 .section-divider {
+    margin: 0;
+    padding: 0;
     width: 100%; 
     text-align: left; 
     border-bottom: 1px solid #818181; 
@@ -112,6 +113,7 @@ ul.list-group:after {
     background-color:rgb(0, 0, 0);
 }
 span#divider-text {
+    margin-left: -15px;
     background-color: #000;
     padding: 0 20px 0 0;
     cursor: pointer;
@@ -119,25 +121,8 @@ span#divider-text {
 span#divider-text:hover {
     color: #ed1c24;
 }
-.grid-cards {
-    cursor: pointer;
-    height: 364px;
-    max-width: 200px;
-    margin: 5px;
-    border-radius: 2px;
-    overflow: hidden;
-    text-align: left;
-    padding: 5px;
-    padding-bottom: 15px;
-    font-size: 12px;
-    line-height: 7px;
-}
-.grid-cards:hover {
-    background-color:#222222;
-}
-.grid-cards .container img {
-    width: 100%;
-    margin: auto;
+.headerContents {
+    font-weight: bold;
 }
 #videoImage {
     width: auto;
@@ -187,11 +172,9 @@ span#divider-text:hover {
     border-radius: 0 !important;
     background-color: #ed1c24;
 } 
-.btn {
-    background-color: #ed1c24 !important;
-}
+
 #fileImageDiv {
-    width: 90%;
+    width: auto;
     margin: auto;
     margin-top: 20px;
 }
@@ -232,3 +215,82 @@ td:hover {
     margin-left: -5px;
     color: #999999;
 }
+.audio-artist-details {
+    min-height: 32px;
+}
+
+.audio-artist-metadata .audio-artist-albums .audio-artist-each-album .img {
+    width: 100%;
+    display: block;
+    height: 148px;
+    background-size: contain;	
+    cursor: pointer;
+}
+.audio-artist-metadata .audio-artist-albums .audio-artist-each-album .img.active {
+    border: 2px solid red;
+}
+
+.audio-artist-details .audio-artist-metadata .audio-artist-albums .audio-artist-each-album .img.active:before {
+    content: '\E73E';
+    color: white;
+    float: right;
+    top: -13px;
+    position: relative;
+    background: red;
+    border-radius: 36px;
+    height: 26px;
+    width: 25px;
+    padding: 0px 5px;
+    right: -9px;
+    font-family: 'Segoemdl2';
+    font-weight: bolder;
+}
+.album-artist-title #albumAudioTitle {
+    font-size: 18px;
+}
+.album-artist-description #albumAudioDescript {
+    margin-top: 20px;
+    font-size: 11px;
+    text-align: justify;
+}
+#tracks {
+    font-size: 18px;
+}
+.trackList {
+    font-size: 12px;
+}
+#track-section {
+    color: #888888;
+}
+table {
+    width: 100%;
+    overflow-x: scroll;
+}
+.tracksListdiv {
+    height: 180px;
+    line-height: 50px;
+    overflow-y: auto;
+}
+.tracksListdiv::-webkit-scrollbar {
+    display: block;
+    width: 10px;
+    border-radius: 10px;
+    padding-top: 5%;
+    padding-bottom: 5%; 
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.tracksListdiv::-webkit-scrollbar-track { 
+    background: #111111; 
+    border-radius: 10px;
+    box-shadow: inset 0 0 8px grey; 
+}
+.tracksListdiv::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+    display: block;
+}
+.tracksListdiv::-webkit-scrollbar-thumb:hover {
+    background: #555555; 
+    border-radius: 10px;
+} 
+

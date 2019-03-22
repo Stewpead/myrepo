@@ -39,6 +39,7 @@ module.exports = {
   },
   
   getAccountHistory: function (data) {
+    console.log("1124 Response: " + data);
     defaultWindow.webContents.send('response-acc-history-display', data);
 
   },
@@ -60,7 +61,7 @@ module.exports = {
   sendFund: function (data) {
 
     defaultWindow.webContents.send('avx-account-send-wallet', data);
-    
+
   },
   
   getAsset: function (data) {
@@ -102,7 +103,7 @@ module.exports = {
   },
 
   addTransactionData: function(data) {
-    console.log(data);
+    console.log("Response from 1134: " + data);
    defaultWindow.webContents.send('add-transaction-history', data);
   }
 

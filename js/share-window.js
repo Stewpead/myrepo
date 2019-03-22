@@ -577,7 +577,7 @@ setTimeout(function() {
 			
 		} else {
 			$(this).addClass('open');
-			
+			 
 		}
 		
 	});

@@ -12,7 +12,9 @@
 		</p>
 		<div class="input-holder">
 			<div class="amount-holder">
-				<input type="number" id="avxquantity" placeholder="0.00">
+				<input type="number" id="avxquantity" placeholder="0.00"><br />
+				<span style="float: left; font-size: 12px;">Total AVX to send (Transaction fee 0.1%) = &nbsp;</span>
+				<span style="float: left; color: #e42525; font-size: 12px;" id="txFee">0.000</span> <br />
 				<p>AVX Quantity to export</p>
 			</div> 
 			<div class="wallet-info">
@@ -22,6 +24,7 @@
 		</div>
 		<div class="share-modal-options row">
 			<div class="col-7">
+				<span style="float: left; text-align:justify; font-size: 10px;">Transferring AVX Token to someone you don't know? This feature is not reversible. Please read this important note on customer protection.</span>
 			</div>
 			<div class="col-5">
 				 <a href="#" id="btnSendtoken" class="btn btn-danger float-right">Send</a>
@@ -56,6 +59,13 @@
     </div>
 </div>
 
+<div class="popup sendToken" pd-popup="accountBalanceInsufficient">
+	<div class="popup-inner scroll-skin">
+	<p> Wallet Insufficient.</p>
+	</div>
+</div>
+
+
 <script>
 
 
@@ -75,29 +85,40 @@ jQuery(document).ready(function($) {
 			e.preventDefault();
 			
 	});
+ 
+	var num1 = 0.0;
 	
+	$('#avxquantity').keydown( () => {
+		let avxQ = document.getElementById('avxquantity').value;
+		num1 = avxQ * .001;
+		num1 = parseFloat(num1).toFixed(4);
+		document.getElementById('txFee').innerHTML = num1;
+	});
+	$('#avxquantity').keypress( () => {
+		let avxQ = document.getElementById('avxquantity').value;
+		num1 = avxQ * .001;
+		num1 = parseFloat(num1).toFixed(4);
+		document.getElementById('txFee').innerHTML = num1;
+	});
+
+
+
 	$('#btnSendtoken').click( function (e) {
 
 		e.preventDefault();
 
 		$('#btnSendtoken').prop('disabled', true).addClass('disabled', true);
 		var json1 = {}; 
-		json1.data = {}; 
-		json1.status = 1115;
- 
-		// var amount = ; 
-		
-		json1.data.sender = $(".WaddressAccountWindow").text();
-  
-		json1.data.receiver = document.getElementById('receiver').value;
+		var totalAmountToSend = 0;
+		var amount = 0;
+		amount = document.getElementById('avxquantity').value;
 
-		json1.data.amount = document.getElementById('avxquantity').value;
-		
-		jsonString1 = JSON.stringify(json1);
+		totalAmountToSend = parseFloat(amount) + parseFloat(num1);
 
 		if( document.getElementById('receiver').value == "" || document.getElementById('avxquantity').value == "" ) {
 			
 			$('[pd-popup="accountSendIncompleteDetailsModal"]').fadeIn(100);
+
 			$('#btnSendtoken').prop('disabled', false).removeClass('disabled');
 
 			setTimeout( () => {
@@ -122,9 +143,41 @@ jQuery(document).ready(function($) {
 				$('#btnSendtoken').prop('disabled', false).removeClass('disabled');
 
 			}, 1000);
- 
+
+		// } else if ( totalAmountToSend < 0) {
+		// 	console.log('totalAmountToSend: ' + totalAmountToSend + ", AVX BALANCE: " + avxTokens);
+		// 	$('[pd-popup="accountBalanceInsufficient"]').fadeIn(100);
+
+		// 	$('#btnSendtoken').prop('disabled', false).removeClass('disabled');
+
+		// 	setTimeout( () => {
+		// 		$('[pd-popup="accountBalanceInsufficient"]').fadeOut(100);
+		// 	}, 1000);
+
+		} else if(totalAmountToSend > avxTokens ) {
+
+			$('[pd-popup="accountBalanceInsufficient"]').fadeIn(100);
+
+			$('#btnSendtoken').prop('disabled', false).removeClass('disabled');
+			setTimeout( () => {
+				$('[pd-popup="accountBalanceInsufficient"]').fadeOut(100);
+			}, 1000);
 		} else {
-			ipcRenderer.send('send-token', jsonString1);
+
+		json1.data = {}; 
+		
+		json1.status = 1115;
+		
+		json1.data.sender = $(".WaddressAccountWindow").text();
+		
+		json1.data.receiver = document.getElementById('receiver').value;
+
+		json1.data.amount = document.getElementById('avxquantity').value;
+		
+		jsonString1 = JSON.stringify(json1);
+
+		ipcRenderer.send('send-token', jsonString1);
+
 		}
 	});
 
@@ -150,7 +203,7 @@ jQuery(document).ready(function($) {
 						$('[pd-popup="accountSendToSuccessModal"]').fadeOut(100);
 
 						$('#btnSendtoken').prop('disabled', false).removeClass('disabled');
-						
+
 						$('[pd-popup="accountSendToModal"]').fadeOut(100);
 					}, 2000);
 
@@ -164,7 +217,6 @@ jQuery(document).ready(function($) {
 	});
 
 });
-
 
 
 

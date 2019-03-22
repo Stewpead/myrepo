@@ -16,7 +16,7 @@ var jdata = {
 ///////////////////////=================================================================================================================
  jdata = JSON.stringify(jdata);
  ipcRenderer.send('get-wallet-data', jdata);
- 
+
 // Real time wallet data retrieval 
 ipcRenderer.on('avx-wallet-data', (event, arg) => {
     walletData = arg; 
@@ -38,9 +38,7 @@ setTimeout( () => {
 }, 100);
 
 $(document).ready(function () {
-
     $('#btnMergeTx').click();
-
 });
 
 $('#btnMergeTx').click(() => {
@@ -52,7 +50,7 @@ $('#btnIncomingTx').click(() => {
     document.getElementById('btnIncomingTx').style.color = 'white';
     document.getElementById('btnMergeTx').style.color = '#818181';
     document.getElementById('btnOutcomingTx').style.color = '#818181';
-});
+}); 
 $('#btnOutcomingTx').click(() => {
     document.getElementById('btnOutcomingTx').style.color = 'white';
     document.getElementById('btnMergeTx').style.color = '#818181';
@@ -197,7 +195,7 @@ $('#btnOutcomingTx').click(() => {
 
 //Request for account transaction history
 var holder = store.get('boolean-transaction-history');
-// store.delete('boolean-transaction-history');
+store.delete('boolean-transaction-history');
 
 if( holder ) {
 
@@ -207,57 +205,66 @@ if( holder ) {
     accHistory = JSON.stringify(accHistory);
     ipcRenderer.send('request-account-history', accHistory);
 }
+
 holder = false;
 //Load Data to populate tables
 
 
 // 1124 all transactions but will be requested only once
+
 // 1134 add transaction data
+
 // 1132 update transaction status
 
-//1124 Get transaction history
-ipcRenderer.on('response-acc-history-display', (event, arg) => {
 
+//1124 Get transaction history
+var accountTx;
+ipcRenderer.on('response-acc-history-display', (event, arg) => {
+    accountTx = arg;
     let txRecord = [];
 
-    for ( var key in arg['data']) {
+    for ( var key in accountTx['data']) {
 
         txRecord[key] = [];
 
-        for (var status in arg['data'][key]) {
+        for (var status in accountTx['data'][key]) {
 
-            for (var i in arg['data'][key][status]) {
+            for (var i in accountTx['data'][key][status]) {
 
-                if (arg['data'][key][status] && arg['data'][key][status][i]) {
+                if (accountTx['data'][key][status] && accountTx['data'][key][status][i]) {
 
                     txRecord[key][status] += '<tr>';
 
                     if( key == "0" ) {
 
-                        txRecord[key][status] += '<td id="' + arg['data'][key][status][i][5] + '">Pending</td>';
+                        txRecord[key][status] += '<td id="' + accountTx['data'][key][status][i][5] + '">Pending</td>';
                     
                     } else if( key == "1") {
 
-                        txRecord[key][status] += '<td id="' + arg['data'][key][status][i][5] + '">Verified</td>';
+                        txRecord[key][status] += '<td id="' + accountTx['data'][key][status][i][5] + '">Verified</td>';
                     }
-                    txRecord[key][status] += '<td>' + arg['data'][key][status][i][4] + '</td>';
-                    txRecord[key][status] += '<td>' + arg['data'][key][status][i][0] +'</td>';
-                    txRecord[key][status] += '<td>' + arg['data'][key][status][i][1] +'</td>';
+                    txRecord[key][status] += '<td>' + accountTx['data'][key][status][i][4] + '</td>';
+                    txRecord[key][status] += '<td>' + accountTx['data'][key][status][i][0] +'</td>';
+                    txRecord[key][status] += '<td>' + accountTx['data'][key][status][i][1] +'</td>';
                     txRecord[key][status] += '<td>Description Message Sample</td>';
-                    txRecord[key][status] += '<td>' + arg['data'][key][status][i][2] + '</td>';
-                    txRecord[key][status] += '<td>' + arg['data'][key][status][i][3] + '</td>';
-                    txRecord[key][status] += '<td>' + arg['data'][key][status][i][5] + '</td>';
+                    txRecord[key][status] += '<td>' + accountTx['data'][key][status][i][2] + '</td>';
+                    txRecord[key][status] += '<td>' + accountTx['data'][key][status][i][3] + '</td>';
+                    txRecord[key][status] += '<td>' + accountTx['data'][key][status][i][5] + '</td>';
                     txRecord[key][status] += '</tr>';
                 }
             }
         }
     }
     
-    ipcRenderer.send('save-account-history', txRecord);
+
+    ipcRenderer.send('save-account-history', accountTx);
+
     $('#incoming tbody').html(txRecord["0"]["in"] + txRecord["1"]["in"]);
     $('#outgoing tbody').html(txRecord["0"]["out"] + txRecord["1"]["out"]);
     $('#merged tbody').html(txRecord["0"]["in"] + txRecord["1"]["in"] + txRecord["0"]["out"] + txRecord["1"]["out"]);
 });
+//1124 Populate screen - account history
+
 
     // response of 1132 - update transaction status
     ipcRenderer.on('wallet-update-history', (event,arg) => {
@@ -265,49 +272,53 @@ ipcRenderer.on('response-acc-history-display', (event, arg) => {
         if(arg['data']) {
 
             var targetTx = arg['tx_hash'];
-            
-            document.getElementById(targetTx).innerHTML = "Verified";
 
+            //document.getElementById(targetTx).innerHTML = "Verified";
+            $("#" + targetTx).html("Verified");
         }
     });
 
     // response of 1134 - add transaction status
     ipcRenderer.on('add-transaction-history', (event,arg) => {
         let jData = arg;
-        let txRecordTemp = [];
+        arg.out = {};
+        var txRecordTemp = [];
+        console.log(arg);
 
-        txRecordTemp = store.get('saved-account-history');
-
-        store.delete('saved-account-history');
-
-        for( var key in jData['data']) {
-            if( key == "out") {
-                txRecordTemp['0']['out'] += '<tr>';
-                txRecordTemp['0']['out'] += '<td id="' + jData['data'][0][5] + '">Pending</td>';
-                txRecordTemp['0']['out'] += '<td id="' + jData['data'][0][4] + '"></td>';
-                txRecordTemp['0']['out'] += '<td id="' + jData['data'][0][0] + '"></td>';
-                txRecordTemp['0']['out'] += '<td id="' + jData['data'][0][1] + '"></td>';
-                txRecordTemp['0']['out'] += '<td>Description Message Sample</td>';
-                txRecordTemp['0']['out'] += '<td id="' + jData['data'][0][2] + '"></td>';
-                txRecordTemp['0']['out'] += '<td id="' + jData['data'][0][3] + '"></td>';
-                txRecordTemp['0']['out'] += '<td id="' + jData['data'][0][5] + '"></td>';
-                txRecordTemp['0']['out'] += '</tr>';
-            } else if( key == "in") {
-                txRecordTemp['0']['in'] += '<tr>';
-                txRecordTemp['0']['in'] += '<td id="' + jData['data'][0][5] + '">Pending</td>';
-                txRecordTemp['0']['in'] += '<td id="' + jData['data'][0][4] + '"></td>';
-                txRecordTemp['0']['in'] += '<td id="' + jData['data'][0][0] + '"></td>';
-                txRecordTemp['0']['in'] += '<td id="' + jData['data'][0][1] + '"></td>';
-                txRecordTemp['0']['in'] += '<td>Description Message Sample</td>';
-                txRecordTemp['0']['in'] += '<td id="' + jData['data'][0][2] + '"></td>';
-                txRecordTemp['0']['in'] += '<td id="' + jData['data'][0][3] + '"></td>';
-                txRecordTemp['0']['in'] += '<td id="' + jData['data'][0][5] + '"></td>';
-                txRecordTemp['0']['in'] += '</tr>';
+        if (arg['out'] != "") {
+            for( var key in arg['out']) {
+                    txRecordTemp['out'][key] += '<tr>';
+                    txRecordTemp['out'][key] += '<td id="' + arg['out'][0][5] + '">Pending</td>';
+                    txRecordTemp['out'][key] += '<td id="' + arg['out'][0][4] + '"></td>';
+                    txRecordTemp['out'][key] += '<td id="' + arg['out'][0][0] + '"></td>';
+                    txRecordTemp['out'][key] += '<td id="' + arg['out'][0][1] + '"></td>';
+                    txRecordTemp['out'][key] += '<td>Description Message Sample</td>';
+                    txRecordTemp['out'][key] += '<td id="' + arg['out'][0][2] + '"></td>';
+                    txRecordTemp['out'][key] += '<td id="' + arg['out'][0][3] + '"></td>';
+                    txRecordTemp['out'][key] += '<td id="' + arg['out'][0][5] + '"></td>';
+                    txRecordTemp['out'][key] += '</tr>';
             }
         }
-        console.log(txRecordTemp);
-        $('#incoming tbody').html(txRecordTemp["0"]["in"] + txRecordTemp["1"]["in"]);
-        $('#outgoing tbody').html(txRecordTemp["0"]["out"] + txRecordTemp["1"]["out"]);
+
+        if( arg['in'] != "") {
+            for( var key in arg['in']) {
+                txRecordTemp['in'][key] += '<tr>';
+                txRecordTemp['in'][key] += '<td id="' + arg['data'][0][5] + '">Pending</td>';
+                txRecordTemp['in'][key] += '<td id="' + arg['data'][0][4] + '"></td>';
+                txRecordTemp['in'][key] += '<td id="' + arg['data'][0][0] + '"></td>';
+                txRecordTemp['in'][key] += '<td id="' + arg['data'][0][1] + '"></td>';
+                txRecordTemp['in'][key] += '<td>Description Message Sample</td>';
+                txRecordTemp['in'][key] += '<td id="' + arg['data'][0][2] + '"></td>';
+                txRecordTemp['in'][key] += '<td id="' + arg['data'][0][3] + '"></td>';
+                txRecordTemp['in'][key] += '<td id="' + arg['data'][0][5] + '"></td>';
+                txRecordTemp['in'][key] += '</tr>';
+            }
+        }
+
+
+        $('#incoming tbody').append(txRecordTemp["in"]);
+        $('#outgoing tbody').append(txRecordTemp["out"]);
+
     });
     
     

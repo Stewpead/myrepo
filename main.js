@@ -32,13 +32,11 @@ var Status = {
 	GENERATE_DOWNLOAD: 1117,
 	GET_BALANCE: 1121,
 	GET_ASSET: 1122,
-	// GET_SPENT: 1124,
-	// GET_PUBLICKEY: 1125,
+	GET_ACCOUNT_HISTORY: 1124,
 	GET_METADATA_DIR_TREE: 1127,
 	GET_FILE_DETAILS: 1131,
 	GET_UPDATED_ACCOUNT_HISTORY: 1132,
 	ADD_TRANSACTION_DATA: 1134,
-	GET_ACCOUNT_HISTORY: 1124,
 	GET_FILE_INFO: 1128,
 	GET_WALLET_DATA: 1130,
 	WALLET_BALANCE: 2000,
@@ -74,8 +72,8 @@ var initiateConnection = function(attempt){
 		module.checkStatus(client);
 		module.sharePaymentAsset(client);
 		module.getSpent(client);
+		module.passAccountHistory();
 		module.getAccountHistory(client);
-		module.saveAccountHistory();
 		module.getAccountWalletAddress(client);
 		module.getAssset(client);
 		module.getFileInfo(client);
