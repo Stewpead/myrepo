@@ -131,9 +131,9 @@ function signin() {
 	ipcRenderer.on('signin-response', (event, arg) => {
 		
 		if( arg == "true" ) {
-			var bool  = true;
+			// var bool  = true;
 			$('[pd-popup="loginSuccessModal"]').fadeIn(100);
-			store.set('boolean-transaction-history' , bool);
+			// store.set('boolean-transaction-history' , bool);
 
 		}
 		else if( arg == "false" ) {

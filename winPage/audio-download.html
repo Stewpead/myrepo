@@ -51,266 +51,429 @@
             <a href="#" onclick="location.href = 'settings-window.html'" style="padding-bottom: 50px;"><span class="icon-segoe segoe-settings" id="sidelinks"></span><br>Settings</a>
         </div>
         <div id="main">
-            <div id="bgvids">
-                <div class="container-fluid">
-                    <div class="row"> 
-                        <div class="col-lg-12 mt-2">
-                            <div class="float-right mr-2">
-                                <a href="#" id="btnSignout"><span class="icon-segoe segoe-close-pane"> Sign out </span></a>    
-                                <a href="wishlist-window.html"><span class="mdi mdi-heart-outline"> Wishlist </span></a>
-                            </div>
+            <div class="container-fluid">
+                <div class="row"> 
+                    <div class="col-lg-12 mt-2">
+                        <div class="float-right mr-2">
+                            <a href="#" id="btnSignout"><span class="icon-segoe segoe-close-pane"> Sign out </span></a>    
+                            <a href="wishlist-window.html"><span class="mdi mdi-heart-outline"> Wishlist </span></a>
                         </div>
                     </div>
-                    <div class="row"> 
-                        <div class="col-lg-6 mt-3">
-                            <a href="#" id="btnBack"> <span class="mdi mdi-arrow-left"> Back</span>  </a>
-                        </div>
-                        <div class="col-lg-6 mt-3">
-                            <div style="margin-left:10vh;">
-                                <div class="p-4 mr-2" id="">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Movie Titles or Audio Tracks" aria-label="Movie Titles or Audio Tracks" aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-danger" type="button" style="color:white;"> Search</button>
-                                        </div>
+                </div>
+                <div class="row"> 
+                    <div class="col-lg-6 mt-3">
+                        <a href="#" id="btnBack"> <span class="mdi mdi-arrow-left"> Back</span>  </a>
+                    </div>
+                    <div class="col-lg-6 mt-3">
+                        <div style="margin-left:10vh;">
+                            <div class="p-4 mr-2" id="">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Movie Titles or Audio Tracks" aria-label="Movie Titles or Audio Tracks" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-danger" type="button" style="color:white;"> Search</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row"> 
-                            <div class="col-md-3" id="fileImageDiv">
-                                <div class="ml-1"id="fileImage">
-                                    
-                                </div>
-                            </div>
-                        <div class="col-lg-9">
-                            <div style="float:left;">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <h4 id="filetitle" style="display: inline-block"></h4> <h6 id="fileyear" style="display: inline-block">2018</h6>
-                                            <ul class="nav" id="tabsfileDetails">
-                                                <li id="fileCost">
-
-                                                </li>
-                                                <li id="videolength">
-                                                    2 h 46 min
-                                                </li>
-                                                <li id="fileSize">
-
-                                                </li>
-                                                <li id="fileExtension">
-                                                    MP4
-                                                </li>
-                                                <li id="resolution">
-
-                                                </li>
-                                                <li id="videoEncoded">
-                                                    H.264
-                                                </li>
-                                                <li id="audioEncoded">
-                                                    ACC Stereo
-                                                </li>
-                                                <li id="fileOwner">
-                                                    See Ownership
-                                                </li>
-                                            </ul>
-                                            <br>
-                                            <p id="movieplot">
-                                                Iron Man, Thor, the Hulk and the rest of the Avengers unite to battle their most powerful enemy yet -- the evil Thanos. On a mission to collect all six Infinity Stones, Thanos plans to use the artifacts to inflict his twisted will on reality. The fate of the planet and existence itself has never been more uncertain as everything the Avengers have fought for has led up to this moment.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+                </div>
+                <div class="row"> 
+                    <div class="col-md-3" id="fileImageDiv">
+                        <div class="ml-1"id="fileImage">
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div style="float:left;">
+                            <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="d-flex justify-content-start">
-                                            <div class="p-2 bd-highlight">
-                                                <button class="btn btn-outline-light" id="btnViewFiles">View Files</button>
-                                            </div>
-                                            <div class="p-2 bd-highlight">
-                                                <button class="btn btn-outline-light" id="btnWishlist">Add to Wishlist</button>
-                                            </div>
-                                            <div class="p-2 bd-highlight">
-                                                <button class="btn btn-danger" id="btnBuy">Buy now</button>
-                                            </div>
+                                        <h4 id="filetitle" style="display: inline-block"></h4> <h6 id="fileyear" style="display: inline-block">2018</h6>
+                                        <ul class="nav" id="tabsfileDetails">
+                                            <li id="fileCost">
+                                                40 AVX
+                                            </li>
+                                            <li id="streamlength">
+                                                51:45 MIN
+                                            </li>
+                                            <li id="fileSize">
+                                                1.09GB
+                                            </li>
+                                            <li id="fileExtension">
+                                                FLAC
+                                            </li>
+                                            <li id="resolution">
+                                                320 Kbps
+                                            </li>
+                                            <li id="audioEncoded">
+                                                Stereo 
+                                            </li>
+                                            <li id="fileOwner">
+                                                See Ownership
+                                            </li>
+                                        </ul>
+                                        <br>
+                                        <p id="movieplot">
+                                            Iron Man, Thor, the Hulk and the rest of the Avengers unite to battle their most powerful enemy yet -- the evil Thanos. On a mission to collect all six Infinity Stones, Thanos plans to use the artifacts to inflict his twisted will on reality. The fate of the planet and existence itself has never been more uncertain as everything the Avengers have fought for has led up to this moment.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="d-flex justify-content-start">
+                                        <div class="p-2 bd-highlight">
+                                            <button class="btn btn-outline-light" id="btnViewFiles">View Files</button>
+                                        </div>
+                                        <div class="p-2 bd-highlight">
+                                            <button class="btn btn-outline-light" id="btnWishlist">Add to Wishlist</button>
+                                        </div>
+                                        <div class="p-2 bd-highlight">
+                                            <button class="btn btn-danger" id="btnBuy">Buy now</button>
                                         </div>
                                     </div>
                                 </div>
-                                <br>
                             </div>
-                        </div>                
+                            <br>
+                        </div>
+                    </div>                
+                </div>
+                <div class="row mt-5">
+                    <div class="col-md-3">
+
                     </div>
-                    <div class="row mt-5">
+                    <div class="col-lg-9" id="styleRow">
+                        <div class="row">
+                            <div class="section-divider">
+                                <ul>
+                                    <li style="background-color: #000; margin: 50px 0 0 0;">
+                                        <span id="divider-text"> Track List </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3">
+
+                        </div>
+                        <div class="col-lg-9">
+
+                            <span>No. Tracks: </span> <span id="tracksCount" class="headerContents"> 10 &nbsp;&nbsp;&nbsp;</span>
+                            
+                            <span>Producer: </span> <span id="producerLabel" class="headerContents"> Garth Richardson &nbsp;&nbsp;&nbsp;</span>
+
+                            <span> Label: </span> <span id="studioRecords" class="headerContents"> Epic/Sony Records &nbsp;&nbsp;&nbsp;</span>
+
+                            <span> Release date: </span> <span id="releaseDate" class="headerContents"> 1992 </span>
+                        </div>
+                    </div>
+                    <div class="row" class="track-section">
                         <div class="col-md-3">
 
                         </div>
-                        <div class="col-lg-9" id="styleRow">
-                            <div class="row">
-                                <div class="section-divider">
-                                    <ul>
-                                        <li style="background-color: #000; margin: 50px 0 0 0;">
-                                            <span id="divider-text"> Media details </span>
-                                        </li>
-                                    </ul>
+                        <div class="col-lg-9 mt-3">
+                            <div class="row mt-2 track-section">
+                                <div class="col-lg-1 tractTitle">
+                                    <span id="01">01</span>
+                                </div>
+                                <div class="col-lg-3 tractTitle">
+                                    <span>Killing In the Name</span>
+                                </div>
+                                <div class="col-lg-1">
+                                    <span> 4:04 </span>
+                                </div>
+                                <div class="col-lg-2" >
+                                    <span> 9:00 MB </span>
+                                </div>
+                                <div class="col-lg-2">
+                                    <span class="mdi mdi-download"></span> <span>720, 572</span>
+                                </div>
+                                <div class="col-lg-3">
+                                    <span>... view files available</span>
+                                </div>
+                            </div>
+                            <div class="row mt-2 track-section">
+                                <div class="col-lg-1 tractTitle">
+                                    <span id="01">01</span>
+                                </div>
+                                <div class="col-lg-3 tractTitle">
+                                    <span>Killing In the Name</span>
+                                </div>
+                                <div class="col-lg-1">
+                                    <span> 4:04 </span>
+                                </div>
+                                <div class="col-lg-2" >
+                                    <span> 9:00 MB </span>
+                                </div>
+                                <div class="col-lg-2">
+                                    <span class="mdi mdi-download"></span> <span>720, 572</span>
+                                </div>
+                                <div class="col-lg-3">
+                                    <span>... view files available</span>
+                                </div>
+                            </div>
+                            <div class="row mt-2 track-section">
+                                <div class="col-lg-1 tractTitle">
+                                    <span id="01">01</span>
+                                </div>
+                                <div class="col-lg-3 tractTitle">
+                                    <span>Killing In the Name</span>
+                                </div>
+                                <div class="col-lg-1">
+                                    <span> 4:04 </span>
+                                </div>
+                                <div class="col-lg-2">
+                                    <span> 9:00 MB </span>
+                                </div>
+                                <div class="col-lg-2">
+                                    <span class="mdi mdi-download"></span> <span>720, 572</span>
+                                </div>
+                                <div class="col-lg-3">
+                                    <span>... view files available</span>
+                                </div>
+                            </div>
+                            <div class="row mt-2 track-section">
+                                <div class="col-lg-1 tractTitle">
+                                    <span id="01">01</span>
+                                </div>
+                                <div class="col-lg-3 tractTitle">
+                                    <span>Killing In the Name</span>
+                                </div>
+                                <div class="col-lg-1">
+                                    <span> 4:04 </span>
+                                </div>
+                                <div class="col-lg-2" >
+                                    <span> 9:00 MB </span>
+                                </div>
+                                <div class="col-lg-2">
+                                    <span class="mdi mdi-download"></span> <span>720, 572</span>
+                                </div>
+                                <div class="col-lg-3">
+                                    <span>... view files available</span>
+                                </div>
+                            </div>
+                            <div class="row mt-2 track-section">
+                                <div class="col-lg-1 tractTitle">
+                                    <span id="01">01</span>
+                                </div>
+                                <div class="col-lg-3 tractTitle">
+                                    <span>Killing In the Name</span>
+                                </div>
+                                <div class="col-lg-1">
+                                    <span> 4:04 </span>
+                                </div>
+                                <div class="col-lg-2" >
+                                    <span> 9:00 MB </span>
+                                </div>
+                                <div class="col-lg-2">
+                                    <span class="mdi mdi-download"></span> <span>720, 572</span>
+                                </div>
+                                <div class="col-lg-3">
+                                    <span>... view files available</span>
+                                </div>
+                            </div>
+                            <div class="row mt-2 track-section">
+                                <div class="col-lg-1 tractTitle">
+                                    <span id="01">01</span>
+                                </div>
+                                <div class="col-lg-3 tractTitle">
+                                    <span>Killing In the Name</span>
+                                </div>
+                                <div class="col-lg-1">
+                                    <span> 4:04 </span>
+                                </div>
+                                <div class="col-lg-2" >
+                                    <span> 9:00 MB </span>
+                                </div>
+                                <div class="col-lg-2">
+                                    <span class="mdi mdi-download"></span> <span>720, 572</span>
+                                </div>
+                                <div class="col-lg-3">
+                                    <span>... view files available</span>
+                                </div>
+                            </div>
+                            <div class="row mt-2 track-section">
+                                <div class="col-lg-1 tractTitle">
+                                    <span id="01">01</span>
+                                </div>
+                                <div class="col-lg-3 tractTitle">
+                                    <span>Killing In the Name</span>
+                                </div>
+                                <div class="col-lg-1">
+                                    <span> 4:04 </span>
+                                </div>
+                                <div class="col-lg-2">
+                                    <span> 9:00 MB </span>
+                                </div>
+                                <div class="col-lg-2">
+                                    <span class="mdi mdi-download"></span> <span>720, 572</span>
+                                </div>
+                                <div class="col-lg-3">
+                                    <span>... view files available</span>
+                                </div>
+                            </div>
+                            <div class="row mt-2 track-section">
+                                <div class="col-lg-1 tractTitle">
+                                    <span id="01">01</span>
+                                </div>
+                                <div class="col-lg-3 tractTitle">
+                                    <span>Killing In the Name</span>
+                                </div>
+                                <div class="col-lg-1">
+                                    <span> 4:04 </span>
+                                </div>
+                                <div class="col-lg-2">
+                                    <span> 9:00 MB </span>
+                                </div>
+                                <div class="col-lg-2">
+                                    <span class="mdi mdi-download"></span> <span>720, 572</span>
+                                </div>
+                                <div class="col-lg-3">
+                                    <span>... view files available</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-3">
-
-                                </div>
-                                <div class="col-lg-9">
-                                    <div class="row meta-data-details">
-                                        <div class="col-lg-4">
-                                            <br />
-                                            <label class="full-width video-reso">Subtitles: <strong id="ddownSubs">English (SRT External)</strong> </label>
-                                            <br />
-                                            <hr />
-                                            <label class="full-width video-duration" >Codec: <strong>SRT</strong> </label>
-                                            <br />
-                                            <label class="full-width video-size">Language: <strong>English</strong> </label>
-                                            <br />
-                                            <label class="full-width audio-video-bitrate">Display Title: <strong>English (SRT External)</strong> </label>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <br />
-                                            <label class="full-width video-reso">Audio: <strong id="ddownAudio">English(AAC Stereo)</strong> </label>
-                                            <br />
-                                            <hr />
-                                            <label class="full-width video-duration" >Codec: <strong>SRT</strong> </label>
-                                            <br />
-                                            <label class="full-width video-size">Language: <strong>English</strong> </label>
-                                            <br />
-                                            <label class="full-width audio-video-bitrate">Display Title: <strong>English (SRT External)</strong> </label>
-                                        </div>
-                                    </div>    
-                                    <div class="row meta-data-details mt-2">
-                             
-                                        <div class="col-4"><br>
-                                            <label class="full-width video-reso">Video Resolution: <strong>1080p</strong> </label>
-                                            <br />
-                                            <label class="full-width video-duration" >Duration: <strong>1:59:01</strong> </label>
-                                            <br />
-                                            <label class="full-width video-size">Size: <strong>1.91 GB</strong> </label>
-                                            <br />
-                                            <label class="full-width audio-video-bitrate">Audio & Video Bitrate: <strong>2298 kbps</strong> </label>
-                                            <br />
-                                            <label class="full-width video-width">Width: <strong>1920</strong> </label>
-                                            <br />
-                                            <label class="full-width video-height">Height: <strong>800</strong> </label>
-                                            <br />
-                                            <label class="full-width aspect-ratio">Aspect Ratio: <strong>2.35</strong> </label>
-                                        </div>
-
-                                        <div class="col-4"><br>
-                                            <label class="full-width video-container">Container: <strong>MP4</strong> </label>
-                                            <br />
-                                            <label class="full-width video-frame-rate">Video Frame Rate: <strong>800</strong> </label>
-                                            <br />
-                                            <label class="full-width">Web Optimized: <strong>Yes</strong> </label>
-                                            <br />
-                                            <label class="full-width video-profile">Video Profile: <strong>High</strong> </label>
-                                            <br />
-                                            <label class="full-width video-codec">Video Codec: <strong>H264</strong> </label>
-                                            <br />
-                                            <label class="full-width video-bitrate">Video Bitrate: <strong>1011 kbps</strong> </label>				
-                                        </div>
-                                        
-                                        <div class="col-4"><br>
-                                            <label class="full-width bit-depth">Bit Depth: <strong>8</strong> </label>
-                                            <br />
-                                            <label class="full-width video-frame-rate">Frame Rate: <strong>23.965 fps</strong> </label>
-                                            <br />
-                                            <label class="full-width audio-codec">Audio Codec: <strong>AAC</strong> </label>
-                                            <br />
-                                            <label class="full-width audio-channels">Audio Channels: <strong>2</strong> </label>
-                                            <br />
-                                            <label class="full-width">Audio Bitrate: <strong>149 kbps</strong> </label>
-                                            <br />
-                                            <label class="full-width">Audio Channel Layout: <strong>Stereo</strong> </label>
-                                            <br />
-                                            <label class="full-width">Sampling Rate: <strong>48000 Hz</strong> </label>
-                                        </div>			 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12" id="styleRow">
-                            <div class="row">
-                                <div class="section-divider ml-5">
-                                    <ul>
-                                        <li style="background-color: #000; margin: 50px 0 0 0;">
-                                            <span id="divider-text">File Review & Artistic Review </span>
-                                        </li>
-                                    </ul>
-                                    <div id="toggleBtn2">
-                                        <span class="mdi mdi-arrow-up-drop-circle"> </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="ratings-sector">
-                                        <span id="fileRatings">5.0</span> <span class="mdi mdi-thumb-up-outline mdi-48px"></span>
-                                        <br/>
-                                        <span id="totalRatings">Total Ratings</span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-9 file-ratings">
-                                    <ul class="nav mt-5" id="tabsfileDetails">
-                                        <li>
-                                            <a id="btnFileReview">File Review</a>
-                                        </li>
-                                        <li>
-                                            <a id="btnArtisticReview">Artistic Review</a>
-                                        </li>
-                                    </ul>
-                                    <br />
-                                    <div class="container-fluid">
-                                        <div class="row file-review-row">
-                                            <div class="col-lg-12" id="file-review">
-                                                <div class="row stars-section">
-                                                    <span> As describe &nbsp;</span>
-                                                    <span class="mdi mdi-star"> </span>
-                                                    <span class="mdi mdi-star"> </span>
-                                                    <span class="mdi mdi-star"> </span>
-                                                    <span class="mdi mdi-star"> </span>
-                                                    <span class="mdi mdi-star">&nbsp;</span>
-                                                    <span> &nbsp; Quality &nbsp;</span>
-                                                    <span class="mdi mdi-star"></span>
-                                                    <span class="mdi mdi-star"></span>
-                                                    <span class="mdi mdi-star"></span>
-                                                    <span class="mdi mdi-star"></span>
-                                                    <span class="mdi mdi-star"></span>
-                                                </div>
-                                                <br />
-                                                <div class="row">
-                                                    <div class="col-lg-12 users-review-section">
-                                                        <span>Love it</span><br />
-                                                        <span> userlove123# </span>&nbsp; <span class="mdi mdi-newspaper"></span> <span>March 19, 2018</span> <br />
-                                                        <br />
-                                                        <p id="userReview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pharetra mauris non nunc sollicitudin venenatis. Pellentesque in ante orci. Morbi finibus, dolor a mollis cursus, ipsum nisl consequat ipsum, ut vehicula velit risus nec nunc. Ut ac sollicitudin mauris. Sed efficitur neque sed tortor aliquet luctus ut quis urna. Sed commodo est non venenatis fringilla. Praesent ut tristique urna. Mauris convallis ornare malesuada. Fusce aliquet et orci convallis congue. Fusce vehicula fringilla turpis, quis porttitor lectus aliquam at. Curabitur volutpat nisl quis tellus pellentesque, at aliquet ex mattis.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12" id="artistic-review">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>                                        
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-3">
+
+                </div>
+                <div class="col-lg-9" id="styleRow">
+                    <div class="row">
+                        <div class="section-divider ml-5">
+                            <ul>
+                                <li style="background-color: #000; margin: 50px 0 0 0;">
+                                    <span id="divider-text"> Media details </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <span>Artist: </span> <span id="artistName">Rage Against The Machine</span> <br />
+                            <span>Album: </span> <span id="albumName">Super Hero</span> <br />
+                            <span>Genre: </span> <span id="genreName">Rap metal, Funk metal</span> <br />
+                            <span>Year: </span> <span id="genreName">Rap metal, Funk metal</span> <br />
+                        </div>
+                        <div class="col-lg-4">
+                            <span>Duration: </span> <span id="durationLabel"> 0:51:45 </span> <br />
+                            <span>Size: </span> <span id="sizeLabel"> 1.09GB</span> <br />
+                            <span>Sample Rate: </span> <span id="rateLabel"> 44.1 KHz</span> <br />
+                            <span>Bitrate: </span> <span id="bitrateLabel"> 1, 411 kbps</span> <br />
+
+                        </div>
+                       <div class="col-lg-4">
+                            <span>Container: </span> <span>FLAC reference libFLAC 1.3.2.120141125</span> <br />
+                            <span>Audio Code: </span> <span id="audioCodec">AAC</span> <br />
+                            <span>Audio Channels:</span> <span>2</span> <br />
+                            <span>Audio Channel Layout: </span> <span> stereo</span> <br />
+                       </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row ml-5">
+                        <div class="section-divider ml-5">
+                            <ul>
+                                <li style="background-color: #000; margin: 50px 0 0 0;">
+                                    <span id="divider-text">File Review & Artistic Review </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 pl-5">
+                        <div class="ratings-sector pl-5">
+                            <span id="fileRatings" class="pl-5">5.0</span> <span class="mdi mdi-thumb-up-outline mdi-48px"></span>
+                            <br/>
+                            <span id="totalRatings" class="pl-5">Total Ratings</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 file-ratings">
+                        <ul class="nav mt-5" id="tabsfileDetails">
+                            <li>
+                                <a id="btnFileReview">File Review</a>
+                            </li>
+                            <li>
+                                <a id="btnArtisticReview">Artistic Review</a>
+                            </li>
+                        </ul>
+                        <br />
+                        <div class="container-fluid">
+                            <div class="row file-review-row">
+                                <div class="col-lg-12" id="file-review">
+                                    <div class="row stars-section">
+                                        <span> As describe &nbsp;</span>
+                                        <span class="mdi mdi-star"> </span>
+                                        <span class="mdi mdi-star"> </span>
+                                        <span class="mdi mdi-star"> </span>
+                                        <span class="mdi mdi-star"> </span>
+                                        <span class="mdi mdi-star">&nbsp;</span>
+                                        <span> &nbsp; Quality &nbsp;</span>
+                                        <span class="mdi mdi-star"></span>
+                                        <span class="mdi mdi-star"></span>
+                                        <span class="mdi mdi-star"></span>
+                                        <span class="mdi mdi-star"></span>
+                                        <span class="mdi mdi-star"></span>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-lg-12 users-review-section">
+                                            <span>Love it</span><br />
+                                            <span> userlove123# </span>&nbsp; <span class="mdi mdi-newspaper"></span> <span>March 19, 2018</span> <br />
+                                            <br />
+                                            <p class="userReview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pharetra mauris non nunc sollicitudin venenatis. Pellentesque in ante orci. Morbi finibus, dolor a mollis cursus, ipsum nisl consequat ipsum, ut vehicula velit risus nec nunc. Ut ac sollicitudin mauris. Sed efficitur neque sed tortor aliquet luctus ut quis urna. Sed commodo est non venenatis fringilla. Praesent ut tristique urna. Mauris convallis ornare malesuada. Fusce aliquet et orci convallis congue. Fusce vehicula fringilla turpis, quis porttitor lectus aliquam at. Curabitur volutpat nisl quis tellus pellentesque, at aliquet ex mattis.</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 users-review-section">
+                                            <span>Love it</span><br />
+                                            <span> userlove123# </span>&nbsp; <span class="mdi mdi-newspaper"></span> <span>March 19, 2018</span> <br />
+                                            <br />
+                                            <p class="userReview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pharetra mauris non nunc sollicitudin venenatis. Pellentesque in ante orci. Morbi finibus, dolor a mollis cursus, ipsum nisl consequat ipsum, ut vehicula velit risus nec nunc. Ut ac sollicitudin mauris. Sed efficitur neque sed tortor aliquet luctus ut quis urna. Sed commodo est non venenatis fringilla. Praesent ut tristique urna. Mauris convallis ornare malesuada. Fusce aliquet et orci convallis congue. Fusce vehicula fringilla turpis, quis porttitor lectus aliquam at. Curabitur volutpat nisl quis tellus pellentesque, at aliquet ex mattis.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-12 users-review-section">
+                                            <span>Love it</span><br />
+                                            <span> userlove123# </span>&nbsp; <span class="mdi mdi-newspaper"></span> <span>March 19, 2018</span> <br />
+                                            <br />
+                                            <p class="userReview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pharetra mauris non nunc sollicitudin venenatis. Pellentesque in ante orci. Morbi finibus, dolor a mollis cursus, ipsum nisl consequat ipsum, ut vehicula velit risus nec nunc. Ut ac sollicitudin mauris. Sed efficitur neque sed tortor aliquet luctus ut quis urna. Sed commodo est non venenatis fringilla. Praesent ut tristique urna. Mauris convallis ornare malesuada. Fusce aliquet et orci convallis congue. Fusce vehicula fringilla turpis, quis porttitor lectus aliquam at. Curabitur volutpat nisl quis tellus pellentesque, at aliquet ex mattis.</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 users-review-section">
+                                            <span>Love it</span><br />
+                                            <span> userlove123# </span>&nbsp; <span class="mdi mdi-newspaper"></span> <span>March 19, 2018</span> <br />
+                                            <br />
+                                            <p class="userReview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pharetra mauris non nunc sollicitudin venenatis. Pellentesque in ante orci. Morbi finibus, dolor a mollis cursus, ipsum nisl consequat ipsum, ut vehicula velit risus nec nunc. Ut ac sollicitudin mauris. Sed efficitur neque sed tortor aliquet luctus ut quis urna. Sed commodo est non venenatis fringilla. Praesent ut tristique urna. Mauris convallis ornare malesuada. Fusce aliquet et orci convallis congue. Fusce vehicula fringilla turpis, quis porttitor lectus aliquam at. Curabitur volutpat nisl quis tellus pellentesque, at aliquet ex mattis.</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 users-review-section">
+                                            <span>Love it</span><br />
+                                            <span> userlove123# </span>&nbsp; <span class="mdi mdi-newspaper"></span> <span>March 19, 2018</span> <br />
+                                            <br />
+                                            <p class="userReview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pharetra mauris non nunc sollicitudin venenatis. Pellentesque in ante orci. Morbi finibus, dolor a mollis cursus, ipsum nisl consequat ipsum, ut vehicula velit risus nec nunc. Ut ac sollicitudin mauris. Sed efficitur neque sed tortor aliquet luctus ut quis urna. Sed commodo est non venenatis fringilla. Praesent ut tristique urna. Mauris convallis ornare malesuada. Fusce aliquet et orci convallis congue. Fusce vehicula fringilla turpis, quis porttitor lectus aliquam at. Curabitur volutpat nisl quis tellus pellentesque, at aliquet ex mattis.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12" id="artistic-review">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>                                    
         </div>    
     </body>
     <!-- INCLUDE HTML AREA -->
