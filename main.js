@@ -35,7 +35,7 @@ var Status = {
 	// GET_SPENT: 1124,
 	// GET_PUBLICKEY: 1125,
 	GET_METADATA_DIR_TREE: 1127,
-	GET_FILE_DETAILS: 1131,
+	GET_FOLDER_DETAILS: 1131,
 	GET_UPDATED_ACCOUNT_HISTORY: 1132,
 	ADD_TRANSACTION_DATA: 1134,
 	GET_ACCOUNT_HISTORY: 1124,
@@ -46,7 +46,8 @@ var Status = {
 	REQUEST_FILETRANSFER_STATS: 5003,
 	HAS_REGISTERED_USER : 7001,
 	REQUEST_CRAWLING: 9000,
-	GET_CRAWLING: 9001
+	GET_CRAWLING: 9001,
+	GET_FILE_DETAILS:1135
 };
 
 /*
@@ -88,6 +89,7 @@ var initiateConnection = function(attempt){
 		module.requestFiletransferStats(client);
 		module.requestFileMetadata(client);
 		module.requestUpdateWalletAfterSending(client);
+		module.requestFileSelectedMetadata(client);
 		
 	});
 
@@ -177,7 +179,7 @@ var initiateConnection = function(attempt){
 				moduleDashboard.receiveFiletransferStats(data);
 				break;
 				
-			case Status.GET_FILE_DETAILS: 
+			case Status.GET_FOLDER_DETAILS: 
 				moduleDashboard.receiveFileMetadata(data);
 				break;
 				
@@ -192,6 +194,10 @@ var initiateConnection = function(attempt){
 			case Status.REQUEST_CRAWLING:
 				moduleDashboard.getRequestCrawlingExternalData(data);
 			break;
+				
+			case Status.GET_FILE_DETAILS: 
+				moduleDashboard.receiveFileSelectedMetadata(data);
+				break;
 		}			
 	});
 

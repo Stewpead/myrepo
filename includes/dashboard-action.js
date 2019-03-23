@@ -103,7 +103,13 @@ module.exports = {
   addTransactionData: function(data) {
     console.log(data);
    defaultWindow.webContents.send('add-transaction-history', data);
-  }
+  },
+  
+  receiveFileSelectedMetadata: function (data) {
+
+    defaultWindow.webContents.send('avx-share-respond-file-selected-metadata', data);
+    
+  },
 
 
 };

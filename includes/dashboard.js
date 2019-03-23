@@ -148,7 +148,14 @@ module.exports = {
 			client.write(arg);
 		});
 
-	}
+	},
+
+	requestFileSelectedMetadata: function (client) {
+
+		ipcMain.on('request-file-selected-metadata', (event, arg) => {
+			client.write(arg);
+		});
+	},
 	
 };
 

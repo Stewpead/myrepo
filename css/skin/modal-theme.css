@@ -29,14 +29,14 @@
 
 /*POPUP INNER WHITE*/
 .popup-inner-white {
-    top: -234px;
-    position: relative;
     max-width: 990px;
     padding-left: 66px;
     padding-right: 66px;
     margin: 0 auto;
     color: #000000;
     background: #ffffff;
+    bottom: 0;
+    display: flow-root;
 }
 .popup-inner-white a {
     color: #000000;
@@ -376,6 +376,7 @@ hr#hr {
 }
 .popup.scan-result .popup-inner .file-details .file-metadata .file-actor .file-actor-details {
     text-align: center;
+	float: left;
 }
 .popup.scan-result .popup-inner .file-details .file-metadata .file-actor h3 {
     font-size: 17px;	
@@ -401,7 +402,9 @@ hr#hr {
 	margin-top: 13px;
     font-weight: bold;
     font-size: 13px;
-     margin-bottom: 0;
+    margin-bottom: 0;
+	width: 100%;
+	text-align: center;
 }
 .popup.scan-result .popup-inner .file-details .file-metadata .file-actor-content .file-actor-details .role {
     font-size: 12px;
@@ -544,6 +547,12 @@ hr#hr {
     width: 200px;
 }
 
+.popup-inner .padding-modal {
+	padding-top: 44px;
+    padding-left: 66px;
+    padding-right: 66px;
+}
+
 /*SCAN RESULTS */
 
 .popup[pd-popup="shareConfirmMetadataModal"] .popup-inner.scroll-skin:before {
@@ -561,4 +570,20 @@ hr#hr {
 }
 .popup.validation-event#loginSuccessModal {
     height: 150px;
+}
+
+/* SLIDER */
+.popup-inner .carousel-control-next, .popup-inner .carousel-control-prev {
+	margin-top: 135px;
+    width: 100%;
+}
+.popup-inner .carousel-control-prev span {
+    float: right;
+    right: 42px;
+    position: absolute;
+}
+.popup-inner .carousel-control-next span {
+    float: right;
+    right: 0;
+    position: absolute;
 }
