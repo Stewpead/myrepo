@@ -274,11 +274,8 @@ ipcRenderer.on('response-acc-history-display', (event, arg) => {
         if(arg['tx_hash']) {
 
             var targetTx = arg['tx_hash'];
+            $( "#mergeTable td:contains('" + targetTx +"')" ).parent().find('td:eq(0)').html('Verified');
 
-            // document.getElementById(targetTx).innerHTML = "Verified";
-            console.log("TEST=>" + targetTx);
-
-             $("'." + targetTx + "'").html("Verified");
 
         }
     });

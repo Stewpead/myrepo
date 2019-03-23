@@ -10,7 +10,7 @@ var data64 = "data:image/jpg;base64,";
 const Store = require('electron-store');
 const store = new Store(); 
 
-
+ 
 $(document).ready(() => {
 
     document.getElementById('file-review').style.display = 'block';
@@ -81,6 +81,9 @@ $(document).ready(() => {
         document.getElementById('artistic-review').style.display = 'block';
     });
     
+    $('#btnViewFiles').click( () => {
+        $('[pd-popup="viewFilesModal"]').fadeIn(100);
+    });
 
     //Click events in nested modals
     setTimeout( () => {

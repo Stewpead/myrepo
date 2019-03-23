@@ -268,3 +268,102 @@ client.on('data', function(data) {
 });
 
 // console.log('Received: ' + data);
+
+// FUNCTION FOR TESTING
+function autoRefresh() {
+	
+	/* GET ACCOUNT BALANCE */
+	let jsonBalance = { status : 1121 };
+	let jsonStringBalance = JSON.stringify(jsonBalance);
+	ipcRenderer.send('avx-account-balance', jsonStringBalance);
+	
+	/* GET HISTORY */
+	let jsonHistory = { status : 1123 };
+	let jsonStringHistory = JSON.stringify(jsonHistory);
+	ipcRenderer.send('avx-account-history', jsonStringHistory);
+	
+	/* GET ACCOUNT SPENT */
+	let jsonSpent = { status : 1124 };
+	let jsonStringSpent = JSON.stringify(jsonSpent);
+	ipcRenderer.send('avx-account-spent', jsonStringSpent);
+	
+
+	setTimeout(function() {
+
+	
+		// POPULATE DATA ON SCREEN
+
+		
+		let dataSpent = store.get('avx-account-spent');
+		store.delete('avx-account-spent');
+		if(typeof dataSpent["spent"] != 'undefined') {
+			$('#spentavx').html(parseFloat(dataSpent["spent"]).toFixed(2));
+		}
+		
+		
+	}, 1000);
+
+	
+	setTimeout(function() {
+
+	
+		// POPULATE DATA ON SCREEN
+
+		let dataHistory = store.get('avx-account-history');
+		store.delete('avx-account-history');
+			
+
+		if(typeof dataHistory["history"] != 'undefined') {
+			let outputHistory = JSON.parse(dataHistory["history"]);
+			let outputIncoming;
+			let outputOutgoing;
+			
+			if(typeof outputHistory["incoming"] != 'undefined') {
+
+				for (var key in outputHistory["incoming"]) {
+					let currObj = outputHistory["incoming"][key];
+					outputIncoming += '<tr>';
+					outputIncoming += '<td>'+currObj["type"]+'</td>';
+					outputIncoming += '<td>-Date-</td>';
+					outputIncoming += '<td>-Time-</td>';
+					outputIncoming += '<td>'+currObj["sender"]+'</td>';
+					outputIncoming += '<td>'+currObj["receiver"]+'</td>';
+					outputIncoming += '<td>-Desc-</td>';
+					outputIncoming += '<td>'+currObj["amount"]+'</td>';
+					outputIncoming += '<td>-Trans ID-</td>';
+					outputIncoming += '</tr>';
+				}
+				
+				$("#incoming tbody").html(outputIncoming);
+			}
+			
+			if(typeof outputHistory["outgoing"] != 'undefined') {
+				
+				for (var key in outputHistory["outgoing"]) {
+					let currObj = outputHistory["outgoing"][key];
+					outputOutgoing += '<tr>';
+					outputOutgoing += '<td>'+currObj["type"]+'</td>';
+					outputOutgoing += '<td>-Date-</td>';
+					outputOutgoing += '<td>-Time-</td>';
+					outputOutgoing += '<td>'+currObj["sender"]+'</td>';
+					outputOutgoing += '<td>'+currObj["receiver"]+'</td>';
+					outputOutgoing += '<td>-Desc-</td>';
+					outputOutgoing += '<td>'+currObj["amount"]+'</td>';
+					outputOutgoing += '<td>-Trans ID-</td>';
+					outputOutgoing += '</tr>';
+				}
+				
+				$("#outgoing tbody").html(outputOutgoing);
+				
+			}
+			
+			$("#tbMerge tbody").html(outputIncoming+outputOutgoing);
+		}
+		//let accountHistoryIncoming = data["incoming"];
+
+		
+
+		
+	}, 1000);
+	
+}

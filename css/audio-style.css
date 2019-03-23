@@ -263,11 +263,14 @@ td:hover {
 
 .track-section {
     color: #888888;
+    cursor: pointer;
 }
 .track-section:hover {
     color: white;
 }
-
+.tractTitle {
+    color: white;
+}
 table {
     width: 100%;
     overflow-x: scroll;
@@ -299,4 +302,14 @@ table {
     background: #555555; 
     border-radius: 10px;
 } 
-
+.ratings-sector {
+    font-size: 18px;
+}
+#fileRatings {
+    font-size: 58px;
+}
+p.userReview {
+    padding-right: 25%;
+    overflow: auto;
+    text-align: justify;
+}

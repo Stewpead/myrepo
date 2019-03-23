@@ -562,3 +562,91 @@ hr#hr {
 .popup.validation-event#loginSuccessModal {
     height: 150px;
 }
+
+.validation-event .popup-view-files {
+    max-width: 500px;    
+	/* padding-left: 33px;
+    padding-right: 33px; */
+}
+.popup-view-files  {
+	display: inline-block;
+	text-align: left;
+	vertical-align: middle;
+	position: relative;
+	max-width: 600px;
+	width: 90%;
+	box-shadow: 0px 2px 6px rgba(0, 0, 0, 1);
+	border-radius: 3px;
+	text-align: center;
+	background-color: #272727;
+	color: whitesmoke;
+	font-family: 'Segoe UI';
+    max-height: 625px;
+    overflow: hidden;
+}
+
+.validation-event .popup-view-files .content-header {
+    padding: 15px 5px 15px 5px !important;
+}
+.validation-event .popup-view-files .popup-view-files-white {
+    background-color: white;
+    color: #000000;
+    height: 200px;
+    overflow-y: scroll;
+}
+.validation-event .popup-view-files .popup-view-files-white::-webkit-scrollbar {
+    display: block;
+    width: 10px;
+    border-radius: 10px;
+    padding-top: 5%;
+    padding-bottom: 5%; 
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.validation-event .popup-view-files .popup-view-files-white::-webkit-scrollbar-track {
+    background: #111111; 
+    border-radius: 10px;
+    box-shadow: inset 0 0 8px grey; 
+}
+.validation-event .popup-view-files .popup-view-files-white::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+    display: block;
+}
+.validation-event .popup-view-files .popup-view-files-white::-webkit-scrollbar-thumb:hover {
+    background: #555555; 
+    border-radius: 10px;
+}
+
+
+.generateFileScanned.white-file-content .file-scanned:not(:first-child) {
+    margin: 0;
+}
+.generateFileScanned.white-file-content .file-lists {
+    padding: 15px 30px 0 30px;
+    list-style-type: none;
+}
+
+/* .generateFileScanned.white-file-content .file-lists {
+    list-style-type: none;
+} */
+.generateFileScanned.white-file-content .file-lists li p {
+    font-size: 12px;
+}
+.generateFileScanned.white-file-content #lineDivider {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    width: 100%;
+}
+.generateFileScanned.white-file-content .btn {
+    font-size: 12px;
+    width: 100px;
+    height: 38px;
+    display: inline-block;
+    margin: 0;
+
+}
