@@ -153,6 +153,10 @@ a:hover {
 .pointer-cursor {
 	cursor: pointer;
 }
+.no-padding {
+    padding: 0!important;	
+}
+
 /* ICONS */
 @font-face {
   font-family: 'Segoemdl2';

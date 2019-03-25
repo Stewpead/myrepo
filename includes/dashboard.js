@@ -33,9 +33,9 @@ module.exports = {
 	sendFundAVX: function (client) {
 		
 		ipcMain.on('send-token',(event, arg) => {
-
-			console.log('SEND TOKEN: ' + arg);
 			
+			console.log('SEND TOKEN: ' + arg);
+
 			client.write(arg);	
 
 			event.returnValue = true;
@@ -70,6 +70,13 @@ module.exports = {
 			client.write(arg);
 			event.returnValue = true;
 		});		
+	},
+
+	saveAccountHistory: function () {
+		ipcMain.on('save-account-history', (event, arg) => {
+			const store = new Store();
+			store.set('saved-account-history', arg);
+		});
 	},
 	
 	getAccountWalletAddress: function (client) {
@@ -141,7 +148,14 @@ module.exports = {
 			client.write(arg);
 		});
 
-	}
+	},
+
+	requestFileSelectedMetadata: function (client) {
+
+		ipcMain.on('request-file-selected-metadata', (event, arg) => {
+			client.write(arg);
+		});
+	},
 	
 };
 

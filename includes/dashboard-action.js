@@ -31,7 +31,7 @@ module.exports = {
 
 
   },
-   
+  
   getAccountSpent: function (data) {
 	const store = new Store();
 	store.set('avx-account-spent', data);
@@ -39,9 +39,6 @@ module.exports = {
   },
   
   getAccountHistory: function (data) {
-
-    console.log(data);
-
     defaultWindow.webContents.send('response-acc-history-display', data);
 
   },
@@ -63,7 +60,7 @@ module.exports = {
   sendFund: function (data) {
 
     defaultWindow.webContents.send('avx-account-send-wallet', data);
-
+    
   },
   
   getAsset: function (data) {
@@ -106,7 +103,13 @@ module.exports = {
   addTransactionData: function(data) {
     console.log(data);
    defaultWindow.webContents.send('add-transaction-history', data);
-  }
+  },
+  
+  receiveFileSelectedMetadata: function (data) {
+
+    defaultWindow.webContents.send('avx-share-respond-file-selected-metadata', data);
+    
+  },
 
 
 };

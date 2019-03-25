@@ -32,11 +32,13 @@ var Status = {
 	GENERATE_DOWNLOAD: 1117,
 	GET_BALANCE: 1121,
 	GET_ASSET: 1122,
-	GET_ACCOUNT_HISTORY: 1124,
+	// GET_SPENT: 1124,
+	// GET_PUBLICKEY: 1125,
 	GET_METADATA_DIR_TREE: 1127,
-	GET_FILE_DETAILS: 1131,
+	GET_FOLDER_DETAILS: 1131,
 	GET_UPDATED_ACCOUNT_HISTORY: 1132,
 	ADD_TRANSACTION_DATA: 1134,
+	GET_ACCOUNT_HISTORY: 1124,
 	GET_FILE_INFO: 1128,
 	GET_WALLET_DATA: 1130,
 	WALLET_BALANCE: 2000,
@@ -44,7 +46,8 @@ var Status = {
 	REQUEST_FILETRANSFER_STATS: 5003,
 	HAS_REGISTERED_USER : 7001,
 	REQUEST_CRAWLING: 9000,
-	GET_CRAWLING: 9001
+	GET_CRAWLING: 9001,
+	GET_FILE_DETAILS:1135
 };
 
 /*
@@ -74,6 +77,7 @@ var initiateConnection = function(attempt){
 		module.sharePaymentAsset(client);
 		module.getSpent(client);
 		module.getAccountHistory(client);
+		module.saveAccountHistory();
 		module.getAccountWalletAddress(client);
 		module.getAssset(client);
 		module.getFileInfo(client);
@@ -85,6 +89,7 @@ var initiateConnection = function(attempt){
 		module.requestFiletransferStats(client);
 		module.requestFileMetadata(client);
 		module.requestUpdateWalletAfterSending(client);
+		module.requestFileSelectedMetadata(client);
 		
 	});
 
@@ -174,7 +179,7 @@ var initiateConnection = function(attempt){
 				moduleDashboard.receiveFiletransferStats(data);
 				break;
 				
-			case Status.GET_FILE_DETAILS: 
+			case Status.GET_FOLDER_DETAILS: 
 				moduleDashboard.receiveFileMetadata(data);
 				break;
 				
@@ -189,6 +194,10 @@ var initiateConnection = function(attempt){
 			case Status.REQUEST_CRAWLING:
 				moduleDashboard.getRequestCrawlingExternalData(data);
 			break;
+				
+			case Status.GET_FILE_DETAILS: 
+				moduleDashboard.receiveFileSelectedMetadata(data);
+				break;
 		}			
 	});
 
