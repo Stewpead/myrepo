@@ -595,6 +595,10 @@ hr#hr {
     overflow-y: scroll;
 }
 .validation-event .popup-view-files .popup-view-files-white::-webkit-scrollbar {
+    display: none;
+ }
+ 
+/* .validation-event .popup-view-files .popup-view-files-white::-webkit-scrollbar {
     display: block;
     width: 10px;
     border-radius: 10px;
@@ -615,7 +619,7 @@ hr#hr {
 .validation-event .popup-view-files .popup-view-files-white::-webkit-scrollbar-thumb:hover {
     background: #555555; 
     border-radius: 10px;
-}
+} */
 
 
 .generateFileScanned.white-file-content .file-scanned:not(:first-child) {
@@ -648,5 +652,8 @@ hr#hr {
     height: 38px;
     display: inline-block;
     margin: 0;
-
+    /* line-height: 20px; */
+}
+.generateFileScanned.white-file-content #navBottom {
+    padding-top: 10%;
 }
