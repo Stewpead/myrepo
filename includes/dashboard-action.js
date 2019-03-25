@@ -19,8 +19,7 @@ module.exports = {
   },
   
   sharePaymentResponse: function (data) {
-	const store = new Store();
-	store.set('avx-upload-payment-response', data);
+	defaultWindow.webContents.send('avx-upload-payment-response', data);
 
   },
   
