@@ -891,8 +891,8 @@ ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
 			
 			actorsData += '<div class="col-2 file-actor-details">';
 			actorsData += '<div class="img" style="background-image: url('+ "'" + actor["thumb"].replace(/(\r\n|\n|\r|'|")/gm, "") + "'" +')"></div>';
-			actorsData += '<label class="name">'+ actor["actor"] +'</label> ';
-			actorsData += '<p class="role">'+ actor["character"] +'</p>'
+			actorsData += '<label class="name">'+ encodeURIComponent(actor["actor"]) +'</label> ';
+			actorsData += '<p class="role">'+ encodeURIComponent(actor["character"]) +'</p>'
 			actorsData += '</div>';
 			
 			if (actorsCounter == 5 ) {
@@ -921,7 +921,7 @@ ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
 
 	movieAssets += '<div class="col-2 file-movie-details">';
 	movieAssets += '	<div class="img" style="background-image: url('+ "'" + crawl["header"]["poster"] + "'"+')"></div>';
-	movieAssets += '	<label class="title">' + data["title"] + '</label>';
+	movieAssets += '	<label class="title">' + encodeURIComponent(data["title"]) + '</label>';
 	movieAssets += '	<textarea style="display: none" filepath="'+ encodeURIComponent(data["path"]) +'">'+ encodeURIComponent(JSON.stringify(data)) +'</textarea>';
 	movieAssets += '	<p class="year"> '+ crawl["header"]["release_date"] +' </p>';
 	movieAssets += '</div>';
