@@ -1,32 +1,39 @@
 const {ipcRenderer} = require('electron');
 const path = require('path');
 const fs = require('fs');
-var obj64 = fs.readFileSync('./json/base64img-2.json'); 
+var obj64 = fs.readFileSync('./json/video-download.json'); 
 var json64 = JSON.parse(obj64);
 var keys64 = Object.keys(json64);
-var imgname = 'decodedimg';
-var imgpath = path.join(__dirname,'/decodedimg/');
+
 var data64 = "data:image/jpg;base64,";
 const Store = require('electron-store');
 const store = new Store(); 
 
- 
+var img = "";
+let jData = store.get('file-details-for-download-page');
+
 $(document).ready(() => {
 
     document.getElementById('file-review').style.display = 'block';
 
     document.getElementById('artistic-review').style.display = 'none';
 
-    let jData = store.get('file-details-for-download-page');
-
-    var img = "";
 
     img = '<img src="' + jData['img64'] + '">';
     $('#fileImage').append(img);
+
     document.getElementById('filetitle').innerHTML = jData['fileID'];
+
     document.getElementById('fileCost').innerHTML = jData['cost'];
+
     document.getElementById('fileSize').innerHTML = jData['filesize'];
+
     document.getElementById('resolution').innerHTML = jData['resolution'];
+
+
+
+
+    
     
     $("#btnBack").click(function() {
 
@@ -113,10 +120,17 @@ $(document).ready(() => {
         $('#btnWishlistClose').click( () => {
             $('[pd-popup="addToWishlist"]').fadeOut(100);  
         });
-    
+
+        $('#btnClosevf').click( () => {
+            $('[pd-popup="viewFilesModal"]').fadeOut(100);
+        });
+
+        // $(".file-feature-img").attr("src", "http://dummyimage.com/250x155/");
+        $('.file-feature-img').css('background-image', 'url(' + jData['img64'] + ')');
     }, 100);
 
 });
+
 
 
 // 	setTimeout( () => {
