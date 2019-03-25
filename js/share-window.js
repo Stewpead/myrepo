@@ -595,8 +595,8 @@ setTimeout(function() {
 			
 			actorsData += '<div class="col-2 file-actor-details">';
 			actorsData += '<div class="img" style="background-image: url('+ "'" + actor["thumb"].replace(/(\r\n|\n|\r|'|")/gm, "") + "'" +')"></div>';
-			actorsData += '<label class="name">'+ actor["actor"] +'</label> ';
-			actorsData += '<p class="role">'+ actor["character"] +'</p>'
+			actorsData += '<label class="name">'+ decodeURIComponent(actor["actor"]) +'</label> ';
+			actorsData += '<p class="role">'+ decodeURIComponent(actor["character"]) +'</p>'
 			actorsData += '</div>';
 			
 			if (actorsCounter == 5 ) {
@@ -889,10 +889,10 @@ ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
 			}
 			actorsCounterActive++;
 			
-			actorsData += '<div class="col-2 file-actor-details">';
+			actorsData += '<div class="col-2 file-actor-details ccccc">';
 			actorsData += '<div class="img" style="background-image: url('+ "'" + actor["thumb"].replace(/(\r\n|\n|\r|'|")/gm, "") + "'" +')"></div>';
-			actorsData += '<label class="name">'+ encodeURIComponent(actor["actor"]) +'</label> ';
-			actorsData += '<p class="role">'+ encodeURIComponent(actor["character"]) +'</p>'
+			actorsData += '<label class="name">'+ decodeURIComponent(actor["actor"]) +'</label> ';
+			actorsData += '<p class="role">'+ decodeURIComponent(actor["character"]) +'</p>'
 			actorsData += '</div>';
 			
 			if (actorsCounter == 5 ) {
