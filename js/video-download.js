@@ -10,14 +10,13 @@ const Store = require('electron-store');
 const store = new Store(); 
 
 var img = "";
+let jData = store.get('file-details-for-download-page');
+
 $(document).ready(() => {
 
     document.getElementById('file-review').style.display = 'block';
 
     document.getElementById('artistic-review').style.display = 'none';
-
-    let jData = store.get('file-details-for-download-page');
-
 
 
     img = '<img src="' + jData['img64'] + '">';
@@ -127,7 +126,7 @@ $(document).ready(() => {
         });
 
         // $(".file-feature-img").attr("src", "http://dummyimage.com/250x155/");
-        $('.file-feature-img').css('background-image', 'url(' + img + ')');
+        $('.file-feature-img').css('background-image', 'url(' + jData['img64'] + ')');
     }, 100);
 
 });
