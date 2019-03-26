@@ -33,8 +33,12 @@ module.exports = {
 	},
 	avxWalletData: function (client) {
 		ipcMain.on('get-wallet-data', (event, arg) => {
-			console.log("1130 SENT: " + arg);
 			client.write(arg);
+			//account window wallet data request
+		});
+		ipcMain.on('payment-balance-request', (event, arg) => {
+			client.write(arg);
+			//download modal wallet data request
 		});
 	},
 	avxSignup: function (client) {

@@ -53,7 +53,8 @@ module.exports = {
   getWalletData: function (data) {
 
     defaultWindow.webContents.send('avx-wallet-data', data);
-
+    defaultWindow.webContents.send('payment-balance-request-response', data);
+    
   },
   
   sendFund: function (data) {

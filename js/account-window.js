@@ -24,6 +24,7 @@ ipcRenderer.on('avx-wallet-data', (event, arg) => {
     document.getElementById('walletBalance').innerHTML = avxTokens;
     document.getElementById('spentavx').innerHTML = spentavx;
     document.getElementById('earnedavx').innerHTML = earnedavx;
+    store.set('wallet-information', arg);
 });
 
 setTimeout( () => {
@@ -215,7 +216,7 @@ ipcRenderer.send('request-account-history', accHistory);
 
 // 1124 all transactions but will be requested only once
 
-// 1134 add transaction data
+// 1134 add transaction data 
 
 // 1132 update transaction status
 
