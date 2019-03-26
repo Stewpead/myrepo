@@ -43,7 +43,7 @@ $(document).ready(() => {
     
     $('#btnBuy').click(() => {
 
-        $('[pd-popup="shareMarketPriceModal"]').fadeIn(100);
+        $('[pd-popup="shareMarketPriceForMultipleModal"]').fadeIn(100);
 
     });
 
@@ -99,7 +99,7 @@ $(document).ready(() => {
 
             $('#executePayment').prop('disabled', true).addClass('disabled', true);
 
-            $('[pd-popup="shareMarketPriceModal"]').fadeOut(100);
+            $('[pd-popup="shareMarketPriceForMultipleModal"]').fadeOut(100);
             $('[pd-popup="sharePaymentSuccessModal"]').fadeIn(100);
             let jMessage = {
                 status : 5002
@@ -110,7 +110,7 @@ $(document).ready(() => {
         });
 
         $('.popup-close').click(() => {
-            $('[pd-popup="shareMarketPriceModal"]').fadeOut(100);
+            $('[pd-popup="shareMarketPriceForMultipleModal"]').fadeOut(100);
         });
 
         $('#btnCloseSuccess').click( function() {
@@ -125,13 +125,45 @@ $(document).ready(() => {
             $('[pd-popup="viewFilesModal"]').fadeOut(100);
         });
 
-        // $(".file-feature-img").attr("src", "http://dummyimage.com/250x155/");
-        $('.file-feature-img').css('background-image', 'url(' + jData['img64'] + ')');
+        $('#executePayment').click( () => {
+            let jPayment = {};
+            jPayment.data = {};
+            jPayment.status = 1115;
+            // jPayment.data.sender
+            jPayment.data.receiver = "fixed";
+            jPayment.data.type = 2;
+            jPayment = JSON.stringify(jPayment);
+            ipcRenderer.send('payment-download-request', jPayment);
+        });
+            // 60% file owner
+            // 35% seeders
+            // 4.9% L2 users
+            // .1% AVX wallet
+        paymentModalData();
+
     }, 100);
 
 });
 
+function paymentModalData() {
+    var walletData;
+    let jRequest = {
+        status : 1130,
+    };
+    jRequest = JSON.stringify(jRequest);
+    ipcRenderer.send('payment-balance-request', jRequest);
 
+    ipcRenderer.on('payment-balance-request-response', (event, arg) => {
+        walletData = arg;
+        $('#walletBalance').text(walletData['wallet_data']['balance']);
+    });
+
+    $('.file-feature-img').css('background-image', 'url(' + jData['img64'] + ')');
+    $('.file-title').text(jData['fileID']);
+    $('#priceAVX').text(jData['cost'] + " AVX");
+
+
+}
 
 // 	setTimeout( () => {
 // 		/* GET ACCOUNT WALLET ADDRESS */
