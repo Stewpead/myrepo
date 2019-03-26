@@ -184,16 +184,23 @@ setTimeout(function() {
 		let size = $(this).attr('file-size');
 		let folder = $(this).closest('.item-file-meta-parent').attr('dir');
 		let url;
+		let dir;
+		let price;
 		if ( folder ) {
 			
 			url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() + folder +"\\"+ filename;
+			dir = $("#ShareModalView .file-dir-info span:nth-child(1)").html() + folder;
+			price = '100';
+			
 		} else {
 		
 			url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() +"\\"+ filename;
+			dir = $("#ShareModalView .file-dir-info span:nth-child(1)").html();
+			price = '100';
 		
 		}
 		
-		tree[counter] = { url };
+		tree[counter] = { url, dir, price };
 
 		counter++;
 
@@ -345,36 +352,43 @@ setTimeout(function() {
 		
 		$('[pd-popup="shareConfirmMetadataModal"]').fadeOut(100);
 		$('[pd-popup="shareMarketPriceModal"]').fadeIn(100);
+		
+		
 	});
 
-	$('#executePayment').click( function(){
-		$('[pd-popup="shareMarketPriceModal"]').fadeOut(100);
-		$('[pd-popup="sharePaymentSuccessModal"]').fadeIn(100);
+	$('#ShareModalView').on("click","#executePayment", function() {
+
+		let files = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details');
+		let assetsData = [];
+		let count = 0; 
+		$.each( files, function( key, value ) {
+		  let data = $(this).find("textarea").text();
+		  assetsData[count] = JSON.parse(data);
+		  count++;
+		});
+
+
 		let filepath = $('#fullFilePathDir').val();
 		let jsonAssetUpload = {
 			status : 1116,
-			data : {
-				type		: 1,
-				price 		: 100,
-				fileInfo 	: {
-					title 					: "title",
-					duration 				: "duration",
-					movieRating 		: "movieRating",
-					directed 				: "directed",
-					written 				: "written",
-					studio 					: "studio",
-					genre 					: "genre",
-					actors 					: "actors"
-				}
-			}
-		}
+			data : assetsData,
+			amount	: "200" //TOTAL AMOUNT
+		};
+		
 		// setTimeout( () => {
 
 
-			let jsonString = JSON.stringify(jsonAssetUpload);
-			ipcRenderer.send('avx-share-upload-asset', jsonString);	
+		let jsonString = JSON.stringify(jsonAssetUpload);
+		ipcRenderer.send('avx-share-upload-asset', jsonString);	
 
+		ipcRenderer.on('avx-upload-payment-response', (event, data) => {
+			console.log(data);
+			if ( data["data"]["received"] == 1) {//success
+				$('[pd-popup="shareMarketPriceModal"]').fadeOut(100);
+				$('[pd-popup="sharePaymentSuccessModal"]').fadeIn(100);
+			}
 
+		});
 		// }, 1000);
 		// setTimeout(function() {
 			// POPULATE DATA ON SCREEN
@@ -417,6 +431,7 @@ $('.importShareFiles input[type="file"]').change(function () {
 
 		ipcRenderer.on('avx-share-upload-scan-results', (event, data) => {
 			let jsonString = JSON.stringify(data);
+			$('[pd-popup="shareScanResultModal"] #fileCategory').val(data["data"]["action"]);
 			
 			var dtp = new DirTreeParserVideo(data["data"]["tree"]);
 			console.log(data["data"]["tree"]);
@@ -545,7 +560,7 @@ setTimeout(function() {
 		imageSrc = ' background-image: '+ imageSrc;
 		$('.popup[pd-popup="shareConfirmMetadataModal"] .file-feature-img').attr('style', imageSrc );
 		
-		let data = JSON.parse($(this).parent().find("textarea").text());
+		let data = JSON.parse(decodeURIComponent($(this).parent().find("textarea").text()));
 		let crawl = JSON.parse(data["crawl"]);
 
 
@@ -804,27 +819,31 @@ function shareShowMetadataPerFile(event) {
 	let folder = target.closest('.item-file-meta-parent').attr("dir");
 	if ( folder ) {
 		
-		var url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() + folder +"\\"+ filename;
+		let url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() + folder +"\\"+ filename;
+		let dir = $("#ShareModalView .file-dir-info span:nth-child(1)").html() + folder;
 	} else {
 	
-		var url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() +"\\"+ filename;
+		let url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() +"\\"+ filename;
+		let dir = $("#ShareModalView .file-dir-info span:nth-child(1)").html();
 	
 	}
 
-	getFileMetadata(url, 'scanned');
+	getFileMetadata(url, dir, 'scanned');
 
 
 
 } 
 
 /*** 2.6 send to crawl file ***/
-function shareCrawlFile(path) {
+function shareCrawlFile(path ,dir) {
 
 		
 	let jCrawlMovie = {
 	   status : 9000,
+	   action : $('[pd-popup="shareScanResultModal"] #fileCategory').val(),
 		data : {
-			movies : path
+			movies 	: path,
+			dir		: dir
 	   }
 	  }
 	  
@@ -842,7 +861,7 @@ ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
 	let movieAssets = '';
 	
 	//Request Metadata
-	getFileMetadata( data["path"], 'crawled' );
+	getFileMetadata( data["path"], data["dir"],  'crawled' );
 	
 	if ( parseInt(getMovieList) == 0 ) {
 		$('[pd-popup="shareConfirmMetadataModal"] .file-movie').parent().parent().css("display", 'none');
@@ -921,9 +940,9 @@ ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
 
 	movieAssets += '<div class="col-2 file-movie-details">';
 	movieAssets += '	<div class="img" style="background-image: url('+ "'" + crawl["header"]["poster"] + "'"+')"></div>';
-	movieAssets += '	<label class="title">' + encodeURIComponent(data["title"]) + '</label>';
+	movieAssets += '	<p style="font-size: 13px;" class="title">' + decodeURIComponent(data["title"]) + '</p>';
 	movieAssets += '	<textarea style="display: none" filepath="'+ encodeURIComponent(data["path"]) +'">'+ encodeURIComponent(JSON.stringify(data)) +'</textarea>';
-	movieAssets += '	<p class="year"> '+ crawl["header"]["release_date"] +' </p>';
+	movieAssets += '	<p style="font-size: 13px; margin-bottom: 40px;" class="year"> '+ crawl["header"]["release_date"] +' </p>';
 	movieAssets += '</div>';
 	$('.file-movie-content').append(movieAssets);
 
@@ -932,14 +951,15 @@ ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
 
 /*** 2.6 Get metadata from crawled file ***/
 
-function getFileMetadata( path, action ){
+function getFileMetadata( path, dir, action ){
 
 	if ( typeof  path !== "undefined" ) {
 		let json = {
 			status : 1131,
 			data : {
 				filename	: path,
-				action		: action
+				action		: action,
+				dir			: dir
 				
 			}
 		}
