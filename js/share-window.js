@@ -382,7 +382,7 @@ setTimeout(function() {
 		ipcRenderer.send('avx-share-upload-asset', jsonString);	
 
 		ipcRenderer.on('avx-upload-payment-response', (event, data) => {
-			console.log(data);
+
 			if ( data["data"]["received"] == 1) {//success
 				$('[pd-popup="shareMarketPriceModal"]').fadeOut(100);
 				$('[pd-popup="sharePaymentSuccessModal"]').fadeIn(100);
@@ -810,6 +810,7 @@ function shareShowMetadataPerFile(event) {
 	let filename = target.attr("file-name");
 	target.addClass("active").css("cursor", "progress");
 	
+	
 	if ( target.attr("disabled") ) {
 		//console.log('true');
 	} else {
@@ -835,22 +836,37 @@ function shareShowMetadataPerFile(event) {
 } 
 
 /*** 2.6 send to crawl file ***/
-function shareCrawlFile(path ,dir) {
+function shareCrawlFile(path) {
+	let category = $('[pd-popup="shareScanResultModal"] #fileCategory').val();
 
+	if ( category == 'movie') {
+
+		let jCrawlMovie = {
+		   status : 9000,
+		   action : category,
+			data : {
+				files 	: path,
+				dir		: dir,
+				price	: "100"
+		   }
+		  }
+		  
+		jCrawl = JSON.stringify(jCrawlMovie);
+		console.log(jCrawlMovie);
+		ipcRenderer.send('trigger-crawl-event', jCrawl);
+
+	} else if ( category == 'tv' ) {
 		
-	let jCrawlMovie = {
-	   status : 9000,
-	   action : $('[pd-popup="shareScanResultModal"] #fileCategory').val(),
-		data : {
-			movies 	: path,
-			dir		: dir
-	   }
-	  }
-	  
-	jCrawl = JSON.stringify(jCrawlMovie);
-	console.log(jCrawlMovie);
-	ipcRenderer.send('trigger-crawl-event', jCrawl);
-
+		let files = [];
+		let count = 0;
+		$.each(path, function( index, value ) {
+		  console.log(value[count]["dir"]);
+		  count++;
+		});
+		
+		
+		
+	}
 }
 
 	
@@ -967,7 +983,7 @@ function getFileMetadata( path, dir, action ){
 		let jsonString = JSON.stringify(json);
 		ipcRenderer.send('request-file-metadata', jsonString);
 	}
-
+	
 }
 	
 ipcRenderer.on('avx-share-respond-file-metadata', (event, data) => {
