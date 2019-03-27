@@ -181,6 +181,7 @@ hr#hr {
     text-align: left;
     font-size: 16px;
     padding-top: 37px;
+	width:	100%;
 }
 
 .popup .popup-inner h5.label-with-border:before,
@@ -345,6 +346,35 @@ hr#hr {
     background: rgb(237, 28, 36);
     padding: 5px 16px;
     margin: 10px;
+}
+
+.popup.scan-result .popup-inner .file-details .file-metadata-desc-tv {
+    padding: 0 15px;
+}
+
+.popup.scan-result .popup-inner .file-details .file-metadata-desc-tv p,
+.popup.scan-result .popup-inner .file-details .file-preview-desc-tv  p {
+    width: 100%;
+    text-align: left;
+    font-size: 15px;
+}
+.popup.scan-result .popup-inner .file-details .file-preview-desc-tv .eps-thumbnail{
+    background-image: url('http://tinyurl.com/y5klegw5');
+    height: 185px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.popup.scan-result .popup-inner .file-details .file-metadata-desc-tv p.runtime span,
+.popup.scan-result .popup-inner .file-details .file-metadata-desc-tv p.no-eps span,
+.popup.scan-result .popup-inner .file-details .file-preview-desc-tv p.runtime span,
+.popup.scan-result .popup-inner .file-details .file-preview-desc-tv p.no-eps span {
+	width: 146px;
+    display: block;
+    float: left;
+}
+.popup.scan-result .popup-inner .file-details .file-metadata-desc-tv p.eps-desc,
+.popup.scan-result .popup-inner .file-details .file-preview-desc-tv p.eps-desc  {
+    color: #897e7e;
 }
 
 .popup.scan-result .popup-inner .file-details .file-metadata{
