@@ -24,7 +24,7 @@ ipcRenderer.on('avx-wallet-data', (event, arg) => {
     document.getElementById('walletBalance').innerHTML = avxTokens;
     document.getElementById('spentavx').innerHTML = spentavx;
     document.getElementById('earnedavx').innerHTML = earnedavx;
-    store.set('wallet-information', arg);
+    
 });
 
 setTimeout( () => {
