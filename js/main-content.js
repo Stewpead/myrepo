@@ -28,6 +28,8 @@ $(document).ready( () => {
 
 	trendingAudios();
 
+	trendingTVSeries();
+
 });
 
 //Generate Movie cards
@@ -77,3 +79,27 @@ function getAudioInfo(hash) {
 	location.href = "audio-details.html";
 }
 
+function trendingTVSeries() {
+
+	var trendingTVcards = "";
+
+	for (var key in json1) {
+		
+		trendingTVcards += '<div class="col-lg-3 grid-cards-video" onclick="getTVseries(\''+ json1[key]['metadata']['filename'] +'\')">';
+		trendingTVcards += '<div class="container">';
+		trendingTVcards += '<img src="' + data64 + json1[key]['metadata']['thumbnail'] + '" />';
+		trendingTVcards += '<p id="video-title" class="thumb-title">' + json1[key]['metadata']['filename'] + '</p>';
+		trendingTVcards += '</div>';
+		trendingTVcards += '</div>';
+
+	} 
+	$('#tvSeriesSection').append(trendingTVcards);
+
+}
+
+// Send data of selected card
+function getTVseries(hash) {
+	store.set('set-dashboard-file-selected-tvseries', hash );
+	location.href = "tvseries-window.html";
+}
+// Send data of selected card

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- WOW  -->
+    <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../node_modules/@mdi/font/css/materialdesignicons.min.css">
+    <!-- WOW -->
+               
+    <!-- MINE -->
+    <link rel="stylesheet" type="text/css" href="../css/app-style.css">
+    <link rel="stylesheet" type="text/css" href="../css/tvseries-style.css">
+    <!-- MINE -->
+  
+    <header> 
+        <div id="container">
+            <nav> 
+                <div id="titleShown"> 
+                </div> 
+                <div id="buttons">
+                    <div id="minimize">
+                        <span class="mdi mdi-window-minimize"></span> 
+                    </div>
+                    <div id="maximize">
+                        <span class="mdi mdi-window-maximize"></span>
+                    </div>
+                    <div id="close">
+                        <span class="mdi mdi-window-close"></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <body>
+        <div id="slidenav" class="sidenav">
+            <div id="avxlogonav">
+                <img src="../images/logo_white.png" alt="avx" id="logox"> 
+            </div>
+            <a href="#" onclick="location.href = 'main-window.html'"> <span class="icon-segoe segoe-home" id="sidelinks"></span> <br>Home</a>
+            <a href="#" onclick="location.href = 'account-window.html'"><span class="icon-segoe segoe-contact-info" id="sidelinks"></span><br>Account Wallet</a>
+            <a href="#" onclick="location.href = 'search-window.html'" style="background-color: #ed1c24; color:white;"><span class="icon-segoe segoe-search icon-flip" id="sidelinks"></span><br>Search Browser</a>
+            <a href="#" onclick="location.href = 'share-window.html'"><span class="icon-segoe segoe-communications" id="sidelinks"></span><br>Share</a>
+            <a href="#" onclick="location.href = 'stream-window.html'"><span class="icon-segoe segoe-v-player" id="sidelinks"></span><br>Stream Player</a>
+            <a href="#" onclick="location.href = 'community-window.html'"><span class="icon-segoe segoe-world" id="sidelinks"></span><br>Community</a>
+            <a href="#" onclick="location.href = 'settings-window.html'" style="padding-bottom: 50px;"><span class="icon-segoe segoe-settings" id="sidelinks"></span><br>Settings</a>
+        </div>
+        </div>
+        <div id="mainSearchResult">
+            <div id="bgvids">
+                <div class="container-fluid">
+                    <div class="row"> 
+                        <div class="col-lg-12 mt-2">
+                            <div class="float-right mr-2">
+                                <a href="#" id="btnSignout"><span class="icon-segoe segoe-close-pane"> Sign out </span></a>    
+                                <a href="wishlist-window.html"><span class="mdi mdi-heart-outline"> Wishlist </span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row"> 
+                        <div class="col-lg-6 mt-3">
+                            <a href="#" id="btnBack"> <span class="mdi mdi-arrow-left"> Back</span> </a>
+                        </div> 
+                        <div class="col-lg-6 mt-3">
+                            <div style="margin-left:10vh;">
+                                <div class="p-4 mr-2" id="">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Movie Titles or Audio Tracks" aria-label="Movie Titles or Audio Tracks" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-danger" id="btnSearch" type="button"> Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row"> 
+                        <div class="col-md-3" id="fileImageDiv">
+                            <div class="ml-1"id="fileImage">
+                                
+                            </div>
+                        </div>
+                        <div class="col-lg-9">
+                            <div style="float:left;">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h4 id="filetitle" style="display: inline-block">Avengers The Infinity Wars</h4> <h6 id="fileyear" style="display: inline-block"></h6>
+                                            <ul class="nav" id="tabsfileDetails">
+                                                <li id="resolutionRange">
+                                                    480p - 1080p Available 
+                                                </li>
+                                                <li id="fileCostRange">
+                                                    Cost 10 AVX - 40 AVX
+                                                </li> 
+                                                <li id="availableFiles">
+                                                    50 file(s) available
+                                                </li>
+                                                <li id="fileOwner">
+                                                    See ownership
+                                                </li>
+                                            </ul>
+                                            <br>
+                                            <p id="movieplot">
+                                                Iron Man, Thor, the Hulk and the rest of the Avengers unite to battle their most powerful enemy yet -- the evil Thanos. On a mission to collect all six Infinity Stones, Thanos plans to use the artifacts to inflict his twisted will on reality. The fate of the planet and existence itself has never been more uncertain as everything the Avengers have fought for has led up to this moment.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="container-fluid" id="otherFileInfo">
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p class="mb-3">Year Active: &emsp;</p>
+                                        </div>
+                                        <div class="col-lg-10">
+                                            <span id="pg">1991 - Present</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p class="mb-3">Origin: &emsp;</p>
+                                        </div>
+                                        <div class="col-lg-10">
+                                            <p>Anthony Russo, Joe Russo</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p class="mb-3">Record Labels: &emsp;</p>
+                                        </div>
+                                        <div class="col-lg-10">
+                                            <p>Kevin Feige</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p class="mb-3">Genres: &emsp;</p>
+                                        </div>
+                                        <div class="col-lg-10 pr-5">
+                                            <span class="pr-5">Christopher Markus, Stephen McFeely, Stan Lee, Jack Kirby, Joe Simon, Jack Kirby, Steve Englehart, Steve Gan, Keith Giffen, Jim Starlin, Stan Lee, Larry Lieber, Jack Kirby, Jim Starlin</span>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                </div>
+                                <div class="container-fluid" id="bandMembers">
+                                    <div class="row">
+                                        <div class="row ml-4">
+                                            <div class="col-lg-12">
+                                                <p>Members</p>
+                                            </div>
+                                        </div>
+                                    <hr />
+                                    </div>
+                                    <div class="row ml-4 actors-section">
+                                        <div class="col-lg-2 cast-thumbnail">
+                                            <div class="actors-details">
+                                                <p class="cast-name">Robert Downey Jr.</p>
+                                                <p class="cast-character">Iron man</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 cast-thumbnail">
+                                            <div class="actors-details">
+                                                <p class="cast-name">Robert Downey Jr.</p>
+                                                <p class="cast-character">Iron man</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 cast-thumbnail">
+                                            <div class="actors-details">
+                                                <p class="cast-name">Robert Downey Jr.</p>
+                                                <p class="cast-character">Iron man</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 cast-thumbnail">
+                                            <div class="actors-details">
+                                                <p class="cast-name">Robert Downey Jr.</p>
+                                                <p class="cast-character">Iron man</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 cast-thumbnail">
+                                            <div class="actors-details">
+                                                <p class="cast-name">Robert Downey Jr.</p>
+                                                <p class="cast-character">Iron man</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 cast-thumbnail">
+                                            <div class="actors-details">
+                                                <p class="cast-name">Robert Downey Jr.</p>
+                                                <p class="cast-character">Iron man</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div> 
+                    </div>              
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-1">
+
+                        </div>
+                        <div class="col-md-11">
+                            <span>Discography</span>
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+
+                        </div>
+                        <div class="col-lg-11">
+                            <div class="row audio-artist-details">
+                                <div class="row audio-artist-metadata">
+                                    <div class="col-12 file-movie">
+                                        <div class="row audio-artist-albums">
+                                            <!--  SAMPLE ALBUMS -->
+                                            <div class="col-2 audio-artist-each-album">
+                                                <div class="img active" style="background-image: url('https://tinyurl.com/ycjjsd24')" ></div>
+                                                <label class="title">Shaun The Sheep : The Movie</label>
+                                                <p class="year"> 2000 </p>
+                                            </div>
+                                            <div class="col-2 audio-artist-each-album">
+                                                <div class="img" style="background-image: url('http://tinyurl.com/yyxemkny')" ></div>
+                                                <label class="title">Early Man: The Movie</label>
+                                                <p class="year"> 2011 </p>
+                                            </div>
+                                            <div class="col-2 audio-artist-each-album">
+                                                <div class="img" style="background-image: url('http://tinyurl.com/y5m7y5av')" ></div>
+                                                <label class="title">Wallace & Gromit</label>
+                                                <p class="year"> 2013 </p>
+                                            </div>
+                                            <div class="col-2 audio-artist-each-album">
+                                                <div class="img" style="background-image: url('http://tinyurl.com/y4xn55zq')" ></div>
+                                                <label class="title">Fishtales 3 : The Movie</label>
+                                                <p class="year"> 2008 </p>
+                                            </div>
+                                            <div class="col-2 audio-artist-each-album">
+                                                <div class="img" style="background-image: url('http://tinyurl.com/y5owz3cj')" ></div>
+                                                <label class="title">Popcorntime</label>
+                                                <p class="year"> 2014 </p>
+                                            </div>
+                                            <div class="col-2 audio-artist-each-album">
+                                                <div class="img" style="background-image: url('http://tinyurl.com/y6pd49cc')" ></div>
+                                                <label class="title">The Good Dinosaur</label>
+                                                <p class="year"> 2015 </p>
+                                            </div>
+                                            <!--  SAMPLE END -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="row album-artist-title">
+                                <div class="col-lg-12 mt-4">
+                                    <span id="albumAudioTitle">Rage Against The Machine</span>
+                                </div>
+                            </div>
+                            <div class="row album-artist-description">
+                                <div class="col-lg-12 mt-3 pr-5">
+                                    <span id="albumAudioDescript">Rage Against the Machine is an American rock band from Los Angeles, California. Formed in 1991, the group consists of vocalist Zack de la Rocha, bassist and backing vocalist Tim Commerford, guitarist Tom Morello, and drummer Brad Wilk. Their songs express revolutionary political views. As of 2010, they had sold over 16 million records worldwide.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="row">
+                                <div class="col-lg-12 mt-3">
+                                    <span id="tracks">Tracks</span>
+                                </div>
+                            </div>
+                            <div class="row tracksListdiv">
+                                <div class="col-lg-12 mt-3" id="tracksLists">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-lg-7 tracksList">
+                                                <span>01 Bombtrack [Explicit] </span>
+                                            </div>
+                                            <div class="col-1 tracksList">
+                                                <span>4:04</span>     
+                                            </div>
+                                            <div class="col-4 tracksList">
+                                                <span>View Files Available</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-7 tracksList">
+                                                <span>01 Bombtrack [Explicit] </span>
+                                            </div>
+                                            <div class="col-1 tracksList">
+                                                <span>4:04</span>     
+                                            </div>
+                                            <div class="col-4 tracksList">
+                                                <span>View Files Available</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-7 tracksList">
+                                                <span>01 Bombtrack [Explicit] </span>
+                                            </div>
+                                            <div class="col-1 tracksList" >
+                                                <span>4:04</span>     
+                                            </div>
+                                            <div class="col-4 tracksList">
+                                                <span>View Files Available</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <span>01 Bombtrack [Explicit] </span>
+                                            </div>
+                                            <div class="col-1">
+                                                <span>4:04</span>     
+                                            </div>
+                                            <div class="col-4">
+                                                <span>View Files Available</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <span>01 Bombtrack [Explicit] </span>
+                                            </div>
+                                            <div class="col-1">
+                                                <span>4:04</span>     
+                                            </div>
+                                            <div class="col-4">
+                                                <span>View Files Available</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <span>01 Bombtrack [Explicit] </span>
+                                            </div>
+                                            <div class="col-1">
+                                                <span>4:04</span>     
+                                            </div>
+                                            <div class="col-4">
+                                                <span>View Files Available</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-1 mt-5">
+
+                    </div>
+                    <div class="col-lg-11 mt-5">
+                        <span>14 files for Rage Against The Machine album</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-1 mt-3">
+
+                    </div>
+                    <div class="col-lg-11 mt-3" id="bodycolumn">
+                        <table class="table table-hover ml-4">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col" style="padding-right:12rem;">File</th>
+                                    <th scope="col">Downloads</th>
+                                    <th scope="col">Cost(AVX)</th>
+                                    <th scope="col">Ratings</th>
+                                    <th scope="col">Language</th>
+                                    <th scope="col">Subtitle</th>
+                                    <th scope="col">Resolution</th>
+                                    <th scope="col">File size</th>
+                                    <th scope="col">Video Codec</th>
+                                    <th scope="col">Audio Codec</th>
+                                    <th scope="col">Video Bitrate</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyDetails">
+                                
+                            </tbody> 
+                        </table>             
+                    </div>
+                </div>                                        
+                </div> 
+            </div> 
+        </div>     
+    </body> 
+    <script src="../js/top-handler.js"></script>
+    <script src="../js/tvseries-window.js"></script>
+</html>
