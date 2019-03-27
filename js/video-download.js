@@ -126,6 +126,7 @@ $(document).ready(() => {
         });
 
         $('#executePayment').click( () => {
+            
             let jPayment = {};
             jPayment.data = {};
             jPayment.status = 1115;
@@ -134,7 +135,9 @@ $(document).ready(() => {
             jPayment.data.type = 2;
             jPayment = JSON.stringify(jPayment);
             ipcRenderer.send('payment-download-request', jPayment);
+
         });
+
             // 60% file owner
             // 35% seeders
             // 4.9% L2 users

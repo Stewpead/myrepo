@@ -177,11 +177,19 @@ hr#hr {
 
 /* Label with border as breaker */
 .popup .popup-inner h5.label-with-border {
+    color: #347b5d;
     overflow: hidden;
     text-align: left;
-    font-size: 16px;
+    font-size: 13px;
     padding-top: 37px;
+<<<<<<< HEAD
 	width:	100%;
+=======
+    font-style: italic;
+}
+.popup .popup-inner h5.break-down {
+    color: whitesmoke;
+>>>>>>> f03efc4f85f83eb96895672e9387eb7d4efe19b8
 }
 
 .popup .popup-inner h5.label-with-border:before,
@@ -193,6 +201,7 @@ hr#hr {
     position: relative;
     vertical-align: middle;
     width: 0%;
+
 }
 
 .popup .popup-inner h5.label-with-border:before {
@@ -333,19 +342,25 @@ hr#hr {
     vertical-align: middle;
     background-position: center;
 }
+
 .popup.scan-result .popup-inner .file-details .file-title .file-year {
     display: block;
     font-size: 16px;
     padding: 15px 0;
 }
 .popup.scan-result .popup-inner .file-details .file-subdata{
-    text-align: left;
+    /* text-align: left; */
     font-size: 15px;	
 }
+
 .popup.scan-result .popup-inner .file-details .file-subdata strong {
     background: rgb(237, 28, 36);
     padding: 5px 16px;
     margin: 10px;
+}
+.file-details .upper-section-data {
+    font-weight: bolder;
+    font-size: 12px;
 }
 
 .popup.scan-result .popup-inner .file-details .file-metadata-desc-tv {
@@ -378,18 +393,39 @@ hr#hr {
 }
 
 .popup.scan-result .popup-inner .file-details .file-metadata{
+	/*background-color: #ed1c24; */
+}
+
+.payment-break-down ul li {
+    font-size: 12px;
+}
+
+.popup.scan-result .popup-inner .file-metadata span.resolution-data {
+    padding: 2px 5px 2px 5px;
+}
+
+.file-metadata.audio-subtitle {
+    margin: 0;
+    text-align: left;
+}
+
+.popup.scan-result .popup-inner .file-details .file-metadata.upper-section {
 	text-align: left;
 	padding: 22px 0;
-	width: 100%;
+    width: 100%;
+    font-size: 12px;
 }
+
 .popup.scan-result .popup-inner .file-details .text-indent{
 	margin-left: 32px;
 }
+
 .popup.scan-result .popup-inner .file-details .file-metadata p, 
 .popup.scan-result .popup-inner .file-details .file-metadata strong {
     font-size: 15px;
     float: left;
 }
+
 .popup.scan-result .popup-inner .file-details .file-metadata p {
 	width: 110px;    
 	margin-bottom: 9px;
@@ -436,6 +472,7 @@ hr#hr {
 	width: 100%;
 	text-align: center;
 }
+
 .popup.scan-result .popup-inner .file-details .file-metadata .file-actor-content .file-actor-details .role {
     font-size: 12px;
 }
