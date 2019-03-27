@@ -382,11 +382,9 @@ setTimeout(function() {
 		ipcRenderer.send('avx-share-upload-asset', jsonString);	
 
 		ipcRenderer.on('avx-upload-payment-response', (event, data) => {
-
-			if ( data["data"]["received"] == 1) {//success
-				$('[pd-popup="shareMarketPriceModal"]').fadeOut(100);
-				$('[pd-popup="sharePaymentSuccessModal"]').fadeIn(100);
-			}
+			store.set("ShareUploadTxKey", data["data"]["tx_key"]);
+			$('[pd-popup="shareMarketPriceModal"]').fadeOut(100);
+			$('[pd-popup="sharePaymentWaitingModal"]').fadeIn(100);
 
 		});
 		// }, 1000);
@@ -397,6 +395,20 @@ setTimeout(function() {
 			 //location.reload();
 		// }, 1000);
 		
+	});
+	
+	ipcRenderer.on('avx-share-respond-file-selected-metadata', (event, data) => {
+		let shareUploadTxKey = store.get("ShareUploadTxKey");
+		if ( shareUploadTxKey ) {
+			if ( shareUploadTxKey ==  data["tx_key"]) {
+				//success
+				
+				$('[pd-popup="sharePaymentWaitingModal"]').fadeOut(100);
+				$('[pd-popup="sharePaymentSuccessModal"]').fadeIn(100);
+				store.delete("ShareUploadTxKey");
+			}
+		}
+
 	});
 
 }, 1000);
@@ -836,7 +848,7 @@ function shareShowMetadataPerFile(event) {
 } 
 
 /*** 2.6 send to crawl file ***/
-function shareCrawlFile(path) {
+function shareCrawlFile(path, dir) {
 	let category = $('[pd-popup="shareScanResultModal"] #fileCategory').val();
 
 	if ( category == 'movie') {
@@ -851,22 +863,43 @@ function shareCrawlFile(path) {
 		   }
 		  }
 		  
-		jCrawl = JSON.stringify(jCrawlMovie);
-		console.log(jCrawlMovie);
-		ipcRenderer.send('trigger-crawl-event', jCrawl);
+		var jCrawl = JSON.stringify(jCrawlMovie);
 
 	} else if ( category == 'tv' ) {
 		
 		let files = [];
-		let count = 0;
+		let counter = 0;
+		let filesListsHolder = [];
 		$.each(path, function( index, value ) {
-		  console.log(value[count]["dir"]);
-		  count++;
+			
+			if ( $.inArray(value["dir"], filesListsHolder) == -1 ) {
+				let tempFiles = [];
+				let dir = value["dir"];
+				let price =  "100";
+				
+				files[counter] = { dir, price };
+				filesListsHolder.push(value["dir"]);
+				counter++;
+				
+			}
 		});
 		
-		
+
+		let jCrawlMovie = {
+		   status : 9000,
+		   action : category,
+			data : files
+		  }
+		  
+		var jCrawl = JSON.stringify(jCrawlMovie);
+		console.log(files);
 		
 	}
+	
+	
+
+	ipcRenderer.send('trigger-crawl-event', jCrawl);
+	
 }
 
 	
