@@ -573,7 +573,7 @@ setTimeout(function() {
 		$('.popup[pd-popup="shareConfirmMetadataModal"] .file-feature-img').attr('style', imageSrc );
 		
 		let data = JSON.parse(decodeURIComponent($(this).parent().find("textarea").text()));
-		let crawl = JSON.parse(data["crawl"]);
+		let crawl = JSON.parse(decodeURIComponent(data["crawl"]));
 
 
 		//GENERATE RESULT
@@ -850,6 +850,7 @@ function shareShowMetadataPerFile(event) {
 /*** 2.6 send to crawl file ***/
 function shareCrawlFile(path, dir) {
 	let category = $('[pd-popup="shareScanResultModal"] #fileCategory').val();
+	let categoryLabel = '';
 
 	if ( category == 'movie') {
 
@@ -864,6 +865,7 @@ function shareCrawlFile(path, dir) {
 		  }
 		  
 		var jCrawl = JSON.stringify(jCrawlMovie);
+		categoryLabel = "Movie Assets ";
 
 	} else if ( category == 'tv' ) {
 		
@@ -892,19 +894,42 @@ function shareCrawlFile(path, dir) {
 		  }
 		  
 		var jCrawl = JSON.stringify(jCrawlMovie);
-		console.log(files);
+		
+		categoryLabel = "TV Show Seasons ";
+		
+		
 		
 	}
 	
-	
 
+	
+	//LABEL CHANGE BASED ON EVENTS CATEGORY
+	$('[pd-popup="shareConfirmMetadataModal"] .file-upload-category-label-assets span').html(categoryLabel);
+	
 	ipcRenderer.send('trigger-crawl-event', jCrawl);
 	
 }
 
 	
 ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
-	let crawl = JSON.parse(data["crawl"]);
+	//data = decodeURIComponent(data);
+		//data =  JSON.stringify(data);
+		//data = decodeURIComponent(data);
+		//console.log(data);
+		//data = JSON.parse(data);
+	//let crawl=  JSON.stringify( decodeURIComponent(data["crawl"]) );
+	//crawl = JSON.parse( crawl );
+	//console.log(crawl.);
+	
+	/*let syn = decodeURIComponent(data["crawl"]["header"]["synopsis"]);
+	console.log(syn);*/
+	
+	let crawl = JSON.parse(decodeURIComponent(data["crawl"]));
+	//data = JSON.parse(decodeURIComponent(data));
+	console.log(JSON.stringify(crawl) );
+	
+	
+
 
 	let getMovieList = $('.file-movie-content .file-movie-details').length;
 	let movieAssets = '';
