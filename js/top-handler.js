@@ -17,6 +17,7 @@ else
 });
 $('#close').click(function(){
     win.close();
+	alert("sheep");
 });
 
 $(function(){   

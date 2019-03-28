@@ -44,7 +44,8 @@ module.exports = {
 				defaultWindow.show();
 			});
 			defaultWindow.on('close', () => {
-				app.close();
+				app.quit();
+				//app.close();
 			});
 		} else if ( checkStat == 0) {
 			//showw sign up
