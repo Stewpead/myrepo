@@ -363,7 +363,7 @@ setTimeout(function() {
 		let count = 0; 
 		$.each( files, function( key, value ) {
 		  let data = $(this).find("textarea").text();
-		  assetsData[count] = JSON.parse(data);
+		  assetsData[count] = JSON.parse(decodeURIComponent(data));
 		  count++;
 		});
 
@@ -447,6 +447,7 @@ $('.importShareFiles input[type="file"]').change(function () {
 			
 			var dtp = new DirTreeParserVideo(data["data"]["tree"]);
 			console.log(data["data"]["tree"]);
+			$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').text( encodeURIComponent( JSON.stringify(data["data"]["tree"]) )) ;
 			$(".generateFileScanned").html(dtp.getHtmlTree());
 			$(".file-dir-info span:nth-child(1)").html(path);
 			$( ".item-file-meta" ).on( "click", shareShowMetadataPerFile );
@@ -560,7 +561,8 @@ setTimeout(function() {
 /** 1.4 Select movie assets preview  **/
 setTimeout(function() {
 	$('.file-movie-content').on("click",".img", function() {
-	//$(".file-movie-content .img").click(function () {
+		let category = $('[pd-popup="shareScanResultModal"] #fileCategory').val();
+					
 		$(".file-movie-content .img").removeClass('active');
 		$(this).addClass('active');
 		let imageSrc = $(this).css('background-image');
@@ -576,97 +578,145 @@ setTimeout(function() {
 		let crawl = JSON.parse(decodeURIComponent(data["crawl"]));
 
 
-		//GENERATE RESULT
-		$(".popup.scan-result .file-title").html(data["title"]);
-		$(".popup.scan-result .metadata-desc").html(decodeURIComponent(crawl["header"]["synopsis"]));
-		$(".popup.scan-result .file-feature-img").css("background-image","url('"+crawl["header"]["poster"]+"'");
-		$(".popup.scan-result .file-rating").html(crawl["header"]["contentRating"]);
-		$(".popup.scan-result .file-producer").html(crawl["producer"]);
-		$(".popup.scan-result .file-studio").html(crawl["company"]);
+			//GENERATE RESULT
+			$(".popup.scan-result .file-title").html(data["title"]);
+			$(".popup.scan-result .metadata-desc").html(decodeURIComponent(crawl["header"]["synopsis"]));
+			$(".popup.scan-result .file-feature-img").css("background-image","url('"+crawl["header"]["poster"]+"'");
+			$(".popup.scan-result .file-rating").html(crawl["header"]["contentRating"]);
+			$(".popup.scan-result .file-producer").html(crawl["producer"]);
+			$(".popup.scan-result .file-studio").html(crawl["company"]);
 
-		
-		//DIRECTORS
-		let directors = crawl["header"]["directors"];
-		if (directors instanceof Array) {
-			 directors =  directors.join(', ');
-		} 
-		$(".popup.scan-result .file-director").html(directors);
-
-		
-		//GENRE
-		let genre = crawl["header"]["genres"];
-		if (genre instanceof Array) {
-			genre =  genre.join(', ');
-		}
-		$(".popup.scan-result .file-genre").html(genre);
-		
-		//ACTORS
-		let actors = crawl["cast"];
-		let actorsData = '';
-		let actorsCounter = 0;
-		let actorsCounterActive = 0;
-		
-		$.each( actors, function( i, actor ) {
-
-			if (actorsCounter == 0 )  {
-				if ( actorsCounterActive == 0) {
-					actorsData += '<div class="carousel-item row no-gutters active">';
-				} else {
-					actorsData += '<div class="carousel-item row no-gutters">';
-				}
-				
-				
-				
-			}
-			actorsCounterActive++;
 			
-			actorsData += '<div class="col-2 file-actor-details">';
-			actorsData += '<div class="img" style="background-image: url('+ "'" + actor["thumb"].replace(/(\r\n|\n|\r|'|")/gm, "") + "'" +')"></div>';
-			actorsData += '<label class="name">'+ decodeURIComponent(actor["actor"]) +'</label> ';
-			actorsData += '<p class="role">'+ decodeURIComponent(actor["character"]) +'</p>'
-			actorsData += '</div>';
-			
-			if (actorsCounter == 5 ) {
-				actorsCounter = 0;
-				actorsData += '</div>';
-			} else {
-				actorsCounter++;
+			//DIRECTORS
+			let directors = crawl["header"]["directors"];
+			if (directors instanceof Array) {
+				 directors =  directors.join(', ');
 			} 
-			
+			$(".popup.scan-result .file-director").html(directors);
 
 			
-		});
-		
-		selectedAssets = ' active';
-		$(".popup.scan-result .file-actor-content").html(actorsData);
-		
-		//METADATA
-		$('[pd-popup="shareConfirmMetadataModal"] .aspect-ratio strong'). html(data["metadata"]["aspect_ratio"]);
-		$('[pd-popup="shareConfirmMetadataModal"] .audio-bitrate strong'). html(data["metadata"]["audio_bitrate"]);
-		$('[pd-popup="shareConfirmMetadataModal"] .audio-codec strong'). html(data["metadata"]["audio_codec_name"]);
-		$('[pd-popup="shareConfirmMetadataModal"] .bit-depth strong'). html(data["metadata"]["bit_depth"]);
-		$('[pd-popup="shareConfirmMetadataModal"] .audio-channel-layout strong'). html(data["metadata"]["channel_layout"]);
-		$('[pd-popup="shareConfirmMetadataModal"] .audio-channels strong'). html(data["metadata"]["channels"]);
-		$('[pd-popup="shareConfirmMetadataModal"] .video-duration strong, [pd-popup="shareConfirmMetadataModal"] .video-duration-head'). html(data["metadata"]["duration"]);
-		$('[pd-popup="shareConfirmMetadataModal"] .video-size strong'). html(data["metadata"]["filesize"]);
-		$('[pd-popup="shareConfirmMetadataModal"] .video-height strong'). html(data["metadata"]["height"]);
-		$('[pd-popup="shareConfirmMetadataModal"] .audio-sampling-rate strong'). html(data["metadata"]["sampling_rate"]);
-		$('[pd-popup="shareConfirmMetadataModal"] .audio-video-bitrate strong'). html(data["metadata"]["video_bitrate"]);
-		$('[pd-popup="shareConfirmMetadataModal"] .video-codec strong'). html(data["metadata"]["video_codec_name"]);
-		$('[pd-popup="shareConfirmMetadataModal"] .video-frame-rate strong'). html(data["metadata"]["video_frame_rate"]);
-		$('[pd-popup="shareConfirmMetadataModal"] .video-profile strong'). html(data["metadata"]["video_profile"]);
-		$('[pd-popup="shareConfirmMetadataModal"] .video-reso strong'). html(data["metadata"]["video_resolution"]);
-		$('[pd-popup="shareConfirmMetadataModal"] .video-width strong'). html(data["metadata"]["width"]);
-		
-		 $('[pd-popup="shareConfirmMetadataModal"] .title-holder').attr("tabindex",-1).focus();;
+			//GENRE
+			let genre = crawl["header"]["genres"];
+			if (genre instanceof Array) {
+				genre =  genre.join(', ');
+			}
+			$(".popup.scan-result .file-genre").html(genre);
 			
+			//ACTORS
+			let actors = crawl["cast"];
+			let actorsData = '';
+			let actorsCounter = 0;
+			let actorsCounterActive = 0;
+			
+			$.each( actors, function( i, actor ) {
+
+				if (actorsCounter == 0 )  {
+					if ( actorsCounterActive == 0) {
+						actorsData += '<div class="carousel-item row no-gutters active">';
+					} else {
+						actorsData += '<div class="carousel-item row no-gutters">';
+					}
+					
+					
+					
+				}
+				actorsCounterActive++;
+				
+				actorsData += '<div class="col-2 file-actor-details">';
+				actorsData += '<div class="img" style="background-image: url('+ "'" + actor["thumb"].replace(/(\r\n|\n|\r|'|")/gm, "") + "'" +')"></div>';
+				actorsData += '<label class="name">'+ decodeURIComponent(actor["actor"]) +'</label> ';
+				actorsData += '<p class="role">'+ decodeURIComponent(actor["character"]) +'</p>'
+				actorsData += '</div>';
+				
+				if (actorsCounter == 5 ) {
+					actorsCounter = 0;
+					actorsData += '</div>';
+				} else {
+					actorsCounter++;
+				} 
+				
+
+				
+			});
+			
+			selectedAssets = ' active';
+			$(".popup.scan-result .file-actor-content").html(actorsData);
+		
+		if ( category == 'movie') {
+			
+			//METADATA
+			$('[pd-popup="shareConfirmMetadataModal"] .aspect-ratio strong'). html(data["metadata"]["aspect_ratio"]);
+			$('[pd-popup="shareConfirmMetadataModal"] .audio-bitrate strong'). html(data["metadata"]["audio_bitrate"]);
+			$('[pd-popup="shareConfirmMetadataModal"] .audio-codec strong'). html(data["metadata"]["audio_codec_name"]);
+			$('[pd-popup="shareConfirmMetadataModal"] .bit-depth strong'). html(data["metadata"]["bit_depth"]);
+			$('[pd-popup="shareConfirmMetadataModal"] .audio-channel-layout strong'). html(data["metadata"]["channel_layout"]);
+			$('[pd-popup="shareConfirmMetadataModal"] .audio-channels strong'). html(data["metadata"]["channels"]);
+			$('[pd-popup="shareConfirmMetadataModal"] .video-duration strong, [pd-popup="shareConfirmMetadataModal"] .video-duration-head'). html(data["metadata"]["duration"]);
+			$('[pd-popup="shareConfirmMetadataModal"] .video-size strong'). html(data["metadata"]["filesize"]);
+			$('[pd-popup="shareConfirmMetadataModal"] .video-height strong'). html(data["metadata"]["height"]);
+			$('[pd-popup="shareConfirmMetadataModal"] .audio-sampling-rate strong'). html(data["metadata"]["sampling_rate"]);
+			$('[pd-popup="shareConfirmMetadataModal"] .audio-video-bitrate strong'). html(data["metadata"]["video_bitrate"]);
+			$('[pd-popup="shareConfirmMetadataModal"] .video-codec strong'). html(data["metadata"]["video_codec_name"]);
+			$('[pd-popup="shareConfirmMetadataModal"] .video-frame-rate strong'). html(data["metadata"]["video_frame_rate"]);
+			$('[pd-popup="shareConfirmMetadataModal"] .video-profile strong'). html(data["metadata"]["video_profile"]);
+			$('[pd-popup="shareConfirmMetadataModal"] .video-reso strong'). html(data["metadata"]["video_resolution"]);
+			$('[pd-popup="shareConfirmMetadataModal"] .video-width strong'). html(data["metadata"]["width"]);
+			
+			 $('[pd-popup="shareConfirmMetadataModal"] .title-holder').attr("tabindex",-1).focus();
+			 
+		} else if ( category == 'tv') {
+			
+			let table = $('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content table tbody');
+			table.html("");
+			console.log(crawl);
+
+			let eps = crawl["episode_titles"];
+			let epsList = '';
+			let count= 0;
+			
+			for (var i in eps) {	
+				count++;
+				let myNumber = count;
+				var dec = myNumber - Math.floor(myNumber);
+				epsList += '<tr indexEp="'+ i +'">';
+				epsList += '	<td>E'+ ("0" + myNumber).slice(-2) +'</td>';
+				epsList += '	<td>'+ crawl["episode_titles"][i] +'</td> ';
+				epsList += '	<td>';
+				epsList += '		<p>'+ limitString(crawl["episode_sypnopses"][i] , 80, true) +'</p>';
+				epsList += '	</td> ';
+				epsList += '	<td>Duration</td>';
+				epsList += '	<td>SIZE</td>';
+				epsList += '</tr>';
+
+			};
+			
+			table.html(epsList);
+			table.find('tr:nth-child(1)').attr("class", "active");
+			
+			
+
+		}
 		
 		
 		
 	});
 }, 100);
 
-
+/** 1.4 Select movie assets preview  **/
+setTimeout(function() {
+	$('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content table tbody').on("click","tr", function() {
+		$('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content table tbody tr').removeClass('active');
+		$(this).addClass('active');
+		
+		let data = JSON.parse(decodeURIComponent($('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').text()));
+		for ( key in data ){
+			console.log( key );
+		}
+	});
+	
+}, 100);
+	
+	
 /** 2 Classes and Functions **/
 
 /*** 2.1 DIR Scan ***/
@@ -866,6 +916,8 @@ function shareCrawlFile(path, dir) {
 		  
 		var jCrawl = JSON.stringify(jCrawlMovie);
 		categoryLabel = "Movie Assets ";
+		$('[pd-popup="shareScanResultModal"] .file-metadata-desc-tv').css("display", "none");
+		$('[pd-popup="shareScanResultModal"] .file-preview-desc-tv').css("display", "none");
 
 	} else if ( category == 'tv' ) {
 		
@@ -896,6 +948,8 @@ function shareCrawlFile(path, dir) {
 		var jCrawl = JSON.stringify(jCrawlMovie);
 		
 		categoryLabel = "TV Show Seasons ";
+		$('[pd-popup="shareScanResultModal"] .file-metadata-desc-tv').css("display", "flex");
+		$('[pd-popup="shareScanResultModal"] .file-preview-desc-tv').css("display", "flex");
 		
 		
 		
@@ -912,31 +966,13 @@ function shareCrawlFile(path, dir) {
 
 	
 ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
-	//data = decodeURIComponent(data);
-		//data =  JSON.stringify(data);
-		//data = decodeURIComponent(data);
-		//console.log(data);
-		//data = JSON.parse(data);
-	//let crawl=  JSON.stringify( decodeURIComponent(data["crawl"]) );
-	//crawl = JSON.parse( crawl );
-	//console.log(crawl.);
-	
-	/*let syn = decodeURIComponent(data["crawl"]["header"]["synopsis"]);
-	console.log(syn);*/
-	
+
 	let crawl = JSON.parse(decodeURIComponent(data["crawl"]));
-	//data = JSON.parse(decodeURIComponent(data));
-	console.log(JSON.stringify(crawl) );
-	
-	
-
-
 	let getMovieList = $('.file-movie-content .file-movie-details').length;
 	let movieAssets = '';
+	let category = $('[pd-popup="shareScanResultModal"] #fileCategory').val();
 	
-	//Request Metadata
-	getFileMetadata( data["path"], data["dir"],  'crawled' );
-	
+
 	if ( parseInt(getMovieList) == 0 ) {
 		$('[pd-popup="shareConfirmMetadataModal"] .file-movie').parent().parent().css("display", 'none');
 		$(".popup.scan-result .file-title").html(data["title"]);
@@ -995,10 +1031,7 @@ ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
 				actorsCounter++;
 			} 
 			
-			setTimeout(function() {
-				let target = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details textarea[filepath="'+ encodeURIComponent( data["path"] ) +'"]');
-				target.parent().find(".img").click();
-			}, 500);
+			
 			
 		});
 		
@@ -1008,7 +1041,7 @@ ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
 		
 	} else {
 		
-		$('[pd-popup="shareConfirmMetadataModal"] .file-movie').parent().parent().css("display", 'block');
+		$('[pd-popup="shareConfirmMetadataModal"] .file-movie').parent().parent().css("display", 'grid');
 	}
 	
 
@@ -1019,7 +1052,16 @@ ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
 	movieAssets += '	<p style="font-size: 13px; margin-bottom: 40px;" class="year"> '+ crawl["header"]["release_date"] +' </p>';
 	movieAssets += '</div>';
 	$('.file-movie-content').append(movieAssets);
-
+	
+	//Request Metadata
+	if ( category  == 'movie') {
+		getFileMetadata( data["path"], data["dir"],  'crawled' );
+		
+		setTimeout(function() {
+			let target = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details textarea[filepath="'+ encodeURIComponent( data["path"] ) +'"]');
+			target.parent().find(".img").click();
+		}, 500);
+	}
 
 });
 
