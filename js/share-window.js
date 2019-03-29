@@ -574,7 +574,7 @@ setTimeout(function() {
 		imageSrc = ' background-image: '+ imageSrc;
 		$('.popup[pd-popup="shareConfirmMetadataModal"] .file-feature-img').attr('style', imageSrc );
 		
-		let data = JSON.parse(decodeURIComponent($(this).parent().find("textarea").text()));
+		let data = JSON.parse(($(this).parent().find("textarea").text()));
 		let crawl = JSON.parse(decodeURIComponent(data["crawl"]));
 
 
@@ -668,11 +668,37 @@ setTimeout(function() {
 			
 			let table = $('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content table tbody');
 			table.html("");
-			console.log(crawl);
+			
+			let getSeasons = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details');
+			let counterSeasons = 0;
+			let seasonsArray = [];
+			let seasonData = JSON.parse(decodeURIComponent($('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').text()));
+			
+			$.each(getSeasons, function( index, value ) {
+				let individualDir = $(this).find("textarea").attr("filedir");
+				let season = $(this).find(".title").html();
+					seasonsArray[counterSeasons] = seasonData[season];
+					
+					$.each(seasonData[season], function( index, value ) {
+						getFileMetadata( decodeURIComponent(individualDir)+"\\"+ value["name"], decodeURIComponent(individualDir),  'tv' );
+					});
+					
+				counterSeasons++;
+			});
+			
+			
 
+				
+				//getFileMetadata( data["path"], data["dir"],  'crawled' );
+				//let currentSeasonData = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(counterSeasons).find("textarea").text();
+				//	currentSeasonData = decodeURIComponent(currentSeasonData);
+				//console.log(JSON.parse(decodeURIComponent(data)));
+				
 			let eps = crawl["episode_titles"];
+			let metadata = data["metadata"];
 			let epsList = '';
 			let count= 0;
+			//console.log(metadata);
 			
 			for (var i in eps) {	
 				count++;
@@ -684,8 +710,8 @@ setTimeout(function() {
 				epsList += '	<td>';
 				epsList += '		<p>'+ limitString(crawl["episode_sypnopses"][i] , 80, true) +'</p>';
 				epsList += '	</td> ';
-				epsList += '	<td>Duration</td>';
-				epsList += '	<td>SIZE</td>';
+				//epsList += '	<td>'+ metadata[i]["duration"] +'</td>';
+				//epsList += '	<td>'+ metadata[i]["filesize"] +'</td>';
 				epsList += '</tr>';
 
 			};
@@ -707,11 +733,9 @@ setTimeout(function() {
 	$('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content table tbody').on("click","tr", function() {
 		$('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content table tbody tr').removeClass('active');
 		$(this).addClass('active');
-		
+		let season = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details .active').parent().find(".title").html();
 		let data = JSON.parse(decodeURIComponent($('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').text()));
-		for ( key in data ){
-			console.log( key );
-		}
+		console.log( data[season] );
 	});
 	
 }, 100);
@@ -966,7 +990,6 @@ function shareCrawlFile(path, dir) {
 
 	
 ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
-
 	let crawl = JSON.parse(decodeURIComponent(data["crawl"]));
 	let getMovieList = $('.file-movie-content .file-movie-details').length;
 	let movieAssets = '';
@@ -1048,19 +1071,20 @@ ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
 	movieAssets += '<div class="col-2 file-movie-details">';
 	movieAssets += '	<div class="img" style="background-image: url('+ "'" + crawl["header"]["poster"] + "'"+')"></div>';
 	movieAssets += '	<p style="font-size: 13px;" class="title">' + decodeURIComponent(data["title"]) + '</p>';
-	movieAssets += '	<textarea style="display: none" filepath="'+ encodeURIComponent(data["path"]) +'">'+ encodeURIComponent(JSON.stringify(data)) +'</textarea>';
+	movieAssets += '	<textarea style="display: none" filepath="'+ encodeURIComponent(data["path"]) +'" filedir="'+ encodeURIComponent(data["dir"]) +'">'+ (JSON.stringify(data)) +'</textarea>';
 	movieAssets += '	<p style="font-size: 13px; margin-bottom: 40px;" class="year"> '+ crawl["header"]["release_date"] +' </p>';
 	movieAssets += '</div>';
 	$('.file-movie-content').append(movieAssets);
 	
 	//Request Metadata
-	if ( category  == 'movie') {
+	if ( category  == 'movie' ) {
 		getFileMetadata( data["path"], data["dir"],  'crawled' );
 		
 		setTimeout(function() {
 			let target = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details textarea[filepath="'+ encodeURIComponent( data["path"] ) +'"]');
 			target.parent().find(".img").click();
-		}, 500);
+		},
+		500);
 	}
 
 });
@@ -1097,6 +1121,22 @@ ipcRenderer.on('avx-share-respond-file-metadata', (event, data) => {
 			content['metadata'] = data["data"]["file_metadata"];
 			target.text( JSON.stringify(content) );
 			
+			
+	} else if ( action == "tv" ) {
+		let target = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details textarea[filedir="'+ encodeURIComponent(data["data"]["dir"]) +'"]');
+		let content = target.text();
+		//let content = decodeURIComponent(target.text());
+			//content = JSON.parse(content);
+			//console.log(content);
+			content = JSON.parse(content);
+			
+			//console.log(JSON.stringify(data["data"]["file_metadata"]));
+			if (typeof content['metadata'] == 'undefined') content['metadata'] = [];
+			content['metadata'].push( data["data"]["file_metadata"] );
+			target.text( JSON.stringify(content) );
+			//console.log(JSON.stringify(content));
+			
+
 	} else if ( action == "scanned" ) {
 		
 		$("[pd-popup='shareScanResultModal'] .video-reso strong").html( data["data"]["file_metadata"]["video_resolution"] );
