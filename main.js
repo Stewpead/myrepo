@@ -40,6 +40,7 @@ var Status = {
 	ADD_TRANSACTION_DATA: 1134,
 	GET_ACCOUNT_HISTORY: 1124,
 	GET_FILE_INFO: 1128,
+	GET_SPECIFIC_ASSET: 1129,
 	GET_WALLET_DATA: 1130,
 	WALLET_BALANCE: 2000,
 	START_HOARDING_SESSION: 5002,
@@ -47,7 +48,8 @@ var Status = {
 	HAS_REGISTERED_USER : 7001,
 	REQUEST_CRAWLING: 9000,
 	GET_CRAWLING: 9001,
-	GET_FILE_DETAILS:1135
+	GET_FILE_DETAILS:1135,
+	REQUEST_DASHBOARD_CARDS:1136
 };
 
 /*
@@ -90,6 +92,7 @@ var initiateConnection = function(attempt){
 		module.requestFileMetadata(client);
 		module.requestUpdateWalletAfterSending(client);
 		module.requestFileSelectedMetadata(client);
+		module.requestDashboardCards(client);
 		
 	});
 
@@ -198,6 +201,11 @@ var initiateConnection = function(attempt){
 			case Status.GET_FILE_DETAILS: 
 				moduleDashboard.receiveFileSelectedMetadata(data);
 				break;
+
+			case Status.REQUEST_DASHBOARD_CARDS: 
+				moduleDashboard.responseDashboardCards(data);
+				break;
+				
 		}			
 	});
 

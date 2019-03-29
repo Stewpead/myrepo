@@ -111,5 +111,8 @@ module.exports = {
     
   },
 
-
+  responseDashboardCards: function (data) {
+    defaultWindow.webContents.send('response-dashboard-cards', data);
+    console.log('response dashboard cards');
+  }
 };

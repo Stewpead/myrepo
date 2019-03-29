@@ -157,6 +157,13 @@ module.exports = {
 		});
 	},
 	
+	requestDashboardCards: function(client) {
+		ipcMain.on('request-dashboard-cards', (event, arg) => {
+			console.log('request dashboard cards');
+			client.write(arg);
+		});
+	}
+
 };
 
 

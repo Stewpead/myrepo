@@ -180,7 +180,7 @@ span#divider-text:hover {
 }
 .fileimage {
     width: 230px;
-    height: 230px;
+    /* height: 230px; */
     margin-left: 19%;
 }
 td:hover {
@@ -277,7 +277,7 @@ table {
 }
 .tracksListdiv {
     height: 180px;
-    line-height: 50px;
+    line-height: 35px;
     overflow-y: auto;
 }
 .tracksListdiv::-webkit-scrollbar {

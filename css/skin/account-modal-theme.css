@@ -154,7 +154,6 @@
     cursor: pointer;
     border-radius: 0;
 }
-
 .popup-close:hover:after,
 .popup-close:hover::before {
 	background: #fff;

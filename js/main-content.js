@@ -30,23 +30,20 @@ $(document).ready( () => {
 
 	trendingTVSeries();
 
+	json = {
+		status : 1136,
+		type : 0
+	}
+	
+	let jsonString = JSON.stringify(json);
+	
+	ipcRenderer.send('request-dashboard-cards', jsonString);
+	
+
 });
 
 //Generate Movie cards
  function trendingVids(){
-
-	var trendingVcards = "";
-
-	for (var key in json1) {
-		trendingVcards += '<div class="col-lg-3 grid-cards-video" onclick="getMovieInfo(\''+ json1[key]['metadata']['filename'] +'\')">';
-		trendingVcards += '<div class="container">';
-		trendingVcards += '<img src="' + data64 + json1[key]['metadata']['thumbnail'] + '" />';
-		trendingVcards += '<p id="video-title" class="thumb-title">' + json1[key]['metadata']['filename'] + '</p>';
-		trendingVcards += '<p id="video-year" class="thumb-year" >(2000)</p>';
-		trendingVcards += '</div>';
-		trendingVcards += '</div>';
-	} 
-	$('#trendingMovies').append(trendingVcards);
 
 }        
 
@@ -103,3 +100,40 @@ function getTVseries(hash) {
 	location.href = "tvseries-window.html";
 }
 // Send data of selected card
+
+// function requestDashboardCards() {
+
+
+// }
+
+ipcRenderer.on('response-dashboard-cards', (event, arg) => {
+	let moviesArray = {};
+	moviesArray = arg;
+	var trendingVcards = "";
+	console.log(moviesArray['data']['movies']);
+	var movies = JSON.parse(moviesArray['data']['movies']);
+	
+	for( var key in movies) {
+
+		trendingVcards += '<div class="col-lg-3 grid-cards-video" onclick="getMovieInfo(\''+ movies[key]['title'] +'\')">';
+		trendingVcards += '<div class="container">';
+		trendingVcards += '<img src="' + movies[key]['poster'] + '" />';
+		trendingVcards += '<p id="video-title" class="thumb-title">' + movies[key]['title'] + '</p>';
+		trendingVcards += '<p id="video-year" class="thumb-year" >' + movies[key]['date'] + '</p>';
+		trendingVcards += '</div>';
+		trendingVcards += '</div>';
+	}
+
+	$('#trendingMovies').append(trendingVcards);
+
+});	
+
+	// for (var key in json1) {
+	// 	trendingVcards += '';
+	// 	trendingVcards += '';
+	// 	trendingVcards += '';
+	// 	trendingVcards += '';
+	// 	trendingVcards += '';
+	// 	trendingVcards += '';
+	// 	trendingVcards += '</div>';
+	// } 
