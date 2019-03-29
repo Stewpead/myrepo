@@ -43,7 +43,8 @@ module.exports = {
 			defaultWindow.once('ready-to-show', () => {
 				defaultWindow.show();
 			});
-			defaultWindow.on('close', () => {
+
+			defaultWindow.on('closed', () => {
 				app.quit();
 				//app.close();
 			});
@@ -67,7 +68,7 @@ module.exports = {
 			defaultWindow.once('ready-to-show', () => {
 				defaultWindow.show();
 			});
-			defaultWindow.on('close', () => {
+			defaultWindow.on('closed', () => {
 				app.close();
 			});
 		}

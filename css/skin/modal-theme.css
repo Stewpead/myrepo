@@ -577,7 +577,7 @@ hr#hr {
 #btnChkAgreement, #btnpasswordEmptyfail, #btnSignupemptyfail, #btnSignupfail, #btnLoginfail {
     width: 150px;
 }
-
+ 
 /* NO PADDING POPUP */
 .popup-inner.no-border-popup {
     padding: 0;	

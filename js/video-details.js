@@ -137,3 +137,51 @@ $('#btnSearch').click( () => {
     location.href = 'video-download.html';
 });
 
+    ipcRenderer.on('filelist-metadata-response', (event, arg) => {
+        let crawl = arg;
+        let actors = crawl["cast"];
+		let actorsData = '';
+		let actorsCounter = 0;
+		let actorsCounterActive = 0;
+		
+		$.each( actors, function( i, actor ) {
+
+			if (actorsCounter == 0 )  {
+				if ( actorsCounterActive == 0) {
+					actorsData += '<div class="carousel-item row no-gutters active">';
+				} else {
+					actorsData += '<div class="carousel-item row no-gutters">';
+				}
+				
+				
+				
+			}
+			actorsCounterActive++;
+			
+			actorsData += '<div class="col-2 file-actor-details ccccc">';
+			actorsData += '<div class="img" style="background-image: url('+ "'" + actor["thumb"].replace(/(\r\n|\n|\r|'|")/gm, "") + "'" +')"></div>';
+			actorsData += '<label class="name">'+ decodeURIComponent(actor["actor"]) +'</label> ';
+			actorsData += '<p class="role">'+ decodeURIComponent(actor["character"]) +'</p>'
+			actorsData += '</div>';
+			
+			if (actorsCounter == 5 ) {
+				actorsCounter = 0;
+				actorsData += '</div>';
+			} else {
+				actorsCounter++;
+			} 
+			
+			setTimeout(function() {
+				let target = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details textarea[filepath="'+ encodeURIComponent( data["path"] ) +'"]');
+				target.parent().find(".img").click();
+			}, 500);
+			
+		});
+		
+        $(".popup.scan-result .file-actor-content").html(actorsData);
+        
+    });
+
+//ACTORS
+		
+		
