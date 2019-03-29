@@ -27,6 +27,11 @@ button span {
     margin: 0;
     padding: 0;
 }
+#imageFile {
+    height: auto;
+    width: 250px;
+    margin: auto;
+}
 a {
     color:white;
 }

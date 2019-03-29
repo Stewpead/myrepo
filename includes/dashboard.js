@@ -162,8 +162,19 @@ module.exports = {
 			console.log('request dashboard cards');
 			client.write(arg);
 		});
-	}
+	},
 
+	requestSpecificAsset: function(client) {
+		ipcMain.on('request-specific-asset', (event, arg) => {
+			client.write(arg);
+		});
+	},
+	
+	requestBuyAsset: function(client) {
+		ipcMain.on('send-buy-this-asset',(event , arg) => {
+			client.write(arg);
+		});
+	}
 };
 
 

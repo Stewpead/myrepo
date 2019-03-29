@@ -113,6 +113,15 @@ module.exports = {
 
   responseDashboardCards: function (data) {
     defaultWindow.webContents.send('response-dashboard-cards', data);
-    console.log('response dashboard cards');
+  },
+  
+  responseSpecificAsset: function(data) {
+    console.log("receive specific asset");
+    defaultWindow.webContents.send('response-filelist-specific-asset', data);
+  },
+  requestBuyAsset: function( data ) {
+    console.log("receive buy response 1117");
+    defaultWindow.webContents.send('response-buy-this-asset', data);
   }
+
 };

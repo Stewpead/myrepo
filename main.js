@@ -29,7 +29,7 @@ var Status = {
 	SIGNIN: 1114,
 	SEND_FUND: 1115,
 	SHARE_PAYMENT: 1116,
-	GENERATE_DOWNLOAD: 1117,
+	BUY_ASSET: 1117,
 	GET_BALANCE: 1121,
 	GET_ASSET: 1122,
 	// GET_SPENT: 1124,
@@ -93,7 +93,8 @@ var initiateConnection = function(attempt){
 		module.requestUpdateWalletAfterSending(client);
 		module.requestFileSelectedMetadata(client);
 		module.requestDashboardCards(client);
-		
+		module.requestSpecificAsset(client);
+		module.requestBuyAsset(client);
 	});
 
 	client.on('error', function() {
@@ -205,7 +206,14 @@ var initiateConnection = function(attempt){
 			case Status.REQUEST_DASHBOARD_CARDS: 
 				moduleDashboard.responseDashboardCards(data);
 				break;
-				
+
+			case Status.GET_SPECIFIC_ASSET:
+				moduleDashboard.responseSpecificAsset(data);
+				break;	
+		
+			case Status.BUY_ASSET:
+				moduleDashboard.requestBuyAsset(data);
+				break;	
 		}			
 	});
 

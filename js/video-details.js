@@ -26,16 +26,7 @@ var filefound;
 var videoname;
 
 
-$(document).ready(function() {
 
-    // Get File Name from store()
-    videoname = store.get('set-dashboard-file-selected-movie' );
-
-    // console.log(filename);
-    store.delete('set-dashboard-file-selected-movie'); 
-    videonameF();
-    loadFileSearchResults();
-});
 
 function videonameF() {
 
@@ -80,29 +71,10 @@ function loadTableData(data) {
 	
 }
 
+$(document).ready(function() {
+    generateTable();
+});
 
-function loadFileSearchResults() { 
-
-    var searchResult = "";
-    for( var key in jsonFSR[videoname]) {
-
-        searchResult += '<tr class="fileDetailsData" data="' + key +'">';
-        searchResult += '<th scope="row"></th>';
-        searchResult += '<td id="filename' + key + '">' + filename + '</td>';
-        searchResult += '<td id="downloads' + key + '"> ' + jsonFSR[videoname][key]['downloads'] + '</td>';
-        searchResult += '<td id="cost' + key + '"> ' + jsonFSR[videoname][key]['cost'] + '</td>';
-        searchResult += '<td id="ratings' + key + '"> ' + jsonFSR[videoname][key]['ratings'] + '</td>';
-        searchResult += '<td id="language' + key + '"> ' + jsonFSR[videoname][key]['language'] + '</td>';
-        searchResult += '<td id="subtitle' + key + '"> ' + jsonFSR[videoname][key]['subtitle'] + '</td>';
-        searchResult += '<td id="resolution' + key + '"> ' + jsonFSR[videoname][key]['Resolution'] + '</td>';
-        searchResult += '<td id="filesize' + key + '"> ' + jsonFSR[videoname][key]['filesize'] + '</td>';
-        searchResult += '<td id="videocodec' + key + '"> ' + jsonFSR[videoname][key]['videocodec'] + '</td>';
-        searchResult += '<td id="audiocodec' + key + '"> ' + jsonFSR[videoname][key]['audiocodec'] + '</td>';
-        searchResult += '<td id="videobitrate' + key + '"> ' + jsonFSR[videoname][key]['bitrate'] + '</td>';
-        searchResult += '</tr>';
-    }
-    $('#tbodyDetails').append(searchResult);
-}
 
 $("#btnBack").click(function() {
     alert('button back under construction!');
@@ -137,51 +109,133 @@ $('#btnSearch').click( () => {
     location.href = 'video-download.html';
 });
 
-    ipcRenderer.on('filelist-metadata-response', (event, arg) => {
-        let crawl = arg;
-        let actors = crawl["cast"];
-		let actorsData = '';
-		let actorsCounter = 0;
-		let actorsCounterActive = 0;
-		
-		$.each( actors, function( i, actor ) {
+    // ipcRenderer.on('filelist-metadata-response', (event, arg) => {
+    //metadata asset_key Note
 
-			if (actorsCounter == 0 )  {
-				if ( actorsCounterActive == 0) {
-					actorsData += '<div class="carousel-item row no-gutters active">';
-				} else {
-					actorsData += '<div class="carousel-item row no-gutters">';
-				}
-				
-				
-				
-			}
-			actorsCounterActive++;
-			
-			actorsData += '<div class="col-2 file-actor-details ccccc">';
-			actorsData += '<div class="img" style="background-image: url('+ "'" + actor["thumb"].replace(/(\r\n|\n|\r|'|")/gm, "") + "'" +')"></div>';
-			actorsData += '<label class="name">'+ decodeURIComponent(actor["actor"]) +'</label> ';
-			actorsData += '<p class="role">'+ decodeURIComponent(actor["character"]) +'</p>'
-			actorsData += '</div>';
-			
-			if (actorsCounter == 5 ) {
-				actorsCounter = 0;
-				actorsData += '</div>';
-			} else {
-				actorsCounter++;
-			} 
-			
-			setTimeout(function() {
-				let target = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details textarea[filepath="'+ encodeURIComponent( data["path"] ) +'"]');
-				target.parent().find(".img").click();
-			}, 500);
-			
-		});
-		
-        $(".popup.scan-result .file-actor-content").html(actorsData);
+
+
+    var thumbtitle = store.get('specific-data-asset');
+    // store.delete('specific-data-asset');
+
+
+
+    var thumbImg = '<img id="imageFile" src="' + thumbtitle['poster'] + '">';
+    $('#fileImage').append(thumbImg);
+
+    var jAsset = store.get('metadata-specific-asset');
+    console.log(jAsset);
+
+    
+
+    let crawl = jAsset;
+    let actors = crawl["crawl"]["cast"];
+    let actorsData = '';
+    let actorsCounter = 0;
+    let actorsCounterActive = 0;
+
+    document.getElementById('filetitle').innerHTML = jAsset["info"][0]["title"];
+    document.getElementById('movieplot').innerHTML = decodeURIComponent(jAsset["crawl"]["header"]["synopsis"]);
+    document.getElementById('fileyear').innerHTML = jAsset["crawl"]["header"]["release_date"];
+
+
+
+
+    function generateTable() {
+        var tableStr = "";
+
+        for(var key1 in jAsset["info"]) {
+            tableStr += '<tr data-key="' + key1 + '">'; 
+            tableStr += '<td></td>';
+            tableStr += '<td>' + jAsset["info"][key1]["title"] + '</td>';
+            tableStr += '<td> 999 </td>';   
+            tableStr += '<td>' + jAsset["info"][key1]["price"] + '</td>';
+            tableStr += '<td> 4.7 </td>';
+            tableStr += '<td> Language </td>';
+            tableStr += '<td> English </td>';
+            tableStr += '<td> 4k </td>';
+            tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["filesize"] +' </td>';
+            tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["video_codec_name"] + ' </td>';
+            tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["audio_codec_name"] + ' </td>';
+            tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["video_frame_rate"] + ' </td>';
+            tableStr += '</tr>';
+        }
+        $('#tbodyDetails').append(tableStr);
+
+        $('#tbodyDetails tr').click(function() {
+            nextWindow($(this).attr('data-key'));
+        });
+    }
+
+    function nextWindow(key) {
+        let json1 = {
+            price : jAsset["info"][key]["price"],
+            assetKey : jAsset["info"][key]["asset_key"]
+        }
+
+        store.set('pass-asset-key', json1);
+        location.href = "video-download.html";
+    }
+
+
+
+    $.each( actors, function( i,  actor) {
+
+        if (actorsCounter == 0 )  {
+
+            if ( actorsCounterActive == 0) {
+                actorsData += '<div class="carousel-item row no-gutters active">';
+            } else {
+                actorsData += '<div class="carousel-item row no-gutters">';
+            }
+            
+            
+        }
+        actorsCounterActive++;
+        
+        actorsData += '<div class="col-2 file-actor-details">';
+        actorsData += '<div class="img" style="background-image: url('+ "'" + actor["thumb"].replace(/(\r\n|\n|\r|'|")/gm, "") + "'" +')"></div>';
+        actorsData += '<label class="name">'+ decodeURIComponent(actor["actor"]) +'</label> ';
+        actorsData += '<p class="role">'+ decodeURIComponent(actor["character"]) +'</p>'
+        actorsData += '</div>';
+        
+        if (actorsCounter == 5 ) {
+            actorsCounter = 0;
+            actorsData += '</div>';
+        } else {
+            actorsCounter++;
+        } 
         
     });
+    
+    $("#mainSearchResult .actors-section").html(actorsData);
+    
+
+
+
+        // for( var keys in jAsset[""])
 
 //ACTORS
 		
-		
+        
+// function loadFileSearchResults() { 
+
+//     var searchResult = "";
+//     for( var key in jsonFSR[videoname]) {
+
+//         searchResult += '<tr class="fileDetailsData" data="' + key +'">';
+//         searchResult += '<th scope="row"></th>';
+//         searchResult += '<td id="filename' + key + '">' + filename + '</td>';
+//         searchResult += '<td id="downloads' + key + '"> ' + jsonFSR[videoname][key]['downloads'] + '</td>';
+//         searchResult += '<td id="cost' + key + '"> ' + jsonFSR[videoname][key]['cost'] + '</td>';
+//         searchResult += '<td id="ratings' + key + '"> ' + jsonFSR[videoname][key]['ratings'] + '</td>';
+//         searchResult += '<td id="language' + key + '"> ' + jsonFSR[videoname][key]['language'] + '</td>';
+//         searchResult += '<td id="subtitle' + key + '"> ' + jsonFSR[videoname][key]['subtitle'] + '</td>';
+//         searchResult += '<td id="resolution' + key + '"> ' + jsonFSR[videoname][key]['Resolution'] + '</td>';
+//         searchResult += '<td id="filesize' + key + '"> ' + jsonFSR[videoname][key]['filesize'] + '</td>';
+//         searchResult += '<td id="videocodec' + key + '"> ' + jsonFSR[videoname][key]['videocodec'] + '</td>';
+//         searchResult += '<td id="audiocodec' + key + '"> ' + jsonFSR[videoname][key]['audiocodec'] + '</td>';
+//         searchResult += '<td id="videobitrate' + key + '"> ' + jsonFSR[videoname][key]['bitrate'] + '</td>';
+//         searchResult += '</tr>';
+//     }
+//     $('#tbodyDetails').append(searchResult);
+// }

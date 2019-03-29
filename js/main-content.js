@@ -3,6 +3,9 @@ const path = require('path');
 const {ipcRenderer} = require('electron');
 const fs = require('fs');
 
+const Store = require('electron-store');
+const store = new Store(); 
+
 // Movie Content
 var obj1 = fs.readFileSync('./json/base64img-2.json'); 
 var json1 = JSON.parse(obj1);
@@ -19,8 +22,7 @@ var imgpath = path.join(__dirname,'/decodedimg/');
 var data64 = "data:image/jpg;base64,";
 
 
-const Store = require('electron-store');
-const store = new Store(); 
+
 
 $(document).ready( () => {
 
@@ -47,12 +49,7 @@ $(document).ready( () => {
 
 }        
 
-// Send data of selected card
-function getMovieInfo(hash) {
-	store.set('set-dashboard-file-selected-movie', hash );
-	location.href = "video-details.html";
-}
-	
+
 // Generate Audio cards
 function trendingAudios(){
 	var trendingAcards = "";
@@ -91,7 +88,6 @@ function trendingTVSeries() {
 
 	} 
 	$('#tvSeriesSection').append(trendingTVcards);
-
 }
 
 // Send data of selected card
@@ -101,21 +97,20 @@ function getTVseries(hash) {
 }
 // Send data of selected card
 
-// function requestDashboardCards() {
-
-
-// }
-
+var movies;
 ipcRenderer.on('response-dashboard-cards', (event, arg) => {
+
 	let moviesArray = {};
 	moviesArray = arg;
 	var trendingVcards = "";
 	console.log(moviesArray['data']['movies']);
-	var movies = JSON.parse(moviesArray['data']['movies']);
-	
+	movies = JSON.parse(moviesArray['data']['movies']);
+
 	for( var key in movies) {
 
-		trendingVcards += '<div class="col-lg-3 grid-cards-video" onclick="getMovieInfo(\''+ movies[key]['title'] +'\')">';
+		console.log(movies[key]);
+
+		trendingVcards += '<div class="col-lg-3 grid-cards-video" onclick="getMovieInfo(\'' + key + '\')">';
 		trendingVcards += '<div class="container">';
 		trendingVcards += '<img src="' + movies[key]['poster'] + '" />';
 		trendingVcards += '<p id="video-title" class="thumb-title">' + movies[key]['title'] + '</p>';
@@ -128,12 +123,35 @@ ipcRenderer.on('response-dashboard-cards', (event, arg) => {
 
 });	
 
-	// for (var key in json1) {
-	// 	trendingVcards += '';
-	// 	trendingVcards += '';
-	// 	trendingVcards += '';
-	// 	trendingVcards += '';
-	// 	trendingVcards += '';
-	// 	trendingVcards += '';
-	// 	trendingVcards += '</div>';
-	// } 
+// Send data of selected card
+function getMovieInfo(keys) {
+
+	let jData = {
+		poster : movies[keys]['poster'],
+		year : movies[keys]['date'],
+		title : movies[keys]['title']
+	};
+
+	let json = {
+		status : 1129,
+		title : movies[keys]['title'],
+		type : 0
+	};
+
+	json = JSON.stringify(json);
+	ipcRenderer.send('request-specific-asset', json);
+
+	store.set('specific-data-asset', jData);
+
+
+	ipcRenderer.on('response-filelist-specific-asset', (event, arg) => {
+
+		arg = JSON.parse(arg['data']);
+		store.set('metadata-specific-asset', arg);
+
+	});
+
+
+	location.href = "video-details.html";
+}
+// 

@@ -12,6 +12,8 @@ const store = new Store();
 var img = "";
 let jData = store.get('file-details-for-download-page');
 
+var assetKey = store.get('pass-asset-key');
+
 $(document).ready(() => {
 
     document.getElementById('file-review').style.display = 'block';
@@ -34,7 +36,8 @@ $(document).ready(() => {
 
 
     
-    
+
+
     $("#btnBack").click(function() {
 
         location.href = 'video-details.html';
@@ -99,13 +102,16 @@ $(document).ready(() => {
 
             $('#executePayment').prop('disabled', true).addClass('disabled', true);
 
-            $('[pd-popup="shareMarketPriceForMultipleModal"]').fadeOut(100);
-            $('[pd-popup="sharePaymentSuccessModal"]').fadeIn(100);
-            let jMessage = {
-                status : 5002
-            };
-            jMessage = JSON.stringify(jMessage);
-            ipcRenderer.send('request-hoarding-session', jMessage);
+
+            let jsonBuy = {
+                status : 1117,
+                asset_key : assetKey['assetKey'],
+                amount : assetKey['price']
+            }
+
+            jsonBuy = JSON.stringify(jsonBuy);
+            ipcRenderer.send('send-buy-this-asset', jsonBuy);
+
 
         });
 
@@ -120,23 +126,14 @@ $(document).ready(() => {
         $('#btnWishlistClose').click( () => {
             $('[pd-popup="addToWishlist"]').fadeOut(100);  
         });
-
+        
+        $('#btnErrorBuyClose').click( () => {
+            $('[pd-popup="ErrorBuyingAsset"]').fadeOut(100);  
+        });
         $('#btnClosevf').click( () => {
             $('[pd-popup="viewFilesModal"]').fadeOut(100);
         });
 
-        $('#executePayment').click( () => {
-            
-            let jPayment = {};
-            jPayment.data = {};
-            jPayment.status = 1115;
-            // jPayment.data.sender
-            jPayment.data.receiver = "fixed";
-            jPayment.data.type = 2;
-            jPayment = JSON.stringify(jPayment);
-            ipcRenderer.send('payment-download-request', jPayment);
-
-        });
 
             // 60% file owner
             // 35% seeders
@@ -145,7 +142,17 @@ $(document).ready(() => {
         paymentModalData();
 
     }, 100);
-
+    ipcRenderer.on('response-buy-this-asset', (event, arg) => {
+        if( arg['data']['valid'] == 1) {
+            // $('[pd-popup="shareMarketPriceForMultipleModal"]').fade(100);
+            // $('[pd-popup="sharePaymentSuccessModal"]').fadeIn(100);
+            $('[pd-popup="pleaseWaitModal"]').fadeIn(100);
+        } else {
+            $('[pd-popup="shareMarketPriceForMultipleModal"]').fadeOut(100);
+            $('[pd-popup="ErrorBuyingAsset"]').fadeIn(100);
+            
+        }
+    });
 });
 
 function paymentModalData() {
@@ -167,6 +174,7 @@ function paymentModalData() {
 
 
 }
+
 
 // 	setTimeout( () => {
 // 		/* GET ACCOUNT WALLET ADDRESS */

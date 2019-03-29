@@ -1013,7 +1013,7 @@ ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
 					actorsData += '<div class="carousel-item row no-gutters">';
 				}
 				
-				
+				 
 				
 			}
 			actorsCounterActive++;
