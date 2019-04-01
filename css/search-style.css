@@ -231,3 +231,51 @@ td:hover {
     margin-left: -5px;
     color: #999999;
 }
+.file-actor-details .img {
+    height: 66px;
+    border-radius: 54px;
+    max-width: 273px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    display: block;
+    vertical-align: middle;
+    background-position: center;
+    width: 65px;
+}
+
+.file-actor-details .name {
+  margin-top: 13px;
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.file-actor-details .role {
+    font-size: 11px;
+    text-align: center;
+
+
+}
+.file-actor-details {
+    display: block;
+    float: left;
+}
+
+
+ .carousel-control-next, .carousel-control-prev {
+	margin-top: 135px;
+    width: 100%;
+}
+ .carousel-control-prev span {
+    float: right;
+    right: 42px;
+    position: absolute;
+}
+ .carousel-control-next span {
+    float: right;
+    right: 0;
+    position: absolute;
+}

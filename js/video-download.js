@@ -10,33 +10,34 @@ const Store = require('electron-store');
 const store = new Store(); 
 
 var img = "";
-let jData = store.get('file-details-for-download-page');
 
 var assetKey = store.get('pass-asset-key');
 
+var jAsset = store.get('metadata-specific-asset');
+console.log(jAsset);
 $(document).ready(() => {
+
+    
 
     document.getElementById('file-review').style.display = 'block';
 
     document.getElementById('artistic-review').style.display = 'none';
+    var index = assetKey["indexKey"];
+    document.getElementById('filetitle').innerHTML = jAsset["info"][index]["title"];
+    document.getElementById('fileCost').innerHTML = assetKey["price"] + " AVX";
+    document.getElementById('duration').innerHTML = getDuration(jAsset["info"][index]["metadata"]["duration"]);
+    document.getElementById('fileSize').innerHTML = formatBytes(jAsset["info"][index]["metadata"]["filesize"], 2);
 
+    // img = '<img src="' + jData['img64'] + '">';
+    // $('#fileImage').append(img);
 
-    img = '<img src="' + jData['img64'] + '">';
-    $('#fileImage').append(img);
+    // document.getElementById('filetitle').innerHTML = jData['fileID'];
 
-    document.getElementById('filetitle').innerHTML = jData['fileID'];
+    // document.getElementById('fileCost').innerHTML = jData['cost'];
 
-    document.getElementById('fileCost').innerHTML = jData['cost'];
+    // document.getElementById('fileSize').innerHTML = jData['filesize'];
 
-    document.getElementById('fileSize').innerHTML = jData['filesize'];
-
-    document.getElementById('resolution').innerHTML = jData['resolution'];
-
-
-
-
-    
-
+    // document.getElementById('resolution').innerHTML = jData['resolution'];
 
     $("#btnBack").click(function() {
 
@@ -62,17 +63,13 @@ $(document).ready(() => {
  
         var Wishlist = '{"0" : {"filename" : "MADAFAKA"}}';
         var jWishlist = {};
-        // jWishlist.items = [{}];
- 
+
         var totalObj = Object.keys(jWishlist).length;
         jWishlist = JSON.parse(Wishlist);
         jWishlist[totalObj].push({ id : "01", filename : 'Fuck you'});
         jWishlist = JSON.stringify(jWishlist); 
-        // jWishlist.items.push(
-        
-        //     { id : totalObj, filename : "Fuck you"}
 
-        // );
+
         fs.writeFile("jWishlist.json",jWishlist, function(e) {
             if(e) {
                 console.log(e);
@@ -168,12 +165,17 @@ function paymentModalData() {
         $('#walletBalance').text(walletData['wallet_data']['balance']);
     });
 
-    $('.file-feature-img').css('background-image', 'url(' + jData['img64'] + ')');
-    $('.file-title').text(jData['fileID']);
-    $('#priceAVX').text(jData['cost'] + " AVX");
+    // $('.file-feature-img').css('background-image', 'url(' + jData['img64'] + ')');
+    // $('.file-title').text(jData['fileID']);
+    // $('#priceAVX').text(jData['cost'] + " AVX");
 
 
 }
+
+// function headerData() {
+//     document.getElementById('filetitle').innerHTML = jAsset["crawl"][""]
+// }
+ 
 
 
 // 	setTimeout( () => {

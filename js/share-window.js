@@ -16,7 +16,7 @@ $('#linkAccount').click(function() {
 
 $('#linkSearch').click(function() {
     ipcRenderer.send('search','share');
-});
+}); 
 
 $('#btn-upload-folder').click(function(e) {
     e.preventDefault();

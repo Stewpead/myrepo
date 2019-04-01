@@ -25,27 +25,6 @@ $ = jQuery;
 var filefound;
 var videoname;
 
-
-
-
-function videonameF() {
-
-    // get search results 
-    filefound = getFiledata(videoname);
-    // get search results 
-
-    filename = jsonAC[filefound]['metadata']['filename'];
-    var fileyear = jsonAC[filefound]['metadata']['year']; 
-    document.getElementById('filetitle').innerHTML = filename;
-    document.getElementById('fileyear').innerHTML = fileyear;
-
-    var imgString = "";
-    img64 = data64 + jsonAC[filefound]['metadata']['thumbnail'];
-    imgString = '<img src="' + img64 + '" class="fileimage" />';
-    $('#fileImage').append(imgString);
-}
-
-
 function getFiledata(filename) {
 
     for(var key in jsonAC) {
@@ -54,21 +33,6 @@ function getFiledata(filename) {
         }
     }
 
-}
-
-function loadTableData(data) {
-    var countFiles = 1;
-    var resultsTableData = "";
-	
-    // for (var key in data) {
-    //     resultsTableData += '<tr id="row' + countFiles + '">';
-    //     resultsTableData += '<th scope="row" class="clickable-row"></th>'
-    //     resultsTableData += '<td id="filename' + countFiles + '">'+data['asset']['title']+'</td>';
-    //     resultsTableData += '<td id="downloads' + countFiles + '"><td id="costavx' + countFiles + '"></td><td id="ratings' + countFiles + '"></td><td id="language' + countFiles + '"></td><td id="subtitle' + countFiles + '"></td><td id="resolution' + countFiles + '"></td><td id="filesize' + countFiles + '"></td><td id="videocode' + countFiles + '"></td><td id="audiocode' + countFiles + '"></td><td id="videobitrate' + countFiles + '"></td>';
-    //     countFiles++;
-    // }
-    // $('#tbodyVdetails').append(resultsTableData);
-	
 }
 
 $(document).ready(function() {
@@ -80,26 +44,26 @@ $("#btnBack").click(function() {
     alert('button back under construction!');
 });
 
-setTimeout(() => {
-    $('tbody .fileDetailsData').click(function() {
-        let jData = {};
-        let row = $(this).attr('data');
-        jData.img64 = img64;
-        jData.fileID = $('#filename' + row).text();
-        jData.downloads = $('#downloads' + row).text();
-        jData.cost = $('#cost' + row).text();
-        jData.ratings = $('#ratings' + row).text();
-        jData.language = $('#language' + row).text();
-        jData.subtitle = $('#subtitle' + row).text();
-        jData.resolution = $('#resolution' + row).text();
-        jData.filesize = $('#filesize' + row).text();
-        jData.videocodec = $('#videcodec' + row).text();
-        jData.audiocodec = $('#audiocodec' + row).text();
-        jData.videobitrate = $('#videobitrate' + row).text();
-        store.set('file-details-for-download-page', jData);
-        location.href = 'video-download.html';
-    });    
-}, 50);
+// setTimeout(() => {
+//     $('tbody .fileDetailsData').click(function() {
+//         let jData = {};
+//         let row = $(this).attr('data');
+//         jData.img64 = img64;
+//         jData.fileID = $('#filename' + row).text();
+//         jData.downloads = $('#downloads' + row).text();
+//         jData.cost = $('#cost' + row).text();
+//         jData.ratings = $('#ratings' + row).text();
+//         jData.language = $('#language' + row).text();
+//         jData.subtitle = $('#subtitle' + row).text();
+//         jData.resolution = $('#resolution' + row).text();
+//         jData.filesize = $('#filesize' + row).text();
+//         jData.videocodec = $('#videcodec' + row).text();
+//         jData.audiocodec = $('#audiocodec' + row).text();
+//         jData.videobitrate = $('#videobitrate' + row).text();
+//         store.set('file-details-for-download-page', jData);
+//         location.href = 'video-download.html';
+//     });    
+// }, 50);
 
 $('#tbodyVdetails').on("click","#row1", function() {
     location.href = 'video-download.html';
@@ -109,23 +73,15 @@ $('#btnSearch').click( () => {
     location.href = 'video-download.html';
 });
 
-    // ipcRenderer.on('filelist-metadata-response', (event, arg) => {
-    //metadata asset_key Note
-
-
-
     var thumbtitle = store.get('specific-data-asset');
     // store.delete('specific-data-asset');
-
 
 
     var thumbImg = '<img id="imageFile" src="' + thumbtitle['poster'] + '">';
     $('#fileImage').append(thumbImg);
 
     var jAsset = store.get('metadata-specific-asset');
-    console.log(jAsset);
-
-    
+    // console.log(jAsset);
 
     let crawl = jAsset;
     let actors = crawl["crawl"]["cast"];
@@ -136,6 +92,7 @@ $('#btnSearch').click( () => {
     document.getElementById('filetitle').innerHTML = jAsset["info"][0]["title"];
     document.getElementById('movieplot').innerHTML = decodeURIComponent(jAsset["crawl"]["header"]["synopsis"]);
     document.getElementById('fileyear').innerHTML = jAsset["crawl"]["header"]["release_date"];
+    document.getElementById('videoDirectors').innerHTML = jAsset["crawl"]["header"]["directors"];
 
 
 
@@ -169,7 +126,8 @@ $('#btnSearch').click( () => {
     function nextWindow(key) {
         let json1 = {
             price : jAsset["info"][key]["price"],
-            assetKey : jAsset["info"][key]["asset_key"]
+            assetKey : jAsset["info"][key]["asset_key"],
+            indexKey : key
         }
 
         store.set('pass-asset-key', json1);

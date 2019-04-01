@@ -1,7 +1,7 @@
 html {
     margin: auto;
     padding: 0;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
 }
 html::-webkit-scrollbar {
   display: none; 
@@ -128,3 +128,8 @@ button {
   margin-left: 30px;
   width: 600px;
 }
+
+
+
+
+/*  */
