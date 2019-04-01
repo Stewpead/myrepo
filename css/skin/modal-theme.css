@@ -95,6 +95,7 @@ hr#hr {
 	font-family: 'Segoe UI';
     max-height: 625px;
     overflow: hidden;
+	z-index: 999;
 }
 
 .popup-inner h1 {
@@ -633,6 +634,7 @@ hr#hr {
     background-size: cover;
     overflow: hidden;
     opacity: 0.5;
+	z-index: -99;
 }
 .popup.validation-event#loginSuccessModal {
     height: 150px;
