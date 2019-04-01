@@ -673,26 +673,24 @@ setTimeout(function() {
 			let counterSeasons = 0;
 			let seasonsArray = [];
 			let seasonData = JSON.parse(decodeURIComponent($('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').text()));
-			
+			console.log( "COUNT "+ getSeasons.length);
 			$.each(getSeasons, function( index, value ) {
-				let individualDir = $(this).find("textarea").attr("filedir");
-				let season = $(this).find(".title").html();
-					seasonsArray[counterSeasons] = seasonData[season];
-					
-					$.each(seasonData[season], function( index, value ) {
-						getFileMetadata( decodeURIComponent(individualDir)+"\\"+ value["name"], decodeURIComponent(individualDir),  'tv' );
-					});
-					
+				
+				if ( getSeasons.length >= counterSeasons ) {
+					let individualDir = $(this).find("textarea").attr("filedir");
+					let season = $(this).find(".title").html();
+						seasonsArray[counterSeasons] = seasonData[season];
+						console.log(seasonsArray.length);
+						
+						$.each(seasonData[season], function( index, value ) {
+							getFileMetadata( decodeURIComponent(individualDir)+"\\"+ value["name"], decodeURIComponent(individualDir),  'tv' );
+							console.log("testing");
+						});
+				}
+				console.log( "COUNT "+ counterSeasons);
 				counterSeasons++;
 			});
-			
-			
 
-				
-				//getFileMetadata( data["path"], data["dir"],  'crawled' );
-				//let currentSeasonData = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(counterSeasons).find("textarea").text();
-				//	currentSeasonData = decodeURIComponent(currentSeasonData);
-				//console.log(JSON.parse(decodeURIComponent(data)));
 				
 			let eps = crawl["episode_titles"];
 			let metadata = data["metadata"];
@@ -856,15 +854,6 @@ function checkFileForVideoPlayable( filename  ) {
 	return ( results < 0 ) ? 0 : 1;
 }
 
-/*** 2.4 BYTES BIT VALUE***/
-function formatBytes(bytes,decimals) {
-   if(bytes == 0) return '0 Bytes';
-   var k = 1024,
-       dm = decimals <= 0 ? 0 : decimals || 2,
-       sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
-       i = Math.floor(Math.log(bytes) / Math.log(k));
-   return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
-}
 
 /*** 2.4 Check if the file is VIDEO FILE ***/
 function activateToggleDIR() {
@@ -1125,12 +1114,8 @@ ipcRenderer.on('avx-share-respond-file-metadata', (event, data) => {
 	} else if ( action == "tv" ) {
 		let target = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details textarea[filedir="'+ encodeURIComponent(data["data"]["dir"]) +'"]');
 		let content = target.text();
-		//let content = decodeURIComponent(target.text());
-			//content = JSON.parse(content);
-			//console.log(content);
 			content = JSON.parse(content);
 			
-			//console.log(JSON.stringify(data["data"]["file_metadata"]));
 			if (typeof content['metadata'] == 'undefined') content['metadata'] = [];
 			content['metadata'].push( data["data"]["file_metadata"] );
 			target.text( JSON.stringify(content) );
