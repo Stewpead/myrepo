@@ -454,6 +454,9 @@ $('.importShareFiles input[type="file"]').change(function () {
 			$(".file-dir-info span:nth-child(1)").html(path);
 			$( ".item-file-meta" ).on( "click", shareShowMetadataPerFile );
 			activateToggleDIR();
+					
+			// CLEAR Modal
+			$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').removeAttr("generated")
 
 		});
 		
@@ -523,7 +526,11 @@ onDrop = function(event) {
 					$(".generateFileScanned").html(dtp.getHtmlTree());
 					$(".file-dir-info span:nth-child(1)").html(path);
 					$( ".popup .item-file-meta" ).on( "click", shareShowMetadataPerFile );
+					
 					activateToggleDIR();
+					
+					// CLEAR Modal
+					$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').removeAttr("generated")
 
 				});
 
@@ -677,29 +684,35 @@ setTimeout(function() {
 			let seasonData = JSON.parse( decodeURIComponent( $('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').text() ) );
 			
 			
-			let checkIfgenerated = $('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').hasAttr("generated");
-			$.each(getSeasons, function( index, value ) {
+			let checkIfgenerated = $('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').attr("generated");
+			
+			if (typeof checkIfgenerated == 'undefined') {
 				
-				if ( getSeasons.length >= counterSeasons ) {
-					let individualDir = $(this).find("textarea").attr("filedir");
-					let season = $(this).find(".title").html();
-						seasonsArray[counterSeasons] = seasonData[season];
-						
-						$.each(seasonData[season], function( index, value ) {
-							getFileMetadata( decodeURIComponent(individualDir)+"\\"+ value["name"], decodeURIComponent(individualDir),  'tv' );
-						});
-						
-				}
+				$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').attr("generated", true);
+				
+				$.each(getSeasons, function( indexSeasons, value ) {
+					
+					if ( getSeasons.length >= counterSeasons ) {
+						let individualDir = $(this).find("textarea").attr("filedir");
+						let season = $(this).find(".title").html();
+							seasonsArray[counterSeasons] = seasonData[season];
+							
+							$.each(seasonData[season], function( index, value ) {
+								getFileMetadata( decodeURIComponent(individualDir)+"\\"+ value["name"], decodeURIComponent(individualDir),  'tv', indexSeasons );
+							});
+							
+					}
 
-				counterSeasons++;
-			});
-
+					counterSeasons++;
+				});
+				
+			}
 				
 			let eps = crawl["episode_titles"];
 			let metadata = data["metadata"];
 			let epsList = '';
 			let count= 0;
-			//console.log(metadata);
+			console.log(metadata);
 			
 			for (var i in eps) {	
 				count++;
@@ -1083,7 +1096,7 @@ ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
 
 /*** 2.6 Get metadata from crawled file ***/
 
-function getFileMetadata( path, dir, action ){
+function getFileMetadata( path, dir, action, counter = 0 ){
 
 	if ( typeof  path !== "undefined" ) {
 		let json = {
@@ -1091,7 +1104,8 @@ function getFileMetadata( path, dir, action ){
 			data : {
 				filename	: path,
 				action		: action,
-				dir			: dir
+				dir			: dir,
+				counter     : counter
 				
 			}
 		}
@@ -1118,11 +1132,13 @@ ipcRenderer.on('avx-share-respond-file-metadata', (event, data) => {
 		let target = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details textarea[filedir="'+ encodeURIComponent(data["data"]["dir"]) +'"]');
 		let content = target.text();
 			content = JSON.parse(content);
+			counter = data["data"]["counter"];
 			
 			if (typeof content['metadata'] == 'undefined') content['metadata'] = [];
-			content['metadata'].push( data["data"]["file_metadata"] );
+			if (typeof content['metadata'][counter] == 'undefined') content['metadata'][counter] = [];
+			content['metadata'][counter].push( data["data"]["file_metadata"] );
 			target.text( JSON.stringify(content) );
-			//console.log(JSON.stringify(content));
+			console.log( counter );
 			
 
 	} else if ( action == "scanned" ) {
