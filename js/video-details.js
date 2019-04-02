@@ -36,7 +36,10 @@ function getFiledata(filename) {
 }
 
 $(document).ready(function() {
+
     generateTable();
+
+
 });
 
 
@@ -44,26 +47,6 @@ $("#btnBack").click(function() {
     alert('button back under construction!');
 });
 
-// setTimeout(() => {
-//     $('tbody .fileDetailsData').click(function() {
-//         let jData = {};
-//         let row = $(this).attr('data');
-//         jData.img64 = img64;
-//         jData.fileID = $('#filename' + row).text();
-//         jData.downloads = $('#downloads' + row).text();
-//         jData.cost = $('#cost' + row).text();
-//         jData.ratings = $('#ratings' + row).text();
-//         jData.language = $('#language' + row).text();
-//         jData.subtitle = $('#subtitle' + row).text();
-//         jData.resolution = $('#resolution' + row).text();
-//         jData.filesize = $('#filesize' + row).text();
-//         jData.videocodec = $('#videcodec' + row).text();
-//         jData.audiocodec = $('#audiocodec' + row).text();
-//         jData.videobitrate = $('#videobitrate' + row).text();
-//         store.set('file-details-for-download-page', jData);
-//         location.href = 'video-download.html';
-//     });    
-// }, 50);
 
 $('#tbodyVdetails').on("click","#row1", function() {
     location.href = 'video-download.html';
@@ -81,7 +64,7 @@ $('#btnSearch').click( () => {
     $('#fileImage').append(thumbImg);
 
     var jAsset = store.get('metadata-specific-asset');
-    // console.log(jAsset);
+    console.log(jAsset);
 
     let crawl = jAsset;
     let actors = crawl["crawl"]["cast"];
@@ -94,9 +77,13 @@ $('#btnSearch').click( () => {
     document.getElementById('fileyear').innerHTML = jAsset["crawl"]["header"]["release_date"];
     document.getElementById('videoDirectors').innerHTML = jAsset["crawl"]["header"]["directors"];
 
-
-
-
+    let strBanner = jAsset["crawl"]["header"]["banner"];
+    console.log(strBanner);
+    $('#mainSearchResult').css({
+        'background': 'linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, .8) 60%, rgba(0, 0, 0, 1) 100%), url("' + strBanner + '") no-repeat',
+        'background-size': '100% 35%'
+    });
+    // linear-gradient(to bottom, rgba(0, 0, 0, 0.575) 30%, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 1) 100%), url('../images/avengers_wall.jpg') no-repeat
     function generateTable() {
         var tableStr = "";
 

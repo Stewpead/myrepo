@@ -129,7 +129,10 @@ button {
   width: 600px;
 }
 
-
+#plot {
+  font-size: 12px;
+  width: 60%;
+}
 
 
 /*  */

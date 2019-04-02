@@ -12,32 +12,16 @@ const store = new Store();
 var img = "";
 
 var assetKey = store.get('pass-asset-key');
-
+var indeKey = assetKey["indexKey"];
+console.log(assetKey);
 var jAsset = store.get('metadata-specific-asset');
 console.log(jAsset);
+
 $(document).ready(() => {
 
-    
+    populateScreen();
 
-    document.getElementById('file-review').style.display = 'block';
-
-    document.getElementById('artistic-review').style.display = 'none';
-    var index = assetKey["indexKey"];
-    document.getElementById('filetitle').innerHTML = jAsset["info"][index]["title"];
-    document.getElementById('fileCost').innerHTML = assetKey["price"] + " AVX";
-    document.getElementById('duration').innerHTML = getDuration(jAsset["info"][index]["metadata"]["duration"]);
-    document.getElementById('fileSize').innerHTML = formatBytes(jAsset["info"][index]["metadata"]["filesize"], 2);
-
-    // img = '<img src="' + jData['img64'] + '">';
-    // $('#fileImage').append(img);
-
-    // document.getElementById('filetitle').innerHTML = jData['fileID'];
-
-    // document.getElementById('fileCost').innerHTML = jData['cost'];
-
-    // document.getElementById('fileSize').innerHTML = jData['filesize'];
-
-    // document.getElementById('resolution').innerHTML = jData['resolution'];
+   
 
     $("#btnBack").click(function() {
 
@@ -136,7 +120,9 @@ $(document).ready(() => {
             // 35% seeders
             // 4.9% L2 users
             // .1% AVX wallet
+
         paymentModalData();
+
 
     }, 100);
     ipcRenderer.on('response-buy-this-asset', (event, arg) => {
@@ -153,10 +139,13 @@ $(document).ready(() => {
 });
 
 function paymentModalData() {
+
     var walletData;
+
     let jRequest = {
         status : 1130,
     };
+
     jRequest = JSON.stringify(jRequest);
     ipcRenderer.send('payment-balance-request', jRequest);
 
@@ -165,13 +154,44 @@ function paymentModalData() {
         $('#walletBalance').text(walletData['wallet_data']['balance']);
     });
 
-    // $('.file-feature-img').css('background-image', 'url(' + jData['img64'] + ')');
-    // $('.file-title').text(jData['fileID']);
-    // $('#priceAVX').text(jData['cost'] + " AVX");
+    $('.file-feature-img').css('background-image', 'url(' + jAsset["crawl"]["header"]["poster"] + ')');
+    document.getElementById('file-title').innerHTML = jAsset["info"][indeKey]["title"];
+    $('#priceAVX').text(assetKey["price"] + " AVX");
+    $('.runtime').text(getDuration(jAsset["info"][indeKey]["metadata"]["duration"]));
+    $('.releasedYear').text(jAsset["crawl"]["header"]["release_date"]);
+}
+
+function populateScreen() {
+    document.getElementById('file-review').style.display = 'block';
+
+    document.getElementById('artistic-review').style.display = 'none';
+   
+
+    document.getElementById('filetitle').innerHTML = jAsset["info"][indeKey]["title"];
+    document.getElementById('fileyear').innerHTML = jAsset["crawl"]["header"]["release_date"];
+    document.getElementById('fileCost').innerHTML = assetKey["price"] + " AVX";
+    document.getElementById('duration').innerHTML = getDuration(jAsset["info"][indeKey]["metadata"]["duration"]);
+    document.getElementById('fileSize').innerHTML = formatBytes(jAsset["info"][indeKey]["metadata"]["filesize"], 2);
+    document.getElementById('audioEncoded').innerHTML = jAsset["info"][indeKey]["metadata"]["audio_codec_name"];
+    document.getElementById('plot').innerHTML = jAsset["crawl"]["header"]["synopsis"];
+    document.getElementById('sizeLabel').innerHTML = formatBytes(jAsset["info"][indeKey]["metadata"]["filesize"], 2);
+    document.getElementById('widthLabel').innerHTML = jAsset["info"][indeKey]["metadata"]["width"];
+    document.getElementById('heightLabel').innerHTML = jAsset["info"][indeKey]["metadata"]["height"];
+    document.getElementById('sizeLabel').innerHTML = formatBytes(jAsset["info"][indeKey]["metadata"]["filesize"], 2);
+    document.getElementById('durationLabel').innerHTML = getDuration(jAsset["info"][indeKey]["metadata"]["duration"]);
+    document.getElementById('audioBitrateLabel').innerHTML = jAsset["info"][indeKey]["metadata"]["audio_bitrate"];
+    document.getElementById('aspectRatioLabel').innerHTML = jAsset["info"][indeKey]["metadata"]["aspect_ratio"];
+    document.getElementById('audNameLabel').innerHTML = jAsset["info"][indeKey]["metadata"]["channels"];
+    document.getElementById('samplingRateLabel').innerHTML = jAsset["info"][indeKey]["metadata"]["sampling_rate"];
+    document.getElementById('videoFramRateLabel').innerHTML = jAsset["info"][indeKey]["metadata"]["video_frame_rate"];
+    document.getElementById('videoCodecLabel').innerHTML = jAsset["info"][indeKey]["metadata"]["video_codec_name"];
+    document.getElementById('bitDepth').innerHTML = jAsset["info"][indeKey]["metadata"]["bit_depth"];
+
+    let imgStr = '<img src="' + jAsset["crawl"]["header"]["poster"] + '" id="videoImage">';
+    $('#fileImage').html(imgStr);
 
 
 }
-
 // function headerData() {
 //     document.getElementById('filetitle').innerHTML = jAsset["crawl"][""]
 // }
