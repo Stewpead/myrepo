@@ -32,14 +32,14 @@ $(document).ready( () => {
 
 	trendingTVSeries();
 
-	json = {
-		status : 1136,
-		type : 0
-	}
+	// json = {
+	// 	status : 1136,
+	// 	type : 0
+	// }
 	
-	let jsonString = JSON.stringify(json);
+	// let jsonString = JSON.stringify(json);
 	
-	ipcRenderer.send('request-dashboard-cards', jsonString);
+	// ipcRenderer.send('request-dashboard-cards', jsonString);
 	
 
 });
