@@ -758,7 +758,7 @@ hr#hr {
 .popup-inner .tv-shows-content table td  {
     max-width: 100%;
     padding: 0 21px;
-    min-width: 100px;
+    min-width: 140px;
 }
 .popup-inner .tv-shows-content table td:nth-child(5) {
     color: #40b082;

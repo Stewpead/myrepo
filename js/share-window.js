@@ -362,26 +362,33 @@ setTimeout(function() {
 		let assetsData = [];
 		let count = 0; 
 		let category = $('[pd-popup="shareScanResultModal"] #fileCategory').val();
+		let jsonAssetUpload = ''; 
+
 		$.each( files, function( key, value ) {
-		  let data = $(this).find("textarea").text();
-		  assetsData[count] = JSON.parse(decodeURIComponent(data));
+		  var data = $(this).find("textarea").text();
+		  
+		  switch(category) {
+			  case 'movie' :
+				assetsData[count] = JSON.parse(decodeURIComponent(data));
+			  break;
+			  case 'tv':
+				assetsData = data; 
+			  break;
+		  }
+		  
 		  count++;
 		});
 
-
 		let filepath = $('#fullFilePathDir').val();
-		let jsonAssetUpload = {
+		
+		jsonAssetUpload = {
 			status : 1116,
 			data : assetsData,
 			action : category,
 			amount	: "200" //TOTAL AMOUNT
 		};
-		
-		// setTimeout( () => {
-
-
-		let jsonString = JSON.stringify(jsonAssetUpload);
-		ipcRenderer.send('avx-share-upload-asset', jsonString);	
+		console.log( JSON.stringify(jsonAssetUpload) );
+		ipcRenderer.send('avx-share-upload-asset', JSON.stringify(jsonAssetUpload) );	
 
 		ipcRenderer.on('avx-upload-payment-response', (event, data) => {
 			store.set("ShareUploadTxKey", data["data"]["tx_key"]);
@@ -698,7 +705,7 @@ setTimeout(function() {
 							seasonsArray[counterSeasons] = seasonData[season];
 							
 							$.each(seasonData[season], function( index, value ) {
-								getFileMetadata( decodeURIComponent(individualDir)+"\\"+ value["name"], decodeURIComponent(individualDir),  'tv', indexSeasons );
+								getFileMetadata( decodeURIComponent(individualDir)+"\\"+ value["name"], decodeURIComponent(individualDir),  'tv' );
 							});
 							
 					}
@@ -712,7 +719,7 @@ setTimeout(function() {
 			let metadata = data["metadata"];
 			let epsList = '';
 			let count= 0;
-			console.log(metadata);
+			//console.log(metadata);
 			
 			for (var i in eps) {	
 				count++;
@@ -724,8 +731,8 @@ setTimeout(function() {
 				epsList += '	<td>';
 				epsList += '		<p>'+ limitString(crawl["episode_sypnopses"][i] , 80, true) +'</p>';
 				epsList += '	</td> ';
-				//epsList += '	<td>'+ metadata[i]["duration"] +'</td>';
-				//epsList += '	<td>'+ metadata[i]["filesize"] +'</td>';
+				epsList += '	<td>'+ getDuration(metadata[i]["duration"]) +'</td>';
+				epsList += '	<td>'+ formatBytes(metadata[i]["filesize"], 2) +'</td>';
 				epsList += '</tr>';
 
 			};
@@ -742,14 +749,39 @@ setTimeout(function() {
 	});
 }, 100);
 
-/** 1.4 Select movie assets preview  **/
+/** 1.4 Select tv assets preview  **/
 setTimeout(function() {
 	$('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content table tbody').on("click","tr", function() {
 		$('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content table tbody tr').removeClass('active');
 		$(this).addClass('active');
 		let season = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details .active').parent().find(".title").html();
-		let data = JSON.parse(decodeURIComponent($('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').text()));
-		console.log( data[season] );
+		let data = JSON.parse($('[pd-popup="shareConfirmMetadataModal"] .file-movie-details .img.active').parent().find('textarea').text());
+		let row = $(this).attr('indexep');
+		//console.log(data);
+		let crawl = JSON.parse( decodeURIComponent(data["crawl"]) );
+		console.log(crawl);
+		
+		//Episodes DATA
+		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv .eps-desc').html(crawl[row]['episode_sypnopses']);
+		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv .eps-thumbnail').css("background-image","url('"+ crawl[row]['thumbs'] +"')");
+		
+		//METADATA
+		$('[pd-popup="shareConfirmMetadataModal"] .aspect-ratio strong'). html(data["metadata"][row]["aspect_ratio"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .audio-bitrate strong'). html(data["metadata"][row]["audio_bitrate"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .audio-codec strong'). html(data["metadata"][row]["audio_codec_name"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .bit-depth strong'). html(data["metadata"][row]["bit_depth"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .audio-channel-layout strong'). html(data["metadata"][row]["channel_layout"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .audio-channels strong'). html(data["metadata"][row]["channels"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-duration strong, [pd-popup="shareConfirmMetadataModal"] .video-duration-head'). html(getDuration(data["metadata"][row]["duration"]));
+		$('[pd-popup="shareConfirmMetadataModal"] .video-size strong'). html( formatBytes(data["metadata"][row]["filesize"]), 2);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-height strong'). html(data["metadata"][row]["height"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .audio-sampling-rate strong'). html(data["metadata"][row]["sampling_rate"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .audio-video-bitrate strong'). html(data["metadata"][row]["video_bitrate"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-codec strong'). html(data["metadata"][row]["video_codec_name"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-frame-rate strong'). html(data["metadata"][row]["video_frame_rate"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-profile strong'). html(data["metadata"][row]["video_profile"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-reso strong'). html(data["metadata"][row]["video_resolution"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-width strong'). html(data["metadata"][row]["width"]);
 	});
 	
 }, 100);
@@ -900,6 +932,8 @@ function shareShowMetadataPerFile(event) {
 	let target = $( event.target );
 	let filename = target.attr("file-name");
 	target.addClass("active").css("cursor", "progress");
+	let url = '';
+	let dir  = '';
 	
 	
 	if ( target.attr("disabled") ) {
@@ -911,12 +945,12 @@ function shareShowMetadataPerFile(event) {
 	let folder = target.closest('.item-file-meta-parent').attr("dir");
 	if ( folder ) {
 		
-		let url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() + folder +"\\"+ filename;
-		let dir = $("#ShareModalView .file-dir-info span:nth-child(1)").html() + folder;
+		url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() + folder +"\\"+ filename;
+		dir = $("#ShareModalView .file-dir-info span:nth-child(1)").html() + folder;
 	} else {
 	
-		let url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() +"\\"+ filename;
-		let dir = $("#ShareModalView .file-dir-info span:nth-child(1)").html();
+		url = $("#ShareModalView .file-dir-info span:nth-child(1)").html() +"\\"+ filename;
+		dir = $("#ShareModalView .file-dir-info span:nth-child(1)").html();
 	
 	}
 
@@ -1096,7 +1130,7 @@ ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
 
 /*** 2.6 Get metadata from crawled file ***/
 
-function getFileMetadata( path, dir, action, counter = 0 ){
+function getFileMetadata( path, dir, action){
 
 	if ( typeof  path !== "undefined" ) {
 		let json = {
@@ -1104,8 +1138,7 @@ function getFileMetadata( path, dir, action, counter = 0 ){
 			data : {
 				filename	: path,
 				action		: action,
-				dir			: dir,
-				counter     : counter
+				dir			: dir
 				
 			}
 		}
@@ -1132,13 +1165,11 @@ ipcRenderer.on('avx-share-respond-file-metadata', (event, data) => {
 		let target = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details textarea[filedir="'+ encodeURIComponent(data["data"]["dir"]) +'"]');
 		let content = target.text();
 			content = JSON.parse(content);
-			counter = data["data"]["counter"];
 			
 			if (typeof content['metadata'] == 'undefined') content['metadata'] = [];
-			if (typeof content['metadata'][counter] == 'undefined') content['metadata'][counter] = [];
-			content['metadata'][counter].push( data["data"]["file_metadata"] );
+			content['metadata'].push( data["data"]["file_metadata"] );
 			target.text( JSON.stringify(content) );
-			console.log( counter );
+
 			
 
 	} else if ( action == "scanned" ) {
