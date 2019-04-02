@@ -16,8 +16,7 @@ var obj2 = fs.readFileSync('./json/audiosection-temp.json');
 var json2 = JSON.parse(obj2);
 // Audio Content
 
-// var keys64 = Object.keys(json64);
-// var imgname = 'decodedimg';
+
 var imgpath = path.join(__dirname,'/decodedimg/');
 var data64 = "data:image/jpg;base64,";
 
@@ -67,7 +66,7 @@ function trendingAudios(){
 	$('#trendingArtist').append(trendingAcards);
 }        
 
-// Send data of selected card
+// Send data of selected card 
 function getAudioInfo(hash) {
 	store.set('set-dashboard-file-selected-audio', hash );
 	location.href = "audio-details.html";
@@ -79,7 +78,7 @@ function trendingTVSeries() {
 
 	for (var key in json1) {
 		
-		trendingTVcards += '<div class="col-lg-3 grid-cards-video" onclick="getTVseries(\''+ json1[key]['metadata']['filename'] +'\')">';
+		trendingTVcards += '<div class="col-lg-3 grid-cards-video" onclick="getTVseries(\''+ key +'\')">';
 		trendingTVcards += '<div class="container">';
 		trendingTVcards += '<img src="' + data64 + json1[key]['metadata']['thumbnail'] + '" />';
 		trendingTVcards += '<p id="video-title" class="thumb-title">' + json1[key]['metadata']['filename'] + '</p>';
@@ -91,9 +90,32 @@ function trendingTVSeries() {
 }
 
 // Send data of selected card
-function getTVseries(hash) {
-	store.set('set-dashboard-file-selected-tvseries', hash );
-	location.href = "tvseries-window.html";
+function getTVseries(keys) {
+	let jData = {
+		poster : movies[keys]['poster'],
+		year : movies[keys]['date'],
+		title : movies[keys]['title']
+	};
+
+	let json = {
+		status : 1129,
+		title : movies[keys]['title'],
+		type : 0
+	};
+
+	json = JSON.stringify(json);
+	ipcRenderer.send('request-specific-asset', json);
+
+	store.set('specific-data-asset', jData);
+
+	ipcRenderer.on('response-filelist-specific-asset', (event, arg) => {
+
+		arg = JSON.parse(arg['data']);
+		store.set('metadata-specific-asset', arg);
+
+	});
+
+	location.href = "tvseries-details.html";
 }
 // Send data of selected card
 
@@ -120,7 +142,6 @@ ipcRenderer.on('response-dashboard-cards', (event, arg) => {
 	}
 
 	$('#trendingMovies').append(trendingVcards);
-
 });	
 
 // Send data of selected card
@@ -151,7 +172,5 @@ function getMovieInfo(keys) {
 
 	});
 
-
 	location.href = "video-details.html";
 }
-// 

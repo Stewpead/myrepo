@@ -13,13 +13,12 @@ var jsonAC = JSON.parse(objAC);
 // Object Asset Chain Movie
 
 var keyfile = store.get('set-dashboard-file-selected-tvseries');
+store.delete('set-dashboard-file-selected-tvseries');
 var filename;
-
 
 $(document).ready( () => {
     tvseriesF();
 });
-
 
 function tvseriesF() {
 
@@ -48,3 +47,19 @@ function getFiledata(filename) {
     }
 
 }
+
+$(".tvseries-season .img").click(function () {
+    $(".tvseries-season .img").removeClass('active');
+    $(this).addClass('active');
+    let imageSrc = $(this).css('background-image');
+    
+    $('#shareStyleBG').remove();
+
+    imageSrc = imageSrc.replace(/"/g, "'");
+    imageSrc = ' background-image: '+ imageSrc;
+    
+});
+
+$('#btnSearch').click( () => {
+    location.href = "tvseries-download.html";
+});

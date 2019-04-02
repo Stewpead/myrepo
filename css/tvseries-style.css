@@ -179,8 +179,9 @@ span#divider-text:hover {
     margin-top: 20px;
 }
 .fileimage {
-    width: 230px;
-    height: 230px;
+    max-width: 230px;
+    min-width: 150px;
+    /* height: 230px; */
     margin-left: 19%;
 }
 td:hover {
@@ -219,18 +220,18 @@ td:hover {
     min-height: 32px;
 }
 
-.audio-artist-metadata .audio-artist-albums .audio-artist-each-album .img {
+.audio-artist-metadata .audio-artist-albums .tvseries-season .img {
     width: 100%;
     display: block;
     height: 148px;
     background-size: contain;	
     cursor: pointer;
 }
-.audio-artist-metadata .audio-artist-albums .audio-artist-each-album .img.active {
+.audio-artist-metadata .audio-artist-albums .tvseries-season .img.active {
     border: 2px solid red;
 }
 
-.audio-artist-details .audio-artist-metadata .audio-artist-albums .audio-artist-each-album .img.active:before {
+.audio-artist-details .audio-artist-metadata .audio-artist-albums .tvseries-season .img.active:before {
     content: '\E73E';
     color: white;
     float: right;
@@ -252,6 +253,9 @@ td:hover {
     margin-top: 20px;
     font-size: 11px;
     text-align: justify;
+}
+.album-artist-description {
+    font-size: 13px;
 }
 #tracks {
     font-size: 18px;
@@ -279,6 +283,7 @@ table {
     height: 180px;
     line-height: 50px;
     overflow-y: auto;
+    background-color: #191919;
 }
 .tracksListdiv::-webkit-scrollbar {
     display: block;
@@ -289,7 +294,7 @@ table {
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 .tracksListdiv::-webkit-scrollbar-track { 
-    background: #111111; 
+    background: #101010; 
     border-radius: 10px;
     box-shadow: inset 0 0 8px grey; 
 }

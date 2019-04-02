@@ -12,21 +12,19 @@ const store = new Store();
 var img = "";
 
 var assetKey = store.get('pass-asset-key');
+store.delete('pass-asset-key');
 var indeKey = assetKey["indexKey"];
 console.log(assetKey);
 var jAsset = store.get('metadata-specific-asset');
+store.delete('metadata-specific-asset');
 console.log(jAsset);
 
 $(document).ready(() => {
 
     populateScreen();
 
-   
-
     $("#btnBack").click(function() {
-
         location.href = 'video-details.html';
-
     });
     
     $('#btnBuy').click(() => {
@@ -45,22 +43,21 @@ $(document).ready(() => {
 
         }, 1500);
  
-        var Wishlist = '{"0" : {"filename" : "MADAFAKA"}}';
-        var jWishlist = {};
+        // var Wishlist = '{"0" : {"filename" : "MADAFAKA"}}';
+        // var jWishlist = {};
+        // var totalObj = Object.keys(jWishlist).length;
+        // jWishlist = JSON.parse(Wishlist);
+        // jWishlist[totalObj].push({ id : "01", filename : 'Fuck you'});
+        // jWishlist = JSON.stringify(jWishlist); 
 
-        var totalObj = Object.keys(jWishlist).length;
-        jWishlist = JSON.parse(Wishlist);
-        jWishlist[totalObj].push({ id : "01", filename : 'Fuck you'});
-        jWishlist = JSON.stringify(jWishlist); 
 
-
-        fs.writeFile("jWishlist.json",jWishlist, function(e) {
-            if(e) {
-                console.log(e);
-            }
-        });
-        console.log(Object.keys(jWishlist).length);
-        console.log(jWishlist);
+        // fs.writeFile("jWishlist.json",jWishlist, function(e) {
+        //     if(e) {
+        //         console.log(e);
+        //     }
+        // });
+        // console.log(Object.keys(jWishlist).length);
+        // console.log(jWishlist);
     });
 
     $('#btnFileReview').click( () => {
@@ -83,7 +80,6 @@ $(document).ready(() => {
 
             $('#executePayment').prop('disabled', true).addClass('disabled', true);
 
-
             let jsonBuy = {
                 status : 1117,
                 asset_key : assetKey['assetKey'],
@@ -92,7 +88,6 @@ $(document).ready(() => {
 
             jsonBuy = JSON.stringify(jsonBuy);
             ipcRenderer.send('send-buy-this-asset', jsonBuy);
-
 
         });
 
@@ -111,6 +106,7 @@ $(document).ready(() => {
         $('#btnErrorBuyClose').click( () => {
             $('[pd-popup="ErrorBuyingAsset"]').fadeOut(100);  
         });
+
         $('#btnClosevf').click( () => {
             $('[pd-popup="viewFilesModal"]').fadeOut(100);
         });
@@ -159,6 +155,7 @@ function paymentModalData() {
     $('#priceAVX').text(assetKey["price"] + " AVX");
     $('.runtime').text(getDuration(jAsset["info"][indeKey]["metadata"]["duration"]));
     $('.releasedYear').text(jAsset["crawl"]["header"]["release_date"]);
+    
 }
 
 function populateScreen() {

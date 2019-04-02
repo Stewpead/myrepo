@@ -28,14 +28,15 @@ $(document).ready( () => {
     $(".audio-artist-each-album .img").click(function () {
 		$(".audio-artist-each-album .img").removeClass('active');
 		$(this).addClass('active');
-		let imageSrc = $(this).css('background-image');
-
+        let imageSrc = $(this).css('background-image');
+        
 		$('#shareStyleBG').remove();
 		// $('body').append('<style id="shareStyleBG">.popup[pd-popup="shareConfirmMetadataModal"] .popup-inner.scroll-skin:before { content:'+ imageSrc +';}</style>');
 		
 		imageSrc = imageSrc.replace(/"/g, "'");
 		imageSrc = ' background-image: '+ imageSrc;
         // $('.popup[pd-popup="shareConfirmMetadataModal"] .file-feature-img').attr('style', imageSrc );
+        
     });
 
 });
