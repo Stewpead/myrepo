@@ -361,6 +361,7 @@ setTimeout(function() {
 		let files = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details');
 		let assetsData = [];
 		let count = 0; 
+		let category = $('[pd-popup="shareScanResultModal"] #fileCategory').val();
 		$.each( files, function( key, value ) {
 		  let data = $(this).find("textarea").text();
 		  assetsData[count] = JSON.parse(decodeURIComponent(data));
@@ -372,6 +373,7 @@ setTimeout(function() {
 		let jsonAssetUpload = {
 			status : 1116,
 			data : assetsData,
+			action : category,
 			amount	: "200" //TOTAL AMOUNT
 		};
 		
@@ -664,7 +666,7 @@ setTimeout(function() {
 			
 			 $('[pd-popup="shareConfirmMetadataModal"] .title-holder').attr("tabindex",-1).focus();
 			 
-		} else if ( category == 'tv') {
+		} else if ( category == 'tv' ) {
 			
 			let table = $('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content table tbody');
 			table.html("");
@@ -672,22 +674,23 @@ setTimeout(function() {
 			let getSeasons = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details');
 			let counterSeasons = 0;
 			let seasonsArray = [];
-			let seasonData = JSON.parse(decodeURIComponent($('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').text()));
-			console.log( "COUNT "+ getSeasons.length);
+			let seasonData = JSON.parse( decodeURIComponent( $('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').text() ) );
+			
+			
+			let checkIfgenerated = $('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').hasAttr("generated");
 			$.each(getSeasons, function( index, value ) {
 				
 				if ( getSeasons.length >= counterSeasons ) {
 					let individualDir = $(this).find("textarea").attr("filedir");
 					let season = $(this).find(".title").html();
 						seasonsArray[counterSeasons] = seasonData[season];
-						console.log(seasonsArray.length);
 						
 						$.each(seasonData[season], function( index, value ) {
 							getFileMetadata( decodeURIComponent(individualDir)+"\\"+ value["name"], decodeURIComponent(individualDir),  'tv' );
-							console.log("testing");
 						});
+						
 				}
-				console.log( "COUNT "+ counterSeasons);
+
 				counterSeasons++;
 			});
 
