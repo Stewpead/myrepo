@@ -233,7 +233,7 @@
 			
 			<div class="row file-metadata" style="padding-top: 70px;">
 				<div class="col-12">
-					<p class="full-width metadata-desc">
+					<p class="full-width metadata-desc" style="text-align:left">
 						
 					</p>
 				</div>
@@ -241,7 +241,7 @@
 			
 			<div class="row file-metadata">
 				<div class="col-12 file-actor">
-					<h3 class="file-actor-heading">Actors</h3>
+					<h3 class="file-actor-heading" style="text-align:left">Actors</h3>
 					
 					<div id="actorsLists" class="carousel slide w-100" data-ride="carousel">
 						<div class="carousel-inner w-100" role="listbox">
@@ -311,7 +311,6 @@
 			<div class="row file-metadata-desc-tv">
 				<p class="runtime"> <span>Runtime: </span> <strong>2hrs 45mins</strong></p>
 				<p class="no-eps">  <span>No of Episodes: </span>  <strong>13</strong></p>
-				<p class="eps-desc">A family man struggles to gain a sense of cultural identity while raising his kids in a predominantly white, upper-middle-class neighborhood.</p>
 			</div>
 			
 			<div class="container file-preview-desc-tv">
@@ -450,7 +449,7 @@
 
 			<div class="col-4">
 				 <a href="#" id="proceedProceedPaymentCart" class="btn btn-danger float-right disabled">Pay now</a>
-				 <a pd-popup-close="shareIntellectualPropertyConfirmationModal" href="#" class="btn btn-default float-right">Cancel</a>
+				 <a pd-popup-close="shareConfirmMetadataModal" href="#" class="btn btn-default float-right">Cancel</a>
 			</div>
 		</div>
 	  <a class="popup-close" pd-popup-close="shareConfirmMetadata" href="#"> </a>
@@ -875,6 +874,19 @@
 				</div>	
 				
 				
+			</div>
+			<div class="row meta-data-details">
+				<canvas id="surface" width="768.286px" height="300"></canvas>
+				<script type="text/javascript">
+					window.onload = function() {
+						let pr = new PriceRuler("surface", 10, 250, 13, 0);
+						//pr.setDataPoints([103.96, 145.6, 130, 112, 219.5]);
+						pr.setDataPoints([3.96, 145.6, 30, 112, 19.5]);
+						pr.render();
+						
+						pr.setPrice(10);
+					};
+				</script>
 			</div>
 			<a class="popup-close" pd-popup-close="shareMarketPriceModal" href="#"> </a>
 		</div>
