@@ -372,7 +372,7 @@ setTimeout(function() {
 				assetsData[count] = JSON.parse(decodeURIComponent(data));
 			  break;
 			  case 'tv':
-				assetsData = data; 
+				assetsData[count] = data; 
 			  break;
 		  }
 		  
@@ -381,6 +381,7 @@ setTimeout(function() {
 
 		let filepath = $('#fullFilePathDir').val();
 		
+
 		jsonAssetUpload = {
 			status : 1116,
 			data : assetsData,
@@ -706,9 +707,6 @@ setTimeout(function() {
 							
 							$.each(seasonData[season], function( index, value ) {
 								getFileMetadata( decodeURIComponent(individualDir)+"\\"+ value["name"], decodeURIComponent(individualDir),  'tv' );
-											
-								//update crawl data by selecting first season
-								$('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(0).find('.img').click();
 								
 							});
 							
@@ -723,29 +721,42 @@ setTimeout(function() {
 			let metadata = data["metadata"];
 			let epsList = '';
 			let count= 0;
-			//console.log(metadata);
-			
-			for (var i in eps) {	
-				count++;
-				let myNumber = count;
-				var dec = myNumber - Math.floor(myNumber);
-				epsList += '<tr indexEp="'+ i +'">';
-				epsList += '	<td>E'+ ("0" + myNumber).slice(-2) +'</td>';
-				epsList += '	<td>'+ crawl["episode_titles"][i] +'</td> ';
-				epsList += '	<td>';
-				epsList += '		<p>'+ limitString(crawl["episode_sypnopses"][i] , 80, true) +'</p>';
-				epsList += '	</td> ';
-				epsList += '	<td>'+ getDuration(metadata[i]["duration"]) +'</td>';
-				epsList += '	<td>'+ formatBytes(metadata[i]["filesize"], 2) +'</td>';
-				epsList += '</tr>';
 
-			};
 			
+			if (  typeof metadata !== 'undefined' ) {
+				var totalDuration = 0;
+				for (var i in eps) {	
+					count++;
+					let myNumber = count;
+					var dec = myNumber - Math.floor(myNumber);
+					epsList += '<tr indexEp="'+ i +'">';
+					epsList += '	<td>E'+ ("0" + myNumber).slice(-2) +'</td>';
+					epsList += '	<td>'+ crawl["episode_titles"][i] +'</td> ';
+					epsList += '	<td>';
+					epsList += '		<p>'+ limitString(crawl["episode_sypnopses"][i] , 80, true) +'</p>';
+					epsList += '	</td> ';
+					epsList += '	<td>'+ getDuration(metadata[i]["duration"]) +'</td>';
+					epsList += '	<td>'+ formatBytes(metadata[i]["filesize"], 2) +'</td>';
+					epsList += '</tr>';
+					
+					totalDuration = totalDuration + metadata[i]["duration"];
+					console.log(metadata[i]["duration"]);
+
+				};
+				setTimeout(function() {
+					$('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content tbody tr').eq(0).click();
+					console.log(totalDuration)
+					$('[pd-popup="shareConfirmMetadataModal"] .file-metadata-desc-tv .runtime strong').html( getDuration(totalDuration) );
+					
+				}, 1000);
+				
+				$('[pd-popup="shareConfirmMetadataModal"] .file-metadata-desc-tv .no-eps strong').html(metadata.length);
+			}
 			table.html(epsList);
 			table.find('tr:nth-child(1)').attr("class", "active");
 			
 			
-
+	
 		}
 		
 		
@@ -764,10 +775,19 @@ setTimeout(function() {
 		//console.log(data);
 		let crawl = JSON.parse( decodeURIComponent(data["crawl"]) );
 		console.log(crawl);
+		let currentRow = $(this).find('td').html();
+		let lastRow = $('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content table tbody tr:last-child td').html();
+		
+		var decCurrent = currentRow - Math.floor(currentRow);
+		var declast = declast - Math.floor(declast);
 		
 		//Episodes DATA
+		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv .eps-title strong').html(crawl['episode_titles'][row]);
 		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv .eps-desc').html(crawl['episode_sypnopses'][row]);
+		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv .runtime strong').html(getDuration(data["metadata"][row]["duration"]));
 		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv .eps-thumbnail').css("background-image","url('"+ crawl['thumbs'][row] +"')");
+		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv .no-eps strong').html( currentRow  );
+		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv .no-eps strong:last-child').html(lastRow );
 		
 		//METADATA
 		$('[pd-popup="shareConfirmMetadataModal"] .aspect-ratio strong'). html(data["metadata"][row]["aspect_ratio"]);
@@ -967,6 +987,7 @@ function shareShowMetadataPerFile(event) {
 /*** 2.6 send to crawl file ***/
 function shareCrawlFile(path, dir) {
 	let category = $('[pd-popup="shareScanResultModal"] #fileCategory').val();
+	console.log("CATEGORY: " + category);
 	let categoryLabel = '';
 
 	if ( category == 'movie') {
@@ -1118,7 +1139,8 @@ ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
 	movieAssets += '	<p style="font-size: 13px; margin-bottom: 40px;" class="year"> '+ crawl["header"]["release_date"] +' </p>';
 	movieAssets += '</div>';
 	$('.file-movie-content').append(movieAssets);
-	
+
+
 	//Request Metadata
 	if ( category  == 'movie' ) {
 		getFileMetadata( data["path"], data["dir"],  'crawled' );
@@ -1128,7 +1150,15 @@ ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
 			target.parent().find(".img").click();
 		},
 		500);
+	} else if (category  == 'tv'){
+		setTimeout(function() {		
+			//update crawl data by selecting first season
+			$('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(0).find('.img').click();
+
+			
+		}, 1000);		
 	}
+	
 
 });
 
@@ -1148,6 +1178,7 @@ function getFileMetadata( path, dir, action){
 		}
 		
 		let jsonString = JSON.stringify(json);
+		
 		ipcRenderer.send('request-file-metadata', jsonString);
 	}
 	
@@ -1156,6 +1187,7 @@ function getFileMetadata( path, dir, action){
 ipcRenderer.on('avx-share-respond-file-metadata', (event, data) => {
 	let action 	= data["data"]["action"];
 	let filename 	= data["data"]["filename"];
+
 	
 	if ( action == "crawled" ) {
 		let target = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details textarea[filepath="'+ encodeURIComponent(filename) +'"]');
@@ -1169,10 +1201,11 @@ ipcRenderer.on('avx-share-respond-file-metadata', (event, data) => {
 		let target = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details textarea[filedir="'+ encodeURIComponent(data["data"]["dir"]) +'"]');
 		let content = target.text();
 			content = JSON.parse(content);
-			
-			if (typeof content['metadata'] == 'undefined') content['metadata'] = [];
-			content['metadata'].push( data["data"]["file_metadata"] );
-			target.text( JSON.stringify(content) );
+		
+		if (typeof content['metadata'] == 'undefined') content['metadata'] = [];
+		content['metadata'].push( data["data"]["file_metadata"] );
+		target.text( JSON.stringify(content) );
+		
 
 			
 
