@@ -23,7 +23,6 @@ $(document).ready( () => {
 
     audionameF();
 
-    // document.getElementById('bandMembers').style.display = 'none';
 
     $(".audio-artist-each-album .img").click(function () {
 		$(".audio-artist-each-album .img").removeClass('active');
@@ -31,12 +30,10 @@ $(document).ready( () => {
         let imageSrc = $(this).css('background-image');
         
 		$('#shareStyleBG').remove();
-		// $('body').append('<style id="shareStyleBG">.popup[pd-popup="shareConfirmMetadataModal"] .popup-inner.scroll-skin:before { content:'+ imageSrc +';}</style>');
-		
+	
 		imageSrc = imageSrc.replace(/"/g, "'");
 		imageSrc = ' background-image: '+ imageSrc;
-        // $('.popup[pd-popup="shareConfirmMetadataModal"] .file-feature-img').attr('style', imageSrc );
-        
+   
     });
 
 });

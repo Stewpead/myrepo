@@ -119,18 +119,30 @@ $(document).ready(() => {
 
         paymentModalData();
 
-
+        $('#btnCloseSuccess').click( () => {
+            $('[pd-popup="sharePaymentSuccessModal"]').fadeOut(100);
+        });
     }, 100);
+    var tx_key = "";
     ipcRenderer.on('response-buy-this-asset', (event, arg) => {
+        tx_key = arg['data']['tx_key'];
         if( arg['data']['valid'] == 1) {
-            // $('[pd-popup="shareMarketPriceForMultipleModal"]').fade(100);
-            // $('[pd-popup="sharePaymentSuccessModal"]').fadeIn(100);
             $('[pd-popup="pleaseWaitModal"]').fadeIn(100);
         } else {
             $('[pd-popup="shareMarketPriceForMultipleModal"]').fadeOut(100);
             $('[pd-popup="ErrorBuyingAsset"]').fadeIn(100);
             
         }
+    });
+     
+    ipcRenderer.on('response-download-payment', (event, arg) => {
+
+        if ( arg['tx_key'] == tx_key ) {
+            $('[pd-popup="shareMarketPriceForMultipleModal"]').fadeOut(100);
+            $('[pd-popup="pleaseWaitModal"]').fadeOut(100);
+            $('[pd-popup="sharePaymentSuccessModal"]').fadeIn(100);
+        }
+        
     });
 });
 

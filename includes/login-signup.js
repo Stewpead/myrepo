@@ -101,20 +101,27 @@ module.exports = {
 		if (validate == 1 ) {
 			//TRIGGER
 			defaultWindow.webContents.send('signin-response', 'true');
-				setTimeout( () =>{
-					defaultWindow.loadURL(url.format({
-						pathname: path.join(__dirname, app_dir,'main-window.html'),
-						protocol: 'file:',
-						slashes: true
-					}));
-				}, 1500);
+
 		}
 		else if(validate == 0) {
 			//TRIGGER
 			defaultWindow.webContents.send('signin-response', 'false');
 			
 		}
-  }
+	},
+
+	connectedToSupernode: function(data) {
+
+		var val = data['connected'];
+		if( val == 1 ) {
+				defaultWindow.loadURL(url.format({
+					pathname: path.join(__dirname, app_dir,'main-window.html'),
+					protocol: 'file:',
+					slashes: true
+				}));
+		}
+
+	}
 };
 
 

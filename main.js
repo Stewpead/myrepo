@@ -24,6 +24,7 @@ var walletBalance = 0;
 var walletAddress = '';
 
 var Status = {
+	CONNECT_SUPERNODE : 4,
 	ASSET_UPLOAD_DATA: 15,
 	SIGNUP: 1113,
 	SIGNIN: 1114,
@@ -42,6 +43,7 @@ var Status = {
 	GET_FILE_INFO: 1128,
 	GET_SPECIFIC_ASSET: 1129,
 	GET_WALLET_DATA: 1130,
+	DOWNLOAD_PAYMENT_CONFIRMATION: 1137,
 	WALLET_BALANCE: 2000,
 	START_HOARDING_SESSION: 5002,
 	REQUEST_FILETRANSFER_STATS: 5003,
@@ -130,6 +132,10 @@ var initiateConnection = function(attempt){
 			case Status.SIGNIN:
 				moduleAccount.signinResponse(data);
 				break;
+
+			case Status.CONNECT_SUPERNODE:
+				moduleAccount.connectedToSupernode(data);
+				break;
 				
 			case Status.ASSET_UPLOAD_DATA:
 				moduleDashboard.shareUploadResponse(data);
@@ -214,6 +220,11 @@ var initiateConnection = function(attempt){
 			case Status.BUY_ASSET:
 				moduleDashboard.requestBuyAsset(data);
 				break;	
+			
+			case Status.DOWNLOAD_PAYMENT_CONFIRMATION:
+				moduleDashboard.responseDownloadPayment(data);
+				break;
+			
 		}			
 	});
 
