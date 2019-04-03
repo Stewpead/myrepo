@@ -133,8 +133,6 @@ function signin() {
 		if( arg == "true" ) {
 			// var bool  = true;
 			$('[pd-popup="loginSuccessModal"]').fadeIn(100);
-			// store.set('boolean-transaction-history' , bool);
-
 		}
 		else if( arg == "false" ) {
 			$('[pd-popup="loginFailModal"]').fadeIn(100);

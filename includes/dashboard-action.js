@@ -119,9 +119,15 @@ module.exports = {
     console.log("receive specific asset");
     defaultWindow.webContents.send('response-filelist-specific-asset', data);
   },
+
   requestBuyAsset: function( data ) {
     console.log("receive buy response 1117");
     defaultWindow.webContents.send('response-buy-this-asset', data);
+  },
+
+  responseDownloadPayment: function(data) {
+    console.log("receive confirmation payment");
+    defaultWindow.webContents.send('response-download-payment',data);
   }
 
 };

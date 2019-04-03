@@ -98,7 +98,6 @@ module.exports = {
 		ipcMain.on('get-file-info', (event, arg) => {
 			client.write(arg);
 		});
-
 	},
 
 	sendAllMetadata: function(client) {

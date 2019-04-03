@@ -16,7 +16,6 @@ var obj2 = fs.readFileSync('./json/audiosection-temp.json');
 var json2 = JSON.parse(obj2);
 // Audio Content
 
-
 var imgpath = path.join(__dirname,'/decodedimg/');
 var data64 = "data:image/jpg;base64,";
 
@@ -31,16 +30,15 @@ $(document).ready( () => {
 
 	trendingTVSeries();
 
-	// json = {
-	// 	status : 1136,
-	// 	type : 0
-	// }
+	json = {
+		status : 1136,
+		type : 0
+	}
 	
-	// let jsonString = JSON.stringify(json);
+	let jsonString = JSON.stringify(json);
 	
-	// ipcRenderer.send('request-dashboard-cards', jsonString);
+	ipcRenderer.send('request-dashboard-cards', jsonString);
 	
-
 });
 
 //Generate Movie cards
