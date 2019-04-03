@@ -706,6 +706,10 @@ setTimeout(function() {
 							
 							$.each(seasonData[season], function( index, value ) {
 								getFileMetadata( decodeURIComponent(individualDir)+"\\"+ value["name"], decodeURIComponent(individualDir),  'tv' );
+											
+								//update crawl data by selecting first season
+								$('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(0).find('.img').click();
+								
 							});
 							
 					}
@@ -762,8 +766,8 @@ setTimeout(function() {
 		console.log(crawl);
 		
 		//Episodes DATA
-		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv .eps-desc').html(crawl[row]['episode_sypnopses']);
-		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv .eps-thumbnail').css("background-image","url('"+ crawl[row]['thumbs'] +"')");
+		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv .eps-desc').html(crawl['episode_sypnopses'][row]);
+		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv .eps-thumbnail').css("background-image","url('"+ crawl['thumbs'][row] +"')");
 		
 		//METADATA
 		$('[pd-popup="shareConfirmMetadataModal"] .aspect-ratio strong'). html(data["metadata"][row]["aspect_ratio"]);
@@ -1169,6 +1173,8 @@ ipcRenderer.on('avx-share-respond-file-metadata', (event, data) => {
 			if (typeof content['metadata'] == 'undefined') content['metadata'] = [];
 			content['metadata'].push( data["data"]["file_metadata"] );
 			target.text( JSON.stringify(content) );
+
+			
 
 			
 
