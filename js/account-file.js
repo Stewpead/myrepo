@@ -21,9 +21,9 @@ $(document).ready( () => {
 });
 
 ipcRenderer.on('receive-filetransfer-stats', (event, arg) => {
-    console.log(JSON.stringify(arg));
+   // console.log(JSON.stringify(arg));
+	//console.log( Object.keys(arg).length );
 	let fn  = arg["filename"];
-	
 	if (!fileDownloadList[fn]) {
 		fileDownloadList[fn] = {
 			data_rate: arg["data_rate"],
@@ -34,6 +34,7 @@ ipcRenderer.on('receive-filetransfer-stats', (event, arg) => {
 		let row = '';
 	
 		for (var key in fileDownloadList) {
+
 			row += '<tr>';
 			row += '<th scope="row"></th>';
 			row += '<td id="stat-filename" >' + key + '</td>';
