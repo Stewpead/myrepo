@@ -373,10 +373,11 @@ hr#hr {
     font-size: 15px;
 }
 .popup.scan-result .popup-inner .file-details .file-preview-desc-tv .eps-thumbnail{
-    background-image: url('http://tinyurl.com/y5klegw5');
+    background-image: url('http://tinyurl.com/y45jk2gf');
     height: 185px;
     background-size: cover;
     background-repeat: no-repeat;
+	background-position: center;
 }
 .popup.scan-result .popup-inner .file-details .file-metadata-desc-tv p.runtime span,
 .popup.scan-result .popup-inner .file-details .file-metadata-desc-tv p.no-eps span,
