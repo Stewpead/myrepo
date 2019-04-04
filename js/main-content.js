@@ -157,6 +157,7 @@ function getMovieInfo(keys) {
 		type : 0
 	};
 
+
 	json = JSON.stringify(json);
 	ipcRenderer.send('request-specific-asset', json);
 
@@ -166,9 +167,12 @@ function getMovieInfo(keys) {
 	ipcRenderer.on('response-filelist-specific-asset', (event, arg) => {
 
 		arg = JSON.parse(arg['data']);
+		
 		store.set('metadata-specific-asset', arg);
+
+		location.href = "video-details.html";
 
 	});
 
-	location.href = "video-details.html";
+
 }
