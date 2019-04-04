@@ -1004,8 +1004,8 @@ function shareCrawlFile(path, dir) {
 		  
 		var jCrawl = JSON.stringify(jCrawlMovie);
 		categoryLabel = "Movie Assets ";
-		$('[pd-popup="shareScanResultModal"] .file-metadata-desc-tv').css("display", "none");
-		$('[pd-popup="shareScanResultModal"] .file-preview-desc-tv').css("display", "none");
+		$('[pd-popup="shareConfirmMetadataModal"] .file-metadata-desc-tv').css("display", "none");
+		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv').css("display", "none");
 
 	} else if ( category == 'tv' ) {
 		
@@ -1036,8 +1036,8 @@ function shareCrawlFile(path, dir) {
 		var jCrawl = JSON.stringify(jCrawlMovie);
 		
 		categoryLabel = "TV Show Seasons ";
-		$('[pd-popup="shareScanResultModal"] .file-metadata-desc-tv').css("display", "flex");
-		$('[pd-popup="shareScanResultModal"] .file-preview-desc-tv').css("display", "flex");
+		$('[pd-popup="shareConfirmMetadataModal"] .file-metadata-desc-tv').css("display", "block");
+		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv').css("display", "block");
 		
 		
 		
