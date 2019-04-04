@@ -167,12 +167,11 @@ function getMovieInfo(keys) {
 	ipcRenderer.on('response-filelist-specific-asset', (event, arg) => {
 
 		arg = JSON.parse(arg['data']);
-		
+
 		store.set('metadata-specific-asset', arg);
 
 		location.href = "video-details.html";
 
 	});
-
 
 }
