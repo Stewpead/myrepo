@@ -239,12 +239,9 @@ ipcRenderer.on('response-acc-history-display', (event, arg) => {
                     txRecord[key][status] += '<tr>';
 
                     if( key == "0" ) {
-
-                        txRecord[key][status] += '<td class="' + arg['data'][key][status][i][5] + '">Pending</td>';
-                    
+                        txRecord[key][status] += '<td class="' + arg['data'][key][status][i][6] + '">Pending</td>';
                     } else if( key == "1") {
-
-                        txRecord[key][status] += '<td class="' + arg['data'][key][status][i][5] + '">Verified</td>';
+                        txRecord[key][status] += '<td class="' + arg['data'][key][status][i][6] + '">Verified</td>';
                     }
                     txRecord[key][status] += '<td>' + arg['data'][key][status][i][4] + '</td>';
                     txRecord[key][status] += '<td>' + arg['data'][key][status][i][0] +'</td>';
@@ -252,7 +249,7 @@ ipcRenderer.on('response-acc-history-display', (event, arg) => {
                     txRecord[key][status] += '<td>Description Message Sample</td>';
                     txRecord[key][status] += '<td>' + arg['data'][key][status][i][2] + '</td>';
                     txRecord[key][status] += '<td>' + arg['data'][key][status][i][3] + '</td>';
-                    txRecord[key][status] += '<td>' + arg['data'][key][status][i][5] + '</td>';
+                    txRecord[key][status] += '<td>' + arg['data'][key][status][i][6] + '</td>';
                     txRecord[key][status] += '</tr>';
                 }
             }
@@ -275,12 +272,16 @@ ipcRenderer.on('response-acc-history-display', (event, arg) => {
         if(arg['tx_hash']) {
 
             var targetTx = arg['tx_hash'];
+
             $( "#mergeTable td:contains('" + targetTx +"')" ).parent().find('td:eq(0)').html('Verified');
+            
+            $( "#incomingTable td:contains('" + targetTx +"')" ).parent().find('td:eq(0)').html('Verified');
 
-
-        }
+            $( "#outgoingTable td:contains('" + targetTx +"')" ).parent().find('td:eq(0)').html('Verified');
+            
+        } 
     });
-
+    
     // response of 1134 - add transaction status
     ipcRenderer.on('add-transaction-history', (event,arg) => {
         let jData = arg;
@@ -293,14 +294,14 @@ ipcRenderer.on('response-acc-history-display', (event, arg) => {
             txRecordTemp[status] = [];
 
                 txRecordTemp[status]['0'] += '<tr>';
-                txRecordTemp[status]['0'] += '<td class="' + arg['data'][status][5] + '">Pending</td>';
+                txRecordTemp[status]['0'] += '<td class="' + arg['data'][status][6] + '">Pending</td>';
                 txRecordTemp[status]['0'] += '<td>' + arg['data'][status][4] + '</td>';
                 txRecordTemp[status]['0'] += '<td>' + arg['data'][status][0] + '</td>';
                 txRecordTemp[status]['0'] += '<td>' + arg['data'][status][1] + '</td>';
                 txRecordTemp[status]['0'] += '<td>Description Message Sample</td>';
                 txRecordTemp[status]['0'] += '<td>' + arg['data'][status][2] + '</td>';
                 txRecordTemp[status]['0'] += '<td>' + arg['data'][status][3] + '</td>';
-                txRecordTemp[status]['0'] += '<td>' + arg['data'][status][5] + '</td>';
+                txRecordTemp[status]['0'] += '<td>' + arg['data'][status][6] + '</td>';
                 txRecordTemp[status]['0'] += '</tr>';
 
         }

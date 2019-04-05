@@ -137,9 +137,11 @@ ipcRenderer.on('response-dashboard-cards', (event, arg) => {
 		trendingVcards += '<p id="video-year" class="thumb-year" >' + movies[key]['date'] + '</p>';
 		trendingVcards += '</div>';
 		trendingVcards += '</div>';
+
 	}
 
 	$('#trendingMovies').append(trendingVcards);
+	
 });	
 
 // Send data of selected card
