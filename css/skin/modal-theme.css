@@ -392,8 +392,10 @@ hr#hr {
     color: #897e7e;
 }
 
-.popup.scan-result .popup-inner .file-details .file-metadata{
-	/*background-color: #ed1c24; */
+.popup.scan-result .popup-inner .file-details .file-metadata .file-actor-container{
+    display: block;
+    width: 100%;
+    min-height: 182px;
 }
 
 .payment-break-down ul li {
