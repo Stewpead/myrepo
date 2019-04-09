@@ -1006,6 +1006,8 @@ function shareCrawlFile(path, dir) {
 		categoryLabel = "Movie Assets ";
 		$('[pd-popup="shareConfirmMetadataModal"] .file-metadata-desc-tv').css("display", "none");
 		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv').css("display", "none");
+		$('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content table').css("display", "none");
+		//$('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content h5.label-with-border').css("display", "none");
 
 	} else if ( category == 'tv' ) {
 		
@@ -1038,6 +1040,8 @@ function shareCrawlFile(path, dir) {
 		categoryLabel = "TV Show Seasons ";
 		$('[pd-popup="shareConfirmMetadataModal"] .file-metadata-desc-tv').css("display", "block");
 		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv').css("display", "block");
+		$('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content table').css("display", "block");
+		//$('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content h5.label-with-border').css("display", "block");
 		
 		
 		
