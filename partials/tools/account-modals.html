@@ -1,4 +1,6 @@
- <div class="popup sendToken" pd-popup="accountSendToModal">
+
+<!-- Send Token -->
+<div class="popup sendToken" pd-popup="accountSendToModal">
     <div class="popup-inner scroll-skin">
 	  <h4 style="font-weight: 400;text-align: left;margin-bottom: 37px; font-size: 29px;" >Send Token</h4>
 		<p class="wallet-infomation">
@@ -33,7 +35,47 @@
 	  <a class="popup-close" pd-popup-close="accountSendToModal" href="#"> </a>
     </div>
 </div>
+<!-- Send Token -->
 
+<!-- Sending Confirmation -->
+
+<div class="popup sendToken" pd-popup="accountSendToModal">
+	<div class="popup-inner scroll-skin">
+	<h4 style="font-weight: 400;text-align: left;margin-bottom: 37px; font-size: 29px;" >Send Token</h4>
+	<p class="wallet-infomation">
+		Wallet balance:  
+		<span style="margin-left: 10px; color: #098c48; font-weight: 700; font-size: 25px; " class="total-balance">00.00</span> 
+		<span style="margin-left: 10px; color: #098c48; font-weight: 700; font-size: 25px; margin-left:0">AVX</span>
+	</p>
+	<p class="wallet-infomation">
+		Wallet address:  
+		<span style="margin-left:10px; font-weight: 100;" class="Waddress"></span>
+	</p>
+	<div class="input-holder">
+		<div class="amount-holder">
+			<input type="number" id="avxquantity" placeholder="0.00"><br />
+			<span style="float: left; font-size: 12px;">Total AVX to send (Transaction fee 0.1%) = &nbsp;</span>
+			<span style="float: left; color: #e42525; font-size: 12px;" id="txFee">0.000</span> <br />
+			<p>AVX Quantity to export</p>
+		</div> 
+		<div class="wallet-info">
+			<input type="text" id="receiver" placeholder="Enter wallet address">
+			<textarea placeholder="Description"></textarea>
+		</div>
+	</div>
+	<div class="share-modal-options row">
+		<div class="col-7">
+			<span style="float: left; text-align:justify; font-size: 10px;">Transferring AVX Token to someone you don't know? This feature is not reversible. Please read this important note on customer protection.</span>
+		</div>
+		<div class="col-5">
+			 <a href="#" id="btnSendtoken" class="btn btn-danger float-right">Send</a>
+		</div>
+	</div>
+	<a class="popup-close" pd-popup-close="accountSendToModal" href="#"> </a>
+	</div>
+</div>
+
+<!-- Sending Confirmation -->
  <div class="popup sendToken" pd-popup="accountSendToSuccessModal">
     <div class="popup-inner scroll-skin">
 		<p> You have successfully send token</p>
