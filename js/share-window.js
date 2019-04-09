@@ -351,7 +351,7 @@ setTimeout(function() {
 		$('.popup[pd-popup="shareConfirmMetadataModal"] .popup-inner.scroll-skin').attr("data-content", "url('https://tinyurl.com/ycjjsd24')");
 		
 		$('[pd-popup="shareConfirmMetadataModal"]').fadeOut(100);
-		$('[pd-popup="shareMarketPriceModal"]').fadeIn(100);
+		$('[pd-popup="shareMarketPriceForMultipleModal"]').fadeIn(100);
 		
 		
 	});
@@ -393,7 +393,7 @@ setTimeout(function() {
 
 		ipcRenderer.on('avx-upload-payment-response', (event, data) => {
 			store.set("ShareUploadTxKey", data["data"]["tx_key"]);
-			$('[pd-popup="shareMarketPriceModal"]').fadeOut(100);
+			$('[pd-popup="shareMarketPriceForMultipleModal"]').fadeOut(100);
 			$('[pd-popup="sharePaymentWaitingModal"]').fadeIn(100);
 
 		});
