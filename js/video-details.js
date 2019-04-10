@@ -22,8 +22,9 @@ const store = new Store();
 
 $ = jQuery;
 
-var filefound;
-var videoname;
+
+var jAsset = store.get('metadata-specific-asset');
+var thumbtitle = store.get('specific-data-asset');
 
 function getFiledata(filename) {
 
@@ -37,8 +38,39 @@ function getFiledata(filename) {
 
 $(document).ready(function() {
 
+    // store.delete('specific-data-asset');
+
+
+    var thumbImg = '<img id="imageFile" src="' + thumbtitle['poster'] + '">';
+    $('#fileImage').append(thumbImg);
+
+    
+    console.log(jAsset);
+
+    let crawl = jAsset;
+    let actors = crawl["crawl"]["cast"];
+    let actorsData = '';
+    let actorsCounter = 0;
+    let actorsCounterActive = 0;
+
+    document.getElementById('filetitle').innerHTML = jAsset["info"][0]["title"];
+    document.getElementById('movieplot').innerHTML = decodeURIComponent(jAsset["crawl"]["header"]["synopsis"]);
+    document.getElementById('fileyear').innerHTML = jAsset["crawl"]["header"]["release_date"];
+    document.getElementById('videoDirectors').innerHTML = jAsset["crawl"]["header"]["directors"];
+
+    let strBanner = jAsset["crawl"]["header"]["banner"];
+    // console.log(strBanner);
+    $('#mainSearchResult').css({
+        'background': 'linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, .8) 60%, rgba(0, 0, 0, 1) 100%), url("' + strBanner + '") no-repeat',
+        'background-size': '100% 35%'
+    });
+
     generateTable();
 
+    $('#tbodyDetails tr').click(function() {
+        nextWindow($(this).attr('data-key'));
+    });
+    
 });
 
 
@@ -55,38 +87,51 @@ $('#btnSearch').click( () => {
     location.href = 'video-download.html';
 });
 
-    var thumbtitle = store.get('specific-data-asset');
-    // store.delete('specific-data-asset');
+   /* setInterval(() => {
 
+        let json = {
 
-    var thumbImg = '<img id="imageFile" src="' + thumbtitle['poster'] + '">';
-    $('#fileImage').append(thumbImg);
+            status : 1139
+        };
+        json = JSON.stringify(json);
+        ipcRenderer.send('request-get-file-list', json);
 
-    var jAsset = store.get('metadata-specific-asset');
-    console.log(jAsset);
+    }, 9000);
+    
 
-    let crawl = jAsset;
-    let actors = crawl["crawl"]["cast"];
-    let actorsData = '';
-    let actorsCounter = 0;
-    let actorsCounterActive = 0;
-
-    document.getElementById('filetitle').innerHTML = jAsset["info"][0]["title"];
-    document.getElementById('movieplot').innerHTML = decodeURIComponent(jAsset["crawl"]["header"]["synopsis"]);
-    document.getElementById('fileyear').innerHTML = jAsset["crawl"]["header"]["release_date"];
-    document.getElementById('videoDirectors').innerHTML = jAsset["crawl"]["header"]["directors"];
-
-    let strBanner = jAsset["crawl"]["header"]["banner"];
-    console.log(strBanner);
-    $('#mainSearchResult').css({
-        'background': 'linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, .8) 60%, rgba(0, 0, 0, 1) 100%), url("' + strBanner + '") no-repeat',
-        'background-size': '100% 35%'
-    });
     // linear-gradient(to bottom, rgba(0, 0, 0, 0.575) 30%, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 1) 100%), url('../images/avengers_wall.jpg') no-repeat
+    ipcRenderer.on('response-get-file-list', (event , arg) => {
+
+            var tableStr = "";
+            if (arg) {
+                for(var key1 in arg['info']) {
+
+                    tableStr += '<tr data-key="' + key1 + '">'; 
+                    tableStr += '<td></td>';
+                    tableStr += '<td>' + arg[key1]["title"] + '</td>';
+                    tableStr += '<td> 999 </td>';   
+                    tableStr += '<td>' + arg[key1]["price"] + '</td>';
+                    tableStr += '<td> 4.7 </td>';
+                    tableStr += '<td> Language </td>';
+                    tableStr += '<td> English </td>';
+                    tableStr += '<td> 4k </td>';
+                    tableStr += '<td> ' + arg[key1]["metadata"]["filesize"] +' </td>';
+                    tableStr += '<td> ' + arg[key1]["metadata"]["video_codec_name"] + ' </td>';
+                    tableStr += '<td> ' + arg[key1]["metadata"]["audio_codec_name"] + ' </td>';
+                    tableStr += '<td> ' + arg[key1]["metadata"]["video_frame_rate"] + ' </td>';
+                    tableStr += '</tr>';
+                }
+            }
+        $('#tbodyDetails').append(tableStr);
+    });
+    */
+    
     function generateTable() {
+
         var tableStr = "";
 
         for(var key1 in jAsset["info"]) {
+
             tableStr += '<tr data-key="' + key1 + '">'; 
             tableStr += '<td></td>';
             tableStr += '<td>' + jAsset["info"][key1]["title"] + '</td>';
@@ -101,12 +146,11 @@ $('#btnSearch').click( () => {
             tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["audio_codec_name"] + ' </td>';
             tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["video_frame_rate"] + ' </td>';
             tableStr += '</tr>';
+
         }
+
         $('#tbodyDetails').append(tableStr);
 
-        $('#tbodyDetails tr').click(function() {
-            nextWindow($(this).attr('data-key'));
-        });
     }
 
     function nextWindow(key) {
@@ -156,7 +200,7 @@ $('#btnSearch').click( () => {
 
 
 
-        // for( var keys in jAsset[""])
+    // for( var keys in jAsset[""])
 
 //ACTORS
 		

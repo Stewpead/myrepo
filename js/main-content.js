@@ -14,7 +14,7 @@ var json1 = JSON.parse(obj1);
 // Audio Content
 var obj2 = fs.readFileSync('./json/audiosection-temp.json'); 
 var json2 = JSON.parse(obj2);
-// Audio Content
+// Audio Content 
 
 var imgpath = path.join(__dirname,'/decodedimg/');
 var data64 = "data:image/jpg;base64,";
@@ -52,14 +52,14 @@ function trendingAudios(){
 	var trendingAcards = "";
 
 	for (var key in json2) {
-		
-		trendingAcards += '<div class="col-lg-3 grid-cards-audio" onclick="getAudioInfo(\''+ json2[key]['metadata']['filename'] +'\')">';
-		trendingAcards += '<div class="container">';
-		trendingAcards += '<img src="' + data64 + json2[key]['metadata']['thumbnail'] + '" />';
+		trendingAcards += '<div class="col-lg-2 col-sm-4 col-6">';
+		trendingAcards += '<div class="grid-cards-audio" onclick="getAudioInfo(\''+ json2[key]['metadata']['filename'] +'\')">';
+		trendingAcards += '<div class="container-card">';
+		trendingAcards += '<img class="img-fluid" src="' + data64 + json2[key]['metadata']['thumbnail'] + '" />';
+		trendingAcards += '</div>';
 		trendingAcards += '<p id="video-title" class="thumb-title">' + json2[key]['metadata']['filename'] + '</p>';
 		trendingAcards += '</div>';
 		trendingAcards += '</div>';
-
 	} 
 	$('#trendingArtist').append(trendingAcards);
 }        
@@ -75,14 +75,14 @@ function trendingTVSeries() {
 	var trendingTVcards = "";
 
 	for (var key in json1) {
-		
-		trendingTVcards += '<div class="col-lg-3 grid-cards-video" onclick="getTVseries(\''+ key +'\')">';
-		trendingTVcards += '<div class="container">';
-		trendingTVcards += '<img src="' + data64 + json1[key]['metadata']['thumbnail'] + '" />';
+		trendingTVcards += '<div class="col-lg-2 col-sm-4 col-6">';
+		trendingTVcards += '<div class="grid-cards-video" onclick="getTVseries(\''+ key +'\')">';
+		trendingTVcards += '<div class="container-card">';
+		trendingTVcards += '<img class="img-fluid" src="' + data64 + json1[key]['metadata']['thumbnail'] + '" />';
+		trendingTVcards += '</div>';
 		trendingTVcards += '<p id="video-title" class="thumb-title">' + json1[key]['metadata']['filename'] + '</p>';
 		trendingTVcards += '</div>';
 		trendingTVcards += '</div>';
-
 	} 
 	$('#tvSeriesSection').append(trendingTVcards);
 }
@@ -128,13 +128,13 @@ ipcRenderer.on('response-dashboard-cards', (event, arg) => {
 
 	for( var key in movies) {
 
-		console.log(movies[key]);
-
-		trendingVcards += '<div class="col-lg-3 grid-cards-video" onclick="getMovieInfo(\'' + key + '\')">';
-		trendingVcards += '<div class="container">';
-		trendingVcards += '<img src="' + movies[key]['poster'] + '" />';
-		trendingVcards += '<p id="video-title" class="thumb-title">' + movies[key]['title'] + '</p>';
-		trendingVcards += '<p id="video-year" class="thumb-year" >' + movies[key]['date'] + '</p>';
+		trendingVcards += '<div class="col-lg-2 col-sm-4 col-6">';
+		trendingVcards += '<div class="grid-cards-video" onclick="getMovieInfo(\'' + key + '\')">';
+		trendingVcards += '<div class="container-card">';
+		trendingVcards += '<img class="img-fluid" src="' + movies[key]['poster'] + '" />';
+		trendingVcards += '</div>';
+		trendingVcards += '<p class="thumb-title">' + movies[key]['title'] + '</p>';
+		trendingVcards += '<p class="thumb-year" >' + movies[key]['date'] + '</p>';
 		trendingVcards += '</div>';
 		trendingVcards += '</div>';
 
@@ -144,36 +144,37 @@ ipcRenderer.on('response-dashboard-cards', (event, arg) => {
 	
 });	
 
+
 // Send data of selected card
 function getMovieInfo(keys) {
-
-	let jData = {
-		poster : movies[keys]['poster'],
-		year : movies[keys]['date'],
-		title : movies[keys]['title']
-	};
-
-	let json = {
-		status : 1129,
-		title : movies[keys]['title'],
-		type : 0
-	};
-
-
-	json = JSON.stringify(json);
-	ipcRenderer.send('request-specific-asset', json);
-
-	store.set('specific-data-asset', jData);
-
-
-	ipcRenderer.on('response-filelist-specific-asset', (event, arg) => {
-
-		arg = JSON.parse(arg['data']);
-
-		store.set('metadata-specific-asset', arg);
-
-		location.href = "video-details.html";
-
-	});
-
+	if(keys) {
+		let jData = {
+			poster : movies[keys]['poster'],
+			year : movies[keys]['date'],
+			title : movies[keys]['title']
+		};
+	
+		let json = {
+			status : 1129,
+			title : movies[keys]['title'],
+			type : 0
+		};
+	
+	
+		json = JSON.stringify(json);
+		ipcRenderer.send('request-specific-asset', json);
+	
+		store.set('specific-data-asset', jData);
+	
+	
+		ipcRenderer.on('response-filelist-specific-asset', (event, arg) => {
+	
+			arg = JSON.parse(arg['data']);
+	
+			store.set('metadata-specific-asset', arg);
+	
+			location.href = "video-details.html";
+	
+		});
+	}
 }
