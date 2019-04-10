@@ -464,7 +464,7 @@ $('.importShareFiles input[type="file"]').change(function () {
 			activateToggleDIR();
 					
 			// CLEAR Modal
-			$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').removeAttr("generated")
+			$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').attr("generated","");
 
 		});
 		
@@ -538,7 +538,7 @@ onDrop = function(event) {
 					activateToggleDIR();
 					
 					// CLEAR Modal
-					$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').removeAttr("generated")
+					$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').attr("generated", "")
 
 				});
 
@@ -690,32 +690,48 @@ setTimeout(function() {
 			let counterSeasons = 0;
 			let seasonsArray = [];
 			let seasonData = JSON.parse( decodeURIComponent( $('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').text() ) );
+			let seasonDatalength = Object.keys(seasonData).length;
+			let currentSeason = 0;
 			
 			
-			let checkIfgenerated = $('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').attr("generated");
+			let checkIfgenerated = $('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea');
 			
-			if (typeof checkIfgenerated == 'undefined') {
+			//if (typeof checkIfgenerated == 'undefined') {
 				
-				$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').attr("generated", true);
+				
 				
 				$.each(getSeasons, function( indexSeasons, value ) {
 					
-					if ( getSeasons.length >= counterSeasons ) {
+
+					
+					
+					if ( getSeasons.length > counterSeasons ) {
 						let individualDir = $(this).find("textarea").attr("filedir");
 						let season = $(this).find(".title").html();
+							let array = new Array();
+							let currentArray = checkIfgenerated.attr("generated");
+							
+							array = currentArray.split(",");
+							array.push(counterSeasons);
+							checkIfgenerated.attr("generated", array );
 							seasonsArray[counterSeasons] = seasonData[season];
 							
+							console.log( "Current Season: " + counterSeasons);
+							console.log( "ARRAY: " + currentArray);
+	
+							let seasonEpisodesLength = Object.keys(seasonData[season]).length;
 							$.each(seasonData[season], function( index, value ) {
-								getFileMetadata( decodeURIComponent(individualDir)+"\\"+ value["name"], decodeURIComponent(individualDir),  'tv' );
+								let noEps = parseInt(index) + 1;
+								console.log( "eps: " + noEps);
+								//getFileMetadata( decodeURIComponent(individualDir)+"\\"+ value["name"], decodeURIComponent(individualDir),  'tv' );
 								
 							});
 							
 					}
-
 					counterSeasons++;
 				});
 				
-			}
+			//}
 				
 			let eps = crawl["episode_titles"];
 			let metadata = data["metadata"];
@@ -1168,7 +1184,7 @@ ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
 
 /*** 2.6 Get metadata from crawled file ***/
 
-function getFileMetadata( path, dir, action){
+function getFileMetadata( path, dir, action, counter = 0){
 
 	if ( typeof  path !== "undefined" ) {
 		let json = {
@@ -1176,7 +1192,8 @@ function getFileMetadata( path, dir, action){
 			data : {
 				filename	: path,
 				action		: action,
-				dir			: dir
+				dir			: dir,
+				counter		: counter
 				
 			}
 		}
