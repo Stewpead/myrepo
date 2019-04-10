@@ -348,7 +348,7 @@ hr#hr {
     padding: 15px 0;
 }
 .popup.scan-result .popup-inner .file-details .file-subdata{
-    /* text-align: left; */
+    text-align: left; 
     font-size: 15px;	
 }
 
@@ -434,7 +434,11 @@ hr#hr {
 	margin-bottom: 9px;
 }
 .popup.scan-result .popup-inner .file-details .file-metadata strong {
-	display: contents;
+	display: contents;    
+	text-align: left;
+    float: left;
+    display: block;
+    width: auto;
 }
 .popup.scan-result .popup-inner .file-details .file-metadata p.full-width{
 	width: 100%;
