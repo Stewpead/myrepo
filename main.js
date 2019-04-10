@@ -43,15 +43,17 @@ var Status = {
 	GET_FILE_INFO: 1128,
 	GET_SPECIFIC_ASSET: 1129,
 	GET_WALLET_DATA: 1130,
+	REQUEST_DASHBOARD_CARDS:1136,
 	DOWNLOAD_PAYMENT_CONFIRMATION: 1137,
+	REQUESST_FILE_LIST: 1139,
 	WALLET_BALANCE: 2000,
 	START_HOARDING_SESSION: 5002,
 	REQUEST_FILETRANSFER_STATS: 5003,
 	HAS_REGISTERED_USER : 7001,
 	REQUEST_CRAWLING: 9000,
 	GET_CRAWLING: 9001,
-	GET_FILE_DETAILS:1135,
-	REQUEST_DASHBOARD_CARDS:1136
+	GET_FILE_DETAILS:1135
+
 };
 
 /*
@@ -203,7 +205,7 @@ var initiateConnection = function(attempt){
 				
 			case Status.REQUEST_CRAWLING:
 				moduleDashboard.getRequestCrawlingExternalData(data);
-			break;
+				break;
 				
 			case Status.GET_FILE_DETAILS: 
 				moduleDashboard.receiveFileSelectedMetadata(data);

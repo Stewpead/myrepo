@@ -129,5 +129,5 @@ module.exports = {
     console.log("receive confirmation payment");
     defaultWindow.webContents.send('response-download-payment',data);
   }
-
+  
 };

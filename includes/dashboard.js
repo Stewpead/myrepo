@@ -182,7 +182,5 @@ module.exports = {
 //     "data": {
 //         "type": "musicIndividual",
 //  "title": "sugar - maroon 5"
-   
-
 //     }
 // }

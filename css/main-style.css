@@ -33,8 +33,8 @@ html::-webkit-scrollbar {
 #content-main {
     position: fixed;
     text-align: justify;
-    margin-left: 15px;
-    height: 55%;
+    /* margin-left: 15px; */
+    height: 65%;
     overflow-y: scroll;
     width: auto;
     overflow-x: hidden;
@@ -67,7 +67,7 @@ html::-webkit-scrollbar {
     background-color:rgb(0, 0, 0);
     margin-left:130px;
 }
-.col-lg-12 {
+div.col-lg-12 {
     margin: 0 !important; 
     padding: 0 !important;
 }
@@ -75,27 +75,29 @@ html::-webkit-scrollbar {
     float: right;
     padding-right: 30px;
 }
-
 .grid-cards-video {
     cursor: pointer;
-    height: 324px;
+    max-height: 304px;
     max-width: 200px;
     margin: 5px;
     border-radius: 2px;
     overflow: hidden;
-    text-align: left;
     padding: 5px;
-    padding-bottom: 15px;
-    font-size: 12px;
-    line-height: 7px;
+    padding-bottom: 10px;
+    max-height: 324px;
+    max-width: 200px;
+    min-height: 203px;
+    min-width: 150px;
+}
+.grid-cards-video .container-card {
+    width: auto;
+    height: auto;
+    margin: 5px;
 }
 .grid-cards-video:hover {
     background-color:#222222;
-}
-.grid-cards-video .container img {
-    width: 100%;
-    margin: auto;
-}
+} 
+
 .grid-cards-audio {
     cursor: pointer;
     height: 230px;
@@ -105,7 +107,7 @@ html::-webkit-scrollbar {
     overflow: hidden;
     text-align: left;
     padding: 5px;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     font-size: 12px;
     line-height: 11px;
 }
@@ -137,7 +139,7 @@ a:hover {
 }
 .section-divider ul li
 {
-    list-style-type: none;
+    list-style-type: none; 
     display: inline;
 
 }
@@ -157,8 +159,7 @@ span#divider-text:hover {
 
 
 #content-main p.thumb-title {
-    font-size: 16px;
-    line-height: initial;
+    font-size: 12px;
     margin-top: 24px;
     margin: 6px 0px;
     text-transform: capitalize;
@@ -167,6 +168,7 @@ span#divider-text:hover {
 	color: #888787;
     font-weight: bold;
     line-height: initial;
+    font-size: 10px;
     margin-top: 0;
 }
 
@@ -204,10 +206,10 @@ span#divider-text:hover {
         padding-right: 5%;
     }
 }
-@media screen and (max-width: 1088px) and (min-width:988px) {
-    .grid-cards {
-        line-height: 10px !important;
-        font-size: 10px;
+@media screen and (max-width: 2000px) and (min-width:1575px) {
+    .grid-cards-video {
+        font-size: 14px;
+        line-height: 10px;
     }
 }
 /* #random-row1 {

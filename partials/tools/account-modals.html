@@ -29,7 +29,7 @@
 				<span style="float: left; text-align:justify; font-size: 10px;">Transferring AVX Token to someone you don't know? This feature is not reversible. Please read this important note on customer protection.</span>
 			</div>
 			<div class="col-5">
-				 <a href="#" id="btnSendtoken" class="btn btn-danger float-right">Send</a>
+				 <a href="#" id="btnSendtoken" class="btn btn-danger float-right">Proceed</a>
 			</div>
 		</div>
 	  <a class="popup-close" pd-popup-close="accountSendToModal" href="#"> </a>
@@ -38,22 +38,13 @@
 <!-- Send Token -->
 
 <!-- Sending Confirmation -->
-
-<div class="popup sendToken" pd-popup="accountSendToModal">
+<div class="popup sendToken" pd-popup="confirmSendToModal">
 	<div class="popup-inner scroll-skin">
-	<h4 style="font-weight: 400;text-align: left;margin-bottom: 37px; font-size: 29px;" >Send Token</h4>
-	<p class="wallet-infomation">
-		Wallet balance:  
-		<span style="margin-left: 10px; color: #098c48; font-weight: 700; font-size: 25px; " class="total-balance">00.00</span> 
-		<span style="margin-left: 10px; color: #098c48; font-weight: 700; font-size: 25px; margin-left:0">AVX</span>
-	</p>
-	<p class="wallet-infomation">
-		Wallet address:  
-		<span style="margin-left:10px; font-weight: 100;" class="Waddress"></span>
-	</p>
+	<h4 style="font-weight: 400;text-align: left;margin-bottom: 37px; font-size: 29px;" >Sending Confimation</h4>
+
 	<div class="input-holder">
 		<div class="amount-holder">
-			<input type="number" id="avxquantity" placeholder="0.00"><br />
+			<input type="number" id="avxToSend" placeholder="0.00"><br />
 			<span style="float: left; font-size: 12px;">Total AVX to send (Transaction fee 0.1%) = &nbsp;</span>
 			<span style="float: left; color: #e42525; font-size: 12px;" id="txFee">0.000</span> <br />
 			<p>AVX Quantity to export</p>
@@ -75,7 +66,7 @@
 	</div>
 </div>
 
-<!-- Sending Confirmation -->
+<!-- Sending Validation -->
  <div class="popup sendToken" pd-popup="accountSendToSuccessModal">
     <div class="popup-inner scroll-skin">
 		<p> You have successfully send token</p>
@@ -108,6 +99,11 @@
 </div>
 
 
+
+
+
+
+
 <script>
 
 
@@ -130,12 +126,12 @@ jQuery(document).ready(function($) {
  
 	var num1 = 0.0;
 	
-	$('#avxquantity').keydown( () => {
-		let avxQ = document.getElementById('avxquantity').value;
-		num1 = avxQ * .001;
-		num1 = parseFloat(num1).toFixed(4);
-		document.getElementById('txFee').innerHTML = num1;
-	});
+	// $('#avxquantity').keydown( () => {
+	// 	let avxQ = document.getElementById('avxquantity').value;
+	// 	num1 = avxQ * .001;
+	// 	num1 = parseFloat(num1).toFixed(4);
+	// 	document.getElementById('txFee').innerHTML = num1;
+	// });
 	$('#avxquantity').keypress( () => {
 		let avxQ = document.getElementById('avxquantity').value;
 		num1 = avxQ * .001;
@@ -144,12 +140,15 @@ jQuery(document).ready(function($) {
 	});
 
 
+	// $('[pd-popup="confirmSendToModal"]').fadeIn(100);
 
 	$('#btnSendtoken').click( function (e) {
 
 		e.preventDefault();
 
 		$('#btnSendtoken').prop('disabled', true).addClass('disabled', true);
+
+
 		var json1 = {}; 
 		var totalAmountToSend = 0;
 		var amount = 0;
