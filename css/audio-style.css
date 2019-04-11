@@ -277,9 +277,10 @@ table {
     overflow-x: scroll;
 }
 .tracksListdiv {
-    height: 180px;
-    line-height: 35px;
+    height: 200px;
+    line-height: 30px;
     overflow-y: auto;
+    margin-right: 5%;
 }
 .tracksListdiv::-webkit-scrollbar {
     display: block;

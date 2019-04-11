@@ -13,6 +13,7 @@
     <!-- MINE -->
     <link rel="stylesheet" type="text/css" href="../css/app-style.css">
     <link rel="stylesheet" type="text/css" href="../css/tvseries-style.css">
+    <link rel="stylesheet" type="text/css" href="../css/skin/modal-theme.css">
     <!-- MINE -->
   
     <header> 
@@ -294,7 +295,7 @@
                                     <span id="tracks">Tracks</span>
                                 </div>
                             </div>
-                            <br />
+                            <br /> 
                             <div class="row tracksListdiv">
                                 <div class="col-lg-12 mt-3" id="tracksLists">
                                     <div class="container-fluid">
@@ -306,7 +307,7 @@
                                                 <span>4:04</span>     
                                             </div>
                                             <div class="col-4 tracksList">
-                                                <span>View Files Available</span>
+                                                <span id="viewFiles">View Files</span>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -317,7 +318,7 @@
                                                 <span>4:04</span>     
                                             </div>
                                             <div class="col-4 tracksList">
-                                                <span>View Files Available</span>
+                                                <span>View Files</span>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -328,7 +329,7 @@
                                                 <span>4:04</span>     
                                             </div>
                                             <div class="col-4 tracksList">
-                                                <span>View Files Available</span>
+                                                <span>View Files</span>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -339,7 +340,7 @@
                                                 <span>4:04</span>     
                                             </div>
                                             <div class="col-4">
-                                                <span>View Files Available</span>
+                                                <span>View Files</span>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -350,7 +351,7 @@
                                                 <span>4:04</span>     
                                             </div>
                                             <div class="col-4">
-                                                <span>View Files Available</span>
+                                                <span>View Files</span>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -361,7 +362,7 @@
                                                 <span>4:04</span>     
                                             </div>
                                             <div class="col-4">
-                                                <span>View Files Available</span>
+                                                <span>View Files</span>
                                             </div>
                                         </div>
                                     </div>
@@ -410,6 +411,14 @@
             </div> 
         </div>     
     </body> 
+    <!-- Modal -->
+    <div id="viewFileModal"></div>
+    <script>
+        $(function(){
+            $("#viewFileModal").load("../partials/tools/file-download.html");
+        }); 
+    </script>
     <script src="../js/top-handler.js"></script>
     <script src="../js/tvseries-details.js"></script>
+
 </html>

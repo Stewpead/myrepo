@@ -131,6 +131,20 @@ hr#hr {
     border-radius: 100%;
     background: transparent;
 }
+.popup-close-white {
+    
+    width: 56px;
+    height: 34px;
+    display: inline-block;
+    position: absolute;
+    top: 17px;
+    right: 28px;
+    -webkit-transform: translate(50%, -50%);
+    transform: translate(50%, -50%);
+    border-radius: 100%;
+    background: transparent;
+    
+}
 
 .popup-close:after,
 .popup-close:before {
@@ -770,4 +784,13 @@ hr#hr {
 .popup-inner .tv-shows-content table td:nth-child(5) {
     color: #40b082;
     font-weight: bold;
+}
+
+.popup-inner.no-border-popup.view-files-modal {
+    max-width: 990px;
+    padding-left: 65px;
+    padding-right: 65px;
+    margin: 0 auto;
+    color: #000000;
+    background: #ffffff;
 }

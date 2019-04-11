@@ -196,7 +196,7 @@ function populateScreen() {
     document.getElementById('videoCodecLabel').innerHTML = jAsset["info"][indeKey]["metadata"]["video_codec_name"];
     document.getElementById('bitDepth').innerHTML = jAsset["info"][indeKey]["metadata"]["bit_depth"];
 
-    let imgStr = '<img src="' + jAsset["crawl"]["header"]["poster"] + '" id="videoImage">';
+    let imgStr = '<img class="img-fluid" src="' + jAsset["crawl"]["header"]["poster"] + '" id="videoImage">';
     $('#fileImage').html(imgStr);
 
 
