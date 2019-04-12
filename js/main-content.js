@@ -96,9 +96,9 @@ ipcRenderer.on('response-dashboard-cards', (event, arg) => {
 		trendingVcards += '<div class="grid-cards-video" onclick="getMovieInfo(\'' + key + '\')">';
 		trendingVcards += '<div class="container-card">';
 		trendingVcards += '<img class="img-fluid" draggable="false" src="' + movies[key]['poster'] + '" />';
-		trendingVcards += '<div class="card-data">';
+		trendingVcards += '<div class="card-data mt-3">';
 		trendingVcards += '<p class="thumb-title text-truncate">' + movies[key]['title'] + '</p>';
-		trendingVcards += '<p class="thumb-year" >' + movies[key]['date'] + '</p>';
+		trendingVcards += '<p class="thumb-year" >' + movies[key]['date'].replace(/\((\d{4})\)/g, "$1") + '</p>';
 		trendingVcards += '</div>';
 		trendingVcards += '</div>';
 		trendingVcards += '</div>';

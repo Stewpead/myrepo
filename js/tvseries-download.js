@@ -6,7 +6,13 @@ $('#btnViewFiles').click( () => {
     $('[pd-popup="viewFilesModal"]').fadeIn(100);
 });
 
-$('')
+$('#toggleTrackList').click( () => {
+    $('#trackSectionToggle').slideToggle();
+});
+
+$('#mediaDetailsToggle').click( () => {
+    $('#mediaDetailsSection').slideToggle();
+});
 
 setTimeout( () => {
 

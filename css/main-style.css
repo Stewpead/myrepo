@@ -6,15 +6,14 @@ html::-webkit-scrollbar {
 	z-index: 999;
 }
 #spacing {
-    height: 40vh;   
+    height: 250px;   
     display: block;
-    padding-bottom: 40vh;
 }
 #bg { 
     position: fixed;
-    height: 40vh;
+    height: 250px;
     width: 95%;
-    background-image:url('../images/mainwall.jpg');
+    background-image:url('../images/mainwall.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -39,7 +38,6 @@ html::-webkit-scrollbar {
     width: auto;
     overflow-x: hidden;
     display: block;
-
 }
 #content-main::-webkit-scrollbar {
     display: block;
@@ -163,15 +161,21 @@ span#divider-text:hover {
     max-width: 200px;
 }
 #content-main p.thumb-year {
-	color: #888787;
-    font-weight: bold;
+	color: #363636;
+    font-weight: 1000;
     line-height: initial;
-    font-size: 10px;
+    font-size: 12px;
     margin: 5px;
 }
-/* .container-card .card-data {
-    margin-top: -65px;
-
+/* .container-card {
+    padding-bottom: 10px;
+}
+.container-card .card-data {
+    margin-top: -40px;
+    background:rgba(0, 0, 0, 0.6);
+    display: block;
+    position: relative;
+    padding: 3px;
 } */
 
 /*SCROLL SKIN*/

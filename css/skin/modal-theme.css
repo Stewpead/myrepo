@@ -786,11 +786,28 @@ hr#hr {
     font-weight: bold;
 }
 
-.popup-inner.no-border-popup.view-files-modal {
-    max-width: 990px;
-    padding-left: 65px;
-    padding-right: 65px;
+.popup-inner.no-border-popup.view-files-modal-content {
+    max-width: 1190px;
+    padding-left: 25px;
+    padding-right: 25px;
     margin: 0 auto;
     color: #000000;
     background: #ffffff;
 }
+.popup-inner.no-border-popup.view-files-modal-content .row .col-lg-12 ul {
+    list-style-type: none;
+}
+
+.popup-inner.no-border-popup.view-files-modal-content .row .col-lg-12 ul li:not(:first-child):before {
+    content: " | ";
+}
+
+.popup-inner.no-border-popup.view-files-modal-content .row .col-lg-12 ul li {
+    display: inline;
+}
+ table {
+    font-size: 12px;
+}
+/* .view-files-modal .table-contents {
+
+} */

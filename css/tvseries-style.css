@@ -96,7 +96,7 @@ ul.list-group:after {
     text-align: left; 
     border-bottom: 1px solid #818181; 
     line-height: .1em;
-    margin: 15px 5% 20px; 
+    margin: 15px 5% 20px 20px; 
 }
 .section-divider ul li
 {
@@ -112,14 +112,21 @@ ul.list-group:after {
 #styleRow {
     background-color:rgb(0, 0, 0);
 }
+/* #styleRow .section-divider {
+    float: left;
+} */
 span#divider-text {
-    margin-left: -15px;
+    text-align: left;
     background-color: #000;
     padding: 0 20px 0 0;
     cursor: pointer;
+    /* float: left; */
 }
 span#divider-text:hover {
     color: #ed1c24;
+}
+.section-divider ul  {
+    float: left;
 }
 .headerContents {
     font-weight: bold;

@@ -49,8 +49,6 @@ $(document).ready(() => {
         // jWishlist = JSON.parse(Wishlist);
         // jWishlist[totalObj].push({ id : "01", filename : 'Fuck you'});
         // jWishlist = JSON.stringify(jWishlist); 
-
-
         // fs.writeFile("jWishlist.json",jWishlist, function(e) {
         //     if(e) {
         //         console.log(e);
@@ -70,7 +68,7 @@ $(document).ready(() => {
     });
     
     $('#btnViewFiles').click( () => {
-        $('[pd-popup="viewFilesModal"]').fadeIn(100);
+        // $('[pd-popup="viewFilesModal"]').fadeIn(100);
     });
 
     //Click events in nested modals
