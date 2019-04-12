@@ -15,23 +15,29 @@ module.exports = {
 				width: 1,
 				height: 1
 				};
-
+				var options = new chrome.Options();
+				options.addArguments("--incognito");
+				options.addArguments("--window-size=500,500");
 				let driver = new Builder()
 					.forBrowser('chrome')
-					.setChromeOptions(new chrome.Options().headless().windowSize(screen))
+					//.setChromeOptions(new chrome.Options().headless().windowSize(screen))
+					//.setChromeOptions(new chrome.Options().windowSize(screen))
+					.setChromeOptions(options)
 					.build();
 					
-				await driver.get('https://www.amazon.com/s?k=' + title + '&rh=n%3A2 901953011&ref=nb_sb_noss');
+				await driver.get('https://www.amazon.com/s?k=' + title + '&rh=n%3A2 901953011&ref=nb_sb_noss_1');
+				//await driver.get('https://www.amazon.com/s?k=' + title + '&ref=nb_sb_noss');
 			
 				let source = await driver.getPageSource();
-
-					console.log(source)
-				defaultWindow.webContents.send('avx-share-crawl-price-source-result', source);
+				data["data"]["source"] = encodeURIComponent( source) ;
+				defaultWindow.webContents.send('avx-share-crawl-price-source-result', data);
 				const fs = require('fs');
-				fs.writeFile("temp.txt", source, function(err, data) {
+				
+				/*fs.writeFile("temp.txt", source, function(err, data) {
 					if (err) console.log(err);
 					console.log("Successfully Written to File.");
 				  });
+				  */
 
 				
 				//insert code for sending source to c++ via network
