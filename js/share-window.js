@@ -372,7 +372,7 @@ setTimeout(function() {
 				assetsData[count] = JSON.parse(decodeURIComponent(data));
 			  break;
 			  case 'tv':
-				assetsData[count] = data; 
+				assetsData[count] = JSON.parse(data); 
 			  break;
 		  }
 		  
@@ -592,7 +592,7 @@ setTimeout(function() {
 		$('.popup[pd-popup="shareConfirmMetadataModal"] .file-feature-img').attr('style', imageSrc );
 		
 		let data = JSON.parse(($(this).parent().find("textarea").text()));
-		let crawl = JSON.parse(decodeURIComponent(data["crawl"]));
+		let crawl = JSON.parse(data["crawl"]);
 
 
 			//GENERATE RESULT
@@ -696,42 +696,56 @@ setTimeout(function() {
 			
 			let checkIfgenerated = $('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea');
 			
-			//if (typeof checkIfgenerated == 'undefined') {
-				
-				
-				
-				$.each(getSeasons, function( indexSeasons, value ) {
-					
+			if (typeof checkIfgenerated.attr("scan") == 'undefined') {
 
+				$.each(seasonData, function( indexSeasons, value ) {
+					let seasonContainter = new Array();
+					let currentSeason = checkIfgenerated.attr("generated"); 
+					let individualDir = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details p.title:contains("'+indexSeasons+'")').parent().find("textarea").attr("filedir");
+					seasonContainter = currentSeason.split(",");
 					
+					seasonContainter = $.grep(seasonContainter,function(n){
+						return(n);
+					});
+					seasonContainter = seasonContainter.filter(function(elem, index, self) {
+						return index === self.indexOf(elem);
+					});
 					
-					if ( getSeasons.length > counterSeasons ) {
-						let individualDir = $(this).find("textarea").attr("filedir");
-						let season = $(this).find(".title").html();
-							let array = new Array();
-							let currentArray = checkIfgenerated.attr("generated");
-							
-							array = currentArray.split(",");
-							array.push(counterSeasons);
-							checkIfgenerated.attr("generated", array );
-							seasonsArray[counterSeasons] = seasonData[season];
-							
-							console.log( "Current Season: " + counterSeasons);
-							console.log( "ARRAY: " + currentArray);
-	
-							let seasonEpisodesLength = Object.keys(seasonData[season]).length;
-							$.each(seasonData[season], function( index, value ) {
-								let noEps = parseInt(index) + 1;
-								console.log( "eps: " + noEps);
-								//getFileMetadata( decodeURIComponent(individualDir)+"\\"+ value["name"], decodeURIComponent(individualDir),  'tv' );
+					if (  typeof individualDir == 'undefined' ) {
+
+							setTimeout(function() {
+								if ( checkStringExistOnArray( indexSeasons,seasonContainter ) !== 1 ) {
+
+									$.each(seasonData[indexSeasons], function( index, value ) {
+										let noEps = parseInt(index) + 1;
+										getFileMetadata( decodeURIComponent(individualDir)+"\\"+ value["name"], decodeURIComponent(individualDir),  'tv' );
+										
+									});	
+				  
+								}
 								
-							});
+								seasonContainter.push(indexSeasons);
+								checkIfgenerated.attr("generated", seasonContainter.join(",") );
 							
+							},
+							3000);
+					} else {
+						if ( checkStringExistOnArray( indexSeasons,seasonContainter ) !== 1 ) {
+
+							$.each(seasonData[indexSeasons], function( index, value ) {
+								let noEps = parseInt(index) + 1;
+								getFileMetadata( decodeURIComponent(individualDir)+"\\"+ value["name"], decodeURIComponent(individualDir),  'tv' );
+								
+							});	
+		  
+						}
+						
+						seasonContainter.push(indexSeasons);
+						checkIfgenerated.attr("generated", seasonContainter.join(",") );
 					}
-					counterSeasons++;
 				});
 				
-			//}
+			}
 				
 			let eps = crawl["episode_titles"];
 			let metadata = data["metadata"];
@@ -741,32 +755,38 @@ setTimeout(function() {
 			
 			if (  typeof metadata !== 'undefined' ) {
 				var totalDuration = 0;
+				let populateEpslist = 0;
 				for (var i in eps) {	
 					count++;
 					let myNumber = count;
 					var dec = myNumber - Math.floor(myNumber);
+					var duration = (  typeof metadata[i]["duration"] !== 'undefined' ) ? metadata[i]["duration"]  : 0;
+	
 					epsList += '<tr indexEp="'+ i +'">';
 					epsList += '	<td>E'+ ("0" + myNumber).slice(-2) +'</td>';
-					epsList += '	<td>'+ crawl["episode_titles"][i] +'</td> ';
+					epsList += '	<td>'+ decodeURIComponent(crawl["episode_titles"][i]) +'</td> ';
 					epsList += '	<td>';
-					epsList += '		<p>'+ limitString(crawl["episode_sypnopses"][i] , 80, true) +'</p>';
+					epsList += '		<p>'+ limitString(decodeURIComponent(crawl["episode_sypnopses"][i]) , 80, true) +'</p>';
 					epsList += '	</td> ';
-					epsList += '	<td>'+ getDuration(metadata[i]["duration"]) +'</td>';
+					epsList += '	<td>'+ getDuration(duration) +'</td>';
 					epsList += '	<td>'+ formatBytes(metadata[i]["filesize"], 2) +'</td>';
 					epsList += '</tr>';
 					
-					totalDuration = totalDuration + metadata[i]["duration"];
-					console.log(metadata[i]["duration"]);
+					totalDuration = totalDuration + duration;
+					populateEpslist = 1;
+					//console.log(typeof metadata[i]["duration"]);
 
 				};
-				setTimeout(function() {
-					$('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content tbody tr').eq(0).click();
-					console.log(totalDuration)
-					$('[pd-popup="shareConfirmMetadataModal"] .file-metadata-desc-tv .runtime strong').html( getDuration(totalDuration) );
+				if ( populateEpslist == 1) {
+					setTimeout(function() {
+						$('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content tbody tr').eq(0).click();
+						$('[pd-popup="shareConfirmMetadataModal"] .file-metadata-desc-tv .runtime strong').html( getDuration(totalDuration) );
 					
-				}, 1000);
+						$('[pd-popup="shareConfirmMetadataModal"] .file-metadata-desc-tv .no-eps strong').html(metadata.length);
+					},500);
+				}
 				
-				$('[pd-popup="shareConfirmMetadataModal"] .file-metadata-desc-tv .no-eps strong').html(metadata.length);
+				
 			}
 			table.html(epsList);
 			table.find('tr:nth-child(1)').attr("class", "active");
@@ -780,6 +800,8 @@ setTimeout(function() {
 	});
 }, 100);
 
+
+
 /** 1.4 Select tv assets preview  **/
 setTimeout(function() {
 	$('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content table tbody').on("click","tr", function() {
@@ -789,7 +811,7 @@ setTimeout(function() {
 		let data = JSON.parse($('[pd-popup="shareConfirmMetadataModal"] .file-movie-details .img.active').parent().find('textarea').text());
 		let row = $(this).attr('indexep');
 		//console.log(data);
-		let crawl = JSON.parse( decodeURIComponent(data["crawl"]) );
+		let crawl = JSON.parse( data["crawl"] );
 		console.log(crawl);
 		let currentRow = $(this).find('td').html();
 		let lastRow = $('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content table tbody tr:last-child td').html();
@@ -798,8 +820,8 @@ setTimeout(function() {
 		var declast = declast - Math.floor(declast);
 		
 		//Episodes DATA
-		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv .eps-title strong').html(crawl['episode_titles'][row]);
-		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv .eps-desc').html(crawl['episode_sypnopses'][row]);
+		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv .eps-title strong').html( decodeURIComponent(crawl['episode_titles'][row]) );
+		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv .eps-desc').html( decodeURIComponent( crawl['episode_sypnopses'][row]) );
 		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv .runtime strong').html(getDuration(data["metadata"][row]["duration"]));
 		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv .eps-thumbnail').css("background-image","url('"+ crawl['thumbs'][row] +"')");
 		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv .no-eps strong').html( currentRow  );
@@ -1074,7 +1096,8 @@ function shareCrawlFile(path, dir) {
 
 	
 ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
-	let crawl = JSON.parse(decodeURIComponent(data["crawl"]));
+
+	let crawl = JSON.parse(data["crawl"]);
 	let getMovieList = $('.file-movie-content .file-movie-details').length;
 	let movieAssets = '';
 	let category = $('[pd-popup="shareScanResultModal"] #fileCategory').val();
@@ -1182,7 +1205,7 @@ ipcRenderer.on('response-trigger-crawl-event', (event, data) => {
 
 });
 
-/*** 2.6 Get metadata from crawled file ***/
+/*** 2.7 Get metadata from crawled file ***/
 
 function getFileMetadata( path, dir, action, counter = 0){
 
@@ -1252,3 +1275,19 @@ ipcRenderer.on('avx-share-respond-file-metadata', (event, data) => {
 	}
 	
 });
+
+
+/*** 2.8 Check string if exist on array ***/
+function checkStringExistOnArray(value,arr){
+  var status = 0;
+ 
+  for(var i=0; i<arr.length; i++){
+    var name = arr[i];
+    if(name == value){
+      status = 1;
+      break;
+    }
+  }
+
+  return status;
+}

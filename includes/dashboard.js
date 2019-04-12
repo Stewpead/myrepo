@@ -173,6 +173,18 @@ module.exports = {
 		ipcMain.on('send-buy-this-asset',(event , arg) => {
 			client.write(arg);
 		});
+	},
+	
+	requestPriceSource: function(client) {
+		ipcMain.on('avx-share-crawl-price-source',(event , arg) => {
+			client.write(arg);
+		});
+	},
+	
+	requestPriceDataPoints: function(client) {
+		ipcMain.on('avx-share-crawl-price-data-points',(event , arg) => {
+			client.write(arg);
+		});
 	}
 };
 

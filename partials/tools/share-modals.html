@@ -877,10 +877,10 @@
 				
 			</div>
 			<div class="row meta-data-details">
-				<canvas id="surface" width="768.286px" height="300"></canvas>
+				<canvas id="surfacet" width="768.286px" height="300"></canvas>
 				<script type="text/javascript">
 					window.onload = function() {
-						let pr = new PriceRuler("surface", 10, 250, 13, 0);
+						let pr = new PriceRuler("surfacet", 10, 250, 13, 0);
 						//pr.setDataPoints([103.96, 145.6, 130, 112, 219.5]);
 						pr.setDataPoints([3.96, 145.6, 30, 112, 19.5]);
 						pr.render();
@@ -1013,6 +1013,52 @@
 					</div>	
 						
 						
+					</div>
+
+					<div class="row meta-data-details">
+						<canvas id="surface" width="677.286px" height="250"></canvas>
+						<script type="text/javascript">
+						json = {
+							status : 1140,
+							data : {
+								title	: 'the avengers'
+							}
+						}
+						
+						let jsonString = JSON.stringify(json);
+							
+						ipcRenderer.send('avx-share-crawl-price-source', jsonString);
+						ipcRenderer.on('avx-share-crawl-price-source-result', (event, data) => {
+							jsonString = JSON.stringify(data);
+
+							json = {
+								status : 1139,
+								//priceSource	: jsonString
+								priceSource	: 'D:\\myrepo\\temp.txt'
+								
+							}
+							
+							jsonString = JSON.stringify(json);
+								
+							ipcRenderer.send('avx-share-crawl-price-data-points', jsonString);
+							ipcRenderer.on('avx-share-crawl-price-data-points-result', (event, data) => {
+								jsonString = JSON.stringify(data);
+								console.log(data);
+							});
+						});
+						
+							setTimeout(function() {
+								
+								let pr = new PriceRuler("surface", 10, 250, 13, 0);
+								//pr.setDataPoints([103.96, 145.6, 130, 112, 219.5]);
+								pr.setDataPoints([3.96, 145.6, 30, 112, 19.5]);
+								pr.render();
+								
+								pr.setPrice(10);
+								
+							},
+							1000);
+						</script>
 					</div>					
 				</div>
 			</div>

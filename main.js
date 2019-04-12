@@ -5,6 +5,7 @@ const BrowserWindow = electron.BrowserWindow;
 const url = require('url');
 const path = require('path');
 const ipcMain = require('electron').ipcMain;
+const chrome = require('selenium-webdriver/chrome');
 
 var filename = ipcMain.addListener.toString;
 var temp;
@@ -52,7 +53,9 @@ var Status = {
 	HAS_REGISTERED_USER : 7001,
 	REQUEST_CRAWLING: 9000,
 	GET_CRAWLING: 9001,
-	GET_FILE_DETAILS:1135
+	GET_FILE_DETAILS:1135,
+	REQUEST_PRICE_DATA_POINTS: 1139,
+	REQUEST_PRICE_SOURCE: 1140
 
 };
 
@@ -99,6 +102,9 @@ var initiateConnection = function(attempt){
 		module.requestDashboardCards(client);
 		module.requestSpecificAsset(client);
 		module.requestBuyAsset(client);
+		module.requestPriceSource(client);
+		module.requestPriceDataPoints(client);
+
 	});
 
 	client.on('error', function() {
@@ -120,6 +126,7 @@ var initiateConnection = function(attempt){
 		
 		var moduleAccount = require('./includes/login-signup');
 		var moduleDashboard = require('./includes/dashboard-action');
+		var modulePriceCrawler = require('./seleniumjs/priceCrawler');
 
 		switch(data["status"])
 		{
@@ -225,7 +232,16 @@ var initiateConnection = function(attempt){
 			
 			case Status.DOWNLOAD_PAYMENT_CONFIRMATION:
 				moduleDashboard.responseDownloadPayment(data);
+				break;	
+			
+			case Status.REQUEST_PRICE_SOURCE:
+				modulePriceCrawler.responsePriceSource(data);
+				break;	
+			
+			case Status.REQUEST_PRICE_DATA_POINTS:
+				modulePriceCrawler.responsePriceDataPoints(data);
 				break;
+
 			
 		}			
 	});
