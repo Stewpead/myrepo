@@ -11,7 +11,7 @@ var audioname;
 var objAC = fs.readFileSync('./json/base64img-2.json'); 
 var jsonAC = JSON.parse(objAC);
 // Object Asset Chain Movie
-
+ 
 var keyfile = store.get('set-dashboard-file-selected-tvseries');
 store.delete('set-dashboard-file-selected-tvseries');
 var filename;
@@ -35,7 +35,6 @@ function tvseriesF() {
     img64 = data64 + jsonAC[filefound]['metadata']['thumbnail'];
     imgString = '<img src="' + img64 + '" class="fileimage" />';
     $('#fileImage').append(imgString);
-
 }
 
 function getFiledata(filename) {
@@ -49,17 +48,34 @@ function getFiledata(filename) {
 }
 
 $(".tvseries-season .img").click(function () {
+
     $(".tvseries-season .img").removeClass('active');
+
     $(this).addClass('active');
+
     let imageSrc = $(this).css('background-image');
     
     $('#shareStyleBG').remove();
 
     imageSrc = imageSrc.replace(/"/g, "'");
+
     imageSrc = ' background-image: '+ imageSrc;
-    
+
 });
 
 $('#btnSearch').click( () => {
     location.href = "tvseries-download.html";
 });
+
+$('#viewFiles').click( () => {
+    $('[pd-popup="tvseriesViewFiles"]').fadeIn(100);
+});
+
+setTimeout( () => {
+    $('#btnClose').click( () => {
+        $('[pd-popup="tvseriesViewFiles"]').fadeOut(100);
+    });
+    $('#btnTopClose').click( () => {
+        $('[pd-popup="tvseriesViewFiles"]').fadeOut(100);    
+    });
+}, 100);

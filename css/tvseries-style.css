@@ -12,7 +12,7 @@ button span {
 #btnSearch {
     background-color: red !important;
 }
-#defaultstudio { 
+#defaultstudio {  
     font-size: 10px;
 }
 .sidenav a:hover { 
@@ -278,12 +278,13 @@ td:hover {
 table {
     width: 100%;
     overflow-x: scroll;
-}
+} 
 .tracksListdiv {
-    height: 180px;
-    line-height: 50px;
+    height: 200px;
+    line-height: 35px;
     overflow-y: auto;
     background-color: #191919;
+    margin-right: 6%;
 }
 .tracksListdiv::-webkit-scrollbar {
     display: block;

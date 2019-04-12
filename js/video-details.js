@@ -18,7 +18,7 @@ var data64 = "data:image/jpg;base64,";
 var img64;
 
 const Store = require('electron-store');
-const store = new Store();  
+const store = new Store();   
 
 $ = jQuery;
 
@@ -41,7 +41,7 @@ $(document).ready(function() {
     // store.delete('specific-data-asset');
 
 
-    var thumbImg = '<img id="imageFile" src="' + thumbtitle['poster'] + '">';
+    var thumbImg = '<img class="img-fluid" id="imageFile" src="' + thumbtitle['poster'] + '">';
     $('#fileImage').append(thumbImg);
 
     
@@ -71,6 +71,36 @@ $(document).ready(function() {
         nextWindow($(this).attr('data-key'));
     });
     
+    $.each( actors, function( i,  actor) {
+
+        if (actorsCounter == 0 )  {
+    
+            if ( actorsCounterActive == 0) {
+                actorsData += '<div class="carousel-item row no-gutters active">';
+            } else {
+                actorsData += '<div class="carousel-item row no-gutters">';
+            }
+             
+            
+        }
+        actorsCounterActive++;
+        
+        actorsData += '<div class="col-2 file-actor-details">';
+        actorsData += '<div class="img" style="background-image: url('+ "'" + actor["thumb"].replace(/(\r\n|\n|\r|'|")/gm, "") + "'" +')"></div>';
+        actorsData += '<label class="name">'+ decodeURIComponent(actor["actor"]) +'</label> ';
+        actorsData += '<p class="role">'+ decodeURIComponent(actor["character"]) +'</p>'
+        actorsData += '</div>';
+        
+        if (actorsCounter == 5 ) {
+            actorsCounter = 0; 
+            actorsData += '</div>';
+        } else {
+            actorsCounter++;
+        } 
+        
+    });
+    $("#mainSearchResult .actors-section").html(actorsData);
+
 });
 
 
@@ -86,6 +116,51 @@ $('#tbodyVdetails').on("click","#row1", function() {
 $('#btnSearch').click( () => {
     location.href = 'video-download.html';
 });
+
+
+
+    
+function generateTable() {
+
+    var tableStr = "";
+
+    for(var key1 in jAsset["info"]) {
+
+        tableStr += '<tr data-key="' + key1 + '">'; 
+        tableStr += '<td></td>';
+        tableStr += '<td>' + jAsset["info"][key1]["title"] + '</td>';
+        tableStr += '<td> 999 </td>';   
+        tableStr += '<td>' + jAsset["info"][key1]["price"] + '</td>';
+        tableStr += '<td> 4.7 </td>';
+        tableStr += '<td> Language </td>';
+        tableStr += '<td> English </td>';
+        tableStr += '<td> 4k </td>';
+        tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["filesize"] +' </td>';
+        tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["video_codec_name"] + ' </td>';
+        tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["audio_codec_name"] + ' </td>';
+        tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["video_frame_rate"] + ' </td>';
+        tableStr += '</tr>';
+
+    }
+
+    $('#tbodyDetails').append(tableStr);
+
+}
+
+function nextWindow(key) {
+    let json1 = {
+        price : jAsset["info"][key]["price"],
+        assetKey : jAsset["info"][key]["asset_key"],
+        indexKey : key
+    }
+
+    store.set('pass-asset-key', json1);
+    location.href = "video-download.html";
+}
+
+
+
+
 
    /* setInterval(() => {
 
@@ -125,78 +200,6 @@ $('#btnSearch').click( () => {
         $('#tbodyDetails').append(tableStr);
     });
     */
-    
-    function generateTable() {
-
-        var tableStr = "";
-
-        for(var key1 in jAsset["info"]) {
-
-            tableStr += '<tr data-key="' + key1 + '">'; 
-            tableStr += '<td></td>';
-            tableStr += '<td>' + jAsset["info"][key1]["title"] + '</td>';
-            tableStr += '<td> 999 </td>';   
-            tableStr += '<td>' + jAsset["info"][key1]["price"] + '</td>';
-            tableStr += '<td> 4.7 </td>';
-            tableStr += '<td> Language </td>';
-            tableStr += '<td> English </td>';
-            tableStr += '<td> 4k </td>';
-            tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["filesize"] +' </td>';
-            tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["video_codec_name"] + ' </td>';
-            tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["audio_codec_name"] + ' </td>';
-            tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["video_frame_rate"] + ' </td>';
-            tableStr += '</tr>';
-
-        }
-
-        $('#tbodyDetails').append(tableStr);
-
-    }
-
-    function nextWindow(key) {
-        let json1 = {
-            price : jAsset["info"][key]["price"],
-            assetKey : jAsset["info"][key]["asset_key"],
-            indexKey : key
-        }
-
-        store.set('pass-asset-key', json1);
-        location.href = "video-download.html";
-    }
-
-
-
-    $.each( actors, function( i,  actor) {
-
-        if (actorsCounter == 0 )  {
-
-            if ( actorsCounterActive == 0) {
-                actorsData += '<div class="carousel-item row no-gutters active">';
-            } else {
-                actorsData += '<div class="carousel-item row no-gutters">';
-            }
-            
-            
-        }
-        actorsCounterActive++;
-        
-        actorsData += '<div class="col-2 file-actor-details">';
-        actorsData += '<div class="img" style="background-image: url('+ "'" + actor["thumb"].replace(/(\r\n|\n|\r|'|")/gm, "") + "'" +')"></div>';
-        actorsData += '<label class="name">'+ decodeURIComponent(actor["actor"]) +'</label> ';
-        actorsData += '<p class="role">'+ decodeURIComponent(actor["character"]) +'</p>'
-        actorsData += '</div>';
-        
-        if (actorsCounter == 5 ) {
-            actorsCounter = 0;
-            actorsData += '</div>';
-        } else {
-            actorsCounter++;
-        } 
-        
-    });
-    
-    $("#mainSearchResult .actors-section").html(actorsData);
-    
 
 
 

@@ -28,7 +28,6 @@ $(document).ready( () => {
 
 	trendingAudios();
 
-	trendingTVSeries();
 
 	json = {
 		status : 1136,
@@ -39,6 +38,12 @@ $(document).ready( () => {
 	
 	ipcRenderer.send('request-dashboard-cards', jsonString);
 	
+	trendingTVSeries();
+
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	})
+
 });
 
 //Generate Movie cards
@@ -55,7 +60,7 @@ function trendingAudios(){
 		trendingAcards += '<div class="col-lg-2 col-sm-4 col-6">';
 		trendingAcards += '<div class="grid-cards-audio" onclick="getAudioInfo(\''+ json2[key]['metadata']['filename'] +'\')">';
 		trendingAcards += '<div class="container-card">';
-		trendingAcards += '<img class="img-fluid" src="' + data64 + json2[key]['metadata']['thumbnail'] + '" />';
+		trendingAcards += '<img class="img-fluid" draggable="false" src="' + data64 + json2[key]['metadata']['thumbnail'] + '" />';
 		trendingAcards += '</div>';
 		trendingAcards += '<p id="video-title" class="thumb-title">' + json2[key]['metadata']['filename'] + '</p>';
 		trendingAcards += '</div>';
@@ -70,83 +75,49 @@ function getAudioInfo(hash) {
 	location.href = "audio-details.html";
 }
 
-function trendingTVSeries() {
 
-	var trendingTVcards = "";
-
-	for (var key in json1) {
-		trendingTVcards += '<div class="col-lg-2 col-sm-4 col-6">';
-		trendingTVcards += '<div class="grid-cards-video" onclick="getTVseries(\''+ key +'\')">';
-		trendingTVcards += '<div class="container-card">';
-		trendingTVcards += '<img class="img-fluid" src="' + data64 + json1[key]['metadata']['thumbnail'] + '" />';
-		trendingTVcards += '</div>';
-		trendingTVcards += '<p id="video-title" class="thumb-title">' + json1[key]['metadata']['filename'] + '</p>';
-		trendingTVcards += '</div>';
-		trendingTVcards += '</div>';
-	} 
-	$('#tvSeriesSection').append(trendingTVcards);
-}
-
-// Send data of selected card
-function getTVseries(keys) {
-	let jData = {
-		poster : movies[keys]['poster'],
-		year : movies[keys]['date'],
-		title : movies[keys]['title']
-	};
-
-	let json = {
-		status : 1129,
-		title : movies[keys]['title'],
-		type : 0
-	};
-
-	json = JSON.stringify(json);
-	ipcRenderer.send('request-specific-asset', json);
-
-	store.set('specific-data-asset', jData);
-
-	ipcRenderer.on('response-filelist-specific-asset', (event, arg) => {
-
-		arg = JSON.parse(arg['data']);
-		store.set('metadata-specific-asset', arg);
-
-	});
-
-	location.href = "tvseries-details.html";
-}
-// Send data of selected card
 
 var movies;
 ipcRenderer.on('response-dashboard-cards', (event, arg) => {
 
 	let moviesArray = {};
+
 	moviesArray = arg;
+
 	var trendingVcards = "";
+
 	console.log(moviesArray['data']['movies']);
+
 	movies = JSON.parse(moviesArray['data']['movies']);
 
 	for( var key in movies) {
 
-		trendingVcards += '<div class="col-lg-2 col-sm-4 col-6">';
+		trendingVcards += '<div class="col-lg-2 col-sm-4 col-6"  data-toggle="tooltip" title="' + movies[key]['title'] + '">';
 		trendingVcards += '<div class="grid-cards-video" onclick="getMovieInfo(\'' + key + '\')">';
 		trendingVcards += '<div class="container-card">';
-		trendingVcards += '<img class="img-fluid" src="' + movies[key]['poster'] + '" />';
-		trendingVcards += '</div>';
-		trendingVcards += '<p class="thumb-title">' + movies[key]['title'] + '</p>';
+		trendingVcards += '<img class="img-fluid" draggable="false" src="' + movies[key]['poster'] + '" />';
+		trendingVcards += '<div class="card-data">';
+		trendingVcards += '<p class="thumb-title text-truncate">' + movies[key]['title'] + '</p>';
 		trendingVcards += '<p class="thumb-year" >' + movies[key]['date'] + '</p>';
 		trendingVcards += '</div>';
 		trendingVcards += '</div>';
-
+		trendingVcards += '</div>';
+		trendingVcards += '</div>';
 	}
-
 	$('#trendingMovies').append(trendingVcards);
-	
+	// $(".grid-cards-video").hover( function () {
+	// 	$(this).fadeOut(100);
+	// 	$(this).fadeIn(500);
+	// });
+
+
+
 });	
 
 
 // Send data of selected card
 function getMovieInfo(keys) {
+
 	if(keys) {
 		let jData = {
 			poster : movies[keys]['poster'],
@@ -177,4 +148,53 @@ function getMovieInfo(keys) {
 	
 		});
 	}
+
 }
+function trendingTVSeries() {
+
+	var trendingTVcards = "";
+	for (var key in json1) {
+		trendingTVcards += '<div class="col-lg-2 col-sm-4 col-6">';
+		trendingTVcards += '<div class="grid-cards-video" onclick="getTVseries(\''+ key +'\')">';
+		trendingTVcards += '<div class="container-card">';
+		trendingTVcards += '<img class="img-fluid" draggable="false" src="' + data64 + json1[key]['metadata']['thumbnail'] + '" />';
+		trendingTVcards += '</div>';
+		trendingTVcards += '<p id="video-title" class="thumb-title">' + json1[key]['metadata']['filename'] + '</p>';
+		trendingTVcards += '</div>';
+		trendingTVcards += '</div>';
+	} 
+	$('#tvSeriesSection').append(trendingTVcards);
+
+}
+
+// Send data of selected card
+function getTVseries(keys) {
+	if(keys) {
+		let jData = {
+			poster : movies[keys]['poster'],
+			year : movies[keys]['date'],
+			title : movies[keys]['title']
+		};
+	
+		let json = {
+			status : 1129,
+			title : movies[keys]['title'],
+			type : 0
+		};
+	
+		json = JSON.stringify(json);
+		ipcRenderer.send('request-specific-asset', json);
+	
+		store.set('specific-data-asset', jData);
+	
+		ipcRenderer.on('response-filelist-specific-asset', (event, arg) => {
+	
+			arg = JSON.parse(arg['data']);
+			store.set('metadata-specific-asset', arg);
+			location.href = "tvseries-details.html";
+		});
+	}
+	
+}
+
+// Send data of selected card
