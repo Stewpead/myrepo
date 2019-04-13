@@ -13,12 +13,14 @@ var img = "";
 
 var assetKey = store.get('pass-asset-key');
 store.delete('pass-asset-key');
+
 var indeKey = assetKey["indexKey"];
-console.log(assetKey);
+
 var jAsset = store.get('metadata-specific-asset');
 store.delete('metadata-specific-asset');
-console.log(jAsset);
-  
+
+var walletData;
+var currentBal;
 $(document).ready(() => {
 
     populateScreen();
@@ -65,16 +67,20 @@ $(document).ready(() => {
         //Buy Video/Audio
         $('#executePayment').click( function(){
 
+
+
             $('#executePayment').prop('disabled', true).addClass('disabled', true);
 
+
             let jsonBuy = {
-                status : 1117,
+                status : 1117, 
                 asset_key : assetKey['assetKey'],
                 amount : assetKey['price']
             }
-
+            currentBal = walletData['wallet_data']['balance'];
             jsonBuy = JSON.stringify(jsonBuy);
             ipcRenderer.send('send-buy-this-asset', jsonBuy);
+
 
         });
 
@@ -132,17 +138,30 @@ $(document).ready(() => {
     ipcRenderer.on('response-download-payment', (event, arg) => {
 
         if ( arg['tx_key'] == tx_key ) {
-            $('[pd-popup="shareMarketPriceForMultipleModal"]').fadeOut(100);
-            $('[pd-popup="pleaseWaitModal"]').fadeOut(100);
-            $('[pd-popup="sharePaymentSuccessModal"]').fadeIn(100);
+           
+            var leftBalance = currentBal - assetKey['price'];
+
+            setTimeout( () => {
+                $('[pd-popup="shareMarketPriceForMultipleModal"]').fadeOut(100);
+                $('[pd-popup="pleaseWaitModal"]').fadeOut(100);
+                $('#updatedBalance').text(leftBalance);
+                $('[pd-popup="sharePaymentSuccessModal"]').fadeIn(100);
+            }, 100);
+
         }
         
+
+
     });
 });
 
+
+
+
+
 function paymentModalData() {
 
-    var walletData;
+
 
     let jRequest = {
         status : 1130,
@@ -153,12 +172,14 @@ function paymentModalData() {
 
     ipcRenderer.on('payment-balance-request-response', (event, arg) => {
         walletData = arg;
-        $('#walletBalance').text(walletData['wallet_data']['balance']);
+        $('#walletBalance').text(parseFloat(walletData['wallet_data']['balance']).toFixed(2));
+
     });
 
     $('.file-feature-img').css('background-image', 'url(' + jAsset["crawl"]["header"]["poster"] + ')');
     document.getElementById('file-title').innerHTML = jAsset["info"][indeKey]["title"];
-    $('#priceAVX').text(assetKey["price"] + " AVX");
+    let priceavx = parseFloat(assetKey["price"]).toFixed(2);
+    $('#priceAVX').text(priceavx + " AVX");
     $('.runtime').text(getDuration(jAsset["info"][indeKey]["metadata"]["duration"]));
     $('.releasedYear').text(jAsset["crawl"]["header"]["release_date"]);
     
@@ -172,7 +193,8 @@ function populateScreen() {
 
     document.getElementById('filetitle').innerHTML = jAsset["info"][indeKey]["title"];
     document.getElementById('fileyear').innerHTML = jAsset["crawl"]["header"]["release_date"];
-    document.getElementById('fileCost').innerHTML = assetKey["price"] + " AVX";
+    let filecost = assetKey["price"];
+    document.getElementById('fileCost').innerHTML = parseFloat(filecost).toFixed(2) + " AVX";
     document.getElementById('duration').innerHTML = getDuration(jAsset["info"][indeKey]["metadata"]["duration"]);
     document.getElementById('fileSize').innerHTML = formatBytes(jAsset["info"][indeKey]["metadata"]["filesize"], 2);
     document.getElementById('audioEncoded').innerHTML = jAsset["info"][indeKey]["metadata"]["audio_codec_name"];
