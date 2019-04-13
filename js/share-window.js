@@ -616,6 +616,7 @@ function crawlPriceSource(title, count, filesLength) {
 
 						
 							$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').html(output+ " AVX");
+							$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').attr("full-price", output);
 							
 					}
 				});
@@ -652,7 +653,7 @@ function crawlPriceSource(title, count, filesLength) {
 		});
 
 		let filepath = $('#fullFilePathDir').val();
-		
+		let amount = $('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').attr("full-price");
 
 		jsonAssetUpload = {
 			status : 1116,
