@@ -179,7 +179,7 @@ function appendJSON(event) {
 
 $ = jQuery;
 
-// EVENTS4326
+// EVENTS
 setTimeout(function() {
 
 	/*Close Modal action*/
@@ -577,7 +577,7 @@ function crawlPriceSource(title, count, filesLength) {
 
 						
 							$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').html(output+ " AVX");
-							$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').attr('fullprice', output);
+							
 					}
 				});
 
@@ -613,13 +613,13 @@ function crawlPriceSource(title, count, filesLength) {
 		});
 
 		let filepath = $('#fullFilePathDir').val();
-		let amount = $('[pd-popup="shareMarketPriceForMultipleModal"] #priceAVX').attr('fullprice');
+		
 
 		jsonAssetUpload = {
 			status : 1116,
 			data : assetsData,
 			action : category,
-			amount	: amount //TOTAL AMOUNT
+			amount	: "200" //TOTAL AMOUNT
 		};
 		console.log( JSON.stringify(jsonAssetUpload) );
 		ipcRenderer.send('avx-share-upload-asset', JSON.stringify(jsonAssetUpload) );	
