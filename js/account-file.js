@@ -85,26 +85,25 @@ ipcRenderer.on('receive-filetransfer-stats', (event, arg) => {
 });
 
 ipcRenderer.on('receive-sourcing-stat', (event, arg) => {
-   // console.log(arg);
+    console.log(arg);
 
 	let fn  = arg["data"];
 
 
 	let row = '';
 	fileDownloadList= [];
-	for ( key in fn) {
+	
+	for (key in fn) {
 		let fndata  = fn[key]["filename"];
 		
 		if ( typeof fileDownloadList[fndata] == "undefined" ) {
 			fileDownloadList[fndata] = {
 				assetkey: fn[key]['assetkey'],
-				hoarders :  1
+				hoarders : 1
 			};
 		} else {
-			fileDownloadList[fndata] = {
-				assetkey: fn[key]['assetkey'],
-				hoarders :  parseInt(fileDownloadList[fndata]['hoarders']) + 1
-			};
+			fileDownloadList[fndata].assetkey = fn[key]['assetkey'];
+			fileDownloadList[fndata].hoarders++;
 		}
 
 	}
