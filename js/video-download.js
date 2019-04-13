@@ -18,7 +18,7 @@ console.log(assetKey);
 var jAsset = store.get('metadata-specific-asset');
 store.delete('metadata-specific-asset');
 console.log(jAsset);
-
+  
 $(document).ready(() => {
 
     populateScreen();
@@ -42,20 +42,7 @@ $(document).ready(() => {
             $('[pd-popup="addToWishlist"]').fadeOut(100);
 
         }, 1500);
- 
-        // var Wishlist = '{"0" : {"filename" : "MADAFAKA"}}';
-        // var jWishlist = {};
-        // var totalObj = Object.keys(jWishlist).length;
-        // jWishlist = JSON.parse(Wishlist);
-        // jWishlist[totalObj].push({ id : "01", filename : 'Fuck you'});
-        // jWishlist = JSON.stringify(jWishlist); 
-        // fs.writeFile("jWishlist.json",jWishlist, function(e) {
-        //     if(e) {
-        //         console.log(e);
-        //     }
-        // });
-        // console.log(Object.keys(jWishlist).length);
-        // console.log(jWishlist);
+
     });
 
     $('#btnFileReview').click( () => {
@@ -70,6 +57,8 @@ $(document).ready(() => {
     $('#btnViewFiles').click( () => {
         // $('[pd-popup="viewFilesModal"]').fadeIn(100);
     });
+
+    
 
     //Click events in nested modals
     setTimeout( () => {
@@ -120,6 +109,13 @@ $(document).ready(() => {
         $('#btnCloseSuccess').click( () => {
             $('[pd-popup="sharePaymentSuccessModal"]').fadeOut(100);
         });
+
+        $('#breakFileOne').click( () => {
+            $('#fileOne').slideToggle('slow');
+        });
+
+
+
     }, 100);
     var tx_key = "";
     ipcRenderer.on('response-buy-this-asset', (event, arg) => {
