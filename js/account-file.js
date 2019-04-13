@@ -5,6 +5,7 @@ var x = document.getElementById('completedFiles');
 x.style.display = "none";
 
 var fileDownloadList = {};
+var fileDownloadListFileReceive = {};
 
 
 $(document).ready( () => {
