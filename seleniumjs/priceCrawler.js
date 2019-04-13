@@ -18,6 +18,7 @@ module.exports = {
 				var options = new chrome.Options();
 				options.addArguments("--incognito");
 				options.addArguments("--window-size=500,500");
+				options.addArguments("headless");
 				let driver = new Builder()
 					.forBrowser('chrome')
 					//.setChromeOptions(new chrome.Options().headless().windowSize(screen))

@@ -388,49 +388,81 @@ setTimeout(function() {
 					console.log(JSON.stringify(content));
 					let crawl = JSON.parse(content["crawl"]);
 					
-					output += '<div class="row file-details file-payment-lists">';
-					output += '	<div class="col-sm-12 col-md-2">';
-					output += '		<div class="file-feature-img" style="min-height: 173px; background-image: url(\''+ crawl["header"]["poster"] +'\')"></div>';
-					output += '	</div>';
-					output += '	<div class="col-sm-12 col-md-10 ">';
-					output += '		<div class="row file-metadata">';
-					output += '			<div class="col-12">';
-					output += '				<p>Title: </p>';
-					output += '				<strong class="col-12 file-title">'+ content["title"] +'</strong>';			
-					output += '				<p class="file-subdata">';
-					output += '					<strong>'+ crawl["header"]["contentRating"] +'</strong>';
-					output += '				</p>';
-					output += '			</div>';
-					output += '			<div class="col-12">';
-					output += '				<p>Runtime: </p>';
-					output += '				<strong class="col-12 "></strong>';
-					output += '			</div>';
-					output += '			<div class="col-12">';
-					output += '				<p>Released: </p>';
-					output += '				<strong class="col-12">'+ crawl["header"]["release_date"].replace(/\((\d{4})\)/g, "$1") +'</strong>';
-					output += '			</div>';
-					output += '			<div class="col-12">';
-					output += '				<p>Type: </p>';
-					output += '				<strong class="col-12">'+ crawl["type"]+'</strong>';
-					output += '			</div>';
+					output += '	<div class="row file-details file-payment-lists"> ';
+					output += '		<div class="row mb-5 mt-5 container-fluid"> ';
+					output += '			<div class="col-md-3"> ';
+					output += '				<span id="fileTitle">'+ content["title"] +'</span> ';
+					output += '			</div> ';
+					
+					output += '			<div class="col-md-6 section-line-divider"> ';
+					output += '			</div> ';
+					output += '			<div class="col-md-3"> ';
+					output += '				<span class="filePrice">0 AVX</span> ';
+					output += '				<span class="mdi mdi-arrow-down-circle" id="breakFile'+item+'"></span> ';
+					output += '			</div> ';
+					output += '		</div> ';
+					
+					output += '		<div id="file'+item+'" class="row">  ';
+					output += '			<div class="col-sm-12 col-md-2"> ';
+					output += '					<div class="file-feature-img" style="min-height: 173px; background-image: url(\''+ crawl["header"]["poster"] +'\')"></div> ';
+					output += '			</div> ';
+					output += '			<div class="col-sm-12 col-md-10 "> ';
+					
+					output += '				<div class="row file-metadata"> ';
+					output += '					<div class="col-12"> ';
+					output += '						<p>Title: </p> ';
+					output += '						<strong class="col-12 file-title">'+ content["title"] +'</strong> ';
+					
+					output += '						<p class="file-subdata"> ';
+					output += '							<strong>'+ crawl["header"]["contentRating"] +'</strong>';
+					output += '						</p> ';
+					output += '					</div> ';
+					output += '					<div class="col-12"> ';
+					output += '						<p>Runtime: </p> ';
+					output += '						<strong class="col-12 "></strong> ';
+					output += '					</div> ';
+					output += '					<div class="col-12"> ';
+					output += '						<p>Released: </p> ';
+					output += '						<strong class="col-12">'+ crawl["header"]["release_date"].replace(/\((\d{4})\)/g, "$1") +'</strong>';
+					output += '					</div> ';
+					output += '					<div class="col-12"> ';
+					output += '						<p>Type: </p> ';
+					output += '						<strong class="col-12">'+ crawl["type"]+'</strong>';
+					output += '					</div> ';
+					output += '				</div> ';
+					
+					output += '				<h5 class="label-with-border">Audio Language and Subtitle: </h5> ';
+					
+					output += '				<div class="row file-metadata"> ';
+					output += '					<div class="col-12"> ';
+					output += '						<p>Audio: </p> ';
+					output += '						<strong class="col-12 red-text">---</strong> ';
+					output += '					</div> ';
+					output += '					<div class="col-12"> ';
+					output += '						<p>Subtitle: </p> ';
+					output += '						<strong class="col-12 red-text">---</strong> ';
+					output += '					</div> ';
+					output += '				</div> ';
+					
+					output += '				<h5 class="label-with-border">Pricing Data Points: </h5> ';
+					output += '				<div class="meta-data-details no-padding"> ';
+					
+					output += '				<div class="row meta-data-details"> ';
+					output += '					<svg width="100" height="100" style="text-align: center;margin: 0 auto;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring"><circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="4" stroke="#e15b64" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(203.589 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></circle></svg>';
+					output += '					<canvas id="surface'+item+'" width="677.286px" height="250"></canvas>';
+					output += '				</div> ';					
+					output += '			</div> ';					
+					output += '		</div>';				
 					output += '		</div>';
+					output += '		<script>';
+					output += '			$("#breakFile'+item+'").click( () => { ';
+					output += '				$("#file'+item+'").slideToggle("slow"); ';
+					output += '			});';
+					output += '		</script>';
+					output += '	</div>';
 
-					output += '		<h5 class="label-with-border">Audio Language and Subtitle: </h5>';
-					output += '		<div class="row file-metadata">';
-					output += '			<div class="col-12">';
-					output += '				<p>Audio: </p>';
-					output += '				<strong class="col-12 red-text">---</strong>';
-					output += '			</div>';
-					output += '			<div class="col-12">';
-					output += '				<p>Subtitle: </p>';
-					output += '				<strong class="col-12 red-text">---</strong>';
-					output += '			</div>';
-					output += '		</div>';
-					output += '		<div class="row meta-data-details">';
-					output += '			<canvas id="surface'+item+'" width="677.286px" height="250"></canvas>';
-					output += '		</div>	';				
-					output += '	</div>';
-					output += '	</div>';
+					
+
 				
 				filesTitle.push(content["title"]);	
 
@@ -478,7 +510,7 @@ function crawlPriceSource(title, count, filesLength) {
 
 		setTimeout(function() {	
 			ipcRenderer.send('avx-share-crawl-price-source', jsonString);
-		},2000);
+		},1000);
 		
 		ipcRenderer.on('avx-share-crawl-price-source-result', (event, data) => {
 			//console.log(data['data']['source']);
@@ -520,11 +552,15 @@ function crawlPriceSource(title, count, filesLength) {
 				
 				
 				pr.setPrice(price);
-				price = price * 0.0015;
+				price = price / 0.0015;
 				$("#surface"+ data["item"] ).attr('price', price);
+				$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(data['item']).find('.filePrice').html(price+ " AVX");
 				let getPrices = $('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists');
 				
 				let avxPrice = 0;
+				
+				$('[pd-popup="shareMarketPriceForMultipleModal"] #surface'+ data['item'] ).parent().find('svg').remove();
+				
 				$.each(getPrices, function( index, value ) {
 					let price = $(this).find('canvas').attr('price');
 					if (typeof price != 'undefined') {
@@ -533,14 +569,15 @@ function crawlPriceSource(title, count, filesLength) {
 						let output = avxPrice.toFixed(8) ;
 						let fileResources = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(data['item']).find('textarea').text();
 							fileResources = JSON.parse(fileResources);
+							
 							console.log("PRICE ORIG: " + fileResources["price"]);
 							fileResources["price"] = output;
 							console.log("PRICE NEW : " + fileResources["price"]);
 							$('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(data['item']).find('textarea').text(JSON.stringify(fileResources));
 
-							console.log("TEST====>" + data['item'] );
 						
-						$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').html(output+ " AVX");
+							$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').html(output+ " AVX");
+							
 					}
 				});
 
