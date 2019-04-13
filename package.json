@@ -21,7 +21,8 @@
     "node-ipc": "^9.1.1",
     "popper.js": "^1.14.7",
     "segoe-fonts": "^1.0.1",
-    "segoe-mdl2-icons": "^0.1.0"
+    "segoe-mdl2-icons": "^0.1.0",
+    "selenium-webdriver": "^4.0.0-alpha.1"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.5.0"

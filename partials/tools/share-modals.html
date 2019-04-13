@@ -946,48 +946,138 @@
 			</div>
 			<div class="file-payment-lists-container"></div>
 			<div class="row file-details file-payment-lists">
-				<div class="col-sm-12 col-md-2">
-					<div class="file-feature-img" style="min-height: 173px; background-image: url('')"></div>
+				<!-- divider line -->
+				<div class="row mb-5 mt-5 container-fluid">
+					<div class="col-md-3">
+						<span id="fileTitle">Snakes On A Plane</span>
+					</div>
+
+					<div class="col-md-6 section-line-divider">
+						
+					</div>
+					<div class="col-md-3">
+						<span id="filePrice">100 AVX</span>
+						<span class="mdi mdi-arrow-down-circle" id="breakFileOne"></span>
+					</div>
 				</div>
-				<div class="col-sm-12 col-md-10 ">
-
-					<div class="row file-metadata">
-						<div class="col-12">
-							<p>Title: </p>
-							<strong class="col-12 file-title"></strong>
+					<!-- divider line -->
+				<div id="fileOne">
+						<div class="col-sm-12 col-md-2">
+								<div class="file-feature-img" style="min-height: 173px; background-image: url('')"></div>
+						</div>
+						<div class="col-sm-12 col-md-10 ">
+	
+							<div class="row file-metadata">
+								<div class="col-12">
+									<p>Title: </p>
+									<strong class="col-12 file-title"></strong>
+									
+									<p class="file-subdata">
+										<strong>---</strong>
+									</p>
+								</div>
+								<div class="col-12">
+									<p>Runtime: </p>
+									<strong class="col-12 "></strong>
+								</div>
+								<div class="col-12">
+									<p>Released: </p>
+									<strong class="col-12"></strong>
+								</div>
+								<div class="col-12">
+									<p>Type: </p>
+									<strong class="col-12"></strong>
+								</div>
+							</div>
+	
+							<h5 class="label-with-border">Audio Language and Subtitle: </h5>
+	
+							<div class="row file-metadata">
+								<div class="col-12">
+									<p>Audio: </p>
+									<strong class="col-12 red-text">---</strong>
+								</div>
+								<div class="col-12">
+									<p>Subtitle: </p>
+									<strong class="col-12 red-text">---</strong>
+								</div>
+							</div>
 							
-							<p class="file-subdata">
-								<strong>---</strong>
-							</p>
+							
+	
+							<h5 class="label-with-border">Pricing Data Points: </h5>
+							<div class="meta-data-details no-padding">
+	
+	
+							<div class=""><br><br><br>
+								<label class="full-width">Time: <strong>16:58:12 (UTC + 08:00) Kuala Lumpur, Singapore</strong> </label>
+								<label class="full-width">Date: <strong>Monday, 03-December-2018</strong> </label>
+							</div>
+	
+	
+							<div class=""><br><br><br>
+								<span class="col-md-3" style="padding-left: 0">iTunes: <strong>$9.50 USD</strong> </span>
+								<span class="col-md-3">Google: <strong>$9.50 USD</strong>  </span>
+								<span class="col-md-3">Amazon: <strong>$10.50 USD</strong>  </span>
+								<span class="col-md-3" style="padding-right: 0">Microsoft: <strong>$9.70 USD</strong>  </span>
+							</div>	
+	
+	
+							<div class=""><br><br>
+								<span class="col-md-3" style="padding-left: 0">USD to BTC Rate: <strong>$9.50 USD</strong> </span>
+								<span class="col-md-3">BTC to AVX Rate: <strong>$9.50 USD</strong>  </span>
+								<br><br><br><br><br><br>
+							</div>	
+								
+								
+							</div>
+	
+							<div class="row meta-data-details">
+								<canvas id="surface" width="677.286px" height="250"></canvas>
+								<script type="text/javascript">
+								json = {
+									status : 1140,
+									data : {
+										title	: 'the avengers'
+									}
+								}
+								
+								let jsonString = JSON.stringify(json);
+									
+								ipcRenderer.send('avx-share-crawl-price-source', jsonString);
+								ipcRenderer.on('avx-share-crawl-price-source-result', (event, data) => {
+									jsonString = JSON.stringify(data);
+	
+									json = {
+										status : 1139,
+										//priceSource	: jsonString
+										priceSource	: 'D:\\myrepo\\temp.txt'
+										
+									}
+									
+									jsonString = JSON.stringify(json);
+										
+									ipcRenderer.send('avx-share-crawl-price-data-points', jsonString);
+									ipcRenderer.on('avx-share-crawl-price-data-points-result', (event, data) => {
+										jsonString = JSON.stringify(data);
+										console.log(data);
+									});
+								});
+								
+									setTimeout(function() {
+										
+										let pr = new PriceRuler("surface", 10, 250, 13, 0);
+										//pr.setDataPoints([103.96, 145.6, 130, 112, 219.5]);
+										pr.setDataPoints([3.96, 145.6, 30, 112, 19.5]);
+										pr.render();
+										
+										pr.setPrice(10);
+										
+									},
+									1000);
+								</script>
+							</div>					
 						</div>
-						<div class="col-12">
-							<p>Runtime: </p>
-							<strong class="col-12 "></strong>
-						</div>
-						<div class="col-12">
-							<p>Released: </p>
-							<strong class="col-12"></strong>
-						</div>
-						<div class="col-12">
-							<p>Type: </p>
-							<strong class="col-12"></strong>
-						</div>
-					</div>
-
-					<h5 class="label-with-border">Audio Language and Subtitle: </h5>
-
-					<div class="row file-metadata">
-						<div class="col-12">
-							<p>Audio: </p>
-							<strong class="col-12 red-text">---</strong>
-						</div>
-						<div class="col-12">
-							<p>Subtitle: </p>
-							<strong class="col-12 red-text">---</strong>
-						</div>
-					</div>
-					
-					
 
 					<h5 class="label-with-border">Pricing Data Points: </h5>
 					<div class="meta-data-details no-padding">
@@ -1070,6 +1160,7 @@
 						*/
 						</script>
 					</div>					
+>>>>>>> 0bfab58c61226636a0520cfb51e61cca83f6f424
 				</div>
 			</div>
 
@@ -1132,7 +1223,7 @@
 	  <h2 class="title-label" >Please wait..</h2>
 	  <a class="popup-close" pd-popup-close="sharePaymentWaitingModal" href="#"> </a>
     </div>
-</div>
+</div> 
 <!-- /Payment waiting for payment  -->
 
 <!-- Payment Confirmation Success -->
@@ -1155,3 +1246,11 @@
     </div>
 </div>
 <!--/ Payment Confirmation Success -->
+
+
+
+<script>
+	$('#breakFileOne').click( () => {
+		$('#fileOne').slideToggle('slow');
+	});
+</script>
