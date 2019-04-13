@@ -91,22 +91,11 @@ ipcRenderer.on('receive-sourcing-stat', (event, arg) => {
 
 
 	let row = '';
-	fileDownloadList= [];
 	
-	for (key in fn) {
-		let fndata  = fn[key]["filename"];
-		
-		if ( typeof fileDownloadList[fndata] == "undefined" ) {
-			fileDownloadList[fndata] = {
-				assetkey: fn[key]['assetkey'],
-				hoarders : 1
-			};
-		} else {
-			fileDownloadList[fndata].assetkey = fn[key]['assetkey'];
-			fileDownloadList[fndata].hoarders++;
-		}
-
-	}
+	fileDownloadList[fndata] = {
+		assetkey: fn[key]['assetkey'],
+		hoarders : fn[key]['hoarders']
+	};
 
 
 	for (var keyList in fileDownloadList) {
