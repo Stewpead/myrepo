@@ -348,13 +348,159 @@ setTimeout(function() {
 	});
 
 	$('#proceedProceedPaymentCart').click( function(){
-		$('.popup[pd-popup="shareConfirmMetadataModal"] .popup-inner.scroll-skin').attr("data-content", "url('https://tinyurl.com/ycjjsd24')");
+		let files = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details');
+		let filesLength = files.length;
+		let item = 0;
+		let filesTitle = [];
+		var output = '';
+		
+		$('[pd-popup="shareConfirmMetadataModal"] .file-payment-lists-container').remove();
+		
+		$.each(files, function( index, value ) {
+			let content = $(this).find("textarea").text();
+			
+			if ( typeof content !=="undefined") {
+					content = JSON.parse(content);
+					console.log(JSON.stringify(content));
+					let crawl = JSON.parse(content["crawl"]);
+					
+					output += '<div class="row file-details file-payment-lists">';
+					output += '	<div class="col-sm-12 col-md-2">';
+					output += '		<div class="file-feature-img" style="min-height: 173px; background-image: url(\''+ crawl["header"]["poster"] +'\')"></div>';
+					output += '	</div>';
+					output += '	<div class="col-sm-12 col-md-10 ">';
+					output += '		<div class="row file-metadata">';
+					output += '			<div class="col-12">';
+					output += '				<p>Title: </p>';
+					output += '				<strong class="col-12 file-title">'+ content["title"] +'</strong>';			
+					output += '				<p class="file-subdata">';
+					output += '					<strong>'+ crawl["header"]["contentRating"] +'</strong>';
+					output += '				</p>';
+					output += '			</div>';
+					output += '			<div class="col-12">';
+					output += '				<p>Runtime: </p>';
+					output += '				<strong class="col-12 "></strong>';
+					output += '			</div>';
+					output += '			<div class="col-12">';
+					output += '				<p>Released: </p>';
+					output += '				<strong class="col-12">'+ crawl["header"]["release_date"].replace(/\((\d{4})\)/g, "$1") +'</strong>';
+					output += '			</div>';
+					output += '			<div class="col-12">';
+					output += '				<p>Type: </p>';
+					output += '				<strong class="col-12">'+ crawl["type"]+'</strong>';
+					output += '			</div>';
+					output += '		</div>';
+
+					output += '		<h5 class="label-with-border">Audio Language and Subtitle: </h5>';
+					output += '		<div class="row file-metadata">';
+					output += '			<div class="col-12">';
+					output += '				<p>Audio: </p>';
+					output += '				<strong class="col-12 red-text">---</strong>';
+					output += '			</div>';
+					output += '			<div class="col-12">';
+					output += '				<p>Subtitle: </p>';
+					output += '				<strong class="col-12 red-text">---</strong>';
+					output += '			</div>';
+					output += '		</div>';
+					output += '		<div class="row meta-data-details">';
+					output += '			<canvas id="surface'+item+'" width="677.286px" height="250"></canvas>';
+					output += '		</div>	';				
+					output += '	</div>';
+					output += '	</div>';
+				
+				filesTitle.push(content["title"]);	
+
+				item++;				
+				if ( item == filesLength) {
+					console.log("YES" + item);
+					crawlPriceSource(filesTitle, 0, filesLength );
+				}
+				
+				
+			}
+		  
+		  
+		  
+		});
+		$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container').html(output);
+		
+		
 		
 		$('[pd-popup="shareConfirmMetadataModal"]').fadeOut(100);
 		$('[pd-popup="shareMarketPriceForMultipleModal"]').fadeIn(100);
 		
 		
+		
+		
 	});
+
+	
+
+function crawlPriceSource(title, count, filesLength) {
+	console.log(count +" > "+ filesLength);
+	title = ["the avengers", "harry potter and the chamber of secrets", "shaun the sheep the movie"];
+	if ( count < filesLength ) {
+		console.log(" GENERATE: " + title[count].toLowerCase());
+
+		json = {
+			status : 1140,
+			data : {
+				title	: title[count].toLowerCase(),
+				item	: count
+			}
+		}
+		
+		let jsonString = JSON.stringify(json);
+		console.log(jsonString);
+
+		setTimeout(function() {	
+			ipcRenderer.send('avx-share-crawl-price-source', jsonString);
+		},2000);
+		
+		ipcRenderer.on('avx-share-crawl-price-source-result', (event, data) => {
+			console.log(data['data']['source']);
+			
+			json = {
+				status 			: 1139,
+				priceSource		: data['data']['source'],
+				item			: data['data']["item"],
+				title			: data['data']["title"]
+				
+			}
+
+			
+			jsonString = JSON.stringify(json);
+	
+			ipcRenderer.send('avx-share-crawl-price-data-points', jsonString);
+
+			ipcRenderer.on('avx-share-crawl-price-data-points-result', (event, data) => {
+				jsonString = JSON.stringify(data);
+				console.log(jsonString);
+				let datapoints = ( data["datapoints"] == '' ) ? '0.00,0.00' : data["datapoints"];
+				datapoints = datapoints.split(',');
+				for (var i=0; i<datapoints.length; i++)
+				{
+					datapoints[i] = parseFloat(datapoints[i], 10);
+				}
+				
+				console.log(datapoints);
+				crawlPriceSource(title, parseInt(data["item"]) + 1, filesLength );
+		
+				let pr = new PriceRuler("surface"+ data["item"], 10, 250, 13, 0);
+				pr.setDataPoints(datapoints);
+				//pr.setDataPoints([3.96, 145.6, 30, 112, 19.5]);
+				pr.render();
+				
+				
+				pr.setPrice(10);
+
+			});
+		});	
+	}
+
+}
+
+
 
 	$('#ShareModalView').on("click","#executePayment", function() {
 

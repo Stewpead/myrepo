@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" class=" a-js a-audio a-video a-canvas a-svg a-drag-drop a-geolocation a-history a-webworker a-autofocus a-input-placeholder a-textarea-placeholder a-local-storage a-gradients a-transform3d a-touch-scrolling a-text-shadow a-text-stroke a-box-shadow a-border-radius a-border-image a-opacity a-transform a-transition" data-19ax5a9jf="dingo" data-aui-build-date="3.19.2-2019-04-05"><!-- sp:feature:head-start --><head><script async="" src="https://m.media-amazon.com/images/G/01/csm/showads.v2.js" crossorigin="anonymous"></script><script async="" src="https://images-na.ssl-images-amazon.com/images/G/01/AUIClients/ClientSideMetricsAUIJavascript@jserrorsForester.10f2559e93ec589d92509318a7e2acbac74c343a._V2_.js" crossorigin="anonymous"></script><script>var aPageStart = (new Date()).getTime();</script><meta charset="utf-8" />
 <script type="text/javascript">var ue_t0=ue_t0||+new Date();</script><!-- sp:feature:cs-optimization -->
 <meta http-equiv="x-dns-prefetch-control" content="on" /><link rel="dns-prefetch" href="//images-na.ssl-images-amazon.com" /><link rel="dns-prefetch" href="//m.media-amazon.com" /><link rel="dns-prefetch" href="//completion.amazon.com" /><script type="text/javascript">
@@ -229,39 +230,41 @@ ue.stub(ue,"trigger");
 
 
 if(window.ue&amp;&amp;uet) { uet('bb'); }
-
-}
-</script><!-- sp:feature:head-close -->
+=======
+<!DOCTYPE html><!--[if lt IE 7]> <html lang="en-us" class="a-no-js a-lt-ie9 a-lt-ie8 a-lt-ie7"> <![endif]--><!--[if IE 7]>    <html lang="en-us" class="a-no-js a-lt-ie9 a-lt-ie8"> <![endif]--><!--[if IE 8]>    <html lang="en-us" class="a-no-js a-lt-ie9"> <![endif]--><!--[if gt IE 8]><!--><html xmlns="http://www.w3.org/1999/xhtml" class="a-no-js" lang="en-us"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title dir="ltr">Robot Check</title>
+<meta name="viewport" content="width=device-width" />
+<link rel="stylesheet" href="https://images-na.ssl-images-amazon.com/images/G/01/AUIClients/AmazonUI-3c913031596ca78a3768f4e934b1cc02ce238101.secure.min._V1_.css" />
 <script>
-window.P &amp;&amp; P.register('bb');
-if (typeof ues === 'function') {
-  ues('t0', 'portal-bb', new Date());
-  ues('ctb', 'portal-bb', 1);
+>>>>>>> 0bfab58c61226636a0520cfb51e61cca83f6f424
+
+if (true === true) {
+    var ue_t0 = (+ new Date()),
+        ue_csm = window,
+        ue = { t0: ue_t0, d: function() { return (+new Date() - ue_t0); } },
+        ue_furl = "fls-na.amazon.com",
+        ue_mid = "ATVPDKIKX0DER",
+        ue_sid = (document.cookie.match(/session-id=([0-9-]+)/) || [])[1],
+        ue_sn = "opfcaptcha.amazon.com",
+        ue_id = 'Q1XVHMFHPRB7G7NG7M6P';
 }
 </script>
+<<<<<<< HEAD
 <script type="text/javascript" async="" crossorigin="anonymous" src="https://images-na.ssl-images-amazon.com/images/I/61HHaoAEflL._RC|11-BZEJ8lnL.js,612-haTSG8L.js,21Of0-9HPCL.js,012FVc3131L.js,119KAWlHU6L.js,31x4ENTlVIL.js,31ReKJl2X6L.js,51keOj-1JaL.js,11AHlQhPRjL.js,016iHgpF74L.js,11aNYFFS5hL.js,116tgw9TSaL.js,211-p4GRUCL.js,01PoLXBDXWL.js,61BsuCRwHCL.js,01mi-J86cyL.js,11BOgvnnntL.js,310xuTUX4pL.js,01rpauTep4L.js,01iyxuSGj4L.js,015Hx8pTO1L.js_.js?AUIClients/AmazonUI#169160-T1.144375-T1"></script><script type="text/javascript" async="" crossorigin="anonymous" src="https://images-na.ssl-images-amazon.com/images/I/419T3U4YyUL._RC|71kQBZK238L.js,61FXgp+FE9L.js,417SPNjYS3L.js,11vrNkbdcvL.js,21SHd9g2LAL.js,318RmEbtv5L.js,51YeRc8UK1L.js,31R1liuRRmL.js_.js?AUIClients/AmazonNavigationDesktopMetaAsset#desktop"></script><script type="text/javascript" async="" crossorigin="anonymous" src="https://images-na.ssl-images-amazon.com/images/I/11imX6bUyWL.js?AUIClients/RetailWebsiteOverlayAUIAssets"></script><style>.s-suggestion { padding: 8px 10px; font-size: 16px; font-family: "Amazon Ember"; cursor: pointer; }</style></head><!-- sp:feature:start-body -->
 <body class="a-m-us a-aui_149818-c a-aui_152852-t1 a-aui_157141-c a-aui_158613-c a-aui_160684-c a-aui_57326-c a-aui_72554-c a-aui_accessibility_49860-c a-aui_attr_validations_1_51371-c a-aui_bolt_62845-c a-aui_perf_130093-c a-aui_tnr_v2_180836-c a-aui_ux_113788-c a-aui_ux_114039-c a-aui_ux_145937-c a-aui_ux_60000-c a-meter-animate"><div id="a-page"><script type="a-state" data-a-state="{&quot;key&quot;:&quot;a-wlab-states&quot;}">{"AUI_160684":"C","AUI_157141":"C","AUI_TNR_V2_180836":"C","AUI_UX_114039":"C","AUI_UX_113788":"C","AUI_UX_145937":"C","AUI_57326":"C","AUI_158613":"C","AUI_149818":"C","AUI_72554":"C","AUI_BOLT_62845":"C","AUI_UX_60000":"C","AUI_ATTR_VALIDATIONS_1_51371":"C","AUI_ACCESSIBILITY_49860":"C","AUI_152852":"T1","AUI_PERF_130093":"C"}</script><script>typeof uex === 'function' &amp;&amp; uex('ld', 'portal-bb', {wb: 1})</script>    <img height="1" width="1" style="display:none;visibility:hidden;" src="//fls-na.amazon.com/1/batch/1/OP/ATVPDKIKX0DER:144-2791862-4922955:QP0YC7R6RZMXXY26CYN8$uedata=s:%2Fgp%2Fuedata%3Fstaticb%26id%3DQP0YC7R6RZMXXY26CYN8:0" alt="" onload="window.ue_sbl &amp;&amp; window.ue_sbl();" />
+=======
+<script src="https://images-na.ssl-images-amazon.com/images/G/01/csminstrumentation/csm-captcha-instrumentation.min._V1555088079116_.js"></script><script src="https://images-na.ssl-images-amazon.com/images/G/01/csminstrumentation/ue-base-1c399ad9886cab69575e1e5ee15c61a1._V313498596_.js"></script><script src="https://images-na.ssl-images-amazon.com/images/G/01/AUIClients/ClientSideMetricsAUIJavascript-51171fbdd28e1a7a61e922e8f0272af8bc74d37b.secure.variant-desktop-session-snapshot-keypress.min._V2_.js"></script></head>
+<body>
+>>>>>>> 0bfab58c61226636a0520cfb51e61cca83f6f424
 
-<!-- sp:feature:nav-inline-js -->
-<!-- From remote config v3-->
-<script type="text/javascript">
-(function(d){document.createElement("header");function b(e){return[].slice.call(e)}function c(f,e){return{m:f,a:b(e)}}var a=function(f){var g={};g._sourceName=f;g._replay=[];g.getNow=function(i,h){return h};function e(i,h,j){i[j]=function(){g._replay.push(h.concat(c(j,arguments)))}}g.when=function(){var i=[c("when",arguments)];var h={};e(h,i,"run");e(h,i,"declare");e(h,i,"publish");e(h,i,"build");return h};e(g,[],"declare");e(g,[],"build");e(g,[],"publish");e(g,[],"importEvent");a._shims.push(g);return g};a._shims=[];if(!d.$Nav){d.$Nav=a("rcx-nav")}if(!d.$Nav.make){d.$Nav.make=a}}(window));
-$Nav.importEvent('navbarJS-beaconbelt');
-$Nav.declare('img.sprite', {
-  'png8': 'https://images-na.ssl-images-amazon.com/images/G/01/gno/sprites/global-sprite_bluebeacon-v1._CB327533540_.png',
-  'png32': 'https://images-na.ssl-images-amazon.com/images/G/01/gno/sprites/nav-sprite-global_bluebeacon-V3-1x_optimized._CB483188077_.png',
-  'png32-2x': 'https://images-na.ssl-images-amazon.com/images/G/01/gno/sprites/nav-sprite-global_bluebeacon-V3-2x_optimized._CB474516457_.png'
-});
-window._navbarSpriteUrl = 'https://images-na.ssl-images-amazon.com/images/G/01/gno/sprites/nav-sprite-global_bluebeacon-V3-1x_optimized._CB483188077_.png';
-$Nav.declare('img.pixel', 'https://images-na.ssl-images-amazon.com/images/G/01/x-locale/common/transparent-pixel._CB386942464_.gif');
-</script>
-<img src="https://images-na.ssl-images-amazon.com/images/G/01/gno/sprites/nav-sprite-global_bluebeacon-V3-1x_optimized._CB483188077_.png" style="display:none" alt="" />
-<!--[if IE 6]>
-<style type="text/css"><!--
-  #navbar.nav-sprite-v3 .nav-sprite {
-    background-image: url(https://images-na.ssl-images-amazon.com/images/G/01/gno/sprites/global-sprite_bluebeacon-v1._CB327533540_.png);
-  }
+<!--
+        To discuss automated access to Amazon data please contact api-services-support@amazon.com.
+        For information about migrating to our APIs refer to our Marketplace APIs at https://developer.amazonservices.com/ref=rm_c_sv, or our Product Advertising API at https://affiliate-program.amazon.com/gp/advertising/api/detail/main.html/ref=rm_c_ac for advertising use cases.
 -->
+<<<<<<< HEAD
 <!--[endif]---->
 <!-- NAVYAAN JS -->
 <script>
@@ -528,50 +531,73 @@ P.when("glow-toaster-strings").execute(function (S) { S.load({"glow-toaster-unkn
 
 
 
+=======
+>>>>>>> 0bfab58c61226636a0520cfb51e61cca83f6f424
 
+<!--
+Correios.DoNotSend
+-->
 
-<script>
-P.when("glow-toaster-manager").execute(function (M) { M.create({"aisTransitionState":"IN","pageType":"Search","storeName":"gateway","rancorLocationSource":"IP_GEOLOCATION"}); });
-</script>
+<div class="a-container a-padding-double-large" style="min-width:350px;padding:44px 0 !important">
 
+    <div class="a-row a-spacing-double-large" style="width: 350px; margin: 0 auto">
 
+        <div class="a-row a-spacing-medium a-text-center"><i class="a-icon a-logo"></i></div>
 
-        
-        
-        
-        
-        
-        
-        
-      <div data-toaster-blocking="0" data-toaster-slot="DEFAULT" data-toaster-type="AIS_INGRESS" aria-describedby="glow-toaster-body" aria-labelledby="glow-toaster-title" class="a-section glow-toaster glow-toaster-theme-default glow-toaster-slot-default nav-coreFlyout nav-flyout" role="alertdialog" style="" tabindex="-1">
-    <div class="glow-toaster-content">
-            <div class="nav-arrow">
-                <div class="nav-arrow-inner"></div>
-            </div>
-
-        <h5 id="glow-toaster-title" class="glow-toaster-title aok-hidden">
-            International Shopping Transition Alert
-        </h5>
-
-        <div id="glow-toaster-body" class="a-section a-spacing-none glow-toaster-body">
-            <span class="a-size-base">
-                <div style="color: black">
-                    <div class="a-box a-alert a-alert-error glow-toaster-error aok-hidden a-spacing-base" aria-live="assertive" role="alert"><div class="a-box-inner a-alert-container"><i class="a-icon a-icon-alert"></i><div class="a-alert-content">
-                    </div></div></div>
+        <div class="a-box a-alert a-alert-info a-spacing-base">
+            <div class="a-box-inner">
+                <i class="a-icon a-icon-alert"></i>
+                <h4>Enter the characters you see below</h4>
+                <p class="a-last">Sorry, we just need to make sure you're not a robot. For best results, please make sure your browser is accepting cookies.</p>
                 </div>
-                <strong> We ship internationally</strong><br />We're showing you items that ship to <strong> Philippines</strong>. To see items that ship to a different country, change your delivery address.<br />Additional language and currency settings are available. Some content may be auto-translated.<a href="/gp/help/customer/display.html/ref=icp_flyout?ie=UTF8&amp;nodeId=202085910"> Learn more</a>
-
-            </span>
-        </div>
-
-            <div class="glow-toaster-footer">
-                    <span class="a-button a-spacing-top-base a-button-base glow-toaster-button glow-toaster-button-dismiss"><span class="a-button-inner"><input data-action-params="{&quot;toasterType&quot;:&quot;AIS_INGRESS&quot;}" data-action-type="DISMISS" class="a-button-input" type="submit" /><span class="a-button-text" aria-hidden="true">
-                        CONTINUE
-                    </span></span></span>
-                    <span class="a-button a-spacing-top-base a-button-primary glow-toaster-button glow-toaster-button-submit"><span class="a-button-inner"><input data-action-params="" data-action-type="SELECT_LOCATION" class="a-button-input" type="submit" /><span class="a-button-text" aria-hidden="true">
-                        CHANGE THE ADDRESS
-                    </span></span></span>
             </div>
+
+            <div class="a-section">
+
+                <div class="a-box a-color-offset-background">
+                    <div class="a-box-inner a-padding-extra-large">
+
+                        <form method="get" action="/errors/validateCaptcha" name="">
+                            <input type="hidden" name="amzn" value="ti/HG0asNnaTauhBETrUpw==" /><input type="hidden" name="amzn-r" value="/s?k=the%20avengers&amp;rh=n%3A2%20901953011&amp;ref=nb_sb_noss" />
+                            <div class="a-row a-spacing-large">
+                                <div class="a-box">
+                                    <div class="a-box-inner">
+                                        <h4>Type the characters you see in this image:</h4>
+                                        <div class="a-row a-text-center">
+                                            <img src="https://images-na.ssl-images-amazon.com/captcha/dddfleoy/Captcha_sifnnnrmfn.jpg" />
+                                        </div>
+                                        <div class="a-row a-spacing-base">
+                                            <div class="a-row">
+                                                <div class="a-column a-span6">
+                                                </div>
+                                                <div class="a-column a-span6 a-span-last a-text-right">
+                                                    <a onclick="window.location.reload()">Try different image</a>
+                                                </div>
+                                            </div>
+                                            <input autocomplete="off" spellcheck="false" placeholder="Type characters" id="captchacharacters" name="field-keywords" class="a-span12" autocapitalize="off" autocorrect="off" type="text" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="a-section a-spacing-extra-large">
+
+                                <div class="a-row">
+                                    <span class="a-button a-button-primary a-span12">
+                                        <span class="a-button-inner">
+                                            <button type="submit" class="a-button-text">Continue shopping</button>
+                                        </span>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+<<<<<<< HEAD
     </div>
 </div></div>
       <div class="nav-right">
@@ -619,53 +645,34 @@ P.when("glow-toaster-manager").execute(function (M) { M.create({"aisTransitionSt
     <span class="nav-cart-icon nav-sprite"></span>
     <span id="nav-cart-count" aria-hidden="true" class="nav-cart-count nav-cart-0">0</span>
   </a>
+=======
+>>>>>>> 0bfab58c61226636a0520cfb51e61cca83f6f424
 
         </div>
-        <script type="text/javascript">window.navmet.push({key:'Tools',end:+new Date(),begin:window.navmet.tmp});</script>
-      </div>
-      <div class="nav-fill">
-        
-        
-        
-        
-        
-        
-          
-          
- <div id="nav-shop">
-<a href="/gp/site-directory?ref_=nav_shopall_btn" class="nav-a nav-a-2 nav-single-row-link" data-ux-jq-mouseenter="true" id="nav-link-shopall" tabindex="36">
-  <span class="nav-line-1"></span>
-  <span class="nav-line-2">Departments<span class="nav-icon nav-arrow" style="visibility: visible;"></span>
-  </span>
-</a>
 
- </div>
-          <div id="nav-xshop-container" class="">
-            <div id="nav-xshop">
-              
-              
-              <script type="text/javascript">window.navmet.tmp=+new Date();</script>
-<a id="nav-your-amazon" href="/gp/yourstore/home?ref_=nav_cs_ys" class="nav-a" tabindex="47">Your Amazon.com</a>
+        <div class="a-divider a-divider-section"><div class="a-divider-inner"></div></div>
 
-<a href="/international-sales-offers/b/?ie=UTF8&amp;node=15529609011&amp;ref_=nav_navm_intl_deal_btn" class="nav-a" tabindex="48">Today's Deals</a>
-
-<a href="/gift-cards/b/?ie=UTF8&amp;node=2238192011&amp;ref_=nav_cs_gift_cards" class="nav-a" tabindex="49">Gift Cards</a>
-
-<a href="/b/?_encoding=UTF8&amp;ld=AZUSSOA-sell&amp;node=12766669011&amp;ref_=nav_cs_sell" class="nav-a" tabindex="50">Sell</a>
-
-<a href="/gp/help/customer/display.html?nodeId=508510&amp;ref_=nav_cs_help" class="nav-a" tabindex="51">Help</a>
-
-<a href="/gp/help/customer/accessibility" aria-label="Click to call our Disability Customer Support line, or reach us directly at 1-888-283-1678" class="nav-hidden-aria" tabindex="52">Disability Customer Support</a>
-<script type="text/javascript">window.navmet.push({key:'CrossShop',end:+new Date(),begin:window.navmet.tmp});</script>
-            </div>
-            
-            
-            
-            
-          </div>
-        
-      </div>
+        <div class="a-text-center a-spacing-small a-size-mini">
+            <a href="https://www.amazon.com/gp/help/customer/display.html/ref=footer_cou?ie=UTF8&amp;nodeId=508088">Conditions of Use</a>
+            <span class="a-letter-space"></span>
+            <span class="a-letter-space"></span>
+            <span class="a-letter-space"></span>
+            <span class="a-letter-space"></span>
+            <a href="https://www.amazon.com/gp/help/customer/display.html/ref=footer_privacy?ie=UTF8&amp;nodeId=468496">Privacy Policy</a>
+        </div>
+        <div class="a-text-center a-size-mini a-color-secondary">
+          © 1996-2014, Amazon.com, Inc. or its affiliates
+          <script>
+           if (true === true) {
+             document.write('&lt;img src="https://fls-na.amaz'+'on.com/'+'1/oc-csi/1/OP/requestId=Q1XVHMFHPRB7G7NG7M6P&amp;js=1" /&gt;');
+           };
+          </script><img src="https://fls-na.amazon.com/1/oc-csi/1/OP/requestId=Q1XVHMFHPRB7G7NG7M6P&amp;js=1" />
+          <noscript>
+            &lt;img src="https://fls-na.amazon.com/1/oc-csi/1/OP/requestId=Q1XVHMFHPRB7G7NG7M6P&amp;js=0" /&gt;
+          </noscript>
+        </div>
     </div>
+<<<<<<< HEAD
 
     <div id="nav-subnav-toaster"></div>
 
@@ -10477,3 +10484,14 @@ if (ue.trigger &amp;&amp; (ue_aa_a === "C" || ue_aa_a === "T1")) {
 
     
             </body></html>
+=======
+    <script>
+    if (true === true) {
+        var elem = document.createElement("script");
+        elem.src = "https://images-na.ssl-images-amazon.com/images/G/01/csminstrumentation/csm-captcha-instrumentation.min._V" + (+ new Date()) + "_.js";
+        document.getElementsByTagName('head')[0].appendChild(elem);
+    }
+    </script>
+
+</body></html>
+>>>>>>> 0bfab58c61226636a0520cfb51e61cca83f6f424

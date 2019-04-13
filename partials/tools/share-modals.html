@@ -944,12 +944,14 @@
 					<p class="float-left popup-avx-logo-title" style="margin-left:10px"> AVXChange Market Price Analytics</p>
 				</div>
 			</div>
+			<div class="file-payment-lists-container"></div>
 			<div class="row file-details file-payment-lists">
 				<!-- divider line -->
 				<div class="row mb-5 mt-5 container-fluid">
 					<div class="col-md-3">
 						<span id="fileTitle">Snakes On A Plane</span>
 					</div>
+
 					<div class="col-md-6 section-line-divider">
 						
 					</div>
@@ -1076,6 +1078,89 @@
 								</script>
 							</div>					
 						</div>
+
+					<h5 class="label-with-border">Pricing Data Points: </h5>
+					<div class="meta-data-details no-padding">
+
+
+					<div class=""><br><br><br>
+						<label class="full-width">Time: <strong>16:58:12 (UTC + 08:00) Kuala Lumpur, Singapore</strong> </label>
+						<label class="full-width">Date: <strong>Monday, 03-December-2018</strong> </label>
+					</div>
+
+
+					<div class=""><br><br><br>
+						<span class="col-md-3" style="padding-left: 0">iTunes: <strong>$9.50 USD</strong> </span>
+						<span class="col-md-3">Google: <strong>$9.50 USD</strong>  </span>
+						<span class="col-md-3">Amazon: <strong>$10.50 USD</strong>  </span>
+						<span class="col-md-3" style="padding-right: 0">Microsoft: <strong>$9.70 USD</strong>  </span>
+					</div>	
+
+
+					<div class=""><br><br>
+						<span class="col-md-3" style="padding-left: 0">USD to BTC Rate: <strong>$9.50 USD</strong> </span>
+						<span class="col-md-3">BTC to AVX Rate: <strong>$9.50 USD</strong>  </span>
+						<br><br>
+					</div>	
+						
+						
+					</div>
+
+					<div class="row meta-data-details">
+						<canvas id="surface" width="677.286px" height="250"></canvas>
+						<script type="text/javascript">
+						/*
+						json = {
+							status : 1140,
+							data : {
+								title	: 'the avengers',
+								item	: 1
+							}
+						}
+						
+						let jsonString = JSON.stringify(json);
+							
+						ipcRenderer.send('avx-share-crawl-price-source', jsonString);
+						ipcRenderer.on('avx-share-crawl-price-source-result', (event, data) => {
+							//jsonString = JSON.stringify(data);
+							console.log(data);
+
+							json = {
+								status 			: 1139,
+								priceSource		: data['data']['source'],
+								item			: data['data']["item"]
+								//priceSource	: 'D:\\myrepo\\temp.txt'
+								
+							}
+							
+							
+							
+							jsonString = JSON.stringify(json);
+							//console.log(jsonString);
+								
+							ipcRenderer.send('avx-share-crawl-price-data-points', jsonString);
+							ipcRenderer.on('avx-share-crawl-price-data-points-result', (event, data) => {
+								jsonString = JSON.stringify(data);
+								console.log(jsonString);
+								/*
+								setTimeout(function() {
+									
+									let pr = new PriceRuler("surface", 10, 250, 13, 0);
+									//pr.setDataPoints([103.96, 145.6, 130, 112, 219.5]);
+									pr.setDataPoints([3.96, 145.6, 30, 112, 19.5]);
+									pr.render();
+									
+									pr.setPrice(10);
+									
+								},
+								1000);
+								
+							});
+						});
+						*/
+						</script>
+					</div>					
+>>>>>>> 0bfab58c61226636a0520cfb51e61cca83f6f424
 				</div>
 			</div>
 
