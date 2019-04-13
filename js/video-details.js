@@ -25,7 +25,7 @@ $ = jQuery;
 
 var jAsset = store.get('metadata-specific-asset');
 var thumbtitle = store.get('specific-data-asset');
-
+console.log(jAsset);
 function getFiledata(filename) {
 
     for(var key in jsonAC) {
@@ -57,6 +57,8 @@ $(document).ready(function() {
     document.getElementById('movieplot').innerHTML = decodeURIComponent(jAsset["crawl"]["header"]["synopsis"]);
     document.getElementById('fileyear').innerHTML = jAsset["crawl"]["header"]["release_date"];
     document.getElementById('videoDirectors').innerHTML = jAsset["crawl"]["header"]["directors"];
+    document.getElementById('videoProducer').innerHTML = jAsset["crawl"]["producer"];
+    document.getElementById('fileGenre').innerHTML = jAsset["crawl"]["header"]["genres"];
 
     let strBanner = jAsset["crawl"]["header"]["banner"];
     // console.log(strBanner);
@@ -129,12 +131,12 @@ function generateTable() {
         tableStr += '<tr data-key="' + key1 + '">'; 
         tableStr += '<td></td>';
         tableStr += '<td>' + jAsset["info"][key1]["title"] + '</td>';
-        tableStr += '<td> 999 </td>';   
+        tableStr += '<td>  </td>';   
         tableStr += '<td>' + jAsset["info"][key1]["price"] + '</td>';
-        tableStr += '<td> 4.7 </td>';
-        tableStr += '<td> Language </td>';
-        tableStr += '<td> English </td>';
-        tableStr += '<td> 4k </td>';
+        tableStr += '<td>  </td>';
+        tableStr += '<td>  </td>';
+        tableStr += '<td>  </td>';
+        tableStr += '<td>  </td>';
         tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["filesize"] +' </td>';
         tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["video_codec_name"] + ' </td>';
         tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["audio_codec_name"] + ' </td>';
