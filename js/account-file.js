@@ -11,11 +11,18 @@ $(document).ready( () => {
     let jMessage = {
         status : 5003
     };
-    jMessage = JSON.stringify(jMessage);
+    jMessageD = JSON.stringify(jMessage);
+	
+	
+		
+	jMessage = {
+		status : 5006
+	};
+	jMessageU = JSON.stringify(jMessage);
 	
 	setInterval(function(){
-		ipcRenderer.send('request-filetransfer-stats', jMessage);
-		
+		ipcRenderer.send('request-filetransfer-stats', jMessageD);
+		ipcRenderer.send('request-sourcing-stat', jMessageU);
 	}, 2000);
     
 });
@@ -77,6 +84,51 @@ ipcRenderer.on('receive-filetransfer-stats', (event, arg) => {
 	
 });
 
+ipcRenderer.on('receive-sourcing-stat', (event, arg) => {
+   // console.log(arg);
+
+	let fn  = arg["data"];
+
+
+	let row = '';
+	fileDownloadList= [];
+	for ( key in fn) {
+		let fndata  = fn[key]["filename"];
+		
+		if ( typeof fileDownloadList[fndata] == "undefined" ) {
+			fileDownloadList[fndata] = {
+				assetkey: fn[key]['assetkey'],
+				hoarders :  1
+			};
+		} else {
+			fileDownloadList[fndata] = {
+				assetkey: fn[key]['assetkey'],
+				hoarders :  parseInt(fileDownloadList[fndata]['hoarders']) + 1
+			};
+		}
+
+	}
+
+
+	for (var keyList in fileDownloadList) {
+		row += '<tr>';
+		row += '<th scope="row"></th>';
+		row += '<td id="stat-filename" >' + keyList + '</td>';
+		row += '<td id="stat-filename" >' + fileDownloadList[keyList].hoarders + '</td>';
+		row += '<td>';
+		row += '<div class="progress">';
+		row += '<div id="stat-progress" class="progress-bar bg-success" style="width:100%" id="prog-bar" role="progressbar" aria-valuemin="0" aria-valuenow="100%" aria-valuemax="100">';
+		row += 'Sharding...';
+		row += '</div>';
+		row += '</td>';
+
+		row += '</tr>';
+	}
+	
+	$("#activeFiles #tables tbody").html(row);
+
+	
+});
 document.getElementById('activeFiles').style.display = "block";
 document.getElementById('DDetails').style.display = "block";
 document.getElementById("DFiles").style.display = "none";

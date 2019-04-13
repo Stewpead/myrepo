@@ -179,7 +179,7 @@ function appendJSON(event) {
 
 $ = jQuery;
 
-// EVENTS
+// EVENTS4326
 setTimeout(function() {
 
 	/*Close Modal action*/
@@ -552,7 +552,7 @@ function crawlPriceSource(title, count, filesLength) {
 				
 				
 				pr.setPrice(price);
-				price = price / 0.0015;
+				price = price / 0.0025;
 				$("#surface"+ data["item"] ).attr('price', price);
 				$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(data['item']).find('.filePrice').html(price+ " AVX");
 				let getPrices = $('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists');
@@ -577,7 +577,7 @@ function crawlPriceSource(title, count, filesLength) {
 
 						
 							$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').html(output+ " AVX");
-							
+							$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').attr('fullprice', output);
 					}
 				});
 
@@ -613,13 +613,13 @@ function crawlPriceSource(title, count, filesLength) {
 		});
 
 		let filepath = $('#fullFilePathDir').val();
-		
+		let amount = $('[pd-popup="shareMarketPriceForMultipleModal"] #priceAVX').attr('fullprice');
 
 		jsonAssetUpload = {
 			status : 1116,
 			data : assetsData,
 			action : category,
-			amount	: "200" //TOTAL AMOUNT
+			amount	: amount //TOTAL AMOUNT
 		};
 		console.log( JSON.stringify(jsonAssetUpload) );
 		ipcRenderer.send('avx-share-upload-asset', JSON.stringify(jsonAssetUpload) );	

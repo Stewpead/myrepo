@@ -55,7 +55,8 @@ var Status = {
 	GET_CRAWLING: 9001,
 	GET_FILE_DETAILS:1135,
 	REQUEST_PRICE_DATA_POINTS: 1139,
-	REQUEST_PRICE_SOURCE: 1140
+	REQUEST_PRICE_SOURCE: 1140,
+	REQUEST_SOURCING_STAT: 5006
 
 };
 
@@ -104,6 +105,7 @@ var initiateConnection = function(attempt){
 		module.requestBuyAsset(client);
 		module.requestPriceSource(client);
 		module.requestPriceDataPoints(client);
+		module.requestSourcingStat(client);
 
 	});
 
@@ -240,7 +242,12 @@ var initiateConnection = function(attempt){
 			
 			case Status.REQUEST_PRICE_DATA_POINTS:
 				modulePriceCrawler.responsePriceDataPoints(data);
+				break;	
+			
+			case Status.REQUEST_SOURCING_STAT:
+				moduleDashboard.responseRequestSourcingStat(data);
 				break;
+				
 
 			
 		}			

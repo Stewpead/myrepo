@@ -128,6 +128,10 @@ module.exports = {
   responseDownloadPayment: function(data) {
     console.log("receive confirmation payment");
     defaultWindow.webContents.send('response-download-payment',data);
+  },
+
+  responseRequestSourcingStat: function(data) {
+    defaultWindow.webContents.send('receive-sourcing-stat',data);
   }
   
 };

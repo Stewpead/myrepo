@@ -185,6 +185,12 @@ module.exports = {
 		ipcMain.on('avx-share-crawl-price-data-points',(event , arg) => {
 			client.write(arg);
 		});
+	},
+	
+	requestSourcingStat: function(client) {
+		ipcMain.on('request-sourcing-stat',(event , arg) => {
+			client.write(arg);
+		});
 	}
 };
 
