@@ -35,6 +35,30 @@ $('#btnClosetop').click( () => {
     document.getElementById('contentmain').style.marginTop = "91px";
 
 });
+
+
+
+setTimeout(function() {	
+	//Wallet Data - 1130
+	var jdata = {
+		status: 1130
+	};
+	jdata = JSON.stringify(jdata);
+	ipcRenderer.send('get-wallet-data', jdata);
+},1000);
+
+ 
+// Real time wallet data retrieval 
+ipcRenderer.on('avx-wallet-data', (event, arg) => {
+    walletData = arg; 
+   console.log(walletData);
+	let balance = walletData;
+		balance = balance['wallet_data']["balance"];
+	$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #walletBalance').html(balance);
+	$('[pd-popup="sharePaymentSuccessModal"] #account-balance span').html(balance);
+
+    
+});
 /*
 var videoFolder = document.getElementById('upload-video-folder');
 videoFolder.addEventListener('change', processFile);
@@ -412,7 +436,7 @@ setTimeout(function() {
 
 				item++;				
 				if ( item == filesLength) {
-					console.log("YES" + item);
+					
 					crawlPriceSource(filesTitle, 0, filesLength );
 				}
 				
@@ -437,8 +461,7 @@ setTimeout(function() {
 	
 
 function crawlPriceSource(title, count, filesLength) {
-	console.log(count +" > "+ filesLength);
-	title = ["the avengers", "harry potter and the chamber of secrets", "shaun the sheep the movie"];
+
 	if ( count < filesLength ) {
 		console.log(" GENERATE: " + title[count].toLowerCase());
 
@@ -451,14 +474,14 @@ function crawlPriceSource(title, count, filesLength) {
 		}
 		
 		let jsonString = JSON.stringify(json);
-		console.log(jsonString);
+		//console.log(jsonString);
 
 		setTimeout(function() {	
 			ipcRenderer.send('avx-share-crawl-price-source', jsonString);
 		},2000);
 		
 		ipcRenderer.on('avx-share-crawl-price-source-result', (event, data) => {
-			console.log(data['data']['source']);
+			//console.log(data['data']['source']);
 			
 			json = {
 				status 			: 1139,
@@ -475,7 +498,7 @@ function crawlPriceSource(title, count, filesLength) {
 
 			ipcRenderer.on('avx-share-crawl-price-data-points-result', (event, data) => {
 				jsonString = JSON.stringify(data);
-				console.log(jsonString);
+				//console.log(jsonString);
 				let datapoints = ( data["datapoints"] == '' ) ? '0.00,0.00' : data["datapoints"];
 				datapoints = datapoints.split(',');
 				for (var i=0; i<datapoints.length; i++)
@@ -483,16 +506,43 @@ function crawlPriceSource(title, count, filesLength) {
 					datapoints[i] = parseFloat(datapoints[i], 10);
 				}
 				
-				console.log(datapoints);
+				//console.log(datapoints);
 				crawlPriceSource(title, parseInt(data["item"]) + 1, filesLength );
 		
 				let pr = new PriceRuler("surface"+ data["item"], 10, 250, 13, 0);
 				pr.setDataPoints(datapoints);
-				//pr.setDataPoints([3.96, 145.6, 30, 112, 19.5]);
+				let price = datapoints.reduce((pv,cv)=>{
+				   return pv + (parseFloat(cv)||0);
+				},0);
+				
+				price = ( price / datapoints.length );
 				pr.render();
 				
 				
-				pr.setPrice(10);
+				pr.setPrice(price);
+				price = price * 0.0015;
+				$("#surface"+ data["item"] ).attr('price', price);
+				let getPrices = $('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists');
+				
+				let avxPrice = 0;
+				$.each(getPrices, function( index, value ) {
+					let price = $(this).find('canvas').attr('price');
+					if (typeof price != 'undefined') {
+						
+						avxPrice = (avxPrice + parseFloat(price));
+						let output = avxPrice.toFixed(8) ;
+						let fileResources = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(data['item']).find('textarea').text();
+							fileResources = JSON.parse(fileResources);
+							console.log("PRICE ORIG: " + fileResources["price"]);
+							fileResources["price"] = output;
+							console.log("PRICE NEW : " + fileResources["price"]);
+							$('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(data['item']).find('textarea').text(JSON.stringify(fileResources));
+
+							console.log("TEST====>" + data['item'] );
+						
+						$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').html(output+ " AVX");
+					}
+				});
 
 			});
 		});	

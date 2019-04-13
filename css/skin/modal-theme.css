@@ -48,6 +48,9 @@
 .popup-inner-white #priceAVX {
     font-size: 32px;
     float: right;
+    color: #ed1c24;
+    text-align: left;
+    width: 100%;
 }
 hr#hr {
     width: 100%;
