@@ -102,21 +102,21 @@ ipcRenderer.on('receive-sourcing-stat', (event, arg) => {
 	}*/
 	
 	for (let i = 0; i < fn.length; ++i) {
-		fileDownloadList[fn[i].assetkey] = {
+		fileDownloadListFileReceive[fn[i].assetkey] = {
 			filename: fn[i].filename,
 			assetkey: fn[i].assetkey,
 			shards : fn[i].shards
 		};
 	}
 	
-	console.log(fileDownloadList);
+	console.log(fileDownloadListFileReceive);
 
 
-	for (var keyList in fileDownloadList) {
+	for (var keyList in fileDownloadListFileReceive) {
 		row += '<tr>';
 		row += '<th scope="row"></th>';
-		row += '<td id="stat-filename" >' + fileDownloadList[keyList].filename + '</td>';
-		row += '<td id="stat-filename" >' + fileDownloadList[keyList].shards + '</td>';
+		row += '<td id="stat-filename" >' + fileDownloadListFileReceive[keyList].filename + '</td>';
+		row += '<td id="stat-filename" >' + fileDownloadListFileReceive[keyList].shards + '</td>';
 		row += '<td>';
 		row += '<div class="progress">';
 		row += '<div id="stat-progress" class="progress-bar bg-success" style="width:100%" id="prog-bar" role="progressbar" aria-valuemin="0" aria-valuenow="100%" aria-valuemax="100">';
