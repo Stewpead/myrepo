@@ -30,7 +30,7 @@ module.exports = {
 				//await driver.get('https://www.amazon.com/s?k=' + title + '&ref=nb_sb_noss');
 			
 				let source = await driver.getPageSource();
-				data["data"]["source"] = encodeURIComponent( source) ;
+				data["data"]["source"] = encodeURIComponent(source) ;
 				defaultWindow.webContents.send('avx-share-crawl-price-source-result', data);
 				const fs = require('fs');
 				

@@ -105,7 +105,7 @@ ipcRenderer.on('receive-sourcing-stat', (event, arg) => {
 		fileDownloadList[fn[i].assetkey] = {
 			filename: fn[i].filename,
 			assetkey: fn[i].assetkey,
-			hoarders : fn[i].hoarders
+			shards : fn[i].shards
 		};
 	}
 	
@@ -116,7 +116,7 @@ ipcRenderer.on('receive-sourcing-stat', (event, arg) => {
 		row += '<tr>';
 		row += '<th scope="row"></th>';
 		row += '<td id="stat-filename" >' + fileDownloadList[keyList].filename + '</td>';
-		row += '<td id="stat-filename" >' + fileDownloadList[keyList].hoarders + '</td>';
+		row += '<td id="stat-filename" >' + fileDownloadList[keyList].shards + '</td>';
 		row += '<td>';
 		row += '<div class="progress">';
 		row += '<div id="stat-progress" class="progress-bar bg-success" style="width:100%" id="prog-bar" role="progressbar" aria-valuemin="0" aria-valuenow="100%" aria-valuemax="100">';

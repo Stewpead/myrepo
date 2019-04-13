@@ -490,7 +490,14 @@ setTimeout(function() {
 		
 	});
 
+function getResolution(height) {
+	let quality = [480, 720, 1080, 1440, 2160, 4000, 6000];
+	let i = 0;
 	
+	while (height > quality[i++]);
+	
+	return i - 1;
+}
 
 function crawlPriceSource(title, count, filesLength) {
 
@@ -542,6 +549,38 @@ function crawlPriceSource(title, count, filesLength) {
 				crawlPriceSource(title, parseInt(data["item"]) + 1, filesLength );
 		
 				let pr = new PriceRuler("surface"+ data["item"], 10, 250, 13, 0);
+				
+				if (data["datapoints"] == '') {
+					let data_crawled = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(data['item']).find('textarea').text();
+					data_crawled = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(0).find('textarea').text();
+					data_crawled = JSON.parse(data_crawled);
+					data_crawled = data_crawled["crawl"];
+					let year = data_crawled["header"]["release_date"].replace(/\((\d{4})\)/g, "$1");
+					let height = parseInt(data_crawled["metadata"]["height"]);
+					
+					if (year <= 1999) {
+						let pricesArr = [3.95, 4.95, 8.95, 9.95]; 
+						let pos = Math.min(getResolution(height), 3);
+						datapoints = [priceArr[pos]];
+					} else if (year <= 2009) {
+						let pricesArr = [3.95, 5.95, 7.95, 10.95]; 
+						let pos = Math.min(getResolution(height), 3);
+						datapoints = [priceArr[pos]];
+					} else if (year <= 2014) {
+						let pricesArr = [3.95, 6.95, 8.95, 11.95]; 
+						let pos = Math.min(getResolution(height), 3);
+						datapoints = [priceArr[pos]];
+					} else if (year <= 2017) {
+						let pricesArr = [4.95, 7.95, 9.95, 14.95]; 
+						let pos = Math.min(getResolution(height), 3);
+						datapoints = [priceArr[pos]];
+					} else {
+						let pricesArr = [5.95, 8.95, 11.95, 18.95]; 
+						let pos = Math.min(getResolution(height), 3);
+						datapoints = [priceArr[pos]];
+					}
+				}
+				
 				pr.setDataPoints(datapoints);
 				let price = datapoints.reduce((pv,cv)=>{
 				   return pv + (parseFloat(cv)||0);
