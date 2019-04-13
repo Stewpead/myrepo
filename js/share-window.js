@@ -659,7 +659,7 @@ function crawlPriceSource(title, count, filesLength) {
 			status : 1116,
 			data : assetsData,
 			action : category,
-			amount	: "200" //TOTAL AMOUNT
+			amount	: amount //TOTAL AMOUNT
 		};
 		console.log( JSON.stringify(jsonAssetUpload) );
 		ipcRenderer.send('avx-share-upload-asset', JSON.stringify(jsonAssetUpload) );	
