@@ -447,9 +447,9 @@ setTimeout(function() {
 					output += '				<h5 class="label-with-border">Pricing Data Points: </h5> ';
 					output += '				<div class="meta-data-details no-padding"> ';
 					
-					output += '				<div class="row meta-data-details"> ';
+					output += '				<div class="row meta-data-details no-padding"> ';
 					output += '					<svg width="100" height="100" style="text-align: center;margin: 0 auto;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring"><circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="4" stroke="#e15b64" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(203.589 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></circle></svg>';
-					output += '					<canvas id="surface'+item+'" width="677.286px" height="250"></canvas>';
+					output += '					<canvas id="surface'+item+'" width="677.286px" style="width:100%" height="250"></canvas>';
 					output += '				</div> ';					
 					output += '			</div> ';					
 					output += '		</div>';				
@@ -468,9 +468,10 @@ setTimeout(function() {
 
 				item++;	
 				if ( item == filesLength) {
-					
-					crawlPriceSource(filesTitle, itemLength, filesLength );
-					itemLength++;
+					setTimeout(function() {
+						crawlPriceSource(filesTitle, itemLength, filesLength );
+						itemLength++;
+					}, 1000);
 				}
 				
 				
@@ -491,60 +492,65 @@ setTimeout(function() {
 		
 	});
 
-function getResolution(height) {
+function getResolution(height, type) {
 	let quality = [480, 720, 1080, 1440, 2160, 4000, 6000];
 	let i = 0;
 	
 	while (height > quality[i++]);
 	
-	return i - 1;
+	return (type == 1) ? quality[i - 1] : i - 1;
 }
 
 function crawlPriceSource(title, count, filesLength) {
-	console.log("TEST: "+ count);
+	console.log("TEST: "+ "surface"+ count);
 	let pr = new PriceRuler("surface"+ count, 10, 250, 13, 0);
 	
 	let data_crawled = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(count).find('textarea').text();
-	data_crawled = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(count).find('textarea').text();
-	data_crawled = JSON.parse(data_crawled);
-	data_crawled = data_crawled["crawl"];
-	let year = data_crawled["header"]["release_date"].replace(/\((\d{4})\)/g, "$1");
-	let height = parseInt(data_crawled["metadata"]["height"]);
+		data_crawled= JSON.parse(data_crawled);
+	let crawled = JSON.parse(data_crawled["crawl"]);
 	
+	let year = crawled["header"]["release_date"].replace(/\((\d{4})\)/g, "$1");
+	let height = parseInt(data_crawled["metadata"]["height"]);
+	console.log(height);
+	console.log(year);
+
 	if (year <= 1999) {
 		let pricesArr = [3.95, 4.95, 8.95, 9.95]; 
 		let pos = Math.min(getResolution(height), 3);
-		datapoints = [priceArr[pos]];
+		datapoints = pricesArr[pos];
 	} else if (year <= 2009) {
 		let pricesArr = [3.95, 5.95, 7.95, 10.95]; 
 		let pos = Math.min(getResolution(height), 3);
-		datapoints = [priceArr[pos]];
+		datapoints = pricesArr[pos];
 	} else if (year <= 2014) {
 		let pricesArr = [3.95, 6.95, 8.95, 11.95]; 
 		let pos = Math.min(getResolution(height), 3);
-		datapoints = [priceArr[pos]];
+		datapoints = pricesArr[pos];
 	} else if (year <= 2017) {
 		let pricesArr = [4.95, 7.95, 9.95, 14.95]; 
 		let pos = Math.min(getResolution(height), 3);
-		datapoints = [priceArr[pos]];
+		datapoints = pricesArr[pos];
 	} else {
 		let pricesArr = [5.95, 8.95, 11.95, 18.95]; 
 		let pos = Math.min(getResolution(height), 3);
-		datapoints = [priceArr[pos]];
+		datapoints = pricesArr[pos];
 	}
 
-	pr.setDataPoints(datapoints);
-	let price = datapoints.reduce((pv,cv)=>{
+	pr.setDataPoints([datapoints]);
+	
+	/*let price = datapoints.reduce((pv,cv)=>{
 	   return pv + (parseFloat(cv)||0);
 	},0);
-	
-	price = ( price / datapoints.length );
+	let price = ( price / datapoints.length );
+		*/
+		
+	let price = datapoints;
 	pr.render();
 	
 	
 	pr.setPrice(price);
 	price = price / 0.0025;
-	$("#surface"+ data["item"] ).attr('price', price);
+	$("#surface"+ count ).attr('price', price);
 	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.filePrice').html(price+ " AVX");
 	let getPrices = $('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists');
 	
@@ -563,6 +569,7 @@ function crawlPriceSource(title, count, filesLength) {
 				console.log("PRICE ORIG: " + fileResources["price"]);
 				fileResources["price"] = output;
 				console.log("PRICE NEW : " + fileResources["price"]);
+				console.log("USD: " + price);
 				$('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(count).find('textarea').text(JSON.stringify(fileResources));
 
 			
@@ -571,6 +578,8 @@ function crawlPriceSource(title, count, filesLength) {
 				
 		}
 	})	
+
+	
 }
 
 
