@@ -120,6 +120,8 @@ $(document).ready(() => {
             $('#fileOne').slideToggle('slow');
         });
 
+        let p = document.getElementById('priceAVX').value;
+        $('#sixtyP').text( p * .6);
 
 
     }, 100);

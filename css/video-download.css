@@ -7,8 +7,17 @@ html::-webkit-scrollbar {
   display: none; 
 
 }
-#styleRow {
-    background-color:rgb(0, 0, 0);
+.header-navigation {
+  padding-bottom: 70px;
+}
+.fileImageDiv {
+  padding: 0 10%;
+}
+#filetitle {
+  font-size: 2.5rem;
+}
+#fileyear {
+  font-size: 1.5rem;
 }
 .list-group-item {
     float: left;
@@ -16,20 +25,25 @@ html::-webkit-scrollbar {
 .container-fluid {
   padding: 0;
 }
-.section-divider ul { 
-  margin: 0;
-  padding: 0;
+#plot {
+  font-size: 14px;
+  width: 600px;
+  margin-bottom: 3rem;
 }
 .section-divider {
   width: 100%; 
   text-align: left; 
-  border-bottom: 1px solid #818181; 
+  border-bottom: 1px solid #444444; 
   line-height: .1em;
-  margin: 15px 5% 20px; 
+  margin: 50px 5% 50px 35px;
+}
+.section-divider ul { 
+  display: inline;
+  padding: 0;
 }
 .section-divider ul li
 {
-
+  background-color: #060606;
   list-style-type: none;
   display: inline;
 
@@ -39,37 +53,27 @@ html::-webkit-scrollbar {
 }
 .section-divider li:not(:first-child):before {
   content: " | ";
-  background-color: #000;
   padding: 10px 20px 10px 10px;
 }
-#styleRow {
-    background-color:rgb(0, 0, 0);
-}
 span#divider-text {
-    background-color: #000;
-    padding: 0 20px 0 0;
-    cursor: pointer;
-    
+  padding: 0 20px 0 0;
+  cursor: pointer;
+  
 }
-span#divider-text:hover {
-    color: #ed1c24;
+#btnBuy {
+  background-color: #ed1c24;
 }
-
 .meta-data-details {
-    font-size: 12px;
+  font-size: 14px;
 }
-
 #tabsfileDetails li + li:before {
   content: "  |  ";
   padding: 0 10px;
 
 }
-
 #tabsfileDetails {
-  font-size: 12px;
-  padding-left: 15px;
+  font-size: 14px;
 }
-
 #movieplot {
   font-size: 10px;
   text-align: justify;
@@ -84,9 +88,11 @@ span#divider-text:hover {
 }
 #toggleBtn2 span {
   float: right;
-  background-color: #000000;
   padding-left: 20px;
   padding-right: 20px;
+}
+.file-ratings-division {
+  margin-top: 50px;
 }
 .ratings-sector {
   margin-left: 50px;
@@ -98,16 +104,13 @@ span#divider-text:hover {
   font-size: 10px;
   padding-left: 20px;
 }
+
 .file-ratings {
   font-size: 14px !important;
-  /* padding-left: 15px; */
 }
 .file-review {
   padding-left: 30px;
 }
-/* .file-review-row .col-lg-12 {
-  padding-left: 0 !important;
-} */
 button {
   z-index: inherit;
 }
@@ -128,11 +131,3 @@ button {
   margin-left: 30px;
   width: 600px;
 }
-
-#plot {
-  font-size: 12px;
-  width: 60%;
-}
-
-
-/*  */

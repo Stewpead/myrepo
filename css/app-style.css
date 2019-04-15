@@ -92,7 +92,7 @@ button {
     position: fixed;
     z-index: 2;
     left: 0;
-    background-color: #111;
+    background-color: #000;
     overflow-x: hidden;
     padding-top: 60px;
 }
@@ -112,7 +112,7 @@ button {
 }
 #main {
     margin-left: 130px;
-    background-color: #000;
+    background-color: #060606;
     color:white;
     height: 100%;
     display:block;
