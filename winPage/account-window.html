@@ -78,11 +78,11 @@
                                     </div>
                                     <div class="col-xs-10">
                                         <div class="row">
-                                            <div class="col-lg-12 ml-5">
-                                                <h3 id="wback">Welcome Back, <span id="userprofile"></span></h3>
-                                                <div class="row mt-5">
-                                                    <span id="SpanWalletAddressLabel"> Wallet address: &nbsp;&nbsp;</span>
-                                                    <span class="WaddressAccountWindow"></span>
+                                            <div class="col-lg-12 mt-3 ml-5">
+                                                <h3 id="wback" class="mt-5">Welcome Back, <span id="userprofile"></span></h3>
+                                                <div class="row wallet-details">
+                                                    <span id="SpanWalletAddressLabel" class="ml-3"> Wallet address: &nbsp;&nbsp;</span>
+                                                    <span class="WaddressAccountWindow pr-2"></span>
                                                     <span class="mdi mdi-content-copy" id="btnCopy"></span>
                                                 </div> 
                                             </div>
@@ -90,21 +90,21 @@
                                         <div class="row"> 
                                             <div class="col-lg-12 ml-5">
                                                 <div>
-                                                    <div class="d-flex flex-wrap mt-5">
+                                                    <div class="d-flex flex-wrap font-weight-bold">
                                                         <div class="d-flex flex-column" style="background-color:#000;">
-                                                            <div class="p-2" class="avxlabel">
+                                                            <div class="avxlabel mt-1">
                                                                 <span style="font-size:14px;"> Total AVX Spent</span>
                                                             </div>
-                                                            <div class="p-2" style="color:rgb(212, 50, 50);font-size: 32px;" id="redavx">
-                                                                <strong><span id="spentavx">0.00</span></strong>
+                                                            <div style="color:rgb(212, 50, 50);font-size: 32px;" id="redavx">
+                                                                <span id="spentavx">0.00</span>
                                                             </div>
                                                         </div>
-                                                        <div class="d-flex flex-column"  class="avxlabel">
-                                                            <div class="p-2">
+                                                        <div class="d-flex flex-column avxlabel ml-5">
+                                                            <div>
                                                                 <span style="font-size:14px;"> Total AVX Earned</span>
                                                             </div>
-                                                            <div class="p-2" style="color:rgb(64, 212, 50);font-size: 32px;" id="greenavx">
-                                                                <strong><span id="earnedavx">0.00</span></strong>
+                                                            <div style="color:rgb(64, 212, 50);font-size: 32px;" id="greenavx">
+                                                                <span id="earnedavx">0.00</span>
                                                             </div>
                                                         </div>  
                                                     </div>
@@ -115,33 +115,33 @@
                                 </div>
                         </div>
                     </div>
-                    <div class="col-lg-3" style="height:45vh; margin-top:80px;">
+                    <div class="col-lg-3 wallet-side-bar">
                         <h5>Available Wallet Balance</h5>
-                        <div class="d-inline-flex p-2">
-                            <p class="p-2 total-balance"style="font-size:24px;" id="walletBalance"></p><p class="p-2" style="font-size:24px;">AVX</p>
+                        <div class="d-inline-flex">
+                            <p class="total-balance"style="font-size:24px;" id="walletBalance"></p><p style="font-size:24px;">AVX</p>
                         </div>
-                        <div class="d-inline-flex p-2">
-                            <p class="p-2 wallet-bal-texts">Display</p>
-                            <div class="p-2">
+                        <div class="d-inline-flex">
+                            <p class="wallet-bal-texts pr-2">Display</p>
+                            <div >
                                 <div class="dropdown" style="background-color:rgb(255, 255, 255);color:#000;">
-                                    <button class="btn btn-flat dropdown-toggle" type="button" id="decimalPlace" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button class="btn btn-flat dropdown-toggle pr-2" type="button" id="decimalPlace" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         8 
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="decimal-place">
-                                        <a class="dropdown-item" href="#" id="a1">1</a>
-                                        <a class="dropdown-item" href="#" id="a2">2</a>
-                                        <a class="dropdown-item" href="#" id="a3">3</a>
-                                        <a class="dropdown-item" href="#" id="a4">4</a>
-                                        <a class="dropdown-item" href="#" id="a5">5</a>
-                                        <a class="dropdown-item" href="#" id="a6">6</a>
-                                        <a class="dropdown-item" href="#" id="a7">7</a>
-                                        <a class="dropdown-item" href="#" id="a8">8</a>
+                                        <a class="dropdown-item" id="a1">1</a>
+                                        <a class="dropdown-item" id="a2">2</a>
+                                        <a class="dropdown-item" id="a3">3</a>
+                                        <a class="dropdown-item" id="a4">4</a>
+                                        <a class="dropdown-item" id="a5">5</a>
+                                        <a class="dropdown-item" id="a6">6</a>
+                                        <a class="dropdown-item" id="a7">7</a>
+                                        <a class="dropdown-item" id="a8">8</a>
                                     </div>
                                 </div>
                             </div>
-                            <p class="p-2 wallet-bal-texts"> decimal point</p>
+                            <p class="wallet-bal-texts pl-2"> decimal point</p>
                         </div>
-                        <div style="text-align: center;">
+                        <div style="text-align: center;" class="mt-3">
                             <button type="button" id="btnSend" class="btn btn-outline-danger">Send AVX</button>
                         </div>
                     </div>
@@ -187,9 +187,6 @@
                 <div class="container-flui">
                     <div class="row">
                         <div class="col-lg-12">
-                                <!-- <div class="tab-content mt-2 mr-5 ml-5" style="width: auto;background-color:#000;">
-                                        <div id="home" >  
-                                            <table  style="color:white;"> -->
                             <div class="tab-content mt-2 mr-5 ml-5">
                                 <div id="merged" class="tab-pane">  
                                     <table id="tbMerge" class="table table-dark mr-5">

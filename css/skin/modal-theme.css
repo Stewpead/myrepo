@@ -498,7 +498,14 @@ hr#hr {
 }
 
 .popup.scan-result .popup-inner .file-details .file-metadata .file-actor-content .file-actor-details .role {
+    height: 22px;
     font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+    padding: 0 14px;
 }
 
 .popup.scan-result .popup-inner .file-details .file-metadata .file-movie-content .file-movie-details .img {

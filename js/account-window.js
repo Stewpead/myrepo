@@ -19,8 +19,8 @@ ipcRenderer.on('avx-wallet-data', (event, arg) => {
     avxTokens = parseFloat(walletData['wallet_data']['balance']);
     let spentavx = 0.0;
     let earnedavx = 0.0;
-    spentavx = parseFloat(walletData['wallet_data']['spent']);
-    earnedavx = parseFloat(walletData['wallet_data']['earned']);
+    spentavx = parseFloat(walletData['wallet_data']['spent']).toFixed(2);
+    earnedavx = parseFloat(walletData['wallet_data']['earned']).toFixed(2);
     document.getElementById('walletBalance').innerHTML = avxTokens;
     document.getElementById('spentavx').innerHTML = spentavx;
     document.getElementById('earnedavx').innerHTML = earnedavx;
@@ -219,7 +219,7 @@ ipcRenderer.send('request-account-history', accHistory);
 // 1134 add transaction data 
 
 // 1132 update transaction status
-
+ 
 //1124 receive transaction history
 var accountTx;
 ipcRenderer.on('response-acc-history-display', (event, arg) => {
