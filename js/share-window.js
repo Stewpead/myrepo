@@ -377,6 +377,7 @@ setTimeout(function() {
 		let item = 0;
 		let filesTitle = [];
 		var output = '';
+		let itemLength = 0;
 		
 		$('[pd-popup="shareConfirmMetadataModal"] .file-payment-lists-container').remove();
 		
@@ -385,7 +386,6 @@ setTimeout(function() {
 			
 			if ( typeof content !=="undefined") {
 					content = JSON.parse(content);
-					console.log(JSON.stringify(content));
 					let crawl = JSON.parse(content["crawl"]);
 					
 					output += '	<div class="row file-details file-payment-lists"> ';
@@ -466,10 +466,11 @@ setTimeout(function() {
 				
 				filesTitle.push(content["title"]);	
 
-				item++;				
+				item++;	
 				if ( item == filesLength) {
 					
-					crawlPriceSource(filesTitle, 0, filesLength );
+					crawlPriceSource(filesTitle, itemLength, filesLength );
+					itemLength++;
 				}
 				
 				
@@ -500,131 +501,76 @@ function getResolution(height) {
 }
 
 function crawlPriceSource(title, count, filesLength) {
-
-	if ( count < filesLength ) {
-		console.log(" GENERATE: " + title[count].toLowerCase());
-
-		json = {
-			status : 1140,
-			data : {
-				title	: title[count].toLowerCase(),
-				item	: count
-			}
-		}
-		
-		let jsonString = JSON.stringify(json);
-		//console.log(jsonString);
-
-		setTimeout(function() {	
-			ipcRenderer.send('avx-share-crawl-price-source', jsonString);
-		},1000);
-		
-		ipcRenderer.on('avx-share-crawl-price-source-result', (event, data) => {
-			//console.log(data['data']['source']);
-			
-			json = {
-				status 			: 1139,
-				priceSource		: data['data']['source'],
-				item			: data['data']["item"],
-				title			: data['data']["title"]
-				
-			}
-
-			
-			jsonString = JSON.stringify(json);
+	console.log("TEST: "+ count);
+	let pr = new PriceRuler("surface"+ count, 10, 250, 13, 0);
 	
-			ipcRenderer.send('avx-share-crawl-price-data-points', jsonString);
-
-			ipcRenderer.on('avx-share-crawl-price-data-points-result', (event, data) => {
-				jsonString = JSON.stringify(data);
-				//console.log(jsonString);
-				let datapoints = ( data["datapoints"] == '' ) ? '0.00,0.00' : data["datapoints"];
-				datapoints = datapoints.split(',');
-				for (var i=0; i<datapoints.length; i++)
-				{
-					datapoints[i] = parseFloat(datapoints[i], 10);
-				}
-				
-				//console.log(datapoints);
-				crawlPriceSource(title, parseInt(data["item"]) + 1, filesLength );
-		
-				let pr = new PriceRuler("surface"+ data["item"], 10, 250, 13, 0);
-				
-				if (data["datapoints"] == '') {
-					let data_crawled = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(data['item']).find('textarea').text();
-					data_crawled = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(0).find('textarea').text();
-					data_crawled = JSON.parse(data_crawled);
-					data_crawled = data_crawled["crawl"];
-					let year = data_crawled["header"]["release_date"].replace(/\((\d{4})\)/g, "$1");
-					let height = parseInt(data_crawled["metadata"]["height"]);
-					
-					if (year <= 1999) {
-						let pricesArr = [3.95, 4.95, 8.95, 9.95]; 
-						let pos = Math.min(getResolution(height), 3);
-						datapoints = [priceArr[pos]];
-					} else if (year <= 2009) {
-						let pricesArr = [3.95, 5.95, 7.95, 10.95]; 
-						let pos = Math.min(getResolution(height), 3);
-						datapoints = [priceArr[pos]];
-					} else if (year <= 2014) {
-						let pricesArr = [3.95, 6.95, 8.95, 11.95]; 
-						let pos = Math.min(getResolution(height), 3);
-						datapoints = [priceArr[pos]];
-					} else if (year <= 2017) {
-						let pricesArr = [4.95, 7.95, 9.95, 14.95]; 
-						let pos = Math.min(getResolution(height), 3);
-						datapoints = [priceArr[pos]];
-					} else {
-						let pricesArr = [5.95, 8.95, 11.95, 18.95]; 
-						let pos = Math.min(getResolution(height), 3);
-						datapoints = [priceArr[pos]];
-					}
-				}
-				
-				pr.setDataPoints(datapoints);
-				let price = datapoints.reduce((pv,cv)=>{
-				   return pv + (parseFloat(cv)||0);
-				},0);
-				
-				price = ( price / datapoints.length );
-				pr.render();
-				
-				
-				pr.setPrice(price);
-				price = price / 0.0025;
-				$("#surface"+ data["item"] ).attr('price', price);
-				$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(data['item']).find('.filePrice').html(price+ " AVX");
-				let getPrices = $('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists');
-				
-				let avxPrice = 0;
-				
-				$('[pd-popup="shareMarketPriceForMultipleModal"] #surface'+ data['item'] ).parent().find('svg').remove();
-				
-				$.each(getPrices, function( index, value ) {
-					let price = $(this).find('canvas').attr('price');
-					if (typeof price != 'undefined') {
-						
-						avxPrice = (avxPrice + parseFloat(price));
-						let output = avxPrice.toFixed(8) ;
-						let fileResources = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(data['item']).find('textarea').text();
-							fileResources = JSON.parse(fileResources);
-							
-							console.log("PRICE ORIG: " + fileResources["price"]);
-							fileResources["price"] = output;
-							console.log("PRICE NEW : " + fileResources["price"]);
-							$('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(data['item']).find('textarea').text(JSON.stringify(fileResources));
-
-						
-							$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').html(output+ " AVX");
-							$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').attr("full-price", output);
-							
-					}
-				});
-
-			});
-		});	
+	let data_crawled = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(count).find('textarea').text();
+	data_crawled = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(count).find('textarea').text();
+	data_crawled = JSON.parse(data_crawled);
+	data_crawled = data_crawled["crawl"];
+	let year = data_crawled["header"]["release_date"].replace(/\((\d{4})\)/g, "$1");
+	let height = parseInt(data_crawled["metadata"]["height"]);
+	
+	if (year <= 1999) {
+		let pricesArr = [3.95, 4.95, 8.95, 9.95]; 
+		let pos = Math.min(getResolution(height), 3);
+		datapoints = [priceArr[pos]];
+	} else if (year <= 2009) {
+		let pricesArr = [3.95, 5.95, 7.95, 10.95]; 
+		let pos = Math.min(getResolution(height), 3);
+		datapoints = [priceArr[pos]];
+	} else if (year <= 2014) {
+		let pricesArr = [3.95, 6.95, 8.95, 11.95]; 
+		let pos = Math.min(getResolution(height), 3);
+		datapoints = [priceArr[pos]];
+	} else if (year <= 2017) {
+		let pricesArr = [4.95, 7.95, 9.95, 14.95]; 
+		let pos = Math.min(getResolution(height), 3);
+		datapoints = [priceArr[pos]];
+	} else {
+		let pricesArr = [5.95, 8.95, 11.95, 18.95]; 
+		let pos = Math.min(getResolution(height), 3);
+		datapoints = [priceArr[pos]];
 	}
 
+	pr.setDataPoints(datapoints);
+	let price = datapoints.reduce((pv,cv)=>{
+	   return pv + (parseFloat(cv)||0);
+	},0);
+	
+	price = ( price / datapoints.length );
+	pr.render();
+	
+	
+	pr.setPrice(price);
+	price = price / 0.0025;
+	$("#surface"+ data["item"] ).attr('price', price);
+	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.filePrice').html(price+ " AVX");
+	let getPrices = $('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists');
+	
+	let avxPrice = 0;
+	
+	$('[pd-popup="shareMarketPriceForMultipleModal"] #surface'+ count ).parent().find('svg').remove();
+	$.each(getPrices, function( index, value ) {
+		let price = $(this).find('canvas').attr('price');
+		if (typeof price != 'undefined') {
+			
+			avxPrice = (avxPrice + parseFloat(price));
+			let output = avxPrice.toFixed(8) ;
+			let fileResources = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(count).find('textarea').text();
+				fileResources = JSON.parse(fileResources);
+				
+				console.log("PRICE ORIG: " + fileResources["price"]);
+				fileResources["price"] = output;
+				console.log("PRICE NEW : " + fileResources["price"]);
+				$('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(count).find('textarea').text(JSON.stringify(fileResources));
+
+			
+				$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').html(output+ " AVX");
+				$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').attr("full-price", output);
+				
+		}
+	})	
 }
 
 
