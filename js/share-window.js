@@ -467,12 +467,12 @@ setTimeout(function() {
 				filesTitle.push(content["title"]);	
 
 				item++;	
-				if ( item == filesLength) {
+				//if ( item == filesLength) {
 					setTimeout(function() {
 						crawlPriceSource(filesTitle, itemLength, filesLength );
 						itemLength++;
 					}, 1000);
-				}
+				//}
 				
 				
 			}
