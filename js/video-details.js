@@ -106,10 +106,6 @@ $(document).ready(function() {
 });
 
 
-$("#btnBack").click(function() {
-    alert('button back under construction!');
-});
-
 
 $('#tbodyVdetails').on("click","#row1", function() {
     location.href = 'video-download.html';

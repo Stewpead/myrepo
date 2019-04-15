@@ -20,8 +20,6 @@ var imgpath = path.join(__dirname,'/decodedimg/');
 var data64 = "data:image/jpg;base64,";
 
 
-
-
 $(document).ready( () => {
 
 	trendingVids();
@@ -40,9 +38,22 @@ $(document).ready( () => {
 	
 	trendingTVSeries();
 
-	$(function () {
-		$('[data-toggle="tooltip"]').tooltip()
-	})
+	// $(function () {
+	// 	$('[data-toggle="tooltip"]').tooltip()
+	// })
+
+
+	$('.section-divider ul li span').click(function () {
+		
+		$('.section-divider ul li span').removeClass("clicked");
+
+
+		$(this).addClass("clicked");
+
+		
+
+
+	});
 
 });
 
@@ -105,12 +116,6 @@ ipcRenderer.on('response-dashboard-cards', (event, arg) => {
 		trendingVcards += '</div>';
 	}
 	$('#trendingMovies').append(trendingVcards);
-	// $(".grid-cards-video").hover( function () {
-	// 	$(this).fadeOut(100);
-	// 	$(this).fadeIn(500);
-	// });
-
-
 
 });	
 

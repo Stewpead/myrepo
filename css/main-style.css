@@ -32,7 +32,6 @@ html::-webkit-scrollbar {
 #content-main {
     position: fixed;
     text-align: justify;
-    /* margin-left: 15px; */
     height: 65%;
     overflow-y: scroll;
     width: auto;
@@ -125,11 +124,12 @@ a:hover {
 .section-divider ul {
     margin: 0;
     padding: 0;
+    font-size: 12px;
 }
 .section-divider {
     width: 100%; 
     text-align: left; 
-    border-bottom: 1px solid #818181; 
+    /* border-bottom: 1px solid #818181;  */
     line-height: .1em;
     margin: 15px 5% 20px; 
 }
@@ -137,22 +137,23 @@ a:hover {
 {
     list-style-type: none; 
     display: inline;
-
+    color: #555555;
 }
 .section-divider li:not(:first-child):before {
     content: " | ";
-    background-color: #000;
+    color: #222222;
     padding: 10px 20px 10px 10px;
 }
-span#divider-text {
-    background-color: #000;
+span.divider-text {
     padding: 0 20px 0 0;
     cursor: pointer;
 }
-span#divider-text:hover {
+span.divider-text:hover {
     color: #ed1c24;
 }
-
+.section-divider ul li span.clicked {
+    color:white;
+}
 #content-main p.thumb-title {
     font-size: 12px;
     text-transform: capitalize;

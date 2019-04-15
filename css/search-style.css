@@ -14,6 +14,7 @@ button span {
 } 
 #btnSearch {
     background-color: red !important;
+    z-index: 0;
 }
 #defaultstudio {
     font-size: 10px;

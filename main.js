@@ -149,7 +149,7 @@ var initiateConnection = function(attempt){
 				break;
 				
 			case Status.ASSET_UPLOAD_DATA:
-				moduleDashboard.shareUploadResponse(data);
+				moduleDashboard.shareUploadResponse(data); 
 				break;
 				
 			case Status.GET_METADATA_DIR_TREE:

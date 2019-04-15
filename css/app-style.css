@@ -38,6 +38,9 @@ button {
 #container > #main {
     position: relative;
 }
+#slidenav a {
+    cursor: pointer;
+}
 #container {
     position: fixed;
     width: 100%;
