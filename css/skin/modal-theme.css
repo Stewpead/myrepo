@@ -270,6 +270,9 @@ hr#hr {
 	font-size: 30px;
     font-weight: 400;
 }
+.popup.scan-result .popup-inner .file-details.merge-file-details  h1 {
+	text-transform: capitalize;
+}
 .popup.scan-result .popup-inner  h1 span.mdi-file-outline::before {
     font-size: 32px;
 }
@@ -284,6 +287,9 @@ hr#hr {
     font-size: 15px;
     text-align: left;
     padding-left: 38px;
+}
+.popup.scan-result .popup-inner .file-details.merge-file-details  p {
+    text-transform: capitalize;
 }
 .popup.scan-result .popup-inner .file-scanned .title > p {
     margin-bottom: 0;	
@@ -470,7 +476,9 @@ hr#hr {
 	width: 100%;
 	padding: 0 12px;
 }
-
+.popup.scan-result .popup-inner .file-details .file-metadata p.full-width.metadata-desc{
+	padding: 0 12px 70px;
+}
 .popup.scan-result .popup-inner .file-details .file-metadata .file-actor {
     padding: 0 25px;
 }
