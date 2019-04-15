@@ -188,14 +188,6 @@ $('#btnOutcomingTx').click(() => {
     document.getElementById('outgoing').style.display = "block";
 })
 
-//Request for account transaction history
-// var holder = store.get('boolean-transaction-history');
-// store.delete('boolean-transaction-history');
-
-// if( holder ) {
-
-    
-// }
 
 
 //Wallet Data - 1130
@@ -225,7 +217,7 @@ var accountTx;
 ipcRenderer.on('response-acc-history-display', (event, arg) => {
     accountTx = arg;
     let txRecord = [];
-
+    console.log(arg);
     for ( var key in arg['data']) {
 
         txRecord[key] = [];
@@ -246,10 +238,15 @@ ipcRenderer.on('response-acc-history-display', (event, arg) => {
                     txRecord[key][status] += '<td>' + arg['data'][key][status][i][4] + '</td>';
                     txRecord[key][status] += '<td>' + arg['data'][key][status][i][0] +'</td>';
                     txRecord[key][status] += '<td>' + arg['data'][key][status][i][1] +'</td>';
-                    txRecord[key][status] += '<td>' + arg['data'][key][status][i][7] +'</td>';
-                    txRecord[key][status] += '<td>' + arg['data'][key][status][i][2] + '</td>';
-                    txRecord[key][status] += '<td>' + arg['data'][key][status][i][3] + '</td>';
                     txRecord[key][status] += '<td>' + arg['data'][key][status][i][6] + '</td>';
+                    if( status == "in" ) {
+                        txRecord[key][status] += '<td style="color:#3fd35f;">' + arg['data'][key][status][i][2] +'</td>';
+                    } else if ( status == "out" ) {
+                        txRecord[key][status] += '<td style="color: #ed1c24;">' + arg['data'][key][status][i][2] +'</td>';
+                    } 
+
+                    txRecord[key][status] += '<td>' + arg['data'][key][status][i][3] + '</td>';
+                    txRecord[key][status] += '<td>' + arg['data'][key][status][i][7] + '</td>';
                     txRecord[key][status] += '</tr>';
                 }
             }
@@ -290,7 +287,7 @@ ipcRenderer.on('response-acc-history-display', (event, arg) => {
         console.log(arg);
 
         for( var status in arg['data']) {
-
+            console.log(status);
             txRecordTemp[status] = [];
 
                 txRecordTemp[status]['0'] += '<tr>';
@@ -298,10 +295,14 @@ ipcRenderer.on('response-acc-history-display', (event, arg) => {
                 txRecordTemp[status]['0'] += '<td>' + arg['data'][status][4] + '</td>';
                 txRecordTemp[status]['0'] += '<td>' + arg['data'][status][0] + '</td>';
                 txRecordTemp[status]['0'] += '<td>' + arg['data'][status][1] + '</td>';
-                txRecordTemp[status]['0'] += '<td>Description Message Sample</td>';
-                txRecordTemp[status]['0'] += '<td>' + arg['data'][status][2] + '</td>';
-                txRecordTemp[status]['0'] += '<td>' + arg['data'][status][3] + '</td>';
                 txRecordTemp[status]['0'] += '<td>' + arg['data'][status][6] + '</td>';
+                if( status == "in" ) {
+                    txRecordTemp[status]['0'] += '<td style="color:#3fd35f;">' + arg['data'][status][2] + '</td>';
+                } else if ( status == "out") {
+                    txRecordTemp[status]['0'] += '<td style="color:#ed1c24;">' + arg['data'][status][2] + '</td>';
+                }
+                txRecordTemp[status]['0'] += '<td>' + arg['data'][status][3] + '</td>';
+                txRecordTemp[status]['0'] += '<td>' + arg['data'][status][7] + '</td>';
                 txRecordTemp[status]['0'] += '</tr>';
 
         }
