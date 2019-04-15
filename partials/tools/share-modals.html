@@ -419,11 +419,11 @@
 		<h5 class="label-with-border">IP Ownership <span class="mdi mdi-information-outline"></span>  </h5>
 		<div class="row file-details">
 			<div class="row file-metadata">
-				<div class="col-12">
-					<p class="full-width text-indent">This intellectual property has an AVX token account</p>
-					<p class="full-width text-indent">AVX Account Name: <strong><u>AVXAssetAccount\----</u></strong></p>
+				<div class="col-12"><br>
+					<p class="full-width text-indent"style='margin-bottom: 4px; font-size: 18px;'>This intellectual property has an AVX token account</p>
+					<p class="full-width text-indent">AVX Account Name: <strong style="float: none;display: inline-block;padding-left: 6px;"><u class="accountName"></u></strong></p>
 					
-					<p class="full-width text-indent"><br><br><br>Do you own the rights to this intellectual property? 
+					<p class="full-width text-indent"><br>Do you own the rights to this intellectual property? 
 						<span class="icon-segoe segoe-warning"></span> <u>Warning!</u>
 					</p>
 				</div>
@@ -449,7 +449,7 @@
 			</div>
 
 			<div class="col-4">
-				 <a href="#" id="proceedProceedPaymentCart" class="btn btn-danger float-right disabled">Pay now</a>
+				 <a href="#" id="proceedProceedPaymentCart" class="btn btn-danger float-right disabled">Confirm</a>
 				 <a pd-popup-close="shareConfirmMetadataModal" href="#" class="btn btn-default float-right">Cancel</a>
 			</div>
 		</div>
@@ -966,7 +966,9 @@
 						<div class="row file-metadata" style="padding: 0;">
 							<div class="row">
 								<p class="pl-1" style="width: 100%;">
-									<span id="walletBalance" style="font-size: 18px; color:#4ab65c;"></span> <span  style="font-size: 18px; color:#4ab65c;">AVX</span>
+									<span id="walletBalance" style="font-size: 16px;color: #868686;text-align: right;font-weight: bold;"></span> 
+									<span id="walletBalanceUsd" style="font-size: 10px;color: #afadad;text-align: right;font-weight: bold;letter-spacing: 1px;"></span> 
+									<span  style="font-size: 18px; color:#4ab65c;">AVX</span>
 									<span class="mdi mdi-shopping-music"></span>
 								</p>
 							</div>
@@ -980,7 +982,7 @@
 					</div>
 				</div>
 				<div class="col-4">
-					<a href="#" id="executePayment" class="btn btn-danger float-right">Share/Pay</a>
+					<a href="#" id="executePayment" class="btn btn-danger float-right">Confirm</a>
 					<a pd-popup-close="shareMarketPriceForMultipleModal" href="#" id="btnCancel" class="btn btn-default float-right">Cancel</a>
 				</div>
 			</div>

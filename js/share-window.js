@@ -755,10 +755,17 @@ setTimeout(function() {
 			$(".popup.scan-result .metadata-desc").html(decodeURIComponent(crawl["header"]["synopsis"]));
 			$(".popup.scan-result .file-feature-img").css("background-image","url('"+crawl["header"]["poster"]+"'");
 			$(".popup.scan-result .file-subdata span").html(   getDuration(durationOnText) );
-			$(".popup.scan-result .file-rating").html(decodeURIComponent( getResolution(parseInt(data["metadata"]["height"]), 1 ) ) + "p");
+			//$(".popup.scan-result .file-rating").html(decodeURIComponent( getResolution(parseInt(data["metadata"]["height"]), 1 ) ) + "p");
+			$(".popup.scan-result .file-rating").html("PG - 13");
 			$(".popup.scan-result .file-producer").html(decodeURIComponent(crawl["producer"]));
 			$(".popup.scan-result .file-studio").html(decodeURIComponent(crawl["company"]));
 			
+			
+			let companyArray = decodeURIComponent(crawl["company"]).split(',');
+			
+			if ( $.isArray(companyArray) ) {
+				$(".popup.scan-result .accountName").html(companyArray[0]);
+			}
 
 			
 			//DIRECTORS
@@ -1038,7 +1045,7 @@ class DirTreeParserVideo {
 					}
 					
 					this.dirtree += '<span class="icon-segoe segoe-v-player float-left" ></span>'; 
-					this.dirtree += '<strong>' + currObj["name"] +'</strong>'; 
+					this.dirtree += '<span>' + currObj["name"] +'</span>'; 
 					this.dirtree += '<strong> - ' + formatBytes(currObj["size"], 2) + '</strong>';
 					this.dirtree += '</p>';
 					this.dirtree += '</li>';
@@ -1498,6 +1505,7 @@ function crawlPriceSource(title, count, filesLength) {
 	
 		
 	let price = datapoints;
+	let usd_price = datapoints;
 	pr.render();
 	
 	
@@ -1527,6 +1535,7 @@ function crawlPriceSource(title, count, filesLength) {
 
 			
 				$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').html(output+ " AVX");
+				$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #walletBalanceUsd').html("USD : " +usd_price);
 				$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').attr("full-price", output);
 				
 		}
