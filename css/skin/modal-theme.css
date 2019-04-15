@@ -457,10 +457,20 @@ hr#hr {
     display: block;
     width: auto;
 }
+.popup.scan-result .popup-inner .file-details.merge-file-details .file-metadata p {
+    width: 16%;
+    margin-bottom: 9px;
+    text-align: left;
+}
+.popup.scan-result .popup-inner .file-details.merge-file-details .file-metadata strong {
+    display: block;
+    width: 74%;
+}
 .popup.scan-result .popup-inner .file-details .file-metadata p.full-width{
 	width: 100%;
 	padding: 0 12px;
 }
+
 .popup.scan-result .popup-inner .file-details .file-metadata .file-actor {
     padding: 0 25px;
 }
@@ -505,8 +515,9 @@ hr#hr {
     width: 100%;
     display: block;
     height: 148px;
-    background-size: contain;	
-	cursor: pointer;
+    background-size: cover;
+    cursor: pointer;
+    background-repeat: no-repeat;
 }
 .popup.scan-result .popup-inner .file-details .file-metadata .file-movie-content .file-movie-details .img.active {
 	border: 2px solid red;
