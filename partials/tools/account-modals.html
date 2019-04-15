@@ -21,7 +21,7 @@
 			</div> 
 			<div class="wallet-info">
 				<input type="text" id="receiver" placeholder="Enter wallet address">
-				<textarea placeholder="Description"></textarea>
+				<textarea placeholder="Description" id="description"></textarea>
 			</div>
 		</div>
 		<div class="share-modal-options row">
@@ -185,16 +185,6 @@ jQuery(document).ready(function($) {
 
 			}, 1000);
 
-		// } else if ( totalAmountToSend < 0) {
-		// 	console.log('totalAmountToSend: ' + totalAmountToSend + ", AVX BALANCE: " + avxTokens);
-		// 	$('[pd-popup="accountBalanceInsufficient"]').fadeIn(100);
-
-		// 	$('#btnSendtoken').prop('disabled', false).removeClass('disabled');
-
-		// 	setTimeout( () => {
-		// 		$('[pd-popup="accountBalanceInsufficient"]').fadeOut(100);
-		// 	}, 1000);
-
 		} else if(totalAmountToSend > avxTokens ) {
 
 			$('[pd-popup="accountBalanceInsufficient"]').fadeIn(100);
@@ -225,6 +215,8 @@ jQuery(document).ready(function($) {
 
 		json1.data.amount = document.getElementById('avxquantity').value;
 		
+		json1.data.description = document.getElementById('description').value;
+
 		json1.data.type = 0;
 
 		jsonString1 = JSON.stringify(json1);

@@ -51,34 +51,36 @@
         <div id="main">
             <div id="bgvids">
                 <div class="container-fluid">
-                    <div class="row"> 
-                        <div class="col-lg-12 mt-2">
-                            <div class="float-right mr-2">
-                                <a href="#" id="btnSignout"><span class="icon-segoe segoe-close-pane"> Sign out </span></a>    
-                                <a href="wishlist-window.html"><span class="mdi mdi-heart-outline"> Wishlist </span></a>
+                    <div class="header-navigation">
+                        <div class="row"> 
+                            <div class="col-lg-12 mt-2">
+                                <div class="float-right mr-2">
+                                    <a href="#" id="btnSignout"><span class="icon-segoe segoe-close-pane"> Sign out </span></a>    
+                                    <a href="wishlist-window.html"><span class="mdi mdi-heart-outline"> Wishlist </span></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row"> 
-                        <div class="col-lg-6 mt-3">
-                            <a href="#" id="btnBack"> <span class="mdi mdi-arrow-left"> Back</span>  </a>
-                        </div>
-                        <div class="col-lg-6 mt-3">
-                            <div style="margin-left:10vh;">
-                                <div class="p-4 mr-2" id="">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Movie Titles or Audio Tracks" aria-label="Movie Titles or Audio Tracks" aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-danger" type="button" style="color:white; z-index: 0;"> Search</button>
-                                        </div>
-                                    </div> 
+                        <div class="row"> 
+                            <div class="col-lg-6 mt-3">
+                                <a href="#" id="btnBack"> <span class="mdi mdi-arrow-left"> Back</span>  </a>
+                            </div>
+                            <div class="col-lg-6 mt-3">
+                                <div style="margin-left:10vh;">
+                                    <div class="p-4 mr-2" id="">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Movie Titles or Audio Tracks" aria-label="Movie Titles or Audio Tracks" aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-danger" type="button" style="color:white; z-index: 0;"> Search</button>
+                                            </div>
+                                        </div> 
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row"> 
-                            <div class="col-md-3" id="fileImageDiv">
-                                <div class="ml-4" id="fileImage">
+                            <div class="col-md-3">
+                                <div class="ml-4 fileImageDiv" id="fileImage">
                                     
                                 </div>
                             </div>
@@ -87,7 +89,7 @@
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <h4 id="filetitle" style="display: inline-block"></h4> <h6 id="fileyear" style="display: inline-block"></h6>
+                                            <span id="filetitle"></span> <span id="fileyear"></span> <br />
                                             <ul class="nav" id="tabsfileDetails">
                                                 <li>
                                                     <strong id="fileCost"></strong>
@@ -140,15 +142,15 @@
                             </div>
                         </div>                
                     </div>
-                    <div class="row mt-5">
+                    <div class="row">
                         <div class="col-md-3">
 
                         </div>
-                        <div class="col-lg-9" id="styleRow">
+                        <div class="col-lg-9">
                             <div class="row">
                                 <div class="section-divider">
                                     <ul>
-                                        <li style="background-color: #000; margin: 50px 0 0 0;">
+                                        <li>
                                             <span id="divider-text" > Media details </span>
                                         </li>
                                     </ul>
@@ -157,92 +159,92 @@
                             </div>
                         </div>
                     </div>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-3">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-3">
 
-                                </div>
-                                <div class="col-lg-9">
-                                    <div class="row meta-data-details">
-                                        <div class="col-lg-4">
-                                            <br />
-                                            <label class="full-width video-reso">Subtitles: <strong id="ddownSubs"></strong> </label>
-                                            <br />
-                                            <hr />
-                                            <label class="full-width video-duration" >Codec: <strong id="codecSubLabel"></strong> </label>
-                                            <br />
-                                            <label class="full-width video-size">Language: <strong id="sLangLabel"></strong> </label>
-                                            <br />
-                                            <label class="full-width audio-video-bitrate">Display Title: <strong id="subNameLabel"></strong> </label>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <br />
-                                            <label class="full-width video-reso">Audio: <strong id="ddownAudio"></strong></label>
-                                            <br />
-                                            <hr />
-                                            <label class="full-width video-duration" >Codec: <strong id="codecAudioLabel"></strong> </label>
-                                            <br />
-                                            <label class="full-width video-size">Language: <strong id="aLangLabel"></strong> </label>
-                                            <br />
-                                            <label class="full-width audio-video-bitrate">Display Title: <strong id="audioLabel"></strong> </label>
-                                        </div>
-                                    </div>    
-                                    <div class="row meta-data-details mt-2">
-                             
-                                        <div class="col-4"><br>
-                                            <label class="full-width video-reso">Video Resolution: <strong id="vrateLabel"></strong> </label>
-                                            <br />
-                                            <label class="full-width video-duration" >Duration: <strong id="durationLabel"></strong> </label>
-                                            <br />
-                                            <label class="full-width video-size">Size: <strong id="sizeLabel"></strong> </label>
-                                            <br />
-                                            <label class="full-width audio-video-bitrate">Audio & Video Bitrate: <strong id="avbLabel"></strong> </label>
-                                            <br />
-                                            <label class="full-width video-width">Width: <strong id="widthLabel"></strong> </label>
-                                            <br />
-                                            <label class="full-width video-height">Height: <strong id="heightLabel"></strong> </label>
-                                            <br />
-                                            <label class="full-width aspect-ratio">Aspect Ratio: <strong id="aspectRatioLabel"></strong> </label>
-                                        </div>
-
-                                        <div class="col-4"><br>
-                                            <label class="full-width video-container">Container: <strong id="containerLabel"></strong> </label>
-                                            <br />
-                                            <label class="full-width video-frame-rate">Video Frame Rate: <strong id="videoFramRateLabel"></strong> </label>
-                                            <br />
-                                            <label class="full-width">Web Optimized: <strong id="webOptimizedLabel"></strong> </label>
-                                            <br />
-                                            <label class="full-width video-profile">Video Profile: <strong id="videProfileLabel"></strong> </label>
-                                            <br />
-                                            <label class="full-width video-codec">Video Codec: <strong id="videoCodecLabel"></strong> </label>
-                                            <br />
-                                            <label class="full-width video-bitrate">Video Bitrate: <strong id="videobitrateLabel"></strong> </label>				
-                                        </div>
-                                        <div class="col-4"><br />
-                                            <label class="full-width bit-depth">Bit Depth: <strong id="bitDepth">8</strong> </label>
-                                            <br />
-                                            <label class="full-width video-frame-rate">Frame Rate: <strong id="framrateLabel"></strong></label>
-                                            <br />
-                                            <label class="full-width audio-channels">Audio Channels: <strong id="audNameLabel"></strong> </label>
-                                            <br />
-                                            <label class="full-width">Audio Bitrate: <strong id="audioBitrateLabel"></strong> </label>
-                                            <br />
-                                            <label class="full-width">Audio Channel Layout: <strong id="audioChannelLabel"></strong> </label>
-                                            <br />
-                                            <label class="full-width">Sampling Rate: <strong id="samplingRateLabel"></strong> </label>
-                                        </div>			 
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="row meta-data-details">
+                                    <div class="col-lg-4 pl-3">
+                                        <br />
+                                        <label class="full-width video-reso">Subtitles: <strong id="ddownSubs"> N/A</strong> </label>
+                                        <br />
+                                        <hr />
+                                        <label class="full-width video-duration" >Codec: <strong id="codecSubLabel">N/A</strong> </label>
+                                        <br />
+                                        <label class="full-width video-size">Language: <strong id="sLangLabel">N/A</strong> </label>
+                                        <br />
+                                        <label class="full-width audio-video-bitrate">Display Title: <strong id="subNameLabel">N/A</strong> </label>
                                     </div>
+                                    <div class="col-lg-4">
+                                        <br />
+                                        <label class="full-width video-reso">Audio: <strong id="ddownAudio">N/A</strong></label>
+                                        <br />
+                                        <hr />
+                                        <label class="full-width video-duration" >Codec: <strong id="codecAudioLabel">N/A</strong> </label>
+                                        <br />
+                                        <label class="full-width video-size">Language: <strong id="aLangLabel">N/A</strong> </label>
+                                        <br />
+                                        <label class="full-width audio-video-bitrate">Display Title: <strong id="audioLabel">N/A</strong> </label>
+                                    </div>
+                                </div>    
+                                <div class="row meta-data-details mt-2">
+                            
+                                    <div class="col-4"><br>
+                                        <label class="full-width video-reso">Video Resolution: <strong id="vrateLabel"></strong> </label>
+                                        <br />
+                                        <label class="full-width video-duration" >Duration: <strong id="durationLabel"></strong> </label>
+                                        <br />
+                                        <label class="full-width video-size">Size: <strong id="sizeLabel"></strong> </label>
+                                        <br />
+                                        <label class="full-width audio-video-bitrate">Audio & Video Bitrate: <strong id="avbLabel"></strong> </label>
+                                        <br />
+                                        <label class="full-width video-width">Width: <strong id="widthLabel"></strong> </label>
+                                        <br />
+                                        <label class="full-width video-height">Height: <strong id="heightLabel"></strong> </label>
+                                        <br />
+                                        <label class="full-width aspect-ratio">Aspect Ratio: <strong id="aspectRatioLabel"></strong> </label>
+                                    </div>
+
+                                    <div class="col-4"><br>
+                                        <label class="full-width video-container">Container: <strong id="containerLabel"></strong> </label>
+                                        <br />
+                                        <label class="full-width video-frame-rate">Video Frame Rate: <strong id="videoFramRateLabel"></strong> </label>
+                                        <br />
+                                        <label class="full-width">Web Optimized: <strong id="webOptimizedLabel"></strong> </label>
+                                        <br />
+                                        <label class="full-width video-profile">Video Profile: <strong id="videProfileLabel"></strong> </label>
+                                        <br />
+                                        <label class="full-width video-codec">Video Codec: <strong id="videoCodecLabel"></strong> </label>
+                                        <br />
+                                        <label class="full-width video-bitrate">Video Bitrate: <strong id="videobitrateLabel"></strong> </label>				
+                                    </div>
+                                    <div class="col-4"><br />
+                                        <label class="full-width bit-depth">Bit Depth: <strong id="bitDepth">8</strong> </label>
+                                        <br />
+                                        <label class="full-width video-frame-rate">Frame Rate: <strong id="framrateLabel"></strong></label>
+                                        <br />
+                                        <label class="full-width audio-channels">Audio Channels: <strong id="audNameLabel"></strong> </label>
+                                        <br />
+                                        <label class="full-width">Audio Bitrate: <strong id="audioBitrateLabel"></strong> </label>
+                                        <br />
+                                        <label class="full-width">Audio Channel Layout: <strong id="audioChannelLabel"></strong> </label>
+                                        <br />
+                                        <label class="full-width">Sampling Rate: <strong id="samplingRateLabel"></strong> </label>
+                                    </div>			 
                                 </div>
                             </div>
                         </div>
                     </div>
                     </div>
-                    <div class="row">
+                    </div>
+                    <div class="row" class="file-ratings-division">
                         <div class="col-lg-12" id="styleRow">
                             <div class="row">
                                 <div class="section-divider ml-5">
                                     <ul>
-                                        <li style="background-color: #000; margin: 50px 0 0 0;">
+                                        <li>
                                             <span id="divider-text">File Review & Artistic Review </span>
                                         </li>
                                     </ul>
