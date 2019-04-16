@@ -25,6 +25,7 @@ img {
 }
 .wallet-details span {
     font-size: 14px !important;
+    font-weight: 900;
 }
 .btn {
     color:rgb(255, 255, 255);

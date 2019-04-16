@@ -111,6 +111,8 @@ $(document).ready(() => {
             // 4.9% L2 users
             // .1% AVX wallet
 
+            // JWU SML TBH 
+
         paymentModalData();
 
         $('#btnCloseSuccess').click( () => {
@@ -178,6 +180,8 @@ function paymentModalData() {
 
     $('.file-feature-img').css('background-image', 'url(' + jAsset["crawl"]["header"]["poster"] + ')');
     document.getElementById('file-title').innerHTML = jAsset["info"][indeKey]["title"];
+    $('.fileTitle').text = jAsset["info"][indeKey]["title"];
+    $('.filePrice').text(parseFloat(assetKey["price"]).toFixed(2));
     let priceavx = parseFloat(assetKey["price"]).toFixed(2);
     $('#sixtyP').text(priceavx * .6);
     $('#thirtyP').text(priceavx * .3);
