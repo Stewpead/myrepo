@@ -57,7 +57,7 @@ function formatBytes(bytes,decimals) {
  }
  
  /*** 2.9 Get Resolution ***/
-function getResolution(height, type= 0) {
+function getResolution(height, type = 0) {
 	let quality = [480, 720, 1080, 1440, 2160, 4000, 6000];
 	let i = 0;
 	
