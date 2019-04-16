@@ -1184,7 +1184,7 @@ function getScanLoadingForModal( speed, fadeOut, fadeIn ) {
 function checkFileForVideoPlayable( filename  ) {
 	let file_ext =  filename.substring(filename.lastIndexOf('.') + 1);
 	let video_lists = [ "webm", "mkv", "flv", "vob", "ogg", "ogv", "avi", "mov", "wmv", "mpg", "mpeg", "mpe", "mpv", "m2v", "m4v", "mp4"];
-	let results = $.inArray( file_ext, video_lists );
+	let results = $.inArray( file_ext.toLowerCase(), video_lists );
 	return ( results < 0 ) ? 0 : 1;
 }
 
