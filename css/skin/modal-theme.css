@@ -872,13 +872,12 @@ hr#hr {
 }
 .file-payment-lists .section-line-divider span#fileTitle {
     margin-left: -30px;
-}
+} 
 /* $('[pd-popup="shareMarketPriceForMultipleModal"]').fadeIn(100); */
 .popup[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner h5.label-with-border.white-title {
 	color: #ffffff;
 	font-style: normal;
 	padding-top: 0;
-	
 }
 .popup[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner h5.label-with-border.white-title .fileTitle{
     text-transform: capitalize;
