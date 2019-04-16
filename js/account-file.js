@@ -6,6 +6,7 @@ x.style.display = "none";
 
 var fileDownloadList = {};
 var fileDownloadListFileReceive = {};
+var g_id;
 
 
 $(document).ready( () => {
@@ -23,7 +24,8 @@ $(document).ready( () => {
 	
 	setInterval(function(){
 		ipcRenderer.send('request-filetransfer-stats', jMessageD);
-		ipcRenderer.send('request-sourcing-stat', jMessageU);
+		// ipcRenderer.send('request-sourcing-stat', jMessageU);
+		getDownloadDetails(g_id);
 	}, 2000);
 	
 	
@@ -80,16 +82,17 @@ ipcRenderer.on('receive-filetransfer-stats', (event, arg) => {
     console.log(JSON.stringify(arg));
 
 	let fn  = arg["filename"];
+	if (typeof g_id == 'undefined') g_id = fn;
 
-		fileDownloadList[fn] = {
-			data_rate: arg["data_rate"],
-			progress: arg["progress"],
-			peers: arg["peers"],
-			time_elapsed: arg["time_elapsed"],
-			downloaded: arg["downloaded"],
-			is_complete: arg["is_complete"],
-			remaining_time: arg["remaining_time"]
-		};
+	fileDownloadList[fn] = {
+		data_rate: arg["data_rate"],
+		progress: arg["progress"],
+		peers: arg["peers"],
+		time_elapsed: arg["time_elapsed"],
+		downloaded: arg["downloaded"],
+		is_complete: arg["is_complete"],
+		remaining_time: arg["remaining_time"]
+	};
 
 	let row = '';
 
@@ -118,11 +121,11 @@ ipcRenderer.on('receive-filetransfer-stats', (event, arg) => {
 	}
 	
 	$("#dtVerticalScroll tbody").html(row);
-	
-	$("#dtVerticalScroll tbody").html(row);
+
+
 	$('#dtVerticalScroll tbody tr').on('click', function() {
-		let id = $("td:eq(0)", this).attr('id');
-		$('#time-elapse').html(getDuration(fileDownloadList[id].time_elapsed / 1000));
+		g_id = $("td:eq(0)", this).attr('id');
+		getDownloadDetails(g_id);
 	});
 	
 });
@@ -233,3 +236,16 @@ $('#viewDspeed').click(() => {
     document.getElementById("DSpeed").style.display = "block";
 });
 
+function getDownloadDetails(id) {
+	console.log(g_id);
+	if (typeof g_id != 'undefined') {
+		let status = fileDownloadList[id].is_complete ? 'complete' : 'in progress';
+
+		$('#time-elapse').html(getDuration(fileDownloadList[id].time_elapsed * 1000000));
+		
+		$('#downloaded-size').html(formatBytes(fileDownloadList[id].downloaded, 2));
+		$('#download-speed').html(fileDownloadList[id].data_rate);
+		$('#download-status').html(status);
+		$('#time-remaining').html(getDuration(fileDownloadList[id].remaining_time * 1000000));
+	}
+}
