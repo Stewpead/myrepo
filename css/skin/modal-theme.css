@@ -50,7 +50,8 @@
     float: right;
     color: #ed1c24;
     text-align: right;
-    width: 100%;
+    width: 100%;    
+	margin-bottom: 0px;
 }
 hr#hr {
     width: 100%;
