@@ -12,13 +12,13 @@ const store = new Store();
 var img = "";
 
 var assetKey = store.get('pass-asset-key');
-store.delete('pass-asset-key');
+// store.delete('pass-asset-key');
 
 var indeKey = assetKey["indexKey"];
 
 var jAsset = store.get('metadata-specific-asset');
-store.delete('metadata-specific-asset');
-
+// store.delete('metadata-specific-asset');
+console.log(jAsset);
 var walletData;
 var currentBal;
 $(document).ready(() => {
@@ -111,6 +111,8 @@ $(document).ready(() => {
             // 4.9% L2 users
             // .1% AVX wallet
 
+            // JWU SML TBH 
+
         paymentModalData();
 
         $('#btnCloseSuccess').click( () => {
@@ -177,7 +179,9 @@ function paymentModalData() {
     });
 
     $('.file-feature-img').css('background-image', 'url(' + jAsset["crawl"]["header"]["poster"] + ')');
-    document.getElementById('file-title').innerHTML = jAsset["info"][indeKey]["title"];
+    document.getElementById('filetitle').innerHTML = jAsset["info"][indeKey]["title"];
+    $('.fileTitle').text(jAsset["info"][indeKey]["title"]);
+    $('.filePrice').text(parseFloat(assetKey["price"]).toFixed(2));
     let priceavx = parseFloat(assetKey["price"]).toFixed(2);
     $('#sixtyP').text(priceavx * .6);
     $('#thirtyP').text(priceavx * .3);
@@ -185,7 +189,6 @@ function paymentModalData() {
     $('#priceAVX').text(priceavx + " AVX");
     $('.runtime').text(getDuration(jAsset["info"][indeKey]["metadata"]["duration"]));
     $('.releasedYear').text(jAsset["crawl"]["header"]["release_date"]);
-    
 }
 
 function populateScreen() {
@@ -194,7 +197,7 @@ function populateScreen() {
     document.getElementById('artistic-review').style.display = 'none';
    
 
-    document.getElementById('filetitle').innerHTML = jAsset["info"][indeKey]["title"];
+    // document.getElementById('filetitle').innerHTML = jAsset["info"][indeKey]["title"];
     document.getElementById('fileyear').innerHTML = jAsset["crawl"]["header"]["release_date"];
     let filecost = assetKey["price"];
     document.getElementById('fileCost').innerHTML = parseFloat(filecost).toFixed(2) + " AVX";
