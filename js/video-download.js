@@ -233,20 +233,22 @@ function paymentModalData() {
 
     $('.resolution').text(getResolution(height, 1));
 
-    $('.filePrice').text(parseFloat(assetKey["price"]).toFixed(2));
+    $('.filePrice').text(parseFloat(assetKey["price"]).toFixed(2) + "AVX");
 
     $('.duration').text(getDuration(jAsset["info"][indeKey]["metadata"]["duration"]));
 
     $('.releaseDate').text(jAsset["crawl"]["header"]["release_date"].replace(/\((\d{4})\)/g, "$1"));
 
     $('.yearsreleased').text(jAsset["crawl"]["header"]["release_date"].replace(/\((\d{4})\)/g, "$1"));
-
-    let usd = parseInt(jAsset["crawl"]["header"]["release_date"].replace(/\((\d{4})\)/g, "$1")) * .0025;
+	
+	let priceavx = parseFloat(assetKey["price"]).toFixed(2);
+    let usd = parseFloat(priceavx) * .0025;
     $('.usd-price').text( "$" + (usd.toFixed(2)) );
 
+
     
-    let priceavx = parseFloat(assetKey["price"]).toFixed(2);
-    $('#usdavx').text("$" + usd);
+
+    $('#usdavx').text("$" + usd.toFixed(2));
     $('#priceOfAVX').text(priceavx);
     
     console.log(assetKey);
