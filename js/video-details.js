@@ -63,7 +63,7 @@ $(document).ready(function() {
     let strBanner = jAsset["crawl"]["header"]["banner"];
     // console.log(strBanner);
     $('#mainSearchResult').css({
-        'background': 'linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, .8) 60%, rgba(0, 0, 0, 1) 100%), url("' + strBanner + '") no-repeat',
+        'background': 'linear-gradient(to bottom, rgba(0, 0, 0, 0.77) 0%, rgba(0, 0, 0, 0.9) 60%, rgba(0, 0, 0, 1) 100%), url("' + strBanner + '") no-repeat',
         'background-size': '100% 35%'
     });
 
