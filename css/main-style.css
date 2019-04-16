@@ -32,12 +32,13 @@ html::-webkit-scrollbar {
 #content-main {
     position: fixed;
     text-align: justify;
-    height: 65%;
+    height: 87%;
     overflow-y: scroll;
     width: auto;
     overflow-x: hidden;
     display: block;
     background-color: #060606;
+    padding-bottom: 120px;
 }
 #content-main::-webkit-scrollbar {
     display: block;
@@ -132,7 +133,7 @@ a:hover {
     text-align: left; 
     /* border-bottom: 1px solid #818181;  */
     line-height: .1em;
-    margin: 60px 5% 40px;
+    margin: 20px 5% 40px;
 }
 .section-divider ul li
 {
@@ -334,11 +335,25 @@ span.divider-text:hover {
     .col-lg-2 {
      max-width: 10.8%!important;
     }
+    #bg{
+      width: 94%;
+      height: 230px;
+    }
 }
     @media (min-width: 1400px) and (max-width: 1699px) {
   
     .col-lg-2 {
      max-width: 13.9%!important;
+    }
+     #bg{
+      width: 92%;
+      height: 167px;
+    }
+    .section-divider{
+        margin: 30px 5% 40px;
+    }
+    #spacing{
+        height: 170px;
     }
   
 }
@@ -347,6 +362,13 @@ span.divider-text:hover {
     .col-lg-2 {
      max-width: 16.2%!important;
     }
+     #bg{
+      width: 90%;
+      height: 148px;
+    }
+    #spacing{
+        height: 150px;
+    }
   
 }
     @media (min-width: 1160px) and (max-width: 1239px) {
@@ -354,12 +376,25 @@ span.divider-text:hover {
     .col-lg-2 {
      max-width: 16%!important;
     }
-  
+    #bg{
+      width: 89%;
+      height: 135px;
+    }
+    #spacing{
+        height: 135px;
+    }
 }
   @media (min-width: 1080px) and (max-width: 1159px) {
   
     .col-lg-2 {
      max-width: 16%!important;
+    }
+     #bg{
+      width: 88%;
+      height: 125px;
+    }
+    #spacing{
+        height: 125px;
     }
   
 }
@@ -368,12 +403,26 @@ span.divider-text:hover {
     .col-lg-2 {
      max-width: 19.2%!important;
     }
+    #bg{
+      width: 87%;
+      height: 112px;
+    }
+    #spacing{
+        height: 112px;
+    }
   
 }
 @media (min-width: 720px) and (max-width: 979px) {
   
     .col-lg-2 {
      max-width: 31.5%!important;
+    }
+     #bg{
+      width: 82%;
+      height: 80px;
+    }
+    #spacing{
+        height: 80px;
     }
   
 }
@@ -385,6 +434,13 @@ span.divider-text:hover {
     .section-divider ul li{
         font-size: 16px;
     }
+     #bg{
+      width: 82%;
+      height: 80px;
+    }
+    #spacing{
+        height: 80px;
+    }
   
 }
 @media (min-width: 650px) and (max-width: 679px) {
@@ -395,6 +451,14 @@ span.divider-text:hover {
      .section-divider ul li{
         font-size: 16px;
     }
+     #bg{
+      width: 82%;
+      height: 80px;
+    }
+    #spacing{
+        height: 80px;
+    }
+  
   
 }
 @media (min-width: 600px) and (max-width: 649px) {
@@ -408,6 +472,14 @@ span.divider-text:hover {
     .section-divider{
         margin: 60px 0% 40px;
     }
+     #bg{
+      width: 82%;
+      height: 80px;
+    }
+    #spacing{
+        height: 80px;
+    }
+  
   
 }
 @media (min-width: 570px) and (max-width: 599px) {
@@ -424,23 +496,13 @@ span.divider-text:hover {
     span.divider-text{
         padding: 0 10px 0 0;
     }
+     #bg{
+      width: 82%;
+      height: 80px;
+    }
+    #spacing{
+        height: 80px;
+    }
   
-}
-
-
-.hvr-grow {
-    display: inline-block;
-    vertical-align: middle;
-    transform: translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    backface-visibility: hidden;
-    -moz-osx-font-smoothing: grayscale;
-    transition-duration: 0.3s;
-    transition-property: transform;
-}
-
-.hvr-grow:hover,
-.hvr-grow:focus,
-.hvr-grow:active {
-    transform: scale(1.1);
+  
 }
