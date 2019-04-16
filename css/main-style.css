@@ -506,3 +506,23 @@ span.divider-text:hover {
   
   
 }
+
+
+a.soon-link {
+ color: #818181!important;
+}
+a.soon-link:before {
+    content: 'Soon!';
+    margin-top: -4px;
+    position: absolute;
+    background-color: #ed1c24;
+    margin-left: 29px;
+    padding: 5px 8px;
+    font-weight: bolder;
+    border-radius: 1px;
+    color: #ffffff;
+    font-size: 9px;
+}
+a.soon-link span {
+ color: #818181!important;
+}
