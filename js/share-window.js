@@ -546,40 +546,49 @@ setTimeout(function() {
 
 
 	$('#ShareModalView').on("click","#executePayment", function() {
+		
+		let totalAmount = parseFloat($('[pd-popup="shareMarketPriceForMultipleModal"] #priceAVX' ).attr("fullprice") );
+		let currentBalance = parseFloat ($('[pd-popup="shareMarketPriceForMultipleModal"] #walletBalance' ).html() );
+		
+		if ( totalAmount > currentBalance ) {
+			alert("You have an insuficient AVX token");
+			
+		} else {
+		
 
-		let files = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details');
-		let assetsData = [];
-		let count = 0; 
-		let category = $('[pd-popup="shareScanResultModal"] #fileCategory').val();
-		let jsonAssetUpload = ''; 
+			let files = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details');
+			let assetsData = [];
+			let count = 0; 
+			let category = $('[pd-popup="shareScanResultModal"] #fileCategory').val();
+			let jsonAssetUpload = ''; 
 
-		$.each( files, function( key, value ) {
-		  var data = $(this).find("textarea").text();
-		  
-		  switch(category) {
-			  case 'movie' :
-				assetsData[count] = JSON.parse(decodeURIComponent(data));
-			  break;
-			  case 'tv':
-				assetsData[count] = JSON.parse(data); 
-			  break;
-		  }
-		  
-		  count++;
-		});
+			$.each( files, function( key, value ) {
+			  var data = $(this).find("textarea").text();
+			  
+			  switch(category) {
+				  case 'movie' :
+					assetsData[count] = JSON.parse(decodeURIComponent(data));
+				  break;
+				  case 'tv':
+					assetsData[count] = JSON.parse(data); 
+				  break;
+			  }
+			  
+			  count++;
+			});
 
-		let filepath = $('#fullFilePathDir').val();
-		let amount = $('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').attr("full-price");
+			let filepath = $('#fullFilePathDir').val();
+			let amount = $('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').attr("full-price");
 
-		jsonAssetUpload = {
-			status : 1116,
-			data : assetsData,
-			action : category,
-			amount	: amount //TOTAL AMOUNT
-		};
-		console.log( JSON.stringify(jsonAssetUpload) );
-		ipcRenderer.send('avx-share-upload-asset', JSON.stringify(jsonAssetUpload) );	
-
+			jsonAssetUpload = {
+				status : 1116,
+				data : assetsData,
+				action : category,
+				amount	: amount //TOTAL AMOUNT
+			};
+			console.log( JSON.stringify(jsonAssetUpload) );
+			ipcRenderer.send('avx-share-upload-asset', JSON.stringify(jsonAssetUpload) );	
+		}
 		ipcRenderer.on('avx-upload-payment-response', (event, data) => {
 			store.set("ShareUploadTxKey", data["data"]["tx_key"]);
 			$('[pd-popup="shareMarketPriceForMultipleModal"]').fadeOut(100);
