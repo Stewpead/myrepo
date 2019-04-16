@@ -38,11 +38,11 @@
 								</div>  
 								<div class="col-12">  
 									<p>Released: </p>  
-									<strong class="col-12"></strong> 
+									<strong class="col-12 releaseDate"></strong> 
 								</div>  
 								<div class="col-12">  
 									<p>Type: </p>  
-									<strong class="col-12"></strong> 
+									<strong class="col-12">Movie</strong> 
 								</div>  
 							</div>  
 			
@@ -51,11 +51,11 @@
 							<div class="row file-metadata"> 
 								<div class="col-12"><br> 
 									<p>Audio: </p>  
-									<strong class="col-12 red-text"> N/A </strong>  
+									<strong class="col-12 red-text"> English (ACC Stereo), Francais (ACC), Francais (ACC Stereo) </strong>  
 								</div>  
 								<div class="col-12">  
 									<p>Subtitle: </p>  
-									<strong class="col-12 red-text"> N/A </strong>  
+									<strong class="col-12 red-text"> English (SRT External), English(ASS) </strong>  
 								</div>  
 							</div>  
 			
@@ -65,7 +65,7 @@
 							<div class="row file-metadata"> 
 								<div class="col-12"><br> 
 									<p>Year Released: </p>  
-									<strong class="col-12"></strong>  
+									<strong class="col-12 yearsreleased"></strong>  
 								</div>  
 								<div class="col-12">  
 									<p>Resolution: </p>  
@@ -75,22 +75,26 @@
 									<p>Price in USD: </p>  
 									<strong class="col-12 usd-price"> </strong>  
 								</div>  
-								<!-- <div class="col-4">  
+								<div class="col-4">  
 									<p style="width: 128px">USD to AVX Rate: </p>  
 									<strong style="background: #f6f6f6;color: #5d5d5d;font-size: 13px;float: left;padding: 2px 11px; width: 128px" class="col-12"> 
-										$1.00 = 0.0025 AVX </strong>  
-								</div>   -->
+										$1.00 = 0.0025 AVX </strong> 
+
+										<!-- <canvas id="surfaceFileDownloadCanvas" width="677.286px" style="width:100%;margin-top: -120px;" height="250"></canvas>  -->
+								</div>  
 								<div class="col-4">  
-									<p>AVX Cost: </p>  
-									<strong class="col-12 price"> N/A </strong>  
+									<span class="float-left">AVX Cost: </span>  <span><strong class="col-12 price"> </strong></span>
+								
+									<br />
+									<hr />
 								</div>  
 							</div>  
 			
 							<div class="row meta-data-details no-padding">  
 
-								<canvas id="surface'+item+'" width="677.286px" style="width:100%;margin-top: -120px;" height="250"></canvas> 
+								<canvas id="surfaceFileDownloadCanvas" width="677.286px" style="width:100%;margin-top: -120px;" height="250"></canvas> 
 								<img id="txImage" src="../images/horizontal logo_tm_x800.png" style="width: 15%;height: 100%;margin-top: -52px; float: left; margin-left:56px"> 
-								<p class="graph-label">$10.00 = 0.0025BTC = 39.123415 AVX</p>  
+							
 								<div class="payment-break-down mb-5">  
 									<h5 class="label-with-border break-down">See where your money goes </h5>  
 										<ul class="ml-5">  
@@ -133,14 +137,10 @@
 							<div class="row">
 								<div class="col-lg-12">
 									<span id="walletBalance" style="font-size: 18px; color:#4ab65c;"> </span> <span  style="font-size: 18px; color:#4ab65c;">AVX</span>
-									<span class="mdi mdi-shopping-music"></span>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-12">
-									<span style="font-size: 10px">
-										Account Wallet Ballance
-									</span>
+									<span class="mdi mdi-shopping-music"></span> <br />
+									<span style="font-size: 14px">
+											Account Wallet Ballance
+										</span>
 								</div>
 							</div>
 						</div>

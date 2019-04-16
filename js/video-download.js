@@ -51,6 +51,7 @@ $(document).ready(() => {
         document.getElementById('file-review').style.display = 'block';
         document.getElementById('artistic-review').style.display = 'none';
     });
+
     $('#btnArtisticReview').click( () => {
         document.getElementById('file-review').style.display = 'none';
         document.getElementById('artistic-review').style.display = 'block';
@@ -122,7 +123,48 @@ $(document).ready(() => {
         $('#breakFileOne').click( () => {
             $('#fileOne').slideToggle('slow');
         });
+        
+// 
 
+    let pr = new PriceRuler("surfaceFileDownloadCanvas" , 10, 250, 13, 0);
+        
+
+    let year = jAsset["crawl"]["header"]["release_date"].replace(/\((\d{4})\)/g, "$1");
+    let height = (parseInt(jAsset["info"][indeKey]["metadata"]["height"]));
+
+    if (year <= 1999) {
+        let pricesArr = [3.95, 4.95, 8.95, 9.95]; 
+        let pos = Math.min(getResolution(height), 3);
+        datapoints = pricesArr[pos];
+    } else if (year <= 2009) {
+        let pricesArr = [3.95, 5.95, 7.95, 10.95]; 
+        let pos = Math.min(getResolution(height), 3);
+        datapoints = pricesArr[pos];
+    } else if (year <= 2014) {
+        let pricesArr = [3.95, 6.95, 8.95, 11.95]; 
+        let pos = Math.min(getResolution(height), 3);
+        datapoints = pricesArr[pos];
+    } else if (year <= 2017) {
+        let pricesArr = [4.95, 7.95, 9.95, 14.95]; 
+        let pos = Math.min(getResolution(height), 3);
+        datapoints = pricesArr[pos];
+    } else {
+        let pricesArr = [5.95, 8.95, 11.95, 18.95]; 
+        let pos = Math.min(getResolution(height), 3);
+        datapoints = pricesArr[pos];
+    }
+
+    pr.setDataPoints([datapoints]);
+
+        
+    let price = datapoints;
+    let usd_price = datapoints;
+    pr.render();
+
+
+    pr.setPrice(price);
+    price = price / 0.0025;
+// 
     }, 100);
     var tx_key = "";
     ipcRenderer.on('response-buy-this-asset', (event, arg) => {
@@ -180,15 +222,40 @@ function paymentModalData() {
 
     $('.file-feature-img').css('background-image', 'url(' + jAsset["crawl"]["header"]["poster"] + ')');
     document.getElementById('filetitle').innerHTML = jAsset["info"][indeKey]["title"];
+
     $('.fileTitle').text(jAsset["info"][indeKey]["title"]);
+
+    let height = parseInt(jAsset["info"][indeKey]["metadata"]["height"]);
+
+    $('.resolution').text(getResolution(height, 1));
+
     $('.filePrice').text(parseFloat(assetKey["price"]).toFixed(2));
+
+    $('.duration').text(getDuration(jAsset["info"][indeKey]["metadata"]["duration"]));
+
+    $('.releaseDate').text(jAsset["crawl"]["header"]["release_date"].replace(/\((\d{4})\)/g, "$1"));
+
+    $('.yearsreleased').text(jAsset["crawl"]["header"]["release_date"].replace(/\((\d{4})\)/g, "$1"));
+
+    let usd = parseInt(jAsset["crawl"]["header"]["release_date"].replace(/\((\d{4})\)/g, "$1")) * .0025;
+    $('.usd-price').text(usd + "$");
+
     let priceavx = parseFloat(assetKey["price"]).toFixed(2);
+    $('#usdavx').text("$" + usd);
+    $('#priceOfAVX').text(priceavx);
+    
+    console.log(assetKey);
+
     $('#sixtyP').text(priceavx * .6);
     $('#thirtyP').text(priceavx * .3);
     $('#fiveP').text(priceavx * .05);
+
     $('#priceAVX').text(priceavx + " AVX");
+
     $('.runtime').text(getDuration(jAsset["info"][indeKey]["metadata"]["duration"]));
+
     $('.releasedYear').text(jAsset["crawl"]["header"]["release_date"]);
+    $('.price').text(parseInt(assetKey["price"]).toFixed(2));
 }
 
 function populateScreen() {
