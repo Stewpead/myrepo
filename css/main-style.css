@@ -158,17 +158,17 @@ span.divider-text:hover {
     color:white;
 }
 #content-main p.thumb-title {
-    font-size: 12px;
+    font-size: 16px;
     text-transform: capitalize;
     margin: 5px;
     line-height: initial;
     max-width: 200px;
 }
 #content-main p.thumb-year {
-	color: #363636;
+	color: #4c4c4c;
     font-weight: 1000;
     line-height: initial;
-    font-size: 12px;
+    font-size: 14px;
     margin: 5px;
 }
 /* .container-card {
@@ -316,6 +316,13 @@ span.divider-text:hover {
   }
   */
 
+.avx-see-more{
+    margin-top: 60px;
+    padding-right: 60px;
+}
+
+
+
   @media (min-width: 2070px){
     .col-lg-2 {
     max-width: 8.85%!important;
@@ -418,4 +425,22 @@ span.divider-text:hover {
         padding: 0 10px 0 0;
     }
   
+}
+
+
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+    transform: scale(1.1);
 }
