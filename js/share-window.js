@@ -127,7 +127,7 @@ function appendJSON(event) {
 		//var dtp = new DirTreeParserVideo(data["data"]["tree"]);
 		$(".generateFileScanned").html(dtp.getHtmlTree());
 		//METADATA
-		$(".video-reso strong").html( data["data"]["metadata"]["video_resolution"] );
+		$(".video-reso strong").html(  (getResolution(data["data"]["file_metadata"]["height"] , 1)) + "p" );
 		$(".video-duration strong").html( getDuration(data["data"]["metadata"]["duration"]) );
 		//$(".video-size strong").html( data["data"]["metadata"]["duration"] ); NO VIDEO SIZE FROM METADATA RESPONSE
 		$(".audio-video-bitrate strong").html( data["data"]["metadata"]["video_bitrate"] );
@@ -902,7 +902,7 @@ setTimeout(function() {
 			$('[pd-popup="shareConfirmMetadataModal"] .video-codec strong'). html(data["metadata"]["video_codec_name"]);
 			$('[pd-popup="shareConfirmMetadataModal"] .video-frame-rate strong'). html(data["metadata"]["video_frame_rate"]);
 			$('[pd-popup="shareConfirmMetadataModal"] .video-profile strong'). html(data["metadata"]["video_profile"]);
-			$('[pd-popup="shareConfirmMetadataModal"] .video-reso strong'). html(data["metadata"]["video_resolution"]);
+			$('[pd-popup="shareConfirmMetadataModal"] .video-reso strong'). html( (getResolution(data["metadata"]["height"] , 1)) + "p");
 			$('[pd-popup="shareConfirmMetadataModal"] .video-width strong'). html(data["metadata"]["width"]);
 			
 			 $('[pd-popup="shareConfirmMetadataModal"] .title-holder').attr("tabindex",-1).focus();
@@ -1068,7 +1068,7 @@ setTimeout(function() {
 		$('[pd-popup="shareConfirmMetadataModal"] .video-codec strong'). html(data["metadata"][row]["video_codec_name"]);
 		$('[pd-popup="shareConfirmMetadataModal"] .video-frame-rate strong'). html(data["metadata"][row]["video_frame_rate"]);
 		$('[pd-popup="shareConfirmMetadataModal"] .video-profile strong'). html(data["metadata"][row]["video_profile"]);
-		$('[pd-popup="shareConfirmMetadataModal"] .video-reso strong'). html(data["metadata"][row]["video_resolution"]);
+		$('[pd-popup="shareConfirmMetadataModal"] .video-reso strong'). html(  (getResolution(data["data"]["file_metadata"]["height"] , 1)) + "p" );
 		$('[pd-popup="shareConfirmMetadataModal"] .video-width strong'). html(data["metadata"][row]["width"]);
 	});
 	
@@ -1271,6 +1271,7 @@ function shareCrawlFile(path, dir) {
 		$('[pd-popup="shareConfirmMetadataModal"] .file-metadata-desc-tv').css("display", "none");
 		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv').css("display", "none");
 		$('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content table').css("display", "none");
+		$('[pd-popup="shareConfirmMetadataModal"] .eps-list-label').css("display", "none");
 		//$('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content h5.label-with-border').css("display", "none");
 
 
@@ -1306,6 +1307,7 @@ function shareCrawlFile(path, dir) {
 		$('[pd-popup="shareConfirmMetadataModal"] .file-metadata-desc-tv').css("display", "block");
 		$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv').css("display", "block");
 		$('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content table').css("display", "block");
+		$('[pd-popup="shareConfirmMetadataModal"] .eps-list-label').css("display", "block");
 		//$('[pd-popup="shareConfirmMetadataModal"] .tv-shows-content h5.label-with-border').css("display", "block");
 		
 		
@@ -1485,7 +1487,7 @@ ipcRenderer.on('avx-share-respond-file-metadata', (event, data) => {
 
 	} else if ( action == "scanned" ) {
 		
-		$("[pd-popup='shareScanResultModal'] .video-reso strong").html( data["data"]["file_metadata"]["video_resolution"] );
+		$("[pd-popup='shareScanResultModal'] .video-reso strong").html(  (getResolution(data["data"]["file_metadata"]["height"] , 1)) + "p"  );
 		$("[pd-popup='shareScanResultModal'] .video-duration strong").html( getDuration(data["data"]["file_metadata"]["duration"]) );
 		$("[pd-popup='shareScanResultModal'] .video-size strong").html( formatBytes(data["data"]["file_metadata"]["filesize"]) );
 		$("[pd-popup='shareScanResultModal'] .audio-video-bitrate strong").html( data["data"]["file_metadata"]["video_bitrate"] );
