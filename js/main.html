@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<title>Price Ruler</title>
+		<script type="text/javascript" src="PriceRuler.js"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				let pr = new PriceRuler("surface", 10, 250, 13, 0);
+				//pr.setDataPoints([103.96, 145.6, 130, 112, 219.5]);
+				pr.setDataPoints([3.96, 145.6, 30, 112, 19.5]);
+				pr.render();
+				
+				pr.setPrice(10);
+			};
+		</script>
+		<style>
+			html, body {
+				margin:0;
+				padding:0;
+			}
+			
+			body {
+				background:#000;
+			}
+			
+			#surface {
+				/*border:1px solid #fff;*/
+				width:100%;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="surface" width="1024" height="300"></canvas>
+	</body>
+</html>
