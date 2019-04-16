@@ -441,7 +441,7 @@ setTimeout(function() {
 						
 					output += '					<h5 class="label-with-border">Audio Language and Subtitle: </h5> ';
 						
-					output += '					<div class="row file-metadata">';
+					output += '					<div class="row file-metadata" style="margin-bottom: 22px;">';
 					output += '						<div class="col-12"><br>';
 					output += '							<p>Audio: </p> ';
 					output += '							<strong class="col-12 red-text"> N/A </strong> ';
