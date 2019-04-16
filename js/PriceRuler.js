@@ -1,5 +1,5 @@
 class PriceRuler {
-	constructor(id, x, y, divs, start) {
+	constructor(id, x, y, divs, start, end) {
 		this.canvas = document.getElementById(id);
 		this.ctx = this.canvas.getContext("2d");
 		
@@ -10,6 +10,8 @@ class PriceRuler {
 		this.y = this.canvas.height / 2;
 		this.divisions = divs;
 		this.start = start;
+		this.end = end;
+		this.divPriceStep = Math.ceil(this.end / this.divisions);
 
 		this.divHeight = 25;
 		this.midDivHeight = 20;
@@ -118,9 +120,9 @@ class PriceRuler {
 	
 	displayDivPrices() {
 		for (let i = 1; i < this.ndiv; ++i) {
-			let pos = i * 10;
-			let x = pos * this.miniDivSpacing + this.x;
-			this.displayPrice(pos + this.start, x, this.divPriceHeight, "#ffffff"); 
+			let pos = i;
+			let x = 10 * i * pos * this.miniDivSpacing + this.x;
+			this.displayPrice(pos + this.start + this.divPriceStep, x, this.divPriceHeight, "#ffffff"); 
 		}
 	}
 	

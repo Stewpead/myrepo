@@ -1524,7 +1524,6 @@ function checkStringExistOnArray(value,arr){
 /*** 3.0 get price source ***/
 function crawlPriceSource(title, count, filesLength) {
 	console.log("TEST: "+ "surface"+ count);
-	let pr = new PriceRuler("surface"+ count, 10, 250, 13, 0);
 	
 	let data_crawled = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(count).find('textarea').text();
 		data_crawled= JSON.parse(data_crawled);
@@ -1555,6 +1554,14 @@ function crawlPriceSource(title, count, filesLength) {
 		datapoints = pricesArr[pos];
 	}
 
+	let lowestPrice = 3.95; 
+	let highestPrice = 19.99;
+	
+	let startRange = Math.floor(lowestPrice);
+	let endRange = Math.ceil(highestPrice);
+	
+	let pr = new PriceRuler("surface"+ count, 10, 250, 10, startRange, endRange);
+	
 	pr.setDataPoints([datapoints]);
 	
 		
