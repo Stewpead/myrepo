@@ -242,7 +242,7 @@ function paymentModalData() {
     $('.yearsreleased').text(jAsset["crawl"]["header"]["release_date"].replace(/\((\d{4})\)/g, "$1"));
 
     let usd = parseInt(jAsset["crawl"]["header"]["release_date"].replace(/\((\d{4})\)/g, "$1")) * .0025;
-    $('.usd-price').text(usd + "$");
+    $('.usd-price').text( "$" + (usd.toFixed(2)) );
 
     
     let priceavx = parseFloat(assetKey["price"]).toFixed(2);
@@ -251,9 +251,9 @@ function paymentModalData() {
     
     console.log(assetKey);
 
-    $('#sixtyP').text(priceavx * .6);
-    $('#thirtyP').text(priceavx * .3);
-    $('#fiveP').text(priceavx * .05);
+    $('#sixtyP').text( (priceavx * .6).toFixed(8) ) ;
+    $('#thirtyP').text( (priceavx * .3).toFixed(8) );
+    $('#fiveP').text( (priceavx * .05).toFixed(8) );
 
     $('#priceAVX').text(priceavx + " AVX");
 

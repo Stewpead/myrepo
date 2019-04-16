@@ -1586,7 +1586,7 @@ function crawlPriceSource(title, count, filesLength) {
 	
 	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.price').html(price);
 	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.filePrice span.labelPriceTop').html( price.toFixed(8) + " AVX");
-	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.usd-price').html( (price * 0.0025 ).toFixed(2) );
+	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.usd-price').html( "$" + (price * 0.0025 ).toFixed(2) );
 	let getPrices = $('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists');
 	
 	let avxPrice = 0;
