@@ -132,17 +132,17 @@ function generateTable() {
         tableStr += '<td>  </td>';
         tableStr += '<td>  </td>';
         tableStr += '<td>  </td>';
-        tableStr += '<td>  </td>';
-        tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["filesize"] +' </td>';
+        tableStr += '<td> ' + getResolution(jAsset["info"][key1]["metadata"]["height"], 1) +' </td>';
+        tableStr += '<td> ' + formatBytes(jAsset["info"][key1]["metadata"]["filesize"], 2) +' </td>';
         tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["video_codec_name"] + ' </td>';
-        tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["audio_codec_name"] + ' </td>';
+        let strAC = jAsset["info"][key1]["metadata"]["audio_codec_name"];
+        tableStr += '<td> ' + strAC.toUppercase(); + ' </td>';
         tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["video_frame_rate"] + ' </td>';
         tableStr += '</tr>';
-
+        
     }
 
     $('#tbodyDetails').append(tableStr);
-
 }
 
 function nextWindow(key) {

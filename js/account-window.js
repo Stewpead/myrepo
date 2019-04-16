@@ -15,7 +15,6 @@ var avxTokens = 0.0;
 ipcRenderer.on('avx-wallet-data', (event, arg) => {
     walletData = arg; 
    console.log(walletData);
-   alert('1130!!');
     $('.WaddressAccountWindow').html(walletData['wallet_data']['public_key']);
     avxTokens = parseFloat(walletData['wallet_data']['balance']);
     let spentavx = 0.0;
