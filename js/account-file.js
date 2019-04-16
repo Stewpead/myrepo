@@ -24,7 +24,7 @@ $(document).ready( () => {
 	
 	setInterval(function(){
 		ipcRenderer.send('request-filetransfer-stats', jMessageD);
-		// ipcRenderer.send('request-sourcing-stat', jMessageU);
+		ipcRenderer.send('request-sourcing-stat', jMessageU);
 		getDownloadDetails(g_id);
 	}, 2000);
 	
