@@ -197,6 +197,8 @@ setTimeout(function() {
 		
 		$('.file-movie-content').html('');
 		
+		$('.popup[pd-popup="shareExistAvxNetwork"] .generateFileScanned .pointer-cursor.item-file-meta').parent().append('<span class="icon-segoe segoe-completed-solid color-success"></span>');
+		
 		
 	let files = $('[pd-popup="shareScanResultModal"] .pointer-cursor.item-file-meta');
 	
