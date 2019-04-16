@@ -12,12 +12,12 @@
 				<div class="row mb-5 mt-5 container-fluid">   
 					<h5 class="label-with-border white-title"> 
 						<span class="fileTitle"></span> 
-						<span class="icon-segoe float-left toogle-icon segoe-flick-up"></span> 
+						<span class="icon-segoe float-left toogle-icon segoe-flick-up" id="slideUp"></span> 
 						<span class="filePrice" style="padding-left: 22px !important; margin-top: 0 !important; padding-right: 25px !important; right: 63px !important"> <span style="color: #969696;font-size: 11px;font-weight: 500;position: absolute;text-transform: capitalize;text-overflow: ellipsis;"	></span> <br><span class="labelPriceTop">0 AVX</span></span> 
 					</h5> 
 				</div>  
 				
-				<div id="file" class="container-fluid">   
+				<div id="fileToDownload" class="container-fluid">   
 					<div class="row">   
 						<div class="col-sm-12 col-md-2">  
 								<div class="file-feature-img" style="min-height: 173px; background-image: url('')"></div>  
@@ -59,7 +59,7 @@
 								</div>  
 							</div>  
 			
-							<h5 class="label-with-border">Pricing Data Points: </h5>  
+							<h5 class="label-with-border" style="margin-top: -80px !important;">Pricing Data Points: </h5>  
 							<div class="meta-data-details no-padding">  
 		
 							<div class="row file-metadata"> 
@@ -303,7 +303,11 @@
 		<a class="popup-close-white" pd-popup-close="tvseriesViewFiles" id="btnTopClose"> <span class="mdi mdi-24px mdi-close"></span> </a>
 	</div>
 </div>
-
+	<script>
+		$('#slideUp').click( function() {
+			$('#fileToDownload').slideToggle('slow');
+		});
+	</script>
 <!-- File Available Files -->
 		<!-- <div class="row">
 			<div class="col-lg-12">
