@@ -27,7 +27,7 @@ html::-webkit-scrollbar {
 }
 #plot {
   font-size: 14px;
-  width: 600px;
+  width: 95%;
   margin-bottom: 3rem;
 }
 .section-divider {
@@ -58,6 +58,8 @@ html::-webkit-scrollbar {
 span#divider-text {
   padding: 0 20px 0 0;
   cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
   
 }
 #btnBuy {
@@ -68,11 +70,13 @@ span#divider-text {
 }
 #tabsfileDetails li + li:before {
   content: "  |  ";
-  padding: 0 10px;
+  padding: 0 20px;
+  color: #424242;
 
 }
 #tabsfileDetails {
-  font-size: 14px;
+  font-size: 18px;
+  margin-top: 10px;
 }
 #movieplot {
   font-size: 10px;
@@ -89,20 +93,35 @@ span#divider-text {
 #toggleBtn2 span {
   float: right;
   padding-left: 20px;
-  padding-right: 20px;
+  padding-right: 0px;
 }
 .file-ratings-division {
   margin-top: 50px;
 }
+.file-ratings-division #tabsfileDetails{
+  font-size: 26px;
+  margin-top: 0px !important;
+}
+
+.file-ratings-division .stars-section{
+  font-size: 18px;
+}
+
+.file-ratings-division .users-review-section{
+    font-size: 18px;
+}
+
+
 .ratings-sector {
   margin-left: 50px;
 }
 #fileRatings {
-  font-size: 48px;
+  font-size: 88px;
 }
 #totalRatings {
-  font-size: 10px;
-  padding-left: 20px;
+  font-size: 18px;
+    padding-left: 20px;
+    text-align: center;
 }
 
 .file-ratings {
@@ -127,7 +146,22 @@ button {
   margin-left: 15px;
 }
   .users-review-section p {
-  font-size: 10px;
-  margin-left: 30px;
-  width: 600px;
+    font-size: 14px;
+    margin-left: 30px;
+    width: 90%;
+}
+.file-meta{
+    margin-top: 80px;
+}
+#avx-usr-accnt{
+    font-weight: 700;
+}
+.avx-file-review-sec{
+  margin-top: 50px;
+}
+.mdi-star{
+  color: #fec136;
+}
+#fileCost{
+  color: #fec136;
 }

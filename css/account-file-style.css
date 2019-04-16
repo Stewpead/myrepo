@@ -5,33 +5,7 @@
     left: 130px;
     z-index: 1;
 }
-img {
-    vertical-align: middle;
-    border-style: none;
-    width: 90px;
-    height: 90px;
-}
-#qrcode {
-    padding-left: 40px;
-}
 
-#contents {
-    margin-top:50px;
-}
-.btn {
-    color:rgb(255, 255, 255);
-    border-radius: 0px !important;
-}
-#buttonn {
-    border-color:#818181;
-}
-#qrcode {
-    top: 12%;
-    left: 40px;
-    height: 30vh;
-    width: 30vh;
-    display: inline-block;
-}
 .avxlabel {
     font-size: 10px;
 }
@@ -58,9 +32,12 @@ ul {
     color: #c72d2d;
 }
 #tabs li + li:before {
-    color: #818181;
+    color: #444444;
     content: "   |   ";
     padding: 0 10px;
+}
+.clicked {
+    color: #ffffff !important;
 }
 li {
     float: left;
@@ -71,9 +48,7 @@ thead {
 td {
     font-size: 11px;
 }
-/* table {
-    display: block;
-} */
+
 tbody {
     background-color:white;
     color:#000;
@@ -117,6 +92,7 @@ a {
 }
 .header-links {
     font-size: 18px;
+    color: #555555;
 }
 .download-details {
     font-size: 14px;

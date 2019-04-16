@@ -47,10 +47,7 @@ a:hover {
 #sowl a i {
     display: inline-block;
 }
-#movieplot {
-    width: 65%;
-    font-size: 13px;
-}
+
 #moviedirector, #moviegenre, #moviestudio {
     text-align: right;
 }
@@ -61,8 +58,10 @@ a:hover {
     display: block;
 }
 tbody { 
-    background-color:white;
-    color: #000;
+    background-color:#fff;
+    color: #252525;
+    font-size: 13px;
+    font-weight: 500;
 }
 ::-webkit-scrollbar { 
     display: none; 
@@ -74,7 +73,7 @@ tbody {
 }
 #bodycolumn {
     height: 80vh;
-    padding-right: 3%; 
+    padding-right: 4%; 
     font-size: 10px;
 }
 /* #bgvids {
@@ -170,18 +169,22 @@ span#divider-text:hover {
 }
 #tabsfileDetails li + li:before {
     content: "  |  ";
-    padding: 0 10px;
+    padding: 0 20px;
+    color: #424242;
 
 }
 #tabsfileDetails { 
-    font-size: 12px;
+    font-size: 18px;
+    margin-top: 10px;
 }
 #movieplot {
-    font-size: 10px;
-    text-align: justify;
+    width: 95%;
+    font-size: 14px;
+    text-align: left;
+    font-weight: 400;
 }
 #otherFileInfo {
-    font-size: 11px;
+    font-size: 16px;
 }
 #pg {
     padding: 3px 10px 3px 10px;
@@ -247,15 +250,16 @@ td:hover {
 .file-actor-details .name {
   margin-top: 13px;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 14px;
   margin-bottom: 0;
   width: 100%;
   text-align: center;
 }
 
 .file-actor-details .role {
-    font-size: 11px;
+    font-size: 13px;
     text-align: center;
+    font-weight: 300;
 
 
 }
@@ -266,7 +270,7 @@ td:hover {
 
 
  .carousel-control-next, .carousel-control-prev {
-	margin-top: 135px;
+	margin-top: 190px;
     width: 100%;
 }
  .carousel-control-prev span {
@@ -278,4 +282,39 @@ td:hover {
     float: right;
     right: 0;
     position: absolute;
+}
+
+#filetitle{
+
+    font-size: 2.5rem;
+}
+
+.vid-header{
+    margin-bottom: 70px;
+}
+.othr-details{
+    color: #555555;
+    font-weight: 600;
+}
+.actor-details{
+    font-size: 16px;
+    padding-left: 15px;
+    margin-bottom: 50px;
+    font-weight: 600;
+}
+.download-label{
+    margin: 40px;
+    font-size: 18px;
+}
+.table .thead-dark th{
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    background-color: #131313;
+}
+.download-tbl{
+    margin-top: 90px;
+}
+.vid-meta{
+    max-width: 150px;
 }

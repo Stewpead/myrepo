@@ -13,21 +13,21 @@ html::-webkit-scrollbar {
     position: fixed;
     height: 250px;
     width: 95%;
-    background-image:url('../images/mainwall.jpg'); 
+    background-image:url('../images/banner_home.png'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover; 
-    background-blend-mode: soft-light;
-    background-color:rgba(0, 0, 0, 0.582);
+    /* background-blend-mode: soft-light;
+    background-color:rgba(0, 0, 0, 0.582); */
     display: block; 
     cursor: pointer;
     transition: background-blend-mode 1s;
     z-index: 1;
 } 
-#bg:hover {
+/* #bg:hover {
     background-blend-mode: normal;
-}
+} */
 
 #content-main {
     position: fixed;
