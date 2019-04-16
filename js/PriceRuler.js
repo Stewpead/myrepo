@@ -233,7 +233,7 @@ class PriceRuler {
 			x1 = this.len + this.x;
 		}
 		
-		this.displayPrice(this.pos, x1, this.dataPointsHeight + 15, "#fff");
+		//this.displayPrice(this.pos, x1, this.dataPointsHeight + 15, "#fff");
 		this.drawCircle(x1, y1, 3, "#e61a24");
 		this.draw(x1, y1, x1, y2, "#e61a24");
 	}
