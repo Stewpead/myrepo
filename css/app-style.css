@@ -266,3 +266,10 @@ a:hover {
 .avx-btn-buy{
     padding: .875rem 2.5rem;
 }
+
+.avx-badge{
+    border-radius: 10.25rem;
+    padding: 0.55em .8em;
+    font-size: 14px;
+    font-weight: 800;
+}

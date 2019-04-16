@@ -197,6 +197,8 @@ setTimeout(function() {
 		
 		$('.file-movie-content').html('');
 		
+		$('.popup[pd-popup="shareExistAvxNetwork"] .generateFileScanned .pointer-cursor.item-file-meta').parent().append('<span class="icon-segoe segoe-completed-solid color-success"></span>');
+		
 		
 	let files = $('[pd-popup="shareScanResultModal"] .pointer-cursor.item-file-meta');
 	
@@ -441,7 +443,7 @@ setTimeout(function() {
 						
 					output += '					<h5 class="label-with-border">Audio Language and Subtitle: </h5> ';
 						
-					output += '					<div class="row file-metadata">';
+					output += '					<div class="row file-metadata" style="margin-bottom: 22px;">';
 					output += '						<div class="col-12"><br>';
 					output += '							<p>Audio: </p> ';
 					output += '							<strong class="col-12 red-text"> N/A </strong> ';
@@ -546,40 +548,49 @@ setTimeout(function() {
 
 
 	$('#ShareModalView').on("click","#executePayment", function() {
+		
+		let totalAmount = parseFloat($('[pd-popup="shareMarketPriceForMultipleModal"] #priceAVX' ).attr("fullprice") );
+		let currentBalance = parseFloat ($('[pd-popup="shareMarketPriceForMultipleModal"] #walletBalance' ).html() );
+		
+		if ( totalAmount > currentBalance ) {
+			alert("You have an insuficient AVX token");
+			
+		} else {
+		
 
-		let files = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details');
-		let assetsData = [];
-		let count = 0; 
-		let category = $('[pd-popup="shareScanResultModal"] #fileCategory').val();
-		let jsonAssetUpload = ''; 
+			let files = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details');
+			let assetsData = [];
+			let count = 0; 
+			let category = $('[pd-popup="shareScanResultModal"] #fileCategory').val();
+			let jsonAssetUpload = ''; 
 
-		$.each( files, function( key, value ) {
-		  var data = $(this).find("textarea").text();
-		  
-		  switch(category) {
-			  case 'movie' :
-				assetsData[count] = JSON.parse(decodeURIComponent(data));
-			  break;
-			  case 'tv':
-				assetsData[count] = JSON.parse(data); 
-			  break;
-		  }
-		  
-		  count++;
-		});
+			$.each( files, function( key, value ) {
+			  var data = $(this).find("textarea").text();
+			  
+			  switch(category) {
+				  case 'movie' :
+					assetsData[count] = JSON.parse(decodeURIComponent(data));
+				  break;
+				  case 'tv':
+					assetsData[count] = JSON.parse(data); 
+				  break;
+			  }
+			  
+			  count++;
+			});
 
-		let filepath = $('#fullFilePathDir').val();
-		let amount = $('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').attr("full-price");
+			let filepath = $('#fullFilePathDir').val();
+			let amount = $('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').attr("full-price");
 
-		jsonAssetUpload = {
-			status : 1116,
-			data : assetsData,
-			action : category,
-			amount	: amount //TOTAL AMOUNT
-		};
-		console.log( JSON.stringify(jsonAssetUpload) );
-		ipcRenderer.send('avx-share-upload-asset', JSON.stringify(jsonAssetUpload) );	
-
+			jsonAssetUpload = {
+				status : 1116,
+				data : assetsData,
+				action : category,
+				amount	: amount //TOTAL AMOUNT
+			};
+			console.log( JSON.stringify(jsonAssetUpload) );
+			ipcRenderer.send('avx-share-upload-asset', JSON.stringify(jsonAssetUpload) );	
+		}
 		ipcRenderer.on('avx-upload-payment-response', (event, data) => {
 			store.set("ShareUploadTxKey", data["data"]["tx_key"]);
 			$('[pd-popup="shareMarketPriceForMultipleModal"]').fadeOut(100);
@@ -1175,7 +1186,7 @@ function getScanLoadingForModal( speed, fadeOut, fadeIn ) {
 function checkFileForVideoPlayable( filename  ) {
 	let file_ext =  filename.substring(filename.lastIndexOf('.') + 1);
 	let video_lists = [ "webm", "mkv", "flv", "vob", "ogg", "ogv", "avi", "mov", "wmv", "mpg", "mpeg", "mpe", "mpv", "m2v", "m4v", "mp4"];
-	let results = $.inArray( file_ext, video_lists );
+	let results = $.inArray( file_ext.toLowerCase(), video_lists );
 	return ( results < 0 ) ? 0 : 1;
 }
 
@@ -1583,14 +1594,13 @@ function crawlPriceSource(title, count, filesLength) {
 	$.each(getPrices, function( index, value ) {
 		let price = $(this).find('canvas').attr('price');
 		if (typeof price != 'undefined') {
-			
 			avxPrice = (avxPrice + parseFloat(price));
 			let output = avxPrice.toFixed(8) ;
 			let fileResources = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(count).find('textarea').text();
 				fileResources = JSON.parse(fileResources);
 				
 				console.log("PRICE ORIG: " + fileResources["price"]);
-				fileResources["price"] = output;
+				fileResources["price"] = parseFloat(price).toFixed(8);
 				console.log("PRICE NEW : " + fileResources["price"]);
 				console.log("USD: " + price);
 				$('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(count).find('textarea').text(JSON.stringify(fileResources));
