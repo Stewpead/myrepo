@@ -13,7 +13,7 @@ html::-webkit-scrollbar {
     position: fixed;
     height: 250px;
     width: 95%;
-    background-image:url('../images/mainwall.jpg'); 
+    background-image:url('../images/banner_home.png'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

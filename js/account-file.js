@@ -9,13 +9,13 @@ var fileDownloadListFileReceive = {};
 
 
 $(document).ready( () => {
+
     let jMessage = {
         status : 5003
     };
     jMessageD = JSON.stringify(jMessage);
 	
 	
-		
 	jMessage = {
 		status : 5006
 	};
@@ -25,28 +25,78 @@ $(document).ready( () => {
 		ipcRenderer.send('request-filetransfer-stats', jMessageD);
 		ipcRenderer.send('request-sourcing-stat', jMessageU);
 	}, 2000);
-    
+	
+	
+	// fileDownloadList['fn1'] = {
+	// 	data_rate: 80,
+	// 	progress: 20,
+	// 	peers: 2,
+	// 	time_elapsed: 1000,
+	// 	downloaded: 300000,
+	// 	is_complete: 0,
+	// 	remaining_time: 500
+	// };
+
+	// fileDownloadList['fn2'] = {
+	// 	data_rate: 70,
+	// 	progress: 40,
+	// 	peers: 1,
+	// 	time_elapsed: 2000,
+	// 	downloaded: 305500,
+	// 	is_complete: 0,
+	// 	remaining_time: 650
+	// };
+
+	// let row = '';
+	// for (var key in fileDownloadList) {
+	// 	row += '<tr>';
+	// 	row += '<th scope="row"></th>';
+	// 	row += '<td id="' + key +'" >' + key + '</td>';
+	// 	row += '<td><div id="stat-datarate">' + fileDownloadList[key].data_rate + '</div></td>';
+	// 	row += '<td>';
+	// 	row += '<div class="container">';
+	// 	row += '<span class="progress-label">'+fileDownloadList[key].progress.toFixed(2) + "%"+'</span>';
+	// 	row += '<div class="progress">';
+	// 	row += '<div id="stat-progress" class="progress-bar bg-success" style="width:'+ fileDownloadList[key].progress +'%" id="prog-bar" role="progressbar" aria-valuemin="0" aria-valuenow="'+ fileDownloadList[key].progress +'" aria-valuemax="100">';
+	// 	row += '</div>';
+	// 	row += '</div>';
+	// 	row += '</div>';
+	// 	row += '</td>';
+	// 	row += '<td><div id="stat-peers"> ' + fileDownloadList[key].peers + '</div></td>';
+	// 	row += '<td class="action-col" id="action-col-id-1">';
+	// 	row += '<a href="#"><span class="icon-segoe segoe-v-player">&nbsp;</span></a>';
+	// 	row += '<a href="#"> <span class="mdi mdi-pause">&nbsp;</span></a>';
+	// 	row += '<a href="#"> <span class="mdi mdi-trash-can-outline">&nbsp;</span></a>';
+	// 	row += '<a href="#"> <span class="mdi mdi-file-remove">&nbsp;</span></a>';
+	// 	row += '</td>';
+	// 	row += '</tr>';
+	// }
+
+
 });
 
 ipcRenderer.on('receive-filetransfer-stats', (event, arg) => {
+
     console.log(JSON.stringify(arg));
-	//console.log( Object.keys(arg).length );
+
 	let fn  = arg["filename"];
 
-	//if (!fileDownloadList[fn]) {
 		fileDownloadList[fn] = {
 			data_rate: arg["data_rate"],
 			progress: arg["progress"],
-			peers: arg["peers"]
+			peers: arg["peers"],
+			time_elapsed: arg["time_elapsed"],
+			downloaded: arg["downloaded"],
+			is_complete: arg["is_complete"],
+			remaining_time: arg["remaining_time"]
 		};
-	//}
 
 	let row = '';
 
 	for (var key in fileDownloadList) {
 		row += '<tr>';
 		row += '<th scope="row"></th>';
-		row += '<td id="stat-filename" >' + key + '</td>';
+		row += '<td id="' + key +'" >' + key + '</td>';
 		row += '<td><div id="stat-datarate">' + fileDownloadList[key].data_rate + '</div></td>';
 		row += '<td>';
 		row += '<div class="container">';
@@ -68,22 +118,17 @@ ipcRenderer.on('receive-filetransfer-stats', (event, arg) => {
 	}
 	
 	$("#dtVerticalScroll tbody").html(row);
-	console.log('true');
 	
-	/*else {
-		for (var key in fileDownloadList) {
-			$("#stat-filename").html(key);
-			$("#stat-datarate").html(fileDownloadList[key].data_rate);
-			$("#stat-progress").attr("style", "width: " + fileDownloadList[key].progress + "%");
-			$("#stat-progress").attr("aria-valuenow", fileDownloadList[key].progress );
-			$(".progress-label").html(fileDownloadList[key].progress.toFixed(2) + "%");
-			$("#stat-peers").html(fileDownloadList[key].peers);
-		}
-	}*/
-	
-	
+	$("#dtVerticalScroll tbody").html(row);
+	$('#dtVerticalScroll tbody tr').on('click', function() {
+		let id = $("td:eq(0)", this).attr('id');
+		$('#time-elapse').html(getDuration(fileDownloadList[id].time_elapsed / 1000));
+	});
 	
 });
+
+
+
 
 ipcRenderer.on('receive-sourcing-stat', (event, arg) => {
     console.log(arg);
@@ -129,14 +174,30 @@ ipcRenderer.on('receive-sourcing-stat', (event, arg) => {
 	}
 	
 	$("#activeFiles #tables tbody").html(row);
-
 	
 });
+
+$('.header-links ul li a#viewDD').addClass('clicked');
+
+$('.header-links ul li a').click( function() {
+
+	$('.header-links ul li a').removeClass("clicked");
+
+	$(this).addClass("clicked");
+
+});
+
+
+
+
 document.getElementById('activeFiles').style.display = "block";
 document.getElementById('DDetails').style.display = "block";
 document.getElementById("DFiles").style.display = "none";
 document.getElementById("DPeers").style.display = "none";
 document.getElementById("DSpeed").style.display = "none";
+
+
+
 
 $('#btnHideCF').click( () => {
     document.getElementById('activeFiles').style.display = "block";
