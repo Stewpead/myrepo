@@ -910,7 +910,7 @@ hr#hr {
 	width: 9%;
 	text-align: left;
 }
-.popup[pd-popup="shareMarketPriceForMultipleModal"] .file-metadata p.file-subdata strong.rated {
+.popup[pd-popup="shareMarketPriceForMultipleModal"] .file-metadata p.file-subdata strong.resolution {
     margin: 0;
     position: absolute;
     padding: 3px 11px;
@@ -918,6 +918,14 @@ hr#hr {
 }
 .popup[pd-popup="shareMarketPriceForMultipleModal"] .file-metadata {
     margin-bottom: 82px;
+}
+.popup[pd-popup="shareMarketPriceForMultipleModal"] .file-metadata  .graph-label {
+    font-size: 15px;
+    float: left;
+    position: relative;
+    margin-top: -57px;
+    margin-left: 22px;
+    font-weight: 600;
 }
 
 

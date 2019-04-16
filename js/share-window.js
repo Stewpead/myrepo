@@ -422,12 +422,12 @@ setTimeout(function() {
 					output += '							<strong class="col-12 file-title">'+ content["title"] +'</strong> ';
 						
 					output += '							<p class="file-subdata"> ';
-					output += '								<strong class="rated">'+ crawl["header"]["contentRating"] +'</strong>';
+					output += '								<strong class="resolution"></strong>';
 					output += '							</p> ';
 					output += '						</div> ';
 					output += '						<div class="col-12"> ';
 					output += '							<p>Runtime: </p> ';
-					output += '							<strong class="col-12 "></strong> ';
+					output += '							<strong class="col-12 duration"></strong> ';
 					output += '						</div> ';
 					output += '						<div class="col-12"> ';
 					output += '							<p>Released: </p> ';
@@ -458,29 +458,47 @@ setTimeout(function() {
 					output += '					<div class="row file-metadata">';
 					output += '						<div class="col-12"><br>';
 					output += '							<p>Year Released: </p> ';
-					output += '							<strong class="col-12"> N/A </strong> ';
+					output += '							<strong class="col-12"> '+ crawl["header"]["release_date"].replace(/\((\d{4})\)/g, "$1") +' </strong> ';
 					output += '						</div> ';
 					output += '						<div class="col-12"> ';
 					output += '							<p>Resolution: </p> ';
-					output += '							<strong class="col-12"> N/A </strong> ';
+					output += '							<strong class="col-12 resolution"> N/A </strong> ';
 					output += '						</div> ';
 					output += '						<div class="col-4"> ';
 					output += '							<p>Price in USD: </p> ';
-					output += '							<strong class="col-12"> N/A </strong> ';
+					output += '							<strong class="col-12 usd-price"> </strong> ';
 					output += '						</div> ';
 					output += '						<div class="col-4"> ';
-					output += '							<p style="background: #f6f6f6;color: #5d5d5d;font-size: 13px;float: left;padding: 2px 11px;">USD to AVX Rate: </p> ';
-					output += '							<strong class="col-12"> N/A </strong> ';
+					output += '							<p style="width: 128px">USD to AVX Rate: </p> ';
+					output += '							<strong style="background: #f6f6f6;color: #5d5d5d;font-size: 13px;float: left;padding: 2px 11px; width: 128px" class="col-12">';
+					output += '								$1.00 = 0.0025 AVX </strong> ';
 					output += '						</div> ';
 					output += '						<div class="col-4"> ';
 					output += '							<p>AVX Cost: </p> ';
-					output += '							<strong class="col-12"> N/A </strong> ';
+					output += '							<strong class="col-12 price"> N/A </strong> ';
 					output += '						</div> ';
 					output += '					</div> ';
 						
 					output += '					<div class="row meta-data-details no-padding"> ';
 					output += '						<svg width="100" height="100" style="text-align: center;margin: 0 auto;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring"><circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="4" stroke="#e15b64" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(203.589 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></circle></svg>';
-					output += '						<canvas id="surface'+item+'" width="677.286px" style="width:100%" height="250"></canvas>';
+					output += '						<canvas id="surface'+item+'" width="677.286px" style="width:100%;margin-top: -120px;" height="250"></canvas>';
+					output += '						<img id="txImage" src="../images/horizontal logo_tm_x800.png" style="width: 15%;height: 100%;margin-top: -52px; float: left; margin-left:56px">';
+					//output += '						<p class="graph-label">$10.00 = 0.0025BTC = 39.123415 AVX</p> ';
+					
+					output += '						<div class="payment-break-down mb-5"> ';
+					output += '							<h5 class="label-with-border break-down">See where your money goes </h5> ';
+					output += '								<ul class="ml-5"> ';
+					output += '									<li> ';
+					output += '										60% = <span id="sixtyP'+item+'"></span> AVX goes to Intellectual Property owners acount. ';
+					output += '									</li> ';
+					output += '								<li> ';
+					output += '										35% = <span id="thirtyP'+item+'"></span> AVX, normally goes to file uploaders, but on file genesis, this goes to the AVX network as a fee to save the new file into the avx network. Please note you will not be uploading this file at this time, it is only entered into the records as being available from you. Any and all uploading will be compensated. ';
+					output += '								</li> ';
+					output += '								<li> ';
+					output += '										5% = <span id="fiveP'+item+'"></span> AVX will go to the nodes maintaining the AVX network. ';
+					output += '								</li> ';
+					output += '							</ul> ';
+					output += '						</div> ';
 					output += '					</div> ';					
 					output += '				</div> ';					
 					output += '			</div>';
@@ -1545,7 +1563,18 @@ function crawlPriceSource(title, count, filesLength) {
 	pr.setPrice(price);
 	price = price / 0.0025;
 	$("#surface"+ count ).attr('price', price);
+	$('#sixtyP'+ count ).text(price * .6);
+    $('#thirtyP'+ count ).text(price * .3);
+    $('#fiveP'+ count ).text(price * .05);
+	
+	
+	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.duration').html(getDuration(data_crawled["metadata"]["duration"]) );
+	
+	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.resolution').html(decodeURIComponent( getResolution(parseInt(data_crawled["metadata"]["height"]), 1 ) ) + "p");
+	
+	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.price').html(price);
 	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.filePrice span.labelPriceTop').html(price+ " AVX");
+	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.usd-price').html( (price * 0.0025 ) + ' AVX');
 	let getPrices = $('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists');
 	
 	let avxPrice = 0;
@@ -1568,7 +1597,7 @@ function crawlPriceSource(title, count, filesLength) {
 
 			
 				$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').html(output+ " AVX");
-				$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #walletBalanceUsd').html("USD : " +usd_price);
+				$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #walletBalanceUsd').html("USD : " + (output * 0.0025 ));
 				$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').attr("full-price", output);
 				
 		}
