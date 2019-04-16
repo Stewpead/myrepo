@@ -126,16 +126,16 @@ function generateTable() {
 
         tableStr += '<tr data-key="' + key1 + '">'; 
         tableStr += '<td></td>';
-        tableStr += '<td>' + jAsset["info"][key1]["metadata"]["filename"] + '</td>';
-        tableStr += '<td>  </td>';   
+        tableStr += '<td>' + jAsset["info"][key1]["metadata"]["filename"] + ' ' + getResolution(jAsset["info"][key1]["metadata"]["height"], 1) + 'p</td>';
+        tableStr += '<td> 1 </td>';   
         tableStr += '<td>' + jAsset["info"][key1]["price"] + '</td>';
-        tableStr += '<td>  </td>';
-        tableStr += '<td>  </td>';
-        tableStr += '<td>  </td>';
+        tableStr += '<td> English </td>';
+        tableStr += '<td> English </td>';
+        tableStr += '<td> 4.7k </td>';
         tableStr += '<td> ' + getResolution(jAsset["info"][key1]["metadata"]["height"], 1) +' </td>';
         tableStr += '<td> ' + formatBytes(jAsset["info"][key1]["metadata"]["filesize"], 2) +' </td>';
         tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["video_codec_name"] + ' </td>';
-        tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["audio_codec_name"] + ' </td>';
+        tableStr += '<td style="text-transform: uppercase;"> ' + jAsset["info"][key1]["metadata"]["audio_codec_name"] + ' </td>';
         tableStr += '<td> ' + jAsset["info"][key1]["metadata"]["video_frame_rate"] + ' </td>';
         tableStr += '</tr>';
         
@@ -143,6 +143,7 @@ function generateTable() {
 
     $('#tbodyDetails').append(tableStr);
 }
+
 
 function nextWindow(key) {
     let json1 = {

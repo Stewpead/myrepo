@@ -63,6 +63,9 @@ tbody {
     font-size: 13px;
     font-weight: 500;
 }
+#ttbodyDetails tr td.upperCase {
+    text-transform: uppercase !important;
+}
 ::-webkit-scrollbar { 
     display: none; 
   }
