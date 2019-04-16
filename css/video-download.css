@@ -11,14 +11,14 @@ html::-webkit-scrollbar {
   padding-bottom: 70px;
 }
 
-h5.label-with-border.white-title {
+/* h5.label-with-border.white-title {
   color: #ffffff;
   font-style: normal;
   padding-top: 0;
 }
 
 h5.label-with-border.white-title .fileTitle {
-  display: block;
+  display: block !important;
   text-transform: capitalize;
   font-weight: 900;
   position: absolute;
@@ -39,7 +39,7 @@ h5.label-with-border.white-title .filePrice {
   font-weight: 700;
   min-width: 95px;
   margin-top: -14px;
-}
+} */
 
 .fileImageDiv {
   padding: 0 10%;
