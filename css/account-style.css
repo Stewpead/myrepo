@@ -23,10 +23,6 @@ img {
 #contents { 
     margin-top:50px;
 }
-.wallet-details span {
-    font-size: 14px !important;
-    font-weight: 900;
-}
 .btn {
     color:rgb(255, 255, 255);
     border-radius: 0px !important;
@@ -44,10 +40,12 @@ img {
     font-size: 10px;
 }
 #SpanWalletAddressLabel {
-    font-size: 12px;
+    font-size: 18px !important;
+    font-weight: 700;
 }
 .WaddressAccountWindow {
-    font-size: 12px;
+    font-size: 18px;
+    font-weight: 300;
 }
 #sort-date {
     color: #000;
@@ -93,7 +91,8 @@ table {
     display: block;
     font-size: 14px;
     font-weight: 500;
-    background-color:rgb(49, 49, 49) !important;
+    background-color:#fff
+    color: #252525;
 }
 table::-webkit-scrollbar {
     display: block;
@@ -175,4 +174,55 @@ td {
 }
 #thTxID {
     width: 15%;
+}
+.avx-account-uppr-top{
+    background-color: #131313;
+}
+#wback{
+    margin-top: 1rem!important;
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 15px;
+}
+.wallet-details{
+   margin-bottom: 15px;
+} 
+.avx-tokn-spent{
+    font-size: 16px;
+}
+#redavx{
+    font-size: 2.8rem;
+    color: #ed1c24;
+}
+.avx-tokn-ernd{
+     font-size: 16px;
+}
+#earnedavx{
+    font-size: 2.8rem;
+    color: #00a651;
+}
+#btnCopy{
+    font-size: 2rem;
+    margin: -10px 0 0 12px;
+}
+.avx-sort-date{
+    float: right;
+}
+#tbMerge tr{
+    background-color: #131313;
+}
+#tbMerge{
+    background-color: #fff;
+}
+#incoming tr{
+    background-color: #131313;
+}
+#incoming table{
+     background-color: #fff;
+}
+#outgoing tr{
+  background-color: #131313;
+}
+#outgoing table{
+     background-color: #fff;
 }
