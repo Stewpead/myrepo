@@ -94,7 +94,7 @@ class PriceRuler {
 	}
 	
 	setPrice(price) {
-		this.adjustMarkerPos();
+		//this.adjustMarkerPos();
 		this.pos = price;
 		this.render();
 	}
@@ -110,7 +110,7 @@ class PriceRuler {
 	markDataPoints(data) {
 		for (let i in data) {
 			//let x = (data[i] - this.start) * this.miniDivSpacing + this.x + (Math.floor(data[i]) * this.divPriceStep);
-			let x = ((data[i] - this.start) * 10 / this.divPriceStep) * this.miniDivSpacing;
+			let x = ((data[i] - this.start) * 10 / this.divPriceStep) * this.miniDivSpacing + this.x;
 			
 			this.drawCircle(x, this.y, 3, "#FFFFFF");
 			
@@ -141,6 +141,9 @@ class PriceRuler {
 	
 	adjustMarkerPos() {
 		let newPos = (this.pos + this.rulerPos) * this.miniDivSpacing + this.x;
+		//let newPos = (this.pos - this.start + this.rulerPos) * this.miniDivSpacing + this.x;
+		
+		let tmpVal = ((pos - this.start) * 10 / this.divPriceStep) * this.miniDivSpacing;
 			
 		if (newPos > this.len + this.x) {
 			newPos = this.len / this.miniDivSpacing;
