@@ -446,11 +446,11 @@ setTimeout(function() {
 					output += '					<div class="row file-metadata" style="margin-bottom: 22px;">';
 					output += '						<div class="col-12"><br>';
 					output += '							<p>Audio: </p> ';
-					output += '							<strong class="col-12 red-text"> N/A </strong> ';
+					output += '							<strong class="col-12 red-text"> English (ACC Stereo), Francias (ACC Mono), Francias (ACC Stereo) </strong> ';
 					output += '						</div> ';
 					output += '						<div class="col-12"> ';
 					output += '							<p>Subtitle: </p> ';
-					output += '							<strong class="col-12 red-text"> N/A </strong> ';
+					output += '							<strong class="col-12 red-text"> English (SRT External), English (ASS) </strong> ';
 					output += '						</div> ';
 					output += '					</div> ';
 						
@@ -470,12 +470,12 @@ setTimeout(function() {
 					output += '							<p>Price in USD: </p> ';
 					output += '							<strong class="col-12 usd-price"> </strong> ';
 					output += '						</div> ';
-					output += '						<div class="col-4"> ';
+					output += '						<div class="col-8"> ';
 					output += '							<p style="width: 128px">USD to AVX Rate: </p> ';
 					output += '							<strong style="background: #f6f6f6;color: #5d5d5d;font-size: 13px;float: left;padding: 2px 11px; width: 128px" class="col-12">';
 					output += '								$1.00 = 0.0025 AVX </strong> ';
 					output += '						</div> ';
-					output += '						<div class="col-4"> ';
+					output += '						<div class="col-12"> ';
 					output += '							<p>AVX Cost: </p> ';
 					output += '							<strong class="col-12 price"> N/A </strong> ';
 					output += '						</div> ';
@@ -488,7 +488,7 @@ setTimeout(function() {
 					//output += '						<p class="graph-label">$10.00 = 0.0025BTC = 39.123415 AVX</p> ';
 					
 					output += '						<div class="payment-break-down mb-5"> ';
-					output += '							<h5 class="label-with-border break-down">See where your money goes </h5> ';
+					output += '							<h5 class="label-with-border break-down">See where your token goes </h5> ';
 					output += '								<ul class="ml-5"> ';
 					output += '									<li> ';
 					output += '										60% = <span id="sixtyP'+item+'"></span> AVX goes to Intellectual Property owners acount. ';
@@ -1519,17 +1519,9 @@ function checkStringExistOnArray(value,arr){
 
   return status;
 }
-/*** 2.9 Get Resolution ***/
-function getResolution(height, type= 0) {
-	let quality = [480, 720, 1080, 1440, 2160, 4000, 6000];
-	let i = 0;
-	
-	while (height > quality[i++]);
-	
-	return (type == 1) ? quality[i - 1] : i - 1;
-}
 
-/*** 10.0 get price source ***/
+
+/*** 3.0 get price source ***/
 function crawlPriceSource(title, count, filesLength) {
 	console.log("TEST: "+ "surface"+ count);
 	let pr = new PriceRuler("surface"+ count, 10, 250, 13, 0);
@@ -1574,9 +1566,9 @@ function crawlPriceSource(title, count, filesLength) {
 	pr.setPrice(price);
 	price = price / 0.0025;
 	$("#surface"+ count ).attr('price', price);
-	$('#sixtyP'+ count ).text(price * .6);
-    $('#thirtyP'+ count ).text(price * .3);
-    $('#fiveP'+ count ).text(price * .05);
+	$('#sixtyP'+ count ).text( ( price * .6 ).toFixed(8));
+    $('#thirtyP'+ count ).text( (price * .3).toFixed(8) );
+    $('#fiveP'+ count ).text( (price * .05).toFixed(8) );
 	
 	
 	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.duration').html(getDuration(data_crawled["metadata"]["duration"]) );
@@ -1584,8 +1576,8 @@ function crawlPriceSource(title, count, filesLength) {
 	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.resolution').html(decodeURIComponent( getResolution(parseInt(data_crawled["metadata"]["height"]), 1 ) ) + "p");
 	
 	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.price').html(price);
-	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.filePrice span.labelPriceTop').html(price+ " AVX");
-	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.usd-price').html( (price * 0.0025 ) + ' AVX');
+	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.filePrice span.labelPriceTop').html( price.toFixed(8) + " AVX");
+	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.usd-price').html( (price * 0.0025 ).toFixed(2) + ' AVX');
 	let getPrices = $('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists');
 	
 	let avxPrice = 0;
@@ -1607,7 +1599,7 @@ function crawlPriceSource(title, count, filesLength) {
 
 			
 				$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').html(output+ " AVX");
-				$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #walletBalanceUsd').html("USD : " + (output * 0.0025 ));
+				$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #walletBalanceUsd').html("USD : " + (output * 0.0025 ).toFixed(2));
 				$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').attr("full-price", output);
 				
 		}
