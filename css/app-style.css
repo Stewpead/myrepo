@@ -262,3 +262,7 @@ a:hover {
 /* ::-webkit-scrollbar {
     display: none;
 } */
+
+.avx-btn-buy{
+    padding: .875rem 2.5rem;
+}
