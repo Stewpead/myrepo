@@ -132,13 +132,20 @@ jQuery(document).ready(function($) {
 	// 	num1 = parseFloat(num1).toFixed(4);
 	// 	document.getElementById('txFee').innerHTML = num1;
 	// });
-	$('#avxquantity').keypress( () => {
+
+	$('#avxquantity').keypress( function (){
 		let avxQ = document.getElementById('avxquantity').value;
 		num1 = avxQ * .001;
 		num1 = parseFloat(num1).toFixed(4);
 		document.getElementById('txFee').innerHTML = num1;
+		followUp();
 	});
-
+	function followUp() {
+		let avxQ = document.getElementById('avxquantity').value;
+		num1 = avxQ * .001;
+		num1 = parseFloat(num1).toFixed(4);
+		document.getElementById('txFee').innerHTML = num1;
+	}
 
 	// $('[pd-popup="confirmSendToModal"]').fadeIn(100);
 
