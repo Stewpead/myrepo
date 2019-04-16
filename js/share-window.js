@@ -1592,14 +1592,13 @@ function crawlPriceSource(title, count, filesLength) {
 	$.each(getPrices, function( index, value ) {
 		let price = $(this).find('canvas').attr('price');
 		if (typeof price != 'undefined') {
-			
 			avxPrice = (avxPrice + parseFloat(price));
 			let output = avxPrice.toFixed(8) ;
 			let fileResources = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(count).find('textarea').text();
 				fileResources = JSON.parse(fileResources);
 				
 				console.log("PRICE ORIG: " + fileResources["price"]);
-				fileResources["price"] = output;
+				fileResources["price"] = parseFloat(price).toFixed(8);
 				console.log("PRICE NEW : " + fileResources["price"]);
 				console.log("USD: " + price);
 				$('[pd-popup="shareConfirmMetadataModal"] .file-movie-content .file-movie-details').eq(count).find('textarea').text(JSON.stringify(fileResources));
