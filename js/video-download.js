@@ -82,6 +82,7 @@ $(document).ready(() => {
             ipcRenderer.send('send-buy-this-asset', jsonBuy);
 
 
+
         });
 
         $('.popup-close').click(() => {
@@ -119,10 +120,6 @@ $(document).ready(() => {
         $('#breakFileOne').click( () => {
             $('#fileOne').slideToggle('slow');
         });
-
-        let p = document.getElementById('priceAVX').value;
-        $('#sixtyP').text( p * .6);
-
 
     }, 100);
     var tx_key = "";
@@ -167,6 +164,7 @@ function paymentModalData() {
 
     let jRequest = {
         status : 1130,
+        type: 0
     };
 
     jRequest = JSON.stringify(jRequest);
@@ -181,6 +179,9 @@ function paymentModalData() {
     $('.file-feature-img').css('background-image', 'url(' + jAsset["crawl"]["header"]["poster"] + ')');
     document.getElementById('file-title').innerHTML = jAsset["info"][indeKey]["title"];
     let priceavx = parseFloat(assetKey["price"]).toFixed(2);
+    $('#sixtyP').text(priceavx * .6);
+    $('#thirtyP').text(priceavx * .3);
+    $('#fiveP').text(priceavx * .05);
     $('#priceAVX').text(priceavx + " AVX");
     $('.runtime').text(getDuration(jAsset["info"][indeKey]["metadata"]["duration"]));
     $('.releasedYear').text(jAsset["crawl"]["header"]["release_date"]);

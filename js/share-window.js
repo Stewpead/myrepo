@@ -40,7 +40,8 @@ $('#btnClosetop').click( () => {
 setTimeout(function() {	
 	//Wallet Data - 1130
 	var jdata = {
-		status: 1130
+		status: 1130,
+		type: 0
 	};
 	jdata = JSON.stringify(jdata);
 	ipcRenderer.send('get-wallet-data', jdata);
@@ -387,72 +388,121 @@ setTimeout(function() {
 			if ( typeof content !=="undefined") {
 					content = JSON.parse(content);
 					let crawl = JSON.parse(content["crawl"]);
+					let labelPrice 	= $('[pd-popup="shareScanResultModal"] #fileCategory').val() + " Price";
 					
 					output += '	<div class="row file-details file-payment-lists"> ';
 					output += '		<div class="row mb-5 mt-5 container-fluid"> ';
-					output += '			<div class="col-md-3"> ';
-					output += '				<span id="fileTitle">'+ content["title"] +'</span> ';
-					output += '			</div> ';
+					//output += '			<div class="col-md-3"> ';
+					//output += '				<span id="fileTitle">'+ content["title"] +'</span> ';
+					//output += '			</div> ';
 					
-					output += '			<div class="col-md-6 section-line-divider"> ';
-					output += '			</div> ';
-					output += '			<div class="col-md-3"> ';
-					output += '				<span class="filePrice">0 AVX</span> ';
-					output += '				<span class="mdi mdi-arrow-down-circle" id="breakFile'+item+'"></span> ';
-					output += '			</div> ';
+					//output += '			<div class="col-md-6 section-line-divider"> ';
+					//output += '			</div> ';
+					//output += '			<div class="col-md-3"> ';
+					//output += '				<span class="filePrice">0 AVX</span> ';
+					//output += '				<span class="mdi mdi-arrow-down-circle" id="breakFile'+item+'"></span> ';
+					//output += '			</div> ';
+					output += 			'<h5 class="label-with-border white-title">';
+					output +=				'<span class="fileTitle">'+ content["title"] +'</span>';
+					output +=				'<span class="icon-segoe float-left toogle-icon segoe-flick-up"  id="breakFile'+item+'"></span>';
+					output +=				'<span class="filePrice"> <span style="color: #969696;font-size: 11px;font-weight: 500;position: absolute;text-transform: capitalize;text-overflow: ellipsis;"	>'+labelPrice+'</span> <br><span class="labelPriceTop">0 AVX</span></span>';
+					output +=			'</h5>';
 					output += '		</div> ';
 					
-					output += '		<div id="file'+item+'" class="row">  ';
-					output += '			<div class="col-sm-12 col-md-2"> ';
-					output += '					<div class="file-feature-img" style="min-height: 173px; background-image: url(\''+ crawl["header"]["poster"] +'\')"></div> ';
-					output += '			</div> ';
-					output += '			<div class="col-sm-12 col-md-10 "> ';
-					
-					output += '				<div class="row file-metadata"> ';
-					output += '					<div class="col-12"> ';
-					output += '						<p>Title: </p> ';
-					output += '						<strong class="col-12 file-title">'+ content["title"] +'</strong> ';
-					
-					output += '						<p class="file-subdata"> ';
-					output += '							<strong>'+ crawl["header"]["contentRating"] +'</strong>';
-					output += '						</p> ';
-					output += '					</div> ';
-					output += '					<div class="col-12"> ';
-					output += '						<p>Runtime: </p> ';
-					output += '						<strong class="col-12 "></strong> ';
-					output += '					</div> ';
-					output += '					<div class="col-12"> ';
-					output += '						<p>Released: </p> ';
-					output += '						<strong class="col-12">'+ crawl["header"]["release_date"].replace(/\((\d{4})\)/g, "$1") +'</strong>';
-					output += '					</div> ';
-					output += '					<div class="col-12"> ';
-					output += '						<p>Type: </p> ';
-					output += '						<strong class="col-12">'+ crawl["type"]+'</strong>';
-					output += '					</div> ';
+					output += '		<div id="file'+item+'" class="container-fluid">  ';
+					output += '			<div class="row">  ';
+					output += '				<div class="col-sm-12 col-md-2"> ';
+					output += '						<div class="file-feature-img" style="min-height: 173px; background-image: url(\''+ crawl["header"]["poster"] +'\')"></div> ';
 					output += '				</div> ';
-					
-					output += '				<h5 class="label-with-border">Audio Language and Subtitle: </h5> ';
-					
-					output += '				<div class="row file-metadata"> ';
-					output += '					<div class="col-12"> ';
-					output += '						<p>Audio: </p> ';
-					output += '						<strong class="col-12 red-text">---</strong> ';
+					output += '				<div class="col-sm-12 col-md-10 "> ';
+						
+					output += '					<div class="row file-metadata"> ';
+					output += '						<div class="col-12"> ';
+					output += '							<p>Title: </p> ';
+					output += '							<strong class="col-12 file-title">'+ content["title"] +'</strong> ';
+						
+					output += '							<p class="file-subdata"> ';
+					output += '								<strong class="resolution"></strong>';
+					output += '							</p> ';
+					output += '						</div> ';
+					output += '						<div class="col-12"> ';
+					output += '							<p>Runtime: </p> ';
+					output += '							<strong class="col-12 duration"></strong> ';
+					output += '						</div> ';
+					output += '						<div class="col-12"> ';
+					output += '							<p>Released: </p> ';
+					output += '							<strong class="col-12">'+ crawl["header"]["release_date"].replace(/\((\d{4})\)/g, "$1") +'</strong>';
+					output += '						</div> ';
+					output += '						<div class="col-12"> ';
+					output += '							<p>Type: </p> ';
+					output += '							<strong class="col-12">'+ crawl["type"]+'</strong>';
+					output += '						</div> ';
 					output += '					</div> ';
-					output += '					<div class="col-12"> ';
-					output += '						<p>Subtitle: </p> ';
-					output += '						<strong class="col-12 red-text">---</strong> ';
+						
+					output += '					<h5 class="label-with-border">Audio Language and Subtitle: </h5> ';
+						
+					output += '					<div class="row file-metadata" style="margin-bottom: 22px;">';
+					output += '						<div class="col-12"><br>';
+					output += '							<p>Audio: </p> ';
+					output += '							<strong class="col-12 red-text"> N/A </strong> ';
+					output += '						</div> ';
+					output += '						<div class="col-12"> ';
+					output += '							<p>Subtitle: </p> ';
+					output += '							<strong class="col-12 red-text"> N/A </strong> ';
+					output += '						</div> ';
 					output += '					</div> ';
-					output += '				</div> ';
+						
+					output += '					<h5 class="label-with-border">Pricing Data Points: </h5> ';
+					output += '					<div class="meta-data-details no-padding"> ';
 					
-					output += '				<h5 class="label-with-border">Pricing Data Points: </h5> ';
-					output += '				<div class="meta-data-details no-padding"> ';
+					output += '					<div class="row file-metadata">';
+					output += '						<div class="col-12"><br>';
+					output += '							<p>Year Released: </p> ';
+					output += '							<strong class="col-12"> '+ crawl["header"]["release_date"].replace(/\((\d{4})\)/g, "$1") +' </strong> ';
+					output += '						</div> ';
+					output += '						<div class="col-12"> ';
+					output += '							<p>Resolution: </p> ';
+					output += '							<strong class="col-12 resolution"> N/A </strong> ';
+					output += '						</div> ';
+					output += '						<div class="col-4"> ';
+					output += '							<p>Price in USD: </p> ';
+					output += '							<strong class="col-12 usd-price"> </strong> ';
+					output += '						</div> ';
+					output += '						<div class="col-4"> ';
+					output += '							<p style="width: 128px">USD to AVX Rate: </p> ';
+					output += '							<strong style="background: #f6f6f6;color: #5d5d5d;font-size: 13px;float: left;padding: 2px 11px; width: 128px" class="col-12">';
+					output += '								$1.00 = 0.0025 AVX </strong> ';
+					output += '						</div> ';
+					output += '						<div class="col-4"> ';
+					output += '							<p>AVX Cost: </p> ';
+					output += '							<strong class="col-12 price"> N/A </strong> ';
+					output += '						</div> ';
+					output += '					</div> ';
+						
+					output += '					<div class="row meta-data-details no-padding"> ';
+					output += '						<svg width="100" height="100" style="text-align: center;margin: 0 auto;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring"><circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="4" stroke="#e15b64" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(203.589 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></circle></svg>';
+					output += '						<canvas id="surface'+item+'" width="677.286px" style="width:100%;margin-top: -120px;" height="250"></canvas>';
+					output += '						<img id="txImage" src="../images/horizontal logo_tm_x800.png" style="width: 15%;height: 100%;margin-top: -52px; float: left; margin-left:56px">';
+					//output += '						<p class="graph-label">$10.00 = 0.0025BTC = 39.123415 AVX</p> ';
 					
-					output += '				<div class="row meta-data-details no-padding"> ';
-					output += '					<svg width="100" height="100" style="text-align: center;margin: 0 auto;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring"><circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="4" stroke="#e15b64" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(203.589 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></circle></svg>';
-					output += '					<canvas id="surface'+item+'" width="677.286px" style="width:100%" height="250"></canvas>';
+					output += '						<div class="payment-break-down mb-5"> ';
+					output += '							<h5 class="label-with-border break-down">See where your money goes </h5> ';
+					output += '								<ul class="ml-5"> ';
+					output += '									<li> ';
+					output += '										60% = <span id="sixtyP'+item+'"></span> AVX goes to Intellectual Property owners acount. ';
+					output += '									</li> ';
+					output += '								<li> ';
+					output += '										35% = <span id="thirtyP'+item+'"></span> AVX, normally goes to file uploaders, but on file genesis, this goes to the AVX network as a fee to save the new file into the avx network. Please note you will not be uploading this file at this time, it is only entered into the records as being available from you. Any and all uploading will be compensated. ';
+					output += '								</li> ';
+					output += '								<li> ';
+					output += '										5% = <span id="fiveP'+item+'"></span> AVX will go to the nodes maintaining the AVX network. ';
+					output += '								</li> ';
+					output += '							</ul> ';
+					output += '						</div> ';
+					output += '					</div> ';					
 					output += '				</div> ';					
-					output += '			</div> ';					
-					output += '		</div>';				
+					output += '			</div>';
+					output += '			</div>';					
 					output += '		</div>';
 					output += '		<script>';
 					output += '			$("#breakFile'+item+'").click( () => { ';
@@ -496,40 +546,49 @@ setTimeout(function() {
 
 
 	$('#ShareModalView').on("click","#executePayment", function() {
+		
+		let totalAmount = parseFloat($('[pd-popup="shareMarketPriceForMultipleModal"] #priceAVX' ).attr("fullprice") );
+		let currentBalance = parseFloat ($('[pd-popup="shareMarketPriceForMultipleModal"] #walletBalance' ).html() );
+		
+		if ( totalAmount > currentBalance ) {
+			alert("You have an insuficient AVX token");
+			
+		} else {
+		
 
-		let files = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details');
-		let assetsData = [];
-		let count = 0; 
-		let category = $('[pd-popup="shareScanResultModal"] #fileCategory').val();
-		let jsonAssetUpload = ''; 
+			let files = $('[pd-popup="shareConfirmMetadataModal"] .file-movie-details');
+			let assetsData = [];
+			let count = 0; 
+			let category = $('[pd-popup="shareScanResultModal"] #fileCategory').val();
+			let jsonAssetUpload = ''; 
 
-		$.each( files, function( key, value ) {
-		  var data = $(this).find("textarea").text();
-		  
-		  switch(category) {
-			  case 'movie' :
-				assetsData[count] = JSON.parse(decodeURIComponent(data));
-			  break;
-			  case 'tv':
-				assetsData[count] = JSON.parse(data); 
-			  break;
-		  }
-		  
-		  count++;
-		});
+			$.each( files, function( key, value ) {
+			  var data = $(this).find("textarea").text();
+			  
+			  switch(category) {
+				  case 'movie' :
+					assetsData[count] = JSON.parse(decodeURIComponent(data));
+				  break;
+				  case 'tv':
+					assetsData[count] = JSON.parse(data); 
+				  break;
+			  }
+			  
+			  count++;
+			});
 
-		let filepath = $('#fullFilePathDir').val();
-		let amount = $('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').attr("full-price");
+			let filepath = $('#fullFilePathDir').val();
+			let amount = $('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').attr("full-price");
 
-		jsonAssetUpload = {
-			status : 1116,
-			data : assetsData,
-			action : category,
-			amount	: amount //TOTAL AMOUNT
-		};
-		console.log( JSON.stringify(jsonAssetUpload) );
-		ipcRenderer.send('avx-share-upload-asset', JSON.stringify(jsonAssetUpload) );	
-
+			jsonAssetUpload = {
+				status : 1116,
+				data : assetsData,
+				action : category,
+				amount	: amount //TOTAL AMOUNT
+			};
+			console.log( JSON.stringify(jsonAssetUpload) );
+			ipcRenderer.send('avx-share-upload-asset', JSON.stringify(jsonAssetUpload) );	
+		}
 		ipcRenderer.on('avx-upload-payment-response', (event, data) => {
 			store.set("ShareUploadTxKey", data["data"]["tx_key"]);
 			$('[pd-popup="shareMarketPriceForMultipleModal"]').fadeOut(100);
@@ -552,7 +611,8 @@ setTimeout(function() {
 			if ( shareUploadTxKey ==  data["tx_key"]) {
 				//success
 				var jdata = {
-					status: 1130
+					status: 1130,
+					type: 0
 				};
 				jdata = JSON.stringify(jdata);
 				ipcRenderer.send('get-wallet-data', jdata);
@@ -755,10 +815,17 @@ setTimeout(function() {
 			$(".popup.scan-result .metadata-desc").html(decodeURIComponent(crawl["header"]["synopsis"]));
 			$(".popup.scan-result .file-feature-img").css("background-image","url('"+crawl["header"]["poster"]+"'");
 			$(".popup.scan-result .file-subdata span").html(   getDuration(durationOnText) );
-			$(".popup.scan-result .file-rating").html(decodeURIComponent( getResolution(parseInt(data["metadata"]["height"]), 1 ) ) + "p");
+			//$(".popup.scan-result .file-rating").html(decodeURIComponent( getResolution(parseInt(data["metadata"]["height"]), 1 ) ) + "p");
+			$(".popup.scan-result .file-rating").html("PG - 13");
 			$(".popup.scan-result .file-producer").html(decodeURIComponent(crawl["producer"]));
 			$(".popup.scan-result .file-studio").html(decodeURIComponent(crawl["company"]));
 			
+			
+			let companyArray = decodeURIComponent(crawl["company"]).split(',');
+			
+			if ( $.isArray(companyArray) ) {
+				$(".popup.scan-result .accountName").html(companyArray[0] + "/" +  decodeURIComponent(data["title"]) );
+			}
 
 			
 			//DIRECTORS
@@ -1038,7 +1105,7 @@ class DirTreeParserVideo {
 					}
 					
 					this.dirtree += '<span class="icon-segoe segoe-v-player float-left" ></span>'; 
-					this.dirtree += '<strong>' + currObj["name"] +'</strong>'; 
+					this.dirtree += '<span>' + currObj["name"] +'</span>'; 
 					this.dirtree += '<strong> - ' + formatBytes(currObj["size"], 2) + '</strong>';
 					this.dirtree += '</p>';
 					this.dirtree += '</li>';
@@ -1117,7 +1184,7 @@ function getScanLoadingForModal( speed, fadeOut, fadeIn ) {
 function checkFileForVideoPlayable( filename  ) {
 	let file_ext =  filename.substring(filename.lastIndexOf('.') + 1);
 	let video_lists = [ "webm", "mkv", "flv", "vob", "ogg", "ogv", "avi", "mov", "wmv", "mpg", "mpeg", "mpe", "mpv", "m2v", "m4v", "mp4"];
-	let results = $.inArray( file_ext, video_lists );
+	let results = $.inArray( file_ext.toLowerCase(), video_lists );
 	return ( results < 0 ) ? 0 : 1;
 }
 
@@ -1498,13 +1565,25 @@ function crawlPriceSource(title, count, filesLength) {
 	
 		
 	let price = datapoints;
+	let usd_price = datapoints;
 	pr.render();
 	
 	
 	pr.setPrice(price);
 	price = price / 0.0025;
 	$("#surface"+ count ).attr('price', price);
-	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.filePrice').html(price+ " AVX");
+	$('#sixtyP'+ count ).text(price * .6);
+    $('#thirtyP'+ count ).text(price * .3);
+    $('#fiveP'+ count ).text(price * .05);
+	
+	
+	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.duration').html(getDuration(data_crawled["metadata"]["duration"]) );
+	
+	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.resolution').html(decodeURIComponent( getResolution(parseInt(data_crawled["metadata"]["height"]), 1 ) ) + "p");
+	
+	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.price').html(price);
+	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.filePrice span.labelPriceTop').html(price+ " AVX");
+	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.usd-price').html( (price * 0.0025 ) + ' AVX');
 	let getPrices = $('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists');
 	
 	let avxPrice = 0;
@@ -1527,6 +1606,7 @@ function crawlPriceSource(title, count, filesLength) {
 
 			
 				$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').html(output+ " AVX");
+				$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #walletBalanceUsd').html("USD : " + (output * 0.0025 ));
 				$('[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner-white #priceAVX').attr("full-price", output);
 				
 		}

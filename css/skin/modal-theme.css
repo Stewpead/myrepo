@@ -49,7 +49,7 @@
     font-size: 32px;
     float: right;
     color: #ed1c24;
-    text-align: left;
+    text-align: right;
     width: 100%;
 }
 hr#hr {
@@ -290,6 +290,7 @@ hr#hr {
 }
 .popup.scan-result .popup-inner .file-details.merge-file-details  p {
     text-transform: capitalize;
+    margin-bottom: 60px;
 }
 .popup.scan-result .popup-inner .file-scanned .title > p {
     margin-bottom: 0;	
@@ -336,8 +337,8 @@ hr#hr {
 	margin-top: -5px;
 }
 .popup.scan-result .popup-inner .share-modal-options {
-    margin: 50px 0;
-    border-top: 1px #808080 solid;    
+    margin: 75px 0 50px;
+    border-top: 1px #808080 solid;
     padding-top: 33px;
 }
 .popup.scan-result .popup-inner .share-modal-options p {
@@ -368,7 +369,7 @@ hr#hr {
 .popup.scan-result .popup-inner .file-details .file-title .file-year {
     display: block;
     font-size: 16px;
-    padding: 15px 0;
+    padding: 6px 0;
 }
 .popup.scan-result .popup-inner .file-details .file-subdata{
     text-align: left; 
@@ -378,7 +379,7 @@ hr#hr {
 .popup.scan-result .popup-inner .file-details .file-subdata strong {
     background: rgb(237, 28, 36);
     padding: 5px 16px;
-    margin: 10px;
+    margin: 10px 10px 10px 34px;
 }
 .file-details .upper-section-data {
     font-weight: bolder;
@@ -450,7 +451,9 @@ hr#hr {
 .popup.scan-result .popup-inner .file-details .file-metadata strong {
     font-size: 15px;
     float: left;
+    text-transform: capitalize;
 }
+
 
 .popup.scan-result .popup-inner .file-details .file-metadata p {
 	width: 110px;    
@@ -464,13 +467,13 @@ hr#hr {
     width: auto;
 }
 .popup.scan-result .popup-inner .file-details.merge-file-details .file-metadata p {
-    width: 16%;
+    width: 15%;
     margin-bottom: 9px;
     text-align: left;
 }
 .popup.scan-result .popup-inner .file-details.merge-file-details .file-metadata strong {
     display: block;
-    width: 74%;
+    width: 75%;
 }
 .popup.scan-result .popup-inner .file-details .file-metadata p.full-width{
 	width: 100%;
@@ -699,6 +702,19 @@ hr#hr {
     list-style-type: none;
 }
 
+.popup [pd-popup="shareConfirmMetadataModal"] .carousel {
+    margin-bottom: 35px;
+}
+.popup [pd-popup="shareConfirmMetadataModal"] .popup-inner h5.label-with-border{
+    color: #ffffff;
+    overflow: hidden;
+    text-align: left;
+    font-size: 15px;
+    padding-top: 37px;
+    width: 100%;
+    padding-bottom: 37px;
+	font-weight: 700;
+}
 /* .generateFileScanned.white-file-content .file-lists {
     list-style-type: none;
 } */
@@ -764,7 +780,7 @@ hr#hr {
  
 /* SLIDER */
 .popup-inner .carousel-control-next, .popup-inner .carousel-control-prev {
-	margin-top: 135px;
+    margin-top: 152px;
     width: 100%;
 }
 .popup-inner .carousel-control-prev span {
@@ -857,3 +873,60 @@ hr#hr {
     margin-left: -30px;
 }
 /* $('[pd-popup="shareMarketPriceForMultipleModal"]').fadeIn(100); */
+.popup[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner h5.label-with-border.white-title {
+	color: #ffffff;
+	font-style: normal;
+	padding-top: 0;
+	
+}
+.popup[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner h5.label-with-border.white-title .fileTitle{
+    text-transform: capitalize;
+    font-weight: 900;
+    position: absolute;
+    z-index: 9999;
+    background: #0f0f0f;
+    padding-right: 16px;
+    max-width: 675px;
+}
+.popup[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner h5.label-with-border.white-title .icon-segoe{
+    position: absolute;
+    right: 47px;
+}
+
+.popup[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner h5.label-with-border.white-title .filePrice{
+    position: absolute;
+    right: 77px;
+    background: #0f0f0f;
+    z-index: 999999;
+    padding-left: 16px;
+    font-size: 15px;
+    color: red;
+    font-weight: 700;
+    min-width: 95px;
+    margin-top: -14px;
+}
+
+.popup[pd-popup="shareMarketPriceForMultipleModal"] .file-metadata p{
+	width: 9%;
+	text-align: left;
+}
+.popup[pd-popup="shareMarketPriceForMultipleModal"] .file-metadata p.file-subdata strong.resolution {
+    margin: 0;
+    position: absolute;
+    padding: 3px 11px;
+    font-size: 13px;
+}
+.popup[pd-popup="shareMarketPriceForMultipleModal"] .file-metadata {
+    margin-bottom: 82px;
+}
+.popup[pd-popup="shareMarketPriceForMultipleModal"] .file-metadata  .graph-label {
+    font-size: 15px;
+    float: left;
+    position: relative;
+    margin-top: -57px;
+    margin-left: 22px;
+    font-weight: 600;
+}
+
+
+

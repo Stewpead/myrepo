@@ -10,6 +10,7 @@ html::-webkit-scrollbar {
 .header-navigation {
   padding-bottom: 70px;
 }
+
 .fileImageDiv {
   padding: 0 10%;
 }
@@ -32,10 +33,13 @@ html::-webkit-scrollbar {
 }
 .section-divider {
   width: 100%; 
-  text-align: left; 
+  text-align: left;  
   border-bottom: 1px solid #444444; 
   line-height: .1em;
   margin: 50px 5% 50px 35px;
+}
+.file-details-header {
+  text-transform: capitalize;
 }
 .section-divider ul { 
   display: inline;

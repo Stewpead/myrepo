@@ -42,8 +42,8 @@ $(document).ready( () => {
 	// 	$('[data-toggle="tooltip"]').tooltip()
 	// })
 
-	$('#recentTab').css('color', 'white');
-
+	
+	$('.section-divider ul li span#recentTab').addClass('clicked');
 
 	$('.section-divider ul li span').click(function () {
 		
