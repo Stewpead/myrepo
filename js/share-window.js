@@ -472,7 +472,7 @@ setTimeout(function() {
 					output += '						</div> ';
 					output += '						<div class="col-8"> ';
 					output += '							<p style="width: 128px">USD to AVX Rate: </p> ';
-					output += '							<strong style="background: #f6f6f6;color: #5d5d5d;font-size: 13px;float: left;padding: 2px 11px; width: 128px" class="col-12">';
+					output += '							<strong style="background: #f6f6f6;color: #5d5d5d;font-size: 13px;float: left;padding: 2px 11px; width: 147px" class="col-12">';
 					output += '								$1.00 = 0.0025 AVX </strong> ';
 					output += '						</div> ';
 					output += '						<div class="col-12"> ';
@@ -1586,7 +1586,7 @@ function crawlPriceSource(title, count, filesLength) {
 	
 	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.price').html(price);
 	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.filePrice span.labelPriceTop').html( price.toFixed(8) + " AVX");
-	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.usd-price').html( (price * 0.0025 ).toFixed(2) + ' AVX');
+	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.usd-price').html( (price * 0.0025 ).toFixed(2) );
 	let getPrices = $('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists');
 	
 	let avxPrice = 0;
