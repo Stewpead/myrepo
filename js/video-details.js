@@ -126,7 +126,7 @@ function generateTable() {
 
         tableStr += '<tr data-key="' + key1 + '">'; 
         tableStr += '<td></td>';
-        tableStr += '<td>' + jAsset["info"][key1]["metadata"]["filename"] + ' ' + getResolution(jAsset["info"][key1]["metadata"]["height"], 1) + 'p</td>';
+        tableStr += '<td>' + jAsset["info"][key1]["metadata"]["filename"] + '</td>';
         tableStr += '<td> 1 </td>';   
         tableStr += '<td>' + jAsset["info"][key1]["price"] + '</td>';
         tableStr += '<td> English </td>';
