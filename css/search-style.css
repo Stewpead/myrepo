@@ -169,11 +169,13 @@ span#divider-text:hover {
 }
 #tabsfileDetails li + li:before {
     content: "  |  ";
-    padding: 0 10px;
+    padding: 0 20px;
+    color: #424242;
 
 }
 #tabsfileDetails { 
     font-size: 18px;
+    margin-top: 10px;
 }
 #movieplot {
     width: 95%;
