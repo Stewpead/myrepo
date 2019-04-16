@@ -451,8 +451,9 @@ hr#hr {
 .popup.scan-result .popup-inner .file-details .file-metadata strong {
     font-size: 15px;
     float: left;
+    text-transform: capitalize;
 }
-}
+
 
 .popup.scan-result .popup-inner .file-details .file-metadata p {
 	width: 110px;    
@@ -872,3 +873,52 @@ hr#hr {
     margin-left: -30px;
 }
 /* $('[pd-popup="shareMarketPriceForMultipleModal"]').fadeIn(100); */
+.popup[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner h5.label-with-border.white-title {
+	color: #ffffff;
+	font-style: normal;
+	padding-top: 0;
+	
+}
+.popup[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner h5.label-with-border.white-title .fileTitle{
+    text-transform: capitalize;
+    font-weight: 900;
+    position: absolute;
+    z-index: 9999;
+    background: #0f0f0f;
+    padding-right: 16px;
+    max-width: 675px;
+}
+.popup[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner h5.label-with-border.white-title .icon-segoe{
+    position: absolute;
+    right: 47px;
+}
+
+.popup[pd-popup="shareMarketPriceForMultipleModal"] .popup-inner h5.label-with-border.white-title .filePrice{
+    position: absolute;
+    right: 77px;
+    background: #0f0f0f;
+    z-index: 999999;
+    padding-left: 16px;
+    font-size: 15px;
+    color: red;
+    font-weight: 700;
+    min-width: 95px;
+    margin-top: -14px;
+}
+
+.popup[pd-popup="shareMarketPriceForMultipleModal"] .file-metadata p{
+	width: 9%;
+	text-align: left;
+}
+.popup[pd-popup="shareMarketPriceForMultipleModal"] .file-metadata p.file-subdata strong.rated {
+    margin: 0;
+    position: absolute;
+    padding: 3px 11px;
+    font-size: 13px;
+}
+.popup[pd-popup="shareMarketPriceForMultipleModal"] .file-metadata {
+    margin-bottom: 82px;
+}
+
+
+

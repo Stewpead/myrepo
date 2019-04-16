@@ -40,7 +40,8 @@ $('#btnClosetop').click( () => {
 setTimeout(function() {	
 	//Wallet Data - 1130
 	var jdata = {
-		status: 1130
+		status: 1130,
+		type: 0
 	};
 	jdata = JSON.stringify(jdata);
 	ipcRenderer.send('get-wallet-data', jdata);
@@ -387,72 +388,103 @@ setTimeout(function() {
 			if ( typeof content !=="undefined") {
 					content = JSON.parse(content);
 					let crawl = JSON.parse(content["crawl"]);
+					let labelPrice 	= $('[pd-popup="shareScanResultModal"] #fileCategory').val() + " Price";
 					
 					output += '	<div class="row file-details file-payment-lists"> ';
 					output += '		<div class="row mb-5 mt-5 container-fluid"> ';
-					output += '			<div class="col-md-3"> ';
-					output += '				<span id="fileTitle">'+ content["title"] +'</span> ';
-					output += '			</div> ';
+					//output += '			<div class="col-md-3"> ';
+					//output += '				<span id="fileTitle">'+ content["title"] +'</span> ';
+					//output += '			</div> ';
 					
-					output += '			<div class="col-md-6 section-line-divider"> ';
-					output += '			</div> ';
-					output += '			<div class="col-md-3"> ';
-					output += '				<span class="filePrice">0 AVX</span> ';
-					output += '				<span class="mdi mdi-arrow-down-circle" id="breakFile'+item+'"></span> ';
-					output += '			</div> ';
+					//output += '			<div class="col-md-6 section-line-divider"> ';
+					//output += '			</div> ';
+					//output += '			<div class="col-md-3"> ';
+					//output += '				<span class="filePrice">0 AVX</span> ';
+					//output += '				<span class="mdi mdi-arrow-down-circle" id="breakFile'+item+'"></span> ';
+					//output += '			</div> ';
+					output += 			'<h5 class="label-with-border white-title">';
+					output +=				'<span class="fileTitle">'+ content["title"] +'</span>';
+					output +=				'<span class="icon-segoe float-left toogle-icon segoe-flick-up"  id="breakFile'+item+'"></span>';
+					output +=				'<span class="filePrice"> <span style="color: #969696;font-size: 11px;font-weight: 500;position: absolute;text-transform: capitalize;text-overflow: ellipsis;"	>'+labelPrice+'</span> <br><span class="labelPriceTop">0 AVX</span></span>';
+					output +=			'</h5>';
 					output += '		</div> ';
 					
-					output += '		<div id="file'+item+'" class="row">  ';
-					output += '			<div class="col-sm-12 col-md-2"> ';
-					output += '					<div class="file-feature-img" style="min-height: 173px; background-image: url(\''+ crawl["header"]["poster"] +'\')"></div> ';
-					output += '			</div> ';
-					output += '			<div class="col-sm-12 col-md-10 "> ';
-					
-					output += '				<div class="row file-metadata"> ';
-					output += '					<div class="col-12"> ';
-					output += '						<p>Title: </p> ';
-					output += '						<strong class="col-12 file-title">'+ content["title"] +'</strong> ';
-					
-					output += '						<p class="file-subdata"> ';
-					output += '							<strong>'+ crawl["header"]["contentRating"] +'</strong>';
-					output += '						</p> ';
-					output += '					</div> ';
-					output += '					<div class="col-12"> ';
-					output += '						<p>Runtime: </p> ';
-					output += '						<strong class="col-12 "></strong> ';
-					output += '					</div> ';
-					output += '					<div class="col-12"> ';
-					output += '						<p>Released: </p> ';
-					output += '						<strong class="col-12">'+ crawl["header"]["release_date"].replace(/\((\d{4})\)/g, "$1") +'</strong>';
-					output += '					</div> ';
-					output += '					<div class="col-12"> ';
-					output += '						<p>Type: </p> ';
-					output += '						<strong class="col-12">'+ crawl["type"]+'</strong>';
-					output += '					</div> ';
+					output += '		<div id="file'+item+'" class="container-fluid">  ';
+					output += '			<div class="row">  ';
+					output += '				<div class="col-sm-12 col-md-2"> ';
+					output += '						<div class="file-feature-img" style="min-height: 173px; background-image: url(\''+ crawl["header"]["poster"] +'\')"></div> ';
 					output += '				</div> ';
-					
-					output += '				<h5 class="label-with-border">Audio Language and Subtitle: </h5> ';
-					
-					output += '				<div class="row file-metadata"> ';
-					output += '					<div class="col-12"> ';
-					output += '						<p>Audio: </p> ';
-					output += '						<strong class="col-12 red-text">---</strong> ';
+					output += '				<div class="col-sm-12 col-md-10 "> ';
+						
+					output += '					<div class="row file-metadata"> ';
+					output += '						<div class="col-12"> ';
+					output += '							<p>Title: </p> ';
+					output += '							<strong class="col-12 file-title">'+ content["title"] +'</strong> ';
+						
+					output += '							<p class="file-subdata"> ';
+					output += '								<strong class="rated">'+ crawl["header"]["contentRating"] +'</strong>';
+					output += '							</p> ';
+					output += '						</div> ';
+					output += '						<div class="col-12"> ';
+					output += '							<p>Runtime: </p> ';
+					output += '							<strong class="col-12 "></strong> ';
+					output += '						</div> ';
+					output += '						<div class="col-12"> ';
+					output += '							<p>Released: </p> ';
+					output += '							<strong class="col-12">'+ crawl["header"]["release_date"].replace(/\((\d{4})\)/g, "$1") +'</strong>';
+					output += '						</div> ';
+					output += '						<div class="col-12"> ';
+					output += '							<p>Type: </p> ';
+					output += '							<strong class="col-12">'+ crawl["type"]+'</strong>';
+					output += '						</div> ';
 					output += '					</div> ';
-					output += '					<div class="col-12"> ';
-					output += '						<p>Subtitle: </p> ';
-					output += '						<strong class="col-12 red-text">---</strong> ';
+						
+					output += '					<h5 class="label-with-border">Audio Language and Subtitle: </h5> ';
+						
+					output += '					<div class="row file-metadata">';
+					output += '						<div class="col-12"><br>';
+					output += '							<p>Audio: </p> ';
+					output += '							<strong class="col-12 red-text"> N/A </strong> ';
+					output += '						</div> ';
+					output += '						<div class="col-12"> ';
+					output += '							<p>Subtitle: </p> ';
+					output += '							<strong class="col-12 red-text"> N/A </strong> ';
+					output += '						</div> ';
 					output += '					</div> ';
-					output += '				</div> ';
+						
+					output += '					<h5 class="label-with-border">Pricing Data Points: </h5> ';
+					output += '					<div class="meta-data-details no-padding"> ';
 					
-					output += '				<h5 class="label-with-border">Pricing Data Points: </h5> ';
-					output += '				<div class="meta-data-details no-padding"> ';
-					
-					output += '				<div class="row meta-data-details no-padding"> ';
-					output += '					<svg width="100" height="100" style="text-align: center;margin: 0 auto;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring"><circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="4" stroke="#e15b64" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(203.589 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></circle></svg>';
-					output += '					<canvas id="surface'+item+'" width="677.286px" style="width:100%" height="250"></canvas>';
+					output += '					<div class="row file-metadata">';
+					output += '						<div class="col-12"><br>';
+					output += '							<p>Year Released: </p> ';
+					output += '							<strong class="col-12"> N/A </strong> ';
+					output += '						</div> ';
+					output += '						<div class="col-12"> ';
+					output += '							<p>Resolution: </p> ';
+					output += '							<strong class="col-12"> N/A </strong> ';
+					output += '						</div> ';
+					output += '						<div class="col-4"> ';
+					output += '							<p>Price in USD: </p> ';
+					output += '							<strong class="col-12"> N/A </strong> ';
+					output += '						</div> ';
+					output += '						<div class="col-4"> ';
+					output += '							<p style="background: #f6f6f6;color: #5d5d5d;font-size: 13px;float: left;padding: 2px 11px;">USD to AVX Rate: </p> ';
+					output += '							<strong class="col-12"> N/A </strong> ';
+					output += '						</div> ';
+					output += '						<div class="col-4"> ';
+					output += '							<p>AVX Cost: </p> ';
+					output += '							<strong class="col-12"> N/A </strong> ';
+					output += '						</div> ';
+					output += '					</div> ';
+						
+					output += '					<div class="row meta-data-details no-padding"> ';
+					output += '						<svg width="100" height="100" style="text-align: center;margin: 0 auto;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring"><circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="4" stroke="#e15b64" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(203.589 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></circle></svg>';
+					output += '						<canvas id="surface'+item+'" width="677.286px" style="width:100%" height="250"></canvas>';
+					output += '					</div> ';					
 					output += '				</div> ';					
-					output += '			</div> ';					
-					output += '		</div>';				
+					output += '			</div>';
+					output += '			</div>';					
 					output += '		</div>';
 					output += '		<script>';
 					output += '			$("#breakFile'+item+'").click( () => { ';
@@ -552,7 +584,8 @@ setTimeout(function() {
 			if ( shareUploadTxKey ==  data["tx_key"]) {
 				//success
 				var jdata = {
-					status: 1130
+					status: 1130,
+					type: 0
 				};
 				jdata = JSON.stringify(jdata);
 				ipcRenderer.send('get-wallet-data', jdata);
@@ -764,7 +797,7 @@ setTimeout(function() {
 			let companyArray = decodeURIComponent(crawl["company"]).split(',');
 			
 			if ( $.isArray(companyArray) ) {
-				$(".popup.scan-result .accountName").html(companyArray[0]);
+				$(".popup.scan-result .accountName").html(companyArray[0] + "/" +  decodeURIComponent(data["title"]) );
 			}
 
 			
@@ -1512,7 +1545,7 @@ function crawlPriceSource(title, count, filesLength) {
 	pr.setPrice(price);
 	price = price / 0.0025;
 	$("#surface"+ count ).attr('price', price);
-	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.filePrice').html(price+ " AVX");
+	$('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists-container .file-payment-lists').eq(count).find('.filePrice span.labelPriceTop').html(price+ " AVX");
 	let getPrices = $('[pd-popup="shareMarketPriceForMultipleModal"] .file-payment-lists');
 	
 	let avxPrice = 0;
