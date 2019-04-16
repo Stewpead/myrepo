@@ -12,12 +12,12 @@ const store = new Store();
 var img = "";
 
 var assetKey = store.get('pass-asset-key');
-// store.delete('pass-asset-key');
+store.delete('pass-asset-key');
 
 var indeKey = assetKey["indexKey"];
 
 var jAsset = store.get('metadata-specific-asset');
-// store.delete('metadata-specific-asset');
+store.delete('metadata-specific-asset');
 console.log(jAsset);
 var walletData;
 var currentBal;
@@ -124,10 +124,14 @@ $(document).ready(() => {
             $('#fileOne').slideToggle('slow');
         });
         
-// 
-
-    let pr = new PriceRuler("surfaceFileDownloadCanvas" , 10, 250, 13, 0);
+        let lowestPrice = 3.95; 
+        let highestPrice = 19.99;
         
+	let startRange = Math.floor(lowestPrice);
+	let endRange = Math.ceil(highestPrice);
+	
+	let pr = new PriceRuler("surfaceFileDownloadCanvas" , 10, 250, 10, startRange, endRange);
+    pr.setMovable(false);
 
     let year = jAsset["crawl"]["header"]["release_date"].replace(/\((\d{4})\)/g, "$1");
     let height = (parseInt(jAsset["info"][indeKey]["metadata"]["height"]));
@@ -240,6 +244,7 @@ function paymentModalData() {
     let usd = parseInt(jAsset["crawl"]["header"]["release_date"].replace(/\((\d{4})\)/g, "$1")) * .0025;
     $('.usd-price').text(usd + "$");
 
+    
     let priceavx = parseFloat(assetKey["price"]).toFixed(2);
     $('#usdavx').text("$" + usd);
     $('#priceOfAVX').text(priceavx);
