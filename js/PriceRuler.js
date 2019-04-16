@@ -21,6 +21,8 @@ class PriceRuler {
 		this.divPointHeight = this.y - 40;
 		this.divPriceHeight = this.y + 40;
 		
+		this.movable = true;
+		
 		this.init();
 		
 		this.pos = 0;
@@ -31,10 +33,11 @@ class PriceRuler {
 		this.dataPoints = [];
 		
 		this.canvas.addEventListener("mousedown", (e) => {
-			this.isDown = true;
-			this.offsetX = e.clientX;
-			this.offsetY = e.clientY;
-			
+			if (this.movable) {
+				this.isDown = true;
+				this.offsetX = e.clientX;
+				this.offsetY = e.clientY;
+			}
 		});
 		
 		this.canvas.addEventListener("mousemove", (e) => {
@@ -53,14 +56,18 @@ class PriceRuler {
 		});
 		
 		this.canvas.addEventListener("mouseup", (e) => {
-			this.isDown = false;
-			this.adjustMarkerPos();
-			console.log(this.getPrice());
+			if (this.isDown) {
+				this.isDown = false;
+				this.adjustMarkerPos();
+				console.log(this.getPrice());
+			}
 		});
 		
 		this.canvas.addEventListener("mouseout", (e) => {
-			this.isDown = false;
-			this.adjustMarkerPos();
+			if (this.isDown) {
+				this.isDown = false;
+				this.adjustMarkerPos();
+			}
 		});
 		
 		this.canvas.addEventListener("resize", (e) => {
@@ -80,6 +87,10 @@ class PriceRuler {
 		this.miniDivStartPos = this.x + this.miniDivSpacing;
 		
 		this.midDivPos = this.spacing / 2 + this.x;
+	}
+	
+	setMovable(flag) {
+		this.movable = flag;
 	}
 	
 	setPrice(price) {
@@ -120,9 +131,9 @@ class PriceRuler {
 	
 	displayDivPrices() {
 		for (let i = 1; i < this.ndiv; ++i) {
-			let pos = i;
-			let x = 10 * i * pos * this.miniDivSpacing + this.x;
-			this.displayPrice(pos + this.start + this.divPriceStep, x, this.divPriceHeight, "#ffffff"); 
+			let pos = i * 10;
+			let x = pos * this.miniDivSpacing + this.x;
+			this.displayPrice(this.start + i * this.divPriceStep, x, this.divPriceHeight, "#ffffff"); 
 		}
 	}
 	
@@ -212,9 +223,9 @@ class PriceRuler {
 			x1 = this.len + this.x;
 		}
 		
+		this.displayPrice(this.pos, x1, this.dataPointsHeight + 15, "#fff");
 		this.drawCircle(x1, y1, 3, "#e61a24");
 		this.draw(x1, y1, x1, y2, "#e61a24");
-		
 	}
 	
 	draw(x1, y1, x2, y2, color) {

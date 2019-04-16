@@ -1561,17 +1561,17 @@ function crawlPriceSource(title, count, filesLength) {
 	let endRange = Math.ceil(highestPrice);
 	
 	let pr = new PriceRuler("surface"+ count, 10, 250, 10, startRange, endRange);
+	pr.setMovable(false);
 	
 	pr.setDataPoints([datapoints]);
-	
-		
+
 	let price = datapoints;
 	let usd_price = datapoints;
 	pr.render();
-	
-	
+
 	pr.setPrice(price);
 	price = price / 0.0025;
+	
 	$("#surface"+ count ).attr('price', price);
 	$('#sixtyP'+ count ).text( ( price * .6 ).toFixed(8));
     $('#thirtyP'+ count ).text( (price * .3).toFixed(8) );
