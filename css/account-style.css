@@ -91,8 +91,9 @@ table {
     display: block;
     font-size: 14px;
     font-weight: 500;
-    background-color:#fff
-    color: #252525;
+    background-color:#131313 !important;
+    /* color: #252525; */
+    color: #fff !important;
 }
 table::-webkit-scrollbar {
     display: block;
@@ -127,8 +128,9 @@ th {
     width: auto;
 }
 tbody {
-    background-color:white;
-    color:#000;
+    background-color:#060606;
+    color: whitesmoke !important;
+
 }
 tr {
     height: 10px !important;
@@ -138,11 +140,6 @@ td {
     height: 30px !important;
     text-align: left;
 }
-/* #Waddress {
-    float: left;
-    padding-left: 5px;
-    font-size: 10px;
-} */
 #decimalPlace {
     color: #000;
 }
