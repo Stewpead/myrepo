@@ -743,13 +743,17 @@ onDrop = function(event) {
 
 				ipcRenderer.on('avx-share-upload-scan-results', (event, data) => {
 					let jsonString = JSON.stringify(data);
+					$('[pd-popup="shareScanResultModal"] #fileCategory').val(data["data"]["action"]);
 					
 					var dtp = new DirTreeParserVideo(data["data"]["tree"]);
+					$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').text( encodeURIComponent( JSON.stringify(data["data"]["tree"]) )) ;
 					$(".generateFileScanned").html(dtp.getHtmlTree());
 					$(".file-dir-info span:nth-child(1)").html(path);
-					$( ".popup .item-file-meta" ).on( "click", shareShowMetadataPerFile );
-					
+					$( ".item-file-meta" ).on( "click", shareShowMetadataPerFile );
 					activateToggleDIR();
+					
+					let trigger = $('[pd-popup="shareScanResultModal"] .video-duration strong').html();
+					$('[pd-popup="shareScanResultModal"] .generateFileScanned .item-file-meta').eq(0).click();
 					
 					// CLEAR Modal
 					$('[pd-popup="shareConfirmMetadataModal"] .file-preview-desc-tv textarea').attr("generated", "")
