@@ -6,6 +6,7 @@ const url = require('url');
 const path = require('path');
 const ipcMain = require('electron').ipcMain;
 const chrome = require('selenium-webdriver/chrome');
+const shell = require('shelljs');
 
 var filename = ipcMain.addListener.toString;
 var temp;
@@ -23,6 +24,7 @@ var tmpStr = '';
 
 var walletBalance = 0;
 var walletAddress = '';
+var executedElectron = 0;
 
 var Status = {
 	CONNECT_SUPERNODE : 4,
@@ -64,19 +66,23 @@ var Status = {
 	Establishing Connection and Reconnecting
 */
 var initiateConnection = function(attempt){
-	
+
 	var client = new net.Socket();
 	
 	client.connect(connectionPort, connectionHost, function() {
 		console.log('Connected');
 		attempt = 0;
-		
-	
+
 		
 		var module = require('./includes/main-window');
-		module.showWindow(client); 
+		if ( executedElectron == 0 ) {
+			module.showWindow(client);
 		module.avxLogin(client);
 		module.avxSignup(client);
+			executedElectron = 1;
+		} 
+		
+
 		module.avxWalletData(client);
 		
 		var module = require('./includes/dashboard');
@@ -113,18 +119,43 @@ var initiateConnection = function(attempt){
 		
 		if ( attempt < 5 ){
 		  console.log('Reconnecting... Attempt(s): ' + attempt);
+		  console.log('executedElectron' + executedElectron);
 		  attempt = attempt + 1;
-		  setTimeout(reconnectConnection, 5000, attempt);
+		  setTimeout(reconnectConnection, 5000, attempt, executedElectron);
 		  
 		} else {
 		  console.log('Connection Timeout');
 		  client.destroy();
 		}
 	});
+/*	
+	client.on('disconnect', () => {
+		console.log('YESY'); 
+	});
+	
+	client.on('close', function(e) {
+
+		if ( attempt < 5 ){
+		  console.log('Reconnecting... Attempt(s): ' + attempt);
+		  console.log('executedElectron' + executedElectron);
+		  attempt = attempt + 1;
+		  setTimeout(reconnectConnection, 5000, attempt, executedElectron);
+		  
+		} else {
+		  console.log('Connection Timeout');
+		  client.destroy();
+		}
+		
+	});	
+	
+
+	*/
 	
 	client.on('data', function(data) {
 		
 		data = JSON.parse(data);
+		
+		console.log(data);
 
 		var moduleAccount = require('./includes/login-signup');
 		var moduleDashboard = require('./includes/dashboard-action');
@@ -255,11 +286,47 @@ var initiateConnection = function(attempt){
 
 }
 
-var reconnectConnection = function(attempt) {
-	initiateConnection(attempt); 
+var reconnectConnection = function(attempt, executedElectron) {
+	const { shell } = require('electron');
+	//shell.openItem('..\\avxcpp\\newp2p.exe');
+	
+	initiateConnection(attempt, executedElectron); 
+	
+
+/*
+
+	var child = require('child_process').exec;
+	var executablePath = '..\\avxcpp\\newp2p.exe';
+
+	child(executablePath, function(err, data) {
+		if(err){
+		   console.error(err);
+		   return;
+		}
+	 
+		console.log(data.toString());
+	});
+
+	*/
+	
 }
 
-initiateConnection(0);
+/*	
+var exec = require('child_process').execFile;
+
+var fun =function(){
+   console.log("fun() start");
+   exec('..\\avxcpp\\newp2p.exe', function(err, data) {  
+        console.log(err)
+        console.log(data.toString());                       
+    });  
+}
+fun();
+
+*/
+
+
+initiateConnection(0 ,executedElectron);
 
 
 

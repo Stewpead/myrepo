@@ -88,6 +88,7 @@ function signup() {
 
 	var jsonString = JSON.stringify(json);
 	ipcRenderer.send("avx-signup", jsonString);
+	
 
 	ipcRenderer.on('signup-response', (event, arg) => {
 		if (arg == "true") {

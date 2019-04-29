@@ -1,0 +1,6 @@
+.popup.scanning-file.notification .mdi-loading:before {
+    font-size: 68px!important;
+}
+.popup.scanning-file.notification h4.title-label {
+	padding-top: 0!important;
+}
